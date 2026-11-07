@@ -64,7 +64,7 @@ updated: 2026-11-07
 
 ## 命名
 
-- 目录：小写短横线；论文卡用 `{arxiv_id}-{slug}.md`
+- 目录：小写短横线；论文卡用 `{arxiv_id}-{slug}.card.md`
 - 子主题目录：`topics/<派>/<子主题>/README.md`；按子机制命名，不按来源类型。派 README 只做地图，详细论证在子主题
 - 结论编号：`E-xx`（结论）/ `Q-xx`（存疑）/ `C-xx`（冲突）
 - 实验编号：`EXP-xxx`
@@ -73,8 +73,8 @@ updated: 2026-11-07
 
 每次动笔后回答三句：
 
-1. 这份材料/这篇文档**改变了哪条判断**？→ 去改 [conclusions](../topics/conclusions.md)
-2. **喂给了哪个主题**？→ 去改 [notes 台账](../src/README.md)
+1. 这份材料/这篇文档**改变了哪条判断**？→ 先写本派 `claims.md`；跨派/进交付物才升 [conclusions](../topics/conclusions.md)
+2. **喂给了哪个主题**？→ 去改 [src 台账](../src/README.md)
 3. 如果修正了旧判断，**哪些主题页要回改**？→ 写进卡片的 `updates:`，逐页改。
 
 三句都答不上来，说明这次动笔没有产生信息。

@@ -1,3 +1,8 @@
+---
+status: draft
+updated: 2026-11-07
+---
+
 # Prompt: 推理期约束
 
 ## 角色

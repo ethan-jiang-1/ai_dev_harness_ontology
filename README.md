@@ -4,6 +4,8 @@
 
 这个仓库不是一次性成文的文档，而是一条**持续运转的消化流水线**：不断吸纳新文章，消化成结构化认知，成熟后抽取为可对外的交付物（手册、Deck、图）。
 
+> **第一次接手**：§1 看问题，[AGENTS](./AGENTS.md) 的工位表看落点；动某个派时，先读该派 README 的「本目录怎么长」。
+
 ---
 
 ## 1. 研究什么
@@ -82,7 +84,7 @@
 
 底座另置于 [`topics/00-harness/`](./topics/00-harness/README.md)：控制回路的七个部件，`01-04` 都是往这些部件上接；`05` 是回路前，`06` 是回路外。
 
-**三条轴，不是一套同义词：** 派轴（凭什么起作用）是目录；部件轴（接在机器哪里）在 `00-harness/`；时刻轴（在哪个时刻介入）在 [`topics/seams.md`](./topics/seams.md)。六派是 **4+1+1**：`01-04` 回路内，`05` 回路前，`06` 回路外。每派另有一个 `frontier.md`，放前沿问题与候选队列。
+**三条轴，不是一套同义词：** 派轴（凭什么起作用）是目录；部件轴（接在机器哪里）在 `00-harness/`；时刻轴（在哪个时刻介入）在 [`topics/seams.md`](./topics/seams.md)。六派是 **4+1+1**：`01-04` 回路内，`05` 回路前，`06` 回路外。每派根目录有四个文件：`README.md`（地图）、`claims.md`（局部结论）、`sources.md`（卡片索引）、`frontier.md`（候选队列）。
 
 **派内还可以有子主题目录**（如 `01-constraint/action-gate/`）：派 README 只做地图与硬证据，详细机制在子主题。这是目录能继续长的第二层；成立条件见 [ADR 0003](adr/0003-subtopics-and-source-types.md)。
 
@@ -104,9 +106,9 @@
 
 ## 5. 七种读法
 
-- **要结论** → [topics/conclusions](./topics/conclusions.md)：三栏，含反例与冲突。
+- **要结论** → [topics/conclusions](./topics/conclusions.md)：三栏，含反例与冲突；各派局部判断在 `claims.md`（`L-xx`），不直接进交付物。
 - **要流派** → [topics/README](./topics/README.md)：六派地图 + 子主题 + 三轴 + 边界规则 + 强度谱。
-- **要台账** → [notes](./src/README.md)：哪篇读了、哪篇没读、喂了哪个主题。
+- **要台账** → [src](./src/README.md)：哪篇读了、哪篇没读、喂了哪个主题。
 - **要机制** → [topics/00-harness](./topics/00-harness/README.md)：控制回路七个部件。
 - **要时刻** → [topics/seams](./topics/seams.md)：六个接缝 + 选择规则 + crosswalk。
 - **要交付** → [deliverables](./deliverables/README.md)：手册大纲与抽取规则。

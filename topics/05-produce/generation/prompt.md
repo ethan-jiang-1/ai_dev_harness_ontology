@@ -1,3 +1,8 @@
+---
+status: draft
+updated: 2026-11-07
+---
+
 # Prompt: 生成的可消费性
 
 ## 角色

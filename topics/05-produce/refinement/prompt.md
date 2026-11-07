@@ -1,3 +1,8 @@
+---
+status: draft
+updated: 2026-11-07
+---
+
 # Prompt: 精化定位
 
 ## 角色
