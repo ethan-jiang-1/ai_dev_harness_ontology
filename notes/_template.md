@@ -1,9 +1,12 @@
 ---
-status: seed            # seed | draft | stabilized
+status: seed            # seed | draft | stabilized | superseded
+reading: 未读           # 未读 | 综述级 | 摘要级 | 精读 | 已消化
+provenance: 未核        # 原文正文 | 原文摘要 | 综述转述 | 未核
 updated: YYYY-MM-DD
 source:                 # 指向 source/ 下的原文件
 author:
 published:
+updates: []             # 本卡修正后需要回改的 topics 文档
 ---
 
 # {材料标题}

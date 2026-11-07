@@ -6,7 +6,9 @@ rq: [RQ2, RQ3]
 
 # 00 harness：被接入的那台机器
 
-六派都是往这台机器上接。本目录讲机器的七个部件**各自如何工作、在哪失效**；本体具体怎么接、效果如何，去对应的派。
+这是**部件轴**：机器由哪七个部件组成、各自在哪失效。派轴（本体凭什么起作用）见 [topics/README](../README.md)；时刻轴（本体在哪个时刻介入）见 [seams.md](../seams.md)。
+
+`01-04` 都是往这台机器上接；`05` 是回路前（来源），`06` 是回路外（尺子）。本目录讲机器的七个部件**各自如何工作、在哪失效**；本体具体怎么接、效果如何，去对应的派。
 
 ## 七个部件
 
@@ -14,23 +16,25 @@ rq: [RQ2, RQ3]
 
 > 给它看什么 → 它留下什么 → 谁在做 → 它怎么施力 → 结果是否可接受 → 我们能否看见 → 是否被授权
 
-## 七个部件与六派的接口
+## 七个部件与 01-04 的接口
 
-| 部件 | 一句话失效 | 接哪一派 |
-|---|---|---|
-| [context](./context.md) 供给 | 压缩会先杀死语义（判据和冗余长得一样） | [03 知识](../03-knowledge/README.md) |
-| [memory](./memory.md) 留存 | 状态比事实更接近记忆的本质 | [04 状态](../04-state/README.md) |
-| [orchestration](./orchestration.md) 分工 | 并行不省总上下文，只挪瓶颈位置 | **无**（见下） |
-| [tools-and-sandbox](./tools-and-sandbox.md) 施力 | 能力面与权限面必须分开设计 | [01 约束](../01-constraint/README.md) |
-| [verification](./verification.md) 判定 | 判定器与被判对象必须不同源 | [02 判定](../02-judgment/README.md) |
-| [observability](./observability.md) 看见 | 只记结果不记中间，等于没有观测 | [02 判定](../02-judgment/README.md) |
-| [governance](./governance.md) 授权 | 粗粒度审批会退化成橡皮图章 | [01 约束](../01-constraint/README.md) |
+| 部件 | 一句话失效 | 接哪一派 | 对应时刻 |
+|---|---|---|---|
+| [context](./context.md) 供给 | 压缩会先杀死语义（判据和冗余长得一样） | [03 知识](../03-knowledge/README.md) | 供给（无时刻） |
+| [memory](./memory.md) 留存 | 状态比事实更接近记忆的本质 | [04 状态](../04-state/README.md) | 5 / 6 |
+| [orchestration](./orchestration.md) 分工 | 并行不省总上下文，只挪瓶颈位置 | **无**（见下） | 无 |
+| [tools-and-sandbox](./tools-and-sandbox.md) 施力 | 能力面与权限面必须分开设计 | [01 约束](../01-constraint/README.md) | 1 |
+| [verification](./verification.md) 判定 | 判定器与被判对象必须不同源 | [02 判定](../02-judgment/README.md) | 3 |
+| [observability](./observability.md) 看见 | 只记结果不记中间，等于没有观测 | [02 判定](../02-judgment/README.md) | 2 / 3（观测面） |
+| [governance](./governance.md) 授权 | 粗粒度审批会退化成橡皮图章 | [01 约束](../01-constraint/README.md) | 4 |
 
 > **「分工」是唯一没有对应流派的部件。** 多智能体协作中的共享本体，目前只有零散的「协作契约」提法，缺可判定的设计与证据。这是本仓库记录的一个空白，不是遗漏。
 
+> **observability 是横切观测面，不在施力强度轴上。** 它不改变「动作能不能做」，而是让「凭什么做/做没做」可查；所以下面的谱是六个施力位置，不是七个部件。
+
 ## 约束强度谱
 
-同一份本体放在不同部件上，强度差一个量级（完整图见 [topics/README](../README.md#强度与覆盖率反向)）：
+同一份本体放在不同**施力位置**上，强度差一个量级（派谱见 [topics/README](../README.md#强度与覆盖率反向)；时刻谱见 [seams.md](../seams.md)）：
 
 ```
 弱 ── context ── memory ── orchestration ── tools ── verification ── governance ── 强

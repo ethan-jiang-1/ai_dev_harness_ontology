@@ -1,5 +1,6 @@
 ---
 status: draft
+deliverable_status: draft
 updated: 2026-11-07
 target: 工程负责人 / 架构师
 length: 4–6 万字

@@ -1,10 +1,11 @@
 ---
 id: EXP-000
-status: 未开始        # 未开始 | 设计中 | 运行中 | 已完成 | 已放弃
+status: seed                 # seed | draft | stabilized | superseded
+experiment_status: 未开始    # 未开始 | 设计中 | 运行中 | 已完成 | 已放弃
 updated: YYYY-MM-DD
 rq: []
-targets: []          # 会改变哪几条结论 / 假设
-artifact:            # 仓库外的实现产物路径或链接
+targets: []                  # 会改变哪几条结论 / 假设
+artifact:                    # 仓库外的实现产物路径或链接
 ---
 
 # {实验标题}

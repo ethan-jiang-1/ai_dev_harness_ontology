@@ -42,9 +42,13 @@ _Avoid_: 基线、ground truth（后者是标注概念）
 
 ### 证据
 
-**证据等级（Grounding Level）**:
-结论与本体之间关系强度的分级，如 entailed / supported / related / unrelated。
-_Avoid_: 置信度、准确率
+**接地等级（Grounding Level）**:
+模型输出与其所引本体证据之间关系强度的分级，如 entailed / supported / related / unrelated。用于约束「这条结论凭什么成立」。
+_Avoid_: 证据等级（与仓库的置信度分级混淆）、置信度、准确率
+
+**证据等级（Evidence Level）**:
+本仓库对一条主张的置信度分级：已证 / 已核 / 推测 / 存疑。定义见 [conventions](./meta/conventions.md#证据等级)。
+_Avoid_: 接地等级、置信度
 
 **上下文编译（Context Compilation）**:
 在检索之前把原始材料预整理成结构化产物的做法，其收益可能落在上下文预算而非检索准确率上。

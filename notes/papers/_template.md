@@ -1,5 +1,7 @@
 ---
-status: seed            # seed | 摘要级 | 精读
+status: seed            # seed | draft | stabilized | superseded
+reading: 未读           # 未读 | 综述级 | 摘要级 | 精读 | 已消化
+provenance: 未核        # 原文正文 | 原文摘要 | 综述转述 | 未核
 updated: YYYY-MM-DD
 arxiv:
 title:
@@ -7,6 +9,7 @@ authors:
 pdf: ../../source/papers/
 direction:              # 源综述的分类编号 1-4（不是本仓库的归位）
 home:                   # 本仓库归位：topics/...
+updates: []             # 本卡修正后需要回改的 topics 文档
 ---
 
 # {短标题}

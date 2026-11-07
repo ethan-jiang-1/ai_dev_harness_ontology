@@ -22,13 +22,15 @@ updated: 2026-11-07
 | 一页图：约束强度谱 | 图 | 待画 | E-01、E-04、[topics/README](../topics/README.md) |
 | Deck：给工程团队的 30 分钟 | 幻灯片 | 待做 | 手册第 1、3、4 章 |
 
-## 状态
+## 交付阶段（`deliverable_status`）
 
 | 状态 | 含义 |
 |---|---|
 | `draft` | 结构在改 |
 | `stable` | 结构冻结，可对外 |
 | `frozen` | 内容冻结，仅随新证据被动修订 |
+
+文档本身的 `status` 仍用 `seed / draft / stabilized / superseded`；`deliverable_status` 只表示交付阶段。见 [conventions](../meta/conventions.md#字段与词汇)。
 
 ## 一条判据
 

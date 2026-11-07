@@ -4,7 +4,7 @@ updated: 2026-11-07
 
 # source：源头
 
-流水线的第一个工位。**一手材料原样落盘，不改写、不摘编、不整理。**
+流水线的第一个工位。**原始材料原样落盘，不改写、不摘编、不整理。** 这里既有论文原文（一手），也有综述/网页（二手）；一手还是转述，按子目录说明与 `notes/` 卡片区分。
 
 整理发生在 `notes/`。这里保持原样，是为了任何时候都能回到原文核对——综述的转述与原文的差别，往往就藏在被省略的限定条件里。
 
@@ -20,7 +20,7 @@ updated: 2026-11-07
 | 路径 | 内容 |
 |---|---|
 | [`papers/`](./papers/) | 20 篇 arXiv 论文 PDF，来源为 [老刘说NLP 的本体综述](../notes/2026-11-04-ontology-20-papers.md) |
-| [`weixin-laoliu/`](./weixin-laoliu/) | 该综述原文（手动下载） |
+| [`weixin-laoliu/`](./weixin-laoliu/) | 该综述原文（二手材料；文件名 `otology.md` 是 `ontology` 的笔误，内容是本体综述） |
 | [`papers/manifest.md`](./papers/manifest.md) | 20 篇清单：编号、页数、方向、文件 |
 | [`papers/_download.log`](./papers/_download.log) | 下载结果记录 |
 

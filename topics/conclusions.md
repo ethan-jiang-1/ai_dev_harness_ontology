@@ -19,7 +19,7 @@ updated: 2026-11-07
 |---|---|---|---|
 | E-01 | 在足够强的检索 harness 下，结构化工件（本体、图、wiki）在 **FRAMES** 上无可检出的准确率增益；PageIndex 式大纲在同规模下反而退化。作者自述这些工件的回报在**部署层**（治理、跨源集成、上手、时序定向、连续性），而准确率基准看不见 | [CAI](../notes/papers/2610.41172-context-as-infrastructure.md) | **支撑 P1**（价值在约束与控制） |
 | E-02 | 三种本体来源（专家 / LLM 生成 / 数据挖掘）在漏检与误报上各有偏向；curated 本体在真实 agent 答案上的标记**精确度仅略优于随机**；按发布状态使用的 curated schema 可能与自身数据矛盾 | [What Does an Ontology Catch](../notes/papers/2610.37809-what-does-an-ontology-catch.md) | **支撑 P3**（判定是权衡） |
-| E-03 | 强制每个答案报告所用作证据的本体观察 + grounding 等级（entailed/supported/related/unrelated），在三个大规模本体基准、六个医学问答任务上整体最优 | [OA-RAG](../notes/papers/2610.36335-oa-rag.md) | 支撑 P1、P2 |
+| E-03 | 强制每个答案报告所用作证据的本体观察 + 接地等级（entailed/supported/related/unrelated），在三个大规模本体基准、六个医学问答任务上整体最优 | [OA-RAG](../notes/papers/2610.36335-oa-rag.md) | 支撑 P1、P2 |
 | E-04 | 用两层本体对工具调用打可逆性分、执行前剪枝：τ²-bench 上六个模型中四个在 airline 域提升 0.11–0.18；**但 18 个模型-域组合仅 8 个整体改善，retail 与更强模型常回退**；作者声明 reward 不是防止伤害的直接度量 | [POLAR](../notes/papers/2610.08082-polar.md) | **支撑 P3**，**削弱**「护栏总是更好」 |
 | E-05 | 本体在记忆系统中承担**对齐与印证条件**（跨期身份 registry、双模态互证），而非自由推理；克制的用法更易落地 | [FIRME](../notes/papers/2610.40482-firme.md) | 支撑 P1（能力与意图分离） |
 | E-06 | 本体接地类任务的失败多来自**工作流**：输入不足、领域接地弱、模板与词汇缺口、校验弱、非局部修复 | [Before Blaming the LLM](../notes/papers/2610.35267-diagnose-workflow.md) | **直接支撑 P2** |
@@ -27,6 +27,8 @@ updated: 2026-11-07
 | E-08 | 「主张-证据叶子」的导航树是唯一被测出正收益的工件：证据充分时查询 token −91%，不充分时 +1.9%，**平均 −38%**；盈亏平衡充分率 2%，实测约 43% | [CAI](../notes/papers/2610.41172-context-as-infrastructure.md) | 支撑「编译解决预算，不解决准确率」 |
 | E-12 | 同一份知识，**投影成文**比放在**查询工具**后面更易被使用：投影使避坑率 0.605→0.802（odds ratio 5.45，p=6.0×10⁻⁷，四个 9B–750B 模型一致）；塔做成查询工具时只服务主动调用它的模型。限定：n=1 工厂、9 任务，作者自述任务「答案基本写在文本里」 | [Narrow & Deep](../notes/papers/2610.11768-narrow-and-deep.md) | 支撑 03 知识派；与 E-01 并列构成 C-04 |
 | E-13 | 约束类机制的增益**随模型基线能力升高而缩小**；POLAR 的拟合趋势给不出零交叉的部署阈值 | [POLAR](../notes/papers/2610.08082-polar.md) | 强化 E-04，划定 01 约束派的适用边界 |
+
+> E-06 的论文发现是「已核」；把它推广为「漂移=输入不完备」是仓库推断，标 `推测`。两者不要混。
 
 ## 推测（未核原文）
 
