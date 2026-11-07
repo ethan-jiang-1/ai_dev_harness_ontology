@@ -23,11 +23,11 @@ updated: 2026-11-07
 
 | 情况 | 写法 |
 |---|---|
-| 一手 | 链接到 `src_raw/` 下的原文件，或 arXiv 编号 |
+| 一手 | 链接到 `src/` 下的原文件，或 arXiv 编号 |
 | 二手转述 | 写「转述自 X」，并加 `待核` |
 | 未读原文 | 不许写成事实；写成「某文报告」 |
 
-**综述的一句摘要不是论文结论。** 本仓库已经因此踩过一次坑：三篇论文的转述丢了限定条件，见 [综述卡](../src_notes/cards/2026-11-04-ontology-20-papers.md#转述与原文的差异)。
+**综述的一句摘要不是论文结论。** 本仓库已经因此踩过一次坑：三篇论文的转述丢了限定条件，见 [综述卡](../src/web/weixin-laoliu/otology.card.md#转述与原文的差异)。
 
 ## 字段与词汇
 
@@ -36,10 +36,10 @@ updated: 2026-11-07
 | 字段 | 用在哪 | 取值 | 含义 |
 |---|---|---|---|
 | `status` | 所有文档 | `seed` / `draft` / `stabilized` / `superseded` | 文档成熟度，不代表篇幅 |
-| `home` / `subtopic` | `src_notes/` 卡片 | `topics/<派>` / `<子主题>` | 卡片归位；移动子主题只改 `subtopic` |
-| `source_type` | `src_notes/` 卡片 | `paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey` | 素材类型；证据天花板见 [source-types](./source-types.md) |
-| `reading` | `src_notes/` 卡片 | `未读` / `综述级` / `摘要级` / `精读` / `已消化` | 读到什么程度 |
-| `provenance` | `src_notes/` 卡片 | `原文正文` / `原文摘要` / `综述转述` / `未核` | 证据来自哪里 |
+| `home` / `subtopic` | `src/` 卡片 | `topics/<派>` / `<子主题>` | 卡片归位；移动子主题只改 `subtopic` |
+| `source_type` | `src/` 卡片 | `paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey` | 素材类型；证据天花板见 [source-types](./source-types.md) |
+| `reading` | `src/` 卡片 | `未读` / `综述级` / `摘要级` / `精读` / `已消化` | 读到什么程度 |
+| `provenance` | `src/` 卡片 | `原文正文` / `原文摘要` / `综述转述` / `未核` | 证据来自哪里 |
 | `experiment_status` | `experiments/` | `未开始` / `设计中` / `运行中` / `已完成` / `已放弃` | 实验阶段 |
 | `deliverable_status` | `deliverables/` | `draft` / `stable` / `frozen` | 交付阶段 |
 
@@ -74,7 +74,7 @@ updated: 2026-11-07
 每次动笔后回答三句：
 
 1. 这份材料/这篇文档**改变了哪条判断**？→ 去改 [conclusions](../topics/conclusions.md)
-2. **喂给了哪个主题**？→ 去改 [notes 台账](../src_notes/README.md)
+2. **喂给了哪个主题**？→ 去改 [notes 台账](../src/README.md)
 3. 如果修正了旧判断，**哪些主题页要回改**？→ 写进卡片的 `updates:`，逐页改。
 
 三句都答不上来，说明这次动笔没有产生信息。

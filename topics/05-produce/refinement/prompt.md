@@ -11,7 +11,7 @@
 ## 输入
 
 - 本子主题 [README](./README.md)、派 [claims](../claims.md)、派 [sources](../sources.md)
-- 卡片：[CASTON](../../../src_notes/cards/2610.21466-caston-refinement.md)、[SFE-O](../../../src_notes/cards/2610.37123-sfe-o.md)
+- 卡片：[CASTON](../../../src/papers/2610.21466-caston-refinement.card.md)、[SFE-O](../../../src/papers/2610.37123-sfe-o.card.md)
 - 候选：KROMA（2507.14032，未建卡）；可从摘要开始，标 `待核`
 - 允许补充检索：ontology refinement / axiom localization / regression tests
 

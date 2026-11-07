@@ -7,5 +7,5 @@ updated: 2026-11-07
 
 | 卡片 | 类型 | 阅读 | 支撑 | 备注 |
 |---|---|---|---|---|
-| [FIRME](../../src_notes/cards/2610.40482-firme.md) | preprint | 摘要级 | 04-L2, 04-L3 | 对齐与印证条件 |
-| [EvoMemState](../../src_notes/cards/2611.03743-evomemstate.md) | preprint | 摘要级 | 04-L1 | 关系状态 + 推理状态 |
+| [FIRME](../../src/papers/2610.40482-firme.card.md) | preprint | 摘要级 | 04-L2, 04-L3 | 对齐与印证条件 |
+| [EvoMemState](../../src/papers/2611.03743-evomemstate.card.md) | preprint | 摘要级 | 04-L1 | 关系状态 + 推理状态 |

@@ -6,7 +6,7 @@ rq: [RQ3]
 
 # 04 状态派 · 前沿与挖掘
 
-> 活页。稳定判断见 [README](./README.md)；证据见 [notes](../../src_notes/)；时刻位置见 [seams](../seams.md#六个时刻)。
+> 活页。稳定判断见 [README](./README.md)；证据见 [src](../../src/)；时刻位置见 [seams](../seams.md#六个时刻)。
 
 ## 这一派现在的前沿问题
 

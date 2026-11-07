@@ -43,4 +43,4 @@ CASTON 的方向明确：精化可以自动化，但规模小。KROMA 把「匹�
 
 - [05 生产派](../README.md)
 - [generation](../generation/README.md)、[lifecycle](../lifecycle/README.md)
-- 卡片：[CASTON](../../../src_notes/cards/2610.21466-caston-refinement.md)；候选：KROMA（2507.14032）
+- 卡片：[CASTON](../../../src/papers/2610.21466-caston-refinement.card.md)；候选：KROMA（2507.14032）

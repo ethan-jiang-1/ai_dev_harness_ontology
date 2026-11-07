@@ -53,4 +53,4 @@ evidence: []
 - [01 约束派](../README.md)
 - [action-gate](../action-gate/README.md)、[commit-gate](../commit-gate/README.md)
 - [02 判定派](../../02-judgment/README.md)
-- 卡片：[多 agent 差分诊断](../../../src_notes/cards/2610.36325-ontology-multiagent-diagnosis.md)、[OntoAct](../../../src_notes/cards/2610.21983-ontoact.md)
+- 卡片：[多 agent 差分诊断](../../../src/papers/2610.36325-ontology-multiagent-diagnosis.card.md)、[OntoAct](../../../src/papers/2610.21983-ontoact.card.md)

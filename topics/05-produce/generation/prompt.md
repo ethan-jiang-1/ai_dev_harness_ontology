@@ -11,7 +11,7 @@
 ## 输入
 
 - 本子主题 [README](./README.md)、派 [claims](../claims.md)、派 [sources](../sources.md)
-- 卡片：[OntoDoc](../../../src_notes/cards/2611.01276-ontodoc.md)、[Peeling](../../../src_notes/cards/2610.41785-peeling-matryoshka.md)、[Evontree](../../../src_notes/cards/2510.26683-evontree.md)、[ReX-GG](../../../src_notes/cards/2610.41901-rex-gg.md)
+- 卡片：[OntoDoc](../../../src/papers/2611.01276-ontodoc.card.md)、[Peeling](../../../src/papers/2610.41785-peeling-matryoshka.card.md)、[Evontree](../../../src/papers/2510.26683-evontree.card.md)、[ReX-GG](../../../src/papers/2610.41901-rex-gg.card.md)
 - 允许补充检索：ontology generation evaluation / downstream utility / consumability
 
 ## 输出

@@ -38,4 +38,4 @@ main_level: 推测        # 本页主判断的等级：已核 | 推测 | 存疑
 ## 关联
 
 - `topics/…`
-- `src_notes/cards/…`
+- `src/…`

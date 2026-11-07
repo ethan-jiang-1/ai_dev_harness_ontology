@@ -62,7 +62,7 @@ curated / LLM 生成 / 数据挖掘的漏检与误报偏向；判定器精度只
 
 - 结论索引（E-xx，含等级）
 - 术语表（来自 [GLOSSARY](../../GLOSSARY.md)）
-- 文献清单（[manifest](../../src_raw/papers/manifest.md)）
+- 文献清单（[manifest](../../src/papers/manifest.md)）
 
 ## 现在不能写的部分
 
