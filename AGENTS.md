@@ -9,6 +9,7 @@
 - 流水线全景与目录推导：[README](./README.md)
 - 研究问题与假设：[THESIS](./THESIS.md)
 - 术语（动笔前先对齐用词）：[GLOSSARY](./GLOSSARY.md)
+- 按需加载（渐进披露）：[meta/loading](./meta/loading.md)
 
 ## 先定位工位
 
