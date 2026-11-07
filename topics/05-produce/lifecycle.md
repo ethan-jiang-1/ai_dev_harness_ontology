@@ -20,7 +20,7 @@ rq: [RQ3]
 
 关键结论（转述，`待核`）：三种来源在**漏检与误报**上的权衡不同，没有单一向优者。原文把「checker 本身」当作研究对象，而不是比较「有没有本体」。
 
-详见 [ontology-as-checker](../seams/ontology-as-checker.md)。
+详见 [ontology-as-checker](../02-judgment/checker.md)。
 
 ## 四个阶段
 

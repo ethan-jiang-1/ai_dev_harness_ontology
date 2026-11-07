@@ -35,7 +35,7 @@ published: 2026-11-04
 | Agentic Power System Studies | 电网规划：本体承载法规标准，数字由求解器算，答案须引用证据 | 转述 |
 | Ontology-guided multi-agent diagnosis | 多 agent 差分诊断，缺证据时主动追问 | 转述 |
 
-**本仓库判断**：这一组不是本体研究，是**接缝研究**——每篇都在回答「本体被放在回路的哪一格」。归位到 [topics/seams/](../topics/seams/README.md)。
+**本仓库判断**：这一组不是本体研究，是**接缝研究**——每篇都在回答「本体被放在回路的哪一格」。归位到 [topics/README.md](../topics/README.md)。
 
 ### 2 · 本体构建与生成（5 篇）
 
@@ -47,7 +47,7 @@ published: 2026-11-04
 | CASTON Refinement | 既有本体的精化，不是从零建 | 转述 |
 | SFE-O | 超临界 CO₂ 萃取域 OWL 本体，显式表达参数溯源 | 转述 |
 
-**本仓库判断**：回答「本体从哪来、怎么修」，归位到 [topics/ontology/lifecycle.md](../topics/ontology/lifecycle.md)。其中「已有本体怎么修」被文献系统性低估。
+**本仓库判断**：回答「本体从哪来、怎么修」，归位到 [topics/05-produce/lifecycle.md](../topics/05-produce/lifecycle.md)。其中「已有本体怎么修」被文献系统性低估。
 
 ### 3 · 机制、评测与反例（4 篇）
 
@@ -70,7 +70,7 @@ published: 2026-11-04
 | Narrow and Deep | 工业设备域建「本体塔」，窄而深 | 转述 |
 | Evontree | 本体规则引导低资源域自演化 | 转述 |
 
-**本仓库判断**：记忆是 harness 机制，本体在此充当状态结构——归位到 [topics/seams/memory-as-state.md](../topics/seams/memory-as-state.md)。注意 FIRME 的克制定位（只定义槽位），这可能是同类工作里最可落地的取向。
+**本仓库判断**：记忆是 harness 机制，本体在此充当状态结构——归位到 [topics/04-state/memory-as-state.md](../topics/04-state/memory-as-state.md)。注意 FIRME 的克制定位（只定义槽位），这可能是同类工作里最可落地的取向。
 
 ## 转述与原文的差异
 
@@ -101,11 +101,11 @@ published: 2026-11-04
 
 ## 喂到哪个主题
 
-- [topics/seams/tool-gate](../topics/seams/tool-gate.md) ← POLAR
-- [topics/seams/commit-boundary](../topics/seams/commit-boundary.md) ← Commit Boundary
-- [topics/seams/ontology-as-checker](../topics/seams/ontology-as-checker.md) ← What Does an Ontology Catch
-- [topics/seams/evidence-and-provenance](../topics/seams/evidence-and-provenance.md) ← OA-RAG
-- [topics/seams/memory-as-state](../topics/seams/memory-as-state.md) ← EvoMemState、FIRME
-- [topics/ontology/lifecycle](../topics/ontology/lifecycle.md) ← CASTON、SFE-O、OntoDoc
-- [topics/harness/context](../topics/harness/context.md) ← Context as Infrastructure
+- [topics/README.mdtool-gate](../topics/01-constraint/tool-gate.md) ← POLAR
+- [topics/README.mdcommit-boundary](../topics/01-constraint/commit-boundary.md) ← Commit Boundary
+- [topics/README.mdontology-as-checker](../topics/02-judgment/checker.md) ← What Does an Ontology Catch
+- [topics/README.mdevidence-and-provenance](../topics/02-judgment/evidence-grading.md) ← OA-RAG
+- [topics/README.mdmemory-as-state](../topics/04-state/memory-as-state.md) ← EvoMemState、FIRME
+- [topics/05-produce/lifecycle](../topics/05-produce/lifecycle.md) ← CASTON、SFE-O、OntoDoc
+- [topics/00-harness/context](../topics/00-harness/context.md) ← Context as Infrastructure
 - [topics/conclusions](../topics/conclusions.md) ← 全部

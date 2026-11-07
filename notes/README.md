@@ -12,8 +12,8 @@ updated: 2026-11-07
 
 | 材料 | 卡片 | 状态 | 已喂到 |
 |---|---|---|---|
-| [老刘说NLP · 本体4方向20工作](./2026-11-04-ontology-20-papers.md)（2026-11-04） | 本目录 | 已消化 | `topics/conclusions.md`、`topics/seams/*`、`topics/ontology/lifecycle.md`、`topics/cases/` |
-| └ 其中 8 篇论文（摘要级） | [papers/](./papers/) | 已建卡 | 同上，逐篇标注 |
+| [老刘说NLP · 本体4方向20工作](./2026-11-04-ontology-20-papers.md)（2026-11-04） | 本目录 | 已消化 | `topics/conclusions.md`、`topics/README.md*`、`topics/05-produce/lifecycle.md`、`topics/domains.md` |
+| └ 其中 20 篇论文（摘要+结论+局限） | [papers/](./papers/) | 摘要级·全部建卡 | 六派 README 逐篇标注 |
 
 ## 状态词汇
 

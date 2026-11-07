@@ -24,13 +24,13 @@ length: 4–6 万字
 ### 第二章 · 控制回路的七个环节
 
 供给、留存、分工、施力、判定、看见、授权。每一环的失效模式。
-**素材**：[topics/harness/](../../topics/harness/README.md)
+**素材**：[topics/00-harness/](../../topics/00-harness/README.md)
 **核心结论**：E-06
 
 ### 第三章 · 约束强度谱
 
 从上下文注入到落盘授权，强度与覆盖率反向。为什么「提准确率」的说法几乎都发生在弱端。
-**素材**：[topics/seams/README.md](../../topics/seams/README.md)
+**素材**：[topics/README.md](../../topics/README.md)
 **核心结论**：E-01、E-04
 **这一章是全书重心。**
 
@@ -44,7 +44,7 @@ length: 4–6 万字
 
 curated / LLM 生成 / 数据挖掘的漏检与误报偏向；判定器精度只略优于随机的含义。
 **核心结论**：E-02
-**素材**：[topics/ontology/lifecycle.md](../../topics/ontology/lifecycle.md)
+**素材**：[topics/05-produce/lifecycle.md](../../topics/05-produce/lifecycle.md)
 
 ### 第六章 · 选对尺子
 
@@ -55,7 +55,7 @@ curated / LLM 生成 / 数据挖掘的漏检与误报偏向；判定器精度只
 ### 第七章 · 领域约束
 
 工业设备、电网、金融、医学、生物医学 KG 各自的硬约束。
-**素材**：[topics/cases/](../../topics/cases/README.md)
+**素材**：[topics/domains.md](../../topics/domains.md)
 
 ### 附录
 

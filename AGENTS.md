@@ -21,7 +21,7 @@
 | 做成对外物 | `deliverables/`，只从 `topics/` 抽取 |
 | 设计验证 | `experiments/`，用 [实验模板](./experiments/_template.md) |
 
-`topics/` 内部再分层：机制 → `harness/`，语义 → `ontology/`，二者交点 → `seams/`（★ 主战场），领域 → `cases/`。跨层洞见写进 `seams/`，两侧只留指针。
+`topics/` 内按**本体凭什么起作用**分六派：`01-constraint`（拦动作）、`02-judgment`（验产出）、`03-knowledge`（喂上下文）、`04-state`（跨轮记忆）、`05-produce`（造与修）、`06-measure`（量它有没有用），底座是 `00-harness`（控制回路七部件）。归派只问一句：**它改变了本体在哪个时刻的行为？** 跨派工作按主效应归派并标双重身份。
 
 ## 三条硬规矩
 

@@ -44,7 +44,7 @@ rq: [RQ2, RQ4]
 
 提交边界是本仓库认为最值得研究的治理问题：**推理时可用什么证据**与**凭什么授权一次持久化变更**，是两个不同的判据，混在一起会导致要么过度保守、要么错误落盘。
 
-见 [commit-boundary](../seams/commit-boundary.md)。
+见 [commit-boundary](../01-constraint/commit-boundary.md)。
 
 ## 开放问题
 

@@ -48,7 +48,7 @@ rq: [RQ2, RQ4]
 
 验证是本体最成熟、证据最多的落点——但也是最容易做错的：判定器的价值由**漏检与误报的权衡**决定，而不是由「是否用了本体」决定。
 
-见 [ontology-as-checker](../seams/ontology-as-checker.md)。
+见 [ontology-as-checker](../02-judgment/checker.md)。
 
 ## 开放问题
 

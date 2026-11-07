@@ -19,7 +19,7 @@ updated: 2026-11-07
 |---|---|---|---|
 | [手册大纲](./handbook/outline.md) | 结构化大纲 | draft | 全仓库 |
 | 手册正文 | Markdown → 可导出 | 待写 | 大纲七章 |
-| 一页图：约束强度谱 | 图 | 待画 | E-01、E-04、[seams/README](../topics/seams/README.md) |
+| 一页图：约束强度谱 | 图 | 待画 | E-01、E-04、[topics/README](../topics/README.md) |
 | Deck：给工程团队的 30 分钟 | 幻灯片 | 待做 | 手册第 1、3、4 章 |
 
 ## 状态
