@@ -27,9 +27,10 @@
 
 ## 4. 计数
 
-- 22 个论文目录（20 基础 + 2 扫描）；每目录一个 `<stem>.pdf`、一个 `card.md`；精读过的有 `digest.md`；1 张材料卡。
+- 22 个论文目录（20 基础 + 2 扫描）；每目录一个 `<stem>.pdf`、`paper.md` / `references.md` / `appendix.md`、`card.md`、`digest.md`；1 张材料卡。
 - 6 派 / 6 个 `frontier.md` / 6 个 `claims.md` / 6 个 `sources.md` / 6 个时刻。
-- README 的统计与 `conclusions.md` 的实际行数一致。
+- README 的统计与 `conclusions.md` 的实际行数一致：17 已核 / 2 推测 / 3 存疑 / 4 冲突。
+- 06 有 5 个子主题（mechanism / failure-attribution / trace / metrics / feasibility）。
 - 标题里的「N 种读法」与下面的条目数一致。
 
 ## 5. 术语
@@ -44,7 +45,8 @@
 - 时刻表在 [topics/seams.md](../topics/seams.md)；派表在 [topics/README.md](../topics/README.md)；部件表在 [00-harness/README.md](../topics/00-harness/README.md)。
 - 稳定判断在 `README.md`；活页在 `frontier.md`；局部结论在 `claims.md`；证据索引在 `sources.md`；详细论证在 `topics/<派>/<子主题>/README.md`。
 - 改一个派只动该派目录；跨派结论才动 `topics/conclusions.md`。
-- 论文一篇一目录：`src/papers/{arxiv_id}-{slug}/`，内含 `<stem>.pdf` / `card.md` / `digest.md` / `figures/`。
+- 论文一篇一目录：`src/papers/{arxiv_id}-{slug}/`，内含 `<stem>.pdf` / `paper.md` / `references.md` / `appendix.md` / `card.md` / `digest.md` / `figures/`。
+- `paper.md` 是正文；`references.md` / `appendix.md` 单独成文件，默认不读。
 - `card.md` 只记论文说了什么；`digest.md` 只记我们怎么用。事实与判断不混。
 - 图在论文目录的 `figures/`；topics 引用时带出处、页码、看什么。
 - 博客/工程原文在 `src/web/`，卡与原文同目录 `.card.md`；不放进 `topics/`。

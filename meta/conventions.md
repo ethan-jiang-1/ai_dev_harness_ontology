@@ -66,7 +66,7 @@ updated: 2026-11-07
 ## 命名
 
 - 目录：小写短横线；论文目录用 `src/papers/{arxiv_id}-{slug}/`
-- 论文文件：`<stem>.pdf`（原文，只读）/ `card.md`（分解）/ `digest.md`（消化）/ `figures/`（原图）
+- 论文文件：`<stem>.pdf`（原文，只读）/ `paper.md`（正文 MD）/ `references.md`（参考文献）/ `appendix.md`（附录）/ `card.md`（分解）/ `digest.md`（消化）/ `figures/`（原图）
 - 网页卡：`src/web/{来源}/<slug>.card.md`，与原文同名
 - 子主题目录：`topics/<派>/<子主题>/README.md`；按子机制命名，不按来源类型。派 README 只做地图，详细论证在子主题
 - 结论编号：`E-xx`（结论）/ `Q-xx`（存疑）/ `C-xx`（冲突）

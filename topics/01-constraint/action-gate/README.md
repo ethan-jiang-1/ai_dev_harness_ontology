@@ -56,6 +56,18 @@ POLAR 在 τ²-bench 上跑 6 模型 × 3 域 × 4 臂，每格 150 attempted ru
 1. **收益与模型能力反向**：强模型本可以自己避开那些错误，硬护栏只剩代价。
 2. **「结构」可能只是「保守」**：T1-only 接近 blanket veto，却没更差；说明测到的收益未必来自逆操作组合。
 
+## 另一种闸门：多模式分配（CASEL）
+
+POLAR 是二值 veto；CASEL 把同一个位置做成**六选一的分配**：direct / verify / sandbox / clarify / approve / abstain。
+
+- 判据不是单一风险分，而是 `p̂`（校准失败率）× `ĉ`（后果）+ 可逆性 `ρ` + 歧义 `g` + 证据新鲜度 `d`。
+- **可逆性决定可行模式集**：sandbox 只对 reversible mutation；approve 只对 compensable/irreversible。
+- 模拟（20 seeds、120k actions）：HSR 14.75%→7.02%；但最低 HSR 是 Risk-Menu 5.82%，代价是审批 12.6% vs CASEL 8.7%。**CASEL 的价值是 harm–approval 前沿，不是最低 harm。**
+- 去掉 reversibility routing：HSR 回到 15.53%；轨迹总账：11.82%（反噬）；未校准：8.22%。
+- 限定：**模拟**，intervention effectiveness `γ_m` 是假设，不是测量。
+
+详见 [CASEL digest](../../../src/papers/2610.36570-casel/digest.md)。
+
 ## 这个位置为什么硬
 
 - **在副作用之前。** 判定发生在世界被改变之前，失败成本最低。

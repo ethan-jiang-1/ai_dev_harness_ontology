@@ -56,6 +56,18 @@ agentic 检索暴露出一个与准确率无关的问题：**不受约束的循�
 
 **结论**：先量 `p_h`、miss penalty、`c`、`Q`、时延预算，再决定是否编译。`p_h` 低于 `p_min` 时，「编译」是负收益。
 
+## 另一种编译：受监管知识系统 + solver（Grid Agents）
+
+Grid Agents 把「编译」推到工业强度：Grid Ontology 是 27 documents / 6,347 pages 的法规/标准语料 + 语义/程序/情景记忆；Grid Studio 把潮流/N-1/短路/OPF 包成工具，所有数字由 solver 算。
+
+- 519 tasks / 8 benchmark families：**99.9% 端到端**、**13.9 s** 中位；base model 最好 40.8%。
+- 法规证据 recall **0.967 vs 0.856**（Claude Code）；LegalBench-RAG F1 0.980。
+- **工具必须到达研究**：PowerMCP 只在 46/519 任务被调用；Grid Studio 的工具覆盖每个 study。
+- **strict pass**：重放工具调用，检查 study 跑在哪个 network state；不是只看最终数字。
+- optimizer 在环：加固方案便宜 **33–67%**。
+
+**它和 CAI 的编译不是一回事**：CAI 编译的是「主张-证据叶子」用于省 token；Grid 编译的是「法规知识系统」用于合规审查与 solver 调度。共同点是**证据可追溯、数字不靠模型**。
+
 ## 何时用 · 何时别用
 
 **用**：语料相对稳定、查询复用高、token 是主要成本、审计要求高、文本为主可抽取。

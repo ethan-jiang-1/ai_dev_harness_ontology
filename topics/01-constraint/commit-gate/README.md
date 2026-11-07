@@ -22,7 +22,7 @@ rq: [RQ2, RQ4]
 
 把它们混成一个判据，会得到两种失败：要么过度保守（推理阶段就要求授权级证据，导致寸步难行），要么错误落盘（推理级证据直接放行）。
 
-## 机制：三段式放行
+## 机制：三段式放行 + 证据状态机
 
 1. **证据齐** —— 本体要求的证据类型是否都在场。
 2. **冲突清** —— 已识别的冲突是否被显式解决，而非被忽略。
@@ -30,15 +30,35 @@ rq: [RQ2, RQ4]
 
 三条全过才允许持久化。任何一条不满足时，产出保留在「待定」状态而不是被丢弃——丢弃会丢失已经获得的证据。
 
+**Commit Boundary 把它细化为状态机**：
+
+| 状态 | 含义 |
+|---|---|
+| `QUARANTINE_EVIDENCE` | 有 admission conflict/indeterminate，暂不可见 |
+| `UNVERIFIED` | 可进 Planner 推理；**不是** positive authorization support |
+| `P_auth(q_m, ω)` | 对特定命题、观察域、policy version 有授权资格 |
+| `PASS` / `BREACH` / `UNKNOWN_EVIDENCE` | 三态结论；`BREACH` > `UNKNOWN` > `PASS` |
+
+**四条 promotion 规则**（原文 §5.3）：
+
+- 评估**具体命题**，不是文档相关性/查询匹配。
+- 不把 Planner 置信度、LLM `verified` 标签、多个 `UNVERIFIED` 重复当授权证据。
+- **不因为 hypothesis 诱导了检索就把结果当独立确认**；同源 query/hypothesis 不算 corroboration。
+- 不从「没检测到冲突」推断 positive support。
+
+**两阶段**：Phase 1 授权 proposed mutation；Phase 2 验证 realized candidate；commit 时 scope/version/graph/evidence 必须在同一 snapshot。
+
 ## 证据：只有设计，没有验证
 
 这条边界的完整论述有一篇专门的论文（[Commit Boundary](../../../src/papers/2610.37407-commit-boundary/card.md)），但它**自述是「无实现、无实证验证的概念架构」**，且保证是条件性的——依赖充分的域策略、可靠的 claim 级证据晋升、忠实的强制执行。
 
-所以它在本仓库里只能作**设计提案**引用，不能作证据。三条可迁移的判断：
+所以它在本仓库里只能作**设计提案**引用，不能作证据。五条可迁移的判断：
 
 1. 把「冲突已解决」「版本仍有效」写进提交条件，而不是留给模型自觉。
 2. 区分「进入系统」与「有权改变系统」——多数设计把两者合并。
 3. 支持不足时**延后**而不是丢弃，保留已获得的证据。
+4. **「可推理」≠「可授权」**：`UNVERIFIED` 可以进推理，但不能当授权证据。
+5. **同源检索不是独立确认**：hypothesis 诱导的多个结果不能互相印证；这是 agentic ER 的核心失败模式，也是本文承认的上游漏洞。
 
 ## 为什么这个位置最硬
 
@@ -52,6 +72,9 @@ rq: [RQ2, RQ4]
 - **冲突被静默消解。** 系统倾向「选一个」，而不是「记录冲突并阻塞」。
 - **版本失效未检测。** 依据在推理期间被更新，落盘时用的是过期证据。
 - **待定状态不可见。** 被阻塞的变更没有队列，等于被静默丢弃。
+- **把「没有冲突」当「支持」。** 没检测到冲突只是没检测到，不是 positive support。
+- **依赖链未记录。** 架构不控制 hypothesis-conditioned retrieval；没有 dependency-aware lineage，promotion 仍可能被污染。
+- **Policy/promotion 正确性外包。** 架构只保证「按 contract 执行」，不保证 contract 本身对。
 
 ## 开放问题
 

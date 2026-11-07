@@ -41,7 +41,7 @@
 
 | 工位 | 职责 | 增长方式 | 完成信号 |
 |---|---|---|---|
-| [`src/`](./src/) | 源头池：一篇一目录，PDF + `card.md`（分解）+ `digest.md`（消化）+ `figures/` | 原文随时加；卡按需建；精读后补 digest | 原文落盘 + card 有 `source_type`/等级 + digest 有 `quality` |
+| [`src/`](./src/) | 源头池：一篇一目录，PDF + `paper.md`/`references.md`/`appendix.md`（全文拆分）+ `card.md`（分解）+ `digest.md`（消化）+ `figures/` | 原文随时加；先转 MD；卡按需建；精读后补 digest | 原文落盘 + 三份 MD 齐 + card 有等级 + digest 有 `quality` |
 | [`topics/`](./topics/) | 按六派沉淀，跨材料综合 | 新 card/digest 触发相关派的修订 | 结论带等级，冲突显式保留 |
 | [`deliverables/`](./deliverables/) | 手册、Deck、图等对外物 | 定期从 topics 抽取重排 | 每条可反查回 topics |
 
@@ -118,8 +118,8 @@
 
 骨架与机制地图成型，三个工位都有可用样板：
 
-- `src/` — 22 个论文目录（20 基础 + 2 扫描；每目录 PDF + `card.md`，精读过的有 `digest.md` 与 `figures/`）+ 1 张材料卡 + manifest
-- `topics/` — 六派成文，11 条已核结论 + 3 条推测 + 3 条存疑 + 4 条冲突；每派有 `claims.md` / `sources.md` / 子主题目录 / `frontier.md`；活跃子主题有 `prompt.md` / `runs/`
+- `src/` — 22 个论文目录（20 基础 + 2 扫描）；每目录 PDF + `paper.md` / `references.md` / `appendix.md` + `card.md` + `digest.md`（L1 为一页判断）+ `figures/`；1 张材料卡 + manifest
+- `topics/` — 六派成文，17 条已核结论 + 2 条推测 + 3 条存疑 + 4 条冲突；每派有 `claims.md` / `sources.md` / 子主题目录 / `frontier.md`；新增 [06-measure/feasibility](./topics/06-measure/feasibility/README.md)
 - `deliverables/` — 手册大纲 7 章
 
 **最大空缺是没有一条结论被独立复现。** 三个实验待做，见 [experiments](./experiments/README.md)。

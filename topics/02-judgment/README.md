@@ -19,8 +19,8 @@ updated: 2026-11-07
 
 ## 两条硬结论
 
-1. **curated 不等于可靠。** 在 UniProt 上，curated 本体误报的正确答案比数据派生的本体更多；在真实 agent 答案上，它的标记精确度**仅略优于随机**。按发布状态使用的 curated schema 甚至可能与自身数据矛盾。
-2. **接地等级要显式化。** OA-RAG 让每个答案强制报告所用作证据的本体观察 + 接地等级（entailed/supported/related/unrelated），在三个大规模本体、六个医学问答任务上整体最优。
+1. **curated 不等于可靠。** 真实答案上 curated catch/FA/precision = 18.9/16.8/57.1%；data-derived = 8.2/3.5/72.3%；masked LLM = 5.0/1.8/93.7%。curated 精确度**仅略优于随机**（+1.6 点，CI 跨零）；按发布状态使用的 curated schema 甚至可能与自身数据矛盾。**空结果重试**在人工 fault 上 catch 79.2%、FA 0%，是必须先超过的基线。
+2. **接地等级要显式化，但别把它当保证。** OA-RAG 让每个答案报告本体观察 + 接地等级（entailed/supported/related/unrelated），平均 50.5%/68.1%；Test 3 同 8k 预算 84.9% vs 66.7%，9.7k vs 96.7k tokens/问。但等级是**模型自评**、未校准；作者自述不提供形式保证。
 
 ## 误报比漏检更贵
 
@@ -43,7 +43,8 @@ updated: 2026-11-07
 ## 开放问题
 
 - 误报的破坏力能否被量化？需要测「被误标后修改造成的新错误」。
-- 等级判定该由谁做：模型自评会让等级立刻失去意义。
+- 等级判定该由谁做：OA-RAG 是模型自评；需要独立判定器/本体推导/抽样人工，并给出每个 level 的 precision/recall。
+- 检索瓶颈怎么修？OA-RAG 的 gold evidence 完整检索 MCQ 61.7% vs OQ 23.6%。
 - 串联判定时，早期误报如何避免放大成下游大量无效工作？
 
 ## 本目录怎么长

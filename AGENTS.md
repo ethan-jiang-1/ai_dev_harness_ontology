@@ -16,6 +16,7 @@
 | 你在做什么 | 落点 |
 |---|---|
 | 存原文 | `src/papers/{arxiv_id}-{slug}/`（论文，一篇一目录）或 `src/web/`（网页）；论文在 [manifest](./src/papers/manifest.md) 登记 |
+| 读一篇论文 | 同目录 `paper.md`（正文，保留页码）；`references.md` / `appendix.md` 单独成文件，默认不读 |
 | 记一篇论文说了什么 | 论文目录里的 `card.md`（分解）；用 [论文卡模板](./src/_templates/paper-card.md) |
 | 消化一篇论文 | 同一目录的 `digest.md`（工程思路 / 实用意义 / 质量 / 洞察）；用 [digest 模板](./src/_templates/paper-digest.md) |
 | 存博客/工程材料 | `src/web/`；卡同目录 `<stem>.card.md`，用 [材料卡模板](./src/_templates/material-card.md) |

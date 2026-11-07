@@ -13,3 +13,8 @@ updated: 2026-11-07
 | 02-L2 | 接地等级显式化在医学 QA 上整体最优 | 已核 | E-03 | 等级由判定逻辑给出 |
 | 02-L3 | 误报比漏检更贵 | 推测 | 仓库推断 | 待 EXP-002 |
 | 02-L4 | 判定器需要校准；只报一个准确率不够 | 推测 | 分析 | 曲线 + 代价 |
+| 02-L5 | ontology check 必须先超过「空结果重试」基线：后者在人工 fault 上 catch 79.2%、FA 0% | 已核 | E-02 / Ontology Catch | 否则只是多一次重试 |
+| 02-L6 | 没有单一向优的本体来源：data-derived precision 72.3% / catch 8.2%；curated 57.1% / 18.9%；LLM 不稳定 | 已核 | E-02 | catch/FA 必须分开报 |
+| 02-L7 | 同一个本体既做 context 又做 checker 会降低 catch（同源确认偏差） | 推测 | Ontology Catch（探索性） | 需要独立 checker |
+| 02-L8 | grounding level 是模型自评的弱信号，不是形式保证；entailed 94.9%/supported 82.1% 是切片，未校准 | 已核 | E-03 / OA-RAG | 作者自述无形式保证 |
+| 02-L9 | 检索是主瓶颈：gold evidence 完全检索率 MCQ 61.7% vs OQ 23.6% | 已核 | E-03 / OA-RAG | 先修检索，再修推理 |
