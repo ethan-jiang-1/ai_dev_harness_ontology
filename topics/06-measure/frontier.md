@@ -42,6 +42,10 @@ rq: [RQ4]
 | CAI（2610.41172） | 提出方案又给反证；过程指标 | 已入档（主归 03） | 抽 token/轮次的度量设计 |
 | Ontology Catch（2610.37809） | 判定器的 FP/FN 曲线 | 已入档（主归 02） | 与 02 共享 |
 | 部署指标线 | 上手/集成/审计 | 待扫描 | 用检索式 1/2 |
+| Agents Are Systems（2610.01618） | 54% 结果方差来自重复同一配置；信息 > 时间/模型；验证工具 > 提示；18k 轨迹 | 已入档 | 正文补方差分解与 config 定义 |
+| AgentDebugX（EMNLP 2026 demo） | 失败观测/归因/修复闭环；WhoWhen 28.8% vs 21.7%；GAIA 13/73 修复 | 摘要已读 | 落盘 + 建卡；对应失败归因 |
+| Intention-behavior consistency failure attribution | 多 agent 失败归因 | 待扫描 | 读摘要 |
+| Towards Outcome-Oriented, Task-Agnostic Evaluation（2511.08242） | 任务无关的结果导向评估 | 待扫描 | 读摘要 |
 
 ## 入档判据
 
@@ -54,8 +58,11 @@ rq: [RQ4]
 | 日期 | 范围 | 结果 | 决定 |
 |---|---|---|---|
 | 2026-11-07 | 本地 20 篇复筛 | C-03 仍是最强判断；缺“机制→尺子”对照表 | 先做表，再扫外部 |
+| 2026-11-07 | 首轮外部扫描（web） | 4 个候选；Agents Are Systems、AgentDebugX 摘要已读 | Agents 已落盘/建卡；AgentDebugX 待落盘 |
 
 ## 本轮计划
+
+> 2026-11-07 首轮扫描已落盘 Agents Are Systems；下一步补正文，并评估 AgentDebugX。
 
 1. 做一张“机制类型 → 失效形态 → 主指标 → 过程指标”的表（EXP-003 的前置）。
 2. 用检索式 1/2 找评测方法论与部署指标。

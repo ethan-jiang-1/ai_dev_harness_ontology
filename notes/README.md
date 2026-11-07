@@ -14,6 +14,7 @@ updated: 2026-11-07
 |---|---|---|---|
 | [老刘说NLP · 本体4方向20工作](./2026-11-04-ontology-20-papers.md)（2026-11-04） | 本目录 | 已消化 / 综述转述 | `topics/conclusions.md`、`topics/README.md`、`topics/05-produce/lifecycle.md`、`topics/domains.md` |
 | └ 其中 20 篇论文（摘要+结论+局限） | [papers/](./papers/) | 摘要级 / 原文摘要（8 篇逐条对照，12 篇未逐条对照） | 六派 README 逐篇标注 |
+| └ 2026-11-07 前沿扫描批次（CASEL、Agents Are Systems） | [papers/](./papers/) | 摘要级 / 原文摘要 | [tool-gate](../topics/01-constraint/tool-gate.md)、[06-measure/README](../topics/06-measure/README.md)（候选，待综合） |
 
 ## 阅读进度（`reading`）
 

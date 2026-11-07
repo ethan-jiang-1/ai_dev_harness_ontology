@@ -41,6 +41,10 @@ rq: [RQ2, RQ4]
 | OntoAct（2610.21983） | 推理期约束；动作空间压到概念层 | 已入档 | 补实验数字与失败模式 |
 | Agentic Power System（2611.03534） | 真实工业流程的“证据→授权→人决策”链 | 已入档 | 拆治理细节 |
 | POLAR 引用链 | 看有没有 follow-up 报告误剪率 | 待扫描 | 雪球一层 |
+| CASEL（2610.36570，CBASE 2026） | 后果 + 可逆性 + 歧义的运行时分配；模拟 12 万动作，有害轨迹 14.75%→7.02%；移除可逆性路由回升到 15.53% | 已入档 | 正文补 simulator 假设与成本模型 |
+| What Can Be Enforced?（2607.22868） | 可执行安全策略的理论边界；false-block/miss 前沿；静态分不识别闭环效应 | 摘要已读 | 落盘 + 建卡；与 POLAR 对读 |
+| Safety monitors for agentic systems（2610.20960） | 运行时监控/安全监视器 | 待扫描 | 读摘要 |
+| OpenPort Protocol（2602.20196） | 工具访问的安全治理规范；偏工程 | 待扫描 | 只作 T2 线索 |
 
 ## 入档判据
 
@@ -53,8 +57,11 @@ rq: [RQ2, RQ4]
 | 日期 | 范围 | 结果 | 决定 |
 |---|---|---|---|
 | 2026-11-07 | 本地 20 篇复筛 | POLAR 缺误剪率；Commit Boundary 缺实现 | 两篇进候选队列头 |
+| 2026-11-07 | 首轮外部扫描（web） | 4 个候选；CASEL、Enforced 摘要已读 | CASEL 已落盘/建卡；Enforced 待落盘 |
 
 ## 本轮计划
+
+> 2026-11-07 首轮扫描已落盘 CASEL；下一步补正文，并评估 What Can Be Enforced?。
 
 1. 读 POLAR 正文，补 `剪枝率 / 误剪率 / 阈值敏感性`，写进卡片与 E-04。
 2. 从 POLAR、Commit Boundary 做引用雪球，找 2026 年的 follow-up。

@@ -7,7 +7,7 @@ arxiv:
 title:
 authors:
 pdf: ../../source/papers/
-direction:              # 源综述的分类编号 1-4（不是本仓库的归位）
+direction:              # 源综述分类 1-4；前沿扫描用 5
 home:                   # 本仓库归位：topics/...
 updates: []             # 本卡修正后需要回改的 topics 文档
 ---

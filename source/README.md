@@ -19,9 +19,10 @@ updated: 2026-11-07
 
 | 路径 | 内容 |
 |---|---|
-| [`papers/`](./papers/) | 20 篇 arXiv 论文 PDF，来源为 [老刘说NLP 的本体综述](../notes/2026-11-04-ontology-20-papers.md) |
+| [`papers/`](./papers/) | 20 篇基础 arXiv PDF（源综述）+ 2 篇前沿扫描 PDF |
 | [`weixin-laoliu/`](./weixin-laoliu/) | 该综述原文（二手材料；文件名 `otology.md` 是 `ontology` 的笔误，内容是本体综述） |
-| [`papers/manifest.md`](./papers/manifest.md) | 20 篇清单：编号、页数、方向、文件 |
+| [`papers/manifest.md`](./papers/manifest.md) | 20 篇基础清单：编号、页数、方向、文件 |
+| [`papers/manifest-scan.md`](./papers/manifest-scan.md) | 2026-11-07 前沿扫描批次（2 篇：CASEL、Agents Are Systems） |
 | [`papers/_download.log`](./papers/_download.log) | 下载结果记录 |
 
 ## 已知缺口

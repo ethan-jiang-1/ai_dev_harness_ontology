@@ -41,6 +41,10 @@ rq: [RQ4, RQ5]
 | MIOE（2610.38326） | “答对≠内部有本体”，影响判定器的必要性论证 | 已入档（主归 06） | 与 06 共享 |
 | checker calibration 线 | 误报代价与校准 | 待扫描 | 用检索式 1/5 |
 | 串联判定 / cascade 线 | 早期误报放大 | 待扫描 | 用检索式 3 |
+| LOGicalThought（2510.01530） | 逻辑本体接地；四基准 +11.84%，negation +10.2、implication +13.2、defeasible +5.5 | 摘要已读 | 落盘 + 建卡；看“本体”具体形态 |
+| CORE-LLM-Bench（Zenodo 2026） | 受控神经符号基准；9,048 QA 实例、81,432 观测 | 摘要已读 | 先入候选；评估能否用于 EXP-002 |
+| Can We Trust LLM Judges（2609.12002） | judge 能力相关偏差 + 多 judge 校准 | 待扫描 | 读摘要；对应 checker 校准 |
+| Automating OntoClean Verification | 本体验证自动化 | 待扫描 | 与 05 共享 |
 
 ## 入档判据
 
@@ -53,8 +57,11 @@ rq: [RQ4, RQ5]
 | 日期 | 范围 | 结果 | 决定 |
 |---|---|---|---|
 | 2026-11-07 | 本地 20 篇复筛 | E-02 的跨域性未测；OA-RAG 的等级判定主体未写清 | 两条进候选队列 |
+| 2026-11-07 | 首轮外部扫描（web） | 4 个候选；LogT、CORE-LLM-Bench 摘要已读 | 入队；top 2 待落盘/建卡 |
 
 ## 本轮计划
+
+> 2026-11-07 首轮外部扫描已完成；下一步从候选队列里选 top 1-2 落盘 + 建卡。
 
 1. 读 What Does an Ontology Catch 正文，补三源 FP/FN 与域，重写 E-02 的限定。
 2. 用检索式 1/5 找 checker 校准/误报代价的工作。
