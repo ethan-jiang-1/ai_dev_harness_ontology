@@ -15,8 +15,8 @@
 | 你在做什么 | 落点 |
 |---|---|
 | 存原文 | `src_raw/`，并在 [manifest](./src_raw/papers/manifest.md) 登记 |
-| 记一篇材料说了什么 | `src_notes/`，用 [材料卡模板](./src_notes/materials/_template.md) 或 [论文卡模板](./src_notes/papers/_template.md) |
-| 存博客/工程材料 | `src_raw/web/`；卡放 `src_notes/materials/` |
+| 记一篇材料说了什么 | `src_notes/cards/`，用 [材料卡模板](./src_notes/cards/_template-material.md) 或 [论文卡模板](./src_notes/cards/_template-paper.md) |
+| 存博客/工程材料 | `src_raw/web/`；卡放 `src_notes/cards/` |
 | 综合几个来源、形成判断 | `topics/`，用 [机制笔记模板](./meta/note-template.md) |
 | 写子机制的详细论证 | `topics/<派>/<子主题>/README.md`；派 README 只留地图 |
 | 记本派结论 | `topics/<派>/claims.md`（`L-xx`）；跨派才升 conclusions |
@@ -38,7 +38,7 @@
 
 **改一个派只动该派目录**：`README.md` / `claims.md` / `sources.md` / `frontier.md` / 子主题。只有跨派结论或进 `deliverables/` 时，才改 [conclusions](./topics/conclusions.md) 的 `E-xx`。
 
-**素材类型不进 topics**：论文/预印本在 `src_notes/papers/`，博客/工程/标准/演讲/综述在 `src_notes/materials/`；证据天花板见 [source-types](./meta/source-types.md)。
+**素材类型不进 topics**：所有卡片都在 `src_notes/cards/`，用 `source_type` 区分论文/预印本与博客/工程/标准/演讲/综述；证据天花板见 [source-types](./meta/source-types.md)。
 
 ## 三条硬规矩
 

@@ -42,6 +42,6 @@
 - 时刻表在 [topics/seams.md](../topics/seams.md)；派表在 [topics/README.md](../topics/README.md)；部件表在 [00-harness/README.md](../topics/00-harness/README.md)。
 - 稳定判断在 `README.md`；活页在 `frontier.md`；局部结论在 `claims.md`；证据索引在 `sources.md`；详细论证在 `topics/<派>/<子主题>/README.md`。
 - 改一个派只动该派目录；跨派结论才动 `topics/conclusions.md`。
-- 博客/工程素材在 `src_raw/web/` 与 `src_notes/materials/`，不放进 `topics/`。
+- 博客/工程素材在 `src_raw/web/` 与 `src_notes/cards/`，不放进 `topics/`。
 - 子主题有 `prompt.md` 才建 `runs/`；run 带 `prompt` / `model` / `sources` / `claims_changed`。
 - run 不直接改 README；结论先过 `claims.md` / README。

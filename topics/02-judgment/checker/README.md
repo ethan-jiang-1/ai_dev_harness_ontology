@@ -25,7 +25,7 @@ evidence: [E-02]
 | LLM 生成 | 覆盖广、启动快 | 语义漂移 |
 | 数据挖掘 | 贴合数据 | 把「常见」当「应然」 |
 
-关键发现（一手摘要，[卡片](../../../src_notes/papers/2610.37809-what-does-an-ontology-catch.md)）：
+关键发现（一手摘要，[卡片](../../../src_notes/cards/2610.37809-what-does-an-ontology-catch.md)）：
 
 - 各来源在**漏检与误报**之间有不同权衡，无单一向优者。
 - curated 本体在真实答案上，其标记的精确度仅略优于随机标记。

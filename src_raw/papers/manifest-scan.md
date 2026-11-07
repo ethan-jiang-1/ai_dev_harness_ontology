@@ -4,8 +4,8 @@
 
 | # | arXiv | 短标题 | 页 | 方向 | 文件 | 卡片 |
 |---|---|---|---|---|---|---|
-| 1 | 2610.36570 | CASEL | 6 | 5 | [pdf](./2610.36570-casel.pdf) | [✓](../../src_notes/papers/2610.36570-casel.md) |
-| 2 | 2610.01618 | Agents Are Systems | 28 | 5 | [pdf](./2610.01618-agents-are-systems.pdf) | [✓](../../src_notes/papers/2610.01618-agents-are-systems.md) |
+| 1 | 2610.36570 | CASEL | 6 | 5 | [pdf](./2610.36570-casel.pdf) | [✓](../../src_notes/cards/2610.36570-casel.md) |
+| 2 | 2610.01618 | Agents Are Systems | 28 | 5 | [pdf](./2610.01618-agents-are-systems.pdf) | [✓](../../src_notes/cards/2610.01618-agents-are-systems.md) |
 
 **方向 5 = 前沿扫描**，不属于源综述的四类。
 

@@ -78,7 +78,7 @@
 ## 8. 子主题与素材类型
 
 - **子主题**：派 README 只做地图；详细机制放 `topics/<派>/<子主题>/README.md`。成立条件（满足其一）：有自己的判断与边界；≥2 张卡片共享同一子机制；需要自己的 frontier。不预建空子目录。见 [ADR 0003](../adr/0003-subtopics-and-source-types.md)。
-- **素材类型**：论文/预印本进 `src_notes/papers/`，博客/工程/标准/演讲/综述进 `src_notes/materials/`；原文分别在 `src_raw/papers/` 与 `src_raw/web/`。
+- **素材类型**：论文/预印本进 `src_notes/cards/`，博客/工程/标准/演讲/综述进 `src_notes/cards/`；原文分别在 `src_raw/papers/` 与 `src_raw/web/`。
 - **证据天花板**：博客/工程的 `已核` 只指「作者报告了 X」；一般规律默认 `推测`。见 [source-types](./source-types.md)。
 
 ## 9. 子主题的 prompt / run

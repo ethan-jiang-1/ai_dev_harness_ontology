@@ -14,9 +14,9 @@ updated: 2026-11-07
 
 | 材料 | 卡片 | 阅读 / 来源 | 已喂到 |
 |---|---|---|---|
-| [老刘说NLP · 本体4方向20工作](./materials/2026-11-04-ontology-20-papers.md)（2026-11-04） | [materials/](./materials/) | 已消化 / 综述转述 | `topics/conclusions.md`、`topics/README.md`、`topics/05-produce/lifecycle/README.md`、`topics/domains.md` |
-| └ 其中 20 篇论文（摘要+结论+局限） | [papers/](./papers/) | 摘要级 / 原文摘要（8 篇逐条对照，12 篇未逐条对照） | 六派 README 逐篇标注 |
-| └ 2026-11-07 前沿扫描批次（CASEL、Agents Are Systems） | [papers/](./papers/) | 摘要级 / 原文摘要 | [action-gate](../topics/01-constraint/action-gate/README.md)、[06-measure/README](../topics/06-measure/README.md)（候选，待综合） |
+| [老刘说NLP · 本体4方向20工作](./cards/2026-11-04-ontology-20-papers.md)（2026-11-04） | [cards/](./cards/) | 已消化 / 综述转述 | `topics/conclusions.md`、`topics/README.md`、`topics/05-produce/lifecycle/README.md`、`topics/domains.md` |
+| └ 其中 20 篇论文（摘要+结论+局限） | [cards/](./cards/) | 摘要级 / 原文摘要（8 篇逐条对照，12 篇未逐条对照） | 六派 README 逐篇标注 |
+| └ 2026-11-07 前沿扫描批次（CASEL、Agents Are Systems） | [cards/](./cards/) | 摘要级 / 原文摘要 | [action-gate](../topics/01-constraint/action-gate/README.md)、[06-measure/README](../topics/06-measure/README.md)（候选，待综合） |
 
 ## 阅读进度（`reading`）
 
@@ -49,14 +49,14 @@ updated: 2026-11-07
 
 `home` 指向 `topics/<派>`；`subtopic` 指向子主题目录。移动/改名子主题时只改 `subtopic`，不动 `home`；这样 `topics/` 内部调整不会牵连卡片。
 
-## 卡片分两类
+## 卡片分两类，平铺在 `cards/`
 
 | 类型 | 模板 | 用于 |
 |---|---|---|
-| 论文卡 | [papers/_template.md](./papers/_template.md) | 单篇论文/预印本。关注「它测了什么、结果是什么、没测什么」 |
-| 材料卡 | [materials/_template.md](./materials/_template.md) | 博客、工程复盘、标准、演讲、综述。关注「作者在什么场景下报告了什么」 |
+| 论文卡 | [cards/_template-paper.md](./cards/_template-paper.md) | 单篇论文/预印本。关注「它测了什么、结果是什么、没测什么」 |
+| 材料卡 | [cards/_template-material.md](./cards/_template-material.md) | 博客、工程复盘、标准、演讲、综述。关注「作者在什么场景下报告了什么」 |
 
-两类最大的差别：论文卡必须有**结果数字**与**未测范围**两栏；材料卡必须写**场景与 scope**。综述最容易省略的正是这两样。
+两类最大的差别：论文卡必须有**结果数字**与**未测范围**两栏；材料卡必须写**场景与 scope**。综述最容易省略的正是这两样。两类都用 `source_type` 区分，不再按 `papers/` / `materials/` 分目录。
 
 ## 什么时候 promote 到 topics
 

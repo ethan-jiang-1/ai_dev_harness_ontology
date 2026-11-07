@@ -14,7 +14,7 @@ updated: 2026-11-07
 
 1. **原样存档。** 下载什么就存什么，不做改写、不做摘要、不重命名内部内容。
 2. **命名带身份。** 论文用 `{arxiv_id}-{slug}.pdf`；博客/网页用 `web/{来源}/` 子目录加原文件名或日期-slug。
-3. **登记。** 论文在 [`papers/manifest.md`](./papers/manifest.md) 登记；博客/工程材料在 [`src_notes/materials/`](../src_notes/materials/) 建卡；`_download.log` 保留下载结果。
+3. **登记。** 论文在 [`papers/manifest.md`](./papers/manifest.md) 登记；博客/工程材料在 [`src_notes/cards/`](../src_notes/cards/) 建卡；`_download.log` 保留下载结果。
 4. **读没读，看 `src_notes/`。** `src_raw/` 只回答「有没有」，`src_notes/` 才回答「消化到哪」。
 
 ## 目录
@@ -30,5 +30,5 @@ updated: 2026-11-07
 
 ## 已知缺口
 
-- 只有摘要级别的核验，正文尚未逐篇精读（`src_notes/papers/` 与 `src_notes/materials/` 里的卡片会逐步补）。
+- 只有摘要级别的核验，正文尚未逐篇精读（`src_notes/cards/` 与 `src_notes/cards/` 里的卡片会逐步补）。
 - 部分论文有 v2/v3 版本，当前取的是下载当日的最新版本；版本变化可能改变结论，重读时需核对。
