@@ -1,3 +1,7 @@
+---
+updated: 2026-11-07
+---
+
 # source/web：博客 / 网页 / 工程材料
 
 这里放 `source_type` 为 `blog` / `engineering` / `standard` / `talk` / `survey` 的原样材料；论文 PDF 在 [papers](../papers/)。

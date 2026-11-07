@@ -42,7 +42,7 @@
 
 一条候选只有满足以下之一才建卡：
 
-1. 会改变某条 `E-xx / Q-xx / C-xx` 的可信度。
+1. 会改变某条 `E-xx / Q-xx / C-xx` 或派内 `L-xx` 的可信度。
 2. 会填一个 `README.md` 的开放问题。
 3. 会推翻一个派的边界判据。
 
@@ -51,18 +51,20 @@
 ## 5. 入档流程
 
 ```
-候选 → 论文卡（notes/papers/）→ 派 README 的 delta → conclusions 更新 →（必要时）交付物重抽
+候选 → 卡片（notes/）→ 派 sources.md → 派 claims.md → 子主题 README 的 delta
+     →（只有跨派/交付物）conclusions 更新 → 交付物重抽
 ```
 
+- **本地优先**：派内新判断先写 `<派>/claims.md`；不要直接改 `conclusions.md`。
 - 卡片的 `provenance` 必须写清：原文正文 / 原文摘要 / 综述转述。
 - 卡片修正了旧判断 → 在 `updates:` 列出所有要回改的主题页，并逐页改。
-- 派 README 只在判断被改变时改写；否则只更新 `frontier.md`。
+- 派 README 只在判断被改变时改写；否则只更新 `frontier.md` 与 `sources.md`。
 - 新派不轻易开：先在 `conclusions.md` 记「悬空结论」，累积三条以上再立派。
 
 ## 6. 节奏
 
 - **每周**：每派 30 分钟扫描，更新 `frontier.md` 的「最近扫描」。
-- **每月**：把候选队列里 ≥3 条同向的证据合成一次，决定是否改 `README` / `conclusions`。
+- **每月**：把候选队列里 ≥3 条同向的证据合成一次，决定是否改 `claims` / 子主题 README；只有跨派才改 `conclusions`。
 - **每季度**：重排优先级，检查是否有派需要拆分/合并；更新检索式。
 
 ## 7. 反模式

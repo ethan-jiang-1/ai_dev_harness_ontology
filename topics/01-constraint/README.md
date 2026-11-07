@@ -49,6 +49,18 @@ POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是�
 
 多 agent 诊断同时属于 [06 测量](../06-measure/README.md)：它给出了一个少见的、作者自认的「性能换安全」的显式取舍。
 
+## 本目录怎么长
+
+| 文件/目录 | 作用 |
+|---|---|
+| `README.md` | 地图 + 硬证据；只做索引 |
+| `claims.md` | 本派局部结论账本（`01-Lx`） |
+| `sources.md` | 本派卡片索引 |
+| `frontier.md` | 本派候选队列 |
+| `<子主题>/README.md` | 详细机制 |
+
+新增内容只改本目录；只有跨派结论或进 `deliverables/` 时，才升到 [conclusions](../conclusions.md) 的 E-xx。卡片 `home` 指向本派，`subtopic` 指向子主题。
+
 ## 持续挖掘
 
 前沿问题、信号源、检索式与候选队列见 [frontier.md](./frontier.md)。稳定判断只在本页被改变时改写。

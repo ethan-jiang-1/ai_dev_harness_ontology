@@ -119,7 +119,7 @@
 
 - `source/` — 20 篇基础论文 PDF（全部下载成功并核对标题）+ 2 篇前沿扫描 PDF + 1 篇 web 综述
 - `notes/` — 材料卡 1 张（综述）+ 论文卡 22 张（20 基础 + 2 扫描，摘要级）
-- `topics/` — 六派成文，10 条已核结论 + 3 条推测 + 3 条存疑 + 4 条冲突；每派有子主题目录与 `frontier.md`
+- `topics/` — 六派成文，10 条已核结论 + 3 条推测 + 3 条存疑 + 4 条冲突；每派有 `claims.md` / `sources.md` / 子主题目录 / `frontier.md`
 - `deliverables/` — 手册大纲 7 章
 
 **最大空缺是没有一条结论被独立复现。** 三个实验待做，见 [experiments](./experiments/README.md)。

@@ -1,3 +1,7 @@
+---
+updated: 2026-11-07
+---
+
 # materials：博客 / 工程 / 标准 / 演讲 / 综述
 
 论文与预印本在 [papers](../papers/)。这里放 `source_type` 为 `blog` / `engineering` / `standard` / `talk` / `survey` 的材料卡。

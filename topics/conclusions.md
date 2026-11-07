@@ -7,6 +7,8 @@ updated: 2026-11-07
 
 跨主题的结论索引。**这是流水线唯一允许被 `deliverables/` 直接引用的地方**——交付物引结论编号，不引原始材料。
 
+> 各派的局部判断先写在本派 `claims.md`（`01-Lx` 等）；只有跨派或进 `deliverables/` 时，才升到本页的 `E-xx`。这样改一个派不必动本页。
+
 等级定义见 [conventions](../meta/conventions.md#证据等级)。
 
 ## 已证

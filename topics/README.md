@@ -124,8 +124,10 @@ updated: 2026-11-07
 
 答不出来，说明它还没被消化。
 
-每派根目录有两个文件：`README.md` 放稳定综合，只在判断被改变时改写；`frontier.md` 放活页（前沿问题、信号源、检索式、候选队列、入档判据）。方法见 [meta/topic-research-protocol.md](../meta/topic-research-protocol.md)。
+每派根目录有四个文件：`README.md`（地图与硬证据，只在判断被改变时改写）、`frontier.md`（活页：前沿问题、信号源、检索式、候选队列、入档判据）、`claims.md`（本派局部结论 `L-xx`）、`sources.md`（本派卡片索引）。方法见 [meta/topic-research-protocol.md](../meta/topic-research-protocol.md)。
 
 派内可以再有**子主题目录**：`topics/<派>/<子主题>/README.md`。派 README 只做地图与硬证据；子主题 README 放详细机制。子主题按子机制/子问题命名，不按来源类型；成立条件与素材类型规则见 [ADR 0003](../adr/0003-subtopics-and-source-types.md)。
+
+**本页只做索引**：各派内部结构见各派 README 的「本目录怎么长」。新增子主题只改该派目录，不要求改本页；只有新派/跨派关系变化才动这里。
 
 新派不轻易开——先在 [conclusions](./conclusions.md) 记为「悬空结论」，累积三条以上再立派。横切的领域差异集中在 [domains](./domains.md)，不单独成派。

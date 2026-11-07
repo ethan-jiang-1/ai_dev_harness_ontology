@@ -19,6 +19,8 @@
 | 存博客/工程材料 | `source/web/`；卡放 `notes/materials/` |
 | 综合几个来源、形成判断 | `topics/`，用 [机制笔记模板](./meta/note-template.md) |
 | 写子机制的详细论证 | `topics/<派>/<子主题>/README.md`；派 README 只留地图 |
+| 记本派结论 | `topics/<派>/claims.md`（`L-xx`）；跨派才升 conclusions |
+| 列本派证据 | `topics/<派>/sources.md` |
 | 修订跨主题结论 | [topics/conclusions.md](./topics/conclusions.md) |
 | 查时刻/接缝 | [topics/seams.md](./topics/seams.md) |
 | 找某派前沿/候选 | `topics/<派>/frontier.md`，方法见 [topic 协议](./meta/topic-research-protocol.md) |
@@ -33,6 +35,8 @@
 
 **派内可以再有子主题**：`topics/<派>/<子主题>/README.md`。派 README 只做地图与硬证据；详细机制在子主题。子主题按子机制命名，不按来源类型；成立条件见 [ADR 0003](./adr/0003-subtopics-and-source-types.md)。
 
+**改一个派只动该派目录**：`README.md` / `claims.md` / `sources.md` / `frontier.md` / 子主题。只有跨派结论或进 `deliverables/` 时，才改 [conclusions](./topics/conclusions.md) 的 `E-xx`。
+
 **素材类型不进 topics**：论文/预印本在 `notes/papers/`，博客/工程/标准/演讲/综述在 `notes/materials/`；证据天花板见 [source-types](./meta/source-types.md)。
 
 ## 三条硬规矩
@@ -43,11 +47,11 @@
 
 ## 写之后
 
-- 问一句「这次动笔改变了哪条判断」：改了 → 更新 [conclusions](./topics/conclusions.md)；没改 → 只补来源。
+- 问一句「这次动笔改变了哪条判断」：改了 → 先写本派 `claims.md`；跨派或进交付物才升 [conclusions](./topics/conclusions.md)；没改 → 只补来源。
 - 如果修正了旧判断，回改所有引用它的主题页，并在卡片 `updates:` 登记。
 - 更新被改文件的 `updated` 与 `status`，并在 [notes 台账](./notes/README.md) 记一笔。
 - 新术语进 [GLOSSARY](./GLOSSARY.md)；改了术语含义，扫一遍引用它的文档。
-- 新候选先放 `frontier.md` 的候选队列；只有会改变判断时才建卡。
+- 新候选先放 `frontier.md` 的候选队列；只有会改变判断时才建卡，入档时先更新本派 `sources.md`。
 - 交稿前过一遍 [checklist](./meta/checklist.md)。
 
 ## 不要做
@@ -59,4 +63,5 @@
 - 不为候选建卡而没有「改变哪条判断」的理由。
 - 不把博客/工程观察当论文结论；一般性结论默认 `推测`。
 - 不按来源类型（papers/blogs）建子主题；子主题按子机制。
+- 不把派内局部判断直接写进 `conclusions.md`；先写本派 `claims.md`。
 - 不引入代码目录。验证性实现放仓库外，靠 `EXP-xxx` 编号回链。

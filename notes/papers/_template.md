@@ -9,7 +9,8 @@ title:
 authors:
 pdf: ../../source/papers/
 direction:              # 源综述分类 1-4；前沿扫描用 5
-home:                   # 归位：topics/<派>/<子主题>/README.md
+home:                   # 归位：topics/<派>
+subtopic:               # 子主题目录（可空）
 updates: []             # 本卡修正后需要回改的 topics 文档
 ---
 

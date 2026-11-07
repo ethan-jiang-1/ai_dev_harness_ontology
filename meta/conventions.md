@@ -31,11 +31,12 @@ updated: 2026-11-07
 
 ## 字段与词汇
 
-同一个字段在不同目录不能有不同含义。本仓库用六个字段，各自一套词汇：
+同一个字段在不同目录不能有不同含义。本仓库用以下字段，各自一套词汇：
 
 | 字段 | 用在哪 | 取值 | 含义 |
 |---|---|---|---|
 | `status` | 所有文档 | `seed` / `draft` / `stabilized` / `superseded` | 文档成熟度，不代表篇幅 |
+| `home` / `subtopic` | `notes/` 卡片 | `topics/<派>` / `<子主题>` | 卡片归位；移动子主题只改 `subtopic` |
 | `source_type` | `notes/` 卡片 | `paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey` | 素材类型；证据天花板见 [source-types](./source-types.md) |
 | `reading` | `notes/` 卡片 | `未读` / `综述级` / `摘要级` / `精读` / `已消化` | 读到什么程度 |
 | `provenance` | `notes/` 卡片 | `原文正文` / `原文摘要` / `综述转述` / `未核` | 证据来自哪里 |
