@@ -16,7 +16,7 @@
 2. **部件轴保留在 `00-harness/`**，并在其 README 增加「对应时刻」列。
 3. **时刻轴不建目录，建一页横切索引** [`topics/seams.md`](../topics/seams.md)。理由：时刻是序列，不是容器；同一时刻的文档已经按派存放，复制成目录会产生两套权威。
 4. **六派明确为 4+1+1**：`01-04` 是回路内的四个介入点，`05` 是回路前（来源），`06` 是回路外（尺子）。
-5. **`experiments/` 是验证回路，不是第五个工位**；在 pipeline 图上用虚线回到 `topics/conclusions.md`。
+5. **`experiments/` 是验证回路，不是主流水线工位**；在 pipeline 图上用虚线回到 `topics/conclusions.md`。
 
 ## 后果
 
