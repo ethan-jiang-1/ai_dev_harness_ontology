@@ -17,11 +17,13 @@ POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是�
 
 | 位置 | 判据问什么 | 代表 | 文档 |
 |---|---|---|---|
-| 动作前 | 这个动作有可逆路径吗 | POLAR（可逆性分级）、OntoAct（符号验证器） | [tool-gate](./tool-gate.md) |
-| 落盘前 | 证据够不够授权这次持久化 | Commit Boundary（三段式放行） | [commit-boundary](./commit-boundary.md) |
-| 推理期 | 结论是否超出了可信知识的范围 | 多 agent 差分诊断（推理限制在 curated KG） | 本页 |
+| 动作前 | 这个动作有可逆路径吗 | POLAR（可逆性分级）、OntoAct（符号验证器） | [action-gate](./action-gate/README.md) |
+| 落盘前 | 证据够不够授权这次持久化 | Commit Boundary（三段式放行） | [commit-gate](./commit-gate/README.md) |
+| 推理期 | 结论是否超出了可信知识的范围 | 多 agent 差分诊断（推理限制在 curated KG） | [reasoning-gate](./reasoning-gate/README.md) |
 
 第三种是最近才补进来的：它不拦动作，拦的是**结论的取用范围**。多 agent 诊断明确写道：把推理限制在 curated KG 上，「阻止了看似合理却无依据的诊断」，代价是**封顶基准表现**。
+
+三个位置各有独立子主题目录：`action-gate/`、`commit-gate/`、`reasoning-gate/`。本页只做地图与硬证据；详细机制在子主题里。
 
 ## 硬证据
 

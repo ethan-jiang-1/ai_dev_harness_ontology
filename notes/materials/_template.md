@@ -1,9 +1,10 @@
 ---
 status: seed            # seed | draft | stabilized | superseded
+source_type: blog       # blog | engineering | standard | talk | survey
 reading: 未读           # 未读 | 综述级 | 摘要级 | 精读 | 已消化
 provenance: 未核        # 原文正文 | 原文摘要 | 综述转述 | 未核
 updated: YYYY-MM-DD
-source:                 # 指向 source/ 下的原文件
+source:                 # 指向 source/web/ 下的文件或 URL
 author:
 published:
 updates: []             # 本卡修正后需要回改的 topics 文档
@@ -18,6 +19,10 @@ updates: []             # 本卡修正后需要回改的 topics 文档
 1.
 2.
 3.
+
+## 场景与 scope
+
+作者在什么场景/规模下观察到什么；哪些结论只在这个场景成立。
 
 ## 证据强度
 

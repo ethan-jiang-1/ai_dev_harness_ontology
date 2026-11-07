@@ -44,11 +44,13 @@ updated: 2026-11-07
 
 **别用**：指望自动生成一个「完备」本体——现有证据表明生成只能产出候选，约束与边界仍需人。
 
-## 文档
+## 子主题
 
-- [representation](./representation.md) —— 形式化到什么程度
-- [modeling](./modeling.md) —— 规范如何压缩自由度
-- [lifecycle](./lifecycle.md) —— 来源、精化、演化
+- [generation](./generation/README.md) —— 本体从哪来
+- [refinement](./refinement/README.md) —— 在既有本体上修
+- [representation](./representation/README.md) —— 形式化到什么程度
+- [modeling](./representation/modeling.md) —— 规范如何压缩自由度
+- [lifecycle](./lifecycle/README.md) —— 来源、精化、演化
 
 ## 开放问题
 

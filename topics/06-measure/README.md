@@ -19,10 +19,12 @@ updated: 2026-11-07
 
 | 文档 | 量什么 | 结论 |
 |---|---|---|
-| [mechanism](./mechanism.md) | 本体知识是否真在模型里 | 机制可干预，但未与类别信息分离 |
-| [failure-attribution](./failure-attribution.md) | 失败出在哪一环 | 归因到工作流，按角色做难度画像 |
-| [trace-validity](./trace-validity.md) | 过程是否有效 | 输出正确掩盖了冗余与错误继承 |
-| [metric-mismatch](./metric-mismatch.md) | 尺子本身对不对 | 度量错配是文献冲突的主因 |
+| [mechanism](./mechanism/README.md) | 本体知识是否真在模型里 | 机制可干预，但未与类别信息分离 |
+| [failure-attribution](./failure-attribution/README.md) | 失败出在哪一环 | 归因到工作流，按角色做难度画像 |
+| [trace](./trace/README.md) | 过程是否有效 | 输出正确掩盖了冗余与错误继承 |
+| [metrics](./metrics/README.md) | 尺子本身对不对 | 度量错配是文献冲突的主因 |
+
+四把尺子各有独立子主题目录：`mechanism/`、`failure-attribution/`、`trace/`、`metrics/`。本页只做地图；详细度量在各子主题。
 
 ## 双重身份
 
@@ -41,7 +43,7 @@ updated: 2026-11-07
 
 ## 开放问题
 
-- 能否设计一套**按机制类型分派**的度量方案？这是本仓库最大的空缺（见 [metric-mismatch](./metric-mismatch.md)）。
+- 能否设计一套**按机制类型分派**的度量方案？这是本仓库最大的空缺（见 [metrics](./metrics/README.md)）。
 - 「部署层面的回报」如何量化？目前它只以定性断言存在。
 - 基准的慷慨程度能否被度量？例如统计「答案有多大比例直接出现在给定材料里」。
 

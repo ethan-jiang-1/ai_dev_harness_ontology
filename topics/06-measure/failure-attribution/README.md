@@ -35,8 +35,8 @@ evidence: [E-06]
 
 ## 与其它派的关系
 
-- 直接支撑 [00-harness/verification](../00-harness/verification.md) 的「判定器与被判对象必须不同源」。
-- 为 [02 判定](../02-judgment/README.md) 提供存在理由：判定弱会让修复变成破坏。
+- 直接支撑 [00-harness/verification](../../00-harness/verification.md) 的「判定器与被判对象必须不同源」。
+- 为 [02 判定](../../02-judgment/README.md) 提供存在理由：判定弱会让修复变成破坏。
 
 ## 待核
 

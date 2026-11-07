@@ -45,7 +45,7 @@ length: 4–6 万字
 
 curated / LLM 生成 / 数据挖掘的漏检与误报偏向；判定器精度只略优于随机的含义。
 **核心结论**：E-02
-**素材**：[topics/05-produce/lifecycle.md](../../topics/05-produce/lifecycle.md)
+**素材**：[05 生命周期](../../topics/05-produce/lifecycle/README.md)
 
 ### 第六章 · 选对尺子
 

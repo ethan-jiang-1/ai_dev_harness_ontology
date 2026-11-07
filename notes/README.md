@@ -12,9 +12,9 @@ updated: 2026-11-07
 
 | 材料 | 卡片 | 阅读 / 来源 | 已喂到 |
 |---|---|---|---|
-| [老刘说NLP · 本体4方向20工作](./2026-11-04-ontology-20-papers.md)（2026-11-04） | 本目录 | 已消化 / 综述转述 | `topics/conclusions.md`、`topics/README.md`、`topics/05-produce/lifecycle.md`、`topics/domains.md` |
+| [老刘说NLP · 本体4方向20工作](./materials/2026-11-04-ontology-20-papers.md)（2026-11-04） | [materials/](./materials/) | 已消化 / 综述转述 | `topics/conclusions.md`、`topics/README.md`、`topics/05-produce/lifecycle/README.md`、`topics/domains.md` |
 | └ 其中 20 篇论文（摘要+结论+局限） | [papers/](./papers/) | 摘要级 / 原文摘要（8 篇逐条对照，12 篇未逐条对照） | 六派 README 逐篇标注 |
-| └ 2026-11-07 前沿扫描批次（CASEL、Agents Are Systems） | [papers/](./papers/) | 摘要级 / 原文摘要 | [tool-gate](../topics/01-constraint/tool-gate.md)、[06-measure/README](../topics/06-measure/README.md)（候选，待综合） |
+| └ 2026-11-07 前沿扫描批次（CASEL、Agents Are Systems） | [papers/](./papers/) | 摘要级 / 原文摘要 | [action-gate](../topics/01-constraint/action-gate/README.md)、[06-measure/README](../topics/06-measure/README.md)（候选，待综合） |
 
 ## 阅读进度（`reading`）
 
@@ -35,18 +35,22 @@ updated: 2026-11-07
 | `综述转述` | 只来自综述或二手材料 |
 | `未核` | 尚未核对来源 |
 
+## 素材类型（`source_type`）
+
+论文卡用 `paper` / `preprint`；材料卡用 `blog` / `engineering` / `standard` / `talk` / `survey`。它回答「素材是什么」，与「读到哪」（`reading`）和「从哪来」（`provenance`）正交。证据天花板见 [source-types](../meta/source-types.md)。
+
 **文档 `status` 与阅读 `reading` 是两件事。** 卡片本身是文档，`status` 用 `seed / draft / stabilized / superseded`；`reading` 才表示读到哪。定义见 [conventions](../meta/conventions.md#字段与词汇)。
 
 **卡片状态与 `source/` 的下载状态无关。** 下载只代表「拥有」，不动笔记账。
 
-## 卡片分两种
+## 卡片分两类
 
 | 类型 | 模板 | 用于 |
 |---|---|---|
-| 材料卡 | [_template.md](./_template.md) | 文章、书、演讲、规范。关注「作者主张什么」 |
-| 论文卡 | [papers/_template.md](./papers/_template.md) | 单篇论文。关注「它测了什么、结果是什么、没测什么」 |
+| 论文卡 | [papers/_template.md](./papers/_template.md) | 单篇论文/预印本。关注「它测了什么、结果是什么、没测什么」 |
+| 材料卡 | [materials/_template.md](./materials/_template.md) | 博客、工程复盘、标准、演讲、综述。关注「作者在什么场景下报告了什么」 |
 
-两者最大的差别：论文卡必须有**结果数字**与**未测范围**两栏。综述最容易省略的正是这两样。
+两类最大的差别：论文卡必须有**结果数字**与**未测范围**两栏；材料卡必须写**场景与 scope**。综述最容易省略的正是这两样。
 
 ## 一条纪律
 

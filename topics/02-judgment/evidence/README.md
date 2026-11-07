@@ -32,7 +32,7 @@ evidence: [E-03]
 
 ## 证据
 
-- 每个答案强制输出所用本体证据与接地等级，等级与正确率正相关（[OA-RAG](../../source/papers/2610.36335-oa-rag.pdf)，`待核`）→ [E-03](../conclusions.md)
+- 每个答案强制输出所用本体证据与接地等级，等级与正确率正相关（[OA-RAG](../../../source/papers/2610.36335-oa-rag.pdf)，`待核`）→ [E-03](../../conclusions.md)
 
 ## 失效模式
 

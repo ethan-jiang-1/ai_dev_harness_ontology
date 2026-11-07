@@ -24,12 +24,12 @@ rq: [RQ2, RQ3]
 
 | # | 时刻 | 文档 | 本体角色 | 违反的后果 | 对应派 / 部件 |
 |---|---|---|---|---|---|
-| 1 | 动作执行**前** | [tool-gate](./01-constraint/tool-gate.md) | 可逆性分级、参数合法性 | 不可逆动作被执行 | 01 / tools |
-| 2 | 输出**时** | [evidence-grading](./02-judgment/evidence-grading.md) | 强制附带依据与接地等级 | 无根据的结论流出 | 02 / observability |
-| 3 | 输出**后** | [checker](./02-judgment/checker.md) | 判定器：查错与纠错 | 不合格产出被放行 | 02 / verification |
-| 4 | 持久化**前** | [commit-boundary](./01-constraint/commit-boundary.md) | 授权判据：证据是否足够 | 错误变更落盘 | 01 / governance |
-| 5 | 跨**轮** | [memory-as-state](./04-state/memory-as-state.md) | 状态结构：约束、失效、冲突 | 后续判断被污染 | 04 / memory |
-| 6 | 跨**运行** | [determinism](./04-state/determinism.md) | 一致性锚点 | 同一输入得出不同结论 | 04 / memory |
+| 1 | 动作执行**前** | [action-gate](./01-constraint/action-gate/README.md) | 可逆性分级、参数合法性 | 不可逆动作被执行 | 01 / tools |
+| 2 | 输出**时** | [evidence](./02-judgment/evidence/README.md) | 强制附带依据与接地等级 | 无根据的结论流出 | 02 / observability |
+| 3 | 输出**后** | [checker](./02-judgment/checker/README.md) | 判定器：查错与纠错 | 不合格产出被放行 | 02 / verification |
+| 4 | 持久化**前** | [commit-gate](./01-constraint/commit-gate/README.md) | 授权判据：证据是否足够 | 错误变更落盘 | 01 / governance |
+| 5 | 跨**轮** | [memory](./04-state/memory/README.md) | 状态结构：约束、失效、冲突 | 后续判断被污染 | 04 / memory |
+| 6 | 跨**运行** | [determinism](./04-state/determinism/README.md) | 一致性锚点 | 同一输入得出不同结论 | 04 / memory |
 
 ## 三层强度谱，不要混
 
@@ -85,7 +85,7 @@ rq: [RQ2, RQ3]
 
 ## 阅读顺序
 
-先读 [tool-gate](./01-constraint/tool-gate.md)（最硬的时刻）→ [commit-boundary](./01-constraint/commit-boundary.md)（最值得研究的治理问题）→ [evidence-grading](./02-judgment/evidence-grading.md)（输出契约）→ [checker](./02-judgment/checker.md)（判定器质量）→ [memory-as-state](./04-state/memory-as-state.md)（状态）→ [determinism](./04-state/determinism.md)（锚点）。
+先读 [action-gate](./01-constraint/action-gate/README.md)（最硬的时刻）→ [commit-gate](./01-constraint/commit-gate/README.md)（最值得研究的治理问题）→ [evidence](./02-judgment/evidence/README.md)（输出契约）→ [checker](./02-judgment/checker/README.md)（判定器质量）→ [memory](./04-state/memory/README.md)（状态）→ [determinism](./04-state/determinism/README.md)（锚点）。
 
 ## 开放问题
 

@@ -39,10 +39,11 @@ FIRME 的一个可迁移经验（`待核`，卡片未记录实现细节）：把
 
 **别用**：单轮任务；本体本身还在建设期（没有稳定槽位，状态结构会一直变）。
 
-## 文档
+## 子主题
 
-- [memory-as-state](./memory-as-state.md) —— 事实集合 vs 状态
-- [determinism](./determinism.md) —— 跨运行的一致性锚点
+- [memory](./memory/README.md) —— 事实集合 vs 状态
+- [determinism](./determinism/README.md) —— 跨运行的一致性锚点
+- [identity](./identity/README.md) —— 跨源、跨期的同一性
 
 ## 开放问题
 

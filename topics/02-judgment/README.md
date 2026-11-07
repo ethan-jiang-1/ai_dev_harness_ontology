@@ -34,10 +34,11 @@ updated: 2026-11-07
 
 **别用**：判定器与生成器同源（自我审核几乎总失效）；没有标注集就无法知道曲线，此时判定器只是给人一种安全感。
 
-## 文档
+## 子主题
 
-- [checker](./checker.md) —— 判定器的位置、来源与失效模式
-- [evidence-grading](./evidence-grading.md) —— 输出时的证据契约
+- [checker](./checker/README.md) —— 判定器的位置、来源与失效模式
+- [evidence](./evidence/README.md) —— 输出时的证据契约
+- [calibration](./calibration/README.md) —— 判定器的曲线与代价
 
 ## 开放问题
 

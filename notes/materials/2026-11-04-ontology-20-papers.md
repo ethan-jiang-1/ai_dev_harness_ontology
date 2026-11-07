@@ -1,9 +1,10 @@
 ---
 status: draft
+source_type: survey
 reading: 已消化
 provenance: 综述转述
 updated: 2026-11-07
-source: ../source/weixin-laoliu/otology.md
+source: ../../source/web/weixin-laoliu/otology.md
 author: 刘焕勇（老刘说NLP）
 published: 2026-11-04
 updates: []
@@ -23,7 +24,7 @@ updates: []
 - 有数据吗：只有转述的数字，无独立实验。
 - 结论强度：作为**索引**极有价值（20 个 ID 全部有效、标题准确）；作为**结论**必须逐篇回原文。
 
-> 已核：20 篇 ID 有效、标题与 PDF 首页一致（2026-11-07）。见 [manifest](../source/papers/manifest.md)。
+> 已核：20 篇 ID 有效、标题与 PDF 首页一致（2026-11-07）。见 [manifest](../../source/papers/manifest.md)。
 
 ## 四个方向（附本仓库判断）
 
@@ -33,14 +34,14 @@ updates: []
 
 | 论文 | 一句话 | 综述可信度 |
 |---|---|---|
-| [What Does an Ontology Catch?](./papers/2610.37809-what-does-an-ontology-catch.md) | 把 checker 本身当研究对象；三种本体来源在漏检/误报上各有权衡 | 摘要已读 |
-| [OA-RAG](./papers/2610.36335-oa-rag.md) | 强制输出所用证据 + 接地等级（entailed/supported/related/unrelated） | 摘要已读 |
-| [POLAR](./papers/2610.08082-polar.md) | 两层本体给工具调用打可逆性分，低于阈值执行前剪掉 | 摘要已读 |
-| [Commit Boundary](./papers/2610.37407-commit-boundary.md) | 区分「推理可用证据」与「有权授权持久化变更的证据」 | 摘要已读 |
+| [What Does an Ontology Catch?](../papers/2610.37809-what-does-an-ontology-catch.md) | 把 checker 本身当研究对象；三种本体来源在漏检/误报上各有权衡 | 摘要已读 |
+| [OA-RAG](../papers/2610.36335-oa-rag.md) | 强制输出所用证据 + 接地等级（entailed/supported/related/unrelated） | 摘要已读 |
+| [POLAR](../papers/2610.08082-polar.md) | 两层本体给工具调用打可逆性分，低于阈值执行前剪掉 | 摘要已读 |
+| [Commit Boundary](../papers/2610.37407-commit-boundary.md) | 区分「推理可用证据」与「有权授权持久化变更的证据」 | 摘要已读 |
 | Agentic Power System Studies | 电网规划：本体承载法规标准，数字由求解器算，答案须引用证据 | 转述 |
 | Ontology-guided multi-agent diagnosis | 多 agent 差分诊断，缺证据时主动追问 | 转述 |
 
-**本仓库判断**：这一组不是本体研究，是**接缝研究**——每篇都在回答「本体被放在回路的哪一格」。归位到 [topics/README.md](../topics/README.md)。
+**本仓库判断**：这一组不是本体研究，是**接缝研究**——每篇都在回答「本体被放在回路的哪一格」。归位到 [topics/README.md](../../topics/README.md)。
 
 ### 2 · 本体构建与生成（5 篇）
 
@@ -52,30 +53,30 @@ updates: []
 | CASTON Refinement | 既有本体的精化，不是从零建 | 转述 |
 | SFE-O | 超临界 CO₂ 萃取域 OWL 本体，显式表达参数溯源 | 转述 |
 
-**本仓库判断**：回答「本体从哪来、怎么修」，归位到 [topics/05-produce/lifecycle.md](../topics/05-produce/lifecycle.md)。其中「已有本体怎么修」被文献系统性低估。
+**本仓库判断**：回答「本体从哪来、怎么修」，归位到 [lifecycle](../../topics/05-produce/lifecycle/README.md)。其中「已有本体怎么修」被文献系统性低估。
 
 ### 3 · 机制、评测与反例（4 篇）
 
 | 论文 | 一句话 | 综述可信度 |
 |---|---|---|
-| [Before Blaming the LLM](./papers/2610.35267-diagnose-workflow.md) | 失败归因到工作流：输入不足、接地弱、模板缺口、校验弱、非局部修复 | 摘要已读 |
-| [Solver-Like Behavior](./papers/2611.02395-solver-like-behavior.md) | 形式化器自己在轨迹里把答案算出来；冗余且会继承错误 | 摘要已读 |
-| [Context as Infrastructure](./papers/2610.41172-context-as-infrastructure.md) | 强 harness 下（仅 BM25+grep）结构化工件无可检出增益 | 摘要已读 |
+| [Before Blaming the LLM](../papers/2610.35267-diagnose-workflow.md) | 失败归因到工作流：输入不足、接地弱、模板缺口、校验弱、非局部修复 | 摘要已读 |
+| [Solver-Like Behavior](../papers/2611.02395-solver-like-behavior.md) | 形式化器自己在轨迹里把答案算出来；冗余且会继承错误 | 摘要已读 |
+| [Context as Infrastructure](../papers/2610.41172-context-as-infrastructure.md) | 强 harness 下（仅 BM25+grep）结构化工件无可检出增益 | 摘要已读 |
 | MIOE | 本体预测机制上可干预，但知识无法与类别信息干净分离 | 转述 |
 
-**本仓库判断**：这一组是**全仓库最重要的证据来源**——它们共同指向「差距在 harness，不在模型」。归位到 [topics/conclusions.md](../topics/conclusions.md)。
+**本仓库判断**：这一组是**全仓库最重要的证据来源**——它们共同指向「差距在 harness，不在模型」。归位到 [topics/conclusions.md](../../topics/conclusions.md)。
 
 ### 4 · 本体当记忆 / 自演化骨架（5 篇）
 
 | 论文 | 一句话 | 综述可信度 |
 |---|---|---|
 | EvoMemState | 记忆从「事实集合」改为「状态」：关系状态 + 推理状态 | 转述 |
-| [FIRME](./papers/2610.40482-firme.md) | 固定 product-topic 本体 + registry 做跨期身份对齐 | 摘要已读 |
+| [FIRME](../papers/2610.40482-firme.md) | 固定 product-topic 本体 + registry 做跨期身份对齐 | 摘要已读 |
 | OntoAct | 把动作空间压到本体概念层再做假设检验 | 转述 |
 | Narrow and Deep | 工业设备域建「本体塔」，窄而深 | 转述 |
 | Evontree | 本体规则引导低资源域自演化 | 转述 |
 
-**本仓库判断**：记忆是 harness 机制，本体在此充当状态结构——归位到 [topics/04-state/memory-as-state.md](../topics/04-state/memory-as-state.md)。注意 FIRME 的克制定位（不承担自由推理，只承担对齐与印证条件），这可能是同类工作里最可落地的取向。
+**本仓库判断**：记忆是 harness 机制，本体在此充当状态结构——归位到 [memory](../../topics/04-state/memory/README.md)。注意 FIRME 的克制定位（不承担自由推理，只承担对齐与印证条件），这可能是同类工作里最可落地的取向。
 
 ## 转述与原文的差异
 
@@ -89,7 +90,7 @@ updates: []
 
 另有两处待核：
 
-- **FIRME**：综述称「本体只承担槽位定义、不做推理」；[FIRME 卡](./papers/2610.40482-firme.md)已修正为「不承担自由推理，只承担对齐与印证条件」。原限定待回正文核对。
+- **FIRME**：综述称「本体只承担槽位定义、不做推理」；[FIRME 卡](../papers/2610.40482-firme.md)已修正为「不承担自由推理，只承担对齐与印证条件」。原限定待回正文核对。
 - **MIOE**：综述归入「机制」方向，但其结论是**削弱**「模型内在本体」的强主张（答对不等于内部有结构）。分类掩盖了结论方向。
 
 ## 它的局限
@@ -106,13 +107,13 @@ updates: []
 
 ## 喂到哪个主题
 
-- [tool-gate](../topics/01-constraint/tool-gate.md) ← POLAR
-- [commit-boundary](../topics/01-constraint/commit-boundary.md) ← Commit Boundary
-- [checker](../topics/02-judgment/checker.md) ← What Does an Ontology Catch
-- [evidence-grading](../topics/02-judgment/evidence-grading.md) ← OA-RAG
-- [memory-as-state](../topics/04-state/memory-as-state.md) ← EvoMemState、FIRME
-- [projection](../topics/03-knowledge/projection.md) ← Narrow and Deep
-- [compilation](../topics/03-knowledge/compilation.md) ← Context as Infrastructure
-- [topics/05-produce/lifecycle](../topics/05-produce/lifecycle.md) ← CASTON、SFE-O、OntoDoc
-- [topics/00-harness/context](../topics/00-harness/context.md) ← Context as Infrastructure
-- [topics/conclusions](../topics/conclusions.md) ← 全部
+- [action-gate](../../topics/01-constraint/action-gate/README.md) ← POLAR
+- [commit-gate](../../topics/01-constraint/commit-gate/README.md) ← Commit Boundary
+- [checker](../../topics/02-judgment/checker/README.md) ← What Does an Ontology Catch
+- [evidence](../../topics/02-judgment/evidence/README.md) ← OA-RAG
+- [memory](../../topics/04-state/memory/README.md) ← EvoMemState、FIRME
+- [projection](../../topics/03-knowledge/projection/README.md) ← Narrow and Deep
+- [compilation](../../topics/03-knowledge/compilation/README.md) ← Context as Infrastructure
+- [topics/05-produce/lifecycle](../../topics/05-produce/lifecycle/README.md) ← CASTON、SFE-O、OntoDoc
+- [topics/00-harness/context](../../topics/00-harness/context.md) ← Context as Infrastructure
+- [topics/conclusions](../../topics/conclusions.md) ← 全部

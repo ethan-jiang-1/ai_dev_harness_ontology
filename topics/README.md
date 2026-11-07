@@ -21,6 +21,8 @@ updated: 2026-11-07
 
 另有两条横切索引：[conclusions](./conclusions.md)（证据）与 [domains](./domains.md)（领域）。
 
+派轴内部还可以再分**子主题**（`topics/<派>/<子主题>/README.md`）；那不是第四条轴，是派轴的第二层。派 README 只做地图，详细机制在子主题。
+
 六派不是六个等价的桶，而是 **4+1+1**：
 
 - `00-harness`：回路本身（七个部件）
@@ -122,6 +124,8 @@ updated: 2026-11-07
 
 答不出来，说明它还没被消化。
 
-每派有两个文件：`README.md` 放稳定综合，只在判断被改变时改写；`frontier.md` 放活页（前沿问题、信号源、检索式、候选队列、入档判据）。方法见 [meta/topic-research-protocol.md](../meta/topic-research-protocol.md)。
+每派根目录有两个文件：`README.md` 放稳定综合，只在判断被改变时改写；`frontier.md` 放活页（前沿问题、信号源、检索式、候选队列、入档判据）。方法见 [meta/topic-research-protocol.md](../meta/topic-research-protocol.md)。
+
+派内可以再有**子主题目录**：`topics/<派>/<子主题>/README.md`。派 README 只做地图与硬证据；子主题 README 放详细机制。子主题按子机制/子问题命名，不按来源类型；成立条件与素材类型规则见 [ADR 0003](../adr/0003-subtopics-and-source-types.md)。
 
 新派不轻易开——先在 [conclusions](./conclusions.md) 记为「悬空结论」，累积三条以上再立派。横切的领域差异集中在 [domains](./domains.md)，不单独成派。

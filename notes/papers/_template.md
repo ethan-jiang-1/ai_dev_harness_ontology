@@ -1,5 +1,6 @@
 ---
 status: seed            # seed | draft | stabilized | superseded
+source_type: preprint   # paper | preprint
 reading: 未读           # 未读 | 综述级 | 摘要级 | 精读 | 已消化
 provenance: 未核        # 原文正文 | 原文摘要 | 综述转述 | 未核
 updated: YYYY-MM-DD
@@ -8,7 +9,7 @@ title:
 authors:
 pdf: ../../source/papers/
 direction:              # 源综述分类 1-4；前沿扫描用 5
-home:                   # 本仓库归位：topics/...
+home:                   # 归位：topics/<派>/<子主题>/README.md
 updates: []             # 本卡修正后需要回改的 topics 文档
 ---
 

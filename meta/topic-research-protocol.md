@@ -7,6 +7,8 @@
 
 `README` 回答「我们现在信什么」；`frontier` 回答「下一步查什么、为什么」。
 
+派内可以再有子主题：`topics/<派>/<子主题>/README.md`。子主题可以有自己的 `frontier.md`；派 `frontier.md` 只汇总，不重复子主题正文。
+
 ## 1. 前沿问题从哪来
 
 - `README.md` 的「开放问题」。
@@ -70,3 +72,9 @@
 - 只加卡，不改 `README` / `conclusions`。
 - 把 `frontier.md` 写成第二篇综述——它只放「下一步做什么」。
 - 为「看起来完整」创建空文件或占位小节。
+
+## 8. 子主题与素材类型
+
+- **子主题**：派 README 只做地图；详细机制放 `topics/<派>/<子主题>/README.md`。成立条件（满足其一）：有自己的判断与边界；≥2 张卡片共享同一子机制；需要自己的 frontier。不预建空子目录。见 [ADR 0003](../adr/0003-subtopics-and-source-types.md)。
+- **素材类型**：论文/预印本进 `notes/papers/`，博客/工程/标准/演讲/综述进 `notes/materials/`；原文分别在 `source/papers/` 与 `source/web/`。
+- **证据天花板**：博客/工程的 `已核` 只指「作者报告了 X」；一般规律默认 `推测`。见 [source-types](./source-types.md)。

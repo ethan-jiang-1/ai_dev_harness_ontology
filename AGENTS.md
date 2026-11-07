@@ -15,8 +15,10 @@
 | 你在做什么 | 落点 |
 |---|---|
 | 存原文 | `source/`，并在 [manifest](./source/papers/manifest.md) 登记 |
-| 记一篇材料说了什么 | `notes/`，用 [材料卡模板](./notes/_template.md) 或 [论文卡模板](./notes/papers/_template.md) |
+| 记一篇材料说了什么 | `notes/`，用 [材料卡模板](./notes/materials/_template.md) 或 [论文卡模板](./notes/papers/_template.md) |
+| 存博客/工程材料 | `source/web/`；卡放 `notes/materials/` |
 | 综合几个来源、形成判断 | `topics/`，用 [机制笔记模板](./meta/note-template.md) |
+| 写子机制的详细论证 | `topics/<派>/<子主题>/README.md`；派 README 只留地图 |
 | 修订跨主题结论 | [topics/conclusions.md](./topics/conclusions.md) |
 | 查时刻/接缝 | [topics/seams.md](./topics/seams.md) |
 | 找某派前沿/候选 | `topics/<派>/frontier.md`，方法见 [topic 协议](./meta/topic-research-protocol.md) |
@@ -27,7 +29,11 @@
 
 六派是 **4+1+1**：`01-04` 是回路内的四个介入点，`05` 是回路前（来源），`06` 是回路外（尺子）。归派一句话：**01-04 问时刻，05 问来源，06 问尺子；跨派按主效应归派并标双重身份。** 时刻轴见 [seams](./topics/seams.md)。
 
-卡片与主题页的字段：`status`（文档成熟度）/ `reading`（读到哪）/ `provenance`（一手/转述），定义见 [conventions](./meta/conventions.md#字段与词汇)。
+卡片与主题页的字段：`status`（文档成熟度）/ `source_type`（素材类型）/ `reading`（读到哪）/ `provenance`（一手/转述），定义见 [conventions](./meta/conventions.md#字段与词汇)。
+
+**派内可以再有子主题**：`topics/<派>/<子主题>/README.md`。派 README 只做地图与硬证据；详细机制在子主题。子主题按子机制命名，不按来源类型；成立条件见 [ADR 0003](./adr/0003-subtopics-and-source-types.md)。
+
+**素材类型不进 topics**：论文/预印本在 `notes/papers/`，博客/工程/标准/演讲/综述在 `notes/materials/`；证据天花板见 [source-types](./meta/source-types.md)。
 
 ## 三条硬规矩
 
@@ -51,4 +57,6 @@
 - 不在 `deliverables/` 里新增 `topics/` 没有的判断。
 - 不把 `frontier.md` 写成第二篇综述——它只放「下一步做什么」，稳定判断回 `README.md`。
 - 不为候选建卡而没有「改变哪条判断」的理由。
+- 不把博客/工程观察当论文结论；一般性结论默认 `推测`。
+- 不按来源类型（papers/blogs）建子主题；子主题按子机制。
 - 不引入代码目录。验证性实现放仓库外，靠 `EXP-xxx` 编号回链。

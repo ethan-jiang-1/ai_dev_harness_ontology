@@ -46,7 +46,7 @@ rq: [RQ3, RQ4]
 
 观测处于**高强度**位置，但常被忽略：强制每个结论带证据与接地等级，本身就是一种控制——没有根据的结论无法通过输出这一关。
 
-这比「事后审计」更早生效。见 [evidence-and-provenance](../02-judgment/evidence-grading.md)。
+这比「事后审计」更早生效。见 [evidence-and-provenance](../02-judgment/evidence/README.md)。
 
 ## 开放问题
 
