@@ -51,7 +51,7 @@
 ## 5. 入档流程
 
 ```
-候选 → 卡片（notes/）→ 派 sources.md → 派 claims.md → 子主题 README 的 delta
+候选 → 卡片（src_notes/）→ 派 sources.md → 派 claims.md → 子主题 README 的 delta
      →（只有跨派/交付物）conclusions 更新 → 交付物重抽
 ```
 
@@ -78,5 +78,13 @@
 ## 8. 子主题与素材类型
 
 - **子主题**：派 README 只做地图；详细机制放 `topics/<派>/<子主题>/README.md`。成立条件（满足其一）：有自己的判断与边界；≥2 张卡片共享同一子机制；需要自己的 frontier。不预建空子目录。见 [ADR 0003](../adr/0003-subtopics-and-source-types.md)。
-- **素材类型**：论文/预印本进 `notes/papers/`，博客/工程/标准/演讲/综述进 `notes/materials/`；原文分别在 `source/papers/` 与 `source/web/`。
+- **素材类型**：论文/预印本进 `src_notes/papers/`，博客/工程/标准/演讲/综述进 `src_notes/materials/`；原文分别在 `src_raw/papers/` 与 `src_raw/web/`。
 - **证据天花板**：博客/工程的 `已核` 只指「作者报告了 X」；一般规律默认 `推测`。见 [source-types](./source-types.md)。
+
+## 9. 子主题的 prompt / run
+
+- 子主题可以有一个 `prompt.md`：问题、输入、输出格式、证据规则。
+- 每次运行把输出写到 `runs/YYYY-MM-DD-<slug>.md`，不要直接改 README。
+- run 必须带 `prompt` / `model` / `sources` / `claims_changed`。
+- 审 run 后，结论才进 `claims.md` / README；run 保留作审计轨迹。
+- 模板见 [subtopic-template](./subtopic-template/README.md)。

@@ -49,4 +49,4 @@ E-02 已经给出一个警告：curated 本体在真实 agent 答案上的标记
 - [02 判定派](../README.md)
 - [checker](../checker/README.md)、[evidence](../evidence/README.md)
 - [06 测量派的尺子](../../06-measure/metrics/README.md)
-- 卡片：[What Does an Ontology Catch](../../../notes/papers/2610.37809-what-does-an-ontology-catch.md)、[POLAR](../../../notes/papers/2610.08082-polar.md)、[CASEL](../../../notes/papers/2610.36570-casel.md)
+- 卡片：[What Does an Ontology Catch](../../../src_notes/papers/2610.37809-what-does-an-ontology-catch.md)、[POLAR](../../../src_notes/papers/2610.08082-polar.md)、[CASEL](../../../src_notes/papers/2610.36570-casel.md)

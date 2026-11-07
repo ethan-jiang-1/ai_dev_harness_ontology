@@ -14,13 +14,14 @@
 
 | 你在做什么 | 落点 |
 |---|---|
-| 存原文 | `source/`，并在 [manifest](./source/papers/manifest.md) 登记 |
-| 记一篇材料说了什么 | `notes/`，用 [材料卡模板](./notes/materials/_template.md) 或 [论文卡模板](./notes/papers/_template.md) |
-| 存博客/工程材料 | `source/web/`；卡放 `notes/materials/` |
+| 存原文 | `src_raw/`，并在 [manifest](./src_raw/papers/manifest.md) 登记 |
+| 记一篇材料说了什么 | `src_notes/`，用 [材料卡模板](./src_notes/materials/_template.md) 或 [论文卡模板](./src_notes/papers/_template.md) |
+| 存博客/工程材料 | `src_raw/web/`；卡放 `src_notes/materials/` |
 | 综合几个来源、形成判断 | `topics/`，用 [机制笔记模板](./meta/note-template.md) |
 | 写子机制的详细论证 | `topics/<派>/<子主题>/README.md`；派 README 只留地图 |
 | 记本派结论 | `topics/<派>/claims.md`（`L-xx`）；跨派才升 conclusions |
 | 列本派证据 | `topics/<派>/sources.md` |
+| 跑一个子主题 | `topics/<派>/<子主题>/prompt.md`；输出放 `runs/` |
 | 修订跨主题结论 | [topics/conclusions.md](./topics/conclusions.md) |
 | 查时刻/接缝 | [topics/seams.md](./topics/seams.md) |
 | 找某派前沿/候选 | `topics/<派>/frontier.md`，方法见 [topic 协议](./meta/topic-research-protocol.md) |
@@ -37,19 +38,19 @@
 
 **改一个派只动该派目录**：`README.md` / `claims.md` / `sources.md` / `frontier.md` / 子主题。只有跨派结论或进 `deliverables/` 时，才改 [conclusions](./topics/conclusions.md) 的 `E-xx`。
 
-**素材类型不进 topics**：论文/预印本在 `notes/papers/`，博客/工程/标准/演讲/综述在 `notes/materials/`；证据天花板见 [source-types](./meta/source-types.md)。
+**素材类型不进 topics**：论文/预印本在 `src_notes/papers/`，博客/工程/标准/演讲/综述在 `src_notes/materials/`；证据天花板见 [source-types](./meta/source-types.md)。
 
 ## 三条硬规矩
 
 1. **每个主张带证据等级。** 已证 / 已核 / 推测 / 存疑，四选一。没写就是推测。定义见 [conventions](./meta/conventions.md#证据等级)。
-2. **区分一手与转述。** 读原文就引 `source/` 下的文件或 arXiv 编号；读综述就在卡片里写「转述自」并标 `待核`。**综述摘要不等于论文结论**——转述常丢限定条件，本仓库已因三处转述失真修正过结论。
+2. **区分一手与转述。** 读原文就引 `src_raw/` 下的文件或 arXiv 编号；读综述就在卡片里写「转述自」并标 `待核`。**综述摘要不等于论文结论**——转述常丢限定条件，本仓库已因三处转述失真修正过结论。
 3. **反例与正例同权重。** 与结论冲突的证据照样入库，并在 conclusions 里保留冲突条目。
 
 ## 写之后
 
 - 问一句「这次动笔改变了哪条判断」：改了 → 先写本派 `claims.md`；跨派或进交付物才升 [conclusions](./topics/conclusions.md)；没改 → 只补来源。
 - 如果修正了旧判断，回改所有引用它的主题页，并在卡片 `updates:` 登记。
-- 更新被改文件的 `updated` 与 `status`，并在 [notes 台账](./notes/README.md) 记一笔。
+- 更新被改文件的 `updated` 与 `status`，并在 [src_notes 台账](./src_notes/README.md) 记一笔。
 - 新术语进 [GLOSSARY](./GLOSSARY.md)；改了术语含义，扫一遍引用它的文档。
 - 新候选先放 `frontier.md` 的候选队列；只有会改变判断时才建卡，入档时先更新本派 `sources.md`。
 - 交稿前过一遍 [checklist](./meta/checklist.md)。
@@ -64,4 +65,5 @@
 - 不把博客/工程观察当论文结论；一般性结论默认 `推测`。
 - 不按来源类型（papers/blogs）建子主题；子主题按子机制。
 - 不把派内局部判断直接写进 `conclusions.md`；先写本派 `claims.md`。
+- 不把 `runs/` 里的输出直接当 README 结论；先审 run，再升 `claims.md` / README。
 - 不引入代码目录。验证性实现放仓库外，靠 `EXP-xxx` 编号回链。

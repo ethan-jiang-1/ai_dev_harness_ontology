@@ -14,12 +14,12 @@
    - 需要自己的 frontier。
    不预建空子目录。
 4. 子主题可以有 `frontier.md`（子扫描）与 `sources.md`（卡片清单）；派 `frontier.md` 仍是汇总，不重复子主题的正文。
-5. **素材类型放在 `source/` 与 `notes/`，不进 `topics/`**：
-   - `source/papers/`（PDF）、`source/web/`（博客/网页）；
-   - `notes/papers/`（论文卡）、`notes/materials/`（博客/工程/标准/演讲卡）；
+5. **素材类型放在 `src_raw/` 与 `src_notes/`，不进 `topics/`**：
+   - `src_raw/papers/`（PDF）、`src_raw/web/`（博客/网页）；
+   - `src_notes/papers/`（论文卡）、`src_notes/materials/`（博客/工程/标准/演讲卡）；
    - 卡片加 `source_type`：`paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey`。
 6. **证据天花板**：paper/preprint 与 standard 可支撑 `已核`；blog/engineering 只对「作者报告了 X」算 `已核`，一般性结论默认 `推测`；survey 只作索引。细则见 [source-types](../meta/source-types.md)。
-7. **入口**：博客/工程素材先入 `notes/materials/`；只有改变判断时才进 `topics/`，否则留在 `frontier` 候选队列。
+7. **入口**：博客/工程素材先入 `src_notes/materials/`；只有改变判断时才进 `topics/`，否则留在 `frontier` 候选队列。
 
 ## 后果
 
