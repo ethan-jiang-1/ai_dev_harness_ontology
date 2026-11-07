@@ -16,7 +16,7 @@ updated: 2026-11-07
 ## 输入
 
 - 本子主题 [README](./README.md)、派 [claims](../claims.md)、派 [sources](../sources.md)
-- 卡片：[FIRME](../../../src/papers/2610.40482-firme.card.md)
+- 卡片：[FIRME](../../../src/papers/2610.40482-firme/card.md)
 - 候选：APEX-MEM（2604.14362，未建卡）；可从摘要开始，标 `待核`
 - 允许补充检索：entity resolution / registry / temporal identity
 

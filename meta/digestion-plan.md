@@ -10,7 +10,7 @@ updated: 2026-11-07
 
 ## 0. 一句话
 
-**不平均用力。** 12 篇精读成「机制档案」，6 篇结构读，4 篇只留卡；先做 1 篇样板校准格式，再按「主干 → 机制 → 测量 → 行业/生产 → 横切综合」五波推进。每篇的交付不是更长的摘要，而是：**机制怎么执行、数字在什么条件下成立、落地要付什么成本、能解决什么操作问题、哪张图能一眼说清**。
+**不平均用力。** 12 篇精读写「card.md（分解）+ digest.md（消化）」，6 篇结构读，4 篇轻消化（card + 一页 digest）；先做 1 篇样板校准格式，再按「主干 → 机制 → 测量 → 行业/生产 → 横切综合」分波推进。每篇的交付不是更长的摘要，而是：**机制怎么执行、数字在什么条件下成立、落地要付什么成本、能解决什么操作问题、哪张图能一眼说清**。
 
 ---
 
@@ -18,10 +18,10 @@ updated: 2026-11-07
 
 现状（2026-11-07）：
 
-- 22 篇 PDF、22 张论文卡 + 1 张材料卡；**全部 `reading: 摘要级`、`provenance: 原文摘要`**。
-- `topics/` 六派已成型，E-01…E-13 有等级、有冲突；但 3 条仍是综述转述（E-09/10/11），C-04 靠一篇论文的边界解释。
-- 全仓库没有一张图；没有「成本 / 使能条件 / 盈亏平衡」字段；部分细节数字只存在于 `frontier.md`，回查不到卡（例：CASEL 的 14.75%→7.02%、15.53%；APEX-MEM 的 88.88%）。
-- 卡片擅长「做了什么 / 结果 / 没测什么」，不擅长「具体怎么做 / 参数是多少 / 为什么现在能做 / 复刻要花多少」。
+- 22 个论文目录（各含 PDF + `card.md`）+ 1 张材料卡；起步时全部 `reading: 摘要级`；**CAI 已精读**（card + digest + 2 图）。
+- `topics/` 六派已成型，E-01…E-14 有等级、有冲突；但 3 条仍是综述转述（E-09/10/11），C-04 靠一篇论文的边界解释。
+- 起步时全仓库没有一张图；没有「成本 / 使能条件 / 盈亏平衡」字段（CAI 正在补）；部分细节数字只存在于 `frontier.md`，回查不到卡（例：CASEL 的 14.75%→7.02%、15.53%；APEX-MEM 的 88.88%）。
+- `card.md` 起步时擅长「做了什么 / 结果 / 没测什么」，不擅长「具体怎么做 / 参数是多少 / 为什么现在能做 / 复刻要花多少」。
 
 三个例子，说明摘要级会漏掉什么：
 
@@ -49,9 +49,9 @@ updated: 2026-11-07
 
 | 级 | 产出 | 判据 | 预算 |
 |---|---|---|---|
-| **L3 精读** | 机制档案（约 150–250 行）+ 2–3 张图 + 判断 delta | 杠杆=2，或证据/迁移/细节三项都强 | 每篇 1 次专注会话 |
-| **L2 结构读** | 80–120 行：机制 + 关键数字 + 边界 + 1 张图 | 有证据但杠杆中等，或概念架构但承重 | 每篇 0.5–1 次会话 |
-| **L1 只留卡** | 现有卡 + 一句「为什么不深读」 | 证据弱且杠杆低，或严格 off-thesis | 每篇 15 分钟 |
+| **L3 精读** | `card.md`（分解）+ `digest.md`（消化，合计约 150–250 行）+ 2–3 张图 + 判断 delta | 杠杆=2，或证据/迁移/细节三项都强 | 1–2 块/篇；30 页以上 2–3 块 |
+| **L2 结构读** | 80–120 行：机制 + 关键数字 + 边界 + 1 张图 | 有证据但杠杆中等，或概念架构但承重 | 每篇 0.5–1 块 |
+| **L1 轻消化** | `card.md` + 一页 `digest.md`（为什么只到卡 + 一条洞察） | 证据弱且杠杆低，或严格 off-thesis | 每篇 15–30 分钟 |
 
 **质量 ≠ 相关性。** 一篇严谨但不在本仓库问题上的论文，仍然只配 L1；一篇概念架构但承重的论文（Commit Boundary）配 L2，但必须标「无实现、无实证」，不能当证据用。
 
@@ -69,77 +69,100 @@ updated: 2026-11-07
 
 | 论文 | 证据类型 | 页/图 | 杠杆 | 落点 |
 |---|---|---|---|---|
-| [CAI](../src/papers/2610.41172-context-as-infrastructure.card.md) | 实证·基准 + 成本模型 | 13/2 | E-01、E-08、C-04 | 03/compilation（现挂 00，读完改 home） |
-| [Ontology Catch](../src/papers/2610.37809-what-does-an-ontology-catch.card.md) | 实证·基准 | 13/3 | E-02、P3 | 02/checker |
-| [POLAR](../src/papers/2610.08082-polar.card.md) | 实证·基准 | 17/4 | E-04、E-13 | 01/action-gate |
-| [Narrow & Deep](../src/papers/2610.11768-narrow-and-deep.card.md) | 实证·真实试验台 | 28/6 | E-12、C-04 | 03/projection |
-| [Diagnose the Workflow](../src/papers/2610.35267-diagnose-workflow.card.md) | 实证·方法论 | 16/1 | E-06、P2 | 06/failure-attribution（现挂 00，读完改 home） |
-| [FIRME](../src/papers/2610.40482-firme.card.md) | 实证·基准 | 20/4 | E-05 | 04/memory |
-| [OntoAct](../src/papers/2610.21983-ontoact.card.md) | 实证·基准 | 49/3（另有 76 张嵌入图） | reasoning-gate | 01/reasoning-gate |
-| [CASEL](../src/papers/2610.36570-casel.card.md) | 实证·模拟 | 6/3 | 01-L4/L5、成本 | 01/action-gate |
-| [Grid Agents](../src/papers/2611.03534-power-system-agentic.card.md) | 实证·部署 + 基准 | 18/3 | 03/02、domains | 03/projection（双重身份 02） |
-| [SLB](../src/papers/2611.02395-solver-like-behavior.card.md) | 实证·基准 | 28/9 | E-07、E-09 | 06/trace（现挂 04，读完改 home） |
-| [MIOE](../src/papers/2610.38326-mioe.card.md) | 机制研究 | 29/17 | E-10 | 06/mechanism |
-| [OntoDoc](../src/papers/2611.01276-ontodoc.card.md) | 实证·基准 | 33/1 | 05/03 | 05/generation |
+| [CAI](../src/papers/2610.41172-context-as-infrastructure/card.md) | 实证·基准 + 成本模型 | 13/2 | E-01、E-08、C-04 | 03/compilation（现挂 00，读完改 home） |
+| [Ontology Catch](../src/papers/2610.37809-what-does-an-ontology-catch/card.md) | 实证·基准 | 13/3 | E-02、P3 | 02/checker |
+| [POLAR](../src/papers/2610.08082-polar/card.md) | 实证·基准 | 17/4 | E-04、E-13 | 01/action-gate |
+| [Narrow & Deep](../src/papers/2610.11768-narrow-and-deep/card.md) | 实证·真实试验台 | 28/6 | E-12、C-04 | 03/projection |
+| [Diagnose the Workflow](../src/papers/2610.35267-diagnose-workflow/card.md) | 实证·方法论 | 16/1 | E-06、P2 | 06/failure-attribution（现挂 00，读完改 home） |
+| [FIRME](../src/papers/2610.40482-firme/card.md) | 实证·基准 | 20/4 | E-05 | 04/memory |
+| [OntoAct](../src/papers/2610.21983-ontoact/card.md) | 实证·基准 | 49/3（另有 76 张嵌入图） | reasoning-gate | 01/reasoning-gate |
+| [CASEL](../src/papers/2610.36570-casel/card.md) | 实证·模拟 | 6/3 | 01-L4/L5、成本 | 01/action-gate |
+| [Grid Agents](../src/papers/2611.03534-power-system-agentic/card.md) | 实证·部署 + 基准 | 18/3 | 03/02、domains | 03（compilation 或 projection，读完定；双重 02） |
+| [SLB](../src/papers/2611.02395-solver-like-behavior/card.md) | 实证·基准 | 28/9 | E-07、E-09 | 06/trace（现挂 04，读完改 home） |
+| [MIOE](../src/papers/2610.38326-mioe/card.md) | 机制研究 | 29/17 | E-10 | 06/mechanism |
+| [OntoDoc](../src/papers/2611.01276-ontodoc/card.md) | 实证·基准 | 33/1 | 05/03 | 05/generation |
 
 ### L2 结构读（6）
 
 | 论文 | 证据类型 | 页/图 | 杠杆 | 落点 |
 |---|---|---|---|---|
-| [OA-RAG](../src/papers/2610.36335-oa-rag.card.md) | 实证·基准 | 13/7 | E-03 | 02/evidence |
-| [多 agent 诊断](../src/papers/2610.36325-ontology-multiagent-diagnosis.card.md) | 实证·基准 | 9/2 | 01-L3 | 01/reasoning-gate |
-| [Commit Boundary](../src/papers/2610.37407-commit-boundary.card.md) | **概念架构**（无实现/无实证） | 32/2 | commit-gate 规范 | 01/commit-gate |
-| [EvoMemState](../src/papers/2611.03743-evomemstate.card.md) | 实证·基准 | 30/13 | 04 状态 | 04/memory |
-| [Agents are Systems](../src/papers/2610.01618-agents-are-systems.card.md) | 实证·基准 + 评测方法 | 28/8 | 06 评测 | 06/metrics |
-| [CASTON](../src/papers/2610.21466-caston-refinement.card.md) | 实证·专家评估 | 5/2 | 05 精化 | 05/refinement |
+| [OA-RAG](../src/papers/2610.36335-oa-rag/card.md) | 实证·基准 | 13/7 | E-03 | 02/evidence |
+| [多 agent 诊断](../src/papers/2610.36325-ontology-multiagent-diagnosis/card.md) | 实证·基准 | 9/2 | 01-L3 | 01/reasoning-gate |
+| [Commit Boundary](../src/papers/2610.37407-commit-boundary/card.md) | **概念架构**（无实现/无实证） | 32/2 | commit-gate 规范 | 01/commit-gate |
+| [EvoMemState](../src/papers/2611.03743-evomemstate/card.md) | 实证·基准 | 30/13 | 04 状态 | 04/memory |
+| [Agents are Systems](../src/papers/2610.01618-agents-are-systems/card.md) | 实证·基准 + 评测方法 | 28/8 | 06 评测 | 06/metrics |
+| [CASTON](../src/papers/2610.21466-caston-refinement/card.md) | 实证·专家评估 | 5/2 | 05 精化 | 05/refinement |
 
-### L1 只留卡（4）
+### L1 轻消化（4）
 
 | 论文 | 证据类型 | 页/图 | 为什么不深读 | 落点 |
 |---|---|---|---|---|
-| [Peeling the Matryoshka](../src/papers/2610.41785-peeling-matryoshka.card.md) | 实证·基准 | 13/6 | 嵌入分类结构，不在 harness 回路上；只值 E-11 的核验 | 05/generation |
-| [Evontree](../src/papers/2510.26683-evontree.card.md) | 实证·训练侧 | 10/2 | 训练侧自演化，摘要无数字，与「回路位置」关系弱 | 05/generation |
-| [SFE-O](../src/papers/2610.37123-sfe-o.card.md) | 概念/域本体 | 8/0 | 域本体设计，无量化的机制证据；只取它的局限清单 | 05/representation |
-| [ReX-GG](../src/papers/2610.41901-rex-gg.card.md) | 工程·用户研究 | 9/4 | 轻量集成流水线，工程味足但本体杠杆低 | 05/generation |
+| [Peeling the Matryoshka](../src/papers/2610.41785-peeling-matryoshka/card.md) | 实证·基准 | 13/6 | 嵌入分类结构，不在 harness 回路上；只值 E-11 的一次快速核验，不值档案 | 05/generation |
+| [Evontree](../src/papers/2510.26683-evontree/card.md) | 实证·训练侧 | 10/2 | 训练侧自演化，摘要无数字，与「回路位置」关系弱 | 05/generation |
+| [SFE-O](../src/papers/2610.37123-sfe-o/card.md) | 概念/域本体 | 8/0 | 域本体设计，无量化的机制证据；只取它的局限清单 | 05/representation |
+| [ReX-GG](../src/papers/2610.41901-rex-gg/card.md) | 工程·用户研究 | 9/4 | 轻量集成流水线，工程味足但本体杠杆低 | 05/generation |
 
-**为什么 05 只有 1 篇 L3**：05 的问题是「本体从哪来、多少钱」，答案分散在手工（N&D）、curated（Grid Agents）、编译（CAI）、抽象（OntoAct）与生成/精化（OntoDoc、CASTON）里。与其把 6 篇 05 都精读，不如做一次 **「本体生产成本」集群综合**，用 L1/L2 的六篇做横向对照（见 Wave 3）。06 同理，用集群而不是逐篇堆。
+**为什么 05 只有 1 篇 L3**：05 的问题是「本体从哪来、多少钱」，答案分散在手工（N&D）、curated（Grid Agents）、编译（CAI）、抽象（OntoAct）与生成/精化（OntoDoc、CASTON）里。与其把 6 篇 05 都精读，不如做一次 **「本体生产成本」集群综合**，用 05 的六篇（1 L3 + 1 L2 + 4 L1）做横向对照（见 Wave 3）。06 同理，用集群而不是逐篇堆。
+
+**如果只想先拿到最硬的判断更新**：做这 6 篇——CAI、POLAR、Narrow & Deep、Ontology Catch、CASEL、SLB。它们覆盖 E-01/02/04/07/08/12/13 与「成本、度量」两条横切；E-03/05/06 与 05 生产仍要后续补。这是最小路线，不是最终覆盖。
+
+**执行时的加载纪律**：按 [loading](./loading.md) 的按需加载。每篇只带该派 `README` + `claims.md` + `sources.md` + 该卡 + 原文；不要把全仓塞进上下文。卡片和 topics 的细节按需回查，不预读。
 
 ---
 
-## 4. 消化单位：机制档案
+## 4. 消化单位：`card.md`（分解）+ `digest.md`（消化）
 
-L3 卡片按以下 12 节写；L2 可把 3+5+6 合并成三节。
+每篇论文一个目录：`src/papers/{arxiv_id}-{slug}/`。里面固定四样：PDF、`card.md`、`digest.md`、`figures/`。
 
-1. `## 一句话` — 不用摘要句，说清它把什么判断从模型手里拿走了。
-2. `## 证据类型与设定` — 任务/数据/模型/基线/n；一句话说清「这证据能证明什么、不能证明什么」。
-3. `## 机制` — 本体在哪、变成什么、执行顺序、接口、参数/阈值；配图。
+**`card.md` 只记论文说了什么**（L3/L2 都写，L1 保留现有卡）：
+
+1. `## 一句话` — 不复述摘要，说清它把什么问题、用什么机制、改成了什么。
+2. `## 问题与设定` — 任务/数据/模型/基线/n；这证据能证明什么、不能证明什么。
+3. `## 机制` — 本体在哪、变成什么、执行顺序、接口、参数/阈值。
 4. `## 关键数字` — 表：数字 | 条件 | 出处（页/表/图） | 核验状态。
-5. `## 工程实践` — 复刻清单：schema 形状、阈值、评审点、日志、失败处理；「如果明天要在团队里做，第一步是什么」。
-6. `## 成本与使能条件` — 建设/运行/维护/人审；一次性 vs 每次；盈亏平衡；依赖的技术条件；2022 年做会卡在哪。
-7. `## 能解决的操作问题` — 2–4 条，写成 practitioner 认得出的问题；附「何时别用」。
-8. `## 失效模式` — 作者自述 / 观察到 / 推断，三分，不混。
-9. `## 不可迁移的部分` — 哪些结论只在这个域/这个数据/这个模型上成立。
-10. `## 图与表` — 2–3 张，图注写「看什么」；出处 + 版权。
-11. `## 对本仓库判断的影响` — E/L/P；没有影响就写「只作边界证据」。
-12. `## 引用锚点` — 关键句原文 + 页码；定位不到的数字标 `存疑`，不进正文。
+5. `## 图表索引` — 哪张图/表值得提取；页码；是否已提取。
+6. `## 作者自述局限` — 作者自己承认的边界。
+7. `## 引用锚点` — 关键句原文 + 页码；定位不到的数字标 `存疑`。
+8. `## 待核` — 正文中要确认的具体点。
 
-字段只动两个：`reading: 精读`、`provenance: 原文正文`。证据类型写在正文第一段，不新增 frontmatter 字段，避免 schema 膨胀。
+**`digest.md` 只记我们怎么用**（L3 必写；L2 可短；L1 写一页「为什么只到卡」+ 一条洞察）：
+
+1. `## 工程思路` — 复刻清单：schema 形状、阈值、评审点、日志、失败处理；「明天要做，第一步是什么」。
+2. `## 实用意义` — 2–4 条操作问题，写成 practitioner 认得出的句子；附「何时用 / 何时别用」。
+3. `## 质量评估` — 证据类型、样本与对照、主要威胁、`quality` 理由。
+4. `## 洞察` — 3–5 条反直觉或可迁移的判断；每条标 `已核` / `推测` / `存疑`。
+5. `## 成本与使能条件` — 建设/运行/维护/人审；一次性 vs 每次；盈亏平衡；依赖的技术条件；2022 年做会卡在哪。
+6. `## 与现有判断的关系` — E/L/P；没有影响就写「只作边界证据」。
+7. `## 不可迁移` — 只在这个域/数据/模型/版本上成立的部分。
+8. `## 开放问题` — 能改成实验的优先。
+
+字段：`card.md` 动 `reading: 精读`、`provenance: 原文正文`；`digest.md` 用 `quality: A/B/C`、`based_on: card.md`、`claims: []`。不新增其他 frontmatter 字段。
 
 **`已消化` 的定义**（建议写进 [conventions](./conventions.md)）：
 
-> 卡片为 `精读` + `原文正文`，且至少有一个 topics 页面或 `claims.md` 被它改变；若判断未变，须在派 `sources.md` 写 `no delta` 及原因。只有卡、没有落点，不算已消化。
+> `card.md` 为 `精读` + `原文正文`，同目录有 `digest.md`，且至少有一个 topics 页面或 `claims.md` 被它改变；若判断未变，须在派 `sources.md` 写 `no delta` 及原因。只有卡、没有落点，不算已消化。
 
 ---
 
 ## 5. 落点：卡片 → 子主题 → 判断
 
-1. **卡片是证据，子主题是判断。** 不把档案抄进 topics；topics 只写「跨论文之后我们信什么」。
+1. **card 是事实，digest 是判断，子主题是综合。** 不把 card/digest 抄进 topics；topics 只写「跨论文之后我们信什么」。
 2. **子主题页至少四张表**：机制步骤、证据（带条件）、成本/使能、失效；再加一张自绘图。
 3. **`claims.md` 只记「改变了哪条判断」**；没改变就写 `no delta`，不硬造 `L-xx`。
 4. **`E-xx` 只在跨派/交付物时改**；改前先查 `C-xx` / `Q-xx`，反例保留。
 5. **home / subtopic 复查**：读完再定主效应。候选：CAI→03、Diagnose→06、SLB→06；改则同步原派的「双重身份」说明与 `updates:`。
 6. **不轻易开子主题**：现有 19 个子主题对 22 篇已经偏碎。只有 ≥2 篇共享同一子机制，或原子主题过载时才拆/并。Wave 2 后做一次结构复盘。
 7. **`frontier.md` 只放「下一步」**：把 frontier 里的细节数字搬回卡 / `claims.md`，frontier 留检索式与候选。
+
+**「能解决的操作问题」长什么样**——不要写「提升准确率」，要写成一线能复述的句子：
+
+- 「同一客户在 CRM 与工单系统里被建成两个实体，历史被劈成两半。」
+- 「删了唯一副本才发现没有备份，事后只能道歉。」
+- 「一条结论要能追到它引用的原始条款，否则审计过不了。」
+- 「同一批文档每次问答都重新检索一遍，token 账单下不来。」
+- 「判定器把正确答案标成错的，模型被逼着去『修』它。」
+
+每条问题后面接：对应机制、证据（E/L）、成本、何时别用。Wave 4 的「问题 → 机制」目录就从这里长出来。
 
 ---
 
@@ -148,8 +171,8 @@ L3 卡片按以下 12 节写；L2 可把 3+5+6 合并成三节。
 ### A. 论文原图（证据图）
 
 - 只选承载机制或关键结果的 2–3 张；不搬装饰图。
-- 工具：PyMuPDF 定位 `Figure N` caption，裁上方图区，300 dpi PNG；人工目检。
-- 存：`src/papers/figs/{arxiv_id}/fig-{n}-{slug}.png`。
+- 工具：PyMuPDF 定位 `Figure N` caption，先判单栏/双栏，再裁图区，300 dpi PNG；人工目检。
+- 存：`src/papers/{arxiv_id}-{slug}/figures/fig-{n}-{slug}.png`。
 - 卡片里写：原 caption（或缩短）+ 页码 + 「看什么」+ 出处/版权。
 - 一张图配一句判断；没有判断的图不贴。
 
@@ -168,11 +191,11 @@ L3 卡片按以下 12 节写；L2 可把 3+5+6 合并成三节。
 
 ---
 
-## 7. 五波执行与 gate
+## 7. 执行波次与 gate（Wave 0–4；Wave 2 分 a/b）
 
 ### Wave 0 · 样板（1 篇）
 
-**CAI**。产出：完整档案 + 3 张图 + `03-knowledge/compilation` 机制页 + `claims.md` / `sources.md` + 一页「样板复盘」（哪些节有用、哪些过重、单篇耗时）。
+**CAI**。产出：`card.md` + `digest.md` + 2 张图 + 1 张重绘表 + `03-knowledge/compilation` 机制页 + `claims.md` / `sources.md` + 复盘（哪些节有用、哪些过重、单篇耗时；直接写回本节，不另开空文件）。
 
 **Gate**：你验收一页；格式不对就先改模板，不铺开。
 
@@ -191,7 +214,7 @@ POLAR、Narrow & Deep、Ontology Catch、Diagnose；OA-RAG 随 Ontology Catch。
 
 CASEL、OntoAct、FIRME；Commit Boundary、多 agent 诊断、EvoMemState。
 
-产出：01 的 action-gate / reasoning-gate / commit-gate 三页合看；04 memory 页；「闸门四形态」对比表（可逆性 / 后果-模式 / 符号验证 / 授权契约）。
+产出：01 的 action-gate / reasoning-gate / commit-gate 三页合看；04 memory 页；「闸门四形态」对比表（可逆性 / 后果-模式 / 符号验证 / 授权契约，其中授权契约只有 Commit Boundary 一份规范，无实现）。
 
 **Gate**：01 的三个子主题是否该合并/重排；Commit Boundary 是否只能当规范。
 
@@ -220,6 +243,12 @@ Grid Agents、OntoDoc；CASTON；Peeling / Evontree / SFE-O / ReX-GG 作 L1 集�
 
 **Gate**：候选假设是否立；`feasibility` 是否立；deliverables 是否要改章。
 
+### 这一轮想验证的洞察（先当假设，不当结论）
+
+**机制能不能落地，不只取决于本体质量，还取决于外部使能条件与成本结构**——工具调用是否稳定、能否结构化输出、上下文是否够长、编译/推理是否够便宜、有没有可接的求解器/检查器。若成立，「为什么现在才出现」就有可判定的答案：不是本体突然变好了，是使能条件跨过了阈值。
+
+入口证据：POLAR 的能力反向、N&D 的 H2 未被支持（投影增益不随容量上升）、CAI 的 2%/43% 盈亏平衡、CASEL 的审批量代价（对照 +45%）、Grid Agents 的 solver-in-loop。这条先挂 RQ5 下；等 Wave 2 后再决定是否升成独立假设，不提前写进 THESIS。
+
 ---
 
 ## 8. 质量门与反幻觉
@@ -239,7 +268,7 @@ Grid Agents、OntoDoc；CASTON；Peeling / Evontree / SFE-O / ReX-GG 作 L1 集�
 
 1. **引文锚点**：关键句原文 + 页码；定位不到就标 `存疑`，不写。
 2. **两遍读**：先结构（节标题/图表/结论），再定点（数字/阈值/消融/局限）。
-3. **图不看 caption 就下结论**：必须目检图；表格必须看单位与条件。
+3. **不要只看 caption 就下结论**：必须目检图；表格必须看单位与条件。
 4. **反例检查**：每条新判断找一条反例或局限；找不到就降级。
 
 ---
@@ -248,15 +277,23 @@ Grid Agents、OntoDoc；CASTON；Peeling / Evontree / SFE-O / ReX-GG 作 L1 集�
 
 | 产出 | 数量 | 说明 |
 |---|---|---|
-| 机制档案 | 12 | L3，约 150–250 行/篇 |
-| 结构读 | 6 | L2，80–120 行/篇 |
-| 论文图 | 25–35 | 2–3/篇 L3，1/篇 L2 |
+| `card.md` | 22 | 每篇一个分解卡 |
+| `digest.md` | 22 | 12 篇 L3 深消化、6 篇 L2、4 篇 L1 轻消化 |
+| L2 消化 | 6 | 80–120 行/篇 |
+| 论文图 | 30–40 | 2–3/篇 L3，1/篇 L2 |
 | 自绘图 | 8–12 | 核心子主题各 1 |
 | 子主题机制页 | 8–10 | 现有页面升级，不新开空目录 |
 | 横切综合 | 3 | 能力梯度、落地经济学、问题目录 |
 | 结论变动 | 5–10 条 | `L-xx` / `E-xx`，含降级与反例 |
 
-工作量：L3 每篇 1 次专注会话；L2 半次；加综合，约 **9–12 个工作会话**。不按日历承诺；每波结束给你验收点。
+工作量（按一个「专注工作块」≈2–3 小时估，不是日历承诺）：
+
+- L3：1–2 块/篇；大篇（OntoAct 49 页、OntoDoc 33 页、MIOE 29 页、SLB 28 页）按 2–3 块。
+- L2：0.5–1 块/篇。
+- 综合与回改：6–8 块（能力梯度、成本表、问题目录、conclusions 回改）。
+- 合计约 **24–32 块**；只走 6 篇最小路线约 **10–14 块**。
+
+每波结束给你一个验收点；不一次性铺完再返工。
 
 ---
 
@@ -276,11 +313,4 @@ Grid Agents、OntoDoc；CASTON；Peeling / Evontree / SFE-O / ReX-GG 作 L1 集�
 1. **分级**：接受 12/6/4，还是想把某几篇提级/降级？（建议先按此跑 Wave 0–1，Wave 2 前再调。）
 2. **05 派**：接受「1 篇 L3 + 1 篇 L2 + 4 篇 L1 集群综合」，还是再挑 1 篇升 L3（候选：CASTON 或 ReX-GG）？
 3. **新横切**：是否同意 Wave 2 后试开 `topics/06-measure/feasibility/`（落地条件与成本），并把「使能条件」先作为 RQ5 的子问题、暂不写进 THESIS？还是等证据更足再说？
-4. **图规则**：接受「论文原图只进 src 卡；topics 以自绘图为主，必要时可嵌原图（带出处/页码/看什么）」吗？
-
----
-
-## 12. 样板复盘（Wave 0 后追加）
-
-> 跑完 CAI 再写：哪些节真的被用、哪些是负担、单篇耗时、图裁剪的返工率、模板要不要减节。
-> 这一节不预填，避免把计划写成愿望清单。
+4. **图规则**：接受「论文原图主要进 src 卡；topics 以自绘图为主，必要时可嵌原图（带出处/页码/看什么），且该子主题至少有一张自绘图」吗？

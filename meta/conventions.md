@@ -36,10 +36,11 @@ updated: 2026-11-07
 | 字段 | 用在哪 | 取值 | 含义 |
 |---|---|---|---|
 | `status` | 所有文档 | `seed` / `draft` / `stabilized` / `superseded` | 文档成熟度，不代表篇幅 |
-| `home` / `subtopic` | `src/` 卡片 | `topics/<派>` / `<子主题>` | 卡片归位；移动子主题只改 `subtopic` |
+| `home` / `subtopic` | 论文 `card.md` / `digest.md` | `topics/<派>` / `<子主题>` | 归位；移动子主题只改 `subtopic` |
 | `source_type` | `src/` 卡片 | `paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey` | 素材类型；证据天花板见 [source-types](./source-types.md) |
-| `reading` | `src/` 卡片 | `未读` / `综述级` / `摘要级` / `精读` / `已消化` | 读到什么程度 |
-| `provenance` | `src/` 卡片 | `原文正文` / `原文摘要` / `综述转述` / `未核` | 证据来自哪里 |
+| `reading` | 论文 `card.md` | `未读` / `综述级` / `摘要级` / `精读` / `已消化` | 读到什么程度 |
+| `provenance` | 论文 `card.md` | `原文正文` / `原文摘要` / `综述转述` / `未核` | 证据来自哪里 |
+| `quality` | 论文 `digest.md` | `A` / `B` / `C` | 证据强度粗分：A 多基准/真实部署/消融；B 单基准/单域/有限评估；C 概念/模拟/小样本/无量化 |
 | `experiment_status` | `experiments/` | `未开始` / `设计中` / `运行中` / `已完成` / `已放弃` | 实验阶段 |
 | `deliverable_status` | `deliverables/` | `draft` / `stable` / `frozen` | 交付阶段 |
 
@@ -64,7 +65,9 @@ updated: 2026-11-07
 
 ## 命名
 
-- 目录：小写短横线；论文卡用 `{arxiv_id}-{slug}.card.md`
+- 目录：小写短横线；论文目录用 `src/papers/{arxiv_id}-{slug}/`
+- 论文文件：`<stem>.pdf`（原文，只读）/ `card.md`（分解）/ `digest.md`（消化）/ `figures/`（原图）
+- 网页卡：`src/web/{来源}/<slug>.card.md`，与原文同名
 - 子主题目录：`topics/<派>/<子主题>/README.md`；按子机制命名，不按来源类型。派 README 只做地图，详细论证在子主题
 - 结论编号：`E-xx`（结论）/ `Q-xx`（存疑）/ `C-xx`（冲突）
 - 实验编号：`EXP-xxx`

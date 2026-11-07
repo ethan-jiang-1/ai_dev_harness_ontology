@@ -16,7 +16,7 @@ updated: 2026-11-07
 ## 输入
 
 - 本子主题 [README](./README.md)、派 [claims](../claims.md)、派 [sources](../sources.md)
-- 卡片：[What Does an Ontology Catch](../../../src/papers/2610.37809-what-does-an-ontology-catch.card.md)、[OA-RAG](../../../src/papers/2610.36335-oa-rag.card.md)、[CASEL](../../../src/papers/2610.36570-casel.card.md)
+- 卡片：[What Does an Ontology Catch](../../../src/papers/2610.37809-what-does-an-ontology-catch/card.md)、[OA-RAG](../../../src/papers/2610.36335-oa-rag/card.md)、[CASEL](../../../src/papers/2610.36570-casel/card.md)
 - 允许补充检索：LLM judge calibration / checker FP-FN / repair damage
 
 ## 输出

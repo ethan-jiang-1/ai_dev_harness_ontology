@@ -46,4 +46,4 @@ FIRME 的克制之处：本体主要做对齐与印证条件，不承担自由�
 - [04 状态派](../README.md)
 - [memory](../memory/README.md)、[determinism](../determinism/README.md)
 - [05 生产派的精化](../../05-produce/refinement/README.md)
-- 卡片：[FIRME](../../../src/papers/2610.40482-firme.card.md)；候选：APEX-MEM（2604.14362）
+- 卡片：[FIRME](../../../src/papers/2610.40482-firme/card.md)；候选：APEX-MEM（2604.14362）

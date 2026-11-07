@@ -41,7 +41,7 @@ updates: []
 | 关联 | 关系 |
 |---|---|
 | 04 状态派 | 核心文献：状态两层拆分 |
-| [memory](../../topics/04-state/memory/README.md) | 「事实集合 vs 状态」的直接对照 |
+| [memory](../../../topics/04-state/memory/README.md) | 「事实集合 vs 状态」的直接对照 |
 
 **最值得抄的**：把「哪些事实该用」从模型隐式判断里拿出来，变成一个显式的中间产物（Reasoning State）。这让「它为什么用了这条」可被检查。
 

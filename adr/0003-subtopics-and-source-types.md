@@ -15,7 +15,7 @@
    不预建空子目录。
 4. 子主题可以有 `frontier.md`（子扫描）与 `sources.md`（卡片清单）；派 `frontier.md` 仍是汇总，不重复子主题的正文。
 5. **素材类型放在 `src/`，不进 `topics/`**：
-   - `src/papers/`：论文 PDF + 同名 `.card.md`；
+   - `src/papers/{arxiv_id}-{slug}/`：一篇一目录，内含 `<stem>.pdf` / `card.md`（分解）/ `digest.md`（消化）/ `figures/`；
    - `src/web/`：网页/博客原文 + 同名 `.card.md`；
    - 卡片用 `source_type` 区分 `paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey`。
 6. **证据天花板**：paper/preprint 与 standard 可支撑 `已核`；blog/engineering 只对「作者报告了 X」算 `已核`，一般性结论默认 `推测`；survey 只作索引。细则见 [source-types](../meta/source-types.md)。

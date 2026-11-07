@@ -34,10 +34,10 @@ updates: []
 
 | 论文 | 一句话 | 综述可信度 |
 |---|---|---|
-| [What Does an Ontology Catch?](../../papers/2610.37809-what-does-an-ontology-catch.card.md) | 把 checker 本身当研究对象；三种本体来源在漏检/误报上各有权衡 | 摘要已读 |
-| [OA-RAG](../../papers/2610.36335-oa-rag.card.md) | 强制输出所用证据 + 接地等级（entailed/supported/related/unrelated） | 摘要已读 |
-| [POLAR](../../papers/2610.08082-polar.card.md) | 两层本体给工具调用打可逆性分，低于阈值执行前剪掉 | 摘要已读 |
-| [Commit Boundary](../../papers/2610.37407-commit-boundary.card.md) | 区分「推理可用证据」与「有权授权持久化变更的证据」 | 摘要已读 |
+| [What Does an Ontology Catch?](../../papers/2610.37809-what-does-an-ontology-catch/card.md) | 把 checker 本身当研究对象；三种本体来源在漏检/误报上各有权衡 | 摘要已读 |
+| [OA-RAG](../../papers/2610.36335-oa-rag/card.md) | 强制输出所用证据 + 接地等级（entailed/supported/related/unrelated） | 摘要已读 |
+| [POLAR](../../papers/2610.08082-polar/card.md) | 两层本体给工具调用打可逆性分，低于阈值执行前剪掉 | 摘要已读 |
+| [Commit Boundary](../../papers/2610.37407-commit-boundary/card.md) | 区分「推理可用证据」与「有权授权持久化变更的证据」 | 摘要已读 |
 | Agentic Power System Studies | 电网规划：本体承载法规标准，数字由求解器算，答案须引用证据 | 转述 |
 | Ontology-guided multi-agent diagnosis | 多 agent 差分诊断，缺证据时主动追问 | 转述 |
 
@@ -59,9 +59,9 @@ updates: []
 
 | 论文 | 一句话 | 综述可信度 |
 |---|---|---|
-| [Before Blaming the LLM](../../papers/2610.35267-diagnose-workflow.card.md) | 失败归因到工作流：输入不足、接地弱、模板缺口、校验弱、非局部修复 | 摘要已读 |
-| [Solver-Like Behavior](../../papers/2611.02395-solver-like-behavior.card.md) | 形式化器自己在轨迹里把答案算出来；冗余且会继承错误 | 摘要已读 |
-| [Context as Infrastructure](../../papers/2610.41172-context-as-infrastructure.card.md) | 强 harness 下（仅 BM25+grep）结构化工件无可检出增益 | 摘要已读 |
+| [Before Blaming the LLM](../../papers/2610.35267-diagnose-workflow/card.md) | 失败归因到工作流：输入不足、接地弱、模板缺口、校验弱、非局部修复 | 摘要已读 |
+| [Solver-Like Behavior](../../papers/2611.02395-solver-like-behavior/card.md) | 形式化器自己在轨迹里把答案算出来；冗余且会继承错误 | 摘要已读 |
+| [Context as Infrastructure](../../papers/2610.41172-context-as-infrastructure/card.md) | 强 harness 下（仅 BM25+grep）结构化工件无可检出增益 | 摘要已读 |
 | MIOE | 本体预测机制上可干预，但知识无法与类别信息干净分离 | 转述 |
 
 **本仓库判断**：这一组是**全仓库最重要的证据来源**——它们共同指向「差距在 harness，不在模型」。归位到 [topics/conclusions.md](../../../topics/conclusions.md)。
@@ -71,7 +71,7 @@ updates: []
 | 论文 | 一句话 | 综述可信度 |
 |---|---|---|
 | EvoMemState | 记忆从「事实集合」改为「状态」：关系状态 + 推理状态 | 转述 |
-| [FIRME](../../papers/2610.40482-firme.card.md) | 固定 product-topic 本体 + registry 做跨期身份对齐 | 摘要已读 |
+| [FIRME](../../papers/2610.40482-firme/card.md) | 固定 product-topic 本体 + registry 做跨期身份对齐 | 摘要已读 |
 | OntoAct | 把动作空间压到本体概念层再做假设检验 | 转述 |
 | Narrow and Deep | 工业设备域建「本体塔」，窄而深 | 转述 |
 | Evontree | 本体规则引导低资源域自演化 | 转述 |
@@ -90,7 +90,7 @@ updates: []
 
 另有两处待核：
 
-- **FIRME**：综述称「本体只承担槽位定义、不做推理」；[FIRME 卡](../../papers/2610.40482-firme.card.md)已修正为「不承担自由推理，只承担对齐与印证条件」。原限定待回正文核对。
+- **FIRME**：综述称「本体只承担槽位定义、不做推理」；[FIRME 卡](../../papers/2610.40482-firme/card.md)已修正为「不承担自由推理，只承担对齐与印证条件」。原限定待回正文核对。
 - **MIOE**：综述归入「机制」方向，但其结论是**削弱**「模型内在本体」的强主张（答对不等于内部有结构）。分类掩盖了结论方向。
 
 ## 它的局限

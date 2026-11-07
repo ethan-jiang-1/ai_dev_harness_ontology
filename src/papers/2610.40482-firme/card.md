@@ -41,7 +41,7 @@ updates: [topics/04-state/memory/README.md, topics/04-state/README.md, topics/co
 |---|---|
 | P1（价值在约束） | 支持：本体的用途是**对齐与约束**，不是提供知识 |
 | E-05 | 本卡是其一手依据，但**综述的转述需修正**（见下） |
-| [memory](../../topics/04-state/memory/README.md) | 核心文献 |
+| [memory](../../../topics/04-state/memory/README.md) | 核心文献 |
 
 **与综述转述的出入**：综述称「本体只承担槽位定义、不做推理」。但卡片所据材料中提到（摘要级，具体出处待核），强兴趣关系**仅当两种模态互相印证时才被赋值**——本体参与了关系赋值的条件判断，不只是定义槽位。
 

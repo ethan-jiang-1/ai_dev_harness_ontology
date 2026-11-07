@@ -44,7 +44,7 @@ updates: []
 | P2（harness 是不可分离的一半） | **直接支持**：失败多来自工作流而非生成能力 |
 | P1 | 间接支持：问题出在供给与校验，不在知识 |
 | E-06 | 本卡是其一手依据 |
-| [verification](../../topics/00-harness/verification.md)、[observability](../../topics/00-harness/observability.md) | 归因方法 |
+| [verification](../../../topics/00-harness/verification.md)、[observability](../../../topics/00-harness/observability.md) | 归因方法 |
 
 **「非局部修复」值得单独记**：校验弱 → 只发现表面问题 → 修改扩散到远处 → 引入新错误。这是一种**可归因的失败模式**，而且它的根因在 harness（校验太弱），不在模型。这解释了为什么加一个更强判定器往往比换模型更有效。
 

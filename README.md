@@ -34,15 +34,15 @@
    源头池               主题沉淀            对外抽取
  ┌──────────┐      ┌──────────┐      ┌──────────────┐
  │  src/    │ ───▶ │ topics/  │ ───▶ │deliverables/ │
- │ 原文+卡  │      │ 深度研究 │      │     交付     │
+ │原文/分解 │      │ 深度研究 │      │     交付     │
  └──────────┘      └──────────┘      └──────────────┘
-   原文与 .card.md      结论可被引用       只抽取不新增
+  PDF/card/digest     结论可被引用       只抽取不新增
 ```
 
 | 工位 | 职责 | 增长方式 | 完成信号 |
 |---|---|---|---|
-| [`src/`](./src/) | 源头池：原文 + 同名 `.card.md` | 原文随时加；卡按需建 | 原文落盘 + 卡有 `source_type`/等级 |
-| [`topics/`](./topics/) | 按六派沉淀，跨材料综合 | 新卡触发相关派的修订 | 结论带等级，冲突显式保留 |
+| [`src/`](./src/) | 源头池：一篇一目录，PDF + `card.md`（分解）+ `digest.md`（消化）+ `figures/` | 原文随时加；卡按需建；精读后补 digest | 原文落盘 + card 有 `source_type`/等级 + digest 有 `quality` |
+| [`topics/`](./topics/) | 按六派沉淀，跨材料综合 | 新 card/digest 触发相关派的修订 | 结论带等级，冲突显式保留 |
 | [`deliverables/`](./deliverables/) | 手册、Deck、图等对外物 | 定期从 topics 抽取重排 | 每条可反查回 topics |
 
 支撑目录：
@@ -57,7 +57,7 @@
 
 ### 流水线的三条规矩
 
-1. **单向、可越级但不可反向。** `deliverables` 只能从 `topics` 抽取，不能直接引 `src`——否则未经消化的材料会以成品面貌流出。反向修订（发现材料有误）走回溯：改 `src` 里的 `.card.md` → 改 `topics` → 重抽交付物。
+1. **单向、可越级但不可反向。** `deliverables` 只能从 `topics` 抽取，不能直接引 `src`——否则未经消化的材料会以成品面貌流出。反向修订（发现材料有误）走回溯：改 `card.md` / `digest.md` → 改 `topics` → 重抽交付物。
 2. **上游可以领先下游。** `src` 里未读的原文、未成主题的卡，都是健康状态；要求每一层同步才是负债。
 3. **每级都自带台账。** `src/` 记原文与卡，`topics` 记结论等级，`deliverables` 记依据哪几条结论。台账让流水线可盘点。
 
@@ -118,8 +118,8 @@
 
 骨架与机制地图成型，三个工位都有可用样板：
 
-- `src/` — 22 篇 PDF（20 基础 + 2 扫描）+ 23 张 `.card.md`（22 论文 + 1 材料）+ manifest
-- `topics/` — 六派成文，10 条已核结论 + 3 条推测 + 3 条存疑 + 4 条冲突；每派有 `claims.md` / `sources.md` / 子主题目录 / `frontier.md`；活跃子主题有 `prompt.md` / `runs/`
+- `src/` — 22 个论文目录（20 基础 + 2 扫描；每目录 PDF + `card.md`，精读过的有 `digest.md` 与 `figures/`）+ 1 张材料卡 + manifest
+- `topics/` — 六派成文，11 条已核结论 + 3 条推测 + 3 条存疑 + 4 条冲突；每派有 `claims.md` / `sources.md` / 子主题目录 / `frontier.md`；活跃子主题有 `prompt.md` / `runs/`
 - `deliverables/` — 手册大纲 7 章
 
 **最大空缺是没有一条结论被独立复现。** 三个实验待做，见 [experiments](./experiments/README.md)。

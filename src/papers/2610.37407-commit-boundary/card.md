@@ -47,7 +47,7 @@ updates: []
 | 关联 | 关系 |
 |---|---|
 | P2（harness 是不可分离的一半） | **支持**：这是一份纯粹的 harness 契约设计 |
-| [commit-gate](../../topics/01-constraint/commit-gate/README.md) | 核心文献，但**只能作设计提案引用** |
+| [commit-gate](../../../topics/01-constraint/commit-gate/README.md) | 核心文献，但**只能作设计提案引用** |
 
 **三条可迁移的设计判断**（不依赖其验证状态）：
 

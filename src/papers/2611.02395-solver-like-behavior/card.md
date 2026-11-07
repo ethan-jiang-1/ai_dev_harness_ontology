@@ -42,8 +42,8 @@ updates: []
 |---|---|
 | P2 | 支持：这是 harness 层的问题（评测判据选错），不是模型能力问题 |
 | E-07 | 本卡是其一手依据 |
-| [determinism](../../topics/04-state/determinism/README.md) | 错误继承机制 |
-| [verification](../../topics/00-harness/verification.md) | 判据设计 |
+| [determinism](../../../topics/04-state/determinism/README.md) | 错误继承机制 |
+| [verification](../../../topics/00-harness/verification.md) | 判据设计 |
 
 **最重要的迁移**：**「输出正确」不等于「过程有效」。** 任何只看最终产物的判据，都会放过冗余与错误继承。这与本仓库「判定器要能看见中间」的主张是同一条。
 

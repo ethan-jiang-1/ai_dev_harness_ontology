@@ -41,7 +41,7 @@ updates: []
 |---|---|
 | E-12 | 一手依据：投影 > 查询 > 检索 |
 | P1（价值在约束） | **限定**：在弱端（知识供给）也能测出真实增益，前提是任务形态匹配 |
-| [projection](../../topics/03-knowledge/projection/README.md) | 核心文献 |
+| [projection](../../../topics/03-knowledge/projection/README.md) | 核心文献 |
 
 ## 待核
 

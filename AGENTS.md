@@ -15,9 +15,10 @@
 
 | 你在做什么 | 落点 |
 |---|---|
-| 存原文 | `src/papers/`（论文）或 `src/web/`（网页）；论文在 [manifest](./src/papers/manifest.md) 登记 |
-| 记一篇材料说了什么 | 同目录 `<stem>.card.md`；用 [材料卡模板](./src/_templates/material-card.md) 或 [论文卡模板](./src/_templates/paper-card.md) |
-| 存博客/工程材料 | `src/web/`；卡同目录 `.card.md` |
+| 存原文 | `src/papers/{arxiv_id}-{slug}/`（论文，一篇一目录）或 `src/web/`（网页）；论文在 [manifest](./src/papers/manifest.md) 登记 |
+| 记一篇论文说了什么 | 论文目录里的 `card.md`（分解）；用 [论文卡模板](./src/_templates/paper-card.md) |
+| 消化一篇论文 | 同一目录的 `digest.md`（工程思路 / 实用意义 / 质量 / 洞察）；用 [digest 模板](./src/_templates/paper-digest.md) |
+| 存博客/工程材料 | `src/web/`；卡同目录 `<stem>.card.md`，用 [材料卡模板](./src/_templates/material-card.md) |
 | 综合几个来源、形成判断 | `topics/`，用 [机制笔记模板](./meta/note-template.md) |
 | 写子机制的详细论证 | `topics/<派>/<子主题>/README.md`；派 README 只留地图 |
 | 记本派结论 | `topics/<派>/claims.md`（`L-xx`）；跨派才升 conclusions |
@@ -39,7 +40,7 @@
 
 **改一个派只动该派目录**：`README.md` / `claims.md` / `sources.md` / `frontier.md` / 子主题。只有跨派结论或进 `deliverables/` 时，才改 [conclusions](./topics/conclusions.md) 的 `E-xx`。
 
-**素材类型不进 topics**：卡片都在 `src/papers/` 或 `src/web/`，与原文同名 `.card.md`；用 `source_type` 区分论文/预印本与博客/工程/标准/演讲/综述。证据天花板见 [source-types](./meta/source-types.md)。
+**素材类型不进 topics**：论文的 `card.md` / `digest.md` 在 `src/papers/{arxiv_id}-{slug}/`，网页卡在 `src/web/`；用 `source_type` 区分论文/预印本与博客/工程/标准/演讲/综述。证据天花板见 [source-types](./meta/source-types.md)。
 
 ## 三条硬规矩
 
@@ -50,7 +51,7 @@
 ## 写之后
 
 - 问一句「这次动笔改变了哪条判断」：改了 → 先写本派 `claims.md`；跨派或进交付物才升 [conclusions](./topics/conclusions.md)；没改 → 只补来源。
-- 如果修正了旧判断，回改所有引用它的主题页，并在卡片 `updates:` 登记。
+- 如果修正了旧判断，回改所有引用它的主题页，并在 `card.md` / `digest.md` 的 `updates:` 登记。
 - 更新被改文件的 `updated` 与 `status`，并在 [src 台账](./src/README.md) 记一笔。
 - 新术语进 [GLOSSARY](./GLOSSARY.md)；改了术语含义，扫一遍引用它的文档。
 - 新候选先放 `frontier.md` 的候选队列；只有会改变判断时才建卡，入档时先更新本派 `sources.md`。
@@ -62,7 +63,7 @@
 - 不把综述的一句话扩散到多篇文档——那会把一次误读放大成仓库共识。
 - 不在 `deliverables/` 里新增 `topics/` 没有的判断。
 - 不把 `frontier.md` 写成第二篇综述——它只放「下一步做什么」，稳定判断回 `README.md`。
-- 不为候选建卡而没有「改变哪条判断」的理由。
+- 不为候选建 `card.md` / `digest.md` 而没有「改变哪条判断」的理由。
 - 不把博客/工程观察当论文结论；一般性结论默认 `推测`。
 - 不按来源类型（papers/blogs）建子主题；子主题按子机制。
 - 不把派内局部判断直接写进 `conclusions.md`；先写本派 `claims.md`。

@@ -41,7 +41,7 @@ updates: []
 |---|---|
 | 05 生产派 | 「先固定本体再抽关系」的务实形态：关系类型必须由本体给定，自由抽取才会漂 |
 | 00-harness/orchestration | 匿名互评 = 用独立性替代更强模型 |
-| [orchestration](../../topics/00-harness/orchestration.md) | 多体协作的一个低成本实现 |
+| [orchestration](../../../topics/00-harness/orchestration.md) | 多体协作的一个低成本实现 |
 
 ## 待核
 

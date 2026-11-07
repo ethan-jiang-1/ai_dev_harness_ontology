@@ -50,4 +50,4 @@ evidence: []
 
 - [05 生产派](../README.md)
 - [refinement](../refinement/README.md)、[representation](../representation/README.md)
-- 卡片：[OntoDoc](../../../src/papers/2611.01276-ontodoc.card.md)、[ReX-GG](../../../src/papers/2610.41901-rex-gg.card.md)、[Peeling](../../../src/papers/2610.41785-peeling-matryoshka.card.md)、[Evontree](../../../src/papers/2510.26683-evontree.card.md)
+- 卡片：[OntoDoc](../../../src/papers/2611.01276-ontodoc/card.md)、[ReX-GG](../../../src/papers/2610.41901-rex-gg/card.md)、[Peeling](../../../src/papers/2610.41785-peeling-matryoshka/card.md)、[Evontree](../../../src/papers/2510.26683-evontree/card.md)

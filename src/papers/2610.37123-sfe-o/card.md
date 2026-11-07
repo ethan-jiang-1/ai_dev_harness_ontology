@@ -45,7 +45,7 @@ updates: []
 |---|---|
 | 05 生产派 | 领域建模范本 |
 | 02 判定派 | 「显式标记冲突」与 Commit Boundary 的「冲突清才放行」是同一条原则的两端 |
-| [representation](../../topics/05-produce/representation/README.md) | 反证：形式化不是瓶颈，执行才是 |
+| [representation](../../../topics/05-produce/representation/README.md) | 反证：形式化不是瓶颈，执行才是 |
 
 ## 待核
 

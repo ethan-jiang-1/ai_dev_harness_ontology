@@ -44,7 +44,7 @@ updates: []
 | E-04 / E-13 | **补强**：可逆性感知路由有独立模拟证据；但它不证明部署有效 |
 | C-03 | **正面例证**：用「有害轨迹率 / 归一化伤害」而不是任务奖励来量闸门 |
 | P1（价值在约束） | 支持「把判断放在动作前」，但提醒代价是审批量 |
-| [action-gate](../../topics/01-constraint/action-gate/README.md) | 核心文献：多模式分配是「剪枝」的细化 |
+| [action-gate](../../../topics/01-constraint/action-gate/README.md) | 核心文献：多模式分配是「剪枝」的细化 |
 
 **值得记的两点**：
 

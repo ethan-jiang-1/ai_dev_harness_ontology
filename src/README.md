@@ -2,25 +2,33 @@
 updated: 2026-11-07
 ---
 
-# src：源头池（原文 + 卡）
+# src：源头池（一篇一目录）
 
-流水线的第一个工位。**一处收原文，一处放卡**：原文和它的卡同目录、同 stem，卡用 `.card.md` 后缀。
+流水线的第一个工位。**一篇论文一个目录**，目录名是 `{arXiv ID}-{题目 slug}`；原文、分解、消化、图都收在里面，打开目录就能从原文走到判断。
 
 ```
 src/
-├── papers/          # 原文 PDF + 同名 .card.md + manifest
-├── web/             # 网页/博客原文 + 同名 .card.md
-├── _templates/      # paper-card.md / material-card.md
+├── papers/
+│   ├── manifest.md
+│   ├── manifest-scan.md
+│   └── {arxiv_id}-{slug}/
+│       ├── {arxiv_id}-{slug}.pdf     # 原文，只读
+│       ├── card.md                   # 分解：论文说了什么
+│       ├── digest.md                 # 消化：工程思路 / 实用意义 / 质量 / 洞察
+│       └── figures/                  # 论文原图（有图才建）
+├── web/                              # 网页/博客原文 + 同名 .card.md
+├── _templates/                       # card / digest / material 卡模板
 └── README.md
 ```
 
 ## 规则
 
-1. **原文只读。** `*.pdf` / 网页原文不改写、不摘编；改了就无法回查。卡的修改只发生在 `.card.md`。
-2. **同名配对。** 论文原文 `2610.08082-polar.pdf` 的卡是 `2610.08082-polar.card.md`；网页原文 `otology.md` 的卡是 `otology.card.md`。找卡就看同目录同 stem。
-3. **命名。** 论文用 `{arxiv_id}-{slug}.pdf` / `.card.md`；网页用 `{来源}/{slug}.md` / `.card.md`。
-4. **登记。** 论文在 [`papers/manifest.md`](./papers/manifest.md) 登记；网页在 [`web/README.md`](./web/README.md) 说明。`_download.log` 保留下载结果。
-5. **读没读，看卡。** 原文只回答「有没有」；`.card.md` 才回答「消化到哪」。
+1. **原文只读。** `*.pdf` / 网页原文不改写、不摘编；改了就无法回查。修改只发生在 `card.md` / `digest.md`。
+2. **一篇一目录。** 论文目录用 `{arxiv_id}-{slug}`，如 `2610.08082-polar/`；PDF 保留原名；卡固定叫 `card.md`，消化固定叫 `digest.md`。
+3. **卡与消化分工。** `card.md` 只记**论文说了什么**（问题、方法、数字、局限、引文、图表索引）；`digest.md` 记**我们怎么用**（工程思路、实用意义、质量评估、洞察、成本与使能条件、何时别用）。判断不进 `card.md`，事实不进 `digest.md` 的引文。
+4. **图随论文。** 论文原图放 `figures/`；文件名 `fig-{n}-{slug}.png`；图注写「看什么」、页码、版权。topics 引用时带出处。
+5. **登记。** 论文在 [`papers/manifest.md`](./papers/manifest.md) 登记；网页在 [`web/README.md`](./web/README.md) 说明。`_download.log` 保留下载结果。
+6. **读没读，看卡。** 原文只回答「有没有」；`card.md` 的 `reading` 回答「读到哪」；`digest.md` 回答「消化成什么判断」。
 
 ## 卡片字段
 
@@ -31,25 +39,29 @@ src/
 | `reading` | `未读` / `综述级` / `摘要级` / `精读` / `已消化` | 读到什么程度 |
 | `provenance` | `原文正文` / `原文摘要` / `综述转述` / `未核` | 证据来自哪里 |
 | `home` / `subtopic` | `topics/<派>` / `<子主题>` | 卡片归位；移动子主题只改 `subtopic` |
+| `quality`（digest） | `A` / `B` / `C` | 证据强度粗分；定义见 [conventions](../meta/conventions.md#字段与词汇) |
 
 正文里的推断句至少标一次 `已核` / `推测` / `存疑`；没有标的按 `推测`。
 
-## 卡片分两类
+## 两类材料
 
 | 类型 | 模板 | 用于 |
 |---|---|---|
-| 论文卡 | [_templates/paper-card.md](./_templates/paper-card.md) | 单篇论文/预印本。关注「它测了什么、结果是什么、没测什么」 |
-| 材料卡 | [_templates/material-card.md](./_templates/material-card.md) | 博客、工程复盘、标准、演讲、综述。关注「作者在什么场景下报告了什么」 |
+| 论文 card | [_templates/paper-card.md](./_templates/paper-card.md) | 论文/预印本的分解：测了什么、结果、没测什么 |
+| 论文 digest | [_templates/paper-digest.md](./_templates/paper-digest.md) | 同一篇的工程消化：机制、成本、质量、洞察 |
+| 材料卡 | [_templates/material-card.md](./_templates/material-card.md) | 博客、工程复盘、标准、演讲、综述 |
 
-两类都用 `source_type` 区分，平铺在 `papers/` 或 `web/` 的原文旁边，不再按 `papers/` / `materials/` 分目录。
+论文用 `papers/{arxiv_id}-{slug}/`；网页/博客仍平铺在 `web/`，卡与原文同目录 `.card.md`。两类都用 `source_type` 区分。
 
 ## 台账
 
-| 材料 | 卡片 | 阅读 / 来源 | 已喂到 |
+| 材料 | 卡片 / 消化 | 阅读 / 来源 | 已喂到 |
 |---|---|---|---|
 | 老刘说NLP · 本体4方向20工作（2026-11-04） | [otology.card.md](./web/weixin-laoliu/otology.card.md) | 已消化 / 综述转述 | `topics/conclusions.md`、`topics/README.md`、`topics/05-produce/lifecycle/README.md`、`topics/domains.md` |
-| 20 篇基础论文（摘要+结论+局限） | [papers/](./papers/)（[manifest](./papers/manifest.md)） | 摘要级 / 原文摘要（8 篇逐条对照，12 篇未逐条对照） | 六派 README 逐篇标注 |
+| 20 篇基础论文 | [papers/](./papers/)（[manifest](./papers/manifest.md)） | 摘要级 / 原文摘要（8 篇逐条对照，12 篇未逐条对照） | 六派 README 逐篇标注 |
 | 2026-11-07 前沿扫描批次（CASEL、Agents Are Systems） | [papers/](./papers/)（[scan](./papers/manifest-scan.md)） | 摘要级 / 原文摘要 | [action-gate](../topics/01-constraint/action-gate/README.md)、[06-measure/README](../topics/06-measure/README.md)（候选，待综合） |
+| CAI（2610.41172） | [card](./papers/2610.41172-context-as-infrastructure/card.md) / [digest](./papers/2610.41172-context-as-infrastructure/digest.md) | 精读 / 原文正文 | 03 compilation、00 context、E-01/E-08/E-14 |
+| 2026-11-07 起逐篇消化 | [papers/](./papers/) 各目录的 `digest.md` | 见各卡 `reading` | 随波次更新 `topics/` |
 
 ## 什么时候 promote 到 topics
 
@@ -57,17 +69,18 @@ src/
 2. ≥2 张卡指向同一子机制；
 3. 需要独立 frontier。
 
-路径：卡片 → `topics/<派>/sources.md` → `claims.md` / 子主题 README。只在池子里躺着、不改变判断的材料，留在 `src/` 与派 `frontier` 候选队列即可。
+路径：`card.md` → `digest.md` → `topics/<派>/sources.md` → `claims.md` / 子主题 README。只在池子里躺着、不改变判断的材料，留在 `src/` 与派 `frontier` 候选队列即可。
 
 ## 目录
 
 | 路径 | 内容 |
 |---|---|
-| [`papers/`](./papers/) | 20 篇基础 + 2 篇扫描 PDF；同名 `.card.md`；[manifest](./papers/manifest.md) |
+| [`papers/`](./papers/) | 22 篇：20 基础 + 2 扫描；每篇一个目录；[manifest](./papers/manifest.md) |
 | [`web/`](./web/) | 网页/博客原文；同名 `.card.md`；规则见 [web/README.md](./web/README.md) |
-| [`_templates/`](./_templates/) | 论文卡、材料卡模板 |
+| [`_templates/`](./_templates/) | 论文 card、论文 digest、材料卡模板 |
 
 ## 已知缺口
 
-- 只有摘要级别的核验，正文尚未逐篇精读。
+- 正文精读刚开始：CAI 已精读；其余仍为摘要级，逐篇推进。
 - 部分论文有 v2/v3 版本，当前取的是下载当日的最新版本；版本变化可能改变结论。
+- `digest.md` 的 `quality` 是粗分，不是同行评审结论；引用时仍看证据等级。

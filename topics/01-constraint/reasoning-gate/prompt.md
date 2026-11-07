@@ -16,7 +16,7 @@ updated: 2026-11-07
 ## 输入
 
 - 本子主题 [README](./README.md)、派 [claims](../claims.md)、派 [sources](../sources.md)
-- 卡片：[多 agent 差分诊断](../../../src/papers/2610.36325-ontology-multiagent-diagnosis.card.md)、[OntoAct](../../../src/papers/2610.21983-ontoact.card.md)
+- 卡片：[多 agent 差分诊断](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/card.md)、[OntoAct](../../../src/papers/2610.21983-ontoact/card.md)
 - 允许补充检索：推理期约束 / ontological abstraction / curated KG 限制
 
 ## 输出

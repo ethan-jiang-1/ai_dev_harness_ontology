@@ -39,7 +39,7 @@ updates: []
 | P1 | 支持「证据结构化」比「知识注入」更有效 |
 | P2 | 支持：等级是 harness 侧的契约，不是提示词技巧 |
 | E-03 | 本卡是其一手依据 |
-| [evidence-and-provenance](../../topics/02-judgment/evidence/README.md) | 核心文献 |
+| [evidence-and-provenance](../../../topics/02-judgment/evidence/README.md) | 核心文献 |
 
 **可借鉴的是「证据强度显式化」，不是再做一个 RAG 变体。** 这个区分对本仓库很关键：前者是可迁移的 harness 机制，后者是又一个检索管线。
 

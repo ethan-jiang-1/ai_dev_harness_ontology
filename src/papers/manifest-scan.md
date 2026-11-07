@@ -2,10 +2,10 @@
 
 首轮外部扫描的落盘对象。基础 20 篇见 [manifest.md](./manifest.md)；本批**不改变基础语料计数**，单独记账。
 
-| # | arXiv | 短标题 | 页 | 方向 | 文件 | 卡片 |
-|---|---|---|---|---|---|---|
-| 1 | 2610.36570 | CASEL | 6 | 5 | [pdf](./2610.36570-casel.pdf) | [✓](2610.36570-casel.card.md) |
-| 2 | 2610.01618 | Agents Are Systems | 28 | 5 | [pdf](./2610.01618-agents-are-systems.pdf) | [✓](2610.01618-agents-are-systems.card.md) |
+| # | arXiv | 短标题 | 页 | 方向 | 文件 | 卡片 | 消化 |
+|---|---|---|---|---|---|---|---|
+| 1 | 2610.36570 | CASEL | 6 | 5 | [pdf](./2610.36570-casel/2610.36570-casel.pdf) | [✓](2610.36570-casel/card.md) | — |
+| 2 | 2610.01618 | Agents Are Systems | 28 | 5 | [pdf](./2610.01618-agents-are-systems/2610.01618-agents-are-systems.pdf) | [✓](2610.01618-agents-are-systems/card.md) | — |
 
 **方向 5 = 前沿扫描**，不属于源综述的四类。
 
