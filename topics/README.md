@@ -50,8 +50,8 @@ updated: 2026-11-07
 
 | 派 | 回答的问题 | 核心工程思想 | 介入时刻 | 约束强度 | 代表 |
 |---|---|---|---|---|---|
-| [05 生产](./05-produce/README.md) | 本体从哪来、怎么修 | 来源决定可信度；精化比新建常见 | 本体未存在时 | — | CASTON、SFE-O、OntoDoc |
-| [03 知识](./03-knowledge/README.md) | 怎么让它知道得对 | **投影优于查询**；编译解决预算不解决准确率 | 供给时 | 弱 | Narrow & Deep、CAI、Grid Agents |
+| [05 生产](./05-produce/README.md) | 本体从哪来、怎么修 | 来源影响可信度（推测）；精化比新建常见（推测） | 本体未存在时 | — | CASTON、SFE-O、OntoDoc |
+| [03 知识](./03-knowledge/README.md) | 怎么让它知道得对 | **投影 pooled 最高但非普适**；编译只省预算、准确率 neutral | 供给时 | 弱 | Narrow & Deep、CAI、Grid Agents |
 | [01 约束](./01-constraint/README.md) | 怎么不让它做错事 | 安全是**结构问题**：问「存在可逆序列吗」 | 动作前 / 落盘前 | **强** | POLAR、Commit Boundary、OntoAct |
 | [02 判定](./02-judgment/README.md) | 怎么知道它做错了 | 判据必须外部且**可度量** | 输出时 / 输出后 | 强 | Ontology Catch、OA-RAG |
 | [04 状态](./04-state/README.md) | 怎么让它记得对 | 记忆是**状态**不是集合；本体克制到只做对齐与印证 | 跨轮 | 中 | EvoMemState、FIRME |

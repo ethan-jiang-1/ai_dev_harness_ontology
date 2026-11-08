@@ -14,7 +14,7 @@ claims: [05-L2, 05-L5]
 
 1. **它问什么**：本体里的 asserted 父类关系（`A ⊑ B`）可能有隐蔽错误；让 LLM 看整个本体既不准也贵。能不能先缩小搜索空间，再让 LLM/专家做局部判断？
 2. **它怎么做**：微调的本体 embedding 给每条 `A ⊑ B` 的所有候选父类排序；取 30 条可疑公理、每条 10 个替代父类；LLM 只在这些候选里给 verdict/confidence/替换建议；专家复核。
-3. **它发现什么**：CASTON 上 default（CASTON-fine-tuned OnT + Qwen3-8B）的 6 条高置信替换被两位专家全部接受（100%）；pretrained ensemble 只有 57.1%；GPT-4o mini 31.3%。**medium-confidence 全 mixed**。
+3. **它发现什么**：CASTON 上 default（CASTON-fine-tuned OnT + Qwen3-8B）的 6 条高置信替换被两位专家全部接受（100%）；pretrained ensemble 只有 57.1%；GPT-4o mini 31.3%。**default 的 2 条 medium 全 mixed（0 接受）；pretrained 1/4、GPT-4o mini 1/5 被接受**。
 
 ## 1. 它解决什么问题
 
@@ -91,14 +91,14 @@ claims: [05-L2, 05-L5]
 - **为什么先缩小搜索空间？** 全本体给 LLM 既贵又不 targeted；30×10 候选让判断局部、可追溯。
 - **为什么 fine-tune embedding 是主要增益？** pretrained ensemble 能召回一些候选，但 precision 不够；目标域语义要靠微调。
 - **为什么 confidence 校准是模型特定的？** Qwen high 100%、GPT-4o mini high 31.3%；同一 confidence 标签在不同模型上含义不同。
-- **为什么 medium 全 mixed？** 本体层级本身可能有争议；不是模型不够强，而是「正确答案」不确定。
+- **为什么 default 的 medium 全 mixed，而 pretrained/GPT 有部分被接受？** 本体层级本身可能有争议；不是模型不够强，而是「正确答案」不确定。default 的 2 条恰好都争议；不能说所有 medium 都 mixed。
 - **为什么没有下游？** 修复是否让应用变好，本文没测；这是外推边界。
 
 ## 5. 这些数字不能说明什么
 
 1. **不是大规模。** 单一本体、单一公理类型（subsumption）、6 条高置信修复。
 2. **不是「LLM 能修本体」。** 是「embedding 缩候选 + LLM 局部判断 + 专家复核」在 small set 上可靠。
-3. **medium 全 mixed。** confidence 只能粗分；medium 必须人审。
+3. **medium 不能一律当 mixed。** default 的 2 条全 mixed；pretrained 1/4、GPT-4o mini 1/5 被接受。confidence 只能粗分；medium 必须人审。
 4. **不是通用 confidence。** Qwen high 100%，GPT-4o mini high 31.3%；换模型要重测校准。
 5. **不是下游收益。** 修复是否让应用变好，没测。
 6. **失败案例：本体层级本身不一致。** `semisolid_metal_processing` 的层级有争议；方法不能替代专家。
@@ -111,7 +111,7 @@ claims: [05-L2, 05-L5]
 2. **每条只给 10 个替代父类。** 不要整个本体塞给 LLM。
 3. **fine-tune embedding 到目标本体。** Default 100% vs pretrained 57.1%；不是可选。
 4. **LLM 只做局部 yes/no/替换判断。** 给 child、当前父类、候选父类 + label/definition/domain/other axioms；JSON 输出。
-5. **用 confidence 做 triage。** High 可信；medium 全 mixed，必须人审。
+5. **用 confidence 做 triage。** High 可信；default 的 medium 全 mixed，pretrained 1/4、GPT-4o mini 1/5 被接受；medium 一律人审。
 6. **不要信任模型 confidence 校准。** 换模型要重测；GPT-4o mini high 只有 31.3%。
 7. **案例看语义类型。** `chromite_sand` 从工艺改材料；embedding 抓的是语义关系。
 8. **本体不一致时，方法会失败。** 先修层级，再谈自动精化。
@@ -140,7 +140,7 @@ claims: [05-L2, 05-L5]
 2. **每条只给 10 个替代父类。** 不要把整个本体塞给 LLM。
 3. **fine-tune embedding 到目标本体。** Default 100% vs pretrained 57.1%；不是可选。
 4. **LLM 局部 yes/no/替换判断。** 给 child/当前父类/候选父类 + label/definition/domain/other axioms；JSON 输出。
-5. **用 confidence 做 triage。** High 可信；medium 全 mixed，必须人审。
+5. **用 confidence 做 triage。** High 可信；default 的 medium 全 mixed，pretrained 1/4、GPT-4o mini 1/5 被接受；medium 一律人审。
 6. **换模型要重测校准。** GPT-4o mini high 只有 31.3%。
 7. **本体不一致时先修层级。** 失败案例显示，专家都不一致时方法会错。
 
@@ -148,13 +148,13 @@ claims: [05-L2, 05-L5]
 
 - **证据类型**：实证·专家评估（小样本）。
 - **强项**：两阶段分工清晰；fine-tune vs ensemble 对照；模型对照；案例具体；代码开源。
-- **主要威胁**：单一本体；6 条高置信；preliminary；medium 全 mixed；无下游；无跨本体。
+- **主要威胁**：单一本体；6 条高置信；preliminary；medium 只有 default 全 mixed；无下游；无跨本体。
 - **`quality: B`**：机制与对照干净，专家评估可信；但样本小、单一本体、初步结果。
 
 ## 8. 与仓库判断的关系
 
 - **05-L2（已核）**：精化可自动化到小规模；high-confidence 6/6；pretrained 57.1%；GPT-4o mini 31.3%。
-- **05-L5（已核）**：精化瓶颈是定位与验证；embedding 缩候选 + LLM 局部判断。
+- **05-L5（推测）**：精化瓶颈是定位与验证（循环引证，未闭环）；embedding 缩候选 + LLM 局部判断（已核）。
 - **P3**：high/medium 分层；precision/recall 权衡。
 - **05-L7**：修复是否让下游变好，未测。
 

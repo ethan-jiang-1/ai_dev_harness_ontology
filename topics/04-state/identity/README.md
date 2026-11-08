@@ -21,23 +21,23 @@ evidence: [E-05]
 
 ## 当前判断
 
-- **registry 锚定是当前最可复用的做法。** 固定 product–topic 本体 + 规范身份/持久别名；重复观察定向到同一段历史。`已核`
-- **alias memory 是主要增量。** final-period CMR +7.8–12.1 pp；human-audit reattachment recall +22.5–29.0 pp；semantic matching token −40.3%。`已核`
-- **身份变更本身是 commit 问题。** 可推理的证据 ≠ 可授权 merge/split；需要 claim-specific promotion、冲突解决、scope/version 检查。`推测`（Commit Boundary 是概念架构，无实现）
+- **registry 锚定有本主题唯一的一手评估证据，但没有「完全不做身份对齐」的对照组。** 固定 product–topic 本体 + 规范身份/持久别名；重复观察定向到同一段历史。`已核`（FIRME 4 settings；APEX-MEM 只有摘要级；registry 净效应未单独识别）
+- **alias 复用是「在 registry + 语义兜底之上」的已测增量；不能推成「alias 是主增量」。** no-alias 对照仍保留 canonical ID/name 匹配与跨期 semantic fallback；加 alias 后 final-period CMR +7.8–12.1 pp、human-audit reattachment recall +22.5–29.0 pp、semantic matching token −40.3%（4 个 dataset–backend 设置；token 仅 investor calls × Opus × final period，不含 registry 构建）。registry / alias / semantic fallback 的分别贡献作者自述未拆分。`已核`（增量）/ `推测`（主增量）
+- **身份变更本身是 commit 问题。** 可推理的证据 ≠ 可授权 merge/split；需要 claim-specific promotion、冲突解决、scope/version 检查；写侧至少要能记 hypothesis_id/source_id、failed_claims[]/unresolved[]、promoted_by。`推测`（Commit Boundary 是概念架构，无实现）
 
 ## 文件地图
 
 | 想知道 | 去 |
 |---|---|
-| registry/时序图/commit gate/失效 | [mechanism](./mechanism.md) |
-| 四条判断的证据/数字 | [findings](./findings.md) |
+| registry/时序图/commit gate/写侧契约/冷启动/失效 | [mechanism](./mechanism.md) |
+| 四条判断的证据/数字（含 alias 增量条件、写侧最小字段） | [findings](./findings.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
 | 原始论文 | [FIRME digest](../../../src/papers/2610.40482-firme/digest.md) · [Commit Boundary digest](../../../src/papers/2610.37407-commit-boundary/digest.md) |
 
 ## 边界
 
 - **不解决记忆内容。** 身份是前置；内容/衰减/冲突由 [memory](../memory/README.md) 管。
-- **不保证合并正确。** merge precision 不等于 CMR；false merge 会长期污染。
+- **不保证合并正确。** merge precision 85.6–97.5%（4 settings）不等于 CMR（CMR = MMR × precision）；false merge 的后续传播是机制推断、论文未测，也没有自动回滚。
 - **APEX-MEM 仅摘要级**，数字 `待核`。
 
 ## 关联

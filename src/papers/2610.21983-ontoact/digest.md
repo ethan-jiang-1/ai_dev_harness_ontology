@@ -182,6 +182,63 @@ claims: [01-L3]
 7. **block 后给 revision 反馈。** 告诉 agent 哪条条件失败/未解析。
 8. **测 spurious interventions。** 只看最终成功率会被「重复失败后终于成功」骗。
 
+## 6.5 工程配方（E3）
+
+### 数据契约
+
+| 对象 | 字段 |
+|---|---|
+| condition | `(u, p, op, z)`：实体/关系、属性、比较符、值；求值 ⊤/⊥/? |
+| axiom | `{id, type, action, conditions[], sources[], created_by, version}` |
+| claim | `{id, subject, predicate, object, source, confidence}` |
+| hypothesis | `{id, required_relations[], conditions[], state}` |
+| block payload | `{action, failed_conditions[], unresolved[], evidence_refs[]}` |
+
+- 公理准入：类型检查 + 来源非空 + 每类 2–3 条测试（C_xi）+ corpus check（至多一条矛盾 transition）；不过不进入世界知识。
+- `f_admit` 字段级规则要写死：类型/来源/引用模式/时间范围；不能只写「测试全过」。
+
+### 接口
+
+- `verify(action, K_t)` → `{allowed|blocked, failed_conditions[], unresolved[]}`；`?` 触发观察/追问，不 block。
+- `revise(block_payload)` → 更新 claims/hypotheses/action；回传结构固定，agent 才能学。
+- `observe(reading)` → 更新 A_t；`corpus_check(axioms)` → 矛盾/覆盖报告。
+
+### 参数与 stop
+
+- turn budget 20–40；block 后重试 ≤3；`?` 累积 3 条转人工；axiom 覆盖率 <40% → 停（选择性护栏）。
+- false-block >10% 或 unresolved >30% → 降级到纯 LLM 基线 + 事后审计。
+- corpus check：至多一条矛盾 transition；schema 变更后重跑。
+
+### 成本
+
+- schema 建设：5–10 专家人日（`推测`）。
+- corpus 知识构造：每 1,000 条记录约 20–50 次 LLM 调用 + 人工抽检（`推测`）；eval token 不含构造。
+- 运行：符号求值轻量；LLM 提议调用为主。
+- 维护：schema/环境变更重跑；规则过期复审。
+
+### 第一个 sprint
+
+2 周、单域单故障类、10–15 人日：
+
+1. 从 20–40 条维护记录定 schema（3 实体 + 2 关系 + 可观察属性 + 公理形式）。
+2. LLM 抽 30–50 条带来源候选公理，实现准入门 + 每类 2–3 测试；人工抽检 20 条。
+3. 实现三值求值 + condition report + block→revision；先用记录脚本回放，不接真 LLM 循环。
+4. 20–30 个历史 episode 回放；报 SI/成功率/block 率/? 比例/公理覆盖率。
+5. 预写 go/no-go：覆盖率 <40% 或 false-block >10% 停，退回纯 LLM 基线。
+
+### 替代方案
+
+- 纯 LLM + 事后审计；curated KG/规则引擎；买 CMMS/知识图谱产品；开源 ontology + tool-calling。
+- 论文只与 IfR/WALL-E/ReAct* 比；没有与这些工程替代做成本-效果。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：工厂维护/值班班组；痛点：误诊、无效干预、专家工时、停机。
+- **指标**：MTTR、每千次干预的无效干预数、专家工时/次、false-block 率、停机分钟。
+- **反事实**：不上验证器 → 纯 LLM 诊断；先测当前 MTTR/SI 基线。
+- **V3 试点**：单域 20–30 episode；成功 = SI 降 ≥30% 且 false-block ≤10%、专家工时降 ≥10%；失败 = 覆盖率 <40% 或 SI 不降；停止线 = 年省专家工时 < 维护成本。
+- **反例**：schema 覆盖低；真实传感器噪声；环境机制频繁变化；无专家维护。
+
 ## 7. 质量与边界
 
 - **证据类型**：实证·基准（三个模拟环境）。

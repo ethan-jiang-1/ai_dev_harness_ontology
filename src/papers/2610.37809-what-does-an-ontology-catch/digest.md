@@ -208,6 +208,64 @@ claims: [E-02]
 6. **同时报 catch/FA/成本。** 只看 accuracy 会反向。
 7. **specific feedback 要验证。** specific 净修复更高；C5 最终准确率差异未确立，不能默认 generic 更安全。
 
+## 6.5 工程配方（E3）
+
+### 接口
+
+- **输入**：SPARQL 查询、结果绑定、本体/schema、数据 summary。
+- **输出**：`{verdict: pass|flag|unknown, constraint_id, query_fragment, message, evidence}`；flag 要能指出「哪条约束/哪个 triple」，否则 agent 只会换姿势重试。
+- **挂载点**：agent 执行前（query check）或执行后（binding check）；unknown 不阻断，只记录并降级到「空结果重试 + 人工抽检」。
+- **specific vs generic**：specific 带 constraint_id/片段；generic 只说「请重查」。specific 的 corrupt 更高，默认先 generic，验证后再 specific。
+
+### data-derived 建库参数
+
+- 模式阈值：属性/类共现 ≥5 次才允许；低于 5 次不 flag，避免把长尾当异常。
+- summary 规模：类/属性/模式列表；论文未给上限；工程上按 1–2 万实体估，超过就分域重建。
+- 重建频率：数据变更/本体变更触发；全量重建按周/月，增量按日。
+- curated 缺声明：先自动补声明（domain/range），补不了的进人工队列；**disjointness 不贡献 flag，别把它当主检查**。
+
+### 成本
+
+- 论文只给 per **flagged** answer：curated 65,976 tokens/46s，data 28,076/17s；不是 per checked。
+- 折算：`per-1k cost = flag_rate × per-flagged cost × 1000`；curated FA 16.8% 时，per-1k 成本约是 per-flagged 的 0.168 倍；别把 66k 当每答案成本。
+- setup：LLM ontology <$1/个；data-derived setup 未记录，按 1–2 人日估（`推测`）。
+- 维护：curated 缺声明/矛盾审计、data summary 重建、告警处置；按 0.5–1 人日/月估（`推测`）。
+
+### stop condition
+
+- 空结果重试基线：人工 fault catch 79.2%/FA 0%；真实答案 catch 2.5%/FA 0.1%。**本体 checker 必须先超过它**。
+- 采纳门：真实/人工混合集上 catch ≥30% 且 FA ≤10%，per-1k 成本 ≤ 人工审核的 1/3；否则不做。
+- 只看「有结果但答错」的增量：若增量 catch <5pp，停；语义错（changes of meaning）结构检查 0%，不要指望它。
+- 同源 context+checker、generic/specific 的结论是 exploratory/未定；不要写进上线门。
+
+### 部署度量
+
+- 没有 ground truth 时 precision 不可算；用 100–400 条分层抽样人工审计，报 Wilson CI；每季度重抽。
+- 在线 A/B：同一流量分「空结果重试」vs「空结果重试 + data-derived check」；主指标 catch/FA、per-1k token、告警处置工时。
+- LLM judge 分支：需另测 precision/成本/稳定性；本文说 judge 检错更多但修坏多于修好，不能默认更好。
+
+### 第一个 sprint
+
+2 周、本方 KG、200 题：
+
+1. 只上空结果重试，记录 catch/FA/token/延迟基线。
+2. 生成 data-derived summary + declaration/pattern check；同一批题测增量 catch/增量 FA。
+3. 记录 setup 人日与 per-flagged 成本；抽 50 条人工复核。
+4. 出口：FA ≤ 自定预算（如 10%）且增量 catch ≥5pp → 进第二阶段；否则停，不接 curated、不组合。
+
+### 替代方案
+
+- 空结果重试（最便宜）；LLM judge（语义错更强，但成本/稳定性未定）；人工审核；采购 SHACL/校验服务；curated 本体（需先审计）。
+- 论文没有与 LLM judge/人工/SHACL 服务的头对头成本；build/buy 只能给公式。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：KG/agent 平台团队、数据治理/合规；痛点：错误答案上线、人工审核贵、告警疲劳。
+- **指标**：每千次产出的真实语义错误拦截数、误判正确数、per-1k token/工时、告警处置时长。
+- **反事实**：不做 checker → 空结果重试 + 人工抽检；先测这个基线。
+- **V3 试点**：200 题、data-derived check vs 空结果重试；成功 = 增量 catch ≥5pp 且 FA ≤10%、per-1k 成本 ≤ 人工 1/3；失败 = 增量 <5pp 或 FA >15%；停止线 = 年省审核工时 < 维护成本。
+- **反例**：语义错为主；没有 ground truth；curated 与数据矛盾；FA 导致修坏超过拦下的错。
+
 ## 7. 质量与边界
 
 - **证据类型**：实证·基准（UniProt confirmatory）。

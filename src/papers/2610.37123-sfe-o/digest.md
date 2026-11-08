@@ -71,6 +71,49 @@ claims: [05-L4]
 4. 数据矛盾显式标记，不静默消解。
 5. 给外部服务建版本/审计边界。
 
+## 6.1 工程配方（E3）
+
+### 最小 schema
+
+- 类：`Biomass`、`Process`、`Product`、`Parameter`、`UnitOperation`、`Stream`。
+- 属性：`hasParameter`、`unit`、`source`、`condition`、`confidence`、`contradicts`。
+- 参数记录：`{value, unit, source, condition, confidence, contradicts[]}`；矛盾显式标，不静默消解。
+- 命名空间/版本：`sfeo:` + 版本号；本体/数据分开。
+
+### SHACL 与外部服务
+
+- SHACL shapes 5–10 条：单位必填、参数范围、source 必填、矛盾标记、单元操作连接。
+- 外部服务（热物性/扩散系数）边界：`{inputs, outputs, service_version, retrieved_at, audit_id}`；OWL 不求解，服务结果写回参数记录。
+
+### stop condition
+
+- 没有 SHACL/外部服务边界 → 只做文档，不做“可执行本体”。
+- 数据矛盾未标/未解决 → 停，先修数据。
+- 参数无来源/单位 → 不可复用，停。
+- 没有消费者（agent/判定器）→ 不做。
+
+### 第一个 sprint
+
+2 周、一条 3–5 单元操作流程：
+
+1. 建三模块 + 参数字段。
+2. 写 5–10 条 SHACL shapes。
+3. 用两处已知矛盾（界面面积公式、ChEBI 标识符共用）做负例，验证 shapes 能标红。
+4. 外部服务 mock + 版本字段隔离。
+5. 出口：shapes 覆盖参数/矛盾；负例能检出；否则停。
+
+### 成本
+
+- 本体/流程建模：2–4 人周（`推测`）。
+- SHACL：3–5 人日。
+- 外部服务集成：1–2 人周（`推测`）。
+- 维护：参数/服务版本变更。
+
+### 替代方案
+
+- 关系库 + 脚本；YAML/JSON schema；不建本体；商业流程模拟器。
+- 论文无成本对照。
+
 ## 7. 质量与边界
 
 - **证据类型**：域本体工程（摘要级/概念）。

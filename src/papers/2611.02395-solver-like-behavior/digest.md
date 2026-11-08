@@ -68,7 +68,7 @@ claims: [E-07, E-09]
 |---|---|---|
 | A. Trace | A1 existence | trace 是否 assign/test/rule out 决策变量 |
 | | A2 extent | 是否给每个变量赋值（complete/partial） |
-| | ratio | SLB 段落占 trace 比例 |
+| | ratio | SLB 段落字符数 / trace 总字符数（论文 trace 字符占比；token 占比另算，不能混用阈值） |
 | B. Program | B1 hardcoded | 打印答案，不计算 |
 | | B2 partly fixed | 计算，但把 trace 决策写进源码 |
 | | B3 steered | 搜索，但 tiebreak/order 被选成返回 trace 答案 |
@@ -147,7 +147,7 @@ claims: [E-07, E-09]
 ### 6.1 复刻顺序
 
 1. **先看 trace，不只看输出。** 程序跑对不代表在搜索；B1–B3 都能通过输出评估。
-2. **量 SLB ratio。** SLB 段落占 trace 比例；85% 轨迹有，24% token 是 SLB。
+2. **量 SLB ratio。** SLB 段落字符 / trace 总字符；85% 轨迹有，24% token 是 SLB。
 3. **看程序是否继承。** B1 hardcoded / B2 partly fixed / B3 steered / B4 independent；只有 B4 真把搜索交给 solver。
 4. **优先 placeholders，不要靠 prompt 警告。** 把值藏到运行时；模型只写结构。
 5. **Cautionary prompts 只能当辅助。** 它可能把 hardcode 推成更隐蔽的 partly fixed/steered。
@@ -183,6 +183,74 @@ claims: [E-07, E-09]
 5. **能交给声明式 solver 就交。** Python 把搜索留给模型，SLB 更多。
 6. **不要 batching 求省 token。** 它砍 reasoning，也砍准确率。
 7. **评估报 trace 指标。** SLB ratio、继承率、C1/C2；只报 program accuracy 不够。
+
+## 6.5 工程配方（E3）
+
+### placeholders 数据契约
+
+- `VALUES` 是扁平值表：`{Person1:"Ann", D1:30, ...}`；**不含 schedules/lists/constraints**；TRAVEL 等独立字段另放。只替换问题里的事实值，不替换结构/约束名。
+- 替换发生在 prompt 构造前；程序运行时注入 `VALUES`；solver/validator 只看到注入后的值。
+- 边界：日期/多值/表格/自然语言条件不能塞进 `VALUES`；值/结构不可分的任务不要用 placeholders（交互式规划）。
+
+### 标注 codebook
+
+| 标签 | 判据 |
+|---|---|
+| A1 | trace 是否 assign/test/rule out 决策变量 |
+| A2 | 是否给每个变量赋值（complete/partial） |
+| B1 | 程序打印答案，不计算 |
+| B2 | 程序计算，但源码含 trace 里的决策值 |
+| B3 | 搜索，但 tie-break/order 被选成返回 trace 答案 |
+| B4 | 在所有约束下搜索；trace 的 SLB 是浪费 |
+| C1/C2 | 输出==reasoning answer / reasoning answer 正确 |
+
+- judge prompt 要给 trace、程序、输出三段，要求逐条给证据；先人工标 30 条校准到 ≥90% 一致，再冻结；B2/B3 分歧由第三人裁决；partial/complete 判据写死。
+
+### 第一个 sprint
+
+2 周、1 类 CSP、1 个开源 reasoning model、100 题：
+
+1. 打通完整 trace 落盘 + 程序配对；没有 trace 就只做 audit-only。
+2. 人工标 30 条，校准 judge ≥90%，冻结 codebook。
+3. 出基线：SLB ratio、B1–B4 分布、C1/C2、继承率。
+4. 抽 50 题开 placeholders；验收 SLB ratio ≤0.02 且程序准确率下降 ≤2 点；不达标退回「只审计不修」。
+5. 交付：可复跑审计脚本 + 一页基线 + 可开关 placeholder 模式。
+
+### 样本量/停止条件
+
+- 9% 基准率要估 ±5pp（95%）约需 126 条；100 题只能看方向，不能当稳定比例。
+- 没有完整 trace（闭源）→ audit-only，不声称 SLB 比例。
+- trace 有 SLB 但程序全 B4 → 不修，只记录浪费。
+- placeholders 不可分离 → 换声明式 solver（Z3/PDDL）或只做 validator 审计。
+- SLB ratio <2% → 不值得建。
+
+### 成本
+
+- trace 存储/审计：每千条 trace 的存储与 judge token；论文未给金额。
+- 人工校准：30 条 × 2 人 × 1–2 小时（`推测`）。
+- placeholders 集成：1–2 人周（`推测`）；改 solver/validator 接口另计。
+- 评估：100 题 × 多配置；GPU/API 成本按模型。
+- **成本随规模上升只在部分数据集成立**：Meeting Planning 3,873→10,971、ZebraLogic 532→4,148；Calendar/BlocksWorld 不增长。Qwen reasoning 在 Calendar 上 token 约 3×/ +54%，GPT-OSS 约 −31%；所以 TCO 要按模型和数据集成，不能套一个平均。
+
+### 替代方案
+
+- placeholders（最强）；cautionary prompt（弱，可能推成 B2/B3）；batching（伤准确率）；换 Z3/PDDL；放弃 solver 保证直接信 LLM；只做 audit-only。
+- 论文只按 SLB 降幅排序，没有单位成本/维护性对照。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：LLM-as-formalizer 产品/平台团队；痛点：程序看似对、实际 hardcode/继承错误，solver 保证失效。
+- **指标**：SLB ratio、继承率、静默错答率、审计发现数、返工小时。
+- **反事实**：不测 SLB → 只看 program accuracy；错误被输出正确掩盖。
+- **V3 试点**：100 题、1 模型、placeholders on/off；成功 = SLB ratio ≤0.02、程序准确率下降 ≤2pp、继承率降 ≥50%；失败 = 准确率降 >5pp 或 placeholders 不可分离；停止线 = 年省返工 < 集成成本。
+- **反例**：闭源无 trace；任务值/结构不可分；solver 本身不需要（简单任务）；placeholders 引入运行时错误。
+
+### E4 决策框架
+
+- **TCO** = 审计脚本 1–2 人周 + placeholders 集成 1–2 人周 + 每千条 trace 的存储/judge token + 人工校准。
+- **收益** = `静默错答率下降 × 每次返工成本 + 审计发现数 × 处理成本`；先测当前继承率/静默错答基线。
+- **替代**：build（审计+placeholders）/ buy（现成 trace/评测工具）/ do nothing（只看 program accuracy）/ 只 audit-only。
+- **决策线**：12 个月收益 > TCO 且 placeholders 不降准确率 >2pp 才做；否则只 audit-only。**buy 臂**：闭源 API 无完整 trace 直接出局；能提供 trace 的评测/审计工具，按 seat/trace 报价 + 集成人周算 NPV，比 build 低才买。
 
 ## 7. 质量与边界
 

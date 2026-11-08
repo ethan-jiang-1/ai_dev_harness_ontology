@@ -187,6 +187,58 @@ RAG 把外部文本拼进上下文；但医学问题常需要：
 7. **单独量检索。** gold evidence 是否检索到、是否被引用；否则把「检索不到」误判为「推理不行」。
 8. **按 context 预算比较。** 8k/32k/262k 下结论不同。
 
+## 6.5 工程配方（E3）
+
+### 数据/接口
+
+- **concept card** 字段：`iri, label, definition, parents[], children[], relations[], comments[], source`；单卡截断到 1–2k 字符，避免 3 个本体一次塞爆。
+- **工具**：`DESCRIBE(iri)` → card；`ASK(s,p,o)` → entailed/not entailed/unknown；`SELECT(query)` → bindings；空结果触发 BM25 fallback（k=5–10 cards）。
+- **name linking**：精确 → 多义候选（数量论文未给）→ 未知名字 BM25 取 200 候选池 + 字符串相似度给 5 个候选；阈值论文未给，工程上记录并固定。
+- **三阶段**：pre-tool reasoning → ReAct loop → answering；answering 必须引用观察 + grounding level。
+
+### 参数与预算
+
+- 8k context 为对比口径；论文 Appendix A 给 per-item 上限：≤10 tool actions、≤5,000 generated tokens（Answer Step 2 另 512）；9.7k total 是观察值。工程上另设 `max_total_tokens=12k`（推测），超过则停/降级——论文本身是 limit reached 后强制作答，停/降级是偏离。
+- 平均 5.8 calls/问、9.7k tokens/问是观察值，不是上限。
+- grounding level：entailed/supported/related/unrelated；自评，不能当形式保证。
+
+### stop condition
+
+- gold evidence 完全检索率 <50% → 先修检索，不要加推理层。
+- 调用 >10 或 generated >5k 或 total >12k → 论文会强制作答；本页的 abstain/降级是工程选择，不是论文行为。
+- grounding level 通胀（entailed+supported >90%）→ 抽样校准，不自动放行。
+- 本体覆盖不足（未知 IRIs >20%）→ 停，先补本体。
+
+### 第一个 sprint
+
+1 周、FoodOn 单本体：
+
+1. 生成 concept cards（1–2k 字符/卡）。
+2. 接 DESCRIBE/ASK/SELECT，空结果 BM25 fallback。
+3. Test 1/2 各 200 题；记录 gold evidence 检索率、引用率、calls/tokens。
+4. 对照 RAGdoc；预写 go/no-go：检索率 ≥50% 且引用率 ≥80% 才进第二阶段。
+5. 不做 Test 3 全量、不做多本体协调。
+
+### 成本
+
+- concept card 生成：每本体 1–2 人日（`推测`）。
+- reasoner/SPARQL 集成：1–2 人周（`推测`）。
+- 每问 5.8 calls/9.7k tokens；按模型单价折算。
+- 维护：本体变更重生成 cards。
+
+### 替代方案
+
+- 纯文本 RAG；只 ASK（不 DESCRIBE）；只 concept card 不 reasoner；人工审核。
+- 论文没有与这些同口径成本-效果。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：医学/生物本体 QA 产品；痛点：答案无依据、术语歧义、检索不到。
+- **指标**：gold evidence 检索率、引用率、grounding 校准、每问 token/时延、人工复核率。
+- **反事实**：不做本体 RAG → 纯文本 RAG/LLM；先测检索率基线。
+- **V3 试点**：单本体 200 题；成功 = 检索率 ≥60%、引用率 ≥85%、准确率 ≥RAGdoc +10pp；失败 = 检索率 <50% 或 grounding 通胀；停止线 = 年省复核 < 维护成本。
+- **反例**：本体覆盖不足；检索瓶颈；grounding 自评；Test 3 只在 8k 预算占优。
+
 ## 7. 质量与边界
 
 - **证据类型**：实证·基准（3 本体、6 医学 QA 任务、2 backbone、多基线、ablation）。

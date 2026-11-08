@@ -171,6 +171,71 @@ claims: [E-06]
 7. **记忆变更需人批准。** semantic/procedural/episodic；共享变更不能静默。
 8. **optimizer 在环。** 加固方案不要只靠 agent 设计；solver + optimizer 互补。
 
+## 6.5 工程配方（E3）
+
+### 接口契约
+
+- **citation**：`{doc_id, version, page, span, clause_id, retrieved_at}`；答案的每条法规结论必须带 citation；不能引用就拒答。
+- **study tool**：输入 `{study_type, network_model, state_hash, solver_config}`；输出 `{result, solver_version, provenance, warnings}`；每次 study 记录 state_hash，strict pass 重放用。
+- **strict-pass log**：`{task_id, tool_calls[], network_state_hash, study_type, pass|fail, reason}`；state 不匹配即 fail。
+- **memory**：`{kind: semantic|procedural|episodic, content, source, approved_by, version}`；共享变更人批准。
+- **pause/resume**：决策点 `{decision_id, findings, citations, signer, timestamp}`；未签核不继续。
+
+### 参数
+
+- 检索：chunk 大小、top-k、rerank 模型；论文未给，工程上固定并记录。
+- 拒答阈值：证据不足/引用缺失的判定规则；45/51 是结果，不是阈值。
+- solver：容差、超时、版本；N-1/潮流/短路/OPF 各自配置。
+- strict-pass：state_hash 一致 + study_type 匹配 + solver 版本记录；不满足即 fail。
+- E-score：任务级 0–100；论文的 99.9% 是结果，不是公式。
+
+### 成本
+
+- 法规语料：27 docs / 6,347 pages；治理/索引约 4–8 人周（`推测`）。
+- 领域工具/solver：wrapper 集成 4–8 人周；商用 solver 授权费按厂商。
+- 运行：每任务 13.9 s（论文）；token/算力按模型。
+- 人签核：每次决策 5–15 分钟（`推测`）；审计/复核另计。
+- 维护：法规更新/工具版本/记忆审批；按月变更比例估。
+
+### stop condition
+
+- 没有 solver/领域工具 → 停，不要用 LLM 手算。
+- strict-pass 漏报 >0（state 不匹配未发现）→ 停，先修重放。
+- citation precision <0.95 或拒答率异常 → 停，先修检索。
+- 人签核吞吐 < 业务需求 → 不扩规模，先改流程。
+- 法规不可检索/不可引用 → 不做。
+
+### 第一个 sprint
+
+2 周、4-bus 算例 + 3 条法规 + 单一 N-1：
+
+1. citation 对象 + 拒答规则（阈值配置化）。
+2. study 工具契约（network model/state hash/solver 版本/provenance）。
+3. strict-pass 重放日志 + 判定脚本。
+4. 决策点暂停 + 具名签核最小流程。
+5. 20 个 held-out 任务：引用精度 ≥0.95、state 不匹配 0 漏报、人审分钟记录。
+6. 交付契约 + pass/fail 判据，不追论文分数；第二 sprint 再谈成本/替代方案。
+
+### 替代方案
+
+- 商用并网/规划工具链 + 人审；只做法规检索不碰 solver；do-nothing（人工流程）。
+- 论文 baseline 全是 agent harness，没有 buy/do-nothing 对照；build/buy 边界要自己补。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：电网运营商/开发商/评审方；痛点：并网队列长、法规审查慢、研究返工、审计不可追溯。
+- **指标**：申请周期（天）、评审工时/单、返工率、审计发现数、每单加固成本、strict-pass 违规率。
+- **反事实**：不上 agent → 人工审查/研究；先测当前周期/工时基线。
+- **V3 试点**：单运营商、20–50 单、4-bus/实际算例；成功 = 评审工时降 ≥20%、周期降 ≥10%、strict-pass 违规 0、引用精度 ≥0.95；失败 = 违规 >0 或工时不降；停止线 = 年省工时 < TCO。
+- **反例**：真实网络数万 buses；法规版本频繁；人签核瓶颈；solver 授权/集成成本；无形式安全保证。
+
+### E4 决策框架
+
+- **TCO** = 法规语料治理 4–8 人周 + 工具/solver 集成 4–8 人周 + 授权费（RFQ）+ 每任务推理 + 人签核分钟 × 单价 + 维护。
+- **收益** = `评审工时下降 × 工时价 + 周期缩短 × 单日价值 + 返工/审计发现减少`；先测当前周期/工时/返工基线。
+- **替代**：build（agent+solver）/ buy（商用并网/规划工具 + 人审）/ 只做法规检索 / do nothing。
+- **决策线**：12 个月收益 > TCO 且 strict-pass 违规 0 才扩；否则只做法规检索或不做。
+
 ## 7. 质量与边界
 
 - **证据类型**：实证·部署/基准（技术报告；工业系统）。

@@ -181,6 +181,80 @@ claims: [E-05]
 6. **把 false merge 当一等风险。** 抽样 audit reattachment；merge precision 与 CMR 一起报。
 7. **不要用「未匹配」推断关系结束。** 它可能是输入缺失/没有观察机会。
 
+## 6.5 工程配方（E3）
+
+### registry schema
+
+| 字段 | 含义 |
+|---|---|
+| `canonical_id` | 持久身份，永不变 |
+| `type` | person/org/product/topic |
+| `normalized_name` | 规范化名 |
+| `aliases[]` | 历史 surface forms（仅实体侧） |
+| `first_seen/last_seen` | 首末观察 period |
+| `source_version` | 本体/抽取器版本 |
+
+**match(input)**：identifier → normalized name → learned alias → LLM semantic fallback（同类型，score≥0.8）。**upsert(observation)**：先 match，命中则写 alias + edge；未命中则新注册。**幂等键**：`(head_id, typed_target_id, source_id, period)`；每 period 每边最多一次强度更新。
+
+### edge schema
+
+| 字段 | 含义 |
+|---|---|
+| `head_id` / `target_id` / `relation` | 关系身份 |
+| `source_indicator` | 1=unstructured、2=structured、3=hybrid |
+| `observations[]` | 每条：id、raw mention、source、timestamp、context |
+| `state` | Emerging / Reinforced / Stable / Fading / Reactivated |
+| `score` | σ_init=0.5；match +0.2；miss ×0.8；<0.01 归零但边不删 |
+| `first_seen/last_seen` | period |
+
+### 参数与定义
+
+- **$100K 阈值**：单月现金流流入 > $100K 才进 `cf-signal` 图；否则忽略弱信号。digest 之前漏了定义，Rule 3/4 无法落地。
+- product–topic 本体最小形态：product/topic 两类 + `CONTAINS`/`PARENT_OF`；谁维护、变更流程要定。
+- semantic threshold 0.8 是在 investor-call T−1 上选的，不是通用默认；换域要重标。
+
+### stop condition
+
+- merge precision <90% 或 alias 组 reattachment recall 增益 <5pp → 停，回滚 alias 集。
+- audit 200 units 的 Wilson CI 宽于 ±10pp → 扩样本，不扩域。
+- false merge 导致下游任务错误 > 可接受线 → 停，先修 registry。
+
+### 冷启动
+
+- period 1 没有 prior memory：从 CRM/通讯录导出稳定 head + canonical name，先建 registry；历史数据按 period 回填，不跨期合并。
+- 历史 alias 只从已有 surface form 学，不从未来数据泄漏。
+
+### 成本
+
+- 建 registry/alias：1–2 人周（`推测`）。
+- 抽取：LLM2Graph 每文档；幻觉 3.3–7.4%、normalization error 3.2–22.16%（domain 不同）。
+- 人审：200 units/setting；按 0.5–1 人日/200 条估（`推测`）。
+- 维护：本体/阈值/alias 审核；0.5 人日/月（`推测`）。
+- token：语义匹配 −40.3%（investor/Opus/final，不含 registry 构建）。
+
+### 第一个 sprint
+
+2 周、单域、1 个 period shadow，先不做 short-term fusion（避开 $100K）：
+
+1. 从 CRM 导出稳定 head + canonical 名；冻结「speaker 变、head 不变」。
+2. 建 registry 表，实现 identifier→normalized name→alias 三级匹配；alias 持久化；semantic fallback 先关（留开关）。
+3. 200–500 份文档过 LLM2Graph，按 head+typed target 建边；五态 + σ 状态机。
+4. 标 200 incoming units，出 CMR、merge precision、reattachment recall（alias on/off）。
+5. 预写 go/no-go：merge precision <90% 或 alias 增益 <5pp 停；交付 registry+edge 表、基线报告、阈值记录。
+
+### 替代方案
+
+- 现成 ER（Splink/Zingg/Senzing）、CRM 原生去重、加强抽取但不做 registry；论文没有与这些头对头成本。
+- 不做 registry：跨期历史碎裂，CMR 低；适合单次会话。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：投研/CRM 团队；痛点：同一客户/产品跨源碎裂、证据挂不上、重复调研。
+- **指标**：CMR、merge precision、reattachment recall、每千条观察的调研工时、错误合并导致的返工。
+- **反事实**：不做 registry → 每次重新识别，历史证据丢失；先测当前 CMR。
+- **V3 试点**：单域、200–500 文档、alias on/off；成功 = CMR 相对 +10pp、merge precision ≥90%、调研工时降 ≥10%；失败 = merge precision <90% 或 alias 增益 <5pp；停止线 = 年省工时 < 维护成本。
+- **反例**：专有数据不可复现；false merge 长期污染；未匹配≠关系结束；跨域阈值不通用。
+
 ## 7. 质量与边界
 
 - **证据类型**：实证·真实专有数据 + 公开 transcript（一手正文）。

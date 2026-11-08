@@ -151,6 +151,66 @@ claims: [04-L1]
 6. **评估分两层。** Complete Retrieval Rate 与 Acc@complete 分开。
 7. **承认训练前提。** 没有参考答案时，只能用弱监督/人工反馈替代。
 
+## 6.5 工程配方（E3）
+
+### 数据契约
+
+| 对象 | 字段 |
+|---|---|
+| persistent fact | `{fact_id, text, source, timestamp, entity_ids[]}` |
+| relational state | `{fact_id, validity, scope, supersedes[], conflicts[], concept_id}` |
+| reasoning state | `{request_id, used_facts[], roles[], priority[]}` |
+| memory graph | concept/fact nodes；`PARENT_OF/CONTAINS/SUPERSEDES/CONFLICTS_WITH` |
+
+### 训练配方（Appendix B.3/D）
+
+- 策略：GRPO；G=8、temperature 1.0、rollout batch 512 / global 4096、lr 1e-6、wd 0.01、KL 0.001、clip 0.2/0.28；prompt 8192 / state 512 tokens；冻结 agent Qwen3-8B；embedding bge-m3。
+- 数据：约 60K 实例，FEVER/SciFact/PersonaMem 三类；含冲突记忆与干扰项。
+- reward：有/无 reasoning state 的答案得分差；格式违规/答案泄露有 gate/penalty（Algorithm 1）。
+- seed 数论文未定；至少 3 seeds，报 CI。
+
+### 接口
+
+- `ingest(dialogue|doc)` → facts + relational states；`retrieve(request)` → seed facts + graph traversal；`policy(request, facts, states)` → reasoning state；`answer(request, facts, states, reasoning)`。
+- 检索预算：565 token 候选上下文（论文设置）；K 自定并记录。
+
+### stop condition
+
+- 没有答案/评分器 → 不训 GRPO，只做 facts/relational state + 检索评估。
+- Complete Retrieval <80% → 先修检索，不训策略。
+- Acc@complete 无提升或下降 → 停，检查 state 是否噪声。
+- 冲突 >20% 未解决 → 停，先修冲突处理。
+
+### 第一个 sprint
+
+2 周，不做 GRPO：
+
+1. facts 与 relational state 分存；建 concept/fact 图。
+2. bge-m3 检索 + 关系遍历；记录 Complete Retrieval / Acc@complete。
+3. 对照：固定 self-reflection vs 空 reasoning state；量「会不会用」差距。
+4. 出口：Acc@complete 提升 ≥5pp 且检索率 ≥80% 才进 GRPO；否则停。
+5. 记录 565 token 预算下的召回损失。
+
+### 成本
+
+- 本体/图构建：1–2 人周（`推测`）。
+- 数据构造：60K 实例 + 冲突/干扰；1–2 人周（`推测`）。
+- GRPO：单卡/多卡 A100；论文未报 GPU 时；按 60K × G=8 估（`推测`）。
+- 评估：4 基准 + judge。
+
+### 替代方案
+
+- 固定 self-reflection prompt；MemoryBank/Mem0；只做 RAG 不做状态；人工规则。
+- 论文有跨 6 个 memory backend 的迁移，但没有与这些同口径成本。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：个人助手/客服/CRM；痛点：偏好更新、冲突记忆、跨会话不一致。
+- **指标**：Acc@complete、冲突解决率、每请求 token/时延、人工纠错率。
+- **反事实**：不做 reasoning state → 固定 prompt/独立事实；先测 Complete Retrieval 与 Acc@complete 基线。
+- **V3 试点**：单域 200–500 请求；成功 = Acc@complete +10pp、冲突漏检 ≤10%、token 不增 >20%；失败 = 无提升或冲突恶化；停止线 = 年省纠错 < 训练/维护。
+- **反例**：无评分器；文本 only；冲突太多；GRPO 成本高；多模态未测。
+
 ## 7. 质量与边界
 
 - **证据类型**：实证·基准（4 基准、9 baseline、ablation、跨系统迁移）。

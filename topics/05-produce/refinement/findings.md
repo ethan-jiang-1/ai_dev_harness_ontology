@@ -1,39 +1,84 @@
 # 精化 · 发现（F）
 
 > `F` 编号是子主题局部编号；跨页引用写 `refinement/Fx`。
+> 只放能追到 CASTON 原文的判断；「瓶颈在哪」这类解释性判断单列，并降级到它该有的等级。
 
 ## 索引
 
 | ID | 判断（一行） | 等级 |
 |---|---|---|
-| F1 | 精化可自动化到小规模：high-confidence 6/6 接受 | 已核 |
-| F2 | fine-tune embedding 是主要增益：100% vs 57.1% | 已核 |
-| F3 | medium-confidence 全 mixed，必须人审 | 已核 |
+| F1 | 精化可自动化到小规模：high-confidence 6/6 接受（2 专家、单一本体、单一公理类型） | 已核 |
+| F2 | 固定 Qwen3-8B 时，fine-tune embedding 比 pretrained 高 42.9 pp；「换更大 LLM 不能补」没有单变量证据 | 已核（对照）／推测（外推） |
+| F3 | medium 不可靠但**不是全 mixed**：default 0/2、pretrained 1/4、GPT-4o mini 1/5 | 已核 |
 | F4 | 「下游错误 → 该修哪条公理」未闭环 | 已核（缺口） |
+| F5 | 接受率不是覆盖率：recall@30 / recall@10 未报，是整条流程的上限 | 已核（缺口） |
+| F6 | 「瓶颈是定位与验证」是本仓库的解释，不是 CASTON 的测量 | 推测 |
 
 ## F1 · 小规模可自动化
 
-- **数字**：CASTON 270 classes/292 subsumption；default high 6/6（100%）；pretrained 4/7（57.1%）。
-- **条件**：单一本体、单一公理类型；2 专家 5 分制。
-- **边界**：6 条高置信；preliminary。
-- **来源**：Table 1, p.4；§3。
+- **数字**：CASTON v1.0.0（270 classes / 306 axioms / 292 条 atomic subsumption）；default（CASTON-fine-tuned OnT + Qwen3-8B）high 6/6 全 +2（100%）；pretrained ensemble + 同 LLM 4/7（57.1%，3 条被两人同时判负）；GPT-4o mini + pretrained ensemble 5/16（31.3%）。
+- **条件**：单一本体、单一公理类型（asserted atomic subsumption，且只产出「替换建议」）；两位领域专家独立 5 分制（−2…+2），双正才记接受。
+- **边界（digest §6.3 的五条「别用」全覆盖）**：这五条是 digest 的工程建议，不是论文测量；其中「层级不一致」「只做替换」「单本体」有原文依据，「本体很小」「没有专家」是推断（`推测`）。括号里的本地判据是本仓库建议（`推测`）。
+  - **本体很小**：缩到 30 条的收益抵不过 fine-tune + 流程开销，专家直接过更便宜（本页判据：atomic subsumption 少于约 100 条）；
+  - **层级本身不一致**：失败案例 `semisolid_metal_(ssm)_processing` 两位专家 0/−2，方法不能替代仲裁（判据：同批 mixed >1/3）；
+  - **需要关系限制/复杂公理**：论文只做 asserted atomic subsumption；∃r.B、cardinality、disjointness 是 future work（判据：待修公理里这类占比高）；
+  - **没有专家**：接受率与 mixed 都靠 2 位专家盲评，没有专家就无法验证 confidence 校准（判据：凑不出 2 名可盲评专家）；
+  - **大规模跨本体**：fine-tune 绑定单本体，跨本体迁移未测（判据：目标 >1 本体或 >1 领域）。
+- **来源**：Table 1, p.4；§3–§4；digest §6.3。
 
-## F2 · embedding 是主要增益
+## F2 · embedding 有干净对照；「更大 LLM」没有
 
-- **判断**：fine-tuned OnT 100% vs pretrained ensemble 57.1%；GPT-4o mini high 31.3%。
-- **含义**：不是「换更大 LLM」能补；任务特定 embedding 是关键。
-- **边界**：跨本体 fine-tune 成本未测。
-- **来源**：Table 1, p.4；§3。
+同一张表可以拆出两个单变量对照（都只差一个变量）：
 
-## F3 · medium 不可靠
+| 对照 | 固定 | 变化 | 结果 | 差值 |
+|---|---|---|---|---|
+| A | Qwen3-8B | fine-tuned OnT → pretrained ensemble | 6/6（100%）→ 4/7（57.1%） | −42.9 pp |
+| B | pretrained ensemble | Qwen3-8B → GPT-4o mini | 4/7（57.1%）→ 5/16（31.3%） | −25.8 pp |
+| C（论文报的 68.7 pp） | 无 | default → GPT-4o mini | 100% → 31.3% | −68.7 pp（**两个变量同换**） |
 
-- **判断**：default medium 0/2（全 mixed）；pretrained medium 1/4；GPT-4o mini 1/5。
-- **含义**：confidence 只能粗分；medium 必须人审。
-- **边界**：校准是模型特定的。
-- **来源**：Table 1, p.4。
+> A、B、C 的差值由 Table 1 的接受率相减得到，不是论文报告的效应量；C 的 68.7 pp 是论文自己报的差值。
+
+- **能说的**：对照 A、B 都是单变量，方向上支持「任务特定 embedding 的增益大于这一次换 LLM 的增益」。`已核`（差值本身）／`推测`（「主要增益」的排序，因 n 太小）
+- **不能说的**：**「不是换个更大 LLM 能补」没有测过。** 论文没测任何「更大」的 LLM；GPT-4o mini 的规模未披露，且这是全文唯一一次换 LLM；对照 C 同时换了 LLM 与 embedding，不能拆成任一方的效应。`推测`（外推）／若把 C 当模型效应，就是 `存疑`
+- **边界**：每格只有 6–16 条，1 条 ≈ 6–17 pp；high 的条数本身随配置变（6 / 7 / 16），所以「接受率」的分母也不同。
+- **来源**：Table 1, p.4；§4。
+
+## F3 · medium 不可靠，但不是全 mixed
+
+| 设置 | medium 条数 | 接受 | rejected | mixed | 接受率 |
+|---|---|---|---|---|---|
+| Default（Qwen3-8B + OnT-FT） | 2 | 0 | 0 | **2** | 0% |
+| Pretrained ensemble + Qwen3-8B | 4 | 1（+1） | 3 | 0 | 25% |
+| GPT-4o mini + pretrained ensemble | 5 | 1（+1） | 4 | 0 | 20% |
+
+- **判断**：medium 接受率 0–25%，同一配置下都低于 high（100% / 57.1% / 31.3%），分诊可用；但「全 mixed」只对 default 的 2 条成立，pretrained 与 GPT-4o mini 的 medium 是**被拒**，不是 mixed。
+- **含义**：medium 一律人审；不要用「medium 都是专家分歧」解释低接受率——多数是模型判错。
+- **边界**：每格 2–5 条；mixed 指两位专家一正一负或含 0 分。GPT-4o mini 行同时换了 embedding，但 medium 的「非全 mixed」结论不依赖 default 行，仍成立。
+- **与 digest 文字的出入**：digest §0/§5 的「medium 全 mixed」与它自己的 Table 1（1/4、1/5）不符；本页以 Table 为准，digest 那句待 digest owner 修。
+- **来源**：Table 1, p.4；§4。
 
 ## F4 · 下游未闭环
 
-- **判断**：修复是否让判定器/应用变好，没测；「下游错误 → 该修的公理」没有通用答案。
+- **判断**：修复是否让判定器/应用变好，论文没测；「下游错误 → 该修的公理」没有通用答案。
 - **含义**：精化质量 ≠ 下游收益；这是 05 的核心空缺。
-- **来源**：CASTON §4；本仓库综合。
+- **边界**：作者 §4 的 future work 是扩到关系限制等复杂公理类型、跨本体更大规模，并把 pipeline 用到 CASTON 后续版本；没有承诺下游任务指标。
+- **来源**：CASTON §4（结论与 future work）；digest §5；本仓库综合。
+
+## F5 · 接受率不是覆盖率
+
+流程有两段召回，论文两段都没报：
+
+1. **recall@30（定位段）**：292 条 subsumption 里取 asserted-parent 排名最差的 30 条。真错公理若不在前 30 条里，流程永远看不到它。
+2. **recall@10（修复段）**：对选中的公理取 10 个替代父类。正确替代父类若不在池里，LLM 判得再准也修不到。池子还排除了 child 自身**与所有已断言父类**（§3.1）——「该补一个已断言的父类」这类修复不在池内，照搬 recall@10 会漏计。
+
+- **论文给的是「池内接受率」**：建议数 + 接受率（6/6、4/7、5/16），没有「专家标出的真错全集」，所以 recall@30 / recall@10 算不出来。
+- **后果**：6/6 只说明「被 LLM 判为 high 的建议几乎都对」，不说明「本体里的错被找到多少」。三个设置合计只产出 40 条 high/medium 建议（8 / 11 / 21），这是「候选 → 建议」的漏斗，不是覆盖率。
+- **等级**：`已核`（缺口：§3–§4 没有这两个数）。怎么测见 [mechanism 工程发现 2](./mechanism.md)。
+- **来源**：CASTON §3.1、§4；Table 1, p.4。
+
+## F6 · 「瓶颈是定位与验证」是解释，不是测量
+
+- **循环在哪**：旧版 README/F 把「瓶颈是定位与验证」挂在 digest §8 的 `05-L5` 上；而 `05-L5` 的证据就是本子主题（[05/claims](../claims.md)）。digest 只是复述，**不是独立来源**。
+- **CASTON 实际测了什么**：固定 `k_r=30`、`k_a=10`，只测池内建议的专家接受率；没有拆分「定位错」与「验证错」，也没有报召回。所以论文不能支持「瓶颈在哪一段」。
+- **本仓库的解释（`推测`）**：真正的上限更可能在候选召回——若真错不在 top-30，验证再准也没用。可检验形式：扩大候选池后「真错发现数」是否上升；前提是先有真错全集（G1）。
+- **来源**：CASTON §3–§4（事实部分）；本仓库解释。

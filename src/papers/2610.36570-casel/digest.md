@@ -187,6 +187,100 @@ claims: [01-L4, 01-L5]
 7. **轨迹总账不是默认**；full ledger 在 harm–compute 面被支配，但在低审批端是前沿点（4.3% approvals / 11.82% HSR）；「只对不可逆动作记账」未验证。
 8. **按 harm–approval–cost 前沿选点**，同时报 task success 与 HSR；「不校准 HSR 高 1.2 点」「AUC 低 49.2%」都是模拟条件，不是通用规律。
 
+## 6.5 工程配方（E3）
+
+### 接口
+
+- **位置**：agent 与工具执行器之间；可选 MCP proxy、pre-execution hook、policy engine（论文 §VII 给了三选项，均不需重训）。
+- **输入**：proposed tool call、tool schema、user context、state/evidence 时间戳；**输出**：`{mode, p̂, ĉ, ρ, g, d, J(m), reason}`。
+- **p̂ 来源**：策略模型自评分或独立校准分类器；必须校准（isotonic/temperature scaling），否则阈值/账本无意义。
+- **执行**：direct/verify/sandbox/clarify/approve/abstain；verify 调 checker；sandbox 需可回滚/dry-run 接口；approve 只对 compensable/irreversible；abstain 可关。
+- **日志**：每个 call 记录动作、可逆性、c_base、p̂、决策、审批人/时间、是否回滚；没有日志就算不出 false-veto/审批成本。
+
+### 参数标定
+
+- `γ_m`：干预后的残余失败比例；论文是假设值。工程上在 trajectory-disjoint 的历史轨迹上回放 verify/sandbox/approve，估点估计 + CI；没有 γ_m 不要算 J(m)。
+- `k`（算力）、`q`（交互）：从部署自身成本读；论文的 0/1.0/1.6/2.2 与 0/0/0.04/0.65 是模拟值。
+- `λ:μ=0.02:0.015`、`τ_g=0.2`、approve `ĉ≥0.55` 是模拟配置；换域要重新标定，不能照搬。
+- 阈值规则 Eq(5)：40,000 条校准轨迹、20 点网格、δ=0.1；ε=0.014 时 20/20 seed 绑定（coverage 62.3%、risk 0.0035）；160,000 条时 ε=0.009 才可认证。工程上先看标注量够不够。
+- **校准记录必须与拟合 f_cal 的数据 disjoint，且 one record per trajectory**；否则 Prop 1 不成立。
+
+### 数据契约
+
+- 校准集：带标签的失败样本；失败定义、标注人、分歧处理、样本量-精度关系要写死。**最小协议**：2,000–10,000 条轨迹、每条轨迹一个记录；20% 双标，κ≥0.6；分歧由第三人裁决；每季度重标；没有这个量就不要用 Eq(5) 认证。
+- 动作混合：论文 58% read-only / 28% reversible / 14% irreversible；自己的流量要先统计，偏离会改变 approvals/HSR。
+- 不可逆长尾要**过采样**；否则 14% 里的高风险动作在测试集太少。
+- `c_base`：per-tool severity（写权限/特权/敏感度/金额）× scope；论文没有 rubric。**可抄的锚点**：read-only 搜索 0.05；可逆编辑 0.4；不可逆转账/对外发送 0.9；删除唯一副本 1.0。粒度先 per-tool，金额/对象敏感的工具再 per-arg；评审人=工具 owner，季度复审。
+
+### 成本
+
+- 论文无金额/人时；只给 compute 0.486 与 approvals 8.7–13.8%。
+- 建设：控制器 + 校准 + c_base 审计 + sandbox/approval 集成；按 2–4 人周估（`推测`）。
+- 运行：p̂/ĉ/J(m) 计算轻量；approve 的人力是主成本；sandbox 的算力另计。
+- 维护：γ_m/k/q/阈值随工具/流量变化重标；c_base 随工具变更复审。
+
+### stop condition
+
+- 上线前：γ_verify 的 CI 宽到无法区分 direct/verify 的 J 差 → 只上静态 p̂ĉ gate，不做多模式。
+- 校准量不足以把 γ_verify 压到 ±3pp → 停，先补标注。
+- 运行中：审批率 > 业务上限（例如 >15%）或 false-veto 投诉超阈值 → 降级到 always-verify/静态 gate，或关闭。
+- p̂ĉ 的 selective-risk AUC 未显著低于 p̂ → 机制不迁移，停。
+
+### 替代方案
+
+- 每个替代方案给一行同口径：TCO / 年省伤害 / 审批率 / task success / 硬约束。静态 p̂ĉ gate + 仅 mutating 审批；Always-Verify；纯人工复核；不上护栏。
+- 论文模拟里比了 Risk/Consequence/Always-Verify，但没与 REFLEX/CA2I 或纯人工比；build/buy 边界要自己补。
+
+### 失败模式
+
+- γ_m 用假设值当测量；c_base 拍脑袋；审批疲劳未建模；abstain/staleness 未启用；单步决策不覆盖多步组合。
+- 主表 τ=∞，阈值规则另测；不要把 7.02% 当“开了阈值”的结果。
+- NoRev 是 verify-only，不是“去掉可逆性路由”。
+
+### 第一个 sprint
+
+2 周、单仓库单工具集、**只记日志不接护栏**：
+
+1. 在 MCP proxy/pre-execution hook 记录 proposed call、reversibility、c_base 候选、p̂ 候选、决策、审批/回滚。
+2. 统计真实动作混合，和论文 58/28/14 对比；偏离大就重估。
+3. 在已有 verify 分支回放，给 verify 打「是否抓到真实缺陷」标签，估 `γ_verify±CI`；sandbox/approve 没基础设施就记 N/A。
+4. 离线画 `p̂ vs ĉ vs p̂ĉ` 的 coverage–risk 曲线，看 `p̂ĉ` 的 selective-risk AUC 是否显著低于 `p̂`。
+5. 预写出口：AUC 无差异 → 停；γ_verify CI > ±3pp → 补标注；两者都过 → 第二 sprint 接静态 gate，不直接上多模式。
+
+交付：一页 action-mix、一条 coverage–risk 曲线、`γ_verify±CI`、go/no-go。
+
+### E4 成本/收益模型（公式，不编价）
+
+E4 不要求论文给金额；要求**能把部署单价代进去**。用这三个式子：
+
+**统一反事实 = 不上护栏（do nothing）**，不是 Uncertainty-Menu/Risk-Menu。do-nothing 基线：HSR 32.76%、approvals 0%、task success 29.48%（Table 2）。
+
+- 伤害节省/千次 = `(32.76% − HSR) × (1000/L) × incidents_per_harmful_trajectory × cost_per_incident`（L=20 动作/轨迹；HSR 按轨迹）。
+- 审批成本/千次 = `approval_rate × 1000 × minutes_per_approval / 60 × hourly_rate`（对 do-nothing，approval 从 0 增到 8.7%，是**成本**不是节省）。
+- task success 收益/千次 = `(47.01% − 29.48%) × 1000 × value_per_success`（可选，若业务能货币化）。
+- 12 个月 TCO = 建设（2–4 人周 × 人周价 + sandbox/审批集成）+ 运行（`0.486` 是论文匹配的公共 compute；CASEL 自身 factor 0.58，按 `0.58 × 基线算力成本` 估）+ 审批人时 + 维护（γ/阈值/c_base 重标 × 次数 × 人日价）。
+
+**build/buy/不做**：
+
+- build：TCO 如上；收益 = 伤害成本下降 + 审批工时下降 + task success 变化折算。
+- buy：商用护栏/审批产品的报价 + 集成人周；没有 RFQ 就写「待报价」，不要编价。
+- 不做：当前 HSR/审批/伤害成本基线；这是反事实。
+- 决策线：12 个月 `NPV_build = Σ(伤害节省 − 审批成本 + task success 收益)/(1+r)^t − TCO`；`NPV_buy` 同口径（RFQ 报价+集成+迁移/退出）；`NPV_do_nothing=0`。取 argmax；task success 下降 ≤2pp、false-veto ≤5% 是硬约束。没有单价/基线时，只能给公式与敏感性，不能给结论。
+
+### E4 验证设计（两段，不是一次 log-only）
+
+- **Stage 1（2 周，log-only）**：估动作混合、`γ_verify±CI`、coverage–risk；不测 HSR 降幅。
+- **Stage 2（4–6 周，shadow/A-B）**：主指标 HSR；按基线 HSR 与最小可检测差异算样本量；预注册审批率、false-veto、task success 为副指标；成功线「HSR 相对降 ≥30%、审批 ≤10%、task success 不降 >2pp」；失败线「AUC 无差异或 false-veto >5%」；停止线「年省伤害 < 年化(建设+算力+审批人时+维护)」，不是只比审批人力。
+- **功效**：HSR 是稀疏事件，样本量按基线率算；不要用 2 周 log-only 的样本硬判 HSR。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：agent 平台/风控/合规；痛点：不可逆动作的伤害、审批排队、误拦合法动作。
+- **指标**：每千次工具调用的有害副作用（HSR）、审批数/千次、false-veto 率、task success、p95 时延。
+- **反事实**：不上护栏 → HSR 32.76%（模拟）；只 always-verify → task success 高但 compute 1.0；不做多模式 → 审批/算力换 harm。
+- **V3 试点**：单工具集、2 周 log-only；先估 γ_verify 与动作混合，再画 coverage-risk；预注册「p̂ĉ 排序的 selective-risk AUC 显著低于 p̂」；成功 = 审批 ≤10% 且 HSR 相对降 ≥30%、task success 不降 >2pp；失败 = AUC 无差异或 false-veto >5%；停止线 = 年省伤害 < 审批人力成本。
+- **反例**：γ_m 估不准；审批疲劳；动作混合偏离 58/28/14；多步组合后果；模拟与真实流量差异。
+
 ## 7. 质量与边界
 
 - **证据类型**：实证·模拟（受控但非部署）。

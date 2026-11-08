@@ -212,6 +212,73 @@ airline 的工具在 Layer A 里**没有** T1 注释；T1-only 遇到 mutating t
 6. **上线前单独量 false-veto。** 没有 harm/authorization 标签，就不知道拦对了多少。
 7. **按能力分层部署。** 弱模型硬 veto；强模型 advisory/动态门；合法意图主导的动作不要只靠可逆性。
 
+## 6.5 工程配方（E3）
+
+### Layer A 谓词（Datalog 事实）
+
+- `inverse_of(Ta, Tb, Slot, w)`
+- `bounded_reversibility(T, Bound, w)`
+- `compensates(Ta, Tb, LossClass, w)`
+- `irreversibly_consumes(T, EntitySlot)`
+- `external_side_effect(T, SinkClass)`
+
+`w` 是 curator 权重 0–1。**rubric**：1.0=有测试/生产验证的精确逆；0.8=文档化但未测试；0.6=部分可逆/有损；0.3=仅理论可能；0=不可逆。`w_loss` 按损失类别（金钱/时间/数据）给 0–1。
+
+### Layer B 状态投影
+
+- `slot(entity_type, entity_id) = value`；从真实 DB + 已执行工具日志重建；每轮刷新，带 `state_hash`。
+- 反向搜索的 T2 bound 在**当前 state**检查；多步 π 的中间态**不模拟**（论文也不模拟完整 s′）。如果要模拟中间态，需另做 state transition，不能假装已有。
+
+### DecisionPolicy 接口
+
+- 挂载点：pre-tool-call middleware；输入 `(tool, args, state_hash)`；输出 `{decision: APPROVE|VETO|ESCALATE, phi, pi, bottleneck}`。
+- ESCALATE 路由到具名审批队列；VETO 返回可读理由（哪条边/哪个 bound/哪一步 φ=0）。
+- 日志：`{tool, entity, tier, phi, tau, decision, reason}`；没有日志就算不出 false-veto。
+
+### 反向搜索
+
+- 从最近动作往回枚举 undo 边，深度上限 3–5；环路检测；多候选 π 取 `max min φ`，同分取最短。
+- T2 bound 对当前投影检查；T3 用 `w·(1−w_loss)`；T4/T5 直接 0。
+- τ=0.80 是论文的设置；工程上按域保留率/覆盖率校准，不能跨域照搬。
+
+### 成本
+
+- Layer A：每域 2–5 curator 人日（`推测`；论文未测）。
+- Layer B：接 DB/工具日志 1–2 人周（`推测`）。
+- 运行：反向搜索轻量；每次候选调用毫秒级。
+- 阈值校准/false-veto 标注：每域 3–5 人日。
+- 维护：工具/槽位变更后更新本体。
+
+### stop condition
+
+- shadow 回放 false-veto >5% → 降级 advisory 或停。
+- 同轨迹配对 Δ ≤0 且 T1-only 与 full 无差异 → 结构贡献不成立，停。
+- 保留率 <20% 或 >95% → 阈值失效，重校准。
+- 拿不到真实状态投影 → 不做硬 veto。
+
+### 第一个 sprint
+
+2 周、单域 shadow，不接线上写权限：
+
+1. 列 mutating tools/槽位，写 T1/T4/T5 本体 v0 + curator 权重。
+2. 接只读真实状态投影（DB + 工具日志）。
+3. 实现反向搜索 + min-φ + veto 日志；回放 200–500 条历史决策，量保留率。
+4. 抽 100 条 blocked 人工标 false-veto。
+5. 产出：本体 v0、shadow gate、保留率/false-veto 初测、build/buy/不做 memo、同轨迹配对 A/B 方案。
+
+### 替代方案
+
+- blanket veto（最便宜）；事后补偿；LLM-as-judge；现成护栏产品。
+- 论文只与 no guard/blanket/uncertainty 比；没有与这些工程替代同条件成本-效果。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：业务/客服/财务/合规；痛点：不可逆动作（退款、取消、对外发送）造成损失，事后补救贵。
+- **指标**：每千次工具调用的不可逆伤害、false-veto 率、审批/千次、task success。
+- **反事实**：不上门 → 事故/补救成本；上 blanket veto → 误拦合法动作。
+- **V3 试点**：单域 shadow 200–500 决策；成功 = false-veto ≤5%、配对 Δ >0 且 CI 不跨零、审批 ≤10%；失败 = Δ ≤0 或 false-veto >5%；停止线 = 年省事故 < curator+审批成本。
+- **反例**：强模型/retail 回退；合法意图被误拦；状态投影不准；本体没人维护。
+
 ## 7. 质量与边界
 
 - **证据类型**：实证·基准（一手正文）。

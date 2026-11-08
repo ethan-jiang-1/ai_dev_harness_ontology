@@ -166,6 +166,72 @@ claims: [E-06]
 6. **Repair trace 记录。** 检索上下文、候选符号、模板、校验结果、人反馈；否则 repair 退化成重复重生成。
 7. **重测同一 case。** 看是否真的修好；不要只看「换了个说法」。
 
+## 6.5 工程配方（E3）
+
+### 产物 schema
+
+**case table（7 行）**：
+
+| 字段 | 取值 |
+|---|---|
+| `case_id` | 失败样本 id |
+| `variable` | Input sufficiency / Context availability / Grounding complexity / Template fit / Vocabulary coverage / Validation strength / Error observability |
+| `evidence` | 指向输入/输出/拒绝记录的行号或片段 |
+| `friction` | low / medium / high |
+| `redesign_lever` | intent gate / 知识库精化 / 候选排序 / motif 库 / 本体扩展 / 分层校验 / repair trace |
+| `owner` | 产品/本体/平台/标注 |
+
+**repair trace JSON**：`{case_id, retrieved_context[], candidate_symbols[], template_used, validation_results[], human_feedback, change, retest}`。
+
+### 接口
+
+- `intent_gate(input)` → `{sufficient|clarify, missing_slots[], questions[]}`；输入不够先澄清，不硬生成。
+- `validate(dsl)` → `{syntax, type, domain_range, template, semantic}`；前三层可自动，semantic 留人审。
+- `repair(trace)` → 修订/重生成/升级；回灌下一次生成。
+
+### 参数与 stop
+
+- 候选符号截断 10–20；人审抽样 10–20%；单轮诊断 15–20 case。
+- stop：语义充分率提升 <10pp 或人审工时没降 → 换执行反馈/结构化校验路线。
+- 诊断 2 轮仍无改善 → 停，不继续调 prompt。
+
+### 成本
+
+- 标注/诊断：15–20 case × 2 人 × 1–2 小时（`推测`）。
+- 本体上下文/motif 库：1–2 人周（`推测`）。
+- 人审：10–20% case；按每小时审成本算。
+- 维护：本体/motif 变更后重跑。
+
+### 第一个 sprint
+
+2 周、单域、15–20 个失败 case：
+
+1. 保留 input/模型输出/参考输出/拒绝记录。
+2. 把七变量落成带字段 + 三档 + 证据链接的 case 表与 repair trace JSON（这步就是缺失的规格）。
+3. 两名标注者独立打 10 例，测 κ；κ<0.4 先改定义。
+4. 按 §6.4 只修 Input/Context：intent gate 澄清 3–5 问 + 补术语/示例；同 batch 重测。
+5. 预写 go/no-go：语义充分率提升 <10pp 或人审工时没降 → 改走执行反馈/结构化校验。
+
+### 替代方案
+
+- 执行反馈（SQL/求解器报错）、schema 校验器、宿主平台校验；do-nothing。
+- 论文无量化；替代方案无同口径对照。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：本体/数据集成团队；痛点：NL→本体断言反复失败、人工 review 贵、修来修去。
+- **指标**：语义充分率、返工轮次、人审工时/case、首次通过率。
+- **反事实**：不诊断 → 继续换模型/调 prompt；成本高且不可归因。
+- **V3 试点**：单域 15–20 case；成功 = 语义充分率 +10pp、人审工时 −10%、κ≥0.6；失败 = 无提升或 κ<0.4；停止线 = 年省工时 < 诊断/维护成本。
+- **反例**：七变量非正交；profile 不一致；单案例；换任务形态权重不同。
+
+### E4 决策框架
+
+- **TCO** = 诊断/标注 `15–20 case × 2 人 × 1–2 小时` + 本体上下文/motif `1–2 人周` + 人审 + 维护。
+- **收益** = `语义充分率提升 × 返工成本 + 人审工时下降 × 工时价`；先测当前充分率/返工/人审基线。
+- **替代**：build（诊断框架）/ buy（现成 schema 校验/抽取工具）/ 执行反馈 / do nothing。
+- **决策线**：语义充分率 +10pp 且人审工时 −10% 才继续；否则改走执行反馈/结构化校验。
+
 ## 7. 质量与边界
 
 - **证据类型**：立场/经验框架（position paper），单案例，无量化评测。

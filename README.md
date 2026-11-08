@@ -69,9 +69,9 @@
 |---|---|---|
 | [01 约束](./topics/01-constraint/README.md) | 怎么不让它做错事 | 安全是结构问题：问「存在可逆序列吗」 |
 | [02 判定](./topics/02-judgment/README.md) | 怎么知道它做错了 | 判据必须外部且可度量 |
-| [03 知识](./topics/03-knowledge/README.md) | 怎么让它知道得对 | 投影优于查询；编译解决预算不解决准确率 |
+| [03 知识](./topics/03-knowledge/README.md) | 怎么让它知道得对 | 投影 pooled 最高但非普适；编译只省预算、准确率 neutral |
 | [04 状态](./topics/04-state/README.md) | 怎么让它记得对 | 记忆是状态不是集合 |
-| [05 生产](./topics/05-produce/README.md) | 本体从哪来、怎么修 | 来源决定可信度；精化比新建常见 |
+| [05 生产](./topics/05-produce/README.md) | 本体从哪来、怎么修 | 来源影响可信度（推测）；精化比新建常见（推测） |
 | [06 测量](./topics/06-measure/README.md) | 它到底有没有用 | 答对≠内部有本体；失败多归工作流 |
 
 六派是 **4+1+1**：`01-04` 回路内，`05` 回路前，`06` 回路外。底座是 [00-harness](./topics/00-harness/README.md)（控制回路七部件）。三轴说明、边界规则、强度谱见 [topics/README](./topics/README.md)。

@@ -87,11 +87,11 @@ source：subject `Paris`，目标类 `City`，类别属性是「population = …
 | DAS | 0.584 / 0.547 | 0.496 / 0.535 |
 | **MDAS** | **0.592 / 0.587** | **0.513 / 0.542** |
 
-> 出处：Table 2, p.6。各方法按 **Entity Disentangle** 选最佳层/维度，Context 用同一配置（不是对称切分）；SAE 8192/L13、DBM 4096/L10、DAS 1024/L17、MDAS 2048/L17（subclass 侧不同）。Dimension 定义不同（SAE latent width、DBM mask、DAS/MDAS rank），不是同容量对照。原文只报 seed 42、无 CI/方差；0.592 vs 0.584 不宜当稳定排序。
+> 出处：Table 2, p.6。各方法按 **Entity Disentangle** 选最佳层/维度，Context 用同一配置（不是对称切分）；**Iso 只在 base-correct 的 retained 例上评估**：Qwen3-8B 的 target micro 94.7，但 auxiliary micro 仅 64.9（4B 92.4/59.7；subclass 93.0/69.1），所以 Iso 0.674 是在约三分之二属性正确子集上算的；SAE 8192/L13、DBM 4096/L10、DAS 1024/L17、MDAS 2048/L17（subclass 侧不同）。Dimension 定义不同（SAE latent width、DBM mask、DAS/MDAS rank），不是同容量对照。原文只报 seed 42、无 CI/方差；0.592 vs 0.584 不宜当稳定排序。
 
 - 分数是 **Disentangle**，范围 0–1；不是准确率，也不是「本体理解百分比」。
 - **没有方法到 1.0**；单层最好 MDAS 约 0.59，多层最高 0.667。0.59 是 Cause/Iso 的平均分，不等于「59% 的样本同时做到」。
-- DAS/MDAS（分布式子空间）明显优于 SAE/DBM；SAE 在 **instance-of** 上的 Iso 只有 **0.352/0.344**（subclass-of 为 0.210/0.233；Table 2, p.6），说明稀疏特征不等于因果变量。
+- DAS/MDAS（分布式子空间）明显优于 SAE/DBM；SAE 在 **instance-of** 上的 Iso 只有 **0.352/0.344**（subclass-of 为 0.210/0.233；Table 2, p.6），说明稀疏特征不等于因果变量。**MDAS 不是两项都优**：instance-of 上 MDAS Cause 0.527 / Iso 0.658，DAS Cause 0.589 / Iso 0.579；Disentangle 接近时，两者在 Cause/Iso 上反向。
 
 ### 4.2 多任务与多层
 
@@ -141,10 +141,75 @@ source：subject `Paris`，目标类 `City`，类别属性是「population = …
 
 1. 选 20–30 个具体类 + 每个类 1 个辅助属性；类要具体、别用宽泛类。
 2. 造 base/source 成对 prompt：base 问目标类，source 提供另一个类；辅助属性问题不变。
-3. 选 2–3 个中间层（比如 12/18/24 层），用 DAS/MDAS 学 rank 256–512 的子空间。
+3. 选 2–3 个中间层（比如 12/18/24 层），用 DAS/MDAS 学子空间；**单层按论文网格用 rank 1024/2048**，多层用 256×4；不要用 256–512 的单层小 rank 去套 0.40/0.55 阈值（小 rank 下 Cause 会掉，阈值作废，只认随机子空间对照）。
 4. 做互换干预：记录 Cause（目标是否换成 source）与 Iso（辅助属性是否保持 base）；报 Disentangle 与类级分布。
 5. 加一个对照：用随机子空间/随机特征替代学到的 F 做干预；若 Cause 不升高，说明不是 F 在起作用。换辅助属性只影响 Iso，测不出干预是否生效；且只在 base-correct 的 retained 例上评估。
 6. 结论只写「在哪些类/层上可干预、分离到什么程度」，不要写「模型懂/不懂本体」。
+
+## 6.5 工程配方（E3）
+
+### 接口
+
+- **位点**：最后一个 subject subtoken 的 block-output residual；DAS/MDAS 只替换学到的子空间分量，正交补不动；不要把整层激活全部覆盖。
+- **hook**：nnsight / TransformerLens / baukit 任一可拦截 block output；论文没有指定库，MIOE 仓库的入口/配置需按代码核（本 digest 未读仓库，不编造函数名）。
+- **训练目标**：DAS/MDAS 学一个 rank-k 子空间；MDAS 加 auxiliary preservation 损失；单层/多层窗口共用同一接口。
+- **评测**：只在未干预 base 已答对的 retained prompt 上算；按 prompt 模板分组后 macro-average；报 Cause/Iso/Disentangle 与类级分布。
+
+### 数据与 pair 构造
+
+- 选 **20–30 个具体、属性稳定的类**（airport/country/currency/university 这一档）；每类 1 个值域明确的辅助属性；宽泛/异质类（body of water/geographical feature/material）先排除。
+- base 与 source 的**目标类必须不同**；Iso 只检查 **base 侧**辅助属性是否保持，source 的属性问题不必相同。
+- 先记录未干预 base 准确率；base-correct 留存率决定 Iso 可评估池。留存率 <50% 或辅助属性 micro <50% → 这域不适合做机制审计，先停。
+- 规模校准：500 / 2,000 / 8,000 对三档，画数据量-效果曲线；原文是 54,184–55,888 Cause / 68,936–70,872 Iso（instance-of），本 digest 的 20–30 类只有原文约 1/20–1/50，不能假设 0.59 会在小数据上存活。
+
+### 训练参数（Appendix Table 4）
+
+- Qwen3-8B：36 层、hidden 2560–4096；6 epoch、batch 128、seed 42；AdamW，lr 1e-4 constant，weight decay 0；单卡 A100。
+- 论文只报 seed 42、无方差/CI；复现时至少 3 seeds，报 bootstrap CI。
+- 9 个（层×方法）配置的 GPU 时间论文未报；按 8B 冻结、只训子空间参数估 **1–3 GPU 天**、**2 人周**（含数据/评测）——这是 `推测`，不是论文数字。
+
+### 成本
+
+- 建设：20–30 类 × 1 属性 + pair 构造 + 评测脚本，约 2 人周。
+- 运行：单卡 A100，9 配置约 1–3 GPU 天（推测）。
+- 维护：类/属性变更后重跑；模型换族要重做。
+- 人审：类级结果 + 失败案例，约 2–3 人日。
+
+### stop condition
+
+- **中位 Disentangle < 0.40，且随机子空间对照达到其 ≥70%** → 机制尺子在本域不可用；停，转外部判定器/规则校验。
+- **0.40–0.55 且类间方差大** → 只做类级分档（哪些类可用内部可分性筛、哪些必须人审），不做全局门。
+- **> 0.55** → 才值得第二 sprint 做「机制分与下游本体判断错误率的相关性」。
+- 另两条数据停手：base-correct 留存 <50%，或辅助属性 micro <50%。
+
+### 替代方案
+
+- 更便宜：行为 holdout 准确率、paraphrase 稳定性、logit-lens/attention probe、外部判定器。
+- **复用**：论文的 SAE/DBM/DAS/MDAS 实现改编自开源 RAVEL 代码库（Appendix）；「自研方法」与「复用 RAVEL + 只写数据/评测」相差一个数量级。2 人周的估算按复用 RAVEL 算；自研实现另加 4–6 人周（`推测`）。
+- 论文没有做这些与 DAS 的头对头成本-收益；E4 的 build/buy 边界因此只能标 `推测`。
+
+### 失败模式
+
+- 训练不收敛/子空间退化成 no-op；随机子空间对照能抓住。
+- Iso 只在属性正确子集上算，留存率低时分数不可比。
+- 单 seed、无 CI；0.592 vs 0.584 不能当稳定排序。
+- 小数据外推：原文 5 万对，20–30 类只有几千对，0.59 未必存活。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：本体工程师/集成商；痛点：本体判断的 false accept 需要人工 audit，成本高且不可解释。
+- **机制**：用 Disentangle 分档，优先把「高分离度类」自动放行/低风险路由，把低分档类送人审。
+- **指标**：每千条本体判断的 false accept 率、每千条 audit 工时、类级误判率。
+- **反事实**：不做机制测量 → 全量人审，或只用行为准确率（无法区分「答对但内部纠缠」）。
+- **V3 试点**：20–30 类、200–500 条判断；**先测当前全量人审工时/千条与 false accept 基线**（没有分母就不做试点）；预注册「高 Disentangle 类的 false accept 率低于低分档」；成功 = 相对下降 ≥30% 且 CI 不跨零；失败 = 无差异/反向；价值停止线 = 年省人审 < 2 人周则不做。
+- **反例**：若低分档类也被人工全审，分档没有节省；若 base-correct 留存低，Iso 不可比；若类级方差大于档间差异，分档无效。
+
+### E4 决策框架
+
+- **TCO** = 建设（复用 RAVEL 2–4 人周；自研 6–10 人周）+ 运行（1–3 GPU 天 × 单价）+ 人审（2–3 人日）+ 维护。
+- **收益** = `false accept 下降 × 每条 audit 成本 + 事故/返工避免`；基线必须先测「当前每千条 audit 工时 + false accept 率」。
+- **替代**：build（机制审计）/ buy（外部 judge、行为评测）/ do nothing（只看行为准确率）。
+- **决策线**：12 个月收益 > TCO 才做；没有基线先做 2 周基线测量；收益 < TCO 则只保留「别用行为准确率当机制证据」这条禁止性判断。
 
 ## 7. 质量与边界
 

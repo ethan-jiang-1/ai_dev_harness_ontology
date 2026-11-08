@@ -21,17 +21,20 @@ evidence: [E-10]
 
 ## 当前判断
 
-- **本体预测机制上可干预。** 说明存在可定位的内部表征；但**不能与类别辅助信息干净分离**（MDAS 最好 0.592/0.587）。`已核`
-- **没有方法到 1.0。** 「部分分离」可能是表示纠缠，也可能是方法不够强；本文不能区分。`已核`
-- **Distributed subspace > SAE/DBM。** SAE Disentangle 0.412/0.371；DAS 0.584/0.547；MDAS 最强。`已核`
-- **多任务 Iso↑/Cause↓；多层窗口更好。** 四层 DAS 512×4 0.667（+0.102）。`已核`
-- **类级差异大。** 具体/规则类好；宽泛/异质类差；聚合分数掩盖。`已核`
+- **本体预测机制上可干预。** 换掉内部表示能改变本体层答案；存在可定位的内部表征。`已核`
+- **但不能与类别辅助信息干净分离。** 单层最好 MDAS 0.592/0.587（instance-of，Qwen3-8B）；0.59 是 Cause 与 Iso 的平均分，不是「59% 的样本同时做到」；没有方法到 1.0。原因未定（表示纠缠或方法不够强），原文不能区分。`已核`
+- **Distributed subspace > SAE/DBM。** SAE 0.412/0.371、DBM 0.425/0.396，DAS 0.584/0.547、MDAS 0.592/0.587（instance-of 单层 Disentangle）；但 **MDAS vs DAS 不宜排序**：instance-of Entity 上，MDAS 的 Iso 更高（0.658 vs 0.579）、DAS 的 Cause 更高（0.589 vs 0.527）；单 seed 无 CI。`已核`
+- **多任务与多层都提升分离度，但 Δ 口径不同。** 多任务是 best-vs-best 配对差（Iso +0.081 / Cause −0.052），不是整体平均；四层 DAS 512×4 0.667 的 +0.102 是相对同方法同总维的单层（≈0.565，由 0.667−0.102 反推），不是相对 0.584。`已核`
+- **类级差异大，但原文没有可引用的区间。** 类级结果以散点与附录的均值/排名呈现：具体/规则类（airport/country/currency/university）较好，宽泛/异质类（body of water/geographical feature/material）较差；同一类当 base 与当 source 也不同。`已核`
+
+> 口径（`已核`）：各方法按 Entity Disentangle 选配置、Context 复用同一配置；Iso 与 Cause 的评估池不同。小 rank 单层不能套 0.40/0.55 阈值（`推测`，digest 工程线）。
 
 ## 文件地图
 
 | 想知道 | 去 |
 |---|---|
-| 因果抽象/方法/数字/边界 | [mechanism](./mechanism.md) |
+| 因果抽象、方法、数字、类级与 Δ 口径 | [mechanism](./mechanism.md) |
+| 接口、训练参数、成本、stop、第一个 sprint | [mechanism §实施与客户价值](./mechanism.md#实施与客户价值a3a4)、[§stop](./mechanism.md#stop-condition) |
 | 五条判断的证据/边界 | [findings](./findings.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
 | 原始论文 | [MIOE digest](../../../src/papers/2610.38326-mioe/digest.md) |

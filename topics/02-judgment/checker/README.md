@@ -13,7 +13,7 @@ evidence: [E-02]
 
 | 项 | 值 |
 |---|---|
-| 已发现 | 5 条（[findings](./findings.md)） |
+| 已发现 | 6 条（[findings](./findings.md)） |
 | 未发现 / 开放 | 5 条（[frontier](./frontier.md)） |
 | 下一步 | 3 个候选（[frontier](./frontier.md)） |
 | 最后扫描 | 2026-11-08 |
@@ -22,15 +22,18 @@ evidence: [E-02]
 ## 当前判断
 
 - **判定器本身是研究对象。** 不是「有没有本体」，而是「哪种来源、什么代价、漏检/误报怎么换」。`已核`
-- **三种来源无单一向优。** curated 抓得多但 FA 高（precision 57.1%）；data-derived FA 低但 catch 8.2%；LLM 生成不稳定。`已核`
+- **三种来源无单一向优。** 真实答案上 curated catch 18.9%、FA 16.8%；data-derived 8.2%/3.5%；LLM 生成不稳定（同 recipe 不同 draw 差异大；masked 三个 draw 均值 5.0%/1.8%）。precision（人工故障 + 25% 错答案假设）curated 57.1、data-derived 72.3、LLM masked 93.7，不能与真实答案口径混用。`已核`
+- **curated 的 FA 主源是 declaration/domain-range，不是「与数据矛盾」。** 盲审 32 个 FA 的双标注一致项中 undeclared term 17、closed-world 11，data clash 0；Table 5 的矛盾是另一类观察，不能拿来解释 FA。`已核`
 - **先超过空结果重试基线。** 空结果重试在人工 fault 上 catch 79.2%、FA 0%；真实答案上 catch 2.5%、FA 0.1%。`已核`
-- **同源检查会失效。** 同一 artifact 既做 context 又做 checker，catch 反而下降（探索性）；判定器应与被判对象不同源。`已核`
+- **LLM judge 检错更多，但修坏多于修好。** 真实答案 catch 40.3%、FA 16.2%；40 修好 / 83 修坏；curated/data-derived 的结构检查对 changes of meaning 是 0%，judge 能抓这类错；但每条答案一次模型调用，成本/稳定性未测，不能默认更好。`已核`（Appendix C.2 比较器；部署判断 `推测`）
+- **同源检查的 catch 下降是探索性观察。** 同一 artifact 既做 context 又做 checker 时 catch 下降；机制（确认偏差 vs 信息冗余）未定，不能写成「必须不同源」的部署规则。`推测`
 
 ## 文件地图
 
 | 想知道 | 去 |
 |---|---|
-| 三种来源/空结果/同源/成本/失效 | [mechanism](./mechanism.md) |
+| 三种来源/curated FA 归因/空结果/同源（探索性）/失效 | [mechanism](./mechanism.md) |
+| 接口/成本口径/公式、建库参数、curated 审计、LLM judge 分支、部署抽样/客户指标、catch ≥30% 门 | [mechanism](./mechanism.md) |
 | 每条判断的证据/数字/条件 | [findings](./findings.md) |
 | 还缺什么、下一步看什么 | [frontier](./frontier.md) |
 | 原始论文 | `src/papers/2610.37809-what-does-an-ontology-catch/` · [digest](../../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) |
@@ -38,7 +41,7 @@ evidence: [E-02]
 ## 边界
 
 - **只查语义/结构，不查格式/行为。** 格式检查管不到语义；测试管不到语义。
-- **不保证发现语义错。** 类型都对、关系方向反了/边界划错，结构检查抓不到；需要 LLM judge/人工。
+- **不保证发现语义错。** 类型都对、关系方向反了/边界划错，curated/data-derived 的结构检查抓不到（changes of meaning catch 0%）；需要 LLM judge/人工。judge 能抓这类错，但修坏多于修好（F6），不能默认更好。
 - **不解决「该不该阻断」。** 判定只是信号；阻断/退回/仅标注是策略层。
 
 ## 关联

@@ -154,6 +154,71 @@ claims: [05-L6]
 6. **加下游检查。** 描述生成后，让用户/agent 做一次真实任务；否则不知道可消费性。
 7. **增量更新。** 本体变更后重生成；不要留旧说明。
 
+## 6.5 工程配方（E3）
+
+### prompt / 判分规格
+
+- 四阶段 prompt 模板在论文 Fig. 2–9（附录图）；必须照抄要点：DB 权威/web 补充、at least one triple citation、lexicographer 角色、不直接命名 IRI。
+- 生成模型：gpt-4.1-mini（默认）；判分：kimi-k2.5；温度/最大 token 论文未给，工程上固定并记录。
+- 重写 prompt 会丢掉 assumptions 层的前提（win 54–61%），复刻只能到「看起来像」。
+
+### DB context 校验（缺失防线）
+
+- 每条 canonical triple 用 SPARQL ASK 回验；不存在/不一致的丢弃，不进入 assumption 层。
+- 网页 context 只作补充；零命中就只用 DB；assumption 与 DB 冲突 → 丢弃或标 conflict，不静默覆盖。
+
+### 产物 schema
+
+`{iri, description, lang, provenance_triples[], generator_version, reviewed_by, generated_at}`；描述落库为 `rdfs:comment` + 语言标签；保留 triple 引用，便于审计。
+
+- 批处理入口：`generate(iri_list, endpoint, config)`；幂等键 `(iri, ontology_version, generator_version)`；重跑不重复写。
+- 增量：本体变更触发重生成；论文未实现，工程上按变更集重跑。
+- 发布闸门：人工抽检 10–20%；reject 率 >20% 或 accuracy <4.0/5 → 不发。
+
+### 失败路径
+
+- SPARQL 失败/空上下文 → 回退到 web only + 人工；不编造。
+- web 零命中 → 只用 DB；不强行补背景。
+- assumption 与 DB 冲突 → 标 conflict；不让描述层自行裁决。
+- 生成超时/超预算 → 跳过，不写半成品。
+
+### 成本
+
+- 每 IRI：4 个 agent 调用 + 检索；论文无金额；按 token 单价估（`推测`）。
+- 人审：10–20% 抽检，每条 2–5 分钟（`推测`）。
+- 维护：本体变更增量重生成；未实现，按 0.5–1 人日/月估（`推测`）。
+- setup：SPARQL/reasoner/检索 API 集成 1–2 人周（`推测`）。
+
+### 第一个 sprint
+
+2 周、一个真实 endpoint、40 个缺 `rdfs:comment` 的术语（20 class/10 property/10 instance）：
+
+1. 先跑 naive 单跳基线。
+2. 四阶段：state keys `database_context→web_context→assumptions→description`，含 ASK 回验与 assumptions JSON。
+3. gpt-4.1-mini 生成；kimi-k2.5 rubric + 20 条人工盲评。
+4. 记每 IRI token/美元/分钟。
+5. 出口：completeness 相对 naive ≥+0.3、人工 accuracy ≥4.0、每 IRI 成本在预设上限；否则停，不写入本体。
+
+### 替代方案
+
+- naive 单跳；模板 verbalizer；人工撰写；通用 LLM 一次性批量生成；商业本体文档工具。
+- 论文只比 naive/模板；没有与人工/商业工具同口径成本。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：本体/知识图谱团队、新用户/集成方；痛点：术语缺说明、上手慢、集成错误。
+- **指标**：找术语时间、集成错误率、人工撰写工时/术语、描述 completeness/accuracy。
+- **反事实**：不生成 → 人工写或空着；先测当前人工工时/术语。
+- **V3 试点**：40 术语、naive vs 四阶段；成功 = completeness +0.3、人工 accuracy ≥4.0、成本 ≤人工 1/3；失败 = 无提升或成本超；停止线 = 年省撰写工时 < 维护成本。
+- **反例**：DBpedia 上 naive accuracy/clarity 更高；无下游任务；假设层信息损失；本体变更频繁。
+
+### E4 决策框架
+
+- **TCO** = 每 IRI token/检索/4 agent + 人审 10–20% + 维护 `0.5–1 人日/月` + setup 1–2 人周。
+- **收益** = `人工撰写工时下降 × 工时价 + 集成错误率下降 × 修复成本`；先测当前人工撰写工时/术语。
+- **替代**：build（四阶段）/ buy（商业本体文档工具）/ 通用 LLM 批量 / 人工写 / do nothing。
+- **决策线**：`NPV_build > max(NPV_buy, 0)` 且 completeness +0.3、人工 accuracy ≥4.0；buy 用商业工具报价+集成人周，覆盖 <70% 术语类型则不买。TCO 按 `N × 每 IRI 成本 + setup + 12 × 月维护` 算。
+
 ## 7. 质量与边界
 
 - **证据类型**：实证·基准（151 terms，3 KGs，11 annotators）。

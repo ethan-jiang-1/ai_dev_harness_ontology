@@ -144,6 +144,73 @@ Entity resolution（ER）：判断两个 mention 是不是同一实体。agentic
 7. **状态聚合 fail-closed。** BREACH > UNKNOWN > PASS；缺证据/未解决冲突 → defer。
 8. **上线前测 false-defer。** 正确变更被 UNKNOWN 拦住的比例；没有这个数，不知道代价。
 
+## 6.5 工程配方（E3）
+
+### 数据契约
+
+| 对象 | 字段 |
+|---|---|
+| mutation context | `{mutation_id, class: merge|split|unmerge, head_id, target_id, policy_version, snapshot_id}` |
+| required claims | `q_m = [{claim_id, predicate, scope, version}]` |
+| evidence | `{obs_id, claim_id, role: support|contradiction|unresolved, provenance, hypothesis_id, source_id}` |
+| promotion record | `{claim_id, obs_id, role, validation_basis, policy_version, promoted_by, promoted_at}` |
+| verdict | `{PASS|BREACH|UNKNOWN_EVIDENCE, failed_claims[], unresolved[], scope_valid, versions_valid}` |
+
+### 两阶段时序
+
+1. Planner 提 mutation m。
+2. Supervisor 从 m、V_E、policy version 派生 q_m。
+3. 证据进 QUARANTINE/UNVERIFIED；promotion 到 P_auth(q_m, ω)。
+4. Phase 1 授权 proposed mutation；Phase 2 验证 realized candidate；同 snapshot 的 scope/version/graph/evidence。
+5. commit gate：PASS + scope/version valid；否则 defer，不丢弃证据。
+
+### 失败模式表
+
+| 失败 | 信号 | 检测 | 处置 |
+|---|---|---|---|
+| promotion 被绕过 | 直接写 P_auth | 审计 promotion 记录 | 拒绝 commit |
+| scope/version 过期 | version mismatch | 同 snapshot 检查 | defer |
+| 部分提交 | graph 与 evidence 不一致 | 事务/对账 | 回滚 |
+| 同源 lineage 误判 | 多 UNVERIFIED 被当确认 | 共享 query/hypothesis/source | 降级为 UNVERIFIED |
+| policy 本身错 | 规则与域不符 | 专家评审 | 停，修 policy |
+
+### stop condition
+
+- false-defer >20% → 停，放宽 claim 范围或补证据。
+- unresolved conflict >10% → 停，先解决冲突。
+- policy 未评审/版本不可追 → 不做写路径。
+- 无审计存储/无事务 → 不做。
+
+### 第一个 sprint
+
+2 周、单 mutation class（person merge）、20 案例：
+
+1. 写 domain policy：required claims 表（身份证/邮箱/地址/冲突）。
+2. 实现 QUARANTINE→UNVERIFIED→P_auth 状态机 + promotion 记录。
+3. 两阶段 fail-closed gate + 同 snapshot 检查。
+4. 20 条历史/合成案例回放：UNVERIFIED 必须 defer；同源检索不得当确认。
+5. 交付状态机 + 案例报告 + false-defer 初测。
+
+### 成本
+
+- policy/claim 表：2–4 专家人日（`推测`）。
+- 状态机/审计存储：2–3 人周（`推测`）。
+- 人审：false-defer 样本 20–50 条。
+- 维护：policy/本体版本变更重审。
+
+### 替代方案
+
+- 规则引擎/工作流引擎；人工审批；现成 MDM/ER 产品；不做 commit gate。
+- 论文无实现/成本；build/buy 只能给框架。
+
+## 6.6 客户价值假设（V2/V3，`推测`）
+
+- **受益者**：MDM/CRM/身份团队；痛点：错误合并、重复实体、审计不可追。
+- **指标**：false merge 率、false-defer 率、合并审计通过率、每千次合并人审工时。
+- **反事实**：不做 gate → 直接 merge；错误合并长期污染。
+- **V3 试点**：单 mutation class、20–50 案例；成功 = false merge 0、false-defer ≤20%、审计可追；失败 = false-defer >30% 或无法回滚；停止线 = 年省返工 < 建设/维护。
+- **反例**：policy 不全；同源 lineage；无实现；审计成本高。
+
 ## 7. 质量与边界
 
 - **证据类型**：概念架构（无实现/实证）。

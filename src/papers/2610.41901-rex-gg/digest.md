@@ -69,6 +69,47 @@ claims: []
 3. 人工抽 50–100 条，报 precision/recall；不要只报感知准确率。
 4. 让下游 agent 用一次图；看是否真的可消费。
 
+## 6.1 工程配方（E3）
+
+### JSON schema
+
+`{cause, effect, relation: strong|weak|contrast|composition, confidence: 0-1, evidence_span: {start,end,text}}`；关系类型由本体定义；没有 evidence_span 的条目丢弃。
+
+### 匿名互评
+
+- 每个候选关系由 k=3–5 个模型匿名评审，只给关系类型/证据，不给来源模型。
+- 排序：每个 reviewer 给 1–5 分；聚合用中位数/Borda；分歧 >2 分或证据不一致 → 人工复核。
+- 去偏：随机化顺序、隐藏模型名、同一模型不自评；位置偏差用双向顺序各跑一次。
+
+### stop condition
+
+- reviewer 一致性（Krippendorff α）<0.6 → 停，重写 rubric。
+- 人工 100 条 precision <0.7 → 停，不自动放行。
+- 七模型成本 > 单模型+人审的 2× → 退回单模型。
+- 下游 agent 无法消费图 → 只做可视化，不做自动。
+
+### 第一个 sprint
+
+2 周、50 篇英语科普：
+
+1. 七模型输出 JSON；丢弃无 evidence_span。
+2. 匿名互评 k=3；聚合排序。
+3. 人工标 100 条 precision/recall；算成本/延迟。
+4. 让下游 agent 消费一次图，记录能否用。
+5. 出口：precision ≥0.7、成本 ≤单模型 2×；否则停。
+
+### 成本
+
+- 七模型调用：按 token/篇；50 篇 × 7。
+- 互评：k=3 × 候选数。
+- 人工：100 条标注，约 1–2 人日（`推测`）。
+- 维护：schema/ rubric 变更重跑。
+
+### 替代方案
+
+- 单模型 + 人审；传统关系抽取；不做图；商业 KG 工具。
+- 论文无成本对照。
+
 ## 7. 质量与边界
 
 - **证据类型**：工程流水线 + 用户研究（摘要级）。

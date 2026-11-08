@@ -2,66 +2,60 @@
 status: draft
 updated: 2026-11-08
 rq: [RQ4]
-evidence: [E-02]
+evidence: [E-02, E-03]
 ---
 
 # 校准：判定器的曲线与代价
+
+> 判定器给出分数/等级之后。这里问「部署错误率是多少、阈值放哪、catch/FA/代价怎么换」，不重复 [checker](../checker/README.md) 的来源选择与接口。
 
 ## 状态
 
 | 项 | 值 |
 |---|---|
-| 已发现 | 3 条（本页） |
-| 未发现 / 开放 | 4 条（见下） |
-| 下一步 | 2 个候选 |
+| 已发现 | 4 条（[findings](./findings.md)） |
+| 未发现 / 开放 | 4 条（[frontier](./frontier.md)） |
+| 下一步 | 3 个候选（[frontier](./frontier.md)） |
 | 最后扫描 | 2026-11-08 |
-| 覆盖 | 判定器的漏检/误报/校准曲线；薄页，未拆 findings/frontier |
-
+| 覆盖 | catch/FA 口径、precision 的错误率条件、空结果基线、接地等级切片、per-flag 成本；不含 checker 实现与概率校准（ECE） |
 
 ## 问题
 
-判定器的价值不是一个准确率，而是**在什么阈值下、漏掉多少、误报多少、误报后造成多大破坏**。校准（calibration）是这条曲线的另一半：判定器说自己有多确定，和它实际有多准，是不是一回事。
+判定器的价值不是一个准确率，而是**在什么阈值下、漏掉多少、误报多少、误报后修复代价多大**。
 
-E-02 已经给出一个警告：curated 本体在真实 agent 答案上的标记精确度**仅略优于随机**。这不是「本体没用」，而是「判定器的置信度没有校准」。
+校准问的是：判定器的分数/等级在部署错误率 p 下对应多少 precision；阈值该按什么预算定。两篇 digest（Ontology Catch、OA-RAG）都只给单点/切片，没有做概率校准；本页只采用它们支持的口径，不把 ECE/isotonic/temperature 当已核机制。
 
-## 要测什么
+## 当前判断
 
-| 指标 | 问什么 | 为什么不能省 |
-|---|---|---|
-| 漏检率 | 错误产出被放过的比例 | 漏检是「没拦住」 |
-| 误报率 | 正确产出被标错的比例 | 误报会让 agent 去改对的东西 |
-| 误报修复破坏 | 被误标后改坏了多少 | 这是误报的真实代价，不是误报率本身 |
-| 校准误差 | 判定器说 0.8 时，实际正确率是不是 0.8 | 没有校准就无法设阈值 |
-| 域移 | 换域后曲线是否还成立 | E-02 的跨域性未测 |
-
-## 现有证据
-
-- **E-02**：三源本体在漏检/误报上各有偏向；curated 的精确度仅略优于随机。说明「来源」不是单一向优，也说明判定器需要校准。
-- **E-04 / CASEL**：用 reward 量护栏会低估收益；CASEL 改用「有害轨迹率 / 归一化伤害」，并报告人工审批成本。这是「按机制选尺子」的正面例证。
-- **LLM judge 偏差线**（候选 2609.12002）：judge 的能力相关偏差与多 judge 校准；待读。
-
-## 失效模式
-
-- **自评。** 判定器与被判对象同源，置信度没有信息。
-- **阈值漂移。** 换域、换模型后，同一阈值不再适用。
-- **类别不平衡。** 稀有错误被总体准确率淹没。
-- **级联放大。** 前一级误报触发下游大量无效工作。
-- **只报一个数。** 没有 FP/FN 曲线，就无法做取舍。
-
-## 开放问题
-
-- 标注集从哪来、谁标、标多少，才能测出曲线？
-- 校准误差能否用少量人工样本估计？
-- 误报修复的破坏，能否在离线环境复现？
-- 级联判定中，早期误报的放大如何计费？
-
-## 关联
-
-- [02 判定派](../README.md)
-- [checker](../checker/README.md)、[evidence](../evidence/README.md)
-- [06 测量派的尺子](../../06-measure/metrics/README.md)
-- 卡片：[What Does an Ontology Catch](../../../src/papers/2610.37809-what-does-an-ontology-catch/card.md)、[POLAR](../../../src/papers/2610.08082-polar/card.md)、[CASEL](../../../src/papers/2610.36570-casel/card.md)
+- **先分 catch/FA，再谈 precision。** 真实答案（UniProt，3,383 可检查）上 curated catch 18.9%、FA 16.8%；data-derived 8.2%/3.5%；masked LLM 5.0%/1.8%；空结果重试 2.5%/0.1%。`已核`
+- **precision 必须带错误率假设。** 57.1/72.3/93.7 是**人工故障 + 25% 错答案**下的口径，不能与真实答案 catch/FA 拼表；真实答案 precision 论文未直接给。curated 在真实答案上的 precision 只比同率随机 flag 高 +1.6 点（CI −2.3~+6.3，跨零）；data-derived 29.9%（+14.4 点），但 catch 只有 8.2%。`已核`
+- **空结果重试是必须先超过的基线。** 人工 fault 上 catch 79.2%、FA 0%；真实答案 2.5%/0.1%。只有「查询仍有结果但答错」的增量才值得付费；增量 catch <5pp 停（digest 工程门，非论文测量）。`已核`（基线）/ `推测`（5pp 门）
+- **接地等级是粗粒度切片，不是校准曲线。** OA-RAG Qwen Test 3：entailed 94.9%、supported 82.1% 正确率；等级是模型自评、未校准；entailed+supported 占比 >90% 时抽样校准、不自动放行（digest 配方）。`已核`（数字）/ `推测`（stop）
+- **成本按 per-flagged 算，FA 放大成本。** curated 65,976 tokens/46.0 s、data-derived 28,076/17 s（每被 flag 的答案，不是每答案）；`per-1k = flag_rate × per-flagged × 1000`。`已核`
 
 ## 文件地图
 
-本页即 dashboard（薄页，未拆 findings/frontier）；相关：[checker](../checker/README.md)、[metrics](../../06-measure/metrics/README.md)、[feasibility](../../06-measure/feasibility/README.md)。
+| 想知道 | 去 |
+|---|---|
+| catch/FA、precision 条件、空结果基线、等级切片、成本 | [findings](./findings.md) |
+| 判定回路、阈值/抽样/成本/stop/第一个 sprint/V3 | [mechanism](./mechanism.md) |
+| 还缺什么、下一步看什么 | [frontier](./frontier.md) |
+| prompt 与运行记录 | [prompt](./prompt.md) · [runs](./runs/README.md) |
+| 相邻：来源选择/接口 | [checker](../checker/README.md) · [evidence](../evidence/README.md) |
+| 尺子与成本 | [metrics](../../06-measure/metrics/README.md) · [feasibility](../../06-measure/feasibility/README.md) |
+| 原始论文 | [Ontology Catch digest](../../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) · [OA-RAG digest](../../../src/papers/2610.36335-oa-rag/digest.md) |
+
+## 边界
+
+- **不是新的 checker。** 来源、接口、FA 归因在 [checker](../checker/README.md)；这里只定口径、阈值与代价。
+- **不做概率校准。** ECE/可靠性图/isotonic/temperature scaling 不在两篇 digest 的证据范围；若团队要用，属通用工程做法，需自测并另立来源（`推测`）。
+- **digest 只给单点。** Ontology Catch 是 checker on/off 的 catch/FA，不是阈值扫描；OA-RAG 是四级序数，不是连续校准曲线。要选阈值，得自己扫分数（工程配方）。
+- **真实部署没有 ground truth。** precision 不能直接算；只能分层抽样审计 + 报 CI。
+- **域移未测。** UniProt 是唯一 confirmatory；其他图 exploratory；OA-RAG 是生物医学三本体。
+- **同源不等于只能路由。** 同源 context+checker 的 catch 下降是探索性观察（机制未定），不能写成部署规则。
+
+## 关联
+
+- 派：[02 判定](../README.md) · 结论：[E-02](../../conclusions.md) / [E-03](../../conclusions.md)
+- 相邻：[checker](../checker/README.md) · [evidence](../evidence/README.md)
+- 成本：[06-measure/feasibility](../../06-measure/feasibility/README.md)

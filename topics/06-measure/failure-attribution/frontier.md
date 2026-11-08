@@ -16,6 +16,7 @@
 | N1 | 多案例 profile | `NL ontology grounding failure taxonomy` | F1/F2 / G1 | 中 |
 | N2 | 重设计对照 | `ontology grounding redesign ablation` | F3 / G3 | 高 |
 | N3 | rubric | `failure attribution rubric LLM workflow` | F2 / G4 | 中 |
+| N4 | 分桶消融：映射失败 / 候选截断 / 排序错 | `failure attribution bucket mapping truncation ranking` | F5–F7 / G1 | 中 |
 
 ## 最近扫描
 
@@ -29,3 +30,4 @@
 |---|---|---|---|
 | 多案例标注 | 分布 | 待扫描 | N1 |
 | 重设计对照 | 可操作性 | 待扫描 | N2 |
+| 分桶归因消融 | 区分「没进池」与「排错」 | 待扫描 | N4 |
