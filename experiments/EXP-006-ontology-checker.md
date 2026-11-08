@@ -24,6 +24,10 @@ artifact: pending（checker 实现与题库在仓库外）
 | 语义错为主（changes of meaning） | 换 LLM judge/人工，不用结构 checker |
 | 只看 curated 的 catch 高 | 不算数：curated FA 也高，必须同报 FA/成本 |
 
+## D0 gate（D1 前签核）
+
+题库/checker 是否已存在：题库（200 题 + 分层比例 + gold）与 checker 实现必须有一个具名 owner 和路径；都没有 → 本 2 周只建题库/接 KG，不判 go。KG 名称、访问方式、数据版本、题源与 owner 写进预注册表。
+
 ## 设计
 
 - **变量**：checker = 空结果重试（baseline）vs 空结果重试 + data-derived check。
@@ -31,7 +35,7 @@ artifact: pending（checker 实现与题库在仓库外）
 - **被控住的混淆项**：
   - 题库分层：真实错误/人工故障/正确题比例**预注册**；不能事后调。
   - 同一 SPARQL 执行环境；同一数据版本；同一 judge。
-  - 人工复核 50 条，盲于 arm。
+  - 人工复核 100–200 条，盲于 arm；50 条只作 smoke。
 - **主指标**：增量 catch = checker 在「有结果但答错」子集上的额外拦截率（相对空结果重试）；**分母是错误子集，不是 200 题**。
 - **次指标**：FA（正确题被 flag）、per-1k token/工时、告警处置时长。
 - **非对称代价**：漏检（放过错）vs 误报（改坏对）；分开报，不合成 accuracy。
@@ -76,7 +80,7 @@ artifact: pending（checker 实现与题库在仓库外）
 
 | 天 | 做什么 | 交付物 |
 |---|---|---|
-| D1–2 | 冻结 200 题与分层比例；先导测错误率；写 gold/判分 rubric | 题库 v1；错误数预估 |
+| D1–2 | 冻结 200 题与分层比例；先导测错误率；写 gold/判分 rubric；产出预注册表（1 题库 owner + 1 平台） | 题库 v1；错误数预估；预注册表 |
 | D3–4 | 跑空结果重试基线；记录 catch/FA/token/延迟 | baseline 报告 |
 | D5–7 | 生成 data-derived summary + declaration/pattern check；同题跑 checker | checker 日志 |
 | D8–9 | 人工抽 100–200 条盲评；算增量 catch/FA/Wilson CI | 标注表；指标表 |
@@ -87,8 +91,18 @@ artifact: pending（checker 实现与题库在仓库外）
 - **build / buy / 不做**：过门 → 进第二阶段；不过 → 不建 checker，只保留空结果重试。
 - **阈值/流程**：把 FA 预算与 per-1k 成本写进验收；没有空结果基线不立项。
 
+## 预注册（v0，D0 后冻结）
+
+- `protocol_version`: v0；`frozen_at`: pending D0；`frozen_by`: 待签。
+- **H1**：checker 在错误子集上的增量 catch ≥5pp，FA ≤10%，per-1k ≤人工 1/3。
+- **H0**：增量 <5pp，或 FA >15%。
+- **主分析**：错误子集增量 catch + Wilson CI；FA 分正确题；per-1k 用同一单价。
+- **不做的分析**：不把 200 题当分母；不把 FA 10–15% 二选一；不做 optional stopping。
+- **偏离记录**：题库/分层比例/gold/checker 版本任一变更 → 记 `deviations.md`。
+- **冻结件**：本文件 + 题库 v1 + 分层比例 + 预注册表 + 单价表（可空）。
+
 ## 回链
 
-- topics：[02/checker](../../topics/02-judgment/checker/mechanism.md) · [02/calibration](../../topics/02-judgment/calibration/mechanism.md)
-- digest：[Ontology Catch](../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) §6.5/§6.6
+- topics：[02/checker](../topics/02-judgment/checker/mechanism.md) · [02/calibration](../topics/02-judgment/calibration/mechanism.md)
+- digest：[Ontology Catch](../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) §6.5/§6.6
 - 结论：E-02；02-L6

@@ -45,23 +45,23 @@
 
 ## 4. 三个试点的核心设计
 
-### EXP-004 · N&D K1 命名+单位
+### EXP-004 · N&D K0/K1/K2
 
-- **问题**：只做 K1（命名/单位/绑定），能否解决本厂 primary trap？
-- **对照**：K0（原样）vs K1；K2 只在 K1 通过后加。
-- **主指标**：primary-trap avoidance；次指标：element score、排障工时/次。
-- **样本**：3 任务 × 2 模型 × 2 条件 × 3 seeds；任务数才是有效 n，trial 不是。
-- **go**：K1 相对 K0 ≥ +15pp（方向性）；且 K1 已解决多数 trap → 不建塔。
-- **stop**：K1 < +5pp → 先修数据/命名，不进入塔；投影/塔一律后置。
-- **关键**：这是“最便宜的试点”，先证明命名+单位值不值，再谈本体塔。
+- **问题**：K2（塔+投影）相对 K1（命名+单位）的 primary-trap avoidance 是否 ≥15pp；K1 相对 K0 是否已拿到大部分收益？
+- **对照**：K0 原样 vs K1 命名/单位 vs K2 塔+45k 投影；三臂同任务/模型/judge。
+- **主指标**：K2−K1；次指标：K1−K0、element score、排障工时/次。
+- **样本**：3 任务 × 2 模型 × 3 臂 × 3 seeds = 54 trials；有效 n 是 3 任务，trial 不是。
+- **go**：K2−K1 ≥ +15pp、≥2/3 任务同向、3 seeds 同向 → 进 **全塔建设**（K2 臂本身是 1/10 试点塔，不是全塔）。
+- **stop**：K2−K1 < +5pp → 不建塔，只做 K1；K1−K0 < +5pp 且 K2−K1 < +5pp → 先修数据/任务。
+- **关键**：先证明“塔的边际值”，不是拿 K1 的增益替代塔的边际。
 
 ### EXP-005 · action-gate shadow
 
-- **问题**：可逆性路由在 shadow 中能否把 false-veto 控制在 5% 内，并保持 task success？
+- **问题**：可逆性路由在 shadow 中能否把 false-veto 控制在 5% 内？task success 留到 Stage 2。
 - **对照**：无门（记录）vs 门（shadow veto，不执行）；同轨迹配对。
 - **主指标**：false-veto（blocked 中本可合法执行的比例）；次指标：保留率、审批/千次、prevented harm（若有标签）。
 - **样本**：200–500 决策；100 条 blocked 人工标；稀疏事件不判 HSR。
-- **go**：false-veto ≤5%、保留率 20–95%、配对 Δ>0 且 CI 不跨零。
+- **go**：false-veto 的 Wilson 95% 上界 ≤5%、保留率 20–95%、100 条 blocked、κ≥0.6。task success 不在 shadow 判。
 - **stop**：false-veto >5%、保留率 <20%/>95%、状态投影不可得。
 - **关键**：不接线上写权限；没有 false-veto 标签就不算过关。
 
@@ -70,7 +70,7 @@
 - **问题**：data-derived checker 能否在空结果重试之上，提供 ≥5pp 增量 catch 且 FA ≤10%？
 - **对照**：空结果重试 vs 空结果重试 + data-derived check；同 200 题。
 - **主指标**：增量 catch（有结果但答错）；次指标：FA、per-1k token/工时、告警处置。
-- **样本**：200 题；人工抽 50 条复核；混合集比例预注册。
+- **样本**：目标 500 条决策，blocked 过采样到 100 条；复核 100–200 条正确题；混合集比例预注册。
 - **go**：增量 catch ≥5pp、FA ≤10%、per-1k ≤人工 1/3；否则停。
 - **stop**：增量 <5pp 或 FA >15%；语义错为主 → 换 LLM judge/人工。
 - **关键**：先建空结果基线；不要把 curated 的 precision 与真实 catch 拼在一起。
@@ -110,7 +110,7 @@
 | Phase | 内容 | 轮次 |
 |---|---|---|
 | 0 | 冻结试点组合、模板、status | 2–3 |
-| 1 | EXP-004 N&D K1 | 4–6 |
+| 1 | EXP-004 N&D K0/K1/K2 | 4–6 |
 | 2 | EXP-005 action-gate shadow | 4–6 |
 | 3 | EXP-006 checker | 4–6 |
 | 4 | 成本工作簿 + playbook | 4–6 |

@@ -17,9 +17,9 @@
 
 `c = D × T_doc / T0`
 
-`C_total = c × (1 + m × r) + T_recluster`（r=变更率，m=变更轮次，T_recluster=重聚类成本）
+`C_total = c × (1 + m × r) + m × T_recluster / T0`（r=变更率/周期，m=周期数；T_recluster 是每次重聚类 token，乘 m 后除以 T0 折成 query-equivalent）
 
-`p_min = 2.0% + C_total / (0.929 × Q)`
+`p_min = 2.0% + C_total / (0.929 × Q)`（2.0% 是论文取整；精确的 0.019/0.929=2.045% 见 B 式）
 
 `B(Q,c,p_h) = Q × (0.929 × p_h − 0.019) − c`（论文 Eq(8) 的净收益，query-equivalent；p_h 是门接受率）
 
@@ -52,10 +52,10 @@
 
 | 变量 | 低 | 基准 | 高 | 影响 |
 |---|---|---|---|---|
-| `T0` | 5k | 20k | 324,479（论文） | T0 越小，c/p_min 越大；企业短上下文可能 p_min 到几十 % |
+| `T0`（`推测`情景） | 5k | 20k | 324,479（论文） | T0 越小，c/p_min 越大；企业短上下文可能 p_min 到几十 % |
 | `miss penalty` | −1.5pp | 0 | +1.5pp | p_h* 在 0.4–3.6% 间移动 |
-| `Q` | 200 | 1,000 | 10,000 | Q 越小，编译越难回本 |
-| `T_doc` | 50 | 300 | 3,000 | 线性抬 c |
+| `Q`（`推测`量级） | 200 | 1,000 | 10,000 | Q 越小，编译越难回本 |
+| `T_doc`（`推测`量级） | 50 | 300 | 3,000 | 线性抬 c |
 
 ## 2. action-gate / CASEL 护栏
 
@@ -66,8 +66,8 @@
 - 伤害节省/千次 = `(32.76% − HSR) × (1000/L) × incidents_per_harmful_trajectory × cost_per_incident`
 - 审批成本/千次 = `approval_rate × 1000 × minutes_per_approval / 60 × hourly_rate`
 - task success 收益/千次 = `(47.01% − 29.48%) × (1000/L) × value_per_success`（可选）
-- `NPV_build = Σ(伤害节省 − 审批成本 + task success 收益)/(1+r)^t − TCO`
-- `NPV_buy` 同口径（RFQ + 集成 + 迁移/退出）；`NPV_do_nothing = 0`；取 argmax。
+- `NPV_build = Σ_{t=1..12} [(伤害节省/千次 − 审批成本/千次 + task success 收益/千次) × N_12/1000] / (1+r)^t − TCO_12`（N_12=12 个月动作/轨迹量；per-千次先乘 N_12/1000；TCO_12 在 t=0 一次性减）
+- `NPV_buy` 同口径：`RFQ + 集成人周 + 迁移/退出` 进 TCO；收益同 build；`NPV_do_nothing = 0`；取 argmax。
 - 硬约束：task success 降 ≤2pp、false-veto ≤5%。
 
 ### 输入
@@ -83,7 +83,7 @@
 | `hourly_rate` | 人时费率 |  | 财务 | 待填 |
 | `value_per_success` | task success 货币化 |  | 业务 | 待填/可空 |
 | `r` | 折现率 |  | 财务 | 待填 |
-| `build` | 2–4 人周 + 集成 |  | 平台 | 待填 |
+| `build` | 建设人周 + 集成（digest 2–4 人周是推测，不预填） |  | 平台 | 待填 |
 | `compute_base` | 基线算力成本 |  | 平台 | 待填 |
 | `N_12` | 12 个月动作/轨迹量 |  | 业务 | 待填 |
 | `run_12` | 12 个月运行成本 |  | 平台 | 待填 |
@@ -100,7 +100,7 @@
 | 变量 | 低 | 高 | 影响 |
 |---|---|---|---|
 | `cost_per_incident` | 1× | 10× | 线性放大伤害节省 |
-| `minutes_per_approval` | 2 | 15 | 线性放大审批成本 |
+| `minutes_per_approval`（`推测`） | 2 | 15 | 线性放大审批成本 |
 | `HSR` | 5% | 20% | HSR 越低，伤害节省越大 |
 | `false-veto` | 2% | 10% | 超过 5% 硬约束失败 |
 

@@ -18,12 +18,20 @@ artifact: pending（实现产物在仓库外；本文件只放协议）
 
 | 若结果为 A | 则 |
 |---|---|
-| K2−K1 ≥ +15pp，且 ≥2/3 任务同向 | **塔值得建**；E-12 的“塔再 +19.8pp”在本厂成立 |
+| K2−K1 ≥ +15pp，且 ≥2/3 任务同向 | **进全塔建设**；E-12 的“塔再 +19.8pp”在本厂成立（K2 臂是 1/10 试点塔） |
 | K2−K1 < +5pp | **不建塔**；只做 K1 命名+单位，预算转治理 |
 | K2−K1 在 5–15pp | 证据不足；扩任务到 6–9 个再判，不建塔 |
 | K1−K0 < +5pp 且 K2−K1 也 <5pp | 命名与塔都不够；先修数据/任务，不立项 |
 | K1−K0 很大但 K2−K1 很小 | K1 是主收益；塔的边际不值，支持“先做 K1” |
 | 只有 1 个任务同向 | 任务是特例；不外推，回到任务选择 |
+
+## D0 gate（D1 前签核）
+
+- 1 台设备 + 3 个任务卡（ground truth/trap/rubric）。
+- 3 人：1 curator（K2 1/10 塔）、1 后端（投影/日志）、1 领域工程师（任务/评分）。
+- K1 命名/单位审计清单；K2 1/10 塔范围（162 节点）与 45k 投影生成器。
+- 盲评人 2 名 + 仲裁 1 名；judge 版本/温度/prompt 冻结。
+- 任一不过 → 本 2 周只交付任务卡/塔/投影，不跑 54 trials。
 
 ## 设计
 
@@ -84,19 +92,29 @@ artifact: pending（实现产物在仓库外；本文件只放协议）
 
 | 天 | 做什么 | 交付物 |
 |---|---|---|
-| D1–2 | 选 3 任务；写 ground truth/trap/rubric；单位/命名审计 | 任务卡 3 份；K1 变更清单 |
+| D1–2 | 选 3 任务；写 ground truth/trap/rubric；单位/命名审计；定 K2 1/10 塔范围 | 任务卡 3 份；K1 变更清单；K2 范围 |
 | D3–4 | 固化 K0/K1/K2 上下文；冻结 prompt/model/judge/温度；10 条预跑 | 上下文 hash；预注册表 |
 | D5–7 | 跑 54 trials（3 arm × 2 模型 × 3 seeds × 3 任务） | trial log |
 | D8–9 | 双人盲评 + 30 条 judge 校准；算逐任务/逐模型 + κ | 评分表；κ |
-| D10 | 出 go/no-go；写 build/不建塔 memo | 1 页 memo |
+| D10 | 出 go/no-go；写“全塔/只 K1/修数据”memo | 1 页 memo |
 
 ## 会改变哪个决定
 
 - **build / buy / 不做**：K2−K1 过线 → 建塔；否则只做 K1；命名不够 → 先修数据。
 - **阈值/流程**：把“先做 K1、再测 K2 边际”写进本体建设流程；无 K1 审计不立项建塔。
 
+## 预注册（v0，D0 后冻结）
+
+- `protocol_version`: v0；`frozen_at`: pending D0；`frozen_by`: 待签。
+- **H1**：K2−K1 的 pooled primary-trap avoidance ≥ +15pp。
+- **H0**：K2−K1 < +5pp（塔的边际不值）。
+- **主分析**：K2−K1 的 pooled 差值 + 逐任务/逐模型差值；3 seeds 同向；双人评分 κ。
+- **不做的分析**：不把 K1−K0 当塔的门；不做 optional stopping；不因一个任务翻转改 pooled 口径。
+- **偏离记录**：任务替换、模型版本、温度、prompt、rubric 任一变更 → 记 `deviations.md`，不静默改。
+- **冻结件**：本文件 + 任务卡 + 预注册表（D3–4 产出）+ 代码/配置 hash。
+
 ## 回链
 
-- topics：[03/projection](../../topics/03-knowledge/projection/README.md) · [06/feasibility](../../topics/06-measure/feasibility/README.md)
-- digest：[N&D](../../src/papers/2610.11768-narrow-and-deep/digest.md) §6.5/§6.6
+- topics：[03/projection](../topics/03-knowledge/projection/README.md) · [06/feasibility](../topics/06-measure/feasibility/README.md)
+- digest：[N&D](../src/papers/2610.11768-narrow-and-deep/digest.md) §6.5/§6.6
 - 结论：E-12；03-L1；03-L7

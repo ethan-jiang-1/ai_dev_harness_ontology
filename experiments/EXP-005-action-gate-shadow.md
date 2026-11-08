@@ -24,6 +24,17 @@ artifact: pending（shadow 回放/实现产物在仓库外）
 | T1-only≈full 且 false-veto 无改善 | 结构贡献不成立；停，不再建多模式（需另立配对实验） |
 | 拿不到真实状态投影 | 不做硬 veto；只做记录，实验降级为 audit-only |
 
+## 前置条件（不满足就不开跑）
+
+- 一个具名域 + 工具集 + ≥500 条可回放决策；每条带决策时点状态（或可重建的 state_hash）。
+- 只有当前态、没有历史状态 → 不能回放；先补前向 logging，本协议顺延。
+- Layer A 本体 v0 可在 D1–2 建，但必须有具名 owner；没有 owner 或 D0 gate 不过 → 本 2 周只做本体，shadow 顺延。
+- 数据/访问审批已拿到；没有日志访问权 → 不开跑。
+
+## D0 gate（D1 前签核）
+
+具名域/工具集、≥500 条带 state_hash 的日志、本体 owner、访问审批、legal codebook 版本、τ 校准的 held-out 20% 划分。任一项不过 → 本 2 周只交付本体/日志，不判 false-veto。
+
 ## 设计
 
 - **变量**：gate = off（只记录）vs on（shadow：计算 veto/allow，但不真正阻断写操作）。
@@ -53,6 +64,7 @@ artifact: pending（shadow 回放/实现产物在仓库外）
 | `run_id` | string | 平台 | 每次回放 |
 | `decision_id` | string | 平台 | 回放时 |
 | `arm` | off/on | 平台 | 回放时 |
+| `pair_id` | string | 平台 | 回放时（同轨迹配对） |
 | `trajectory_id` | string | 平台 | 回放时 |
 | `tool` | string | 平台 | 回放时 |
 | `args_hash` | string | 平台 | 回放时 |
@@ -62,12 +74,15 @@ artifact: pending（shadow 回放/实现产物在仓库外）
 | `phi` | float | 平台 | 回放时 |
 | `tau` | float | 平台 | 回放时 |
 | `would_execute` | 0/1 | 平台（历史） | 回放时 |
-| `human_legal` | legal/illegal/unknown | 双人盲评 | 标注时 |
+| `rater1_legal` | legal/illegal/unknown | 评审 A | 标注时 |
+| `rater2_legal` | legal/illegal/unknown | 评审 B | 标注时 |
+| `adjudicated_legal` | legal/illegal/unknown | 仲裁 | 分歧时 |
 | `human_harm` | none/minor/major | 双人盲评 | 标注时 |
 | `blocked_pool_size` | int | 平台 | 回放后 |
 | `approval_minutes` | float/blank | 业务 | 若有 |
 | `task_success` | 0/1/blank | 业务 | **仅 Stage 2；shadow 不填** |
 | `reviewer` | string | 标注 | 标注时 |
+| `legal_codebook_version` | string | 领域专家 | 预注册时 |
 
 ## go/no-go
 
@@ -80,7 +95,7 @@ artifact: pending（shadow 回放/实现产物在仓库外）
 
 | 天 | 做什么 | 交付物 |
 |---|---|---|
-| D1–2 | 列 mutating tools/槽位；写 T1/T4/T5 本体 v0 + `w` rubric；在 held-out 20% 校准 τ | 本体 v0；τ 校准记录 |
+| D1–2 | 列 mutating tools/槽位；写 T1/T4/T5 本体 v0 + `w` rubric；在 held-out 20% 校准 τ（1 curator + 1 后端） | 本体 v0；τ 校准记录 |
 | D3–4 | 接只读状态投影（DB + 工具日志）；回放 50 条试跑 | state_hash 表；试跑日志 |
 | D5–7 | 回放 200–500 决策；gate off/on 同轨迹配对 | decision log |
 | D8–9 | 抽 100 blocked 双人盲标；算 κ、false-veto 上界 | 标注表；κ |
@@ -91,8 +106,18 @@ artifact: pending（shadow 回放/实现产物在仓库外）
 - **build / buy / 不做**：false-veto 过门 → 可进第二 sprint；不过 → advisory/不做，不买“硬 veto”。
 - **阈值/流程**：把 false-veto 上界写进上线门；没有 blocked 标签不立项。
 
+## 预注册（v0，D0 后冻结）
+
+- `protocol_version`: v0；`frozen_at`: pending D0；`frozen_by`: 待签。
+- **H1**：false-veto 的 Wilson 95% 上界 ≤5%，且保留率 20–95%。
+- **H0**：false-veto 上界 >5%，或保留率越界。
+- **主分析**：100 条 blocked 的 false-veto 比例 + Wilson 上界；保留率按 500 条决策。
+- **不做的分析**：shadow 不测 task success；不做 optional stopping；不把 escalate 自动算 veto（先定义）。
+- **偏离记录**：域/工具集/τ/本体版本/legal codebook 任一变更 → 记 `deviations.md`。
+- **冻结件**：本文件 + legal codebook v1 + τ 校准记录 + 日志 schema。
+
 ## 回链
 
-- topics：[01/action-gate](../../topics/01-constraint/action-gate/mechanism.md) · [06/feasibility](../../topics/06-measure/feasibility/mechanism.md)
-- digest：[POLAR](../../src/papers/2610.08082-polar/digest.md) §6.5/§6.6 · [CASEL](../../src/papers/2610.36570-casel/digest.md) §6.5/§6.6
+- topics：[01/action-gate](../topics/01-constraint/action-gate/mechanism.md) · [06/feasibility](../topics/06-measure/feasibility/mechanism.md)
+- digest：[POLAR](../src/papers/2610.08082-polar/digest.md) §6.5/§6.6 · [CASEL](../src/papers/2610.36570-casel/digest.md) §6.5/§6.6
 - 结论：E-15、E-04；01-L4/L8/L9/L10

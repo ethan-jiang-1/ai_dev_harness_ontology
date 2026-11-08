@@ -12,21 +12,21 @@
 
 | 周 | 试点 | 关键动作 | 出口 |
 |---|---|---|---|
-| 1–2 | N&D K1 | 3 任务、K0 vs K1、2 模型、3 seeds；单位/命名审计 | K1 ≥15pp → 不建塔；<5pp → 只说明命名不够 |
+| 1–2 | N&D K0/K1/K2 | 3 任务、三臂（K0/K1/K2）、2 模型、3 seeds；单位/命名审计 + 1/10 塔 | K2−K1 ≥15pp → 进全塔建设（K2 臂是 1/10 试点塔）；<5pp → 只做 K1 |
 | 3–4 | action-gate shadow | 200–500 决策；100 blocked 盲标；同轨迹配对 | false-veto 上界 ≤5%、保留率 20–95% |
-| 5–6 | checker | 200 题；空结果重试 vs +data-derived；50 条复核 | 增量 catch ≥5pp、FA ≤10%、成本 ≤人工 1/3 |
-| 7–8 | 成本/决策 memo | 用 [cost-model](../meta/implementation/cost-model.md) 代公式；单价缺就只出 token 账 + 缺口 | 三个试点各一页“能算/不能算”；单价齐才 build/buy/不做 |
+| 5–6 | checker | 200 题（目标 ≥80 错误）；空结果重试 vs +data-derived；100–200 条复核 | 增量 catch ≥5pp、FA ≤10%、成本 ≤人工 1/3 |
+| 7–8 | 成本/决策 memo | 用 [cost-model](../meta/implementation/cost-model.md) 代公式；单价缺就只出 token 账 + 缺口 | 三个试点各一页“能算/不能算”；单价齐才 build/buy/不做；缺单价只交 token 账 + 缺口 |
 | 9–12 | 复盘/扩展 | 只扩跑通的；失败写 frontier；给失败项留重跑/扩样槽 | 是否进第二 sprint/对外 |
 
 ## 2. 三个试点的最小包
 
-### N&D K1（最便宜，先做）
+### N&D K0/K1/K2（先做 K1，但塔的门是 K2−K1）
 
-- **问题**：只做 K1，能否解决 primary trap？
-- **数据**：3 个“答案在文本里”的任务；K0/K1 同设备、同 prompt、同 judge。
+- **问题**：K2 相对 K1 的边际是否 ≥15pp；K1 相对 K0 是否已拿大部分？
+- **数据**：3 个“答案在文本里”的任务；K0/K1/K2 同设备、同 prompt、同 judge；K2 用 1/10 塔 + 45k 投影。
 - **主指标**：primary-trap avoidance；次指标：element score、排障工时/次。
-- **go**：K1 ≥ +15pp，≥2/3 任务同向、3 seeds 同向 → **不建塔**。
-- **stop**：< +5pp → 命名不够；不据此说塔无效，下一步才测 K2。
+- **go**：K2−K1 ≥ +15pp，≥2/3 任务同向、3 seeds 同向 → **进全塔建设**（K2 臂本身是 1/10 试点塔，不是全塔）。
+- **stop**：K2−K1 < +5pp → **不建塔**，只做 K1；K1−K0 < +5pp 且 K2−K1 < +5pp → 先修数据/任务。
 - **协议**：[EXP-004](../experiments/EXP-004-narrow-deep-k1.md)
 
 ### action-gate shadow

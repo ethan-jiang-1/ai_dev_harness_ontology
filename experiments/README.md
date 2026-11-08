@@ -18,9 +18,9 @@ updated: 2026-11-08
 | EXP-001 | 同一 harness 下，结构化工件有没有用 | 设计中 | E-01 / E-08 | [EXP-001](./EXP-001-structured-artifacts.md) |
 | EXP-002 | 判定器的漏检/误报曲线，而非单一 accuracy | 未开始 | E-02 | [EXP-002](./EXP-002-checker-fp-fn.md) |
 | EXP-003 | 同一本体放在不同接缝（上下文/判定/授权）的差异 | 未开始 | E-04 / C-03 | [EXP-003](./EXP-003-seam-position.md) |
-| EXP-004 | 只做 K1 命名+单位，能否解决 primary trap | 设计中 | E-12 / 03-L1 | [EXP-004](./EXP-004-narrow-deep-k1.md) |
-| EXP-005 | 可逆性路由 shadow 的 false-veto 能否 ≤5% | 设计中 | E-15 / E-04 | [EXP-005](./EXP-005-action-gate-shadow.md) |
-| EXP-006 | data-derived checker 能否在空结果重试上提供增量 catch | 设计中 | E-02 | [EXP-006](./EXP-006-ontology-checker.md) |
+| EXP-004 | K0/K1/K2：塔的边际是否 ≥15pp | v0 draft | E-12 / 03-L1 | [EXP-004](./EXP-004-narrow-deep-k1.md) |
+| EXP-005 | 可逆性路由 shadow 的 false-veto 能否 ≤5% | v0 draft | E-15 / E-04 | [EXP-005](./EXP-005-action-gate-shadow.md) |
+| EXP-006 | data-derived checker 能否在空结果重试上提供增量 catch | v0 draft | E-02 | [EXP-006](./EXP-006-ontology-checker.md) |
 
 ## 状态
 
