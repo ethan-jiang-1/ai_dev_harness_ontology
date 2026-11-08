@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 摘要级
 provenance: 原文摘要
-updated: 2026-11-07
+updated: 2026-11-08
 arxiv: 2610.41785
 title: Peeling the Matryoshka: Extracting Ontological Structure from Retrieval Embeddings
 authors: Eunchan Kim（汉阳大学）
@@ -15,6 +15,8 @@ updates: []
 ---
 
 # Peeling the Matryoshka
+
+> **这是来源卡，不是消化正文。** 机制、数字、判断、工程用法都在同目录 [digest.md](./digest.md)；下游默认只读 digest。
 
 ## 做了什么
 
@@ -48,3 +50,8 @@ updates: []
 
 - [ ] 非 MRL 嵌入是否有类似信号
 - [ ] 抽出的层级与人工本体在**约束**上的差距
+
+## 原文
+
+- PDF：同目录 `2610.41785-peeling-matryoshka.pdf`
+- arXiv:2610.41785

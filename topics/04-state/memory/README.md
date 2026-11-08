@@ -1,71 +1,47 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-08
 rq: [RQ3]
-evidence: [E-05]
+evidence: [E-05, E-17]
 ---
 
-# 时刻 5 · 跨轮
+# 跨轮记忆：状态，不是事实集合
 
-## 位置
+> 一个回合结束、下一个回合开始时。这里问「记忆以什么形式存在、怎么对齐/更新/冲突、当前请求怎么用」，不负责哈希链的确定性（[determinism](../determinism/README.md)）。
 
-一个回合结束、下一个回合开始时。此处没有立即的动作，失真是缓慢累积的。
+## 状态
 
-## 核心区分：事实集合 vs 状态
+| 项 | 值 |
+|---|---|
+| 已发现 | 4 条（[findings](./findings.md)） |
+| 未发现 / 开放 | 5 条（[frontier](./frontier.md)） |
+| 下一步 | 3 个候选（[frontier](./frontier.md)） |
+| 最后扫描 | 2026-11-08 |
+| 覆盖 | 跨会话/跨期记忆；不含单轮上下文压缩（[00-harness/context](../../00-harness/context.md)） |
 
-| | 事实集合（常见做法） | 状态（本仓库主张） |
-|---|---|---|
-| 单元 | 一条独立事实 | 事实 + 它与其他事实的关系 |
-| 冲突 | 并存，无人裁决 | 显式记录，直到被解决 |
-| 失效 | 无失效条件 | 每条带失效条件与时间 |
-| 使用 | 检索回一堆条目 | 按当前请求筛选可用子集 |
+## 当前判断
 
-丢掉关系之后，模型每轮都要重新做一遍一致性推导，且每轮结论可能不同——这直接导致多次运行不收敛（见 [determinism](../determinism/README.md)）。
+- **本体在记忆里是克制的：对齐与印证条件，不是自由推理。** FIRME 用固定 product-topic 本体 + registry 做跨期身份；本体改动只影响槽位/条件。`已核`
+- **身份先于内容。** alias memory 让 final-period CMR +7.8–12.1 pp；false merge 会长期污染。`已核`
+- **增益在「会用」，不在「检索更多」。** EvoMemState Complete Retrieval 85.6%（MemoryBank 86.4，相当），但 Acc@complete 70.8 vs 36.8。`已核`
 
-## 本体在此的角色：克制
+## 文件地图
 
-值得注意的实现取向：**本体不承担自由推理；它承担对齐与印证条件。**
+| 想知道 | 去 |
+|---|---|
+| 事实 vs 状态/两层状态/失效 | [mechanism](./mechanism.md) |
+| 四条判断的证据/数字 | [findings](./findings.md) |
+| 还缺什么、下一步 | [frontier](./frontier.md) |
+| 原始论文 | [FIRME digest](../../../src/papers/2610.40482-firme/digest.md) · [EvoMemState digest](../../../src/papers/2611.03743-evomemstate/digest.md) |
 
-- 定义哪些是实体、哪些关系可被推翻、冲突如何表示
-- 不定义通用推理规则，不要求运行时推导任意隐含结论
-- 但对关键关系的赋值可以设条件（例如两种模态互相印证时才成立）
+## 边界
 
-这个克制让系统可维护：本体改动只影响槽位与印证条件，不扩散成不可控的推理路径。反过来，一旦让本体承担自由推理，槽位变更就会引发不可预测的行为变化。
+- **不定义通用推理规则。** 本体只定义实体/关系/冲突表示与关键印证条件。
+- **不把「未匹配」当「关系结束」。** 衰减不是删除；miss 可能是输入缺失。
+- **不解决跨模态。** 两篇都是文本记忆；文档/图片/artifact 未测。
 
-> 一手正文（[FIRME card](../../../src/papers/2610.40482-firme/card.md) / [digest](../../../src/papers/2610.40482-firme/digest.md)，`已核`）：金融记忆图用固定 product-topic 本体加 registry 做跨期身份对齐；alias memory 让 final-period CMR 提升 **7.8–12.1 pp**（4 settings），human audit 的 reattachment recall 提升 **22.5–29.0 pp**；semantic matching token 降 **40.3%**。本体承担的是**对齐与印证条件**，不是自由推理 → [E-05](../../conclusions.md)
+## 关联
 
-**FIRME 的三个可直接借用的设计**：
-
-1. **身份先于内容。** registry 分层匹配（ID → 规范化名 → alias → 语义 fallback），错误匹配会把后续观察路由到错误历史。
-2. **topic 与 product 分开。** 主题讨论可以印证多个产品，但不合并身份；印证是引用，不是覆盖。
-3. **未匹配 ≠ 结束。** `σ=0.8σ` 衰减、边不删除、Fading 后可 Reactivated；但作者也承认「未匹配」可能是输入缺失/没有观察机会。
-
-## 两层状态
-
-EvoMemState（一手正文，`已核`）给出一个可复用的拆分：
-
-| 层 | 内容 | 由谁维护 |
-|---|---|---|
-| 关系状态 | 事实的有效性/scope、更新/冲突/约束 | 本体引导归纳 |
-| 推理状态 | 当前请求该用哪些事实、什么角色/优先级 | 策略内化（GRPO 训练） |
-
-前者是结构，后者是策略。混在一起会导致结构每次随请求变化，无法审计。
-
-**关键数字**：Complete Retrieval Rate 85.6%（MemoryBank 86.4，相当），但 Acc@complete **70.8 vs 36.8**（LoCoMo-Refined）；MemSyco Acc@complete 68.5，比最强 baseline +31.2。去掉 Relational State：MemSyco −8.9、MemTrap −6.4；去掉 Reasoning State：−8.0 / −15.0；去掉 RL：−7.9 / −16.4。**增益在「会用」，不在「检索更多」。**
-
-## 失效模式
-
-- **过期事实不失效。** 新值覆盖旧值但无版本，历史结论的依据消失。
-- **记忆污染不可逆。** 一次错误结论进入记忆后被当作前提，错误会自我强化。
-- **检查点粒度错配。** 检查点落在「任务完成」，而真正需要的回滚点是「错误分支开始处」。
-- **身份漂移。** 同一实体跨期未对齐，历史证据挂不上新版本（需 registry 锚定）。
-- **错误合并的长期污染。** 一个 false merge 会把后续同名观察路由到错误 anchor，且很难回滚；merge precision 必须和 CMR 一起看。
-- **把「未观察到」当「关系结束」。** 衰减不是删除；但也不能把 miss 解释成负信号。
-
-## 开放问题
-
-- 状态结构能否由本体自动生成？若可以，本体就必须先于任务存在——这对冷启动是硬约束。
-- 冲突应阻塞推进，还是带冲突推进并标注？对应两种产品语义。
-- 记忆压缩与上下文压缩是同一问题吗？若是，可共用「判据保护」机制（见 [context](../../00-harness/context.md)）。
-- 衰减/强化参数能否按 entity/relation 学习，而不是全局 α/γ/N？
-- false merge 如何检测与回滚？需要什么样的审计轨迹？
+- 派：[04 状态](../README.md) · 结论：[E-05 / E-17](../../conclusions.md)
+- 相邻：[identity](../identity/README.md) · [determinism](../determinism/README.md)
+- 上下文：[00-harness/context](../../00-harness/context.md)

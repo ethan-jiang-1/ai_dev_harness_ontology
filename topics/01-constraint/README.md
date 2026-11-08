@@ -18,8 +18,8 @@ POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是�
 | 子主题 | 回答什么 | 状态 | 已发现 / 未发现 | 先读 |
 |---|---|---|---|---|
 | [action-gate](./action-gate/README.md) | 动作前：可逆性够不够、该分配多少审查 | `draft`，已拆 F/G | 6 F / 4 G | dashboard → findings |
-| [commit-gate](./commit-gate/README.md) | 落盘前：证据够不够授权持久化 | `seed`，概念规范 | 2 F / 3 G | dashboard / 规范 |
-| [reasoning-gate](./reasoning-gate/README.md) | 推理期：结论能不能取用 | `draft`，机制页 | 3 F / 3 G | dashboard / 机制 |
+| [commit-gate](./commit-gate/README.md) | 落盘前：证据够不够授权持久化 | `seed`，已拆 F/G | 4 F / 4 G | dashboard |
+| [reasoning-gate](./reasoning-gate/README.md) | 推理期：结论能不能取用 | `draft`，已拆 F/G | 4 F / 4 G | dashboard |
 
 ## 本派当前判断
 

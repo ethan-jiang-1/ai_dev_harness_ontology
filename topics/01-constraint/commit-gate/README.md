@@ -1,83 +1,48 @@
 ---
 status: seed
-updated: 2026-11-07
+updated: 2026-11-08
 rq: [RQ2, RQ4]
+evidence: [E-05]
 ---
 
-# 时刻 4 · 持久化前
+# 持久化前：推理证据 ≠ 授权证据
 
-## 位置
+> 变更即将落盘或写入外部系统的那一刻。前面都是「推理」，这里是唯一「改变世界」的时刻；这里问「什么证据才有权推动持久化」。
 
-变更即将落盘或写入外部系统的那一刻。前面所有环节都是「推理」，这里是唯一「改变世界」的时刻。
+## 状态
 
-## 核心区分
-
-本仓库认为最值得研究的一条治理命题：**推理可用的证据**与**有权推动持久化变更的证据**是两个不同的判据。
-
-| | 推理证据 | 授权证据 |
-|---|---|---|
-| 要什么 | 能支持假设 | 必须同时满足：证据齐、冲突清、版本有效 |
-| 不足时 | 结论标为低等级 | 拒绝 commit |
-| 谁定 | 本体定义的证据类型 | 本体定义的授权谓词 |
-
-把它们混成一个判据，会得到两种失败：要么过度保守（推理阶段就要求授权级证据，导致寸步难行），要么错误落盘（推理级证据直接放行）。
-
-## 机制：三段式放行 + 证据状态机
-
-1. **证据齐** —— 本体要求的证据类型是否都在场。
-2. **冲突清** —— 已识别的冲突是否被显式解决，而非被忽略。
-3. **版本有效** —— 依据的版本是否仍是当前版本。
-
-三条全过才允许持久化。任何一条不满足时，产出保留在「待定」状态而不是被丢弃——丢弃会丢失已经获得的证据。
-
-**Commit Boundary 把它细化为状态机**：
-
-| 状态 | 含义 |
+| 项 | 值 |
 |---|---|
-| `QUARANTINE_EVIDENCE` | 有 admission conflict/indeterminate，暂不可见 |
-| `UNVERIFIED` | 可进 Planner 推理；**不是** positive authorization support |
-| `P_auth(q_m, ω)` | 对特定命题、观察域、policy version 有授权资格 |
-| `PASS` / `BREACH` / `UNKNOWN_EVIDENCE` | 三态结论；`BREACH` > `UNKNOWN` > `PASS` |
+| 已发现 | 4 条（[findings](./findings.md)） |
+| 未发现 / 开放 | 4 条（[frontier](./frontier.md)） |
+| 下一步 | 3 个候选（[frontier](./frontier.md)） |
+| 最后扫描 | 2026-11-08 |
+| 覆盖 | 落盘前的授权契约；不含动作前（action-gate）与推理期（reasoning-gate） |
 
-**四条 promotion 规则**（原文 §5.3）：
+## 当前判断
 
-- 评估**具体命题**，不是文档相关性/查询匹配。
-- 不把 Planner 置信度、LLM `verified` 标签、多个 `UNVERIFIED` 重复当授权证据。
-- **不因为 hypothesis 诱导了检索就把结果当独立确认**；同源 query/hypothesis 不算 corroboration。
-- 不从「没检测到冲突」推断 positive support。
+- **推理证据 ≠ 授权证据。** 能支持假设，不等于有权推动持久化变更；`UNVERIFIED` 可进 Planner，但不能当 positive authorization support。`已核`（概念架构）
+- **提交条件要显式化。** 证据齐、冲突清、版本有效，三条全过才 commit；不是交给模型自觉。`已核`（设计规范）
+- **同源检索不是独立确认。** hypothesis 诱导的多个结果不能互相印证；「没检测到冲突」也不是 positive support。`已核`（概念）
+- **只有设计，没有实现。** Commit Boundary 自述无实现、无实证；保证是条件性的，只能作设计提案。`已核`
 
-**两阶段**：Phase 1 授权 proposed mutation；Phase 2 验证 realized candidate；commit 时 scope/version/graph/evidence 必须在同一 snapshot。
+## 文件地图
 
-## 证据：只有设计，没有验证
+| 想知道 | 去 |
+|---|---|
+| 三条件/状态机/promotion/失效 | [mechanism](./mechanism.md) |
+| 四条判断的证据/边界 | [findings](./findings.md) |
+| 还缺什么、下一步 | [frontier](./frontier.md) |
+| 原始论文 | [Commit Boundary digest](../../../src/papers/2610.37407-commit-boundary/digest.md) |
 
-这条边界的完整论述有一篇专门的论文（[Commit Boundary](../../../src/papers/2610.37407-commit-boundary/card.md)），但它**自述是「无实现、无实证验证的概念架构」**，且保证是条件性的——依赖充分的域策略、可靠的 claim 级证据晋升、忠实的强制执行。
+## 边界
 
-所以它在本仓库里只能作**设计提案**引用，不能作证据。五条可迁移的判断：
+- **不是动作前拦截。** 它管落盘/持久化，不管工具调用是否执行。
+- **不是已验证效果。** 无实现、无 false-defer 率；引用时必须标「概念架构」。
+- **不控制上游检索。** hypothesis-conditioned retrieval 不在架构内；dependency-aware lineage 是 future work。
 
-1. 把「冲突已解决」「版本仍有效」写进提交条件，而不是留给模型自觉。
-2. 区分「进入系统」与「有权改变系统」——多数设计把两者合并。
-3. 支持不足时**延后**而不是丢弃，保留已获得的证据。
-4. **「可推理」≠「可授权」**：`UNVERIFIED` 可以进推理，但不能当授权证据。
-5. **同源检索不是独立确认**：hypothesis 诱导的多个结果不能互相印证；这是 agentic ER 的核心失败模式，也是本文承认的上游漏洞。
+## 关联
 
-## 为什么这个位置最硬
-
-- **不可逆。** 落盘之后的错误只能靠补救，成本高一个量级。
-- **判据可形式化。** 「证据是否齐备」是集合判断，「版本是否有效」是时间比较，都不需要模型自评。
-- **可审计。** 每次拒绝都留下一条结构化原因，形成可复盘的授权轨迹。
-
-## 失效模式
-
-- **授权即全信。** 一次批准覆盖了整个会话，后续变更继承该批准。
-- **冲突被静默消解。** 系统倾向「选一个」，而不是「记录冲突并阻塞」。
-- **版本失效未检测。** 依据在推理期间被更新，落盘时用的是过期证据。
-- **待定状态不可见。** 被阻塞的变更没有队列，等于被静默丢弃。
-- **把「没有冲突」当「支持」。** 没检测到冲突只是没检测到，不是 positive support。
-- **依赖链未记录。** 架构不控制 hypothesis-conditioned retrieval；没有 dependency-aware lineage，promotion 仍可能被污染。
-- **Policy/promotion 正确性外包。** 架构只保证「按 contract 执行」，不保证 contract 本身对。
-
-## 开放问题
-
-- 授权判据应由谁执行：本体查询、独立判定器，还是硬编码流程？三者的可维护性差异很大。
-- 「冲突清」在什么条件下可以降级为「冲突已标注」？医疗与金融显然不同。
-- 被阻塞的变更如何重新进入流水线，而不必从头推理？
+- 派：[01 约束](../README.md) · 结论：[E-05](../../conclusions.md)
+- 相邻：[action-gate](../action-gate/README.md) · [reasoning-gate](../reasoning-gate/README.md)
+- 记忆写入：[04 memory](../../04-state/memory/README.md) · [identity](../../04-state/identity/README.md)

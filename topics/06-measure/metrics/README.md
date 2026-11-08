@@ -1,49 +1,48 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-08
 rq: [RQ4]
 evidence: [C-03]
 ---
 
-# 尺子四：用错了尺子
+# 用错了尺子：按机制分派指标
 
-## 问题
+> 文献里「本体有用」与「本体无用」长期并存；多数不是相反结论，而是**用不同的尺子量不同的机制**。这里问「什么机制该用什么指标」。
 
-文献里「本体有用」与「本体无用」两类证据长期并存。本仓库的读法是：**它们大多不是对同一件事的相反结论，而是用了不同的尺子去量不同的机制。**
+## 状态
 
-## 四种量错，四个案例
+| 项 | 值 |
+|---|---|
+| 已发现 | 4 条（[findings](./findings.md)） |
+| 未发现 / 开放 | 4 条（[frontier](./frontier.md)） |
+| 下一步 | 3 个候选（[frontier](./frontier.md)） |
+| 最后扫描 | 2026-11-08 |
+| 覆盖 | 指标选择/度量错配；不含具体 trace/mechanism 分析（见同派子页） |
 
-| 机制 | 常用尺子 | 为什么错 | 更好的尺子 |
-|---|---|---|---|
-| 闸门 / 授权（01） | 任务奖励、准确率 | 被拦住的伤害不会体现在奖励里；护栏还会误剪合法动作 | 不可逆错误的拦截率、误剪率、审批量 |
-| 判定器（02） | 判定准确率 | 掩盖漏检与误报的非对称代价 | 漏检/误报曲线 + 「被误标后修坏」计数 |
-| 知识供给（03） | 基准准确率 | 基准看不见治理、集成、上手这些回报 | 部署指标 + token/轮次/时延等过程指标 |
-| agent 配置（06） | 单次 run 的 score | 54% 方差来自 run-to-run 噪声；配置轴交互 | 重复采样 + completion + cost + calibration + variance |
+## 当前判断
 
-## 四个一手证据
+- **度量错配会让结论反向，不只是失真。** POLAR 用 reward 量护栏：18 组仅 8 组改善；但 reward 不是防伤害度量。`已核`
+- **非对称代价必须分开报。** checker 的 catch 18.9% / FA 16.8% / precision 57.1%；只报 accuracy 会把「多抓错、多杀对」混在一起。`已核`
+- **输出正确会掩盖过程无效。** SLB：85% 轨迹、24% token，输出评估区分不出 hardcoded 与 independent。`已核`
+- **单次 score 不可靠。** Agents are Systems：54% 方差来自重复同一配置；必须重复采样 + 报 completion/cost/calibration。`已核`
 
-1. **POLAR**：reward 衡量护栏，18 个组合仅 8 个改善，看着像失败；但作者说 reward 不是防止伤害的度量。**护栏的目标是「不发生」，reward 只能度量「发生了且做对了」。**
-2. **Ontology Catch**：curated checker 的 catch 18.9%、false alarm 16.8%、precision 57.1%；只看 accuracy 会把「多抓错、多杀对」混在一起。
-3. **SLB**：程序跑对不代表在搜索；85% 轨迹有 SLB、24% token 是 SLB，输出评估区分不出 hardcoded 与 independent。
-4. **Agents are Systems**：54% 的 score variance 是重复同一配置的噪声；单次跑分不可靠；Information 轴的影响 > 模型大小/预算；提示自检几乎不改变行为，给验证工具才会。
+## 文件地图
 
-## 由此得到的方法要求
+| 想知道 | 去 |
+|---|---|
+| 四种量错/方法要求 | [mechanism](./mechanism.md) |
+| 四条判断的证据/数字 | [findings](./findings.md) |
+| 还缺什么、下一步 | [frontier](./frontier.md) |
+| 相关子页 | [trace](../trace/README.md) · [mechanism](../mechanism/README.md) · [failure-attribution](../failure-attribution/README.md) |
 
-1. **先声明机制的失效形态，再选指标。** 是「做错」还是「没做」？是「慢」还是「不准」？是「内部没有」还是「输出对了」？
-2. **主指标 + 过程指标并报。** 只看一个数，任何机制都能被证成无用。
-3. **报告非对称代价。** 漏检与误报不能合并成一个「准确率」；审批量与 false-veto 要单独报。
-4. **重复采样 + 方差。** 至少 5 runs/config；报 CI、completion、cost、calibration；单次 score 不够。
-5. **能读中间。** 对 formalizer 看 trace；对 agent 看轨迹；对 checker 看 catch/FA；对记忆看 retrieval completeness 与 conditional accuracy。
-6. **按配置轴做敏感性分析。** 至少变信息、预算、模型；看交互，不要一次只动一个。
+## 边界
 
-## 一个具体的例证
+- **不是「换一个指标就好」。** 要先声明机制的失效形态；指标跟着失效形态走。
+- **不是「所有机制都要过程指标」。** 有些机制（动作闸门）的终点是不可逆错误，不是过程。
+- **没有统一评分卡。** 目前只有按机制分派的雏形，未做成实验。
 
-POLAR 用 reward 衡量护栏：18 个组合仅 8 个改善，看着像失败。但作者自己指出 reward 不是防止伤害的度量——**护栏的目标是「不发生」，而 reward 只能度量「发生了且做对了」。**
+## 关联
 
-这种量错不会让数字失真，会让**结论反向**。
-
-## 开放问题
-
-这是本仓库**最大的空缺**：还没有一套「按机制类型分派指标」的可操作方案。目前只有上表这个雏形。
-
-下一步应当是把它做成实验设计（[EXP-003](../../../experiments/README.md)）：同一份本体放三个位置，只用各自合适的尺子量，看结论是否与混用尺子时相反。另一个空缺是**配置方差**：本仓库还没有在自有实验里估计 run-to-run 噪声。
+- 派：[06 测量](../README.md) · 冲突：[C-03](../../conclusions.md)
+- 实验：[EXP-003](../../../experiments/README.md)
+- 成本：[feasibility](../feasibility/README.md)

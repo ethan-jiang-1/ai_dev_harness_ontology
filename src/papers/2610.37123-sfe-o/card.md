@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 摘要级
 provenance: 原文摘要
-updated: 2026-11-07
+updated: 2026-11-08
 arxiv: 2610.37123
 title: SFE-O: An Ontology for Knowledge-Grounded AI in Supercritical CO2 Biomass Extraction and Fractionation
 authors: Thomas Pallet, Mario Lezoche, Gianpaolo Leone, et al.
@@ -15,6 +15,8 @@ updates: []
 ---
 
 # SFE-O
+
+> **这是来源卡，不是消化正文。** 机制、数字、判断、工程用法都在同目录 [digest.md](./digest.md)；下游默认只读 digest。
 
 ## 做了什么
 
@@ -51,3 +53,8 @@ updates: []
 
 - [ ] 「参数溯源」的建模方式（值得抄）
 - [ ] SHACL 化之后的约束覆盖
+
+## 原文
+
+- PDF：同目录 `2610.37123-sfe-o.pdf`
+- arXiv:2610.37123

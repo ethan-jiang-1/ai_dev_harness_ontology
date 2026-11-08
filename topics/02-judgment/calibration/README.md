@@ -1,11 +1,22 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-08
 rq: [RQ4]
 evidence: [E-02]
 ---
 
 # 校准：判定器的曲线与代价
+
+## 状态
+
+| 项 | 值 |
+|---|---|
+| 已发现 | 3 条（本页） |
+| 未发现 / 开放 | 4 条（见下） |
+| 下一步 | 2 个候选 |
+| 最后扫描 | 2026-11-08 |
+| 覆盖 | 判定器的漏检/误报/校准曲线；薄页，未拆 findings/frontier |
+
 
 ## 问题
 
@@ -50,3 +61,7 @@ E-02 已经给出一个警告：curated 本体在真实 agent 答案上的标记
 - [checker](../checker/README.md)、[evidence](../evidence/README.md)
 - [06 测量派的尺子](../../06-measure/metrics/README.md)
 - 卡片：[What Does an Ontology Catch](../../../src/papers/2610.37809-what-does-an-ontology-catch/card.md)、[POLAR](../../../src/papers/2610.08082-polar/card.md)、[CASEL](../../../src/papers/2610.36570-casel/card.md)
+
+## 文件地图
+
+本页即 dashboard（薄页，未拆 findings/frontier）；相关：[checker](../checker/README.md)、[metrics](../../06-measure/metrics/README.md)、[feasibility](../../06-measure/feasibility/README.md)。

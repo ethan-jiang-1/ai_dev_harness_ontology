@@ -1,11 +1,22 @@
 ---
 status: seed
-updated: 2026-11-07
+updated: 2026-11-08
 rq: [RQ3]
 evidence: [E-06, E-07]
 ---
 
 # 时刻 6 · 跨运行
+
+## 状态
+
+| 项 | 值 |
+|---|---|
+| 已发现 | 3 条（本页） |
+| 未发现 / 开放 | 3 条（见下） |
+| 下一步 | 2 个候选 |
+| 最后扫描 | 2026-11-08 |
+| 覆盖 | 跨运行一致性/漂移；薄页，未拆 findings/frontier |
+
 
 ## 位置
 
@@ -59,3 +70,7 @@ evidence: [E-06, E-07]
 - 结构比对能否自动化到可用？需要本体提供可比较的投影。
 - 逐次运行的一致性，与单次的正确性，孰先优化？
 - 本体能否作为「测试集」——一组必须成立 / 必须不成立的事实对？
+
+## 文件地图
+
+本页即 dashboard（薄页，未拆 findings/frontier）；相关：[memory](../memory/README.md)、[trace](../../06-measure/trace/README.md)、[00-harness/context](../../00-harness/context.md)。

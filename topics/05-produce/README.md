@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-08
 ---
 
 # 05 生产派：本体从哪来、怎么修
@@ -13,30 +13,38 @@ updated: 2026-11-07
 
 第二条：**精化比新建更常见。** 真实项目大多在修一个已存在的本体，而文献更喜欢研究从零建。这个错位是当前最被低估的空档。
 
-## 六种来源
+## 子主题地图
 
-| 来源 | 做法 | 代表 | 系统性偏向 |
-|---|---|---|---|
-| 专家手工 | 建模规范 + 评审 | SFE-O（OWL 2 领域本体） | 覆盖窄、维护贵、易过时 |
-| LLM 生成 | 多 agent 流水线生成描述/关系 | OntoDoc、ReX-GG | 语义漂移，关系方向易错 |
-| 数据挖掘 | 从数据分布反推 schema | （综述提到的 data-derived） | 把「常见」当「应然」，缺约束 |
-| 表征挖掘 | 从冻结嵌入里抽出层级 | Peeling the Matryoshka | 只在特定嵌入族上成立，未测下游效用 |
-| 规则引导自演化 | 用少量本体规则驱动模型自检重训 | Evontree | 需要人工种子（15 个根概念） |
-| 精化 | 在既有本体上修子类关系 | CASTON | 只覆盖少量高置信修复 |
+| 子主题 | 回答什么 | 状态 | 已发现 / 未发现 | 先读 |
+|---|---|---|---|---|
+| [generation](./generation/README.md) | 本体从哪来：四条生成路线 | `draft`，已拆 F/G | 4 F / 4 G | dashboard |
+| [refinement](./refinement/README.md) | 在既有本体上修子类/约束 | `draft`，已拆 F/G | 4 F / 4 G | dashboard |
+| [representation](./representation/README.md) | 形式化到什么程度 | `seed`，薄页 dashboard | 3 F / 3 G | 本页 |
+| [lifecycle](./lifecycle/README.md) | 来源、精化、对齐、演化 | `seed`，薄页 dashboard | 3 F / 3 G | 本页 |
+| [modeling](./representation/modeling.md) | 规范如何压缩自由度 | 机制页 | — | 本页 |
 
-## 硬证据
+## 本派当前判断
 
-- **CASTON**：微调嵌入 + LLM 找出少量高置信修复，两位领域专家判定**全部完全正确**。规模小（单一本体、少量修复），但方向明确——精化是可自动化的。
-- **SFE-O**：两条值得抄的工程判断——把「参数溯源」建进本体；发现源文档相互矛盾时**显式标注而非静默消解**（一个界面面积公式两处不一致、一个 ChEBI 标识符被两种脂肪酸共用）。作者自述局限「在执行而非表示」：数值依赖落不进 OWL，约束还不是可执行的 SHACL。
-- **OntoDoc**：四阶段多 agent 为任意 IRI 生成说明，151 个术语，完整性较基线 +12%，含 11 人人工评估。
-- **Peeling**：98K 参数探针在冻结嵌入上抽分类，Graph F1 0.885 / 0.931；**明确未测下游效用**。
-- **Evontree**：仅两条本体规则即可驱动自检与重训，但需要 15 个人工选定的根概念——「无监督」并不彻底。
+- **生成产出候选，不是完备本体。** OntoDoc 的 assumptions 层能提升完整性，但没有下游任务；可消费性评估缺失。详见 [generation/F1](./generation/findings.md)。
+- **精化可以自动化到小规模，但下游未闭环。** CASTON high 6/6；medium 全 mixed；「下游错误 → 该修哪条公理」没有通用答案。详见 [refinement/F4](./refinement/findings.md)。
+- **来源决定系统性偏向。** 专家覆盖窄、LLM 语义漂移、数据挖掘把常见当应然、表征挖掘限 MRL、规则自演化要种子。`推测`
+
+## 六种来源（索引）
+
+| 来源 | 代表 | 系统性偏向 |
+|---|---|---|
+| 专家手工 | SFE-O | 覆盖窄、维护贵、易过时 |
+| LLM 生成 | OntoDoc、ReX-GG | 语义漂移、关系方向易错 |
+| 数据挖掘 | 综述 | 把「常见」当「应然」，缺约束 |
+| 表征挖掘 | Peeling | 只在特定嵌入族上成立；未测下游 |
+| 规则引导自演化 | Evontree | 需要人工种子 |
+| 精化 | CASTON | 只覆盖少量高置信修复 |
 
 ## 三条工程判断
 
-1. **来源标记要进入判定逻辑**，否则不同可信度的约束被平等使用，判定器的可信度无从继承。
-2. **冲突显式化优于静默消解。** SFE-O 的做法是范本：发现矛盾就标出来，交给人判断，而不是选一个。
-3. **表示不是瓶颈，执行才是。** SFE-O 的局限清单指向同一个结论：OWL 能表达，但跑不起来（缺 SHACL、缺数值求解、缺外部服务对接）。这与「形式化程度应按消费位置选」相互印证。
+1. **来源标记要进入判定逻辑**，否则不同可信度的约束被平等使用。
+2. **冲突显式化优于静默消解。** SFE-O 的范本：发现矛盾就标出来，交给人判断。
+3. **表示不是瓶颈，执行才是。** OWL 能表达，但缺 SHACL/数值求解/外部服务；形式化程度应按消费位置选。
 
 ## 何时用 · 何时别用
 
@@ -44,35 +52,19 @@ updated: 2026-11-07
 
 **别用**：指望自动生成一个「完备」本体——现有证据表明生成只能产出候选，约束与边界仍需人。
 
-## 子主题
-
-- [generation](./generation/README.md) —— 本体从哪来
-- [refinement](./refinement/README.md) —— 在既有本体上修
-- [representation](./representation/README.md) —— 形式化到什么程度
-- [modeling](./representation/modeling.md) —— 规范如何压缩自由度
-- [lifecycle](./lifecycle/README.md) —— 来源、精化、演化
-
-## 开放问题
-
-- 本体是否也需要「测试」——一组必须成立/必须不成立的事实对？
-- 来源标记如何进入判定权重而不使判定不可解释？
-- 精化能否产品化：给定一个本体和一批下游错误，自动定位该修哪条子类关系？
-
 ## 本目录怎么长
 
 | 文件/目录 | 作用 |
 |---|---|
-| `README.md` | 地图 + 硬证据；只做索引 |
+| `README.md` | 本页：派地图 + top claims；不展开机制 |
 | `claims.md` | 本派局部结论账本（`05-Lx`） |
-| `sources.md` | 本派卡片索引 |
+| `sources.md` | 本派 digest/card 索引 |
 | `frontier.md` | 本派候选队列 |
-| `<子主题>/README.md` | 详细机制 |
-| `<子主题>/prompt.md` + `runs/` | 常驻 prompt 与按日期输出（模板见 [meta/subtopic-template](../../meta/subtopic-template/README.md)） |
-
-新增内容只改本目录；只有跨派结论或进 `deliverables/` 时，才升到 [conclusions](../conclusions.md) 的 E-xx。卡片 `home` 指向本派，`subtopic` 指向子主题。
-
-子主题按 [模板](../../meta/subtopic-template/README.md) 起；没有 `prompt.md` 就先不建 `runs/`。
+| `<子主题>/README.md` | dashboard：覆盖/计数/当前判断/文件地图 |
+| `<子主题>/findings.md` | 该子主题的发现与证据 |
+| `<子主题>/frontier.md` | 该子主题的 gap/next |
+| `<子主题>/mechanism.md` | 机制怎么跑（按需） |
 
 ## 持续挖掘
 
-前沿问题、信号源、检索式与候选队列见 [frontier.md](./frontier.md)。稳定判断只在本页被改变时改写。
+派级前沿、检索式与候选见 [frontier.md](./frontier.md)；子主题的 gap/next 在各自 `frontier.md`。

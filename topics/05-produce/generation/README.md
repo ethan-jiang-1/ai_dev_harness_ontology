@@ -1,55 +1,48 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-08
 rq: [RQ2, RQ3]
-evidence: []
+evidence: [E-05]
 ---
 
 # 生成：本体从哪来
 
-## 问题
+> 多数本体文献默认本体已经存在；真实项目第一步往往是「造一个」。这里问「来源怎么决定可信度、生成物怎么被消费」，不负责精化（[refinement](../refinement/README.md)）。
 
-多数本体文献默认本体已经存在；真实项目里，第一步往往是「造一个」。造法不止一种，来源决定了它能被信到什么程度，也决定了它的系统性偏向。
+## 状态
 
-## 四条路线
+| 项 | 值 |
+|---|---|
+| 已发现 | 4 条（[findings](./findings.md)） |
+| 未发现 / 开放 | 4 条（[frontier](./frontier.md)） |
+| 下一步 | 3 个候选（[frontier](./frontier.md)） |
+| 最后扫描 | 2026-11-08 |
+| 覆盖 | 本体/说明的生成路线；不含精化、表示、生命周期 |
 
-| 路线 | 做法 | 代表 | 系统性偏向 |
-|---|---|---|---|
-| 专家手工 | 建模规范 + 评审 | SFE-O | 覆盖窄、维护贵、易过时 |
-| LLM 生成 | 多 agent 流水线生成描述/关系 | OntoDoc、ReX-GG | 语义漂移、关系方向易错 |
-| 表征挖掘 | 从冻结嵌入里抽层级 | Peeling the Matryoshka | 只在特定嵌入族上成立；未测下游 |
-| 规则引导自演化 | 用少量本体规则驱动自检/重训 | Evontree | 需要人工种子（15 个根概念） |
+## 当前判断
 
-「数据挖掘」是第五种，但在本仓库的 20 篇里没有独立案例，暂并入「表征挖掘」讨论。
+- **生成产出候选，不是完备本体。** 现有证据能证明「能生成可读、部分正确的结构」，不能证明「能被下游判定器直接消费」。`推测`
+- **先写 assumptions 再写描述，显著提升完整性。** OntoDoc：win 54–61%，completeness 3.43→3.84；但没有下游任务。`已核`
+- **来源决定系统性偏向。** 专家手工覆盖窄/维护贵；LLM 生成语义漂移；表征挖掘只限特定嵌入；规则自演化要人工种子。`推测`
+- **可消费性评估缺失。** 判定器能否加载/解释/复现生成结构，目前没有一篇测。`已核`（缺口）
 
-## 证据
+## 文件地图
 
-- **OntoDoc**：151 个术语、3 个知识图；completeness 3.43→3.84（5 分制），模板 verbalizer 只有 1.2–3.2；假设层 win rate 54–61%；11 人人工评估（`已核`）。**没有测下游任务**——说明质量 ≠ 可消费性。
-- **ReX-GG**：LLM 集成 + 结构化输出 + 匿名互评做关系抽取，用户研究感知准确率 0.778（`摘要级`）。
-- **Peeling**：98K 参数探针在冻结嵌入上抽分类，Graph F1 0.885 / 0.931；**明确未测下游效用**（`摘要级`）。
-- **Evontree**：仅两条本体规则即可驱动自检与重训，但需要 15 个人工选定的根概念（`摘要级`）。
+| 想知道 | 去 |
+|---|---|
+| 四条路线/证据/失效 | [mechanism](./mechanism.md) |
+| 四条判断的证据/边界 | [findings](./findings.md) |
+| 还缺什么、下一步 | [frontier](./frontier.md) |
+| 原始论文 | [OntoDoc digest](../../../src/papers/2611.01276-ontodoc/digest.md) · [ReX-GG digest](../../../src/papers/2610.41901-rex-gg/digest.md) · [Peeling digest](../../../src/papers/2610.41785-peeling-matryoshka/digest.md) · [Evontree digest](../../../src/papers/2510.26683-evontree/digest.md) |
 
-## 核心判断
+## 边界
 
-**生成产出的是候选，不是「完备本体」。** 现有证据能证明「能生成出可读、部分正确的结构」，不能证明「生成的结构能被下游判定器直接消费」。这两件事之间隔着「可消费性」评估，目前缺。
-
-**OntoDoc 的可迁移设计**：先写 assumptions（带 reasoning + triple 引用）再写描述；DB context 权威、web 只作补充；自适应 SPARQL 探索而非单跳查询。这是「生成前先把推断前提摆到台面上」的一个具体实现。
-
-## 失效模式
-
-- **语义漂移。** 生成的关系看似合理，方向或边界错。
-- **把「常见」当「应然」。** 数据里高频的模式被写成约束。
-- **只测完整性。** 说明写得更全，不等于下游任务更好。
-- **无来源标记。** 下游判定器不知道一条约束是专家写的还是模型编的。
-
-## 开放问题
-
-- 「可消费性」怎么测：判定器能否加载、能否解释、能否稳定复现？
-- 生成结构的最小人工种子是什么？Evontree 的 15 个根概念是下限吗？
-- 来源标记能否进入判定权重，而不使判定不可解释？
+- **不保证可消费。** 说明/结构生成后，判定器能否加载未测。
+- **不保证来源可信。** 来源标记目前是文档层，不进判定权重。
+- **不解决维护。** 生成后的同步/版本管理在 [lifecycle](../lifecycle/README.md)。
 
 ## 关联
 
-- [05 生产派](../README.md)
-- [refinement](../refinement/README.md)、[representation](../representation/README.md)
-- 卡片：[OntoDoc](../../../src/papers/2611.01276-ontodoc/card.md)、[ReX-GG](../../../src/papers/2610.41901-rex-gg/card.md)、[Peeling](../../../src/papers/2610.41785-peeling-matryoshka/card.md)、[Evontree](../../../src/papers/2510.26683-evontree/card.md)
+- 派：[05 生产](../README.md) · 结论：[E-05](../../conclusions.md)
+- 相邻：[refinement](../refinement/README.md) · [representation](../representation/README.md)
+- 判定：[02 checker](../../02-judgment/checker/README.md)

@@ -1,48 +1,48 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-08
 rq: [RQ2, RQ3]
-evidence: []
+evidence: [E-05]
 ---
 
 # 精化：在既有本体上修
 
-## 问题
+> 真实项目很少从零建本体；更常见的是「已经有一个，但不够用/有错/过时」。这里问「怎么定位该修哪条、怎么验证」，不负责生成（[generation](../generation/README.md)）。
 
-真实项目很少从零建本体；更常见的是「已经有一个本体，但它不够用/有错/过时」。文献偏好研究从零生成，精化被系统性低估。
+## 状态
 
-精化的难点不是「加一个概念」，而是**定位该修哪条子类关系/约束**，以及修了之后下游判定器会不会变好。
+| 项 | 值 |
+|---|---|
+| 已发现 | 4 条（[findings](./findings.md)） |
+| 未发现 / 开放 | 4 条（[frontier](./frontier.md)） |
+| 下一步 | 3 个候选（[frontier](./frontier.md)） |
+| 最后扫描 | 2026-11-08 |
+| 覆盖 | 既有本体的子类/约束精化；不含从零生成、生命周期 |
 
-## 两种做法
+## 当前判断
 
-| 做法 | 机制 | 代表 | 规模/局限 |
-|---|---|---|---|
-| 嵌入 + LLM 找高置信修复 | 微调嵌入找候选（30 条可疑公理 × 10 候选父类），LLM 判定，专家复核 | CASTON（2610.21466） | 单一本体、6 条高置信修复全部接受；medium 全 mixed |
-| 匹配 + 轻量精化 | RAG 检索结构/词法/定义知识，bisimilarity 剪候选，再做轻量精化 | KROMA（2507.14032，ISWC 2025） | 多基准；优于经典与 LLM 基线，开销相当 |
+- **精化可以自动化到小规模。** CASTON high-confidence 6/6 被两位专家接受；pretrained ensemble 57.1%；GPT-4o mini 31.3%。`已核`
+- **瓶颈是定位与验证，不是生成候选。** 先缩到 30 条可疑公理 × 10 候选父类，再让 LLM 做局部判断。`已核`
+- **fine-tune embedding 是主要增益来源。** 100% vs 57.1%；不是「换个更大 LLM」能补的。`已核`
+- **medium-confidence 不可靠。** 全 mixed，必须人审；confidence 校准是模型特定的。`已核`
 
-CASTON 的方向明确：精化可以自动化，但规模小。**具体数字**：CASTON 270 classes / 292 subsumption；default（CASTON-fine-tuned OnT + Qwen3-8B）high-confidence 6/6 被两位专家接受（100%）；pretrained ensemble 4/7（57.1%）；GPT-4o mini 5/16（31.3%）。**medium-confidence 全 mixed**，必须人审。KROMA 把「匹配」与「精化」接在一起，说明精化不只是修子类，也包括跨本体对齐。
+## 文件地图
 
-## 核心判断
+| 想知道 | 去 |
+|---|---|
+| 两种做法/CASTON 数字/失效 | [mechanism](./mechanism.md) |
+| 四条判断的证据/边界 | [findings](./findings.md) |
+| 还缺什么、下一步 | [frontier](./frontier.md) |
+| 原始论文 | [CASTON digest](../../../src/papers/2610.21466-caston-refinement/digest.md) |
 
-**精化的瓶颈不是生成候选，而是定位与验证。** 给定一个本体和一批下游错误，能不能自动指出「该修哪条公理」，目前没有通用答案。CASTON 靠 embedding 排序 + 专家复核；KROMA 靠匹配基准；两者都还没有把「下游错误 → 该修的公理」闭环。
+## 边界
 
-**CASTON 的可迁移设计**：先缩小搜索空间（30×10），再让 LLM 做局部 yes/no/替换；fine-tune embedding 是主要增益来源（100% vs 57.1%）；confidence 只能粗分（high 可信、medium 人审），且校准是模型特定的（GPT-4o mini high 仅 31.3%）。
-
-## 失效模式
-
-- **局部最优。** 只修高置信的小问题，大的结构错误不动。
-- **修了但没测下游。** 本体更「正确」，判定器不一定更好。
-- **无回归测试。** 修一条子类关系，可能破坏另一条约束。
-- **来源/版本丢失。** 不知道当前版本是谁改的、为什么改。
-
-## 开放问题
-
-- 能否从下游错误反推「该修哪条公理」？
-- 精化要不要像代码一样有回归测试（必须成立/必须不成立的事实对）？
-- 精化的回滚粒度是什么：单条公理、子图，还是整个版本？
+- **不是大规模。** 单一本体、单一公理类型、6 条高置信修复。
+- **不是下游闭环。** 修复是否让判定器/应用变好，没测。
+- **不是通用 confidence。** 换模型要重测校准。
 
 ## 关联
 
-- [05 生产派](../README.md)
-- [generation](../generation/README.md)、[lifecycle](../lifecycle/README.md)
-- 卡片：[CASTON](../../../src/papers/2610.21466-caston-refinement/card.md)；候选：KROMA（2507.14032）
+- 派：[05 生产](../README.md) · 结论：[E-05](../../conclusions.md)
+- 相邻：[generation](../generation/README.md) · [lifecycle](../lifecycle/README.md)
+- 判定：[02 checker](../../02-judgment/checker/README.md)

@@ -1,10 +1,21 @@
 ---
 status: seed
-updated: 2026-11-07
+updated: 2026-11-08
 rq: [RQ2, RQ5]
 ---
 
 # 表示：形式化到什么程度
+
+## 状态
+
+| 项 | 值 |
+|---|---|
+| 已发现 | 3 条（本页） |
+| 未发现 / 开放 | 3 条（见下） |
+| 下一步 | 2 个候选 |
+| 最后扫描 | 2026-11-08 |
+| 覆盖 | 表示形式/形式化档次；薄页，未拆 findings/frontier |
+
 
 ## 问题
 
@@ -44,3 +55,7 @@ rq: [RQ2, RQ5]
 - 第二档能否覆盖大多数判定场景？这一档的边界在哪。
 - 能否用同一份源生成两种表示（人读/机判定），从而避免双份不同步？
 - 参数的**来源**是否应作为一种关系进入本体？某些工程域已把「参数溯源」显式建模，值得借鉴。
+
+## 文件地图
+
+本页即 dashboard（薄页，未拆 findings/frontier）；相关：[generation](../generation/README.md)、[refinement](../refinement/README.md)、[lifecycle](../lifecycle/README.md)。

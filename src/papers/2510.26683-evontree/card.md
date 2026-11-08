@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 摘要级
 provenance: 原文摘要
-updated: 2026-11-07
+updated: 2026-11-08
 arxiv: 2510.26683
 title: Evontree: Ontology Rule-Guided Self-Evolution of Large Language Models
 authors: Mingchen Tu, Zhiqiang Liu, Juan Li, et al.（浙江大学 / 蚂蚁集团）
@@ -15,6 +15,8 @@ updates: []
 ---
 
 # Evontree
+
+> **这是来源卡，不是消化正文。** 机制、数字、判断、工程用法都在同目录 [digest.md](./digest.md)；下游默认只读 digest。
 
 ## 做了什么
 
@@ -49,3 +51,8 @@ updates: []
 
 - [ ] 「两条规则」具体是什么
 - [ ] 自演化轮数与漂移的关系
+
+## 原文
+
+- PDF：同目录 `2510.26683-evontree.pdf`
+- arXiv:2510.26683

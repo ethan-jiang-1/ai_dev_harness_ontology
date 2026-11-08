@@ -1,64 +1,47 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-08
 rq: [RQ2, RQ4]
 evidence: [E-03]
 ---
 
-# 时刻 2 · 输出时
+# 输出时证据契约
 
-## 位置
+> 模型生成结论时。判定尚未发生，但输出格式已被约束：每个结论必须附带依据，以及依据与本体的关系强度。这里不负责输出后的 checker（[checker](../checker/README.md)）。
 
-模型生成结论时。判定还没有发生，但**输出格式已经被约束**：每个结论必须附带依据，以及依据与本体的关系强度。
+## 状态
 
-## 机制：接地等级显式化
-
-不是「请引用来源」，而是**结构化分级**：
-
-| 等级 | 含义 |
+| 项 | 值 |
 |---|---|
-| entailed | 由本体约束必然推出 |
-| supported | 有直接证据支撑，但非必然 |
-| related | 仅有相关材料，非直接支撑 |
-| unrelated | 无支撑 |
+| 已发现 | 3 条（[findings](./findings.md)） |
+| 未发现 / 开放 | 4 条（[frontier](./frontier.md)） |
+| 下一步 | 2 个候选（[frontier](./frontier.md)） |
+| 最后扫描 | 2026-11-08 |
+| 覆盖 | 输出时的证据/接地等级；不含输出后的 checker 与推理期约束 |
 
-**OA-RAG 的实际做法**：在 answering 阶段多一轮，让模型报告引用的观察 `C` 与等级 `g`；模型先过滤失败/空观察，再从 evidence digest 作答。等级是**模型自评**，不是独立判定器或形式推导。作者明确写：「does not provide a formal guarantee of answer correctness」。
+## 当前判断
 
-**为什么仍然有用**：它把「没检索到」与「检索到但没用」分开（`unrelated` vs `related`），并给答案一个可排序的可靠性字段。**但必须把「自评」当失效风险，而不是当保证。**
+- **显式接地等级整体最优。** 强制报告本体观察 + entailed/supported/related/unrelated，比只给文本 RAG 更可审计。`已核`
+- **等级是模型自评，不是保证。** OA-RAG 自己写明「不提供形式正确性保证」；等级与正确率正相关，但未校准。`已核`
+- **检索是主瓶颈。** gold evidence 完全检索 MCQ 61.7% vs OQ 23.6%；检索到后 MCQ 95.1–98.4% 被引用。`已核`
 
-## 为什么它比事后审计更早生效
+## 文件地图
 
-事后审计只能在产生之后挑错，而**强制结构**改变了产出本身：没有依据的结论无法通过格式这一关。这是把「不能无根据」从规范变成机制。
+| 想知道 | 去 |
+|---|---|
+| 四个等级/为什么有用/失效 | [mechanism](./mechanism.md) |
+| 三条判断的证据/数字 | [findings](./findings.md) |
+| 还缺什么、下一步 | [frontier](./frontier.md) |
+| 原始论文 | `src/papers/2610.36335-oa-rag/` · [digest](../../../src/papers/2610.36335-oa-rag/digest.md) |
 
-它同时解决了一个长期难题：**「没检索到」与「检索到但没用」不可区分**。带上接地等级后，二者分属 `unrelated` 与 `related`。
+## 边界
 
-## 证据
+- **不是形式保证。** 等级是模型自评；不能当自动放行依据。
+- **不是输出后判定。** 它约束输出的格式与证据声明；是否放行仍由 checker/人决定。
+- **不解决检索覆盖。** 检索不到时，等级只能标 unrelated，不能补内容。
 
-OA-RAG 在三个本体（GO/FoodOn/SNOMED）、六个医学 QA 任务、两个 backbone 上：
+## 关联
 
-- 平均准确率 **50.5%（Llama）/ 68.1%（Qwen）**；Tests 1–2 比最强基线 **+10–15 pp**（44.3 vs 28.9；59.7 vs 49.7）。
-- Test 3 同一 8k context：**84.9% vs 66.7%**（Qwen，vs i-MedRAGdoc 262k 截到 8k）；**9.7k vs 96.7k tokens/问**，5.8 vs 22 calls。
-- grounding：entailed+supported 占 **70.0%（Llama）/ 53.2%（Qwen）**；unrelated 0.2% / 7.8%。
-- Qwen Test 3：entailed **94.9%** 正确、supported **82.1%** 正确；但这是切片，不是全校准曲线。
-- 检索是主瓶颈：gold evidence 完全检索 **61.7% MCQ vs 23.6% OQ**；检索到后 MCQ **95.1–98.4%** 被引用。
-
-（一手正文，[OA-RAG card](../../../src/papers/2610.36335-oa-rag/card.md) / [digest](../../../src/papers/2610.36335-oa-rag/digest.md) → [E-03](../../conclusions.md)）
-
-**限定**：grounding level 是模型自评，未做独立校准；entailed 的高正确率不能当成「等级 = 正确性保证」。这是本派最需要补的实验。
-
-## 失效模式
-
-- **等级自评。** 由模型自己声明等级，等于让它给自己打分；OA-RAG 就是这样，等级与正确率的相关性是经验观察，不是保证。
-- **等级通胀。** 所有结论都被标为 `supported`，字段存在但无区分度。
-- **引用形式化。** 引用了文档，但结论与文档无关——形式合规、实质不成立。
-- **格式开销挤占预算。** 每个结论都带证据，长输出里格式成本可观。
-- **等级未校准。** 没有独立标注，就不知道 `entailed` 的 precision/recall；「等级与正确率正相关」不等于「等级可用于自动放行」。
-- **把等级当形式证明。** 作者自己说没有形式保证；引用时必须保留这句。
-
-## 开放问题
-
-- 等级判定应由谁执行：独立判定器、本体推导，还是抽样人工？OA-RAG 的自评只是起点。
-- 能否用「等级分布」作为系统健康度指标？等级通胀会表现为分布塌缩。
-- 证据的粒度为句子还是结论？句子级更准，但成本高一个量级。
-- 等级能否校准到可自动放行？需要每个 level 的 precision/recall 与代价曲线。
-- 检索瓶颈与等级质量的关系：检索不到时，`unrelated` 是否被正确标出？
+- 派：[02 判定](../README.md) · 结论：[E-03](../../conclusions.md)
+- 相邻：[checker](../checker/README.md) · [03 知识 projection](../../03-knowledge/projection/README.md)
+- 成本：[06-measure/feasibility](../../06-measure/feasibility/README.md)

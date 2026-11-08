@@ -1,11 +1,22 @@
 ---
 status: seed
-updated: 2026-11-07
+updated: 2026-11-08
 rq: [RQ3]
 evidence: [E-02]
 ---
 
 # 生命周期：来源、精化、演化
+
+## 状态
+
+| 项 | 值 |
+|---|---|
+| 已发现 | 3 条（本页） |
+| 未发现 / 开放 | 3 条（见下） |
+| 下一步 | 2 个候选 |
+| 最后扫描 | 2026-11-08 |
+| 覆盖 | 来源/精化/对齐/演化；薄页，未拆 findings/frontier |
+
 
 ## 问题
 
@@ -44,3 +55,7 @@ evidence: [E-02]
 - 本体是否也需要「测试」——一组必须成立/必须不成立的事实对？
 - 来源标记能否进入判定逻辑，使不同来源的约束具有不同权重？
 - 演化速度如何与下游判定器的重训/重载节奏对齐？
+
+## 文件地图
+
+本页即 dashboard（薄页，未拆 findings/frontier）；相关：[generation](../generation/README.md)、[refinement](../refinement/README.md)、[checker](../../02-judgment/checker/README.md)。
