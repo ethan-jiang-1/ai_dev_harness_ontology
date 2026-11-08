@@ -20,6 +20,7 @@ src/
 │       ├── digest.md                 # 消化正文：自包含，下游唯一入口
 │       └── figures/                  # 论文原图（有图才建）
 ├── web/                              # 网页/博客原文 + 同名 .card.md
+├── open-source/                      # GitHub/GitLab 真实项目：card.md + code-map.md
 ├── _templates/                       # card / digest / material 模板
 └── README.md
 ```
@@ -53,7 +54,25 @@ PDF ──▶ paper.md（原文，保真）
 5. **digest 自包含。** 不假设读者读过论文或 card：定义术语、解释方法、数字带条件、说明不能证明什么、给出工程用法。链接只放原文/代码，放在最后。
 6. **topics 引 digest，不引 card 作为内容。** `sources.md` 可同时给 card（provenance）与 digest（内容），但内容判断只从 digest 来。
 7. **图随论文。** 原图放 `figures/`；文件名 `fig-{n}-{slug}.png`；图注写「看什么」、页码、版权。
-8. **登记。** 论文在 [`papers/manifest.md`](./papers/manifest.md) 登记；`_download.log` 保留下载结果；网页规则见 [`web/README.md`](./web/README.md)。
+8. **登记。** 论文在 [`papers/manifest.md`](./papers/manifest.md) 登记；`_download.log` 保留下载结果；网页规则见 [`web/README.md`](./web/README.md)；开源项目规则见 [`open-source/README.md`](./open-source/README.md)。
+
+## 1.1 open-source 的定位：真实实现
+
+`src/open-source/` 放 GitHub/GitLab 上可读代码的项目，不是论文、不是博客。一个项目一个目录：
+
+```
+open-source/{org}-{repo}/
+├── card.md        # repo/commit/license/本体角色/接缝/执行或装饰/证据
+└── code-map.md    # 可选：文件/函数/调用链
+```
+
+规则：
+
+- **不 vendor 代码**：只写 commit/tag + 链接 + 文件路径，不把整仓搬进仓库。
+- **pin 版本**：必须写 commit SHA 或 release tag；stars 只作影响力参考。
+- **执行 vs 装饰**：必须回答“本体是跑 SHACL/OWL/policy，还是只塞 prompt”。
+- **一个项目一卡**：`card.md` 是来源卡；机制细节进 `code-map.md`。
+- 模板见 [`open-source/_template.md`](./open-source/_template.md)。
 
 ## 2. `card.md` 的定位：来源卡，不是消化
 
