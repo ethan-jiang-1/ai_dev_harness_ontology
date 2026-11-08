@@ -14,7 +14,7 @@ claims: [E-01, E-08, E-14]
 
 1. **它问什么**：agent 在检索时反复查、反复读、把窗口塞满没用的段落；如果在检索之前先把文档「编译」成结构化工件（带证据的树、图、wiki、本体），值不值得？
 2. **它怎么做**：在同一套 BM25/grep harness 下，只变工件与阅读方式；在 FRAMES 多跳问答上测准确率、token、时延；再给一个成本模型。
-3. **它发现什么**：结构化工件**不提高准确率**；唯一测出正收益的是「叶子带逐字证据」的 claim–evidence 树——平均省 38% token，但省 token 可能用检索轮次/时延换；盈亏平衡是条件性的（2% 是无限视野，有限视野更高）。
+3. **它发现什么**：结构化工件**没有可检出的准确率增益**；唯一测出正收益的是「叶子带逐字证据」的 claim–evidence 树——平均省 38% token，但省 token 可能用检索轮次/时延换；盈亏平衡是条件性的（2% 是无限视野，有限视野更高）。
 
 ## 1. 它解决什么问题
 
@@ -22,7 +22,7 @@ claims: [E-01, E-08, E-14]
 
 传统 RAG 是「一次检索 → 拼上下文 → 回答」。现在越来越多的系统是 **agentic retrieval**：模型自己写查询、读结果、改写查询、决定什么时候停。这套外围循环叫 **harness**。
 
-harness 变强之后，准确率问题被解决了一部分：论文里的基线只用 BM25 + grep（两种词法检索），作答模型 MiniMax M3，在 BrowseComp-Plus 上 85%、多跳 FRAMES 上 91%——**没有任何向量索引、没有任何编译工件**。
+harness 变强之后，准确率问题被解决了一部分：论文里的基线只用 BM25 + grep（两种词法检索），作答模型 MiniMax M3，在 BrowseComp-Plus 上 85%、多跳 FRAMES 上 91%——**没有任何向量索引、没有任何编译工件**。作者明确说这两个数不可比：token 规模约 3M/问 vs 325k/问，任务形态不同。
 
 但新问题出现了：**上下文成本**。循环会重复查同样的东西、重读同样的文档、把窗口塞满从未被使用的段落。过程消耗 token，但不产出一个答案。
 
@@ -40,12 +40,15 @@ harness 变强之后，准确率问题被解决了一部分：论文里的基线
 | **agentic retrieval** | 模型在循环里自己查、读、改写、停，而不是一次检索。 |
 | **harness** | 包住模型的运行框架：工具、上下文、循环、预算、停止条件。 |
 | **BM25 / grep** | 两种词法检索；不依赖向量。 |
-| **knowledge compilation** | 在查询之前把文档加工成结构化工件；本文的工件都带 lineage（指回原文 span）。 |
+| **knowledge compilation** | 在查询之前把文档加工成结构化工件；claim–leaf 树带逐字 lineage，其他工件不一定（wiki 是 lossy provenance）。 |
 | **claim–evidence pair** | 一条规范化主张（claim）+ 一段逐字证据（span）+ 源 chunk/offset + 时效。 |
-| **artifact** | 编译产物：导航树、实体图、wiki、本体、时间线、记忆等。 |
+| **artifact** | 编译产物：导航树、实体图、wiki、本体、时间线、记忆等。**并非都带逐字 lineage**：claim–leaf 树有；LLM wiki 是 lossy provenance。 |
+| **carrier** | 承载证据的结构（如树），不是检索器；树本身不做检索。 |
 | **FRAMES** | 多跳 Wikipedia 问答基准；本文主实验 N=200。 |
 | **gate / p_h** | 决策门；`p_h` 是门接受（认为证据充分）的比例。 |
 | **break-even** | 编译成本回本所需的充分率/查询次数。 |
+| **arm mean** | 消融的一个分支（arm）相对未编译基线的均值；题数少，不能与 hit/miss 条件分支直接比。 |
+| **query-equivalent** | 相当于一次未编译查询的 token 成本；成本模型里的 `c` 用它作单位。 |
 
 ## 3. 它怎么做
 
@@ -94,21 +97,21 @@ Tree 模板：`extract.unit=claim_evidence`、`require_verbatim_span=true`、`va
 
 ## 4. 结果：数字与条件
 
-### 4.1 结构化工件没有准确率增益
+### 4.1 被测量的结构化工件没有准确率增益
 
 | 工件 | FRAMES 准确率 | token |
 |---|---|---|
 | 无编译 BM25/grep 基线 | 91.0% | 324,479/问 |
 | Claim–evidence 树 | acc. neutral | 平均 **−38%** |
 | RAPTOR 摘要树（去 claim） | acc. neutral | — |
-| PageIndex 大纲（去 claim） | neutral → 大规模负面 | — |
+| PageIndex 大纲（去 claim） | neutral at small scale；FRAMES 规模实测为负 | — |
 | 实体图 | acc. neutral | — |
 | LLM wiki | acc. neutral | — |
 | 本体 | **not measured** | — |
 
-条件：FRAMES N=200；BM25/grep harness；MiniMax M3；glm-4-flash 抽取；单次运行、无 CI/重复种子。
+条件：Table 4 为 FRAMES N=200；Table 3 的结构变体各跑一次、原文未给 N；BM25/grep harness；MiniMax M3；glm-4-flash 抽取；单次运行、无 CI/重复种子。**ontology、timeline、mind map、session memory 在 Table 1 是 not measured，不在这个「无增益」结论里。**
 
-> 出处：§5 主结果 / Table 4（FRAMES 各行）；基线 85%/91% 在 §1 与 §5；token 端点 §5。
+> 出处：Table 4 在 §8.3；结构变体 Table 3 在 §8.2；ontology 行在 Table 1；基线 85%/91% 在 §1 与 §8.7；token 端点 §8.3。
 
 ### 4.2 token 收益是条件性的
 
@@ -120,9 +123,9 @@ Tree 模板：`extract.unit=claim_evidence`、`require_verbatim_span=true`、`va
 | 决策门（有证据，arm mean） | −52% |
 | 决策门（无证据，arm mean） | −30% |
 
-**平均会骗人**：−38% 是 −91% 与 +1.9% 的混合；不上报 hit/miss 分布，不能做上线决策。
+**平均会骗人**：−38% 是 −91% 与 +1.9% 的混合；不上报 hit/miss 分布，不能做上线决策。Table 4 的 −52%/−30% 是 **arm mean**，题数更少，原文明确说不可与 −91%/−38% 直接比较。
 
-> 出处：§6 成本模型 / Table 4；决策门 140→30 s 在 §6.4 与 Fig. 2。
+> 出处：成本模型在 §4.4；决策门 140→30 s 在 §8.5 与 Fig. 2；3× 时延只在 7 道配对题上测（未编译臂另有 1 题失败）。
 
 ### 4.3 成本模型
 
@@ -130,7 +133,7 @@ Tree 模板：`extract.unit=claim_evidence`、`require_verbatim_span=true`、`va
 - 有限视野：`p_min = 2.0% + c/(0.929Q)`；`c` 是编译成本（query-equivalent），`Q` 是查询次数。
 - 例子：`Q=1,000, c=10` → `p_min=3.12%`；若 `p_h=2.5%`，仍亏 5.8 query-equivalent。
 - 回本：`p_h≈0.43, c=10` → 约 26 次查询。
-- 时延：证据替换用轮次换 token；配对子集 token 约减半，端到端时延约 **3×**；决策门把时延从 140 s 降到 30 s。
+- 时延：**latency 比较只基于 7 道配对题**（Table 4 的 token/accuracy 是 N=200，latency 是这 7 题）；未编译臂 46.7 s → claim 臂 140 s，约 3×。140→30 s 是 **gate arm** 的均值，不是未编译基线。
 
 ![Figure 2: token and latency](../../../src/papers/2610.41172-context-as-infrastructure/figures/fig-2-token-latency.png)
 
@@ -138,7 +141,18 @@ Tree 模板：`extract.unit=claim_evidence`、`require_verbatim_span=true`、`va
 
 **看什么**：上图是条件性 token 变化（hit −91%、miss +1.9%、平均 −38%）；下图是决策门把时延从 140 s 降到 30 s。平均 −38% 掩盖了两端，时延代价在平均值里看不见。
 
-> 出处：Fig. 2, p.6；配对子集时延 3× 在 §8/§6.4。
+> 出处：Fig. 2, p.6；配对子集时延 3× 在 §8.4（Serving Ablations），不是 §6.4。
+
+### 4.4 为什么结构不提高准确率
+
+论文给了四个机制，值得记住：
+
+1. **harness 已经是自适应的。** grep + 读，本身就是按需建索引；静态分区只有在比 agent 的下一次查询更好时才赢。
+2. **结构不是证据。** 摘要/大纲只是重新描述，不增加事实；叶子没有逐字证据时，树只是导航。
+3. **抽取误差会复合。** 一个大纲每个 routing 决策 95% 正确，跨 10^5 份文档、分支因子 8 时约 5–6 层决策，端到端约 75% routing 成功；这是**解析模型**，不是 scale sweep。自信的错分支比开放搜索更糟。
+4. **结构增加选择负担。** agent 要决定什么时候导航；这消耗轮次与上下文。
+
+这四条解释了为什么「编译」在准确率上中性，却在 token 上可能有条件收益：它优化的是供给，不是证据。
 
 ## 5. 这些数字不能说明什么
 
@@ -186,6 +200,17 @@ Tree 模板：`extract.unit=claim_evidence`、`require_verbatim_span=true`、`va
 
 **别用**：时延硬约束；查询视野小；表格/扫描/行话导致抽取质量差；没有审计/版本管理；`p_h` 低于 `p_min`。
 
+### 6.4 最小落地实验
+
+不要一上来全量编译。按这个顺序：
+
+1. **量基线**：同一 harness、同一语料，记录准确率、token/问、时延、轮次。
+2. **抽 100–200 问，估 `p_h`**：门认为证据充分的比例；同时记录 miss penalty。
+3. **算 `p_min`**：`2% + c/(0.929Q)`；如果 `p_h < p_min`，先别上线。
+4. **做 A/B**：只改 E2 证据替换，其他不动；按 collection hash 分桶；预登记主指标（token、时延、准确率）。
+5. **单独估 φ**：抽 100–400 条 accepted query 人工审计；不要用 `p_h` 代替。
+6. **再决定要不要扩到 E1/E3**：时延硬约束时，优先 E1/决策门，不要买 token 节省。
+
 ## 7. 质量与边界
 
 - **证据类型**：实证·基准 + 成本模型（一手正文）。
@@ -195,8 +220,8 @@ Tree 模板：`extract.unit=claim_evidence`、`require_verbatim_span=true`、`va
 
 ## 8. 与仓库判断的关系
 
-- **E-01（已核）**：强 harness 下结构化工件无可检出准确率增益；PageIndex 大规模负面。补充：基线 91%、单基准、无 CI；部署价值是作者主张。
-- **E-08（已核）**：claim-leaf tree 是唯一测出正收益的工件；−91%/+1.9%/−38%；2%/43%。
+- **E-01（已核）**：强 harness 下结构化工件无可检出准确率增益；PageIndex 在 FRAMES 规模实测为负（10^5 是解析模型，不是实测）。补充：基线 91%、单基准、无 CI；部署价值是作者主张。
+- **E-08（已核）**：claim-leaf tree 是唯一测出正收益的工件；−91%/+1.9%/−38%；2% 是无限视野盈亏平衡，43% 是由 −38% 反推的 p_h（不是直接计数）。
 - **E-14（已核）**：有限视野 `p_min=2%+c/(0.929Q)`；平均 −38% 不能当上线依据；时延约 3×。
 - **C-04**：CAI 投影的是**证据**（claim+span），N&D 投影的是**领域知识**（本体塔）；两者都是「投影」，但 payload 不同。
 - **P1**：支撑「价值在部署/治理」——但 CAI 的部署价值是作者定位，ledger 为空；只能标「作者这么说」，不能标「已证」。
@@ -204,7 +229,7 @@ Tree 模板：`extract.unit=claim_evidence`、`require_verbatim_span=true`、`va
 
 ## 9. 还没解决 / 下一步
 
-- **企业语料的 `p_h`/miss**：FRAMES 的 43% 不能外推；表格/扫描/行话会改变盈亏平衡。
+- **企业语料的 `p_h`/miss**：FRAMES 的 43% 是反推值，不能外推；表格/扫描/行话会改变盈亏平衡。
 - **φ（false-accept rate）**：`p_h` 不是正确率；需要 100–400 条标注审计。
 - **时延代价**：证据替换的 3× 时延能否用并行/预算控制压下来？
 - **增量维护成本**：文档频繁变更时，registry/重抽/聚类更新会不会吃掉 token 收益？
@@ -214,5 +239,6 @@ Tree 模板：`extract.unit=claim_evidence`、`require_verbatim_span=true`、`va
 ## 10. 原文
 
 - arXiv:2610.41172
-- PDF：`src/papers/2610.41172-context-as-infrastructure/`
-- 代码/数据：论文未给独立仓库；实现细节见附录与正文。
+- PDF：同目录 `2610.41172-context-as-infrastructure.pdf`
+- 代码：RAGFlow，https://github.com/infiniflow/ragflow（作者在评自己的管线）
+- 实现细节在 §7 与 Listing 1；本文没有附录。

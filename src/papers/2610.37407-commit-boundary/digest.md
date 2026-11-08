@@ -86,6 +86,13 @@ Entity resolution（ER）：判断两个 mention 是不是同一实体。agentic
 
 **没有准确率/延迟/成本数字。** 第 8 节只是 proposed evaluation protocol。
 
+### 4.1 为什么授权要单独状态机
+
+- **推理证据与授权证据的目标不同。** 前者要「能支持假设」，后者要「证据齐、冲突清、版本有效」；混成一个判据会过度保守或错误落盘。
+- **同源检索不是独立确认。** 初始错误假设会条件化后续检索，结果看起来像确认，其实共享同一个 query/hypothesis；把它当 corroboration 会自我强化。
+- **保证是条件性的。** 它依赖 domain policy、promotion 正确、强制执行、scope/version 完整；架构只保证「按 contract 执行」，不保证 contract 本身对。
+- **没有实现。** 所以它只能作设计规范，不能当效果证据；false-defer 率未知。
+
 ## 5. 这些数字不能说明什么
 
 1. **不是实证。** 没有实现；不能引用为「有效」。
@@ -125,6 +132,17 @@ Entity resolution（ER）：判断两个 mention 是不是同一实体。agentic
 **用**：身份变更/图合并/主数据写入；需要审计；有 domain policy；能实现 promotion 流程。
 
 **别用**：没有 policy；promotion 只能靠 LLM 自评；无法控制写路径；需要语义真值保证；依赖链无法记录。
+
+### 6.4 最小落地清单
+
+1. **先写 domain policy。** mutation class、required claims、constraints；没有 policy，状态机无法判。
+2. **mutation 派生 required claims。** merge/split/un-merge 各需要哪些命题；supervisor 从 m、V_E、policy version 派生 q_m。
+3. **证据分状态。** QUARANTINE → UNVERIFIED → claim-specific P_auth；UNVERIFIED 可进推理，不能授权。
+4. **promotion 命题级。** 记录 provenance、角色、时间适用性、validation basis、version；不接受 Planner 置信度/LLM verified/重复 UNVERIFIED。
+5. **同源不算确认。** 共享 query/hypothesis/source/derivation 的观察不能互相印证。
+6. **两阶段 + 原子 commit。** Phase 1 授权 proposed；Phase 2 验证 realized；scope/version/graph/evidence 同 snapshot。
+7. **状态聚合 fail-closed。** BREACH > UNKNOWN > PASS；缺证据/未解决冲突 → defer。
+8. **上线前测 false-defer。** 正确变更被 UNKNOWN 拦住的比例；没有这个数，不知道代价。
 
 ## 7. 质量与边界
 

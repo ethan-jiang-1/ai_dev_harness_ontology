@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-08
 ---
 
 # 06 测量派：它到底有没有用
@@ -17,15 +17,15 @@ updated: 2026-11-07
 
 ## 四把尺子 + 一个经济性横切
 
-| 文档 | 量什么 | 结论 |
-|---|---|---|
-| [mechanism](./mechanism/README.md) | 本体知识是否真在模型里 | 机制可干预，但未与类别信息分离 |
-| [failure-attribution](./failure-attribution/README.md) | 失败出在哪一环 | 归因到工作流，按角色做难度画像 |
-| [trace](./trace/README.md) | 过程是否有效 | 输出正确掩盖了冗余与错误继承 |
-| [metrics](./metrics/README.md) | 尺子本身对不对 | 度量错配是文献冲突的主因 |
-| [feasibility](./feasibility/README.md) | 值不值得 | 位置×成本×使能条件；三个可算的盈亏平衡 |
+| 子主题 | 量什么 | 已发现 / 未发现 | 结论 |
+|---|---|---|---|
+| [mechanism](./mechanism/README.md) | 本体知识是否真在模型里 | 5 F / 5 G | 机制可干预，但未与类别信息分离 |
+| [failure-attribution](./failure-attribution/README.md) | 失败出在哪一环 | 4 F / 4 G | 归因到工作流，按角色做难度画像 |
+| [trace](./trace/README.md) | 过程是否有效 | 5 F / 5 G | 输出正确掩盖了冗余与错误继承 |
+| [metrics](./metrics/README.md) | 尺子本身对不对 | 4 F / 4 G | 度量错配是文献冲突的主因 |
+| [feasibility](./feasibility/README.md) | 值不值得 | 4 F / 5 G | 位置×成本×使能条件；三个可算的盈亏平衡 |
 
-四把尺子 + 一个经济性横切，各有独立子主题目录：`mechanism/`、`failure-attribution/`、`trace/`、`metrics/`、`feasibility/`。本页只做地图；详细度量在各子主题。
+五个子主题各有独立目录：`mechanism/`、`failure-attribution/`、`trace/`、`metrics/`、`feasibility/`。本页只做地图；详细度量在各子主题。
 
 ## 双重身份
 

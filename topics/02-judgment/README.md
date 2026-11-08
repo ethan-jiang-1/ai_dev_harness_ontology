@@ -16,7 +16,7 @@ updated: 2026-11-08
 | 子主题 | 回答什么 | 状态 | 已发现 / 未发现 | 先读 |
 |---|---|---|---|---|
 | [checker](./checker/README.md) | 输出后：本体当语义判据，漏检/误报怎么换 | `draft`，已拆 F/G | 5 F / 5 G | dashboard |
-| [evidence](./evidence/README.md) | 输出时：答案带什么证据、接地等级怎么报 | `draft`，机制页 | 3 F / 3 G | dashboard |
+| [evidence](./evidence/README.md) | 输出时：答案带什么证据、接地等级怎么报 | `draft`，已拆 F/G | 3 F / 4 G | dashboard |
 | [calibration](./calibration/README.md) | 判定器的曲线与代价 | `seed`，待拆 | — | 机制页 |
 
 ## 本派当前判断

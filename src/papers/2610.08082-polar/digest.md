@@ -31,11 +31,11 @@ POLAR 的立场：**安全是结构问题**。不要问「模型觉得这个动�
 
 ### 1.2 一个具体例子
 
-用户说：「请取消我的预订 R1。」
+用户说：「请取消我的预订 R1。」（先假设一个 T1/T2 有界可逆的工具；再看 airline 的真实情况。）
 
-- 动作：`cancel_reservation(reservation_id=R1)`。
-- 逆操作：`book_reservation(R1)`，但只有在 R1 的座位/价格仍可恢复、且没有下游依赖时才成立。
-- POLAR：Layer A 找到 `cancel_reservation` 的 T1/T2 注释；Layer B 检查 bound（座位是否还在、支付是否已结算）；如果找不到完整逆序列，或最弱一步 φ<0.80，就 veto，并报告 bottleneck。
+- **假设情形**：Layer A 给 `cancel_reservation` 一条 T2 有界可逆注释；Layer B 检查 bound（座位/支付状态）；找不到完整逆序列或最弱一步 φ<0.80，就 veto。
+- **airline 实际**：`cancel_reservation` **没有 T1 注释**；取消后重订会分配新的 `reservation_id`，所以它是 T3 compensable，不是 `book_reservation(R1)` 这种精确逆。POLAR 会走 T3/NO_CANDIDATE，而不是 T1。
+- 这个区别很重要：把 airline 的取消/重订当成 T1，会高估结构反向组合的能力。
 
 ## 2. 术语
 
@@ -105,17 +105,18 @@ POLAR 的立场：**安全是结构问题**。不要问「模型觉得这个动�
 | llama-3.1-8b | +0.182 | +0.029 | +0.053 |
 | qwen3-8B | +0.111 | −0.100 | +0.038 |
 | nemotron-9b | +0.110 | −0.033 | −0.053 |
+| gemini-flash-lite | +0.109 | −0.026 | 0.000 |
 | gpt-oss-120B | −0.073 | −0.242 | +0.020 |
 | qwen3.5-27B | −0.119 | −0.209 | −0.060 |
 
-> 出处：Table 3, p.6（6 模型 × 3 域 × 4 臂；每格 150 runs）。
+> 出处：Table 3, p.6。Δ 是「分别误差过滤后的 arm mean 差」，不是配对估计；每格 150 attempted runs，valid counts 不同。主 cell（qwen3-8B airline）配对估计 +0.119，95% CI [+0.057,+0.184]（Appendix D）。
 
 ### 4.2 能力反向
 
-- Δ 随 baseline reward 下降：airline −0.76、retail −0.67、telecom −0.31；R² 0.92/0.98/0.65。
+- **Δ 随 baseline reward 上升而下降**：airline −0.76、retail −0.67、telecom −0.31；R² 0.92/0.98/0.65。**这是描述性拟合：baseline 同时进入横纵轴，存在数学耦合；斜率不识别 causal headroom。**
 - **这是六点描述性拟合，不是部署阈值**；作者明确说不能拿它做 zero-crossing 规则。
 
-> 出处：Figure 2（Δ vs baseline reward）；斜率与 R² 在 §5.3。
+> 出处：Figure 4（Δ vs baseline reward）；斜率与 R² 在 §4.2。
 
 ### 4.3 阈值保留率
 
@@ -127,7 +128,7 @@ POLAR 的立场：**安全是结构问题**。不要问「模型觉得这个动�
 
 同一个阈值在不同域含义不同；airline 的 verdict 分布对工作点很敏感。
 
-> 出处：Table 4, p.7（τ 敏感性；固定轨迹上的保留率，不是 reward 曲线）。
+> 出处：Table 4, p.7。36.6% 是「996 条有非空候选池的 logged decisions」在独立 instrumented 固定轨迹 run 上的保留率；原文明确它不估计其他阈值的 reward，也不确立最优阈值。
 
 ### 4.4 tier ablation
 
@@ -141,18 +142,24 @@ POLAR 的立场：**安全是结构问题**。不要问「模型觉得这个动�
 
 **T1-only 在 airline 没有 T1 注释时接近 blanket veto，增益却不比 full 小。** 作者自述：不能把「结构反向组合」的贡献与「保守拒绝」分开。
 
-> 出处：Table 5, p.7–8（tier ablation；95% CI）。
+> 出处：Table 5, p.7–8。这是 **qwen3-8B airline、150 runs/arm 的单格消融**，不是 18 格整体；五个配置各自 separate baseline rerun，ablation full 0.080 ≠ 主实验 +0.111。
 
 ### 4.5 被拦了什么
 
 - 1,745 条 blocked decisions；最高 block 次数：GPT-OSS-120B retail return 150 次、exchange 103 次；Nemotron-9B airline update_flights 77 次。
 - **没有独立的 harm/authorization 标签**；无法算 false-veto 率。
 
-> 出处：§5.4 block log；1,745 条 blocked decisions。
+> 出处：§4.6 block log；1,745 条 blocked decisions。
+
+### 4.6 为什么 T1-only 接近 blanket veto
+
+airline 的工具在 Layer A 里**没有** T1 注释；T1-only 遇到 mutating tool 时找不到精确逆，于是对**所有** mutating 调用返回 veto。它不是「更保守的结构判断」，而是**结构退化成「凡 mutating 就拒」**；这正是 blanket veto 的形态。
+
+实验结果却显示它的增益与 full 相近（0.087 vs 0.080），说明 airline 的收益可能主要来自「拒绝 mutating 动作」，而不是「结构反向组合」。要分开这两者，必须做同一 baseline、同一轨迹的配对实验；本文没有。
 
 ## 5. 这些数字不能说明什么
 
-1. **reward 不是防伤害。** 被 veto 的风险动作不体现在 reward 里；airline 的 +0.11 可能只是「少做了危险动作」的副作用。
+1. **reward 不是防伤害。** 被 veto 的风险动作不体现在 reward 里；airline 的 +0.11 只说明任务奖励，不能证明防伤害，也不能隔离 reverse search 与 conservative blocking。
 2. **T1-only ≈ blanket veto。** 测到的收益可能来自保守拒绝；不能声称「结构推理有效」。
 3. **retail 的失败不一定是机制失败。** 退货/换货是合法用户请求；可逆性不是唯一判据，需要意图/授权层。
 4. **不是部署阈值。** 斜率是六点描述性拟合；作者说给不出 zero-crossing。
@@ -170,7 +177,7 @@ POLAR 的立场：**安全是结构问题**。不要问「模型觉得这个动�
 4. **反向搜索只判「有没有路」。** 不要求执行逆操作，也不要求证明恢复成功；先把「有没有路」和「路好不好」分开。
 5. **分数取最弱一步。** 一步不可逆就整条归零；bottleneck 就是审计理由。
 6. **判定与执行分离。** 同一个 φ 可以驱动硬 veto、escalate、advisory；策略可配置。
-7. **阈值先按保留率/覆盖率校准，再按 reward 校准。** airline 在 0.80 只保留 36.6%，retail 100%。
+7. **阈值先按保留率/覆盖率校准，再按 reward 校准。** airline 在 0.80 只保留 36.6%，retail 100%；这个 36.6% 是 996 条有非空候选池的 logged decisions 在固定轨迹上的保留率，不是 reward 曲线，也不估计最优阈值。
 8. **上线前单独量 false-veto。** 必须有 harm/authorization 标签或人工审计。
 9. **按能力分层部署。** 弱模型 + 高不可逆风险：硬 veto；强模型：advisory/动态门；强模型 + 合法用户意图：不要用可逆性单独裁决。
 
@@ -193,7 +200,17 @@ POLAR 的立场：**安全是结构问题**。不要问「模型觉得这个动�
 
 **用**：动作不可逆且代价高；模型弱于域要求；域规则可查询成事实；有真实状态投影；能承担本体维护。
 
-**别用**：强模型 + 高基线；用户意图主导、动作本身合法（retail）；拿不到状态；只用 reward 评估；本体没人维护。
+**别用（本文观察/读者推断）**：强模型 + 高基线常回退；用户意图主导、动作本身合法（retail）；拿不到状态；只用 reward 评估；本体没人维护。是否部署要自己的 false-veto/成本数据，不能照搬斜率。
+
+### 6.4 最小落地清单
+
+1. **列 mutating tools 和槽位。** 只对会改变外部世界的工具建本体。
+2. **写 T1–T5 + curator 权重。** 先只写 T1/T4/T5，T2/T3 可以后补；但 T1-only 会退化，别拿它当 full。
+3. **接真实状态投影。** 从 DB + 工具执行记录重建 Layer B；不要让 LLM 想象。
+4. **反向搜索只判「有没有路」。** 先不验证逆执行；把「有路」与「路能走通」分开。
+5. **阈值按保留率校准。** airline 在 0.80 只保留 36.6%，retail 100%；同一阈值跨域不通用。
+6. **上线前单独量 false-veto。** 没有 harm/authorization 标签，就不知道拦对了多少。
+7. **按能力分层部署。** 弱模型硬 veto；强模型 advisory/动态门；合法意图主导的动作不要只靠可逆性。
 
 ## 7. 质量与边界
 
@@ -214,7 +231,7 @@ POLAR 的立场：**安全是结构问题**。不要问「模型觉得这个动�
 
 - **T1-only vs full 的配对实验**：同一 baseline、同一轨迹，分开「结构」与「保守拒绝」。
 - **False-veto 率**：1,745 条 blocked decisions 能否人工标注「本可合法执行」？
-- **复合动作的可逆性**：单步可逆、组合不可逆；当前只看单步/当前 state。
+- **复合动作的可逆性**：POLAR 会组合候选逆序列，但不模拟完整 post-action state s′、不验证逆执行；组合可逆性仍是未测。
 - **意图/授权层**：可逆性门 + 用户确认 + 策略引擎，谁做最终裁决？
 - **动态/不确定性感知门**：强模型上保留结构检查而不回退？
 - **本体编写成本**：一个人天/域？工具变更后的维护成本？
@@ -222,5 +239,5 @@ POLAR 的立场：**安全是结构问题**。不要问「模型觉得这个动�
 ## 10. 原文
 
 - arXiv:2610.08082
-- PDF：`src/papers/2610.08082-polar/`
+- PDF：同目录 `2610.08082-polar.pdf`
 - 代码/数据：论文未给独立仓库。

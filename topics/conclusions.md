@@ -19,8 +19,8 @@ updated: 2026-11-07
 
 | 编号 | 结论 | 出处 | 影响 |
 |---|---|---|---|
-| E-01 | 在足够强的检索 harness 下，结构化工件（本体、图、wiki）在 **FRAMES** 上无可检出的准确率增益；PageIndex 式大纲在同规模下反而退化。作者自述这些工件的回报在**部署层**（治理、跨源集成、上手、时序定向、连续性），而准确率基准看不见；但其部署 ledger 为空，**这是作者主张，不是观测**。限定：单基准、单 compiler/answer model、无 CI | [CAI](../src/papers/2610.41172-context-as-infrastructure/card.md) | **支撑 P1**（价值在约束与控制） |
-| E-02 | 三种本体来源（专家 / LLM 生成 / 数据挖掘）在漏检与误报上各有偏向，无单一向优：真实答案上 curated catch/FA/precision 18.9/16.8/57.1%，data-derived 8.2/3.5/72.3%，masked LLM 5.0/1.8/93.7%；curated 精确度**仅略优于随机**（+1.6 点，CI 跨零）；按发布状态使用的 curated schema 可能**与自身数据矛盾**。空结果重试在人工 fault 上 catch 79.2%、FA 0%，是关键基线 | [What Does an Ontology Catch](../src/papers/2610.37809-what-does-an-ontology-catch/card.md) | **支撑 P3**（判定是权衡）；给出判定器评估基线 |
+| E-01 | 在足够强的检索 harness 下，**被测量的**结构化工件（摘要树、PageIndex 大纲、wiki、entity graph）在 **FRAMES** 上无可检出的准确率增益；PageIndex 式大纲在同规模下反而退化。**本体、timeline、mind map、session memory 在 Table 1 是 not measured，不能算进这个结论。** 作者自述这些工件的回报在**部署层**（治理、跨源集成、上手、时序定向、连续性），而准确率基准看不见；但其部署 ledger 为空，**这是作者主张，不是观测**。限定：单基准、单 compiler/answer model、无 CI | [CAI digest](../src/papers/2610.41172-context-as-infrastructure/digest.md) | **支撑 P1**（价值在约束与控制） |
+| E-02 | 三种本体来源（专家 / LLM 生成 / 数据挖掘）在漏检与误报上各有偏向，无单一向优：真实答案 catch/FA 为 curated 18.9/16.8、data-derived 8.2/3.5、masked LLM 5.0/1.8；precision（**人工故障、25% 错答案假设**）为 57.1/72.3/93.7；curated 精确度**仅略优于随机**（+1.6 点，CI 跨零）；按发布状态使用的 curated schema 可能**与自身数据矛盾**。空结果重试在人工 fault 上 catch 79.2%、FA 0%，是关键基线 | [What Does an Ontology Catch digest](../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) | **支撑 P3**（判定是权衡）；给出判定器评估基线 |
 | E-03 | 强制每个答案报告所用作证据的本体观察 + 接地等级（entailed/supported/related/unrelated），在三个大本体、六个医学 QA 任务、2 backbone 上整体最优：平均 50.5%/68.1%；Tests 1–2 +10–15pp；Test 3 同 8k 预算 84.9% vs 66.7%，9.7k vs 96.7k tokens/问。限定：等级是**模型自评**、未校准；检索是主瓶颈（gold evidence 完整检索 MCQ 61.7% vs OQ 23.6%） | [OA-RAG](../src/papers/2610.36335-oa-rag/card.md) | 支撑 P1、P2；接地等级是弱信号 |
 | E-04 | 用两层本体对工具调用打可逆性分、执行前剪枝：τ²-bench 上六个模型中四个在 airline 域提升 0.11–0.18；**但 18 个模型-域组合仅 8 个整体改善，retail 与更强模型常回退**；作者声明 reward 不是防止伤害的直接度量。**T1-only 接近 blanket veto，增益却不比 full 小——结构反向组合的贡献未被隔离** | [POLAR](../src/papers/2610.08082-polar/card.md) | **支撑 P3**，**削弱**「护栏总是更好」；也削弱「结构本身有效」 |
 | E-05 | 本体在记忆系统中承担**对齐与印证条件**（跨期身份 registry、双模态互证），而非自由推理；克制的用法更易落地。alias memory 让 final-period CMR +7.8–12.1 pp（4 settings），human-audit recall +22.5–29.0 pp，semantic matching token −40.3%。限定：专有数据、3 period、无年度周期；未匹配≠关系结束 | [FIRME](../src/papers/2610.40482-firme/card.md) | 支撑 P1（能力与意图分离）；04 state 的核心一手证据 |
@@ -30,7 +30,7 @@ updated: 2026-11-07
 | E-12 | 同一份知识，**投影成文**比 JSON、查询工具、文档检索都更易被使用：element score 投影 0.777 / JSON 0.717 / 查询 0.638 / 检索 0.597；避坑率 0.605→0.802（+19.8pp，OR 5.45，p=6.0×10⁻⁷）。**K0→K1 命名+单位已有 +54.6pp**；9B 带投影 0.737 > 750B 不带 0.672；H2（增益随容量上升）未支持（p=0.85）。限定：n=1 工厂、9 任务、答案基本写在文本里 | [Narrow & Deep](../src/papers/2610.11768-narrow-and-deep/card.md) | 支撑 03 知识派；与 E-01 并列构成 C-04 |
 | E-13 | 约束类机制的增益**随模型基线能力升高而缩小**：airline/retail/telecom 斜率约 −0.76/−0.67/−0.31（R² 0.92/0.98/0.65），但这是六点描述性拟合，**给不出零交叉的部署阈值** | [POLAR](../src/papers/2610.08082-polar/card.md) | 强化 E-04，划定 01 约束派的适用边界；不可当预测曲线 |
 | E-14 | 编译的盈亏平衡是**条件性**的：无限视野 `p_h > 2%`，有限视野 `p_min = 2% + c/(0.929Q)`；平均 −38% 是 hit/miss 混合，不能当上线依据；证据替换用检索轮次换 token，配对子集时延约 **3×** | [CAI](../src/papers/2610.41172-context-as-infrastructure/card.md) | 支撑 RQ5；把「编译值不值」变成可算的门槛 |
-| E-15 | 护栏/分配机制应报 **harm–approval–cost 前沿**，不是单一 HSR：CASEL 模拟（20 seeds、120k actions）HSR 14.75%→7.02%、审批 8.7%；Risk-Menu HSR 5.82% 但审批 12.6%；CASEL 用约 30% 更少审批达到相近 harm。轨迹总账反噬（11.82%）。限定：模拟、γ_m 假设、审批疲劳未建模 | [CASEL](../src/papers/2610.36570-casel/card.md) | 支撑 RQ4/RQ5；把「护栏值不值」变成三维前沿 |
+| E-15 | 护栏/分配机制应报 **harm–approval–cost 前沿**，不是单一 HSR：CASEL 模拟（20 seeds、120k actions）HSR 14.75%→7.02%、审批 8.7%；最低 HSR 是 Consequence-Menu 4.38%（审批 13.8%），Risk-Menu 5.82%（审批 12.6%）；CASEL 用约 30% 更少审批达到相近 harm。**主表 CASEL 在 τ=∞（阈值关闭）下；不是所有方法同 menu/cost**。full ledger 在 harm–compute 面被支配，但在低审批端（4.3% approvals / 11.82% HSR）是前沿点。限定：模拟、γ_m 假设、审批疲劳未建模 | [CASEL digest](../src/papers/2610.36570-casel/digest.md) | 支撑 RQ4/RQ5；把「护栏值不值」变成三维前沿 |
 | E-16 | **推理期约束的形式决定它是天花板还是护栏**：限制知识源（curated KG）可能封顶；验证条件（三值 ⊤/⊥/?） + 假设 revision 可同时提高成功率与减少无效干预（Tacit-FLE 78.6–90.0% vs IfR 64.3–65.0%，SI 1.9–2.4 vs 6.4–17.8；Mars 15.92 vs 10.64；ALFWorld 98.5% vs 96.3%）。限定：模拟、固定 schema、无真实工厂 | [OntoAct](../src/papers/2610.21983-ontoact/card.md) | 支撑 P1/P2；refine 01-L3 |
 | E-17 | **记忆是状态，不是事实集合**：Persistent Facts + Relational State（有效性/scope/更新/冲突）+ Reasoning State（当前请求怎么用）。EvoMemState 四基准：Complete Retrieval 85.6%（与最好 baseline 相当），但 Acc@complete 70.8/68.5（+11.5/+31.2）；去掉 Relational −8.9/−6.4，去掉 Reasoning −8.0/−15.0，去掉 RL −7.9/−16.4；reasoning state 跨 6 系统 +0.2–4.9。限定：文本 only、需训练信号 | [EvoMemState](../src/papers/2611.03743-evomemstate/card.md) | 支撑 04 状态派；「会用」比「检索到」更关键 |
 | E-09 | SLB 的规模与干预：85% traces、24% token、77–89% 程序仍独立重算；SLB 与准确率无关联（ratio +0.1 → +0.007）；placeholders 减 SLB token **97%** 而准确率 +2.6（不降）；cautionary prompts 只减约 1/4；batching 准确率 −5.9。形式语言是最大解释变量（Python > Z3/PDDL，0.03–0.20 ratio）。限定：3 模型/4 CSP/2 FL、单次生成、闭源无 trace | [SLB](../src/papers/2611.02395-solver-like-behavior/card.md) | 支撑 06 trace；把「SLB 可移除」从推测升为已核 |
@@ -44,7 +44,7 @@ updated: 2026-11-07
 | 编号 | 结论 | 为什么仍是推测 |
 |---|---|---|
 | E-11 | 训练好的检索嵌入中，前缀维度与分类法粒度对齐 | 仅读综述转述（Peeling the Matryoshka） |
-| E-19 | 机制是否值得落地，取决于「位置 × 成本 × 使能条件」，不是本体质量；没有一条适用于所有机制的能力曲线（约束类随能力下降，知识投影不随容量上升） | Wave 4 综合；证据分散在 E-08/E-12/E-13/E-14/E-15/E-16/E-17 |
+| E-19 | 机制是否值得落地，取决于「位置 × 成本 × 使能条件」，不是本体质量；没有一条适用于所有机制的能力曲线（约束类随能力下降，知识投影不随容量上升） | 横切综合；证据分散在 E-08/E-12/E-13/E-14/E-15/E-16/E-17 |
 
 ## 存疑
 

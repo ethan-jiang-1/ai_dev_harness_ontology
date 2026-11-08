@@ -112,6 +112,14 @@ Information 轴：
 - Verification prompt 从 none→binding，reference-based verification 只 19%→22%；给 oracle 翻三倍。
 - ~3/4 的 runs 只做 format-only verification；oracle 的 hill-climbing 只 4.4%。
 
+### 4.4 这些数字之间的逻辑
+
+- **为什么 54% 是噪声？** 同一配置重复跑，模型采样/工具状态/环境时序都在变；单次分数差异很容易被误读成配置效应。
+- **为什么 Information > Model？** agent 的瓶颈常是「不知道有 specialist / 不知道怎么调」，不是「模型不够聪明」；补信息直接消除瓶颈，换模型不能。
+- **为什么预算与信息/模型交互？** 时间只让 agent 在已有路径上多试；信息不足时，多试只是在错误路径上跑更久。
+- **为什么验证工具 > prompt？** prompt 要求自检，但模型没有外部信号；工具提供可验证的反馈。行为从 19% 到 22%，oracle 翻三倍。
+- **为什么 agent 不拒绝弱 specialist？** 可能是 authority bias（默认 specialist 更强）或探索不足（从不比较 backbone 自己的答案）。
+
 ## 5. 这些数字不能说明什么
 
 1. **不是所有域。** 4 tasks / 2 scientific domains；其他领域未测。
@@ -153,6 +161,17 @@ Information 轴：
 **用**：长程 agent；多配置/多模型；需要可靠性与成本；有 specialist/tool 可调用。
 
 **别用**：单步任务；配置轴不适用；没有足够 runs 做方差；没有 specialist reference。
+
+### 6.4 最小评测清单
+
+1. **把 agent 当 config。** 固定任务，变五轴；至少全因子或分组对照。
+2. **先量 run-to-run 噪声。** 同配置重复 5 次；单次跑分不可信。
+3. **报 completion/variance/cost/calibration。** 不只报 score。
+4. **先加信息，再换模型/加预算。** Information 在每个任务上第一；还降成本/改善校准。
+5. **预算不是独立旋钮。** 时间只在信息/模型足够时有用。
+6. **验证要靠工具。** 给 oracle/validator，不要只写「请自检」。
+7. **强制比较弱 specialist。** 不要假设 agent 会拒绝；在系统层让它比较。
+8. **效率 ≠ 结果。** 同时报 tool calls/错误/校准与 pooled G。
 
 ## 7. 质量与边界
 

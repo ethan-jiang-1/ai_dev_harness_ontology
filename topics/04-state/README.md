@@ -18,7 +18,7 @@ updated: 2026-11-08
 | 子主题 | 回答什么 | 状态 | 已发现 / 未发现 | 先读 |
 |---|---|---|---|---|
 | [memory](./memory/README.md) | 事实集合 vs 状态；两层状态 | `draft`，已拆 F/G | 4 F / 5 G | dashboard |
-| [identity](./identity/README.md) | 跨源、跨期的同一性 | `draft`，机制页 | 3 F / 3 G | dashboard |
+| [identity](./identity/README.md) | 跨源、跨期的同一性 | `draft`，已拆 F/G | 4 F / 5 G | dashboard |
 | [determinism](./determinism/README.md) | 跨运行的一致性锚点 | `seed`，待拆 | — | 机制页 |
 
 ## 本派当前判断

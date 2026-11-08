@@ -86,6 +86,14 @@ claims: [05-L2, 05-L5]
 - CASTON v1.0.0：270 classes / 306 axioms / 292 atomic subsumption。
 - 相对 default，GPT-4o mini high-confidence 接受率低 **68.7 pp**。
 
+### 4.1 这些数字之间的逻辑
+
+- **为什么先缩小搜索空间？** 全本体给 LLM 既贵又不 targeted；30×10 候选让判断局部、可追溯。
+- **为什么 fine-tune embedding 是主要增益？** pretrained ensemble 能召回一些候选，但 precision 不够；目标域语义要靠微调。
+- **为什么 confidence 校准是模型特定的？** Qwen high 100%、GPT-4o mini high 31.3%；同一 confidence 标签在不同模型上含义不同。
+- **为什么 medium 全 mixed？** 本体层级本身可能有争议；不是模型不够强，而是「正确答案」不确定。
+- **为什么没有下游？** 修复是否让应用变好，本文没测；这是外推边界。
+
 ## 5. 这些数字不能说明什么
 
 1. **不是大规模。** 单一本体、单一公理类型（subsumption）、6 条高置信修复。
@@ -125,6 +133,16 @@ claims: [05-L2, 05-L5]
 **用**：中等规模本体；有 embedding/LLM；有专家可审 high/medium；目标是父类替换。
 
 **别用**：本体很小；层级本身不一致；需要关系限制/复杂公理；没有专家；大规模跨本体。
+
+### 6.4 最小落地清单
+
+1. **先用 embedding 缩候选。** 每条 `A ⊑ B` 排序；只拿 asserted parent 排名很低的 30 条。
+2. **每条只给 10 个替代父类。** 不要把整个本体塞给 LLM。
+3. **fine-tune embedding 到目标本体。** Default 100% vs pretrained 57.1%；不是可选。
+4. **LLM 局部 yes/no/替换判断。** 给 child/当前父类/候选父类 + label/definition/domain/other axioms；JSON 输出。
+5. **用 confidence 做 triage。** High 可信；medium 全 mixed，必须人审。
+6. **换模型要重测校准。** GPT-4o mini high 只有 31.3%。
+7. **本体不一致时先修层级。** 失败案例显示，专家都不一致时方法会错。
 
 ## 7. 质量与边界
 

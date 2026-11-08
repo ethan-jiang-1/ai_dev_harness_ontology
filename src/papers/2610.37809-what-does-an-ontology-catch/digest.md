@@ -14,7 +14,7 @@ claims: [E-02]
 
 1. **它问什么**：LLM agent 在知识图谱上写 SPARQL 答题；用图的本体做 checker，能不能可靠地抓错？curated / LLM 生成 / 数据派生三种来源，哪种更值得？
 2. **它怎么做**：在 5 个知识图、7 个模型上，比较三种本体来源 × 三种用法（prompt 上下文 / checker / 两者）；用「真实答案 + 人工故障」分别量 catch 与 false alarm。
-3. **它发现什么**：curated 本体抓得多、但误报也多；真实答案上它的 precision 只比随机高 1.6 点。数据派生本体 precision 更高（72.3%）但只抓到 8.2% 的真错；**空结果重试**是很强的基线（人工故障 catch 79.2%、FA 0%）。没有单一向优的来源。
+3. **它发现什么**：curated 本体抓得多、但误报也多；真实答案上它的 precision 只比随机高 1.6 点（CI 跨零）。数据派生本体在「人工故障 + 25% 错答案」假设下 precision 更高（72.3%），但只抓到 8.2% 的真错；**空结果重试**是很强的基线（人工故障 catch 79.2%、FA 0%）。没有单一向优的来源。
 
 ## 1. 它解决什么问题
 
@@ -48,6 +48,12 @@ claims: [E-02]
 | **precision** | flag 里有多少是真的错；catch 高但 FA 高，precision 就低。 |
 | **empty-result retry** | 查询返回空就重试；不需要本体，是很强的基线。 |
 | **UniProt** | 本文唯一 confirmatory 的图（约 4×10⁸ triples）。 |
+| **type swap** | 把类/属性/常量替换成 co-occurrence 图上 2 或 4 步外的**不同类型**项；用来测 domain/range 等结构检查能抓的类型错误。**不是「类型都对、关系错」**；后者是 changes of meaning（语义错）。 |
+| **domain / range** | 属性允许的主语类 / 宾语类；违反会产生结构误报。 |
+| **disjointness** | 两个类不能有共同实例；本文发现它几乎不贡献 flag。 |
+| **triple / binding** | RDF 的三元组 / 查询结果变量的绑定；binding check 是对结果重新求值。 |
+| **C1–C5** | 预注册比较：C1 context 准确率、C2 人工故障 FA/type-swap、C3 LLM 对照 FA、C4 组合净收益、C5 feedback。 |
+| **confirmatory / exploratory** | 前者是预注册检验、有权重；后者是描述性/事后比较，不能当确认证据。 |
 
 ## 3. 它怎么做
 
@@ -101,77 +107,86 @@ claims: [E-02]
 
 ### 4.1 真实答案（UniProt，4,410 条，3,383 可检查）
 
-| 来源 | catch | false alarm | precision |
+| 来源 | catch（真实答案） | FA（真实答案） |
 |---|---|---|---|
-| curated | **18.9%** | **16.8%** | **57.1%** |
-| data-derived | **8.2%** | **3.5%** | **72.3%** |
-| LLM-generated（masked，三个） | 5.0% | 1.8% | 93.7% |
-| 空结果重试 | 2.5% | 0.1% | 100% |
+| curated | **18.9%** | **16.8%** |
+| data-derived | **8.2%** | **3.5%** |
+| LLM-generated（masked，三个） | 5.0% | 1.8% |
+| 空结果重试 | 2.5% | 0.1% |
 
-- curated precision 相对随机 flag 只高 **+1.6 点**（CI −2.3~+6.3）；LLM judge 比随机高 +15.8。
-- 确认性比较（C2）：curated − data-derived：FA **+8.6**（6.0,11.2），type-swap catch **−22.3**（−23.5,−21.0）。
-- C3：curated − masked LLM：FA **+15.7**（13.7,17.9）。
+- **precision 不是真实答案口径**：57.1/72.3/93.7/100 是用人工故障的 catch/FA、在「错答案占 25%」假设下算的。若把同一公式套到真实答案 18.9/16.8，会得到约 27.3%，但**论文没有直接给这个数**；只能当反推。表里只放真实答案 catch/FA，precision 单独看。
+- **C2（人工故障上的确认性比较，per-question controls）**：curated − data-derived：FA **+8.6**（6.0,11.2），type-swap catch **−22.3**（−23.5,−21.0）；两个方向都超过 5 点 margin。注意：type-swap 故障是从 **data-derived 自己的 co-occurrence graph** 生成的，设计上偏向 data-derived；−22.3 只由 4 步 swap 驱动，2 步 swap 的差异未确立（−1.3，CI 跨零，exploratory）。这不是干净的普遍优势。
+- **C3（人工故障）**：curated − masked LLM：FA **+15.7**（13.7,17.9）。
+- **C1a（context 用法，pooled）**：data-derived 作上下文比 curated 准 **2.1 点**（curated−data −2.1，CI −3.4~−0.9，p*=0.003）。但同一 C1 的 **C1b** 在 Qwen3.8 / Sonnet 上 ±3 等价未确立（−1.1 [−4.2,1.9]、−0.8 [−2.7,0.9]）；不能把这个 pooled 优势说成跨模型稳健。
 
-> 出处：Table 2, p.7；Table 3, p.7；§5.3。
+> 出处：Table 2, p.7；Table 3, p.7；§5 RQ1。**precision（人工故障、25% 错答案假设）：curated 57.1、data 72.3、LLM masked 93.7、空结果 100。**
 
 ### 4.2 人工故障
 
-| 来源 | catch（all） | catch（rows returned） | FA |
+| 来源 | catch（all） | catch（rows returned） | FA（人工故障/control） |
 |---|---|---|---|
-| curated | 60.1% | 54.3% | 16.8% |
-| data-derived | 75.6% | 62.1% | 3.5% |
+| curated | 60.1% | 54.3% | **15.0%** |
+| data-derived | 75.6% | 62.1% | **9.7%** |
 | 空结果重试 | 79.2% | 0.0% | 0% |
 
 **空结果基线在人工故障上已经很强**：很多故障会让查询返回空；ontology check 的增量价值主要在「查询仍有结果」的错误。
 
-> 出处：Table 2, p.7；§5.4。
+> 出处：Table 2, p.7；§5 RQ1。注意：16.8%/3.5% 是真实答案的 FA，15.0%/9.7% 是人工故障/control 的 FA；不能跨表拼接。
 
 ### 4.3 组合与反馈
 
-- 组合 curated + data-derived：catch 19.5%、FA 17.8%；比 curated 单用只多 0.6 点 catch，却多 1.0 点 FA；C4 无净收益。
-- specific feedback：修复 28.3% 的 flagged wrong，但 corrupt 1.0% 的 flagged correct；generic 是 20.2% / 0.2%。C5 无显著差异。
+- 组合 curated + data-derived：真实答案 catch 19.5%、FA 17.8%；比 curated 单用只多 0.6 点 catch，却多 1.0 点 FA。C4 的注册检验在人工故障/25% 错答案上：combined−curated **−0.5**（CI −1.5~0.4），combined−data-derived **−10.6**（CI −12.2~−9.2）；组合不比 curated 好，且显著差于 data-derived。
+- specific feedback：修复 28.3% 的 flagged wrong，但 corrupt 1.0% 的 flagged correct；generic 是 20.2% / 0.2%。specific 的净修复更高；C5 的最终准确率差异未确立，不是「generic 更安全」。
 
-> 出处：§5.5；Table 4（组合/反馈）。
+> 出处：Table 2（fixed/corrupted）、Table 3（C4/C5）；§5 RQ3；Table 4 是人工故障类别，不是组合/反馈。
 
 ### 4.4 成本
 
-- curated check：每答案 65,976 tokens / 46.0 s（median）。
-- data-derived：28,076 tokens / 17 s。
-- 生成一个 data-derived ontology：<$1。
+- curated check：每**被 flag 的答案** 65,976 tokens / 46.0 s（median）。
+- data-derived：28,076 tokens / 17 s（同为 per answer flagged，不是 per answer checked）。
+- LLM ontology 生成：<$1/个（Claude Opus 5.5）；data-derived 的 setup 成本/时间**未记录**（论文 Table 8 的 Setup 列是「—」）。
 
-> 出处：Table 8, p.10；§5.7。
+> 出处：Table 8 / Appendix B.3；§5 RQ2/RQ3。
+
+### 4.5 这些数字之间的逻辑
+
+- **为什么 curated catch 高、FA 也高？** 它检查的约束多（domain/range/disjointness），能抓到更多类型/声明错误；但 schema 与数据漂移时，它会把大量正确答案标错。
+- **为什么 data-derived FA 低、catch 也低？** 它从数据总结模式，不会 flag 数据里出现≥5 次的模式；它抓的是「数据里没见过的组合」，不是语义错误。
+- **为什么 curated 会与自己的数据矛盾？** 发布状态的本体可能缺声明、与实例数据不一致；14.3% 的 Linked Data triples 使用未声明属性（这是论文引用的外部 crawl 统计，不是本文测量）。每个缺失声明都会误报用到它的正确答案。
+- **为什么空结果重试这么强？** 很多人工 fault 会让查询返回空；空结果重试不需要本体。但真实 agent 的「有结果但答错」它抓不到（真实答案 catch 2.5%）。
+- **为什么组合没有净收益？** 组合只有 curated + data-derived 两源，覆盖重叠；curated 的 FA 抵消了 data-derived 的增量 catch；真实答案上只多 0.6 点 catch、多 1.0 点 FA。
 
 ## 5. 这些数字不能说明什么
 
-1. **不是「本体无用」。** 它说明「把本体当 checker」在真实答案上 precision 只略高于随机；特定错误类型（type swap）curated 仍然有用。
+1. **不是「本体无用」。** curated 在真实答案上 precision 只略高于随机（+1.6，CI 跨零）；**data-derived 的真实答案 precision 是 29.9%，比同率随机 flag 高 +14.4 点**——它 catch 低，但 precision 不差。curated 的明显优势在 invented identifier（77.4% vs 随机 48.1%）；type swap 只略高于随机（55.3% vs 48.0），且低于 data-derived（78.4%）。
 2. **不是「data-derived 更好」。** data-derived 的 precision 高，但 catch 只有 8.2%；它抓不到语义错误（类型都对、问错问题）。
 3. **不是「空结果重试就够了」。** 它在真实答案上只抓 2.5%；对「查询仍有结果」的错误，ontology check 才有增量。
 4. **UniProt 是唯一 confirmatory。** 其他图 exploratory；private 只报率。
 5. **人工故障可能不代表真实错误。** 真实 agent 错误稀疏且分布不均。
 6. **知道正确答案。** 真实部署没有这个条件；precision/recall 无法直接算。
-7. **curated setup 成本未测。** data-derived <$1 是生成成本，不是维护成本。
+7. **curated/data-derived setup 成本未测。** `<$1` 是 LLM ontology 的生成成本，不是 data-derived，也不是维护成本。
 
 ## 6. 工程上怎么用
 
 ### 6.1 复刻顺序
 
 1. **先建空结果重试基线。** 不加本体，先看执行结果本身能暴露多少错。
-2. **做 data-derived summary 审计 curated 本体。** 缺声明、矛盾 axiom 是最便宜的 false alarm 来源。
+2. **做 data-derived summary 审计 curated 本体。** false alarm 主要来自 domain/range 与 declaration check；「curated schema 与自身数据矛盾」是 Table 5 的观察，不是 false-alarm 来源（Table 6 里 data clash=0）。
 3. **按错误类型选 checker。** 类型/声明/模式错 → data-derived / declaration check；语义错 → 本体检查抓不到，换 LLM judge 或人工。
 4. **同时报 catch 与 FA。** 只看 accuracy 会把「多抓错、多杀对」混在一起。
-5. **不要同源。** 同一个本体既做 context 又做 checker，catch 反而下降（探索性）；判定器应与被判定对象不同源。
+5. **同源 context+checker 的 catch 下降是探索性观察**，不要写成部署规则；机制（确认偏差 vs 信息冗余）未定。
 6. **不要盲目组合。** 组合往往增加 FA 而不增加净收益。
 7. **把 FA 当预算。** Google 的静态分析要求 effective FP <10%；agent 场景要自己定。
-8. **specific feedback 要验证。** 它修复更多，但 corrupt 也更多；没有验证前 generic 更安全。
+8. **specific feedback 要验证。** specific 修复 28.3% / corrupt 1.0%，generic 20.2% / 0.2%，specific 净修复更高；C5 的最终准确率差异未确立（0.2，CI −3.2~3.1），不能默认 generic 更安全。
 
 ### 6.2 成本与使能
 
 | 成本 | 一次性/每次 | 说明 |
 |---|---|---|
 | curated 本体 | 发布方一次性（未测） | 可能缺声明/与数据矛盾；维护成本高 |
-| data-derived summary | 一次性，<$1 | 从数据总结类/属性/模式；可自动生成 |
+| data-derived summary | 一次性，成本未记录 | 从数据总结类/属性/模式；可自动生成 |
 | LLM-generated 本体 | 一次性，<$1/个 | 不稳定；需多个 draw + 评估 |
-| check | 每次答案 | curated 66k tokens / 46 s；data 28k / 17 s |
+| check | 每**被 flag 的答案** | curated 66k tokens / 46 s；data 28k / 17 s；不是 per answer checked |
 | 重试 | 每次 flag | 由 false alarm 触发；成本随 FA 上升 |
 | 人工标注 | 评估期 | 需要正确答案/抽样标注；部署时通常没有 |
 
@@ -182,6 +197,16 @@ claims: [E-02]
 **用**：知识图谱有可执行 schema；任务主要是类型/声明/模式错误；有正确答案或能人工标注；false alarm 预算明确。
 
 **别用**：语义错误为主；没有正确答案、无法估 precision；curated 本体与数据不一致且没人维护；查询大量使用 UNION/subquery；false alarm 会直接损害用户信任。
+
+### 6.4 最小落地清单
+
+1. **先建空结果重试基线。** 不加本体，记录 catch/FA/成本。
+2. **做 data-derived summary。** 从数据总结类/属性/模式；生成成本未记录；先审计 curated 的缺声明/矛盾。
+3. **按错误类型选 checker。** 类型/声明/模式错 → data-derived/declaration；语义错 → LLM judge/人工。
+4. **同源 context+checker 的 catch 下降是探索性观察**；不要写成「判定器必须不同源」的部署规则。
+5. **不要盲目组合。** 组合通常增加 FA；先证明净收益。
+6. **同时报 catch/FA/成本。** 只看 accuracy 会反向。
+7. **specific feedback 要验证。** specific 净修复更高；C5 最终准确率差异未确立，不能默认 generic 更安全。
 
 ## 7. 质量与边界
 
@@ -210,5 +235,5 @@ claims: [E-02]
 ## 10. 原文
 
 - arXiv:2610.37809
-- PDF：`src/papers/2610.37809-what-does-an-ontology-catch/`
+- PDF：同目录 `2610.37809-what-does-an-ontology-catch.pdf`
 - 代码/数据：论文提供 replication package；正文链接。

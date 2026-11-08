@@ -124,6 +124,14 @@ claims: [E-07, E-09]
 
 > 出处：§5-H1/H2/H3/H4, p.5–7；Fig. 2（SLB 本体）；Fig. 6（干预）。
 
+### 4.6 这些数字之间的逻辑
+
+- **为什么 SLB 这么普遍？** reasoning model 在写程序前会先「想清楚」；它自然用赋值/试算/排除来想，这正好是 solver 的活。Python 又把搜索留给模型，SLB 更多。
+- **为什么输出评估完全看不见？** B1 hardcoded、B2 partly fixed、B3 steered、B4 independent 都可能输出正确答案；只看最终答案，四者不可区分。
+- **为什么 placeholders 有效？** 把问题里的值藏到运行时，模型看不到具体数值，只能写结构；它无法提前算出答案。
+- **为什么 batching 伤准确率？** 它把多个问题塞进一个 prompt，reasoning token 被压缩；SLB 比例没降，但模型对每个实例的注意力被稀释。
+- **SLB 与准确率为什么无关？** 它测的是「有没有替 solver 干活」，不是「干得对不对」；多算不等于算对。
+
 ## 5. 这些数字不能说明什么
 
 1. **不是所有模型。** 3 个 reasoning model；闭源 API 不返回完整 trace，无法测。
@@ -165,6 +173,16 @@ claims: [E-07, E-09]
 **用**：LLM-as-formalizer；solver-backed agent；需要审计「程序怎么来的」；有完整 trace。
 
 **别用**：闭源模型无完整 trace；任务不能把值与结构分离；需要单次低延迟；不关心求解保证。
+
+### 6.4 最小审计清单
+
+1. **拿到完整 trace。** 没有 trace 就只能看输出，无法测 SLB；闭源模型是结构性盲区。
+2. **按 A/B/C 本体标注。** A1/A2/ratio；B1/B2/B3/B4；C1/C2。
+3. **先量 SLB ratio 与继承率。** 85% 轨迹有 SLB、24% token；9% 程序继承。
+4. **优先 placeholders。** 把值藏到运行时；不要先靠 cautionary prompt。
+5. **能交给声明式 solver 就交。** Python 把搜索留给模型，SLB 更多。
+6. **不要 batching 求省 token。** 它砍 reasoning，也砍准确率。
+7. **评估报 trace 指标。** SLB ratio、继承率、C1/C2；只报 program accuracy 不够。
 
 ## 7. 质量与边界
 

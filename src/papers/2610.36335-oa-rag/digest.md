@@ -127,6 +127,13 @@ RAG 把外部文本拼进上下文；但医学问题常需要：
 - 检索到后，MCQ 证据被引用 95.1–98.4%；OQ 更低。
 - 作者结论：**retrieval，rather than reasoning over retrieved evidence, is the primary bottleneck.**
 
+### 4.5 这些数字之间的逻辑
+
+- **为什么形式 + 注释都要？** 形式公理能回答 entailment，但不能解释概念；注释能解释，但不能保证逻辑后承。两者结合，agent 才能既查关系又读定义。
+- **为什么 grounding level 是自评？** 它由模型在 answering 阶段报告，不是独立 reasoner/判定器；等级与正确率正相关，但没校准。
+- **为什么 Test 3 省 token？** 它把本体观察压成证据摘要，5.8 calls/9.7k tokens；i-MedRAG 用 22 calls/96.7k。
+- **为什么检索是主瓶颈？** gold evidence 完全检索 MCQ 61.7% vs OQ 23.6%；检索不到，推理再强也没用。
+
 ## 5. 这些数字不能说明什么
 
 1. **不是形式保证。** grounding level 是模型自评；没有独立校准/审计。
@@ -168,6 +175,17 @@ RAG 把外部文本拼进上下文；但医学问题常需要：
 **用**：有大规模 OWL 本体；问题需要概念定义/分类/关系；需要证据可追溯；context 预算有限。
 
 **别用**：问题超出本体覆盖；没有 reasoner/SPARQL endpoint；需要形式正确性保证；多本体协调复杂；答案主要是文本阅读/计算。
+
+### 6.4 最小落地清单
+
+1. **先做 concept card。** 每个类转成固定字段文本卡；agent 读卡，不直接读 OWL。
+2. **三阶段分开。** 先想、再查、最后只依据证据回答。
+3. **三种查询原语。** DESCRIBE / ASK / SELECT；prompt 写明开放世界（Not Entailed ≠ false）。
+4. **空结果 fallback。** BM25 取 top-k cards；否则 open-world 会误判「不存在」。
+5. **名字链接要能修。** 精确匹配失败 → 5 个候选 → agent 改 query。
+6. **答案带证据 + grounding level。** 但不要把它当形式保证。
+7. **单独量检索。** gold evidence 是否检索到、是否被引用；否则把「检索不到」误判为「推理不行」。
+8. **按 context 预算比较。** 8k/32k/262k 下结论不同。
 
 ## 7. 质量与边界
 

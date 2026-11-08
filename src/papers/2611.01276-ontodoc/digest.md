@@ -96,6 +96,14 @@ claims: [05-L6]
 
 > 出处：Table 5, p.13（naive 对比）；Table 6, p.13（verbalizer）；Table 7, p.14（人工评估）；Table 4, p.11（假设消融）。
 
+### 4.3 这些数字之间的逻辑
+
+- **为什么 completeness 提升，accuracy 不一定？** 多阶段 pipeline 会加更多上下文/实例事实，完整性更高；但简单图上 naive 更简洁，accuracy/clarity 可能更高。
+- **为什么 assumption 层有效？** 它先写 reasoning + assumptions，再写描述；推断前提被摆到台面上，DB 权威、web 补充。win 54–61%。
+- **为什么 SOCKG 分数更低？** 农业/土壤术语更专业、更异质；同样的 pipeline 在专业域更难。
+- **为什么假设层是瓶颈？** 漏掉的关键细节后面拿不回来；它不是无损中间表示。
+- **为什么没有下游？** 说明写得更完整，不等于用户/agent 更能用；本文没测。
+
 ## 5. 这些数字不能说明什么
 
 1. **不是下游效用。** 说明写得更完整，不等于用户/agent 更能用；本文没测。
@@ -135,6 +143,16 @@ claims: [05-L6]
 **用**：本体术语缺说明；有 SPARQL endpoint；有实例数据；需要批量补文档。
 
 **别用**：本体很小/很简单；没有实例数据；需要形式公理说明（模板更合适）；需要下游任务保证。
+
+### 6.4 最小落地清单
+
+1. **先做自适应 SPARQL 探索。** 先判 IRI 类型，再按类型扫 outgoing/incoming/实例；不要单跳查询。
+2. **网页只作补充。** Wikipedia 适合通用词；Tavily 适合技术/小众词；DB context 是权威。
+3. **先写 assumptions。** 每条带 reasoning + triple 引用；至少一条引用 DB triple。
+4. **描述用 lexicographer 风格。** 不直接命名 IRI；优先 instance-level/区分性事实；省略通用元数据。
+5. **四维评估。** accuracy/clarity/completeness/cruciality；只看一个会掩盖 tradeoff。
+6. **加下游检查。** 描述生成后，让用户/agent 做一次真实任务；否则不知道可消费性。
+7. **增量更新。** 本体变更后重生成；不要留旧说明。
 
 ## 7. 质量与边界
 

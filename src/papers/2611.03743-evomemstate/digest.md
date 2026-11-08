@@ -92,6 +92,14 @@ claims: [04-L1]
 - MemTrap：−6.4 / −15.0 / −16.4。
 - 跨 6 个 memory systems 加 reasoning state：+0.2–4.9。
 
+### 4.4 这些数字之间的逻辑
+
+- **为什么要有两个状态？** 关系状态是「事实怎么成立/冲突/更新」，推理状态是「当前请求怎么用」。混在一起，结构每次随请求变化，无法审计。
+- **为什么用 GRPO？** 没有「正确 reasoning state」的标签；用「有/无 state 时 frozen agent 的答案得分差」当 reward，让策略学会「怎么用」。
+- **为什么 complete retrieval 相当、acc 更高？** 检索到事实不等于会用；reasoning state 决定哪些事实适用、什么优先级。
+- **为什么冲突要显式？** 新事实可能 supersede/conflict 旧事实；独立存储会丢关系，模型每轮重新推断。
+- **为什么没有训练信号会退化？** reasoning-state policy 没有 reward 就只能写死 prompt；固定 self-reflection 可能帮倒忙。
+
 ## 5. 这些数字不能说明什么
 
 1. **不是「检索更多」。** Complete Retrieval 85.6% 与 MemoryBank 86.4 相当；增益在「会用」。
@@ -132,6 +140,16 @@ claims: [04-L1]
 **用**：长期个人助手；偏好/约束/经历跨会话变化；冲突需要保留；有答案/评分器可训练策略。
 
 **别用**：单次会话；没有训练信号；多模态为主；需要形式可验证状态；实时低延迟。
+
+### 6.4 最小落地清单
+
+1. **事实与状态分开存。** Persistent Facts 保留原文/source/timestamp；Relational State 存 validity/scope/更新/冲突。
+2. **增量建本体。** 每个事实挂到最具体 concept；PARENT_OF/CONTAINS 组织；CREATE/MERGE/SPLIT 修订层级。
+3. **检索用关系遍历。** 先 seed，再沿 SUPERSEDES/CONFLICTS_WITH/CONTAINS 拉齐。
+4. **Reasoning State 要学。** 固定 self-reflection 可能帮倒忙；用答案得分差做 reward。
+5. **Reasoning State 只写「怎么用」。** applicability/role/priority；不改写事实。
+6. **评估分两层。** Complete Retrieval Rate 与 Acc@complete 分开。
+7. **承认训练前提。** 没有参考答案时，只能用弱监督/人工反馈替代。
 
 ## 7. 质量与边界
 
