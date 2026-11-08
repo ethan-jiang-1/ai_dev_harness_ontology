@@ -1,5 +1,5 @@
 ---
-updated: 2026-11-07
+updated: 2026-11-09
 ---
 
 # 写作约定
@@ -36,13 +36,21 @@ updated: 2026-11-07
 | 字段 | 用在哪 | 取值 | 含义 |
 |---|---|---|---|
 | `status` | 所有文档 | `seed` / `draft` / `stabilized` / `superseded` | 文档成熟度，不代表篇幅 |
-| `home` / `subtopic` | 论文 `card.md` / `digest.md` | `topics/<派>` / `<子主题>` | 归位；移动子主题只改 `subtopic` |
-| `source_type` | `src/` 卡片 | `paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey` | 素材类型；证据天花板见 [source-types](./source-types.md) |
-| `reading` | 论文 `card.md` | `未读` / `综述级` / `摘要级` / `精读` / `已消化` | 读到什么程度 |
-| `provenance` | 论文 `card.md` | `原文正文` / `原文摘要` / `综述转述` / `未核` | 证据来自哪里 |
-| `quality` | 论文 `digest.md` | `A` / `B` / `C` | 证据强度粗分：A 多基准/真实部署/消融；B 单基准/单域/有限评估；C 概念/模拟/小样本/无量化 |
+| `home` / `subtopic` | 源卡 / digest | `topics/<派>` / `<子主题>` | 归位；移动子主题只改 `subtopic` |
+| `source_type` | `src/` 卡片 | `paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey` / `open-source` | 素材类型；证据天花板见 [source-types](./source-types.md) |
+| `reading` | 源卡 `card.md` | 论文/材料：`未读` / `综述级` / `摘要级` / `精读` / `已消化`；代码：`未读` / `已读代码` / `已跑通` | 读到什么程度；**不是证据等级** |
+| `provenance` | 源卡 `card.md` | 论文/材料：`原文正文` / `原文摘要` / `综述转述` / `未核`；代码：`一手代码` / `一手文档` / `未核` | 证据来自哪里 |
+| `quality` | `digest.md` | `A` / `B` / `C` | 证据强度粗分：A 多基准/真实部署/消融（代码：有测试且有生产/基准）；B 单基准/单域/有限评估（代码：有测试但单路径）；C 概念/模拟/小样本/无量化（代码：只读代码/无测试） |
 | `experiment_status` | `experiments/` | `未开始` / `设计中` / `运行中` / `已完成` / `已放弃` | 实验阶段 |
 | `deliverable_status` | `deliverables/` | `draft` / `stable` / `frozen` | 交付阶段 |
+
+开源卡另有两组字段，只在 `src/open-source/` 使用：
+
+| 字段 | 取值 | 含义 |
+|---|---|---|
+| `commit` / `release` / `license` | SHA 或 tag / tag / SPDX | 版本与许可；不 pin commit 不算入库 |
+| `scan_date` / `stars_at_scan` / `last_push` | 日期 / 数字 / 日期 | 扫描快照；star 只作影响力参考 |
+| `ontology_role` / `seam` / `execution` | `core/adjunct/none/unclear` / 六时刻或 `none` / `executed/context/mixed/none/unknown` | 本体地位、接缝、执行形态；只写初判，定级在 digest |
 
 `status` 的判据：
 
@@ -65,8 +73,10 @@ updated: 2026-11-07
 
 ## 命名
 
-- 目录：小写短横线；论文目录用 `src/papers/{arxiv_id}-{slug}/`
+- 目录：小写短横线；论文目录用 `src/papers/{arxiv_id}-{slug}/`；开源项目目录用 `src/open-source/{org}-{repo}/`（全小写，`/` 换成 `-`，如 `RDFLib/pySHACL` → `rdflib-pyshacl`）
 - 论文文件：`<stem>.pdf`（原文，只读）/ `paper.md`（正文 MD）/ `references.md`（参考文献）/ `appendix.md`（附录）/ `card.md`（分解）/ `digest.md`（消化）/ `figures/`（原图）
+- 开源文件：`card.md`（来源卡）/ `digest.md`（代码阅读，下游入口）/ `code-map.md`（文件/符号索引，可选）
+- 模板统一放 `src/_templates/`：论文、材料、开源各自一套；**源材料子目录不再自带模板**
 - 网页卡：`src/web/{来源}/<slug>.card.md`，与原文同名
 - 子主题目录：`topics/<派>/<子主题>/README.md`；按子机制命名，不按来源类型。派 README 只做地图，详细论证在子主题
 - 结论编号：`E-xx`（结论）/ `Q-xx`（存疑）/ `C-xx`（冲突）

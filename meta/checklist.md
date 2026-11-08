@@ -11,8 +11,9 @@
 ## 2. frontmatter
 
 - 文档：`status` ∈ {`seed`, `draft`, `stabilized`, `superseded`}。
-- 笔记：`source_type` ∈ {`paper`, `preprint`, `blog`, `engineering`, `standard`, `talk`, `survey`}；`reading` ∈ {`未读`, `综述级`, `摘要级`, `精读`, `已消化`}；`provenance` ∈ {`原文正文`, `原文摘要`, `综述转述`, `未核`}；`home` 指向 `topics/<派>`，`subtopic` 指向子主题。
+- 笔记：`source_type` ∈ {`paper`, `preprint`, `blog`, `engineering`, `standard`, `talk`, `survey`, `open-source`}；`reading` ∈ {`未读`, `综述级`, `摘要级`, `精读`, `已消化`}（代码卡另可用 `已读代码` / `已跑通`）；`provenance` ∈ {`原文正文`, `原文摘要`, `综述转述`, `未核`}（代码卡另可用 `一手代码` / `一手文档`）；`home` 指向 `topics/<派>`，`subtopic` 指向子主题。
 - 论文 digest：`quality` ∈ {`A`, `B`, `C`}；`based_on: card.md` 指向同目录的来源卡。
+- 开源卡：`commit` 已 pin；`scan_date` / `stars_at_scan` / `last_push` 齐全；`ontology_role` ∈ {`core`, `adjunct`, `none`, `unclear`}；`seam` 取六时刻之一或 `none`；`execution` ∈ {`executed`, `context`, `mixed`, `none`, `unknown`}。
 - 实验：`experiment_status` ∈ {`未开始`, `设计中`, `运行中`, `已完成`, `已放弃`}。
 - 交付：`deliverable_status` ∈ {`draft`, `stable`, `frozen`}。
 - `updated` 是最后一次实质修订，不是搬家日期。
@@ -28,6 +29,7 @@
 ## 4. 计数
 
 - 22 个论文目录（20 基础 + 2 扫描）；每目录一个 `<stem>.pdf`、`paper.md` / `references.md` / `appendix.md`、`card.md`、`digest.md`；1 张材料卡。
+- 开源：`src/open-source/` 下磁盘目录数 = 状态表「已建卡」数；「已消化」数 = 有 `digest.md` 的目录数；没有 digest 的不计入。
 - 6 派 / 6 个 `frontier.md` / 6 个 `claims.md` / 6 个 `sources.md` / 6 个时刻。
 - 06 有 5 个子主题（mechanism / failure-attribution / trace / metrics / feasibility）。
 - README 的统计与 `conclusions.md` 的实际行数一致：17 已核 / 2 推测 / 3 存疑 / 4 冲突。
@@ -47,6 +49,8 @@
 - **子主题 README 是 index/dashboard**：一屏以内；发现/证据在 `findings.md` + `findings/`，gap/next 在 `frontier.md`，机制在 `mechanism.md`。
 - 改一个派只动该派目录；跨派结论才动 `topics/conclusions.md`。
 - 论文一篇一目录：`src/papers/{arxiv_id}-{slug}/`，内含 `<stem>.pdf` / `paper.md` / `references.md` / `appendix.md` / `card.md` / `digest.md` / `figures/`。
+- 开源一个项目一目录：`src/open-source/{org}-{repo}/`，内含 `card.md` / `digest.md` / `code-map.md`；**没有 digest 的不算入库**；不 vendor 代码。
+- **模板只有一处**：`src/_templates/`（paper / material / open-source 各一套）；源材料子目录不再自带 `_template.md`。
 - **card 是来源卡，digest 是消化正文**：card 只放元数据 + 一页索引 + 图表位置 + 作者局限；digest 自包含（术语/方法/数字条件/边界/工程用法），不靠「详见 card」。
 - 图在论文目录的 `figures/`；topics 引用时带出处、页码、看什么。
 - 博客/工程原文在 `src/web/`，卡与原文同目录 `.card.md`；不放进 `topics/`。

@@ -22,7 +22,8 @@
 | 在一个派内干活 | 该派 README + `claims.md` + `sources.md` + `frontier.md` | 其他派 |
 | 写一个子主题 | 子主题 README + `sources.md` 里对应的卡 | 其他子主题 |
 | 跑一次研究 | 子主题 `prompt.md` + 相关卡 | 全仓 |
-| 加原文/卡 | [src/README](../src/README.md) + `_templates/` | topics |
+| 加原文/卡 | [src/README](../src/README.md) + `_templates/`（论文 / 材料 / 开源三套） | topics |
+| 读一个开源项目 | [open-source/README](../src/open-source/README.md) + 该项目 `digest.md` | 其他项目、全部论文 |
 | 做交付 | [conclusions](../topics/conclusions.md) + [deliverables/README](../deliverables/README.md) | src 原文 |
 | 设计验证 | [experiments/README](../experiments/README.md) + 对应 E-xx | 全部卡片 |
 
