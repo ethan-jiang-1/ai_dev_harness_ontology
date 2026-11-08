@@ -16,9 +16,9 @@
 | 你在做什么 | 落点 |
 |---|---|
 | 存原文 | `src/papers/{arxiv_id}-{slug}/`（论文，一篇一目录）或 `src/web/`（网页）；论文在 [manifest](./src/papers/manifest.md) 登记 |
-| 读一篇论文 | 同目录 `paper.md`（正文，保留页码）；`references.md` / `appendix.md` 单独成文件，默认不读 |
-| 记一篇论文说了什么 | 论文目录里的 `card.md`（分解）；用 [论文卡模板](./src/_templates/paper-card.md) |
-| 消化一篇论文 | 同一目录的 `digest.md`（工程思路 / 实用意义 / 质量 / 洞察）；用 [digest 模板](./src/_templates/paper-digest.md) |
+| 读一篇论文 | 先读同目录 `digest.md`（自包含，下游唯一入口）；要核引文再看 `paper.md` / `references.md` / `appendix.md` |
+| 记一篇论文的来源 | 同目录 `card.md`（来源卡：元数据 + 一页索引 + 图表位置）；用 [论文卡模板](./src/_templates/paper-card.md) |
+| 消化一篇论文 | 同目录 `digest.md`（自包含长文：术语/方法/数字条件/边界/工程用法）；用 [digest 模板](./src/_templates/paper-digest.md) |
 | 存博客/工程材料 | `src/web/`；卡同目录 `<stem>.card.md`，用 [材料卡模板](./src/_templates/material-card.md) |
 | 综合几个来源、形成判断 | `topics/`，用 [机制笔记模板](./meta/note-template.md) |
 | 写子机制的详细论证 | `topics/<派>/<子主题>/README.md`；派 README 只留地图 |
@@ -41,7 +41,7 @@
 
 **改一个派只动该派目录**：`README.md` / `claims.md` / `sources.md` / `frontier.md` / 子主题。只有跨派结论或进 `deliverables/` 时，才改 [conclusions](./topics/conclusions.md) 的 `E-xx`。
 
-**素材类型不进 topics**：论文的 `card.md` / `digest.md` 在 `src/papers/{arxiv_id}-{slug}/`，网页卡在 `src/web/`；用 `source_type` 区分论文/预印本与博客/工程/标准/演讲/综述。证据天花板见 [source-types](./meta/source-types.md)。
+**素材类型不进 topics**：论文的 `card.md` / `digest.md` 在 `src/papers/{arxiv_id}-{slug}/`，网页卡在 `src/web/`；用 `source_type` 区分论文/预印本与博客/工程/标准/演讲/综述。**topics 引用内容时链 `digest.md`；`card.md` 只用于 provenance/阅读状态。** 证据天花板见 [source-types](./meta/source-types.md)。
 
 ## 三条硬规矩
 
@@ -69,4 +69,5 @@
 - 不按来源类型（papers/blogs）建子主题；子主题按子机制。
 - 不把派内局部判断直接写进 `conclusions.md`；先写本派 `claims.md`。
 - 不把 `runs/` 里的输出直接当 README 结论；先审 run，再升 `claims.md` / README。
+- 不用 `card.md` 当消化正文；`digest.md` 必须自包含，下游不需要先读 card。
 - 不引入代码目录。验证性实现放仓库外，靠 `EXP-xxx` 编号回链。

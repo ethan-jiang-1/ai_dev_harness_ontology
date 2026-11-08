@@ -14,7 +14,7 @@ updated: 2026-11-07
 | 论文目录 | 22 | `src/papers/{arxiv_id}-{slug}/` |
 | PDF → MD | 22 × 3 | `paper.md`（正文）/ `references.md` / `appendix.md`（无附录写说明） |
 | 分解卡 | 22 | `card.md`；`reading`/`provenance` 已更新 |
-| 消化卡 | 22 | `digest.md`；L3 12、L2 6、L1 4（一页判断） |
+| 消化卡 | 22 | `digest.md`；自包含，下游唯一入口；L3 12、L2 6、L1 4 |
 | 论文图 | 35 | 18 篇有图；`figures/`；带出处/页码/看什么 |
 | 自绘/综合图 | 0（本阶段） | 图主要集中在论文原图；综合图在 Wave 4 未单独绘制，文字表格替代 |
 | 结论 | 17 已核 / 2 推测 / 3 存疑 / 4 冲突 | E-01…E-19；见 [conclusions](../topics/conclusions.md) |
@@ -44,7 +44,7 @@ updated: 2026-11-07
 
 ## 4. 质量与边界
 
-- **L3 12 篇**：card + digest + 2–3 图；数字带页码/表号；作者自述局限与读者推断分开。
+- **L3 12 篇**：card + digest + 2–3 图；digest 自包含（术语/方法/数字条件/边界/工程用法）；数字带页码/表号；作者自述局限与读者推断分开。
 - **L2 6 篇**：card + digest；OA-RAG/Commit Boundary/多 agent/EvoMemState/Agents are Systems/CASTON。
 - **L1 4 篇**：只到卡 + 一页判断（Peeling/Evontree/SFE-O/ReX-GG）；**没有深读正文**，引用时按 `摘要级`。
 - **无独立复现**：所有「已核」仍是「读过一手原文」，不是「已证」；本仓库尚无实验。
@@ -66,6 +66,7 @@ updated: 2026-11-07
 - [x] `paper.md` 保留 `<!-- page N -->`；references/appendix 单独成文件。
 - [x] 所有相对链接可解析（950 条，0 broken）。
 - [x] 22 张卡有 `reading` / `provenance`；18 篇 `精读`，4 篇 L1 `摘要级`。
-- [x] 22 篇 digest 有 `quality` / `based_on`。
+- [x] 22 篇 digest 有 `quality` / `based_on`；均为自包含长文，不靠 `card.md` 补上下文。
+- [x] `digest-audit.md` 逐篇记录行数与状态。
 - [x] conclusions：17 已核 / 2 推测 / 3 存疑 / 4 冲突；README 与 checklist 计数一致。
 - [x] manifest 的「消化」列 22 篇全部 ✓。

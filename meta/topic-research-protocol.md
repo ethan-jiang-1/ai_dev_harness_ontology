@@ -79,7 +79,7 @@
 
 ## 8. 子主题与素材类型
 
-- **子主题**：派 README 只做地图；详细机制放 `topics/<派>/<子主题>/README.md`。成立条件（满足其一）：有自己的判断与边界；≥2 张卡片共享同一子机制；需要自己的 frontier。不预建空子目录。见 [ADR 0003](../adr/0003-subtopics-and-source-types.md)。
+- **子主题**：派 README 只做地图；子主题 README 只做 index/dashboard；详细机制、发现、路线分别放 `mechanism.md` / `findings.md` / `frontier.md`。成立条件（满足其一）：有自己的判断与边界；≥2 张卡片共享同一子机制；需要自己的 frontier。不预建空子目录。见 [ADR 0003](../adr/0003-subtopics-and-source-types.md) 与 [§10](#10-readme-是-index不是正文)。
 - **素材类型**：论文在 `src/papers/{arxiv_id}-{slug}/`，目录内含 `<stem>.pdf` / `card.md` / `digest.md` / `figures/`；网页在 `src/web/`，卡与原文同名 `.card.md`。都用 `source_type` 区分。
 - **证据天花板**：博客/工程的 `已核` 只指「作者报告了 X」；一般规律默认 `推测`。见 [source-types](./source-types.md)。
 
@@ -90,3 +90,43 @@
 - run 必须带 `prompt` / `model` / `sources` / `claims_changed`。
 - 审 run 后，结论才进 `claims.md` / README；run 保留作审计轨迹。
 - 模板见 [subtopic-template](./subtopic-template/README.md)。
+
+## 10. README 是 index，不是正文
+
+内容一多，README 会同时变成索引、正文、证据表和路线图，结果是：**看不见「发现了多少」「还缺什么」「下一步看什么」**。所以三类 README 各司其职：
+
+| README | 角色 | 只放 |
+|---|---|---|
+| 根 `README.md` | 门厅 / router | 这是什么、从哪开始、当前状态；细节全链走 |
+| `topics/<派>/README.md` | 派地图 | 子主题表 + 每页状态 + 本派 top claims；不展开机制 |
+| `topics/<派>/<子主题>/README.md` | dashboard | 覆盖范围、已发现/未发现/下一步计数、当前判断、文件地图 |
+
+### 子主题四件套
+
+```
+topics/<派>/<子主题>/
+├── README.md       # index：dashboard + 当前判断 + 文件地图（一屏以内）
+├── findings.md     # 发现索引：F1… 一行一条，带等级与链接
+├── findings/       # 可选：每条/每组发现的详细证据（超过 ~5 行就拆）
+├── frontier.md     # 未发现（G）+ 下一步（N）+ 候选/检索式
+├── mechanism.md    # 可选：机制怎么跑（稳定综合）
+├── prompt.md       # 可选：常驻研究 prompt
+└── runs/           # 可选：按日期输出
+```
+
+**判断放哪**：
+
+- `findings.md`：已经能站住的判断。每条带 `F` 编号、等级、条件、反例/边界、来源。
+- `frontier.md`：还没站住的判断 + 下一步。`G` 是 gap（缺什么、为什么重要、关闭它需要什么、去哪找、优先级）；`N` 是 next（候选论文/检索式/来源、预期改变哪条 F/G、成本）。
+- `mechanism.md`：机制的结构化描述；不写“我们信什么”，只写“它怎么跑”。
+
+**编号是局部的**：`F1` / `G1` / `N1` 只在当前子主题内唯一；跨页引用带路径，例如 `action-gate/F3`。
+
+**长度纪律**：README 一屏以内（约 60–80 行）。超过就说明内容该下沉到 `findings/` 或 `mechanism.md`，不要靠加长 README 解决。
+
+**迁移规则**：
+
+1. 先迁“重”页（有 ≥3 条判断或 ≥2 个未解决 gap 的页）；薄页只加 dashboard，不硬拆。
+2. `findings.md` 先做索引；某条发现超过 ~5 行或需要独立证据表，再拆到 `findings/<slug>.md`。
+3. 不预建空 `findings/`、`mechanism.md`、`runs/`。
+4. 迁完一页，回改派 README 的子主题表与 `sources.md`，并在卡片 `updates:` 登记（如果判断变了）。

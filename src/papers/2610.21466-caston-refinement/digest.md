@@ -1,64 +1,116 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-08
 quality: B
 based_on: card.md
 claims: [05-L2, 05-L5]
 ---
 
-# CASTON · 消化
+# CASTON：用 embedding 缩候选，让 LLM 只做局部判断
 
-> 事实、数字、页码回 [card.md](./card.md)。这里只写**我们怎么用**、值不值得、哪里会坏。
+> 这篇消化不假设你读过论文。先讲清「本体层级精化」是什么，再看两阶段流程、CASTON 上的专家评估与边界。
 
-## 工程思路
+## 0. 三句话
 
-**要做本体层级精化，按这个顺序：**
+1. **它问什么**：本体里的 asserted 父类关系（`A ⊑ B`）可能有隐蔽错误；让 LLM 看整个本体既不准也贵。能不能先缩小搜索空间，再让 LLM/专家做局部判断？
+2. **它怎么做**：微调的本体 embedding 给每条 `A ⊑ B` 的所有候选父类排序；取 30 条可疑公理、每条 10 个替代父类；LLM 只在这些候选里给 verdict/confidence/替换建议；专家复核。
+3. **它发现什么**：CASTON 上 default（CASTON-fine-tuned OnT + Qwen3-8B）的 6 条高置信替换被两位专家全部接受（100%）；pretrained ensemble 只有 57.1%；GPT-4o mini 31.3%。**medium-confidence 全 mixed**。
 
-1. **先用 embedding 缩小搜索空间。** 对每条 `A ⊑ B` 给所有候选父类排序；只把 asserted parent 排名很低的 30 条拿出来。
-2. **每条只给 10 个替代父类。** 不要把整个本体塞给 LLM；局部候选才能让判断可追溯。
-3. **fine-tune embedding 到目标本体。** Default 100% vs pretrained ensemble 57.1%；这一步不是可选的。
-4. **LLM 只做局部 yes/no/替换判断。** 给 child、当前父类、候选父类 + label/definition/domain/other axioms；返回结构化 JSON。
-5. **用 confidence 做 triage。** High 可信（本文 6/6）；medium 全 mixed，必须人审；不要把人审预算花在 high 上。
-6. **不要信任模型的 confidence 校准。** GPT-4o mini 的 high-confidence 只有 31.3% 被接受；Qwen3-8B 是 100%。换模型要重测校准。
-7. **案例要看语义类型。** `chromite_sand` 从 `green_sand_molding`（工艺）改到 `foundry_sand`（材料）——embedding 抓的是语义关系，不是词面相似。
-8. **本体本身不一致时，方法会失败。** `semisolid_metal_processing` 的层级本身有争议；专家都不一致。先修本体结构，再谈自动精化。
+## 1. 它解决什么问题
 
-## 实用意义
+### 1.1 背景
 
-它解决的操作问题：
+本体里的类层级可能错：`chromite_sand` 被挂在 `green_sand_molding`（工艺）下，但它其实是材料。这类错误会影响推理和下游应用。
 
-- **「本体里有隐蔽的父类错误，人工看不过来。」** → embedding 排序 + LLM 局部验证，先看 30 条。
-- **「LLM 直接看整个本体，既贵又不准。」** → 缩到 30×10 候选。
-- **「微调 embedding 值不值？」** → 值：100% vs 57.1% 高置信接受率。
-- **「模型的 high confidence 能不能信？」** → 取决于模型；GPT-4o mini 只有 31.3%，Qwen3-8B 100%。
-- **「medium confidence 怎么办？」** → 人审；本文 medium 全 mixed。
-- **「本体层级本身有争议。」** → 自动精化不能替代领域专家裁决。
+让 LLM 看整个本体：
+- 不 targeted，贵；
+- 容易漏掉局部语义；
+- 难以追溯「为什么改」。
 
-**何时用**：有中等规模本体；有 embedding/LLM；有专家可审 high/medium；目标是父类替换。
+### 1.2 论文的立场
 
-**何时别用**：本体很小；层级本身不一致；需要关系限制/复杂公理；没有专家；需要大规模跨本体。
+**先用 embedding 缩小搜索空间，再让 LLM 做局部判断。** 分两阶段：召回/排序 vs 语义裁决。
 
-## 质量评估
+## 2. 术语
 
-- **证据类型**：实证·专家评估（`已核`，一手正文；小样本）。
-- **样本与对照**：CASTON 270 classes/292 subsumption；3 设置；2 专家；5 分制；40 建议。
-- **优点**：两阶段分工清晰；fine-tune vs ensemble 对照；模型对照；案例具体；代码开源。
-- **主要威胁**：单一本体；6 条高置信；preliminary；medium 全 mixed；无下游；无跨本体。
-- **`quality: B` 理由**：机制与对照干净，专家评估可信；但样本小、单一本体、初步结果。
+| 术语 | 用大白话说 |
+|---|---|
+| **subsumption** | 父类关系：`A ⊑ B`（A 是 B 的子类）。 |
+| **asserted axiom** | 本体里显式写出的公理（不是推理出来的）。 |
+| **ontology embedding** | 把类/关系编码成向量；用于排序候选父类。 |
+| **fine-tuned embedding** | 在目标本体上微调过的 embedding。 |
+| **candidate parent** | 替代当前父类的候选。 |
+| **confidence** | LLM 自报的高/中/低置信。 |
+| **acceptance** | 两位专家都给正分。 |
+| **mixed** | 专家不一致或不确定。 |
 
-## 洞察
+## 3. 它怎么做
 
-1. **「缩小搜索空间」比「更强 LLM」更重要。** 30×10 候选让 LLM 只做局部判断；全本体审查既贵又不准。`已核`
-2. **Embedding fine-tune 是主要增益来源。** 100% vs 57.1%；pretrained ensemble 的召回有，但 precision 不够。`已核`
-3. **Confidence 校准是模型特定的。** Qwen3-8B high 100%；GPT-4o mini high 31.3%；换模型必须重测。`已核`
-4. **High/medium 的分层有用。** High 可信任；medium 全 mixed；不要一视同仁。`已核`
-5. **语义关系 ≠ 词面相似。** `chromite_sand` 是材料，`green_sand_molding` 是工艺；embedding 能抓这种区别。`已核`
-6. **本体结构不一致时，自动精化会失败。** 失败案例的层级本身有争议；方法不能替代专家。`已核`
-7. **小样本不能外推。** 6 条高置信、单一本体；需要更大规模验证。`已核`（作者自述）
+### 3.1 两阶段（Fig. 1）
 
-## 成本与使能条件
+![Figure 1: workflow](../../../src/papers/2610.21466-caston-refinement/figures/fig-1-workflow.png)
 
-| 成本 | 一次性 / 每次 | 说明 |
+> 原图：arXiv:2610.21466, p.2, Fig. 1。版权归作者，研究评论用途。
+
+**看什么**：embedding 先缩候选，LLM 只在局部验证。**不是「LLM 读整个本体」**；搜索空间被 embedding 压到 30×10。
+
+1. **Candidate generation**：
+   - 对每条 `A ⊑ B`，用 embedding 给所有候选父类排序；若 asserted parent B 排名很低，标记为可疑。
+   - 取 top `k_r=30` 条可疑公理；对每个 A，取 top `k_a=10` 个替代父类（排除 A 与已断言父类）。
+   - Default：OnT 在 CASTON 上 fine-tune（hyperbolic，适配 EL 本体）。
+2. **LLM validation**：
+   - Prompt 给 child A、当前父类、候选父类、每个类的 ID/label/definition/comment/scope note，以及其他 axiom。
+   - LLM 返回 JSON：每个父类的 verdict（correct/incorrect/partial）、confidence、reason、suggested_replacements。
+   - 只保留 high/medium 作为候选修复。
+
+### 3.2 一个具体例子
+
+`chromite_sand` 原父类 `green_sand_molding`（工艺）。
+
+- embedding 排序：`foundry_sand`（材料）排名高。
+- LLM 局部判断：建议 remove `green_sand_molding`，add `foundry_sand`。
+- 专家 +2/+2；语义更准确（材料 taxonomy）。
+- 类似：olivine_sand、silica_sand、zircon_sand。
+
+## 4. 结果：数字与条件
+
+| 设置 | confidence | 建议数 | 接受 | 接受率 |
+|---|---|---|---|---|
+| Default（Qwen3-8B + CASTON OnT-FT） | high | 6 | 6（全 +2） | **100%** |
+| Default | medium | 2 | 0 | 0%（全 mixed） |
+| Pretrained ensemble + Qwen3-8B | high | 7 | 4 | **57.1%** |
+| Pretrained ensemble + Qwen3-8B | medium | 4 | 1 | 25% |
+| GPT-4o mini + pretrained ensemble | high | 16 | 5 | **31.3%** |
+| GPT-4o mini + pretrained ensemble | medium | 5 | 1 | 20% |
+
+- CASTON v1.0.0：270 classes / 306 axioms / 292 atomic subsumption。
+- 相对 default，GPT-4o mini high-confidence 接受率低 **68.7 pp**。
+
+## 5. 这些数字不能说明什么
+
+1. **不是大规模。** 单一本体、单一公理类型（subsumption）、6 条高置信修复。
+2. **不是「LLM 能修本体」。** 是「embedding 缩候选 + LLM 局部判断 + 专家复核」在 small set 上可靠。
+3. **medium 全 mixed。** confidence 只能粗分；medium 必须人审。
+4. **不是通用 confidence。** Qwen high 100%，GPT-4o mini high 31.3%；换模型要重测校准。
+5. **不是下游收益。** 修复是否让应用变好，没测。
+6. **失败案例：本体层级本身不一致。** `semisolid_metal_processing` 的层级有争议；方法不能替代专家。
+
+## 6. 工程上怎么用
+
+### 6.1 复刻顺序
+
+1. **先用 embedding 缩小搜索空间。** 对每条 `A ⊑ B` 排序；只拿 asserted parent 排名很低的 30 条。
+2. **每条只给 10 个替代父类。** 不要整个本体塞给 LLM。
+3. **fine-tune embedding 到目标本体。** Default 100% vs pretrained 57.1%；不是可选。
+4. **LLM 只做局部 yes/no/替换判断。** 给 child、当前父类、候选父类 + label/definition/domain/other axioms；JSON 输出。
+5. **用 confidence 做 triage。** High 可信；medium 全 mixed，必须人审。
+6. **不要信任模型 confidence 校准。** 换模型要重测；GPT-4o mini high 只有 31.3%。
+7. **案例看语义类型。** `chromite_sand` 从工艺改材料；embedding 抓的是语义关系。
+8. **本体不一致时，方法会失败。** 先修层级，再谈自动精化。
+
+### 6.2 成本与使能
+
+| 成本 | 一次性/每次 | 说明 |
 |---|---|---|
 | Embedding fine-tune | 每本体一次性 | OnT + CASTON；GPU |
 | Candidate generation | 每本体 | 292 条排序；轻量 |
@@ -68,33 +120,37 @@ claims: [05-L2, 05-L5]
 
 **使能条件**：本体 + embedding 模型；LLM；领域专家；可微调。
 
-**2022 年做会卡在哪**：本体 embedding/LLM 工具链不成熟；OnT 等 hyperbolic embedding 未普及；但两阶段思路可手写。
+### 6.3 何时用 / 何时别用
 
-**反向条件**：本体很小；层级本身不一致；关系限制公理；无专家；跨本体规模大。
+**用**：中等规模本体；有 embedding/LLM；有专家可审 high/medium；目标是父类替换。
 
-## 与现有判断的关系
+**别用**：本体很小；层级本身不一致；需要关系限制/复杂公理；没有专家；大规模跨本体。
 
-| 关联 | 关系 |
-|---|---|
-| **05-L2** | 支撑「精化可自动化到小规模」：6/6 高置信接受；单一本体/少量修复。 |
-| **05-L5** | 支撑「精化瓶颈是定位与验证」：embedding 定位候选，LLM/专家验证；medium 不可靠。 |
-| **P3** | 支撑「判定是权衡」：high/medium 分层；precision 与召回权衡。 |
-| [refinement](../../../topics/05-produce/refinement/README.md) | 核心文献；机制细节回 card。 |
-| [representation](../../../topics/05-produce/representation/README.md) | 本体表示不是瓶颈；定位/验证才是。 |
+## 7. 质量与边界
 
-## 不可迁移
+- **证据类型**：实证·专家评估（小样本）。
+- **强项**：两阶段分工清晰；fine-tune vs ensemble 对照；模型对照；案例具体；代码开源。
+- **主要威胁**：单一本体；6 条高置信；preliminary；medium 全 mixed；无下游；无跨本体。
+- **`quality: B`**：机制与对照干净，专家评估可信；但样本小、单一本体、初步结果。
 
-- 单一本体（CASTON）、单一公理类型（subsumption）、6 条高置信修复。
-- Preliminary；没有大规模/跨本体。
-- Medium 全 mixed；confidence 只能粗分。
-- 无下游任务；修复是否让应用变好不好说。
-- 失败案例显示层级本身不一致时方法会错。
+## 8. 与仓库判断的关系
 
-## 开放问题
+- **05-L2（已核）**：精化可自动化到小规模；high-confidence 6/6；pretrained 57.1%；GPT-4o mini 31.3%。
+- **05-L5（已核）**：精化瓶颈是定位与验证；embedding 缩候选 + LLM 局部判断。
+- **P3**：high/medium 分层；precision/recall 权衡。
+- **05-L7**：修复是否让下游变好，未测。
 
-- 更大本体/更多公理类型是否同样？
-- Medium-confidence 能否通过更强验证/人审降级？
-- 跨本体 fine-tune 的迁移成本？
-- 下游任务是否因修复变好？
-- 多层/关系限制公理能否用同一 pipeline？
-- 能否把专家评审变成可学习的 reward？
+## 9. 还没解决 / 下一步
+
+- **更大本体/更多公理类型** 是否同样？
+- **medium-confidence** 能否通过更强验证/人审降级？
+- **跨本体 fine-tune** 的迁移成本？
+- **下游任务** 是否因修复变好？
+- **多层/关系限制公理** 能否用同一 pipeline？
+- **专家评审能否变成可学习 reward？**
+
+## 10. 原文
+
+- arXiv:2610.21466
+- PDF：`src/papers/2610.21466-caston-refinement/`
+- 代码：https://github.com/HuiYang1997/OntRefine

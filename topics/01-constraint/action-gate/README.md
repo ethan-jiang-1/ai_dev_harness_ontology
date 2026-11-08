@@ -1,113 +1,49 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-08
 rq: [RQ2, RQ5]
-evidence: [E-04, E-13]
+evidence: [E-04, E-13, E-15]
 ---
 
-# 时刻 1 · 动作执行前
+# 动作前拦截
 
-## 位置
+> 模型决定调用工具、尚未真正调用之前：这里问「这个动作有没有可接受的逆路径/该分配多少审查」，不负责落盘后的提交契约。
 
-模型决定调用某个工具、且尚未真正调用之前。这是唯一能**阻止**副作用的位置——再往后只能事后补救。
+## 状态
 
-## 机制：可逆性分级
+| 项 | 值 |
+|---|---|
+| 已发现 | 6 条（[findings](./findings.md)） |
+| 未发现 / 开放 | 4 条（[frontier](./frontier.md)） |
+| 下一步 | 3 个候选/检索式（[frontier](./frontier.md)） |
+| 最后扫描 | 2026-11-08 |
+| 覆盖 | 动作前的可逆性判定、多模式分配、审批/成本；不含落盘前（[commit-gate](../commit-gate/README.md)）与推理期（[reasoning-gate](../reasoning-gate/README.md)） |
 
-不是给动作打「危险/安全」标签，而是打**可逆性分值**。POLAR 的做法是可用的骨架：
+## 当前判断
 
-| 层 | 内容 | 什么时候有 |
-|---|---|---|
-| Layer A | 静态动作本体：每个 mutating tool 的类型化逆关系 T1–T5，带 curator 权重 | 域级，手写 |
-| Layer B | 状态投影：`slot(entity,id)=value`，从真实 DB + 已执行工具重建 | 每轮 |
+- **可逆性可以做成结构化判据。** POLAR 用 T1–T5 类型化关系 + 反向搜索 + 最弱一步分数，比 LLM judge 可审计。`已核`
+- **收益与基线能力反向。** 强模型/retail 经常回退；硬护栏可能只剩代价。`已核`
+- **「结构」还没被证明。** T1-only ≈ blanket veto，增益却不比 full 小；结构反向组合的贡献未隔离。`已核`
+- **多模式分配的价值是 harm–approval–cost 前沿**，不是最低 HSR。CASEL 用约 30% 更少审批达到相近 harm。`已核`（模拟）
 
-| tier | 关系 | 每步 φ | 含义 |
-|---|---|---|---|
-| T1 | `inverse_of` | `w` | 有精确逆操作 |
-| T2 | `bounded_reversibility` | `w · 1[Bound]` | 在边界内可逆 |
-| T3 | `compensates` | `w · (1−w_loss)` | 可补偿，但有损 |
-| T4 | `irreversibly_consumes` | 0 | 不可逆消费 |
-| T5 | `external_side_effect` | 0 | 外部副作用，fail-closed |
+## 文件地图
 
-**反向搜索**：从最近的动作往回找 undo 边，组合候选逆序列 π；成功则 `φ(π)=min φ(u)`（最弱一步），失败则报告第一个不可执行步骤。**阈值 τ=0.80**；低于阈值或没有完整 π → Veto。判定与执行分离：APPROVE / VETO / ESCALATE / Advisory 是策略，不是本体。
+| 想知道 | 去 |
+|---|---|
+| POLAR/CASEL 的机制怎么跑 | [mechanism](./mechanism.md) |
+| 每条判断的证据/数字/条件 | [findings](./findings.md) |
+| 还缺什么、下一步看什么 | [frontier](./frontier.md) |
+| POLAR 原卡 | `src/papers/2610.08082-polar/card.md` · [digest](../../../src/papers/2610.08082-polar/digest.md) |
+| CASEL 原卡 | `src/papers/2610.36570-casel/card.md` · [digest](../../../src/papers/2610.36570-casel/digest.md) |
 
-关键在于**判据是可查询的事实**，而非对动作的主观评价：
+## 边界
 
-> 「删除 `/tmp/x.log`」是否危险，取决于它是不是唯一副本，而不是「删除」这个动词。
+- **只拦动作，不验产出。** 产出后的语义判定归 [02 判定](../../02-judgment/README.md)。
+- **只判可逆性，不判意图/授权。** 合法用户意图（retail 退货）可能被误拦；需要意图/授权层。
+- **不保证逆操作能执行。** 「有逆序列」不等于「恢复成功」；本文不模拟完整 s′。
 
-机制细节、表 1/图 2 见 [POLAR card](../../../src/papers/2610.08082-polar/card.md)。
+## 关联
 
-## 证据：一个被转述掩盖了的权衡
-
-POLAR 在 τ²-bench 上跑 6 模型 × 3 域 × 4 臂，每格 150 attempted runs：
-
-- airline：六个模型中四个的平均 reward 提升 **+0.11–0.18**。
-- **但 18 个模型-域格只有 8 个整体改善；retail 与更强的模型经常回退。**
-  - llama-3.1-8b：+0.182 / +0.029 / +0.053（airline/retail/telecom）
-  - gpt-oss-120B：−0.073 / −0.242 / +0.020
-  - qwen3.5-27B：−0.119 / −0.209 / −0.060
-- Δ 随 baseline reward 下降：airline −0.76、retail −0.67、telecom −0.31；R² 0.92/0.98/0.65。**六点描述性拟合，不是部署阈值。**
-- **Tier ablation 的关键反例**：T1-only 的 +0.087 与 full 的 +0.080 区间重叠；T1-only 在 airline 没有 T1 注释时接近 **blanket veto**。作者自述「不能把结构反向组合的贡献与保守拒绝分开」。
-- 作者明确声明「reward 不是防止伤害的直接度量」；1,745 条 blocked decisions 没有独立 harm/authorization 标签，false-veto 率未知。
-
-（一手正文，[POLAR card](../../../src/papers/2610.08082-polar/card.md) / [digest](../../../src/papers/2610.08082-polar/digest.md) → [E-04](../../conclusions.md)、[E-13](../../conclusions.md)）
-
-**这个结果比「护栏有效」更有用**：它同时给出适用边界与一个机制警告——
-
-1. **收益与模型能力反向**：强模型本可以自己避开那些错误，硬护栏只剩代价。
-2. **「结构」可能只是「保守」**：T1-only 接近 blanket veto，却没更差；说明测到的收益未必来自逆操作组合。
-
-## 另一种闸门：多模式分配（CASEL）
-
-POLAR 是二值 veto；CASEL 把同一个位置做成**六选一的分配**：direct / verify / sandbox / clarify / approve / abstain。
-
-- 判据不是单一风险分，而是 `p̂`（校准失败率）× `ĉ`（后果）+ 可逆性 `ρ` + 歧义 `g` + 证据新鲜度 `d`。
-- **可逆性决定可行模式集**：sandbox 只对 reversible mutation；approve 只对 compensable/irreversible。
-- 模拟（20 seeds、120k actions）：HSR 14.75%→7.02%；但最低 HSR 是 Risk-Menu 5.82%，代价是审批 12.6% vs CASEL 8.7%。**CASEL 的价值是 harm–approval 前沿，不是最低 harm。**
-- 去掉 reversibility routing：HSR 回到 15.53%；轨迹总账：11.82%（反噬）；未校准：8.22%。
-- 限定：**模拟**，intervention effectiveness `γ_m` 是假设，不是测量。
-
-详见 [CASEL digest](../../../src/papers/2610.36570-casel/digest.md)。
-
-## 这个位置为什么硬
-
-- **在副作用之前。** 判定发生在世界被改变之前，失败成本最低。
-- **判据可外部验证。** 「有没有备份」「有没有逆操作」是可查的事实，不依赖模型自评。
-- **拒绝可解释。** 剪枝理由可以回给模型：哪条边缺失、哪个 bound 不满足、哪一步 φ=0。
-
-## 成本与使能条件
-
-| 成本 | 一次性 / 每次 | 说明 |
-|---|---|---|
-| 本体编写 | 每域一次性 | curator 手写 T1–T5；工具/槽位变更要维护 |
-| 状态投影 | 集成一次性 | 必须接真实 DB/执行记录；不能靠 LLM 想象 |
-| 阈值校准 | 每域一次 | 保留率、reward、false-veto；同一阈值跨域含义不同 |
-| 判定 | 每次候选调用 | 图遍历 + bound 检查；轻量 |
-| 审计 | 每次 | bottleneck + 注释边；否则不可解释 |
-
-**使能条件**：类型化工具 schema、可读真实状态、可枚举的撤销操作。**本体编写仍是人工成本**——这篇没有降低它。
-
-## 何时用 · 何时别用
-
-**用**：动作不可逆且代价高；模型弱于域要求；域规则可查询成事实；有真实状态投影；能承担本体维护。
-
-**别用**：强模型 + 高基线；用户意图主导、动作本身合法（retail 退货/换货）；拿不到状态；只用 reward 评估；本体没人维护。
-
-## 失效模式
-
-- **T1-only ≈ blanket veto。** 结构贡献未隔离；「有本体」不等于「本体在起作用」。
-- **可逆性 ≠ 安全性 ≠ 授权。** 外部副作用可能完全合法；零售退货被拦是机制误用，不是模型错。
-- **漏掉一条不可逆关系 → false approval。** 只要还有一条正向关系，门就可能放行；本体错误是 fail-open 的。
-- **判据依赖运行时状态。** 可逆性随环境变化（是否有其他进程在读），静态本体不够，需要状态输入——又把 [memory](../../04-state/memory/README.md) 拉回回路。
-- **阈值错置。** 阈值太高，正常操作被频繁剪枝；阈值太低，等于没有。airline 在 0.80 只保留 36.6%，retail 100%。
-- **只判不记。** 剪枝事件不被记录，事后无法知道「本可以做的事为何没做」；false-veto 也无法算。
-- **粒度按工具而非参数。** 同一删除工具，删临时文件与删生产数据共享一个权限位。
-- **不验证逆执行。** 「有逆序列」不等于「恢复会成功」；本文不模拟完整 s′。
-
-## 开放问题
-
-- T1-only 与 full 的差异能否用配对实验分开？需要同一 baseline、同一轨迹。
-- False-veto 率怎么量？1,745 条 blocked decisions 能否人工标注出「本可合法执行」的比例？
-- 可逆性能否作为工具契约的一等字段，由工具提供者声明而非判定器推测？
-- 剪枝与澄清的界限在哪：不确定时应当阻断、追问，还是放行并记录？
-- 多步动作的复合可逆性如何计算？单步都可逆，组合可能不可逆。
-- 动态/不确定性感知门能否在强模型上保留结构检查而不回退？
+- 派：[01 约束](../README.md) · 结论：[E-04 / E-13 / E-15](../../conclusions.md)
+- 相邻：[commit-gate](../commit-gate/README.md)（落盘前）· [reasoning-gate](../reasoning-gate/README.md)（推理期）
+- 成本/可行性：[06-measure/feasibility](../../06-measure/feasibility/README.md)

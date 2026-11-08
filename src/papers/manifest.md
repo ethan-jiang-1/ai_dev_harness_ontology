@@ -29,7 +29,7 @@ updated: 2026-11-07
 | 12 | 2610.38326 | MIOE（机制可解释性） | 29 | 3 | [pdf](./2610.38326-mioe/2610.38326-mioe.pdf) | [✓](2610.38326-mioe/card.md) | [✓](2610.38326-mioe/digest.md) |
 | 13 | 2610.35267 | Before Blaming the LLM | 16 | 3 | [pdf](./2610.35267-diagnose-workflow/2610.35267-diagnose-workflow.pdf) | [✓](2610.35267-diagnose-workflow/card.md) | [✓](2610.35267-diagnose-workflow/digest.md) |
 | 14 | 2611.02395 | Solver-Like Behavior | 28 | 3 | [pdf](./2611.02395-solver-like-behavior/2611.02395-solver-like-behavior.pdf) | [✓](2611.02395-solver-like-behavior/card.md) | [✓](2611.02395-solver-like-behavior/digest.md) |
-| 15 | 2610.41172 | Context as Infrastructure | 13 | 3 | [pdf](./2610.41172-context-as-infrastructure/2610.41172-context-as-infrastructure.pdf) | [✓](2610.41172-context-as-infrastructure/card.md) | [✓](2610.41172-context-as-infrastructure/digest.md | [✓](2610.41172-context-as-infrastructure/digest.md) |
+| 15 | 2610.41172 | Context as Infrastructure | 13 | 3 | [pdf](./2610.41172-context-as-infrastructure/2610.41172-context-as-infrastructure.pdf) | [✓](2610.41172-context-as-infrastructure/card.md) | [✓](2610.41172-context-as-infrastructure/digest.md) |
 | 16 | 2611.03743 | EvoMemState | 30 | 4 | [pdf](./2611.03743-evomemstate/2611.03743-evomemstate.pdf) | [✓](2611.03743-evomemstate/card.md) | [✓](2611.03743-evomemstate/digest.md) |
 | 17 | 2610.40482 | FIRME | 20 | 4 | [pdf](./2610.40482-firme/2610.40482-firme.pdf) | [✓](2610.40482-firme/card.md) | [✓](2610.40482-firme/digest.md) |
 | 18 | 2610.21983 | OntoAct | 49 | 4 | [pdf](./2610.21983-ontoact/2610.21983-ontoact.pdf) | [✓](2610.21983-ontoact/card.md) | [✓](2610.21983-ontoact/digest.md) |

@@ -2,21 +2,33 @@
 
 **研究 harness。本体是研究它的切口，不是目的。**
 
-这个仓库不是一次性成文的文档，而是一条**持续运转的消化流水线**：不断吸纳新文章，消化成结构化认知，成熟后抽取为可对外的交付物（手册、Deck、图）。
-
-> **第一次接手**：§1 看问题，[AGENTS](./AGENTS.md) 的工位表看落点；动某个派时，先读该派 README 的「本目录怎么长」。按任务加载见 [meta/loading](./meta/loading.md)。
+这个仓库不是一次性成文的文档，而是一条**持续运转的消化流水线**：材料进来 → 精读成卡 → 沉淀成主题 → 抽成交付物。本页只做 **router**；判断在 topics，材料在 src，方法在 meta。
 
 ---
 
-## 1. 研究什么
+## 0. 路由
+
+| 想知道 | 去 |
+|---|---|
+| 研究问题与假设 | [THESIS](./THESIS.md) |
+| 六派地图、子主题、三轴 | [topics/README](./topics/README.md) |
+| 跨主题结论（E-xx） | [topics/conclusions](./topics/conclusions.md) |
+| 时刻 / 接缝 | [topics/seams](./topics/seams.md) |
+| 控制回路七部件 | [topics/00-harness](./topics/00-harness/README.md) |
+| 材料、卡、消化 | [src/README](./src/README.md) |
+| 落地成本 / 可行性 | [topics/06-measure/feasibility](./topics/06-measure/feasibility/README.md) |
+| 交付物 | [deliverables](./deliverables/README.md) |
+| 实验设计 | [experiments](./experiments/README.md) |
+| 写作约定与模板 | [meta/](./meta/) |
+| 按需加载 | [meta/loading](./meta/loading.md) |
+
+## 1. 一句话问题
 
 模型能力外溢之后，同一模型在同一任务上仍然拉开差距——差距不在模型，在模型外围那一圈工程：上下文怎么给、状态怎么存、动作怎么放行、结果怎么验、过程怎么看得见。这一圈就是 **harness**。
 
 本体在这个语境里反复被提起，但多停在「把业务语义注入提示词」。本仓库追问更靠工程的一层：
 
 > **本体在 harness 的控制回路里，究竟以什么形式被执行？**
-
-本体若只是上下文里的知识，随时可被忽略、压缩掉或幻觉覆盖；只有当它成为判定器、闸门、证据要求或状态结构，才开始真正约束行为。
 
 三条工作假设（细节与反驳条件见 [THESIS](./THESIS.md)）：
 
@@ -26,9 +38,9 @@
 | P2 | harness 是本体得以「被执行」的那一半 | 本体工程不能脱离 harness 单独立项 |
 | P3 | 判定质量是**权衡**——漏检与误报此消彼长 | 不存在「好本体」这种单一量 |
 
-## 2. 根目录 = 流水线的三个工位
+## 2. 目录 = 流水线
 
-一级目录不套 `docs/`：**目录名即地图**。根下有六个目录，前三个是流水线，后三个是支撑。
+一级目录不套 `docs/`：**目录名即地图**。前三个是流水线，后三个是支撑。
 
 ```
    源头池               主题沉淀            对外抽取
@@ -39,87 +51,44 @@
   PDF/card/digest     结论可被引用       只抽取不新增
 ```
 
-| 工位 | 职责 | 增长方式 | 完成信号 |
-|---|---|---|---|
-| [`src/`](./src/) | 源头池：一篇一目录，PDF + `paper.md`/`references.md`/`appendix.md`（全文拆分）+ `card.md`（分解）+ `digest.md`（消化）+ `figures/` | 原文随时加；先转 MD；卡按需建；精读后补 digest | 原文落盘 + 三份 MD 齐 + card 有等级 + digest 有 `quality` |
-| [`topics/`](./topics/) | 按六派沉淀，跨材料综合 | 新 card/digest 触发相关派的修订 | 结论带等级，冲突显式保留 |
-| [`deliverables/`](./deliverables/) | 手册、Deck、图等对外物 | 定期从 topics 抽取重排 | 每条可反查回 topics |
-
-支撑目录：
-
-| 目录 | 职责 |
-|---|---|
-| [`experiments/`](./experiments/) | 实验设计。实现产物在仓库外，靠编号回链 |
-| [`adr/`](./adr/) | 结构性决策：为什么这样组织 |
-| [`meta/`](./meta/) | 写作约定与模板 |
-
-四个根文件各司其职：[README](./README.md) 门厅、[THESIS](./THESIS.md) 纲领、[GLOSSARY](./GLOSSARY.md) 术语、[AGENTS](./AGENTS.md) 落点规则。
-
-### 流水线的三条规矩
-
-1. **单向、可越级但不可反向。** `deliverables` 只能从 `topics` 抽取，不能直接引 `src`——否则未经消化的材料会以成品面貌流出。反向修订（发现材料有误）走回溯：改 `card.md` / `digest.md` → 改 `topics` → 重抽交付物。
-2. **上游可以领先下游。** `src` 里未读的原文、未成主题的卡，都是健康状态；要求每一层同步才是负债。
-3. **每级都自带台账。** `src/` 记原文与卡，`topics` 记结论等级，`deliverables` 记依据哪几条结论。台账让流水线可盘点。
-
-## 3. 六派：按「本体凭什么起作用」分
-
-`topics/` 下不是按主题、也不是按层分，而是按**本体凭什么起作用**分成六派。每一派回答一个工程问题，目录名本身就是问题：
-
-```
-   05 生产        03 知识        01 约束       02 判定      04 状态
- 本体尚未存在 ─▶ 供给上下文 ─▶ 动作前拦截 ─▶ 输出后校验 ─▶ 跨轮一致
- 来源/精化/演化    投影/编译      可逆性/前置条件   漏检/误报     槽位/冲突
-
- └───────────────── 06 测量：这一切到底有没有用 ─────────────────┘
-```
-
-| 派 | 回答的问题 | 核心工程思想 | 强度 |
-|---|---|---|---|
-| [01 约束](./topics/01-constraint/README.md) | 怎么不让它做错事 | 安全是结构问题：问「存在可逆序列吗」 | **强** |
-| [02 判定](./topics/02-judgment/README.md) | 怎么知道它做错了 | 判据必须外部且可度量 | 强 |
-| [03 知识](./topics/03-knowledge/README.md) | 怎么让它知道得对 | 投影优于查询；编译解决预算不解决准确率 | 弱 |
-| [04 状态](./topics/04-state/README.md) | 怎么让它记得对 | 记忆是状态不是集合 | 中 |
-| [05 生产](./topics/05-produce/README.md) | 本体从哪来、怎么修 | 来源决定可信度；精化比新建常见 | — |
-| [06 测量](./topics/06-measure/README.md) | 它到底有没有用 | 答对≠内部有本体；失败多归工作流 | 元 |
-
-底座另置于 [`topics/00-harness/`](./topics/00-harness/README.md)：控制回路的七个部件，`01-04` 都是往这些部件上接；`05` 是回路前，`06` 是回路外。
-
-**三条轴，不是一套同义词：** 派轴（凭什么起作用）是目录；部件轴（接在机器哪里）在 `00-harness/`；时刻轴（在哪个时刻介入）在 [`topics/seams.md`](./topics/seams.md)。六派是 **4+1+1**：`01-04` 回路内，`05` 回路前，`06` 回路外。每派根目录有四个文件：`README.md`（地图）、`claims.md`（局部结论）、`sources.md`（卡片索引）、`frontier.md`（候选队列）。
-
-**派内还可以有子主题目录**（如 `01-constraint/action-gate/`）：派 README 只做地图与硬证据，详细机制在子主题。这是目录能继续长的第二层；成立条件见 [ADR 0003](adr/0003-subtopics-and-source-types.md)。
-
-为什么这么分：**约束强度与覆盖率反向**（弱端管得广、什么都管不住；强端管得硬、管得少）。混成一派会把两种性质相反的东西放在一起，评测时必然用错尺子。
-
-## 4. 源文献的四个方向怎么归位
-
-起点材料是一份 2026-11 的本体×智能体综述（[原文](src/web/weixin-laoliu/otology.md)），把 20 篇工作分为四类。读完 20 篇的摘要、结论与局限后，四类被重切成六派——因为**综述的方向是按主题分的，而派是按作用机制分的**，同一方向里混着性质不同的工作：
-
-| 原文方向 | 归位 | 为什么拆/并 |
+| 工位 | 职责 | 完成信号 |
 |---|---|---|
-| 本体当判定器 / 约束层 | 拆成 [01 约束](./topics/01-constraint/README.md) + [02 判定](./topics/02-judgment/README.md) | 「拦动作」与「验产出」是两个位置，判据来源也不同 |
-| 本体构建与生成 | [05 生产](./topics/05-produce/README.md) | 一致 |
-| 机制、评测与反例 | [06 测量](./topics/06-measure/README.md) | 一致 |
-| 本体当记忆 / 自演化骨架 | 拆成 [04 状态](./topics/04-state/README.md) + [05 生产](./topics/05-produce/README.md) | 自演化本质是生产方式，不是记忆 |
-| **（综述未单列）** | [03 知识](./topics/03-knowledge/README.md) | 综述把投影类工作分散塞进方向 1/3/4，恰好漏掉了工程上最常问的一派 |
+| [`src/`](./src/) | 一篇一目录：PDF + `paper.md` / `references.md` / `appendix.md` + `card.md` + `digest.md` + `figures/` | 原文落盘 + 三份 MD 齐 + digest 有 `quality` |
+| [`topics/`](./topics/) | 按六派沉淀；派 README 是地图，子主题 README 是 dashboard | 结论带等级，冲突显式保留，gap/next 可见 |
+| [`deliverables/`](./deliverables/) | 手册、Deck、图等对外物 | 每条可反查回 topics |
 
-归位判据一句话：**01-04 问时刻，05 问来源，06 问尺子；跨派按主效应归派并标双重身份。**
+支撑目录：`experiments/`（实验设计，实现放仓库外）、`adr/`（结构决策）、`meta/`（约定与模板）。
 
-## 5. 七种读法
+**三条规矩**：单向不可反向（deliverables 只从 topics 抽）；上游可以领先下游；每级自带台账。
 
-- **要结论** → [topics/conclusions](./topics/conclusions.md)：三栏，含反例与冲突；各派局部判断在 `claims.md`（`L-xx`），不直接进交付物。
-- **要流派** → [topics/README](./topics/README.md)：六派地图 + 子主题 + 三轴 + 边界规则 + 强度谱。
-- **要台账** → [src](./src/README.md)：哪篇读了、哪篇没读、喂了哪个主题。
-- **要机制** → [topics/00-harness](./topics/00-harness/README.md)：控制回路七个部件。
-- **要时刻** → [topics/seams](./topics/seams.md)：六个接缝 + 选择规则 + crosswalk。
-- **要交付** → [deliverables](./deliverables/README.md)：手册大纲与抽取规则。
-- **要前沿** → 各派 `frontier.md`：前沿问题、检索式、候选队列。
+## 3. 六派
 
-## 6. 现状
+`topics/` 按**本体凭什么起作用**分六派；目录名本身就是问题：
 
-骨架与机制地图成型，三个工位都有可用样板：
+| 派 | 回答的问题 | 核心工程思想 |
+|---|---|---|
+| [01 约束](./topics/01-constraint/README.md) | 怎么不让它做错事 | 安全是结构问题：问「存在可逆序列吗」 |
+| [02 判定](./topics/02-judgment/README.md) | 怎么知道它做错了 | 判据必须外部且可度量 |
+| [03 知识](./topics/03-knowledge/README.md) | 怎么让它知道得对 | 投影优于查询；编译解决预算不解决准确率 |
+| [04 状态](./topics/04-state/README.md) | 怎么让它记得对 | 记忆是状态不是集合 |
+| [05 生产](./topics/05-produce/README.md) | 本体从哪来、怎么修 | 来源决定可信度；精化比新建常见 |
+| [06 测量](./topics/06-measure/README.md) | 它到底有没有用 | 答对≠内部有本体；失败多归工作流 |
 
-- `src/` — 22 个论文目录（20 基础 + 2 扫描）；每目录 PDF + `paper.md` / `references.md` / `appendix.md` + `card.md` + `digest.md`（L1 为一页判断）+ `figures/`；1 张材料卡 + manifest
-- `topics/` — 六派成文，17 条已核结论 + 2 条推测 + 3 条存疑 + 4 条冲突；每派有 `claims.md` / `sources.md` / 子主题目录 / `frontier.md`；新增 [06-measure/feasibility](./topics/06-measure/feasibility/README.md)
-- `deliverables/` — 手册大纲 7 章
+六派是 **4+1+1**：`01-04` 回路内，`05` 回路前，`06` 回路外。底座是 [00-harness](./topics/00-harness/README.md)（控制回路七部件）。三轴说明、边界规则、强度谱见 [topics/README](./topics/README.md)。
 
-**最大空缺是没有一条结论被独立复现。** 三个实验待做，见 [experiments](./experiments/README.md)。
+## 4. 当前状态
+
+- `src/` — 22 个论文目录（20 基础 + 2 扫描）；每目录 PDF + 三份 MD + `card.md` + `digest.md`（L1 一页判断）+ `figures/`；1 张材料卡 + manifest。
+- `topics/` — 六派成文；17 条已核 + 2 条推测 + 3 条存疑 + 4 条冲突；新增 [06-measure/feasibility](./topics/06-measure/feasibility/README.md)。
+- `deliverables/` — 手册大纲 7 章。
+
+**最大空缺是没有一条结论被独立复现。** 三个实验待做，见 [experiments](./experiments/README.md)；部署层回报、false-veto/false-defer、维护成本仍缺量化。
+
+## 5. 怎么增长
+
+- 材料 → `src/README`：一篇一目录；先转 MD（正文/参考文献/附录），再建卡、消化。
+- 子主题 → [meta/subtopic-template](./meta/subtopic-template/README.md)：README 是 dashboard；findings / frontier / mechanism 分文件。
+- 派 → [meta/topic-research-protocol](./meta/topic-research-protocol.md)：README 是地图；claims / sources / frontier 各司其职。
+- 交稿 → [meta/checklist](./meta/checklist.md)。
+
+**不要做的**：不把 findings 堆回 README；不为「看起来完整」建空文件；不在 deliverables 里新增判断。

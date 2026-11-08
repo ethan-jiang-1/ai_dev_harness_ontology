@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-08
 ---
 
 # 01 约束派：怎么不让它做错事
@@ -13,41 +13,25 @@ POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是�
 
 这是六派里唯一一派，其判据不依赖模型输出，只依赖对世界的查询。
 
-## 三种约束位置
+## 子主题地图
 
-| 位置 | 判据问什么 | 代表 | 文档 |
-|---|---|---|---|
-| 动作前 | 这个动作有可逆路径吗 | POLAR（可逆性分级）、OntoAct（符号验证器） | [action-gate](./action-gate/README.md) |
-| 落盘前 | 证据够不够授权这次持久化 | Commit Boundary（三段式放行） | [commit-gate](./commit-gate/README.md) |
-| 推理期 | 结论是否超出了可信知识的范围 | 多 agent 差分诊断（推理限制在 curated KG） | [reasoning-gate](./reasoning-gate/README.md) |
+| 子主题 | 回答什么 | 状态 | 已发现 / 未发现 | 先读 |
+|---|---|---|---|---|
+| [action-gate](./action-gate/README.md) | 动作前：可逆性够不够、该分配多少审查 | `draft`，已拆 F/G | 6 F / 4 G | dashboard → findings |
+| [commit-gate](./commit-gate/README.md) | 落盘前：证据够不够授权持久化 | `seed`，概念规范 | 2 F / 3 G | dashboard / 规范 |
+| [reasoning-gate](./reasoning-gate/README.md) | 推理期：结论能不能取用 | `draft`，机制页 | 3 F / 3 G | dashboard / 机制 |
 
-第三种是最近才补进来的：它不拦动作，拦的是**结论的取用范围**。多 agent 诊断明确写道：把推理限制在 curated KG 上，「阻止了看似合理却无依据的诊断」，代价是**封顶基准表现**。
+## 本派当前判断
 
-三个位置各有独立子主题目录：`action-gate/`、`commit-gate/`、`reasoning-gate/`。本页只做地图与硬证据；详细机制在子主题里。
-
-## 硬证据
-
-- POLAR 在 τ²-bench 六个模型上：18 个模型-域组合**仅 8 个改善**；retail 域与更强的模型经常回退。
-- 作者结论原话：奖励增益**随未加护栏的基线升高而缩小**，且拟合趋势给不出零交叉的部署阈值。
-- 作者还声明「reward 不是防止伤害的直接度量」——被剪掉的风险动作不体现在奖励里。
-- **T1-only 接近 blanket veto**：+0.087（T1-only）vs +0.080（full），区间重叠；「结构反向组合」的贡献**未被隔离**。
-- 1,745 条 blocked decisions 没有独立的 harm/authorization 标签；false-veto 率未知。
-
-> 这条证据的价值在于它同时给出了**适用边界**与**机制警告**：约束派在弱模型、高不可逆风险的域里最划算；在强模型上，硬护栏只剩代价。而 T1-only 的结果说明，测到的收益可能来自「保守拒绝」，不是「结构推理」。
+- **动作前**：可逆性可以做成 T1–T5 + 反向搜索的结构判据；但收益随基线能力下降，T1-only ≈ blanket veto，结构贡献未隔离。详见 [action-gate/findings](./action-gate/findings.md)。
+- **落盘前**：可推理 ≠ 可授权；`UNVERIFIED` 不能当 positive authorization support；需 claim-specific promotion、冲突解决、scope/version 检查。详见 [commit-gate](./commit-gate/README.md)。
+- **推理期**：约束形式决定天花板还是护栏；验证条件（OntoAct）可提升，限制知识源（curated KG）可能封顶。详见 [reasoning-gate](./reasoning-gate/README.md)。
 
 ## 何时用 · 何时别用
 
 **用**：动作不可逆且代价高（对外发送、资金、删除唯一数据）；模型能力弱于域要求；域规则可被查询成事实。
 
-**别用**：强模型 + 高基线场景（POLAR 已观察到回退）；动作的复合可逆性无法计算；判定所需事实依赖运行时状态而系统拿不到。
-
-## 开放问题
-
-- 复合动作的可逆性如何计算？单步都可逆，组合可能不可逆。
-- 收益与基线能力的反向关系，能否写成一条可预测的曲线，而不是事后观察？
-- T1-only 与 full 的差异能否用配对实验分开？需要同一 baseline、同一轨迹。
-- False-veto 率怎么量？1,745 条 blocked decisions 能否人工标注出「本可合法执行」的比例？
-- 「推理期约束」这一支（OntoAct、多 agent 诊断）与「动作期约束」是否该合为一派？本仓库倾向合，因为判据来源相同。
+**别用**：强模型 + 高基线（POLAR 已观察到回退）；动作的复合可逆性无法计算；判定所需事实依赖运行时状态而系统拿不到。
 
 ## 双重身份
 
@@ -57,17 +41,17 @@ POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是�
 
 | 文件/目录 | 作用 |
 |---|---|
-| `README.md` | 地图 + 硬证据；只做索引 |
+| `README.md` | 本页：派地图 + top claims；不展开机制 |
 | `claims.md` | 本派局部结论账本（`01-Lx`） |
 | `sources.md` | 本派卡片索引 |
 | `frontier.md` | 本派候选队列 |
-| `<子主题>/README.md` | 详细机制 |
-| `<子主题>/prompt.md` + `runs/` | 常驻 prompt 与按日期输出（模板见 [meta/subtopic-template](../../meta/subtopic-template/README.md)） |
+| `<子主题>/README.md` | dashboard：覆盖/计数/当前判断/文件地图 |
+| `<子主题>/findings.md` + `findings/` | 该子主题的发现与证据 |
+| `<子主题>/frontier.md` | 该子主题的 gap / next |
+| `<子主题>/prompt.md` + `runs/` | 可选：常驻 prompt 与按日期输出 |
 
-新增内容只改本目录；只有跨派结论或进 `deliverables/` 时，才升到 [conclusions](../conclusions.md) 的 E-xx。卡片 `home` 指向本派，`subtopic` 指向子主题。
-
-子主题按 [模板](../../meta/subtopic-template/README.md) 起；没有 `prompt.md` 就先不建 `runs/`。
+模板见 [meta/subtopic-template](../../meta/subtopic-template/README.md)。新增内容只改本目录；跨派才升 [conclusions](../conclusions.md)。
 
 ## 持续挖掘
 
-前沿问题、信号源、检索式与候选队列见 [frontier.md](./frontier.md)。稳定判断只在本页被改变时改写。
+派级前沿、检索式与候选见 [frontier.md](./frontier.md)；子主题的 gap/next 在各自 `frontier.md`。

@@ -1,99 +1,176 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-08
 quality: C
 based_on: card.md
 claims: [E-06]
 ---
 
-# Before Blaming the LLM, Diagnose the Workflow · 消化
+# Diagnose the Workflow：先别怪模型，先看病流
 
-> 事实、数字、页码回 [card.md](./card.md)。这里只写**我们怎么用**、值不值得、哪里会坏。
+> 这篇消化不假设你读过论文。先讲清「NL→本体接地 DSL」这项工作，再给五角色/七变量、钻井例子、以及为什么它是 position paper。
 
-## 工程思路
+## 0. 三句话
 
-**模型「不够强」之前，先走一遍这七问：**
+1. **它问什么**：把自然语言描述翻译成「本体接地的 ABox 断言」时，失败常被归因于「模型弱」；但输入不足、上下文缺失、模板/词汇缺口、校验弱、非局部修复也会造成同样表现。
+2. **它怎么做**：提出一个**角色级难度画像**：五个角色（Input / Generator / Output / Validator / Repairer）× 七个诊断变量；每个变量给「问题 / 高摩擦证据 / 重设计杆」。
+3. **它发现什么**：用一个钻井信号 ABox 例子展示「语法对、语义不足」；**没有量化评测**，是 position paper。价值在诊断词汇与重设计映射，不在效应量。
 
-1. **Input sufficiency**：输入够不够明确？缺实体/关系/约束/建模假设吗？→ 加 intent gate，缺就澄清，不要硬生成。
-2. **Context availability**：generator 拿得到术语说明、示例、建模约定吗？→ 精化知识库 + ontology-aware retrieval。
-3. **Grounding complexity**：候选符号/模板是不是太多？→ 候选生成 + 排序，分阶段选 entity/relation/template。
-4. **Template fit**：这类输入有没有稳定的断言模式？→ 建 motif 库；不要让模型每次现发明结构。
-5. **Vocabulary coverage**：本体有需要的类/关系/单位吗？→ 缺就暴露为本体扩展请求，不要静默 near-match。
-6. **Validation strength**：能不能确定性检查语义充分性？→ 分层：语法/类型/domain-range/template 先查，语义留人审。
-7. **Error observability**：失败能不能定位到上面六项？→ 保存 repair trace：检索上下文、候选符号、模板、校验结果、人反馈。
+## 1. 它解决什么问题
 
-**记录方式**：每个 case 填一张 7 行表（变量 / 证据 / 高摩擦？ / 重设计杆 / 负责人）。这比「模型不行，换个更大的」更能指导下一步。
+### 1.1 背景：NL→本体接地 DSL
 
-## 实用意义
+很多领域要把非正式描述翻译成结构化断言：
 
-它解决的操作问题：
+- 自然语言 → SQL；
+- 自然语言 → API 调用；
+- 自然语言 → workflow；
+- 自然语言 → 本体接地的 ABox DSL（本文重点）。
 
-- **「模型生成的本体断言语法都对，专家说语义不对。」** → 先分 workflow 角色，不要直接换模型。
-- **「同一个输入，模型每次生成的结构都不一样。」** → template fit 差；建 motif 库，而不是加 temperature 约束。
-- **「本体里没有这个词，模型硬凑了一个近义类。」** → vocabulary coverage；暴露为本体扩展请求。
-- **「校验器说通过，专家说不行。」** → validation strength；语义充分性需要人审或更强的外部判据。
-- **「修了一次，别的地方又坏了。」** → 非局部修复；需要 repair trace + 跨断言一致性检查。
-- **「不知道该不该上人审。」** → 看 validation strength 与 error observability：语义不可判定时，人审是设计的一部分，不是失败。
+**ABox** 是本体里的实例层断言（相对于 TBox 的类/公理）。例如：
 
-**何时用**：NL→本体/DSL、语义互操作、数据集成、agent 生成配置、专家评审成本高的域。
+> 「给 Bottom Hole Depth 钻井信号一个语义。」
 
-**何时别用**：只需要语法/格式校验；任务有强执行反馈（SQL/求解器）；已经有可量化的失败归因。
+要翻成：`DynamicDrillingSignal` + `HoleBottomLocation` + `DepthDrillingQuantity` + 若干 `hasDynamicValue` 断言。
 
-## 质量评估
+**语法有效很容易，语义充分很难。** 一个 DSL 可以语法对、类型对、甚至本体接地，但模板错、漏断言、选错本体构造。
 
-- **证据类型**：立场/经验框架（position paper），单案例，无量化评测。
-- **样本与对照**：一个钻井 ABox 系统；约 2,250 类 / 200 对象属性；一个 diagnostic case（实际 vs 参考配置）。
-- **优点**：诊断词汇清晰；五角色 + 七变量可操作；把「模型弱」拆成可改设计；与 Text-to-SQL/API/Workflow 做了对照定位。
-- **主要威胁**：没有量化验证；七变量非正交、非穷尽；单案例；评估者差异；不能预测重设计效果。
-- **`quality: C` 理由**：概念框架，不是实证；价值在诊断，不在效应量。
+### 1.2 论文的立场
 
-## 洞察
+失败常被归因于 generator 模型；但反复出现的难点是**结构性的**：
 
-1. **「模型弱」是默认归因，但往往不是根因。** 输入不足、上下文缺失、模板缺口、词汇缺口、校验弱、可观测性差，都会表现成「模型不行」。`已核`（作者立场；本仓库认同）
-2. **语法有效是弱成功标准。** ABox DSL 可以语法对、类型对、甚至本体接地，但模板错/漏断言/选错构造；用语法通过率评估会高估系统。`已核`
-3. **Template fit 是输出侧属性，换更强模型修不好。** 如果领域没有稳定 motif，模型只能每次现发明结构；需要 motif 库。`推测`（设计判断）
-4. **Vocabulary gap 会变成 near-match。** 缺构造时，模型不是报错，而是塞进一个相近的类；这比报错更危险，因为看起来通过了。`已核`（例子）
-5. **Error observability 是一等设计变量。** 失败不能定位，repair 就退化成重复重生成；repair trace 不是调试附属品，是系统组件。`推测`
-6. **语义充分性通常需要人审。** Validation strength 决定自动化上限；不要把「LLM judge 能打分」当成「语义可判定」。`推测`
-7. **非局部修复是本体接地的常态。** 一个类型/关系错会沿链接传播；单点修补不够，需要跨断言一致性检查。`已核`（作者观察）
+- 输入不足（缺字段、隐含假设、歧义）；
+- 上下文缺失（术语说明、示例、建模约定）；
+- grounding 复杂（太多候选符号/模板）；
+- 模板缺口（断言模式不规则）；
+- 词汇缺口（本体没有需要的构造）；
+- 校验弱（语义充分性不可确定性检查）；
+- 错误可观测性差（失败无法定位）。
 
-## 成本与使能条件
+## 2. 术语
+
+| 术语 | 用大白话说 |
+|---|---|
+| **NL→DSL** | 自然语言 → 领域特定语言。 |
+| **ABox / TBox** | ABox 是实例断言；TBox 是类/公理。本文做 ABox。 |
+| **ontology-grounded** | 输出必须使用既有本体的词汇。 |
+| **role-level** | 按工作流角色（输入/生成/输出/校验/修复）诊断，而不是只看模型。 |
+| **difficulty profile** | 七变量组成的诊断表；不是 benchmark，不是评分。 |
+| **intent gate** | 生成前先检查输入够不够；不够就澄清。 |
+| **motif library** | 常见断言模式的模板库。 |
+| **repair trace** | 记录失败定位/修改路径，供后续修复。 |
+
+## 3. 它怎么做
+
+### 3.1 五个角色（Fig. 1）
+
+| 角色 | 做什么 | 典型失败 |
+|---|---|---|
+| Input | 提供意图与上下文 | 歧义、不完整、隐含假设 |
+| Generator | grounding 到本体符号，生成候选 | 选错类/关系/模板 |
+| Output | DSL 表达式空间 | 模板不规则、覆盖缺口、near-match |
+| Validator | 判断是否可接受 | 语法过、语义错；反馈弱 |
+| Repairer | 修订/澄清/重生成/升级 | 非局部修复、重复重生成 |
+
+### 3.2 七个诊断变量
+
+| 变量 | 角色 | 高摩擦证据 | 重设计杆 |
+|---|---|---|---|
+| Input sufficiency | Input | 缺字段/隐含假设/歧义 | intent gate + clarification |
+| Context availability | Generator | 缺术语说明/示例/约定 | 知识库精化 |
+| Grounding complexity | Generator | 候选符号/模板太多 | 候选排序 |
+| Template fit | Output | 断言模式不规则/重叠 | motif 库 |
+| Vocabulary coverage | Output | 缺构造、被迫 near-match | 本体扩展 |
+| Validation strength | Validator | 语义充分性不可确定性检查 | 分层校验 + 人审 |
+| Error observability | Repairer | 失败无法定位 | repair trace |
+
+### 3.3 钻井例子
+
+输入：`Give the semantics for retrieving the Bottom Hole Depth drilling signal.`
+
+- **实际输出**：`DynamicDrillingSignal` + `HoleBottomLocation` + `DepthDrillingQuantity` + 两条断言。
+- **参考配置**：还要求 `PhysicalData`、`OneDimensionalCurviLinearReferenceFrame`、`HasDynamicValue`，并把 quantity/frame/location 挂在 physical data 上。
+- **按七变量诊断**：
+  - Input：没说要不要 physical data/reference frame——缺的是建模假设，不是一个槽位。
+  - Context：agent 无法从输入推断「Bottom Hole Depth 需要 reference frame」。
+  - Grounding：本体里有大量候选类/关系，要分多步选。
+  - Template：没有稳定 motif，模型每次现发明结构。
+  - Vocabulary：本例词汇够；缺词时会变成 near-match。
+  - Validation：语法/类型能过，语义充分性要专家。
+  - Observability：拒绝输出时，说不清是输入、上下文、grounding、模板还是词汇问题。
+
+## 4. 结果：数字与条件
+
+| 数字 | 条件 | 说明 |
+|---|---|---|
+| ≈2,250 类 / ≈200 对象属性 | DDHub 派生本体快照（原型） | 例子系统规模 |
+| 无量化评测 | 全文是框架 + 单案例 | position paper |
+
+**没有准确率/延迟/成本数字。** 论文的价值在诊断词汇与重设计映射，不在效应量。
+
+## 5. 这些数字不能说明什么
+
+1. **不是实证。** 一个案例、无跨系统实验；不能证明「七变量能预测失败」。
+2. **不是穷尽。** 七变量非正交、非穷尽；低 context 会放大 grounding complexity，弱 template fit 会与 vocabulary coverage 交互。
+3. **不是可打分 rubric。** 目前靠定性判断；不同实践者可能给不同 profile。
+4. **不是从零建本体。** 假设本体至少部分可用；TBox 构建不在范围内。
+5. **不是「换更强模型就好」。** 作者明确说错误主要来自结构；更强模型不一定修 template/vocabulary gap。
+
+## 6. 工程上怎么用
+
+### 6.1 复刻顺序
+
+1. **先填一张 7 行表。** 每个 case：变量 / 证据 / 高摩擦？ / 重设计杆 / 负责人。
+2. **Input 先过 intent gate。** 缺实体/关系/约束/建模假设 → 澄清，不要硬生成。
+3. **Context 先补术语/示例/约定。** 用 ontology-aware retrieval 把相关部分带进生成。
+4. **Grounding 分阶段。** 先选 entity，再选 relation/template；候选排序，不要一次让模型选全部。
+5. **Template 建 motif 库。** 常见断言模式写成模板；不要让模型每次现发明结构。
+6. **Vocabulary gap 暴露为本体扩展请求。** 不要静默 near-match。
+7. **Validation 分层。** 语法/类型/domain-range/template 先查；语义留人审。
+8. **Repair trace 记录。** 检索上下文、候选符号、模板、校验结果、人反馈；否则 repair 退化成重复重生成。
+
+### 6.2 成本与使能
 
 | 成本 | 说明 |
 |---|---|
-| 本体上下文/示例 | 需要维护术语说明、建模约定、curated examples |
-| Motif 库 | 需要领域专家把 recurring 结构写成模板 |
-| 人审 | 语义充分性不可判定时，专家 review 是必需 |
+| 本体上下文/示例 | 维护术语说明、建模约定、curated examples |
+| Motif 库 | 领域专家把 recurring 结构写成模板 |
+| 人审 | 语义充分性不可判定时，专家 review 必需 |
 | Repair trace | 记录检索上下文、候选、模板、校验、反馈；存储/工具成本 |
 | 本体扩展 | 缺词时评审、加类/关系、版本管理 |
 
 **使能条件**：本体至少部分可用；有领域专家；有 DSL/grammar；能保存生成与校验轨迹。
 
-**2022 年做会卡在哪**：LLM 生成本体断言的稳定性更差；没有 agent/工具调用；本体上下文与检索不成熟；但诊断框架本身不依赖模型版本。
+### 6.3 何时用 / 何时别用
 
-**反向条件**：任务有强执行反馈；只需要语法校验；没有专家可审；本体完全从零构建。
+**用**：NL→本体/DSL、语义互操作、数据集成、agent 生成配置、专家评审成本高的域。
 
-## 与现有判断的关系
+**别用**：只需要语法/格式校验；任务有强执行反馈（SQL/求解器）；已经有可量化的失败归因。
 
-| 关联 | 关系 |
-|---|---|
-| **E-06** | **直接支撑**：本体接地类任务的失败多来自工作流（输入不足、领域接地弱、模板/词汇缺口、校验弱、非局部修复）。 |
-| **P2** | 支撑「harness 是不可分离的一半」：同一模型，换 input/context/template/validator，难度不同。 |
-| [failure-attribution](../../../topics/06-measure/failure-attribution/README.md) | 核心文献；七变量可作为 EXP-002 的诊断表。 |
-| [00-harness/verification](../../../topics/00-harness/verification.md) | 语义充分性需要外部判据/人审，与 02 判定派相接。 |
-| [05-produce/lifecycle](../../../topics/05-produce/lifecycle/README.md) | vocabulary gap → 本体扩展，是生产侧的回流。 |
+## 7. 质量与边界
 
-## 不可迁移
+- **证据类型**：立场/经验框架（position paper），单案例，无量化评测。
+- **强项**：诊断词汇清晰；五角色 + 七变量可操作；把「模型弱」拆成可改设计；与 Text-to-SQL/API/Workflow 做了对照定位。
+- **主要威胁**：没有量化验证；七变量非正交/非穷尽；单案例；评估者差异；不能预测重设计效果。
+- **`quality: C`**：概念框架，不是实证；价值在诊断，不在效应量。
 
-- 一个钻井 ABox 系统、一个案例；不能外推到所有 NL→DSL。
-- 定性框架，没有效应量；不能用来预测准确率或比较模型。
-- 七变量非正交；不同评估者可能给出不同 profile。
-- 假设本体至少部分可用；从零构建本体不在范围内。
+## 8. 与仓库判断的关系
 
-## 开放问题
+- **E-06（已核）**：本体接地类任务的失败多来自工作流；五角色 + 七变量；语法通过不等于语义充分。
+- **P2**：同一模型，换 input/context/template/validator，难度不同。
+- **06 failure-attribution**：七变量可作为 EXP-002 的诊断表。
+- **05 生产**：vocabulary gap → 本体扩展；template fit → motif 库。
 
-- 七变量能否变成可打分的 rubric？评分者一致性如何？
-- 这套诊断能否预测重设计后的效果？需要前后对照。
-- 在 Text-to-SQL/API/Workflow 上是否同样适用？哪些变量权重不同？
-- 能否把 repair trace 自动化为结构化日志，喂给下一次生成？
-- 语义充分性的人审成本能否用「分层校验 + 抽样」降下来？
+## 9. 还没解决 / 下一步
+
+- **七变量能否变成可打分的 rubric？** 评分者一致性如何？
+- **能否预测重设计后的效果？** 需要前后对照。
+- **在 Text-to-SQL/API/Workflow 上是否同样适用？** 哪些变量权重不同？
+- **repair trace 能否自动化为结构化日志，喂给下一次生成？**
+- **语义充分性的人审成本能否用「分层校验 + 抽样」降下来？**
+
+## 10. 原文
+
+- arXiv:2610.35267
+- PDF：`src/papers/2610.35267-diagnose-workflow/`
+- 代码/数据：论文未给公开仓库。
