@@ -12,7 +12,19 @@
 6. [conclusions](../topics/conclusions.md)：E-01…E-20 的等级与出处；至少读 E-01、E-04、E-20。
 7. 任选一派 README，读它的「本目录怎么长」。
 
-到这里你能复述“它在研究什么”。**要安全地改仓库，还不够**：再加 [src/README](../src/README.md) §5（入库流程）、[meta/conventions](./conventions.md)（字段）、[meta/state](./state.md)（当前计数/阻塞）。实际加载约 2,800–3,000 行，是上面路径的 6–9 倍——这是“接手”的真实成本，不是 15 分钟。
+到这里你能复述“它在研究什么”。**要安全地改仓库，还不够**——走下面的接手路径。
+
+## 30–45 分钟接手路径（要改仓库时）
+
+1. [meta/state](./state.md)：当前计数、边界、最后自检；先看这一页。
+2. [src/README](../src/README.md) §5：论文/开源入库的完整流程与模板。
+3. [meta/conventions](./conventions.md)：字段、证据等级、命名、台账纪律。
+4. [meta/checklist](./checklist.md)：交稿前检查；再跑 `python3 meta/tools/check_repo.py`。
+5. 目标派的 `README.md` + `sources.md` + `claims.md` + `frontier.md`。
+6. 至少一份完整 `digest.md`（要改哪条判断就读哪篇）。
+7. 改完：更新 `meta/state` 计数，commit 前再跑 checker。
+
+实际加载约 2,800–3,000 行，是 15 分钟路径的 6–9 倍——这是“接手”的真实成本，不是 15 分钟。
 
 ## 按任务加载
 
