@@ -187,6 +187,13 @@ def main() -> int:
                 "topics/04-state", "topics/05-produce", "topics/06-measure",
             }:
                 errors.append(f"bad home {scalar(card, 'home')!r}: src/papers/{d}/card.md")
+            home = scalar(card, "home")
+            # also_supports is a simple inline list; strip the bracketed prefix
+            raw = card.get("also_supports", "").strip("[] ")
+            subs = [x.strip("'\" ") for x in raw.split(",") if x.strip("'\" ")]
+            for sub in ([scalar(card, "subtopic")] if scalar(card, "subtopic") else []) + subs:
+                if home and sub and not os.path.exists(os.path.join(ROOT, home, sub, "README.md")):
+                    errors.append(f"unknown subtopic {sub!r}: src/papers/{d}/card.md")
             if not scalar(card, "subtopic"):
                 warnings.append(f"no subtopic: src/papers/{d}/card.md")
 
