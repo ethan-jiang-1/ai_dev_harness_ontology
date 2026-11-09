@@ -69,11 +69,15 @@ updated: 2026-11-09
 
 关键发现：`engine` 不是一种语义（OWL 重写 / SHACL-AF / SHACL 校验）；执行 ≠ 健全（trustgraph fail-open）；执行 ≠ 授权（open-ontologies 只做 CI/报告）；三态在 JSON 保留、在 shell 退出码被折叠。已升 [E-20](../topics/conclusions.md)（`已核（代码）`，不是 `已证`）。
 
+## 薄页合并审计（2026-11-09）
+
+15 个独立来源 <2 的子主题逐页审计：全部有独立机制或独立判断，**本轮 0 个合并**；`determinism` / `lifecycle` 列为下轮复核。规则与审计表见 [ADR 0008](../adr/0008-thin-subtopics-merge-audit.md)。「薄」是来源计数，不是冗余信号。
+
 ## 本轮修复（2026-11-09）
 
 - E 层：全部 E-xx 出处改链 digest（17 条）；E-04 去掉“支撑 P3”的范畴错误，改标 P3a，并新增“E-04 能/不能支撑什么”范围框；Q-03 收窄到单基准/单 gate；outline 第 6 章去掉“reward 低估”的方向断言；合法意图归因降回 `推测`。E-04 共 37 处引用，4 类过度解读（结构有效 / P3b / reward 低估 / 合法意图）已修。
 - 硬矛盾：E-05 错挂回改；02-L2 改为“模型自评”；开源接缝改为 `read-path` / `supply` / `none`；manifest 合并为 22 篇单账；GLOSSARY 工位改为 3 个；P3 拆 P3a/P3b。
-- 结构：新增 `execution_form` 轴（[topics/execution-forms.md](../topics/execution-forms.md)，[ADR 0006](../adr/0006-execution-form-axis.md)）、`evidence_role`、`also_supports`；26 个来源全部落字段（9/4/6/3；engine 4 / compiled 7 / context 2 / label 1 / none 12）；E 行影响列改用 P1a/P1b/P1c/P2/P3a/P3b；16 个薄子主题标记；L1/L2/L3 定义与长度门重写。
+- 结构：新增 `execution_form` 轴（[topics/execution-forms.md](../topics/execution-forms.md)，[ADR 0006](../adr/0006-execution-form-axis.md)）、`evidence_role`、`also_supports`；26 个来源全部落字段（9/4/6/3；engine 4 / compiled 7 / context 2 / label 1 / none 12）；E 行影响列改用 P1a/P1b/P1c/P2/P3a/P3b；15 个薄子主题标记；L1/L2/L3 定义与长度门重写。
 - 账本：meta 索引 + 归档（8 个一次性文档 + full-audit）；state.md（本页）；可执行自检（ADR 0005）；ADR 索引（含 0006）；manifest 合并为 22 篇单账（含批次列），删除 manifest-scan。
 
 ## 怎么刷新

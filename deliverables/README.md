@@ -18,7 +18,8 @@ updated: 2026-11-07
 | 交付物 | 形态 | 状态 | 依据 |
 |---|---|---|---|
 | [手册大纲](./handbook/outline.md) | 结构化大纲 | draft | 全仓库 |
-| 手册正文 | Markdown → 可导出 | 待写 | 大纲七章 |
+| [手册规划建议](./handbook/planning-notes.md) | 规划输入（不写正文） | draft | 评审 + 修复记录 |
+| 手册正文 | Markdown → 可导出 | 待写（先读规划建议） | 大纲七章 |
 | 一页图：约束强度谱 | 图 | 待画 | E-01、E-04、[topics/README](../topics/README.md)（组织假设，标注不是 E 结论） |
 | Deck：给工程团队的 30 分钟 | 幻灯片 | 待做 | 手册第 1、3、4 章 |
 
