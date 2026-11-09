@@ -50,6 +50,13 @@
 
 否则只留在 `frontier.md` 的候选队列，不建卡。**不要为「看起来覆盖了」建卡。**
 
+**配比纪律（2026-11-09）**：
+
+- 建卡前先填 `evidence_role`：`execution-test` 优先；`mechanism-only` / `harness-evidence` / `boundary-ruler` 只有在填具名 G 或改变某条判断时才建卡。
+- 每新增 3 个来源，至少 2 个能把本体当被测变量（`execution-test`），或明确填掉一个具名 G；否则留在 frontier。
+- `harness-evidence` / `boundary-ruler` 不新开子主题；只进现有子主题或 frontier。
+- 这条是注意力配额，不是质量评级：C 类证据可以很有价值，但不能让它们占满结构。
+
 ## 5. 入档流程
 
 ```

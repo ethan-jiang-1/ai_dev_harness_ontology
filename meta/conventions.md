@@ -37,7 +37,7 @@ updated: 2026-11-09
 |---|---|---|---|
 | `status` | 所有文档 | `seed` / `draft` / `stabilized` / `superseded` | 文档成熟度，不代表篇幅 |
 | `home` / `subtopic` / `also_supports` | 源卡 / digest | `topics/<派>` / `<子主题>` / `[<子主题>]` | 归位；移动子主题只改 `subtopic`；一篇论文喂多个子主题时，主归位放 `subtopic`，其余放 `also_supports` |
-| `evidence_role` | 源卡 | `execution-test` / `mechanism-only` / `harness-evidence` / `boundary-ruler` | 对中心问题提供哪类证据：真的测了本体被执行 / 只提机制 / 提供 harness 证据 / 只做边界与尺子 |
+| `evidence_role` | 源卡 | `execution-test` / `mechanism-only` / `harness-evidence` / `boundary-ruler` / `unclear` | 对中心问题提供哪类证据：真的测了本体被执行 / 只提机制 / 提供 harness 证据 / 只做边界与尺子 |
 | `execution_form` | 源卡 | `engine` / `compiled` / `context` / `label` / `none` / `unknown` | 本体以什么形态被执行：引擎求值 / 编译成约束 / 作为上下文注入 / 只当标签 / 未执行 / 未判 |
 | `source_type` | `src/` 卡片 | `paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey` / `open-source` | 素材类型；证据天花板见 [source-types](./source-types.md) |
 | `reading` | 源卡 `card.md` | 论文/材料：`未读` / `综述级` / `摘要级` / `精读` / `已消化`；代码：`未读` / `已读代码` / `已跑通` | 读到什么程度；**不是证据等级** |
@@ -58,7 +58,7 @@ updated: 2026-11-09
 
 - `seed` — 结构在，内容已开始，但未交叉核对。
 - `draft` — 论证完整，至少经过一次交叉核对；结论可能变。
-- `stabilized` — 结论稳定，可被交付物引用。
+- `stabilized` — 结论稳定，可被交付物引用；**需要独立复现或外部签核**。当前没有文档达到，是事实，不是遗漏。
 - `superseded` — 已被别的文档取代，保留指针。
 
 `updated` 表示「最后一次实质修订」；搬家、改链接、批量重排不算。不要为了显得新而改日期。

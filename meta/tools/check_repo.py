@@ -35,7 +35,7 @@ EXPERIMENT_STATUS = {"未开始", "设计中", "运行中", "已完成", "已放
 DELIVERABLE_STATUS = {"draft", "stable", "frozen"}
 SEAM = {"action-gate", "evidence", "checker", "commit-gate", "memory", "determinism", "read-path", "supply", "reasoning", "training", "none"}
 EXECUTION_FORM = {"engine", "compiled", "context", "label", "none", "unknown"}
-EVIDENCE_ROLE = {"execution-test", "mechanism-only", "harness-evidence", "boundary-ruler"}
+EVIDENCE_ROLE = {"execution-test", "mechanism-only", "harness-evidence", "boundary-ruler", "unclear"}
 
 RAW_PAPER = re.compile(r"^src/papers/[^/]+/(paper|references|appendix)\.md$")
 SKIP_FRONTMATTER = {"README.md", "AGENTS.md", "GLOSSARY.md", "THESIS.md"}

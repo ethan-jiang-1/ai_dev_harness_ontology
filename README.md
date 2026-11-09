@@ -14,12 +14,14 @@
 | 六派地图、子主题、四轴 | [topics/README](./topics/README.md) |
 | 跨主题结论（E-xx） | [topics/conclusions](./topics/conclusions.md) |
 | 时刻 / 接缝 | [topics/seams](./topics/seams.md) |
+| 执行形态（第四轴） | [topics/execution-forms](./topics/execution-forms.md) |
 | 控制回路七部件 | [topics/00-harness](./topics/00-harness/README.md) |
 | 材料、卡、消化 | [src/README](./src/README.md) |
 | 落地成本 / 可行性 | [topics/06-measure/feasibility](./topics/06-measure/feasibility/README.md) |
 | 交付物 | [deliverables](./deliverables/README.md) |
 | 实验设计 | [experiments](./experiments/README.md) |
-| 写作约定与模板 | [meta/](./meta/) |
+| 写作约定与模板 | [meta/README](./meta/README.md) |
+| 当前计数与阻塞 | [meta/state](./meta/state.md) |
 | 按需加载 | [meta/loading](./meta/loading.md) |
 
 ## 1. 一句话问题
@@ -82,13 +84,13 @@
 ## 4. 当前状态
 
 - `src/` — 22 个论文目录（20 基础 + 2 扫描）；每目录 PDF + 三份 MD + `card.md` + `digest.md` + `figures/`；4 个开源项目（已 pin commit、已消化）；1 张材料卡 + 一本合并后的 [manifest](./src/papers/manifest.md)。
-- `topics/` — 六派成文；17 条已核 + 2 条推测 + 3 条存疑 + 4 条冲突；26 个来源里 **9 篇把本体当被测变量并测了执行效果**，其余是机制/评测/边界证据（见各卡 `evidence_role`）。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
+- `topics/` — 六派成文；17 条已核 + 2 条推测 + 3 条存疑 + 4 条冲突；22 篇论文里 **9 篇把本体当被测变量并测了执行效果**，4 篇只提机制、6 篇是 harness 证据、3 篇是边界/尺子（见各卡 `evidence_role`）；4 个开源项目提供代码级机制证据。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
 - `deliverables/` — 手册大纲 7 章。
 - `experiments/` — 6 个协议，其中 3 个已冻结为试点（EXP-004/005/006）；**D0 资产门未签核，暂不可开跑**。
 
 **最大空缺是没有一条结论被独立复现。** 全审结论是「内部可签 / 对外 no-go」；当前真正的瓶颈是 [D0 外部资产](./meta/state.md)（具名域、日志、题库、人、单价），不是再读论文。部署层回报、false-veto/false-defer、维护成本仍缺量化。
 
-自检：`python3 meta/tools/check_repo.py`（链接、枚举、ID、清单、计数；见 [ADR 0005](./adr/0005-repo-self-check.md)）。
+以上摘要数字以 [meta/state](./meta/state.md) 为准。自检：`python3 meta/tools/check_repo.py`（链接、枚举、ID、清单、计数；见 [ADR 0005](./adr/0005-repo-self-check.md)）。
 
 ## 5. 怎么增长
 

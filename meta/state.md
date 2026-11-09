@@ -5,7 +5,7 @@ updated: 2026-11-09
 
 # 仓库状态戳
 
-> 这是全仓**唯一允许写“当前计数”的地方**。README、checklist、manifest 不再各写一套；它们指向这里。
+> 这是全仓**权威的当前计数**。README 只保留结构性摘要，checklist 不再抄数；数字冲突时以本页为准。
 > 每次结构性提交前更新；自检命令见文末。
 
 ## 当前状态（2026-11-09）
@@ -29,6 +29,19 @@ updated: 2026-11-09
 1. **D0 外部资产**：具名域、≥500 条带 `state_hash` 日志、200 题 + gold、K2 的 3 人、单价/人时。没有它，三个试点不能开跑。
 2. **独立人类抽检**：5 digest + 5 topic 未做；AI 代办不等于 human sign-off。对外交付前必须补。
 3. **形态消融**：EXP-007 不依赖客户资产，可先用合成域做 v0；这是当前唯一能自主推进的实证线。
+
+## 扫描状态（全局视图）
+
+候选队列分散在各派 `frontier.md`；本表只汇总“最后一次扫描”，不复制候选。每周扫描后更新一行。
+
+| 派 | 最后扫描 | 下一步 | 入口 |
+|---|---|---|---|
+| 01 约束 | 2026-11-09（开源 trustgraph） | false-veto/剪枝率；Commit Boundary 实现 | [frontier](../topics/01-constraint/frontier.md) |
+| 02 判定 | 2026-11-07（首轮外部） | LogT / CORE-LLM-Bench 待落盘 | [frontier](../topics/02-judgment/frontier.md) |
+| 03 知识 | 2026-11-07（首轮外部） | Grep 候选；投影粒度 | [frontier](../topics/03-knowledge/frontier.md) |
+| 04 状态 | 2026-11-07（首轮外部） | APEX-MEM 候选；determinism 设计 | [frontier](../topics/04-state/frontier.md) |
+| 05 生产 | 2026-11-08（G-X 回写） | KROMA 候选；可消费性 | [frontier](../topics/05-produce/frontier.md) |
+| 06 测量 | 2026-11-07（首轮外部） | AgentDebugX 候选；机制→尺子表 | [frontier](../topics/06-measure/frontier.md) |
 
 ## 本轮修复（2026-11-09）
 
