@@ -240,6 +240,24 @@ def main() -> int:
             if scalar(card, "execution_form") in EXECUTION_FORM:
                 form_counts[scalar(card, "execution_form")] += 1
 
+    # 6b. open-source README table agrees with card seam
+    oss_readme = os.path.join(oss_dir, "README.md")
+    if os.path.exists(oss_readme):
+        readme = open(oss_readme, encoding="utf-8").read()
+        for d in oss_projects:
+            card, _ = parse_frontmatter(open(os.path.join(oss_dir, d, "card.md"), encoding="utf-8").read())
+            if not card:
+                continue
+            repo = scalar(card, "repo")
+            seam = scalar(card, "seam")
+            if not repo or not seam:
+                continue
+            for line in readme.splitlines():
+                if f"github.com/{repo}" in line and line.startswith("|"):
+                    cells = [c.strip() for c in line.split("|")]
+                    if len(cells) > 4 and seam not in cells[4]:
+                        errors.append(f"README seam mismatch: {repo} card={seam} table={cells[4]!r}")
+
     # 7. conclusion level counts (section based; rows do not repeat the level)
     counts = Counter()
     section = None

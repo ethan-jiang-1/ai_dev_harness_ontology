@@ -20,7 +20,7 @@
 ## 后果
 
 - `source_type` / `reading` / `provenance` 枚举都要扩（见 conventions、checklist）。
-- `seam` 字段取 [topics/seams.md](../topics/seams.md) 的六时刻，不用派名，避免轴混用。
+- `seam` 字段取 [topics/seams.md](../topics/seams.md) 的六时刻，不用派名，避免轴混用。**2026-11-09 起**另接受 `read-path` / `supply` / `reasoning` / `training` 四个轴外位置（见 ADR 0006 与 seams 的「轴外位置」节）。
 - 概念上的缺口（04 记忆、06 度量没有「本体真执行」的项目）会保留为缺口，不硬凑。
 - 后续若出现第二类「不可读原文」的源材料，按本 ADR 的模板集中与证据天花板原则处理，不新开模板家。
 

@@ -48,10 +48,10 @@ src/open-source/
 
 | 项目 | stars | 本体在代码里做什么 | 接缝 | 为什么选它 / 要小心什么 |
 |---|---:|---|---|---|
-| [trustgraph-ai/trustgraph](https://github.com/trustgraph-ai/trustgraph) | 2,902 | 两处：`extract/kg/ontology/`（loader/selector/triple_converter，从配置服务加载 OWL-like 结构）+ `specs/ontology/trustgraph.ttl`；**`policy/policy_filter.py` 是自研 SHACL-AF 求值器**，对查询结果做策略过滤 | checker（读路径）/ commit-gate（未定位） | 唯一成规模的「agent + 本体」平台（30 贡献者、1,603 commits、28 个月）。**SHACL 是真执行，但不是 pyshacl**——grep 库名会漏，要读 `policy_filter.py` |
-| [semantica-agi/semantica](https://github.com/semantica-agi/semantica) | 14,475 | `semantica/ontology/`（owl_generator / class_inferrer / competency_questions）；`run_shacl_validation()` 调 pyshacl；24 releases + strict-xfail CI | evidence / checker（**待核**） | 影响最大，用来回答「高星是否真本体」；已核：pyshacl 与 OWL 生成是真代码。贡献者 100+（API 截断），承诺要逐条回代码 |
-| [fabio-rovai/open-ontologies](https://github.com/fabio-rovai/open-ontologies) | 2,848 | `src/shacl.rs` + `shacl_verified.rs`；314 个 `.ttl`、54 个 SHACL；W3C SHACL 测试套件；16 releases | commit-gate | 真 SHACL 引擎 + 本体变更/回滚的声称，直接对应 commit boundary。12 贡献者、680/1,080 提交来自 `claude` 账号——AI 辅助，非造假，但别把 commit 数当人力 |
-| [ontop/ontop](https://github.com/ontop/ontop) | 1,016 | OWL 2 QL 本体 + R2RML 映射 → SPARQL 重写成 SQL | `none`（供给） | 2013 年至今的 OBDA 参考实现；「本体真被执行」的成熟形态，也可当 LLM 查询工具 |
+| [trustgraph-ai/trustgraph](https://github.com/trustgraph-ai/trustgraph) | 2,902 | 两处：`extract/kg/ontology/`（loader/selector/triple_converter，从配置服务加载 OWL-like 结构）+ `specs/ontology/trustgraph.ttl`；**`policy/policy_filter.py` 是自研 SHACL-AF 求值器**，对查询结果做策略过滤 | `read-path`（读路径授权）；commit-gate 未定位 | 唯一成规模的「agent + 本体」平台（30 贡献者、1,603 commits、28 个月）。**SHACL 是真执行，但不是 pyshacl**——grep 库名会漏，要读 `policy_filter.py` |
+| [semantica-agi/semantica](https://github.com/semantica-agi/semantica) | 14,475 | `semantica/ontology/`（owl_generator / class_inferrer / competency_questions）；`run_shacl_validation()` 调 pyshacl；24 releases + strict-xfail CI | `checker`（输出后判定）；evidence 路径待核 | 影响最大，用来回答「高星是否真本体」；已核：pyshacl 与 OWL 生成是真代码。贡献者 100+（API 截断），承诺要逐条回代码 |
+| [fabio-rovai/open-ontologies](https://github.com/fabio-rovai/open-ontologies) | 2,848 | `src/shacl.rs` + `shacl_verified.rs`；314 个 `.ttl`、54 个 SHACL；W3C SHACL 测试套件；16 releases | `none`（影响报告，不是授权） | 真 SHACL 引擎 + 本体变更/回滚的声称，直接对应 commit boundary。12 贡献者、680/1,080 提交来自 `claude` 账号——AI 辅助，非造假，但别把 commit 数当人力 |
+| [ontop/ontop](https://github.com/ontop/ontop) | 1,016 | OWL 2 QL 本体 + R2RML 映射 → SPARQL 重写成 SQL | `supply`（查询编译） | 2013 年至今的 OBDA 参考实现；「本体真被执行」的成熟形态，也可当 LLM 查询工具 |
 
 **状态（2026-11-09）**：4 个本轮项目全部已消化（trustgraph、semantica、ontop、open-ontologies）；矩阵 `absorbed`×3 + `partial`×1（ontop 只进 frontier）。低于 1,000★ 的三个（pySHACL 371 / ROBOT 329 / sparql-llm 130）已删除目录，只在 [`_scan-2026-11-09.md`](./_scan-2026-11-09.md) 保留元数据；撤销门槛时重新建卡。
 

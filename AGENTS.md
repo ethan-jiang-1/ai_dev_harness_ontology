@@ -33,15 +33,16 @@
 | 跑一个子主题 | `topics/<派>/<子主题>/prompt.md`；输出放 `runs/` |
 | 修订跨主题结论 | [topics/conclusions.md](./topics/conclusions.md) |
 | 查时刻/接缝 | [topics/seams.md](./topics/seams.md) |
+| 查执行形态 | [topics/execution-forms.md](./topics/execution-forms.md) |
 | 找某派前沿/候选 | `topics/<派>/frontier.md`，方法见 [topic 协议](./meta/topic-research-protocol.md) |
 | 做成对外物 | `deliverables/`，只从 `topics/` 抽取 |
 | 设计验证 | `experiments/`，用 [实验模板](./experiments/_template.md) |
 
 `topics/` 内按**本体凭什么起作用**分六派：`01-constraint`（拦动作）、`02-judgment`（验产出）、`03-knowledge`（喂上下文）、`04-state`（跨轮记忆）、`05-produce`（造与修）、`06-measure`（量它有没有用），底座是 `00-harness`（控制回路七部件）。
 
-六派是 **4+1+1**：`01-04` 是回路内的四个介入点，`05` 是回路前（来源），`06` 是回路外（尺子）。归派一句话：**01-04 问时刻，05 问来源，06 问尺子；跨派按主效应归派并标双重身份。** 时刻轴见 [seams](./topics/seams.md)。
+六派是 **4+1+1**：`01-04` 是回路内的四个介入点，`05` 是回路前（来源），`06` 是回路外（尺子）。归派一句话：**01-04 问时刻，05 问来源，06 问尺子；跨派按主效应归派并标双重身份。** 时刻轴见 [seams](./topics/seams.md)；形态轴见 [execution-forms](./topics/execution-forms.md)。
 
-卡片与主题页的字段：`status`（文档成熟度）/ `source_type`（素材类型）/ `reading`（读到哪）/ `provenance`（一手/转述），定义见 [conventions](./meta/conventions.md#字段与词汇)。
+卡片与主题页的字段：`status`（文档成熟度）/ `source_type`（素材类型）/ `reading`（读到哪）/ `provenance`（一手/转述）/ `evidence_role`（对中心问题提供哪类证据）/ `execution_form`（以什么形态被执行），定义见 [conventions](./meta/conventions.md#字段与词汇)。
 
 **派内可以再有子主题**：`topics/<派>/<子主题>/README.md`。派 README 只做地图与硬证据；详细机制在子主题。子主题按子机制命名，不按来源类型；成立条件见 [ADR 0003](./adr/0003-subtopics-and-source-types.md)。
 
