@@ -20,9 +20,9 @@ updated: 2026-11-09
 | 局部判断 | 65 条 L（01:15 / 02:9 / 03:11 / 04:7 / 05:9 / 06:14） |
 | 证据配比（22 篇） | 9 execution-test（8 回路上 + 1 训练侧）/ 4 mechanism-only / 6 harness-evidence / 3 boundary-ruler |
 | 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
-| 交付物 | 手册大纲 7 章；规划建议已写；正文未写（不执行） |
+| 交付物 | 手册大纲 7 章；规划建议已写；第三章正文初稿（约 0.97 万字）已写；其余章未写（不执行） |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-09 12:40，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
+| 最后自检 | 2026-11-09 13:20，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
 
 ## 当前边界（不是阻塞）
 
@@ -30,6 +30,14 @@ updated: 2026-11-09
 2. **独立复现仍是空缺**：不影响 desk research；若要升「已证」，需要独立复现，但不在本仓库做；不设实验目录，也不再用模型做实验被试。
 3. **独立人类抽检**：只在对外交付时需要；内部研究不阻塞。
 4. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 仍只有 1 个实现，需第二个才能决定是否升第七时刻。
+
+## 2026-11-09 手册第三章初稿
+
+- 新增 [ch03-constraint-spectrum.md](../deliverables/handbook/ch03-constraint-spectrum.md)：9 节、约 0.97 万中文字符；12 条 E + C-03；强度/覆盖率反向标组织假设；六个位置逐节；E-20 放 3.3。
+- 修正 [planning-notes.md](../deliverables/handbook/planning-notes.md)：第三章证据行补 E-02/E-03/E-05/E-14/E-17；图法改为派谱 spine + 六刻度；记录「准确率说法集中在弱端」的收窄。
+- 更新 [deliverables/README.md](../deliverables/README.md) 清单、[outline.md](../deliverables/handbook/outline.md) 第三章正文链接。
+- 写作检验：topics 够用；六位置逐节未出现必须回写的判断缺口；已知缺口仍是 commit 写路径无实现、false-veto 未测、E-20 非效应量。
+- 自检：`python3 meta/tools/check_repo.py` 通过（327 文件 / 22 论文 / 4 开源；E=20，Q=3，C=4，L=65）。
 
 ## 扫描状态（全局视图）
 
