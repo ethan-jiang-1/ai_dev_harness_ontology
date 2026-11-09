@@ -16,6 +16,8 @@ updated: 2026-11-09
 | [critic-sample.md](./critic-sample.md) | 独立 critic 抽样 | 一次性抽样 |
 | [full-audit/](./full-audit/README.md) | 全审（E0–E4 / A0–A4 / V0–V3）与条件 go/no-go | 已出报告；D0 阻塞另行跟踪 |
 | [ontology-llm-landscape.md](./ontology-llm-landscape.md) | 外部「本体 × LLM 应用」问题扫描（2026-11） | 工作底稿；未入 topics，不构成 E |
+| [04-upstream-gaps.md](./04-upstream-gaps.md) | 04 的 topics/src 支撑矩阵与 intake 优先级 | 工作底稿；未改 topics，不构成 E |
+
 
 
 **保留原因**：这些文件记录了“当时为什么这么判”，对追溯有用；但其中的计数、链接与判断可能已被 2026-11-09 的修复取代。

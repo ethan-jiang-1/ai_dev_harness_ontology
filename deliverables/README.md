@@ -111,6 +111,8 @@ updated: 2026-11-09
 
 01 的详细执行计划见 [plan.md](./_plans/01-capability-status.md)：覆盖审计、现有 digest 回抽、新 `src/` 来源、WBS、排期、DoD 与停止规则。
 
+04 的 topics/src 支撑计划见 [04-ontology-in-production.md](./_plans/04-ontology-in-production.md)：5+1 intake、3 个 topics 页面、P0–P5。
+
 ## handbook 的去留（2026-11-09）
 
 **没有独立的 handbook。** 原《本体在 harness 里如何被执行》7 章、4–6 万字的书稿计划已废弃：
