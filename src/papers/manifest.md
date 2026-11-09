@@ -35,7 +35,6 @@ updated: 2026-11-09
 | 18 | 基础 | 2610.21983 | OntoAct | 49 | 4 | [pdf](./2610.21983-ontoact/2610.21983-ontoact.pdf) | [✓](2610.21983-ontoact/card.md) | [✓](2610.21983-ontoact/digest.md) |
 | 19 | 基础 | 2610.11768 | Narrow and Deep（本体塔） | 28 | 4 | [pdf](./2610.11768-narrow-and-deep/2610.11768-narrow-and-deep.pdf) | [✓](2610.11768-narrow-and-deep/card.md) | [✓](2610.11768-narrow-and-deep/digest.md) |
 | 20 | 基础 | 2510.26683 | Evontree | 10 | 4 | [pdf](./2510.26683-evontree/2510.26683-evontree.pdf) | [✓](2510.26683-evontree/card.md) | [✓](2510.26683-evontree/digest.md) |
-
 | 21 | 扫描 | 2610.36570 | CASEL | 6 | 5 | [pdf](./2610.36570-casel/2610.36570-casel.pdf) | [✓](2610.36570-casel/card.md) | [✓](2610.36570-casel/digest.md) |
 | 22 | 扫描 | 2610.01618 | Agents Are Systems | 28 | 5 | [pdf](./2610.01618-agents-are-systems/2610.01618-agents-are-systems.pdf) | [✓](2610.01618-agents-are-systems/card.md) | [✓](2610.01618-agents-are-systems/digest.md) |
 

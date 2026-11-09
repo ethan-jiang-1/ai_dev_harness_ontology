@@ -8,8 +8,9 @@
 2. [THESIS](../THESIS.md) 的「研究问题」与 P1a/P1b/P1c、P2、P3a/P3b。
 3. [AGENTS](../AGENTS.md) 的「先定位落点」表。
 4. [topics/README](../topics/README.md)：四轴 + 4+1+1；[execution-forms](../topics/execution-forms.md)：第四根形态轴。
-5. [conclusions](../topics/conclusions.md)：E-01…E-19 的等级与出处；至少读 E-01、E-04。
-6. 任选一派 README，读它的「本目录怎么长」。
+5. [meta/state](./state.md)：当前计数、边界与最后自检；先看这一页，避免把旧数字当真。
+6. [conclusions](../topics/conclusions.md)：E-01…E-20 的等级与出处；至少读 E-01、E-04、E-20。
+7. 任选一派 README，读它的「本目录怎么长」。
 
 到这里你能复述“它在研究什么”。**要安全地改仓库，还不够**：再加 [src/README](../src/README.md) §5（入库流程）、[meta/conventions](./conventions.md)（字段）、[meta/state](./state.md)（当前计数/阻塞）。实际加载约 2,800–3,000 行，是上面路径的 6–9 倍——这是“接手”的真实成本，不是 15 分钟。
 
@@ -27,8 +28,8 @@
 | 加原文/卡 | [src/README](../src/README.md) + `_templates/`（论文 / 材料 / 开源三套） | topics |
 | 读一个开源项目 | [open-source/README](../src/open-source/README.md) + 该项目 `digest.md` | 其他项目、全部论文 |
 | 做交付 | [conclusions](../topics/conclusions.md) + [deliverables/README](../deliverables/README.md) | src 原文 |
-| 要用模型跑实验 | [meta/models](./models.md) + 对应 EXP | 本地模型/第三方 endpoint |
-| 查结构决策 | [adr/](../adr/)（4 条决策 + 自检例外） | 全部 meta |
+| 用模型做第二意见（不用于实验） | [meta/models](./models.md) | 本地模型/实验被试 |
+| 查结构决策 | [adr/](../adr/README.md)（0001–0008） | 全部 meta |
 | 查 meta 有什么 | [meta/README](./README.md)：现行 / 模板 / 历史 | `archive/` |
 
 ## 三条规则

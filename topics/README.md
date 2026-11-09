@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-09
 ---
 
 # topics：六派与四轴

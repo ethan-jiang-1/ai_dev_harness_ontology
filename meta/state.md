@@ -16,13 +16,13 @@ updated: 2026-11-09
 | 论文 | 22 个目录（20 基础 + 2 扫描），全部有 PDF + 三份 MD + card + digest |
 | 开源 | 4 个项目（trustgraph / semantica / ontop / open-ontologies），已 pin commit、已消化 |
 | 主题 | 6 派 + 20 个子主题 + 00-harness 七部件 + 6 时刻 + 1 条形态轴 |
-| 结论 | 20 条 E：18 已核 / 2 推测；3 条 Q；4 条冲突 |
+| 结论 | 20 条 E：17 已核原文 + 1 已核代码 + 2 推测；3 条 Q；4 条 C |
 | 局部判断 | 65 条 L（01:15 / 02:9 / 03:11 / 04:7 / 05:9 / 06:14） |
 | 证据配比（22 篇） | 9 execution-test（8 回路上 + 1 训练侧）/ 4 mechanism-only / 6 harness-evidence / 3 boundary-ruler |
 | 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
 | 交付物 | 手册大纲 7 章；规划建议已写；正文未写（不执行） |
-| 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不能当实验被试**；见 [models](./models.md) |
-| 最后自检 | 2026-11-09 12:20，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
+| 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
+| 最后自检 | 2026-11-09 12:35，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
 
 ## 当前边界（不是阻塞）
 
