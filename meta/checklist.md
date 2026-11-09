@@ -29,7 +29,7 @@
 ## 4. 计数
 
 - 22 个论文目录（20 基础 + 2 扫描）；每目录一个 `<stem>.pdf`、`paper.md` / `references.md` / `appendix.md`、`card.md`、`digest.md`；1 张材料卡。
-- 开源：`src/open-source/` 下磁盘目录数 = 状态表「已建卡」数；「已消化」数 = 有 `digest.md` 的目录数；没有 digest 的不计入。
+- 开源：磁盘目录数 = 有 `card.md` 的项目数；有 `digest.md` 的才是「已消化」；没有 digest 的不计入。
 - 6 派 / 6 个 `frontier.md` / 6 个 `claims.md` / 6 个 `sources.md` / 6 个时刻。
 - 06 有 5 个子主题（mechanism / failure-attribution / trace / metrics / feasibility）。
 - README 的统计与 `conclusions.md` 的实际行数一致：17 已核 / 2 推测 / 3 存疑 / 4 冲突。

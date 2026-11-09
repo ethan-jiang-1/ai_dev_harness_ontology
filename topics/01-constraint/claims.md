@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-08
+updated: 2026-11-09
 ---
 
 # 01 约束派 · 局部结论
@@ -21,7 +21,7 @@ updated: 2026-11-08
 | 01-L10 | full ledger 在 harm–compute 面被支配，但在低审批端（4.3% approvals / 11.82% HSR）仍是前沿点；「只对不可逆动作记账」未验证 | 已核（模拟） | CASEL | 54% 直接执行步骤 p_t c_t > r̄_t，ledger 前提失败 |
 | 01-L11 | 验证条件式推理期约束在 Tacit-FLE 三个规模上同时提高成功率、减少无效干预：small 78.6 vs IfR 64.3、medium 83.3 vs 66.7、large 90.0 vs 65.0；SI 1.6–2.4 vs IfR 6.4–17.8 | 已核（模拟） | OntoAct | Tacit-FLE 三个规模；Mars/ALFWorld 同向；合成/固定 schema；elimination 上 IfR 匹配/超过，不能推广为「验证条件总是更好」 |
 | 01-L12 | Spurious interventions 是被最终成功率掩盖的指标；应单独报 | 已核 | OntoAct / CASEL | 两篇都强调；CASEL 另报 approvals/coverage |
-| 01-L13 | 可推理 ≠ 可授权：`UNVERIFIED` 可进 Planner，但不能当 positive authorization support；需 claim-specific promotion | 已核（概念） | Commit Boundary | 无实现；设计规范，不是效果证据；未升 E |
+| 01-L13 | 可推理 ≠ 可授权：`UNVERIFIED` 可进 Planner，但不能当 positive authorization support；需 claim-specific promotion | 已核（概念） | Commit Boundary | Commit Boundary 本身无实现；读路径授权已有实现（trustgraph `policy_filter.py`，已核）；写路径 commit gate 仍无；未升 E |
 | 01-L14 | 同源检索（hypothesis 诱导的多个结果）不算独立确认；「没检测到冲突」也不是 positive support | 已核（概念） | Commit Boundary | 上游 dependency lineage 未解决；未升 E |
 | 01-L15 | 推理期条件闸门只拦有适用 axiom 的动作；缺证据转 unresolved/观察，不是覆盖所有动作的安全保证 | 已核 | OntoAct / 多 agent 诊断 | 覆盖率是缺口（reasoning-gate F4/G1）；三环境模拟；作者明确不声称可部署 |
 

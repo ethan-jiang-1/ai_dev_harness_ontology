@@ -96,7 +96,7 @@ open-source/{org}-{repo}/
 - **digest 是下游唯一入口**：topics 引开源证据时链 `digest.md`；`card.md` 只作 provenance，`code-map.md` 只做索引。
 - **执行 vs 装饰**要在 digest 里定级：真的跑 SHACL/OWL/约束检查，还是只把本体塞进 prompt；只有 README 说法的标 `推测`。
 - **命名**：目录全小写，`{org}-{repo}`，`/` 换成 `-`（如 `RDFLib/pySHACL` → `rdflib-pyshacl`）。
-- **候选与入库分开**：候选池、选择标准在 [open-source/README](./open-source/README.md)；入选项目才建目录。
+- **候选与入库分开**：候选池、选择标准在 [open-source/README](./open-source/README.md)；入选项目才建目录。消化顺序与 C/A 闸见 [开源消化计划](../meta/open-source-digestion-plan.md)。
 - 模板：[open-source-card](./_templates/open-source-card.md) / [open-source-digest](./_templates/open-source-digest.md) / [open-source-code-map](./_templates/open-source-code-map.md)。
 
 ## 2. `card.md` 的定位：来源卡，不是消化（以论文为例）
@@ -117,7 +117,7 @@ open-source/{org}-{repo}/
 
 ## 3. `digest.md` 的定位：下游唯一入口
 
-`digest.md` 是**自包含消化正文**。读者可能只读这一篇，不读 card/原文；所以它必须能独立成立。下骨架以论文为例；开源 digest 用 [open-source-digest](./_templates/open-source-digest.md)，要求相同（自包含、不靠「详见 card」）。
+`digest.md` 是**自包含消化正文**。读者可能只读这一篇，不读 card/原文；所以它必须能独立成立。以下骨架以论文为例；开源 digest 用 [open-source-digest](./_templates/open-source-digest.md)，要求相同（自包含、不靠「详见 card」）。
 
 固定骨架：
 
@@ -194,7 +194,7 @@ open-source/{org}-{repo}/
 |---|---|---|---|
 | 老刘说NLP · 本体4方向20工作（2026-11-04） | [otology.card.md](./web/weixin-laoliu/otology.card.md) | 已消化 / 综述转述 | `topics/conclusions.md`、`topics/README.md`、`topics/05-produce/lifecycle/README.md`、`topics/domains.md` |
 | 22 篇论文（20 基础 + 2 扫描） | 各目录 `card.md` / `digest.md` | L3 12 篇 / L2 6 篇 / L1 4 篇 | 六派 README、claims、conclusions（E-01…E-19） |
-| 开源项目 | 状态与进度见 [open-source/README](./open-source/README.md)；未建卡的不算入库 | 卡 = 已读代码，digest = 已消化 | 待建 |
+| 开源项目 | 状态与进度见 [open-source/README](./open-source/README.md)；未建卡的不算入库 | 4 个本轮全部已消化；3 个 <1,000★ 已删除 | `topics/01-constraint`（commit-gate F5–F7）、`topics/02-judgment`（checker F7–F8）、`topics/05-produce`（generation F7、lifecycle 判断 4）、`topics/03-knowledge`（frontier） |
 
 > 论文按篇记；开源按项目记在 `open-source/README` 的状态表里，本页只留总账——**一处明细，一处总账，不重复**。
 
@@ -205,4 +205,4 @@ open-source/{org}-{repo}/
 - 部署层回报、false-veto/false-defer、维护成本仍缺量化。
 - 部分论文有 v2/v3 版本，当前取下载当日最新版；版本变化可能改变结论。
 - `quality` 是粗分，不是同行评审结论；引用时仍看证据等级。
-- 开源侧：7 个入选项目尚未建卡；**04 记忆 / 06 度量** 还没有「本体真执行」的开源样本，语义检索类项目不计入。这是缺口，不硬凑。
+- 开源侧：本轮 4 个（≥1,000★）全部已消化（trustgraph、semantica、ontop、open-ontologies）；3 个 <1,000★ 已删除目录（元数据留在扫描快照）。**04 记忆 / 06 度量** 还没有「本体真执行」的开源样本，语义检索类项目不计入。这是缺口，不硬凑。

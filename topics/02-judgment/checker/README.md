@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-08
+updated: 2026-11-09
 rq: [RQ2, RQ4, RQ5]
 evidence: [E-02]
 ---
@@ -13,10 +13,10 @@ evidence: [E-02]
 
 | 项 | 值 |
 |---|---|
-| 已发现 | 6 条（[findings](./findings.md)） |
+| 已发现 | 8 条（[findings](./findings.md)） |
 | 未发现 / 开放 | 5 条（[frontier](./frontier.md)） |
 | 下一步 | 3 个候选（[frontier](./frontier.md)） |
-| 最后扫描 | 2026-11-08 |
+| 最后扫描 | 2026-11-09 |
 | 覆盖 | 输出后的语义/结构检查；不含格式检查与行为测试（见 [00-harness/verification](../../00-harness/verification.md)） |
 
 ## 当前判断
@@ -27,6 +27,8 @@ evidence: [E-02]
 - **先超过空结果重试基线。** 空结果重试在人工 fault 上 catch 79.2%、FA 0%；真实答案上 catch 2.5%、FA 0.1%。`已核`
 - **LLM judge 检错更多，但修坏多于修好。** 真实答案 catch 40.3%、FA 16.2%；40 修好 / 83 修坏；curated/data-derived 的结构检查对 changes of meaning 是 0%，judge 能抓这类错；但每条答案一次模型调用，成本/稳定性未测，不能默认更好。`已核`（Appendix C.2 比较器；部署判断 `推测`）
 - **同源检查的 catch 下降是探索性观察。** 同一 artifact 既做 context 又做 checker 时 catch 下降；机制（确认偏差 vs 信息冗余）未定，不能写成「必须不同源」的部署规则。`推测`
+- **checker 要报三态。** 通过 / 违反 / 未检查完；把「没检查完」合并进 pass 会污染 catch/FA 的分母。开源侧已有实现把 undetermined 做成独立 exit code。`已核`（代码；未跑）
+- **覆盖与保证不可兼得。** 同一 SHACL 引擎的两条路径：默认支持 `sh:sparql` 但会 skip；verified 覆盖 Core 但拒绝 `sh:sparql`（22/120）。选型时要说明用哪条、拒了什么。`已核`（代码；未跑）
 
 ## 文件地图
 

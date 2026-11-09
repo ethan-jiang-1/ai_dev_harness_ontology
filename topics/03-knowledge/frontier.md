@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-09
 rq: [RQ1, RQ5]
 ---
 
@@ -43,6 +43,7 @@ rq: [RQ1, RQ5]
 | 投影+RAG 混用线 | 叠加/干扰 | 待扫描 | 用检索式 3/5 |
 | Grep is All You Need（Zenodo 2026） | grep + LLM 编译概念/FAQ 两层；76 agents、500 文本、100% 检索准确率、sub-10ms | 摘要已读 | 落盘 + 建卡；直接对照 E-01/RQ5 |
 | Knowledge-compile（Zenodo） | 知识编译 | 待扫描 | 读摘要 |
+| Ontop（开源 OBDA） | 本体 + R2RML 在查询时编译成 SQL；供给型执行器，不是接缝 | 已核（代码+最小运行） | 包成 LLM 工具；做「有/无本体公理」消融 |
 | Structured Contextual Distillation（SCD v3.1） | 确定性、可验证的持久 agent 状态 | 待扫描 | 与 04 共享 |
 | Context Engineering（T3 blog） | 工程侧信号 | 只作 T3 | 不建卡 |
 

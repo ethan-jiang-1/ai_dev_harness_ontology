@@ -10,6 +10,9 @@
 | F2 | 提交条件应显式化：证据齐/冲突清/版本有效；批准不跨 mutation 继承 | 已核（设计规范） |
 | F3 | 同源检索不是独立确认；「没冲突」不是 positive support | 已核（概念） |
 | F4 | 只有设计，没有实现；保证是条件性的 | 已核（概念） |
+| F5 | 授权有读路径实现（策略过滤），写路径 commit gate 仍无 | 已核（代码） |
+| F6 | 读路径策略执行是 fail-open：SPARQL 异常/缺字段即放行 | 已核（代码） |
+| F7 | 读路径过滤只删 subject 侧三元组，object 方向可能泄漏 | 已核（代码） |
 
 > `F` 只放判断；接口/字段/成本/stop/替代方案的工程口径放在 [mechanism](./mechanism.md) 的「工程发现 1–4」，不新增 `F` 编号。
 
@@ -44,3 +47,25 @@
 - **判断**：Commit Boundary 自述无实现、无实证；保证是条件性的——依赖域策略充分、promotion 可靠、强制执行等 7 条假设。
 - **含义**：只能作设计提案引用，不能作效果证据；false-defer 率未知。
 - **来源**：摘要/§8；digest §5。
+
+## F5 · 读路径有实现，写路径没有
+
+- **判断**：开源系统里已有「用户上下文 + SHACL-AF 策略」的**读路径**授权过滤（trustgraph `policy/policy_filter.py`）；但它拦的是检索结果，不是落盘变更。Commit Boundary 的**写路径** commit gate 仍无实现。
+- **等级**：已核（代码；31 条单测已跑）。
+- **条件**：策略存在才强制（无策略 → open mode）；错误路径 fail-open，未测；只删 subject 侧三元组。
+- **含义**：F4 的「只有设计」对 commit gate 仍成立，但不能外推成「授权不可执行」——授权执行在开源里先落在读侧。引用时写清「读路径 vs 写路径」。
+- **来源**：trustgraph digest §3–§4；`policy/triples/service.py`、`policy/policy_filter.py`。
+
+## F6 · 读路径策略执行是 fail-open
+
+- **判断**：trustgraph 的策略求值器在错误路径上放行：`sh:SPARQLTarget` 抛异常 → 当作不命中；`sh:SPARQLRule` 抛异常 → 无判定；策略缺 `sh:select`/`sh:construct` → 跳过该策略；没有任何策略 → 原样返回。只有「有策略 + 请求未带 user_context」是 fail-closed。
+- **等级**：已核（代码；`policy_filter.py: _run_sparql_target/_run_sparql_rule`、`PolicyFilter.apply`）。
+- **含义**：授权执行器的错误路径决定它是「安全默认」还是「可用性优先」。读路径实现选了可用性；引用它做安全论证时必须写清，且需要异常注入测试（当前没有）。
+- **来源**：[trustgraph digest](../../../src/open-source/trustgraph-ai-trustgraph/digest.md) §3/§6。
+
+## F7 · 读路径过滤只删 subject 侧
+
+- **判断**：命中 `tg-pol:blocks=true` 的节点，只会删掉它作为 **subject** 的三元组；以它为 **object** 的三元组不删（`_triple_blocked` 只检查 `triple.s`）。
+- **等级**：已核（代码）。
+- **含义**：敏感信息可能以「别人 → 指向 → 敏感节点」的方向返回。授权过滤的方向性与主体/客体语义绑定，不能假设「节点被 block = 完全不可见」。
+- **来源**：[trustgraph digest](../../../src/open-source/trustgraph-ai-trustgraph/digest.md) §3/§6。

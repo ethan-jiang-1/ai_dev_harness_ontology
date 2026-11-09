@@ -1,6 +1,6 @@
 ---
 status: seed
-updated: 2026-11-08
+updated: 2026-11-09
 rq: [RQ3]
 evidence: [E-02, E-05]
 ---
@@ -11,10 +11,10 @@ evidence: [E-02, E-05]
 
 | 项 | 值 |
 |---|---|
-| 已发现 | 3 条判断（本页）+ 4 条工程发现（[mechanism](./mechanism.md)「工程发现」） |
+| 已发现 | 4 条判断（本页）+ 4 条工程发现（[mechanism](./mechanism.md)「工程发现」） |
 | 未发现 / 开放 | 3 条（见下） |
 | 下一步 | 见「开放问题」（3 条） |
-| 最后扫描 | 2026-11-08 |
+| 最后扫描 | 2026-11-09 |
 | 覆盖 | 来源/精化/对齐/演化；薄页，未拆 findings/frontier |
 
 
@@ -46,6 +46,8 @@ evidence: [E-02, E-05]
 4. **演化** —— 规则引导的自演化，或用例驱动的增量修订。
 
 这四段是框架性归纳（`推测`），不是三篇 digest 直接测出来的：CASTON 落在第 2 段，Evontree 落在第 1/4 段，FIRME 落在第 3 段。阶段 2 到 4 的共同难点：**没有人对「这个本体今天仍然成立」负责。** 与代码不同，本体没有测试，失效是静默的。
+
+**工具侧的部分反例（`已核`，代码；未跑）**：open-ontologies 把本体变更做成可执行检查——SHACL 校验（默认路径会列 `skipped_constraints`；verified 路径有 `undetermined`/exit 3）、闭包差分（丢了哪些蕴含、带证书与 exit code）。所以更准确的说法是：**本体没有回归测试，但可以有一致性/约束检查**；工具让失效可见，不替人负责语义正确。引用时不要把「有检查」写成「有测试」。详见 [open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md)。
 
 ## 失效模式
 

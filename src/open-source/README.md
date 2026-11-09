@@ -38,39 +38,51 @@ src/open-source/
 
 **排除项**：纯图检索（无 schema 约束/校验/推理）、闭源核心、README 承诺多于代码、star 异常但无提交历史。
 
-## 状态表（2026-11-09 扫描）
+## 状态表（2026-11-09 扫描 + 一轮代码复核）
 
-扫描快照见 [`_scan-2026-11-09.md`](./_scan-2026-11-09.md)。代码级判断标 `待核` 的表示只看了元数据/README/二手定位，还没自己读过代码。
+扫描快照见 [`_scan-2026-11-09.md`](./_scan-2026-11-09.md)。**复核说明**：六个高星项目做过一轮 tarball/代码检查（由研究 agent 完成，本仓库尚未自己复核），结论已折进下表；标 `待核` 的路径要等我自己读过代码才升 `已核`。
 
-### 入选（7，按接缝排）
+### 本轮消化（4，≥1,000★）
 
-| 项目 | stars | 本体角色 | 接缝 | 选它的理由 |
+本轮临时门槛：**stars ≥ 1,000**（2026-11-09 起，可撤销）。消化顺序与 C/A 闸见 [开源消化计划](../../meta/open-source-digestion-plan.md)。4 个均已建卡，`digest.md` 未写。
+
+| 项目 | stars | 本体在代码里做什么 | 接缝 | 为什么选它 / 要小心什么 |
 |---|---:|---|---|---|
-| [trustgraph-ai/trustgraph](https://github.com/trustgraph-ai/trustgraph) | 2,902 | core（待核） | action-gate / evidence（待核） | 唯一把 ontology/SHACL/RDF 放在 agent 管道里的活跃项目；要验「运行时 gate 还是离线文档」 |
-| [ontodev/robot](https://github.com/ontodev/robot) | 329 | core | commit-gate | reason→validate→diff→release 的真实管线；回答「本体变更/影响面/回滚」到底怎么做（对照 Open Ontologies 的声称） |
-| [sib-swiss/sparql-llm](https://github.com/sib-swiss/sparql-llm) | 130† | core | checker | LLM 生成 SPARQL 后，用端点 VoID 逐谓词/类校验，返回 NL 修复提示；自带 MCP server + 生产 chat。**最贴「回路内 schema 检查」的小项目** |
-| [RDFLib/pySHACL](https://github.com/RDFLib/pySHACL) | 371 | core | checker | 可嵌入 Python harness 的约束执行；最小可复现；对照 TopBraid SHACL 参考实现 |
-| [monarch-initiative/ontogpt](https://github.com/monarch-initiative/ontogpt) | 1,089 | core | evidence（待核） | LinkML schema 约束 + ontology grounding；生物医学有真实使用 |
-| [ontop/ontop](https://github.com/ontop/ontop) | 1,016 | core | `none`（供给） | 本体 + R2RML 映射 → SPARQL 重写到 SQL；「本体真被执行」最成熟的形态，可当 LLM 工具 |
-| [apache/jena](https://github.com/apache/jena) | 1,501 | core | `none`（控制组） | 标准栈对照组：RDF/SPARQL/SHACL/推理长什么样、为什么难进 agent |
+| [trustgraph-ai/trustgraph](https://github.com/trustgraph-ai/trustgraph) | 2,902 | 两处：`extract/kg/ontology/`（loader/selector/triple_converter，从配置服务加载 OWL-like 结构）+ `specs/ontology/trustgraph.ttl`；**`policy/policy_filter.py` 是自研 SHACL-AF 求值器**，对查询结果做策略过滤 | checker（读路径）/ commit-gate（未定位） | 唯一成规模的「agent + 本体」平台（30 贡献者、1,603 commits、28 个月）。**SHACL 是真执行，但不是 pyshacl**——grep 库名会漏，要读 `policy_filter.py` |
+| [semantica-agi/semantica](https://github.com/semantica-agi/semantica) | 14,475 | `semantica/ontology/`（owl_generator / class_inferrer / competency_questions）；`run_shacl_validation()` 调 pyshacl；24 releases + strict-xfail CI | evidence / checker（**待核**） | 影响最大，用来回答「高星是否真本体」；已核：pyshacl 与 OWL 生成是真代码。贡献者 100+（API 截断），承诺要逐条回代码 |
+| [fabio-rovai/open-ontologies](https://github.com/fabio-rovai/open-ontologies) | 2,848 | `src/shacl.rs` + `shacl_verified.rs`；314 个 `.ttl`、54 个 SHACL；W3C SHACL 测试套件；16 releases | commit-gate | 真 SHACL 引擎 + 本体变更/回滚的声称，直接对应 commit boundary。12 贡献者、680/1,080 提交来自 `claude` 账号——AI 辅助，非造假，但别把 commit 数当人力 |
+| [ontop/ontop](https://github.com/ontop/ontop) | 1,016 | OWL 2 QL 本体 + R2RML 映射 → SPARQL 重写成 SQL | `none`（供给） | 2013 年至今的 OBDA 参考实现；「本体真被执行」的成熟形态，也可当 LLM 查询工具 |
 
-### 依赖 / 对照（不建目录，在 digest 里引用）
+**状态（2026-11-09）**：4 个本轮项目全部已消化（trustgraph、semantica、ontop、open-ontologies）；矩阵 `absorbed`×3 + `partial`×1（ontop 只进 frontier）。低于 1,000★ 的三个（pySHACL 371 / ROBOT 329 / sparql-llm 130）已删除目录，只在 [`_scan-2026-11-09.md`](./_scan-2026-11-09.md) 保留元数据；撤销门槛时重新建卡。
+
+### 对照 / 依赖（不建目录，在 digest 里引用）
 
 | 项目 | stars | 关系 |
 |---|---:|---|
-| [linkml/linkml](https://github.com/linkml/linkml) | 691 | ontogpt 的 schema 底座；「轻 schema 路线」的对照。若「OWL 太重」成为主线，再单独建卡 |
+| [apache/jena](https://github.com/apache/jena) | 1,501 | 标准栈控制组（RDF/SPARQL/SHACL/推理）；「为什么难进 agent」的参照 |
+| [monarch-initiative/ontogpt](https://github.com/monarch-initiative/ontogpt) | 1,089 | LinkML + ontology grounding，生成侧对照；约束的是抽取结构，不是执行判据 |
+| [linkml/linkml](https://github.com/linkml/linkml) | 691 | 「轻 schema 路线」；ontogpt 的底座。若「OWL 太重」成主线，再升卡 |
+| [owlcs/owlapi](https://github.com/owlcs/owlapi) | 945 | OWL 推理接口，ROBOT/Jena 的依赖 |
+| [liveontologies/elk-reasoner](https://github.com/liveontologies/elk-reasoner) | 129 | OWL EL 推理内核（ROBOT 的 reasoner） |
+| [RDFLib/OWL-RL](https://github.com/RDFLib/OWL-RL) | 181 | OWL2-RL 闭包；pySHACL `-i owlrl` 的 entailment 源 |
 | [TopQuadrant/shacl](https://github.com/TopQuadrant/shacl) | 248 | SHACL 参考实现，pySHACL 的对照 |
 | [INCATools/ontology-development-kit](https://github.com/INCATools/ontology-development-kit) | 391 | ROBOT 的 CI 包装；生命周期流程对照 |
-| [owlcs/owlapi](https://github.com/owlcs/owlapi) | 945 | OWL 推理接口，ROBOT/Jena 的依赖 |
-| [liveontologies/elk-reasoner](https://github.com/liveontologies/elk-reasoner) | 129 | OWL EL 推理内核 |
-| [RDFLib/OWL-RL](https://github.com/RDFLib/OWL-RL) | 181 | OWL2-RL 闭包；pySHACL 的 `-i owlrl` 用 |
-| [biolink/biolink-model](https://github.com/biolink/biolink-model) | 269 | ontogpt/Biolink 生态的 schema |
-| [neo4j-labs/neosemantics](https://github.com/neo4j-labs/neosemantics) | 972 | RDF/OWL/SHACL 进属性图的一条路 |
+| [biolink/biolink-model](https://github.com/biolink/biolink-model) | 269 | ontogpt/semantica 生态的 schema |
 | [dice-group/owlapy](https://github.com/dice-group/owlapy) | 115† | Python OWL + HermiT/ELK，回路内一致性检查的候选 |
-| [coasys/ad4m](https://github.com/coasys/ad4m) | 103† | SHACL 约束门控图变更 + MCP；license 非标准、LLM 链路未核 |
-| [ensaremirerol/shacl-rust](https://github.com/ensaremirerol/shacl-rust) | 5† | `shacl-mcp`：把 SHACL 包成 agent 工具，极小样本 |
-| [KRR-Oxford/DeepOnto](https://github.com/KRR-Oxford/DeepOnto) | 328 | 本体补全/嵌入 + DL 推理；学术线候选 |
-| [zjunlp/OneKE](https://github.com/zjunlp/OneKE) | 197 | schema 引导抽取的 agent；生成侧对照 |
+| [coasys/ad4m](https://github.com/coasys/ad4m) | 103† | SHACL 门控图变更 + MCP；license 非标准、LLM 链路未核 |
+| [ensaremirerol/shacl-rust](https://github.com/ensaremirerol/shacl-rust) | 5† | `shacl-mcp`：把 SHACL 包成 agent 工具；样本极小 |
+| [zazuko/rdf-validate-shacl](https://github.com/zazuko/rdf-validate-shacl) | 126† | 纯 JS SHACL 引擎，可做输出闸门 |
+| [neo4j-labs/neosemantics](https://github.com/neo4j-labs/neosemantics) | 972 | RDF/OWL/SHACL 进属性图的一条路 |
+| [KRR-Oxford/DeepOnto](https://github.com/KRR-Oxford/DeepOnto) | 328 | 本体补全/嵌入 + DL 推理；学术候选 |
+| [zjunlp/OneKE](https://github.com/zjunlp/OneKE) | 197 | schema 引导抽取的 agent；生成侧候选 |
+
+### 候选待核（真实，但先不进第一批）
+
+| 项目 | stars | 为什么先不进 |
+|---|---:|---|
+| [deeplethe/utopia](https://github.com/deeplethe/utopia) | 8,692 | `crates/utopia-ingest/src/ontology_rdf.rs` 真解析 OWL 构造；但 3 个月做到 8.7k 星、536/929 提交来自 `claude`——先看稳定性与真实用户 |
+| [HelixDB/helix-foundry](https://github.com/HelixDB/helix-foundry) | 2,082 | `backend/ontology/` 是自建 Go schema，不是 RDF/OWL；1 个月，无独立使用证据 |
+| [FengZhenfei/carrel](https://github.com/FengZhenfei/carrel) | 801 | `app/kb_pipeline/ontology.py` 是 680 行 LinkML 子集；0 个 `.ttl/.owl`，OWL/SHACL 被推到「plugin side」；2 人 |
 
 ### 淘汰（不建目录）
 
@@ -80,23 +92,21 @@ src/open-source/
 | [HKUDS/LightRAG](https://github.com/HKUDS/LightRAG) | 40,608 | 同上；graph 是索引结构 |
 | [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) | 144,347 | 代码库知识图；star 量级异常，先不投入 |
 | [neo4j-labs/llm-graph-builder](https://github.com/neo4j-labs/llm-graph-builder) | 5,301 | schema 引导抽取，但约束停在抽取阶段 |
-| [semantica-agi/semantica](https://github.com/semantica-agi/semantica) | 14,475 | 2025-06 建、星数极高；ontology 是核心还是营销**待核**，无代码定位前不建卡 |
-| [deeplethe/utopia](https://github.com/deeplethe/utopia) | 8,692 | 2026-08 建，增速异常；「企业世界模型」是否只是图数据库**待核** |
-| [fabio-rovai/open-ontologies](https://github.com/fabio-rovai/open-ontologies) | 2,848 | 声称的 blast radius/rollback 是代码还是文档**待核**；研究点已由 ROBOT 覆盖 |
-| [HelixDB/helix-foundry](https://github.com/HelixDB/helix-foundry) | 2,082 | 2026-10 建；agent 起草本体，太新，无 issue/使用证据 |
-| [FengZhenfei/carrel](https://github.com/FengZhenfei/carrel) | 801 | 2026-09 建、0 open issues；名字命中但证据不足 |
 | [getzep/graphiti](https://github.com/getzep/graphiti) | 32,652 | schema-typed 时序记忆，不是形式本体；留作 04 记忆接缝对照 |
 | [topoteretes/cognee](https://github.com/topoteretes/cognee) | 33,135 | 同上；memory graph，不是 ontology |
 
 ## 影响力：star 会骗人，采用不会
 
-- **标准/推理类 star 低、采用广**：Jena 是 Apache 顶级项目；ROBOT/ODK 是 OBO Foundry 的发布链；pySHACL 的 PyPI 月下载约 160 万（pypistats，2026-11-09）；sparql-llm 的 star 只有 130，但有 expasy.org/chat 的生产部署。
+- **标准/推理类 star 低、采用广**：Jena 是 Apache 顶级项目；ROBOT/ODK 是 OBO Foundry 的发布链；pySHACL 月下载约 160 万；sparql-llm 只有 130 星，但有 expasy.org/chat 的生产部署与论文。
 - **图检索类 star 高一个量级**：GraphRAG 3.6 万、cognee 3.3 万、graphiti 3.3 万。
-- 这个落差本身就是证据：**社区注意力在「检索」，不在「执行」**——对应 P1/P2。选项目时按「本体是否被执行」而非 star 排序。
+- 这个落差本身就是证据：**社区注意力在「检索」，不在「执行」**——对应 P1/P2。
+- 三个反信号：① `claude` 账号在多个高星本体项目里占大量提交（open-ontologies 680/1,080、utopia 536/929）；② 新项目 star 增速异常（utopia 3 个月 8.7k）；③ **SHACL 可以自研**——trustgraph 不用 pyshacl，而是在 `policy/policy_filter.py` 里自己实现 SHACL-AF 求值；只 grep `pyshacl` / `shacl.rs` 会误判。判断标准是「有没有 shape 求值 + 是否影响返回」，不是依赖清单。
 
 ## 先做哪几个
 
-1. **给 7 个入选项目建 `card.md`**（只写可定位事实，不写结论）。
-2. **先深读 2 个**：`trustgraph`（最贴题的 agent 内本体）+ `rdflib-pyshacl`（最小可跑、当天能出调用链）。
-3. 再补 `ontop`（OBDA）与 `robot`（本体生命周期），这两个是「真执行」的两个极端形态。
-4. 每个项目读完回 `topics/<派>/sources.md`；只是「论文机制没找到实现」→ 写进 `frontier.md` 的 G/N。
+按 [开源消化计划](../../meta/open-source-digestion-plan.md) 的波次走，一次只动 1–2 个派：
+
+1. **Wave 1（01 / 02）**：`trustgraph`（读路径策略链 + `tests/unit/test_policy`）。
+2. **Wave 2（03）**：`semantica`（`run_shacl_validation` 最小示例）→ `ontop`（Docker 最小示例 + 查询重写）。
+3. **Wave 3（05 / 01）**：`open-ontologies`（W3C SHACL 一条用例 + 变更/影响面）。
+4. **Wave 4**：`jena` / `ontogpt` 只做对照段；跨派结论只在两个以上来源同向时动 `conclusions`；吸收矩阵记一行。

@@ -12,6 +12,8 @@
 | F4 | curated + data-derived 组合无净收益 | 已核 |
 | F5 | specific feedback 修复更多，但 corrupt 也更多 | 已核 |
 | F6 | LLM judge 检错更多，但修坏多于修好；不能默认更好 | 已核（单图比较器） |
+| F7 | checker 的答案应分三态：通过 / 违反 / 未检查完；把「没检查完」合并进 pass 会污染 catch/FA | 已核（代码；未跑） |
+| F8 | SHACL 求值器的「覆盖」与「保证」不可兼得：默认支持 `sh:sparql` 但会 skip；verified 覆盖 Core 但拒绝 `sh:sparql`（22/120） | 已核（代码；未跑） |
 
 ## F1 · 三源权衡
 
@@ -60,3 +62,18 @@
 - **条件**：UniProt 主表；Appendix C.2 比较器；真实答案由 agent 自己的模型扮演，人工故障由 Claude Sonnet 5.5 / Haiku 5.5 扮演。
 - **边界**：单图为主；成本/稳定性未做头对头。
 - **来源**：Appendix C.2, Table 11；§6 Discussion；digest §6.5 部署度量。
+
+## F7 · 三态：通过 / 违反 / 未检查完
+
+- **判断**：checker 不能只有「通过/违反」两态。开源实现（open-ontologies）把「没检查完」做成独立状态：默认 SHACL 路径会 skip 不支持的约束（`skipped_constraints`），verified 路径用 exit code 3 = `undetermined`，并且明确不以 `conforms: true` 冒充「全查过」。把这两态合并，catch/FA 的分母就被污染——「没查」会被算成「查过且通过」。
+- **等级**：已核（代码；本次未跑起来）。
+- **条件**：适用于任何「部分覆盖」的 checker：shapes 不完整、约束被 skip、样本抽样、离线标注集缺答案。
+- **含义**：checker 的度量要同时报三个数：checked / passed / undetermined（或 skipped）；否则 catch 与 FA 都不可比。这直接约束 G1/G5 的评测口径。
+- **来源**：[open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md) §3–§5；`src/shacl_verified.rs`、`src/shacl.rs`。
+
+## F8 · 覆盖与保证不可兼得
+
+- **判断**：open-ontologies 的两条 SHACL 求值路径不是 superset：默认路径把约束编译成 SPARQL，支持 `sh:sparql` 与自定义组件，但会 skip 一部分约束；verified 路径（`oo-shacl`）覆盖 SHACL Core、声明的 soundness 有机器检查定理，但**明确拒绝** `sh:sparql` 与用户自定义组件（W3C 120 条里 22 条）。CLI 也拒绝把 `--verified` 与 temporal scope 合用，否则 scope 会被静默丢弃。
+- **等级**：已核（代码；本次未跑）。
+- **含义**：checker 选型不是「越强越好」，而是「用覆盖换保证」或反之；引用时必须说明用的是哪条路径、它拒了什么。这与 F7 的三态是同一件事的两面：保证越强，undetermined/拒绝的边界越显式。
+- **来源**：[open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md) §3–§5；`src/shacl_verified.rs`、`src/main.rs` 的 `Shacl` 分发。
