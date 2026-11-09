@@ -17,6 +17,7 @@ updated: 2026-11-09
 | [topic-research-protocol.md](./topic-research-protocol.md) | 派与子主题怎么长、frontier 怎么用 | 开新子主题/做扫描时 |
 | [loading.md](./loading.md) | 按任务加载（渐进披露） | 接手时 |
 | [state.md](./state.md) | **当前计数、阻塞、最后自检** | 想知道“现在到哪了” |
+| [models.md](./models.md) | **可用模型与本地约束**（不装本地模型；只用 Yovole 两个） | 要跑任何模型依赖的实验时 |
 
 ## 模板与工具
 

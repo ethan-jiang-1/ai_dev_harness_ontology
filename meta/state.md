@@ -22,6 +22,7 @@ updated: 2026-11-09
 | 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
 | 实验 | 4 个协议（EXP-001/002/003 + EXP-007）；无外部资产前置 |
 | 交付物 | 手册大纲 7 章；正文未写 |
+| 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不能当实验被试**；见 [models](./models.md) |
 | 最后自检 | 2026-11-09 11:35，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
 
 ## 当前边界（不是阻塞）
@@ -60,6 +61,7 @@ updated: 2026-11-09
 - engine / compiled / context 均 4/4；label 0/4（DeepSeek）、1/4（Qwen），失败以 JSON 解析/空 content 为主。
 - 解释：**天花板效应**，任务太简单，engine 直接给 verdict 等于 oracle；不能支持或否定 P2。正式实验要更难、engine 要带覆盖缺口、label 对照要公平。
 - 详情：[experiments/EXP-007-form-ablation.md](../experiments/EXP-007-form-ablation.md#代理试点-v02026-11-09已完成不构成正式结果)。
+- **Yovole 路径作废**：workflow subagent 会读仓库/调用工具（qwen 输出提到 runs/、checker），不是 raw chat；不能作实验被试。
 
 ## 执行形态代码核对（2026-11-09）
 

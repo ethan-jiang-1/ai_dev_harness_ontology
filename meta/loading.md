@@ -28,6 +28,7 @@
 | 读一个开源项目 | [open-source/README](../src/open-source/README.md) + 该项目 `digest.md` | 其他项目、全部论文 |
 | 做交付 | [conclusions](../topics/conclusions.md) + [deliverables/README](../deliverables/README.md) | src 原文 |
 | 设计验证 | [experiments/README](../experiments/README.md) + 对应 E-xx / P | 全部卡片 |
+| 要用模型跑实验 | [meta/models](./models.md) + 对应 EXP | 本地模型/第三方 endpoint |
 | 查结构决策 | [adr/](../adr/)（4 条决策 + 自检例外） | 全部 meta |
 | 查 meta 有什么 | [meta/README](./README.md)：现行 / 模板 / 历史 | `archive/` |
 

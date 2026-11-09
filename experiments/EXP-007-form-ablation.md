@@ -40,7 +40,7 @@ artifact: 仓库外（未开始）
 
 **目的**：在投入真 runner 前，先用当前可用的 DeepSeek 模型看四种形态有没有可观察差异。
 
-- 模型：`deepseek-v4-pro`（DeepSeek API，`temperature=0`，单次）。
+- 模型：`deepseek-v4-pro`（DeepSeek API，`temperature=0`，单次）。**2026-11-09 起模型来源受 [meta/models](../meta/models.md) 约束：本地不装模型，只用 Yovole 的 `DeepSeek-V4-Flash` / `qwen3.8-27b`；后续正式实验按此重跑。**
 - 设计：4 个退款审批 case × 4 种形态 = 16 次调用；case 含阈值（>500）与角色（support agent 批准不算 manager 批准）。
 - 形态：`engine`（外部 SHACL 求值器返回 blocks=true/false）、`compiled`（if/else 规则）、`context`（政策散文）、`label`（只有类型标签，无阈值/规则）。
 - 结果：
@@ -55,6 +55,12 @@ label 的失败以 JSON 解析失败/空内容为主（Qwen 有 2 次 provider �
 **解释（`推测`）**：这是**天花板效应**，不是“形态无用”。两个模型在 engine/compiled/context 上都满分；label 视图故意缺阈值，属于不公平的对照，模型只能拒答或猜。16 次/模型、单次调用，不能支持或否定 P2。
 
 **它改变了什么**：EXP-007 原设计需要改——case 要更难（冲突证据、歧义、需要多步核对），label 对照要公平（给标签 + 可查的阈值，或明确标为“信息不足”基线），engine 形态要走真实求值器而不是一句 verdict。更根本的是：**engine 一旦以 oracle verdict 出现，任务就退化成“照抄”，测不到形态差异**；正式实验要让 engine 也带不确定性/覆盖缺口，或者把任务设计成“验证器只覆盖一部分，剩余要 agent 判断”。**不要用纯文本 chat 代替执行形态实验。**
+
+### Yovole 路径尝试（2026-11-09，作废）
+
+用户提供的两个模型（`DeepSeek-V4-Flash` / `qwen3.8-27b`）可以通过 workflow 的 provider override 调用；但 **subagent 不是 raw chat**：它带工具和仓库上下文，prompt 里写了“不要用工具”也不保证遵守。本次 qwen 的输出直接出现「I've recorded the full analysis in the repo's `runs/` location」「Self-check result for `ai_dev_harness_ontology`: OK」等语句，并且真的写了 `topics/01-constraint/action-gate/runs/2026-11-09-refund-block-run.md`（已删除）；它读了仓库、跑了 checker。**这一轮结果作废，不能与前面的 raw API pilot 合并。**
+
+**方法结论**：不要把 subagent / workflow 当实验被试；需要 raw chat endpoint，或一个明确禁用工具、禁用仓库访问的 runner。当前环境下 Yovole 直连 HTTP 超时，所以这条实验线在工具层也不成立。
 
 ## 状态与阻塞
 

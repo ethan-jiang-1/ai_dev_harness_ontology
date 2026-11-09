@@ -22,7 +22,7 @@ updated: 2026-11-09
 | EXP-001 | 同一 harness 下，结构化工件有没有用 | 设计中 | E-01 / E-08 | [EXP-001](./EXP-001-structured-artifacts.md) |
 | EXP-002 | 判定器的漏检/误报曲线，而非单一 accuracy | 未开始 | E-02 | [EXP-002](./EXP-002-checker-fp-fn.md) |
 | EXP-003 | 同一本体放在不同接缝（上下文/判定/授权）的差异 | 未开始 | E-04 / C-03 | [EXP-003](./EXP-003-seam-position.md) |
-| EXP-007 | 同一接缝、只换执行形态（engine/compiled/context/label） | 设计中（代理试点完成；正式未跑） | P1a / P2 | [EXP-007](./EXP-007-form-ablation.md) |
+| EXP-007 | 同一接缝、只换执行形态（engine/compiled/context/label） | 设计中（代理试点受污染；正式未跑） | P1a / P2 | [EXP-007](./EXP-007-form-ablation.md) |
 
 ## 状态
 
