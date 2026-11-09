@@ -22,6 +22,7 @@ updated: 2026-11-09
 |---|---|---|---|---|
 | [projection](./projection/README.md) | 把领域知识投影成文本/JSON/工具 | `draft`，已拆 F/G | 4 F / 5 G | dashboard |
 | [compilation](./compilation/README.md) | 把证据预编译成 claim–leaf 工件 | `draft`，已拆 F/G | 11 F / 8 G | dashboard |
+| [querying](./querying/README.md) | 自然语言 → SPARQL 的三条路线 | `draft`，已拆 F/G | 3 F / 4 G | dashboard |
 
 **薄页（<2 篇独立来源）**：projection（1 篇，单工厂）、compilation（2 篇，同一 CAI 的两种切法）。薄页的结论不能外推为跨域规律。
 
@@ -33,6 +34,7 @@ updated: 2026-11-09
 - **编译只解决预算，且是条件性的。** claim–leaf 平均 −38% token，准确率仍 neutral；PageIndex 大纲在 FRAMES 规模为负；盈亏平衡 `p_min=2%+c/(0.929Q)`，先量 miss。详见 [compilation/F1](./compilation/findings/accuracy.md#f1) · [F2](./compilation/findings/economics.md#f2) · [F7](./compilation/findings/economics.md#f7)。`已核`
 - **受监管支线：Grid 对最强 agent baseline 只高 0.5pp，可审计性靠契约。** 99.9% vs Codex/Power-Agent 99.4%；Power-Agent 仅 46/519 调用 PowerMCP 仍到 99.4%；citation/拒答、strict pass、记忆批准与决策点签核是契约，客户指标尚无基线。详见 [compilation/F5](./compilation/findings/regulatory.md#f5) · [F11](./compilation/findings/regulatory.md#f11)。`已核`（数字/契约）/`推测`（工具归因、客户指标）
 - **两条不矛盾，差别不只在答案位置，还在投影什么。** 知识即答案 → 投影领域知识；答案要从语料检索 → 编译证据/检索。`推测`（分析框架）。详见 [C-04](../conclusions.md)。
+- **查询生成有三条路线，但没有头对头。** GGC 选择性纠错（MCQA 答案集匹配 90.23→98.33，全量纠错 92.34）；NLKGQ 完整 OWL 进上下文（DBLP-QuAD 3.1 89.9 Match/81.3 Exact）；KGVoyager 无 ontology 的 agentic navigation（4 小 benchmark F1 +3.7pp，不是 4×）。详见 [querying](./querying/README.md)。`已核`（各自数字）/`推测`（综合）
 
 ## 三种供给形态
 

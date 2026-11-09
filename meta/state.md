@@ -14,15 +14,15 @@ updated: 2026-11-09
 |---|---|
 | 阶段 | 内部研究档案；不做对外客户交付，因此不设客户资产/签核前置 |
 | 论文 | 24 个目录（20 基础 + 4 扫描），全部有 PDF + 三份 MD + card + digest |
-| 开源 | 4 个项目（trustgraph / semantica / ontop / open-ontologies），已 pin commit、已消化 |
-| 主题 | 6 派 + 20 个子主题 + 00-harness 七部件 + 6 时刻 + 1 条形态轴 |
-| 结论 | 20 条 E：17 已核原文 + 1 已核代码 + 2 推测；3 条 Q；4 条 C |
-| 局部判断 | 66 条 L（01:15 / 02:9 / 03:11 / 04:7 / 05:9 / 06:15） |
-| 证据配比（24 篇） | 9 execution-test（8 回路上 + 1 训练侧）/ 4 mechanism-only / 8 harness-evidence / 3 boundary-ruler |
-| 执行形态（28 源） | engine 4 / compiled 7 / context 2 / label 1 / none 14 |
-| 交付物 | 4 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-ontology-in-production；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（README + GUIDE + 3 body + sections + evidence，外部信号未升 E）；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
+| 开源 | 6 个项目（trustgraph / semantica / ontop / open-ontologies + OPA / Qlever），已 pin commit、已消化 |
+| 主题 | 6 派 + 22 个子主题 + 00-harness 七部件 + 6 时刻 + 1 条形态轴 |
+| 结论 | 22 条 E：19 已核原文 + 1 已核代码 + 2 推测；3 条 Q；4 条 C |
+| 局部判断 | 73 条 L（01:18 / 02:9 / 03:15 / 04:7 / 05:9 / 06:15） |
+| 证据配比（28 篇 + 6 开源） | 9 execution-test（8 回路上 + 1 训练侧）/ 14 mechanism-only / 8 harness-evidence / 3 boundary-ruler |
+| 执行形态（34 源） | engine 4 / compiled 7 / context 3 / label 2 / none 18 |
+| 交付物 | 4 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-ontology-in-production；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（README + GUIDE + 3 body + sections + evidence，E-21/E-22 已升、未入库 signal 另列）；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-09 18:35，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（426 文件；E=20，Q=3，C=4，L=66；24 论文 / 4 开源） |
+| 最后自检 | 2026-11-09 22:45，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（462 文件；E=22，Q=3，C=4，L=73；28 论文 / 6 开源） |
 
 ## 当前边界（不是阻塞）
 
@@ -138,6 +138,15 @@ updated: 2026-11-09
 - **读者**：本体/数据工程师（建）、应用/agent 工程师（用）、治理/安全（治）；决策者仍走 01，工程负责人走 02，架构师走 03。
 - **证据边界**：外部来源（Ontology Generation、Axiom Benchmark、CK25、GGC、SAGA、SchemaForge、Build2SPARQL、VAULT、Graph-Agentic RAG、Enterprise Agentic Systems、AWS 指南）只作“信号/候选”，**未入库、未升 E**；04 正文只引 E-xx + 这些信号，不把厂商/摘要数字写成结论。
 - 自检：`python3 meta/tools/check_repo.py` 通过（426 文件；E=20，Q=3，C=4，L=66；24 论文 / 4 开源）。
+
+## 2026-11-09 04 支撑执行（E-21/E-22）
+
+> 取代上一节的“外部信号未升 E”状态。
+
+- 论文线冻结：GGC（SG）、Glyph（US）、NLKGQ（DE）、KGVoyager（US）入库；2512/2507/2503/CK25/VAULT/SPARQL-LLM/CQ4OE/OntoExtend/QRAKEN/PPC 删除。
+- 页面/E：`03/querying`、`01/access-control`；E-21/E-22；04 B.3/C.1 引 E，build 保持 signal。
+- 工程线：OPA、Qlever 入档；Web：HN Netflix 材料卡（不升 E）。
+- 自检：`check_repo` 通过（462 文件；E=22，L=73；28 论文/6 开源）。
 
 ## 怎么刷新
 

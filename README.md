@@ -85,8 +85,8 @@
 
 ## 4. 当前状态
 
-- `src/` — 24 个论文目录（20 基础 + 4 扫描）；每目录 PDF + 三份 MD + `card.md` + `digest.md`（有图则 `figures/`）；4 个开源项目（已 pin commit、已消化）；1 张材料卡 + 一本合并后的 [manifest](./src/papers/manifest.md)。
-- `topics/` — 六派成文；20 条 E（17 已核原文 + 1 已核代码 + 2 推测）、3 条 Q、4 条冲突；24 篇论文里 **9 篇把本体当被测变量并测了执行效果**（8 篇在 agent 回路内，Evontree 在训练侧），4 篇只提机制、8 篇是 harness 证据、3 篇是边界/尺子（见各卡 `evidence_role`）；4 个开源项目提供代码级机制证据。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
+- `src/` — 28 个论文目录（20 基础 + 4 扫描 + 4 补给）；每目录 PDF + 三份 MD + `card.md` + `digest.md`（有图则 `figures/`）；6 个开源项目（4 本体 + OPA/Qlever 工程线，已 pin commit、已消化）；2 张材料卡 + 一本合并后的 [manifest](./src/papers/manifest.md)。
+- `topics/` — 六派成文；22 条 E（19 已核原文 + 1 已核代码 + 2 推测）、3 条 Q、4 条冲突；28 篇论文 + 6 个开源里，**9 个 execution-test（8 个回路上 + 1 训练侧）/ 14 个 mechanism-only / 8 个 harness-evidence / 3 个 boundary-ruler**（见各卡 `evidence_role`）；6 个开源项目提供代码级机制证据。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
 - `deliverables/` — 4 个子目录（3 层 + 1 条生命周期）：[01 现状](./deliverables/01-capability-status/README.md) / [02 工程实施](./deliverables/02-engineering-playbook/README.md) / [03 机制参考](./deliverables/03-mechanism-reference/README.md) / [04 建用治](./deliverables/04-ontology-in-production/README.md)；03 内含[约束强度谱长版附录](./deliverables/03-mechanism-reference/appendix-constraint-spectrum.md)。原 7 章书稿计划已废弃，没有独立 handbook。
 
 **最大空缺是没有一条结论被独立复现。** 这是研究深度的缺口，不是阻塞：外部客户试点线已于 2026-11-09 删除，不再请求任何域/日志/题库/人/单价。当前可自主推进的是代码级执行证据与 digest 消化；不设实验；若未来要做验证，在仓库外做并只留指针。部署层回报、false-veto/false-defer、维护成本仍缺量化。

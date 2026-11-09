@@ -20,3 +20,7 @@ updated: 2026-11-08
 | 03-L9 | 受监管知识供给的三原则（证据引用、solver 算数字、人决策）在 Grid 里有实现与指标；但「工具必须到达研究」只是设计原则——Grid 对最强 agent baseline 仅 +0.5pp，Power-Agent 46/519 调用 PowerMCP 仍到 99.4% | 已核（原则/数字）/ 推测（工具归因） | Grid Agents | 519 tasks/8 families；99.9%/13.9 s；Codex/Power-Agent 99.4% |
 | 03-L10 | 盈亏平衡的不确定性由 miss 主导：miss ±1.5pp → `p_h*` 0.4–3.6%，hit ±1.5pp → 2.0–2.1%；先量 miss | 已核（解析推导） | E-14 | CAI §6.5；解析值不是实测；企业语料 miss 更高 |
 | 03-L11 | 受监管支线的可审计性靠契约：citation + 拒答、strict pass（state_hash/study_type/solver_version）、记忆与决策点签核；客户指标尚无基线 | 已核（契约）/ 推测（客户指标） | Grid Agents | Grid §4.1/§6.5；45/51 是结果不是阈值；optimizer −33–67% 是唯一有数的客户项 |
+| 03-L12 | 查询生成有三条独立路线：生成后选择性纠错（GGC）、ontology-in-context（NLKGQ）、ontology-free agentic navigation（KGVoyager）；各自单 benchmark，没有头对头 | 推测（综合）/ 已核（各自数字） | querying F1–F3 | 三条路线不能放一张表比较；GGC 单 KG/单骨干；NLKGQ 单 snapshot；KGVoyager 4 小 benchmark |
+| 03-L13 | GGC 的 90.23→98.33 是答案集匹配率，不是 execution accuracy；90.23 是 Generator 单跑、92.34 是全量纠错；45% 是相对全量纠错的墙钟 | 已核（数字）/ 推测（跨域） | GGC digest | 单 KG/单 3B 骨干/单 seed；无 2×2 净收益；空结果未测 |
+| 03-L14 | NLKGQ 在 DBLP-QuAD 3.1 上 89.9% Match / 81.3% Exact；2.0 确定性协议 57.6/20.1；wrapper +15.0/+25.3；单 snapshot/单系统，Match 允许 superset | 已核（单系统）/ 推测（跨域） | NLKGQ digest | 完整 OWL 进上下文；无 entity linking/闭源模型；3.1 是作者修订 |
+| 03-L15 | KGVoyager 在 4 个小型 benchmark 上平均 F1 64.6 vs 60.9（+3.7pp，不是 4×）；成本 −38.3%、墙钟 −23.8%；只支持 rdf:type 图，class index ~68% endpoint | 已核（数字）/ 推测（跨域） | KGVoyager digest | 4 benchmark 88–108 题、同源；GRASP best-case；preprint/无独立复现 |

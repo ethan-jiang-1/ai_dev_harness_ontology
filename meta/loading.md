@@ -9,7 +9,7 @@
 3. [AGENTS](../AGENTS.md) 的「先定位落点」表。
 4. [topics/README](../topics/README.md)：四轴 + 4+1+1；[execution-forms](../topics/execution-forms.md)：第四根形态轴。
 5. [meta/state](./state.md)：当前计数、边界与最后自检；先看这一页，避免把旧数字当真。
-6. [conclusions](../topics/conclusions.md)：E-01…E-20 的等级与出处；至少读 E-01、E-04、E-20。
+6. [conclusions](../topics/conclusions.md)：E-01…E-22 的等级与出处；至少读 E-01、E-04、E-20、E-21、E-22。
 7. 任选一派 README，读它的「本目录怎么长」。
 
 到这里你能复述“它在研究什么”。**要安全地改仓库，还不够**——走下面的接手路径。
@@ -42,7 +42,7 @@
 | 做 01 现状 | [01 GUIDE](../deliverables/01-capability-status/GUIDE.md) + [01 §5.2](../deliverables/01-capability-status/sections/acceptance.md#52-期待与数据需求验收规格) + [plan](../deliverables/_plans/01-capability-status.md) + [conclusions](../topics/conclusions.md) E 表 + 对应派 `sources.md`/子主题 + 指定 digest §4/§5 | 其他派、`card.md`/`references.md`/`appendix.md` |
 | 做 02 工程 | [02 GUIDE](../deliverables/02-engineering-playbook/GUIDE.md) + [02 §0–§3](../deliverables/02-engineering-playbook/README.md) + [sections/map](../deliverables/02-engineering-playbook/sections/map.md) + [sections/approach](../deliverables/02-engineering-playbook/sections/approach.md) + 对应 recipe + 子主题 `mechanism.md` + [execution-forms](../topics/execution-forms.md) + 4 个开源 digest | 24 篇 `paper.md`、`card.md`、其他派 |
 | 做 03 机制 | [03 GUIDE](../deliverables/03-mechanism-reference/GUIDE.md) + [03 §2–§4](../deliverables/03-mechanism-reference/README.md) + [sections/map](../deliverables/03-mechanism-reference/sections/map.md) + [positions](../deliverables/03-mechanism-reference/positions/README.md) + `positions/<位置>.md` + [boundaries](../deliverables/03-mechanism-reference/evidence/boundaries.md) + [conclusions](../topics/conclusions.md)；长版论证再看[附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md) §3.1–3.3/§3.7 | `src/` 原文、其他派 `mechanism.md`、全部 `paper.md` |
-| 做 04 落地 | [04 GUIDE](../deliverables/04-ontology-in-production/GUIDE.md) + [04 地图](../deliverables/04-ontology-in-production/sections/map.md) + [04 建/用/治](../deliverables/04-ontology-in-production/body/README.md) | 01/02/03 全篇、外部原文 |
+| 做 04 落地 | [04 GUIDE](../deliverables/04-ontology-in-production/GUIDE.md) + [04 地图](../deliverables/04-ontology-in-production/sections/map.md) + [04 建/用/治](../deliverables/04-ontology-in-production/body/README.md) + [E-21/E-22](../topics/conclusions.md) + [03/querying](../topics/03-knowledge/querying/README.md) + [01/access-control](../topics/01-constraint/access-control/README.md) | 01/02/03 全篇、外部原文 |
 | 用模型做第二意见（不用于实验） | [meta/models](./models.md) | 本地模型/实验被试 |
 | 查结构决策 | [adr/](../adr/README.md)（0001–0008） | 全部 meta |
 | 查 meta 有什么 | [meta/README](./README.md)：现行 / 模板 / 历史 | `archive/` |
@@ -60,7 +60,7 @@ D3 边界 → conclusions E 表 → digest §5/§9 → 附录 §3.7/§3.8
 | 交付物 | 起点 | 走到哪停 | 默认不读 |
 |---|---|---|---|
 | 01 现状 | `01/sections/acceptance.md` + `_plans/01-capability-status.md` | 能填出 E1–E9 的 verdict + boundary | 全部 `paper.md`（只读指定节）、`card.md`（只作 provenance）、`references.md`/`appendix.md`、其他派 |
-| 02 工程 | `02/README §0 + sections/map + sections/approach + recipes/` | 能写出接口/字段/验收/停线 | 24 篇论文正文、其他派 mechanism、`conclusions` 全表 |
+| 02 工程 | `02/README §0 + sections/map + sections/approach + recipes/` | 能写出接口/字段/验收/停线 | 28 篇论文正文、其他派 mechanism、`conclusions` 全表 |
 | 03 机制 | `03/sections/map + positions + sections/boundaries` | 能指到 E-xx 与「不能证明什么」 | `src/` 原文、其他派 mechanism、全部 `paper.md` |
 
 **三条反向规则**：

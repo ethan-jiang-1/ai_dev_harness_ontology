@@ -34,6 +34,7 @@ src/open-source/
 | harness 接缝 | 能挂到哪个时刻（action-gate / evidence / checker / commit-gate / memory / determinism）；不是接缝就写 `none` |
 | 证据 | tests/benchmarks/issues/生产案例，不只看 README |
 | 可研究性 | 能否定位到文件/符号；能否与 22 篇 digest 对照 |
+| 活跃度 | **`last_push` ≥ 2026-07-01（新入档硬门槛）**；2026-06 后仍活跃才算 |
 | 影响力 | star/采用/标准地位；**star 只作参考，不单独决定入选** |
 
 **排除项**：纯图检索（无 schema 约束/校验/推理）、闭源核心、README 承诺多于代码、star 异常但无提交历史。
@@ -42,9 +43,11 @@ src/open-source/
 
 扫描快照见 [`_scan-2026-11-09.md`](./_scan-2026-11-09.md)。**复核说明**：2026-11-09 已在 card 所 pin 的 commit 上，对 4 个本轮项目做只读代码核对（未跑测试）；关键路径与结论见各 `digest.md` 的「2026-11-09 代码核对」段，跨项目矩阵见 [execution-forms](../../topics/execution-forms.md#代码级核对2026-11-09)。标 `待核` 的路径仍需实际运行/复核。
 
-### 本轮消化（4，≥1,000★）
+> **新鲜度**：现有 6 个项目的 `last_push` 为 2026-11-04/09，全部满足“2026-06 之后仍活跃”。新项目 `last_push` < 2026-07-01 不建卡；`check_repo` 会查。
 
-本轮临时门槛：**stars ≥ 1,000**（2026-11-09 起，可撤销）。消化顺序与 C/A 闸见 [开源消化计划](../../meta/open-source-digestion-plan.md)。4 个均已建卡并写 `digest.md`（见下表与状态行）。
+### 本轮消化（6：4 本体 + 2 工程线）
+
+本轮临时门槛：**本体项目 stars ≥ 1,000**（2026-11-09 起，可撤销）；工程线按采用/任务相关性例外。消化顺序与 C/A 闸见 [开源消化计划](../../meta/open-source-digestion-plan.md)。6 个均已建卡并写 `digest.md`（见下表与状态行）。
 
 | 项目 | stars | 本体在代码里做什么 | 接缝 | 为什么选它 / 要小心什么 |
 |---|---:|---|---|---|
@@ -52,8 +55,10 @@ src/open-source/
 | [semantica-agi/semantica](https://github.com/semantica-agi/semantica) | 14,475 | `semantica/ontology/`（owl_generator / class_inferrer / competency_questions）；`run_shacl_validation()` 调 pyshacl；24 releases + strict-xfail CI | `checker`（输出后判定）；evidence 路径待核 | 影响最大，用来回答「高星是否真本体」；已核：pyshacl 与 OWL 生成是真代码。贡献者 100+（API 截断），承诺要逐条回代码 |
 | [fabio-rovai/open-ontologies](https://github.com/fabio-rovai/open-ontologies) | 2,848 | `src/shacl.rs` + `shacl_verified.rs`；314 个 `.ttl`、54 个 SHACL；W3C SHACL 测试套件；16 releases | `none`（影响报告，不是授权） | 真 SHACL 引擎 + 本体变更/回滚的声称，直接对应 commit boundary。12 贡献者、680/1,080 提交来自 `claude` 账号——AI 辅助，非造假，但别把 commit 数当人力 |
 | [ontop/ontop](https://github.com/ontop/ontop) | 1,016 | OWL 2 QL 本体 + R2RML 映射 → SPARQL 重写成 SQL | `supply`（查询编译） | 2013 年至今的 OBDA 参考实现；「本体真被执行」的成熟形态，也可当 LLM 查询工具 |
+| [open-policy-agent/opa](https://github.com/open-policy-agent/opa) | 12,452 | 无本体；Rego 策略引擎；把标签/属性当 JSON data | `none`（策略层 adjunct；不执行 KG 过滤） | 补 04 C.1 策略层；CNCF graduated；不消费 Glyph 标签、不解析 OWL/SHACL；与 trustgraph 无现成集成 |
+| [ad-freiburg/qlever](https://github.com/ad-freiburg/qlever) | 940 | 无本体；RDF/SPARQL 引擎；完整 SPARQL 1.1 | `none`（B.3 执行层 adjunct） | 补 04 B.3 执行层；Text2SPARQL/QRAKEN 使用；940★ 低于临时门槛，按采用/工程价值例外；不做 OWL 推理 |
 
-**状态（2026-11-09）**：4 个本轮项目全部已消化（trustgraph、semantica、ontop、open-ontologies）；矩阵 `absorbed`×3 + `partial`×1（ontop 只进 frontier）。低于 1,000★ 的三个（pySHACL 371 / ROBOT 329 / sparql-llm 130）已删除目录，只在 [`_scan-2026-11-09.md`](./_scan-2026-11-09.md) 保留元数据；撤销门槛时重新建卡。
+**状态（2026-11-09）**：6 个本轮项目已消化（trustgraph、semantica、ontop、open-ontologies + OPA/Qlever 工程线）；矩阵 `absorbed`×3 + `partial`×1（ontop 只进 frontier）。低于 1,000★ 的 pySHACL 371 / ROBOT 329 / sparql-llm 130 仍不建卡；Qlever 940 作为工程线例外（按采用/任务相关性，不按 star）。
 
 ### 对照 / 依赖（不建目录，在 digest 里引用）
 

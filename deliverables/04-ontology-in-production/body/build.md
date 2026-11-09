@@ -21,11 +21,7 @@ parent: ../README.md
 
 ## A.2 候选生成：LLM 只做候选
 
-外部信号（未入库）：
-
-- [Ontology Generation](https://arxiv.org/abs/2503.05388)：10 个本体、100 CQs、29 user stories；o1-preview + Ontogenia 能产出“专家可接受”的候选，但仍有常见错误与质量波动。
-- [Axiom Benchmark](https://arxiv.org/abs/2512.05594)：9 个本体、17,118 triples、2,771 axioms；subclass F1 在 FOAF 0.642、music 0.218，整体不足以全自动。
-- [LLM-assisted ontology evaluation](https://arxiv.org/abs/2507.14552)：1,393 CQs；LLM 自动 CQ 验证大致接近普通用户，不是专家。
+**本轮不升级**：没有 2026-07 后、in-scope 的生成/公理/CQ 评估一手来源；2025 的 2503/2512/2507 已删除，不再引数字。以下是工程做法，不是研究结论。
 
 **做法**：
 
@@ -49,8 +45,8 @@ parent: ../README.md
 
 ## A.4 对齐与精化：候选 + 人审
 
-- **对齐**（Agent-OM 等）：先 identifier/标签/结构，再语义；候选要能回指两侧本体。
-- **精化**（CASTON 等）：embedding 取候选，LLM 给修复建议；high-confidence 6/6 接受，medium 0–25%，必须人审。
+- **对齐**：先 identifier/标签/结构，再语义；候选要能回指两侧本体（不引旧源）。
+- **精化**：embedding 取候选，LLM 给修复建议；high-confidence 仍需人审；具体接受率不引旧源。
 - **版本**：每次对齐/精化递增 `ontology_version`，保留 `supersedes`。
 
 ## A.5 评估：三种尺子分开
@@ -62,6 +58,8 @@ parent: ../README.md
 | 人审 | 领域专家是否接受 | 可扩展的自动指标 |
 
 **最低验收**：CQ 覆盖、负例通过、一致性、人审接受率、下游消费者加载；五项缺一项就不是“可消费”。
+
+**本轮边界**：没有 in-scope 的 CQ/公理 benchmark；这三把尺是工程分工，不是已验证的阈值。
 
 ## A.6 数据契约：`build_report`
 

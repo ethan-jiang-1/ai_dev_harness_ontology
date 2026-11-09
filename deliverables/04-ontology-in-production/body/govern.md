@@ -12,11 +12,11 @@ parent: ../README.md
 
 | 层 | 问题 | 机制 | 不能当什么 |
 |---|---|---|---|
-| 文档级 | 这份文档能不能进上下文 | ACL/标签 | 节点级可见性 |
-| 节点级 | 这个实体/关系能不能返回 | 策略图/SHACL-AF | 写授权 |
+| 标签/分类 | 这列/节点是什么、算哪类敏感 | sensitivity ontology + tagging（Glyph） | 策略判定或执行 |
+| 节点级 | 这个实体/关系能不能返回 | 策略图/SHACL-AF post-filter（trustgraph） | 写授权 |
 | 写路径 | 这个变更能不能落盘 | commit gate/promotion | 读过滤 |
 
-外部信号（未入库）：[VAULT](https://elib.dlr.de/214536/) 把 ontology-driven extraction 与 document-level + node-level access control 结合，16 个开源 LLM；是单实现/单论文，不是部署效果。
+**E-22（引）+ E-20**：Glyph 只做标签层（Apple 单企业；不产策略、不执行）；trustgraph 是单实现读路径过滤（fail-open/只删 subject）；策略层没有领域来源。**工程候选**：OPA（通用策略引擎；不解析本体/不消费标签；未入 E）。
 
 **做法**：
 
@@ -24,6 +24,7 @@ parent: ../README.md
 2. 先做读侧可见性，再做写侧授权；不要把 R8 当 R9。
 3. 对 object 方向单独测：敏感节点作为 object 仍可能泄漏。
 4. 审计日志记 `policy_version/decision/reason`。
+5. 策略层单独补：谁写策略、冲突/默认 allow-deny、策略版本；Glyph 的标签与 trustgraph 的策略图没有接口。
 
 ## C.2 来源与时效：每条结论能回指
 
@@ -37,7 +38,7 @@ evidence: {source_id, version, span/page, retrieved_at, valid_from/valid_to}
 
 ## C.3 输出校验：不要只拦输入
 
-外部信号（未入库）：[Enterprise Agentic Systems](https://arxiv.org/abs/2604.00555) 把企业本体分成 Role / Domain / Interaction 三层，指出当前系统多约束输入、少约束输出，主张扩展到 response checking / reasoning verification / compliance enforcement；1,800 runs、5 industries、3 LLMs（厂商生产系统声明）。
+**本轮没有 in-scope 的输出校验来源**；2026-04 的旧预印本已过期，不再引数字。以下只写工程做法。
 
 **做法**：
 
@@ -63,6 +64,8 @@ evidence: {source_id, version, span/page, retrieved_at, valid_from/valid_to}
 - **审计存储**：谁、何时、基于哪条 claim/policy/version；没有它，事后无法解释。
 - **人审**：高风险写路径、低置信合并、异常策略；人审记录要能被查询。
 - **回滚**：alias/policy/projection 至少各演练一次；没有回滚不做 enforce。
+
+**行业信号（非 E）**：Netflix ontology-driven observability 的 HN 讨论（131 pts/32 comments，2026-10）同时出现“ontology 是必要形式化”与“企业投入数百万、关系库仍主导”两种经验；单公司/评论，不作 E。
 
 ## C.6 治理接口
 

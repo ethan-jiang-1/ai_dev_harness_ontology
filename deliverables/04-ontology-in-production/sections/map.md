@@ -14,9 +14,9 @@ parent: ../README.md
 
 | 段 | 问什么 | 产出 | 主读者 | 主要证据 |
 |---|---|---|---|---|
-| **建** | 本体能不能被消费？ | CQ、候选本体、负例、`build_report` | 本体/数据工程师 | 05 生产派 + 外部信号 |
-| **用** | 问题能不能被查？ | KG、schema slice、query/correction、`consume_report` | 应用/agent 工程师 | 03 知识派 + 02 R11 + 外部信号 |
-| **治** | 谁有权看/写？失败会不会传播？ | policy、provenance、audit、`govern_report` | 治理/安全/合规 | 01 约束派 + 02 R8/R9 + 外部信号 |
+| **建** | 本体能不能被消费？ | CQ、候选本体、负例、`build_report` | 本体/数据工程师 | 05 生产派 + signal（无 in-scope evaluation） |
+| **用** | 问题能不能被查？ | KG、schema slice、query/correction、`consume_report` | 应用/agent 工程师 | E-21 + 03 知识派 + 02 R11 |
+| **治** | 谁有权看/写？失败会不会传播？ | policy、provenance、audit、`govern_report` | 治理/安全/合规 | E-22 + E-20 + 01 约束派 + 02 R8/R9 |
 
 **不是瀑布**：治理会打回建/用——权限不够、来源缺失、时效过期；用也会打回建——schema 覆盖不足、查询空结果。见 [GUIDE](../GUIDE.md) 的回路图。
 

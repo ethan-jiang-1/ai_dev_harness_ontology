@@ -24,5 +24,8 @@ updated: 2026-11-09
 | 01-L13 | 可推理 ≠ 可授权：`UNVERIFIED` 可进 Planner，但不能当 positive authorization support；需 claim-specific promotion | 已核（概念） | Commit Boundary | Commit Boundary 本身无实现；读路径授权已有实现（trustgraph `policy_filter.py`，已核）；写路径 commit gate 仍无；未升 E |
 | 01-L14 | 同源检索（hypothesis 诱导的多个结果）不算独立确认；「没检测到冲突」也不是 positive support | 已核（概念） | Commit Boundary | 上游 dependency lineage 未解决；未升 E |
 | 01-L15 | 推理期条件闸门只拦有适用 axiom 的动作；缺证据转 unresolved/观察，不是覆盖所有动作的安全保证 | 已核 | OntoAct / 多 agent 诊断 | 覆盖率是缺口（reasoning-gate F4/G1）；三环境模拟；作者明确不声称可部署 |
+| 01-L16 | 访问控制至少三层：标签/分类（Glyph 生产）、策略（无领域来源；OPA 为 adjunct 候选）、执行（trustgraph 单实现）；三层不能互推 | 推测（综合） | access-control F1–F3 | Glyph 单企业/标签层；trustgraph 单实现/只读代码；OPA 不解析本体/不消费标签 |
+| 01-L17 | Glyph 的标签层可工程化，但 NDCG/MAP 是检索指标、生产接受率是作者报告且对 FN 盲；不能当打标准确率或访问控制正确性 | 已核（一手正文；生产部署为作者报告）/ 推测（跨企业） | Glyph digest | 275-leaf 内部本体；无 OOD/漏标率；单企业 |
+| 01-L18 | trustgraph 的读路径 SHACL-AF 过滤是单实现、fail-open、只删 subject；读路径过滤 ≠ 写授权 | 已核（代码） | E-20 / commit-gate F5–F7 | 错误路径细节在 commit-gate；本派不复述 |
 
 > **跨页缺口（2026-11-09 已修）**：Commit Boundary 仍是概念架构，未升 E；`conclusions` 的 E-05 属 FIRME，不属于本派，`src/papers/2610.37407-commit-boundary/digest.md` 的 `claims: [E-05]` 已改为空并回写 §8。E-16 已按 OntoAct digest 的 78.6/83.3/90.0%（IfR 64.3/66.7/65.0%）、SI `1.6–2.4` 校正。

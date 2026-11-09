@@ -18,4 +18,9 @@ OK    2610.40482  200  216070B  firme
 OK    2610.21983  200  3258995B  ontoact
 OK    2610.11768  200  905113B  narrow-and-deep
 OK    2510.26683  200  458404B  evontree
+# 2026-11-09 04 补给（只保留 2026-07 以后 + US/China/Germany/Singapore origin）
+OK    2607.28082  200  341274B  ggc
+OK    2609.10430  200  379505B  glyph
+OK    2609.14652  200  238383B  nlkgq
+OK    2609.01780  200  1467501B  kgvoyager
 DONE

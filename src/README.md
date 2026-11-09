@@ -9,15 +9,17 @@ updated: 2026-11-09
 | 类 | 落点 | 目录粒度 | 原文形态 |
 |---|---|---|---|
 | 论文 | `papers/` | 一篇一目录 `{arxiv_id}-{slug}/` | PDF + `paper.md` |
-| 网页/博客 | `web/` | 一源一目录 `{来源}/` | 原文 MD |
+| 网页/博客/非 arXiv 论文 | `web/` | 一源一目录 `{来源}/` | 原文 MD；论文另存 PDF |
 | 真实代码项目 | `open-source/` | 一个项目一目录 `{org}-{repo}/` | 不 vendor，pin commit + 链接 |
 
 三类都解决三件事：**原文/代码在不在、它说了什么或怎么走、我们消化出了什么**。
 
+> 非 arXiv 的会议论文/数据集（Zenodo、DLR 等）也落 `web/`，`source_type: paper`；材料卡即消化正文，不另建 digest（见 [web/README](./web/README.md)）。
+
 ```
 src/
 ├── papers/
-│   ├── manifest.md          # 全仓唯一论文登记（24 篇，含批次列）
+│   ├── manifest.md          # 全仓唯一论文登记（28 篇，含批次列）
 │   └── {arxiv_id}-{slug}/
 │       ├── {arxiv_id}-{slug}.pdf     # 原文，只读
 │       ├── paper.md                  # 正文全文 MD（保留页码标记）
@@ -68,13 +70,28 @@ src/
 
 **反向阅读锚点（digest 契约）**：§4「结果：数字与条件」、§5「这些数字不能说明什么」、§6「工程上怎么用」、§8「与仓库判断的关系」——这四节编号固定，不重排；新增内容放 §9/§10。反向读不到 §4/§5 时，才回 `paper.md` 的指定表/节。
 
+## 0.1 来源新鲜度（2026-11-09 起，硬规则）
+
+- **论文**：新入档论文的**首次提交/发表**必须 **≥ 2026-07-01**。2025 年及更早的材料不再新入档；已有 24 篇是历史语料，不回填，也不据此新开判断。
+- **开源项目**：新入档项目的 `last_push` 必须 **≥ 2026-07-01**（2026 年 6 月之后仍活跃）。只有 star/README、没有近期提交的不算。
+- **登记**：新论文卡带 `batch: 补给` + `published: YYYY-MM-DD`；新开源卡带 `last_push`；`check_repo` 机械校验（论文只查 `补给` 批，避免误伤历史卡）。
+- **理由**：在快速变化的 ontology/agent 工程里，2025 的材料经常把过时假设带进来；宁可少一条，不拿旧结论撑新判断。
+
+## 0.2 来源可靠性 / 影响力（2026-11-09 起，硬规则）
+
+- **scope**：新来源 origin 只收 **US / China / Germany / Singapore**；其他地区不新入档（已有历史语料不回填）。scope 内再按 `venue` / 生产 / benchmark 采用 / 强组 track record 看 reliability / impact。
+- **论文**：卡上写 `region`（机构/国家）、`venue`、`reliability`（high/medium/low）、`impact`（high/medium/low），并给一句依据。preprint 不能默认 high。
+- **降级**：preprint-only + 无采用 + 无强组 = signal，不单独撑 E；`reliability: low` 不入核心。
+- **开源**：`stars` / contributors / commits / 生产采用 + `last_push ≥ 2026-07-01`；低星/单作者/停更只作候选。
+- **理由**：来源本身不可靠，数字越漂亮越误导。
+
 ## 1. 论文的规则（`papers/`）
 
 网页的规则见 [web/README](./web/README.md)；开源项目的规则见 §1.1。三类共用的是 §0 的角色关系与 §4 的字段纪律。
 
 1. **原文只读。** `*.pdf` / 网页原文不改写、不摘编；修改只发生在 `card.md` / `digest.md`。
 2. **一篇一目录。** 目录用 `{arxiv_id}-{slug}`；PDF 保留原名；来源卡固定 `card.md`，消化固定 `digest.md`。
-3. **先转 MD，再建卡。** PDF 完整转 `paper.md`，把 `references.md` / `appendix.md` 单独切出；正文保留 `<!-- page N -->`。转换用 `pymupdf4llm`；公式/表格可能有版式噪声，引用前回 PDF 核。
+3. **先转 MD，再建卡。** PDF 完整转 `paper.md`，把 `references.md` / `appendix.md` 单独切出；正文保留 `<!-- page N -->`。转换优先用 `pymupdf4llm`；不可用时用 `pdftotext -layout` 并在 `paper.md` frontmatter 记 `converter: pdftotext-layout`。公式/表格可能有版式噪声，引用前回 PDF 核。
 4. **card 短，digest 长。** `card.md` 不承载机制细节与判断；`digest.md` 承载全部下游需要的信息。**不要用「详见 card」代替内容**。
 5. **digest 自包含。** 不假设读者读过论文或 card：定义术语、解释方法、数字带条件、说明不能证明什么、给出工程用法。链接只放原文/代码，放在最后。
 6. **topics 引 digest，不引 card 作为内容。** `sources.md` 可同时给 card（provenance）与 digest（内容），但内容判断只从 digest 来。
@@ -198,14 +215,16 @@ open-source/{org}-{repo}/
 | 材料 | 卡 / 消化 | 阅读 / 来源 | 已喂到 |
 |---|---|---|---|
 | 老刘说NLP · 本体4方向20工作（2026-11-04） | [otology.card.md](./web/weixin-laoliu/otology.card.md) | 已消化 / 综述转述 | `topics/conclusions.md`、`topics/README.md`、`topics/05-produce/lifecycle/README.md`、`topics/domains.md` |
-| 24 篇论文（20 基础 + 4 扫描） | 各目录 `card.md` / `digest.md` | L3 12 篇 / L2 8 篇 / L1 4 篇 | 六派 README、claims、conclusions（E-01…E-20） |
-| 开源项目 | 状态与进度见 [open-source/README](./open-source/README.md)；未建卡的不算入库 | 4 个本轮全部已消化；3 个 <1,000★ 已删除 | `topics/01-constraint`（commit-gate F5–F7）、`topics/02-judgment`（checker F7–F8）、`topics/05-produce`（generation F7、lifecycle 判断 4）、`topics/03-knowledge`（frontier） |
+| HN · Netflix ontology-driven observability（2026-10-19） | [card](./web/hn-netflix-ontology-observability/hn-netflix-ontology-observability.card.md) | 已消化 / thread 原文 | 04 C.5/B.2 signal；不升 E |
+| 24 篇历史论文（20 基础 + 4 扫描） | 各目录 `card.md` / `digest.md` | L3 12 篇 / L2 8 篇 / L1 4 篇 | 六派 README、claims、conclusions（E-01…E-22） |
+| 4 篇补给（GGC / Glyph / NLKGQ / KGVoyager） | 各目录 `card.md` / `digest.md` | 精读；L2/L1 见各 card | `topics/03-knowledge/querying`、`topics/01-constraint/access-control`、conclusions（P1/P2 新 E） |
+| 开源项目 | 状态与进度见 [open-source/README](./open-source/README.md)；未建卡的不算入库 | 6 个本轮已消化（4 本体 + OPA/Qlever 工程线）；3 个 <1,000★ 仍不建卡 | `topics/01-constraint`（commit-gate F5–F7、access-control）、`topics/02-judgment`（checker F7–F8）、`topics/05-produce`（generation F7、lifecycle 判断 4）、`topics/03-knowledge`（querying） |
 
 > 论文按篇记；开源按项目记在 `open-source/README` 的状态表里，本页只留总账——**一处明细，一处总账，不重复**。
 
 ## 7. 已知缺口
 
-- 24 篇都有 card + digest；**digest 已全部重写为自包含版本**（L3 250–360 行、L2 160–260、L1 100–240）；历史审计表见 [digest-audit](../meta/archive/2026-11/digest-audit.md)。
+- 28 篇都有 card + digest；**digest 已全部重写为自包含版本**（L3 250–360 行、L2 160–260、L1 100–240）；4 篇补给按 L1/L2 落（见各卡）；历史审计表见 [digest-audit](../meta/archive/2026-11/digest-audit.md)。
 - L1 4 篇只到一页判断（Peeling/Evontree/SFE-O/ReX-GG），没有深读正文。
 - 部署层回报、false-veto/false-defer、维护成本仍缺量化。
 - 部分论文有 v2/v3 版本，当前取下载当日最新版；版本变化可能改变结论。

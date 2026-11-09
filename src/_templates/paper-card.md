@@ -4,6 +4,12 @@ source_type: preprint    # paper | preprint
 reading: 未读            # 未读 | 综述级 | 摘要级 | 精读 | 已消化
 provenance: 未核         # 原文正文 | 原文摘要 | 综述转述 | 未核
 updated: YYYY-MM-DD
+batch:                   # 补给 = 2026-07-01 后新入档；历史卡可空
+published: YYYY-MM-DD    # 首次提交/发表；补给批必须 ≥ 2026-07-01
+region:                  # 机构/国家，如 US / China / Germany / ...
+venue:                   # 会议/期刊/arXiv preprint/生产系统
+reliability: medium      # high | medium | low（补给批必填）
+impact: medium           # high | medium | low（补给批必填）
 arxiv:
 title:
 authors:

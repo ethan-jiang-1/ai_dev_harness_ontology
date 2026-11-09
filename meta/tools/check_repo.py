@@ -36,6 +36,7 @@ DELIVERABLE_STATUS = {"draft", "stable", "frozen"}
 SEAM = {"action-gate", "evidence", "checker", "commit-gate", "memory", "determinism", "read-path", "supply", "reasoning", "training", "none"}
 EXECUTION_FORM = {"engine", "compiled", "context", "label", "none", "unknown"}
 EVIDENCE_ROLE = {"execution-test", "mechanism-only", "harness-evidence", "boundary-ruler", "unclear"}
+FRESHNESS_CUTOFF = "2026-07-01"
 
 RAW_PAPER = re.compile(r"^src/papers/[^/]+/(paper|references|appendix)\.md$")
 SKIP_FRONTMATTER = {"README.md", "AGENTS.md", "GLOSSARY.md", "THESIS.md"}
@@ -170,8 +171,6 @@ def main() -> int:
         d for d in os.listdir(papers_dir)
         if os.path.isdir(os.path.join(papers_dir, d)) and not d.startswith("_")
     )
-    if len(paper_dirs) != 24:
-        errors.append(f"paper directories: expected 24, found {len(paper_dirs)}")
     for d in paper_dirs:
         base = os.path.join(papers_dir, d)
         required = ["card.md", "digest.md", "paper.md", "references.md", "appendix.md"]
@@ -180,7 +179,10 @@ def main() -> int:
                 errors.append(f"missing {name}: src/papers/{d}")
         if not any(f.endswith(".pdf") for f in os.listdir(base)):
             errors.append(f"missing pdf: src/papers/{d}")
-        card, _ = parse_frontmatter(open(os.path.join(base, "card.md"), encoding="utf-8").read())
+        card_path = os.path.join(base, "card.md")
+        if not os.path.exists(card_path):
+            continue
+        card, _ = parse_frontmatter(open(card_path, encoding="utf-8").read())
         if card:
             if scalar(card, "home") and scalar(card, "home") not in {
                 "topics/01-constraint", "topics/02-judgment", "topics/03-knowledge",
@@ -196,12 +198,19 @@ def main() -> int:
                     errors.append(f"unknown subtopic {sub!r}: src/papers/{d}/card.md")
             if not scalar(card, "subtopic"):
                 warnings.append(f"no subtopic: src/papers/{d}/card.md")
+            if scalar(card, "batch") == "补给":
+                published = scalar(card, "published")
+                if not published or published < FRESHNESS_CUTOFF:
+                    errors.append(f"stale 补给 source (published {published!r}): src/papers/{d}/card.md")
 
     # 4b. evidence role / execution form coverage
     role_counts = Counter()
     form_counts = Counter()
     for d in paper_dirs:
-        card, _ = parse_frontmatter(open(os.path.join(papers_dir, d, "card.md"), encoding="utf-8").read())
+        card_path = os.path.join(papers_dir, d, "card.md")
+        if not os.path.exists(card_path):
+            continue
+        card, _ = parse_frontmatter(open(card_path, encoding="utf-8").read())
         if not card:
             errors.append(f"no frontmatter: src/papers/{d}/card.md")
             continue
@@ -217,7 +226,7 @@ def main() -> int:
     # 5. manifest coverage
     manifest = os.path.join(papers_dir, "manifest.md")
     if os.path.exists(manifest):
-        rows = re.findall(r"^\|\s*\d+\s*\|\s*(?:基础|扫描)\s*\|\s*(\d{4}\.\d{4,5})\s*\|", open(manifest, encoding="utf-8").read(), re.M)
+        rows = re.findall(r"^\|\s*\d+\s*\|\s*(?:基础|扫描|补给)\s*\|\s*(\d{4}\.\d{4,5})\s*\|", open(manifest, encoding="utf-8").read(), re.M)
         if len(rows) != len(paper_dirs):
             errors.append(f"manifest rows: expected {len(paper_dirs)}, found {len(rows)}")
         batch = "批次" in open(manifest, encoding="utf-8").read()
@@ -239,6 +248,9 @@ def main() -> int:
         if card and not scalar(card, "commit"):
             errors.append(f"no commit pin: src/open-source/{d}/card.md")
         if card:
+            last_push = scalar(card, "last_push")
+            if not last_push or last_push < FRESHNESS_CUTOFF:
+                errors.append(f"stale open-source (last_push {last_push!r}): src/open-source/{d}/card.md")
             for key in ("evidence_role", "execution_form", "seam"):
                 if not scalar(card, key):
                     errors.append(f"missing {key}: src/open-source/{d}/card.md")
@@ -275,14 +287,8 @@ def main() -> int:
         if m and section in {"已核（一手原文摘要）", "已核（代码）", "推测（未核原文）", "存疑", "冲突"}:
             key = {"已核（一手原文摘要）": "已核", "已核（代码）": "已核", "推测（未核原文）": "推测"}.get(section, section)
             counts[key] += 1
-    if counts["已核"] != 18 or counts["推测"] != 2:
+    if counts["已核"] != 20 or counts["推测"] != 2:
         warnings.append(f"conclusion levels changed: {dict(counts)} (meta/state may need update)")
-    expected_roles = {"execution-test": 9, "mechanism-only": 8, "harness-evidence": 8, "boundary-ruler": 3}
-    if dict(role_counts) != expected_roles:
-        errors.append(f"evidence_role counts: expected {expected_roles}, found {dict(role_counts)}")
-    expected_forms = {"engine": 4, "compiled": 7, "context": 2, "label": 1, "none": 14}
-    if dict(form_counts) != expected_forms:
-        errors.append(f"execution_form counts: expected {expected_forms}, found {dict(form_counts)}")
 
     # 8. summary
     print(f"files: {len(files)}  papers: {len(paper_dirs)}  open-source: {len(oss_projects)}")

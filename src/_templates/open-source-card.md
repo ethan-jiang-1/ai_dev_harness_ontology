@@ -11,7 +11,7 @@ release:
 license:
 scan_date: YYYY-MM-DD
 stars_at_scan: 0        # 只作影响力参考，不是质量证明
-last_push: YYYY-MM-DD
+last_push: YYYY-MM-DD   # 新入档必须 ≥ 2026-07-01（2026-06 后仍活跃）
 ontology_role: unclear  # core | adjunct | none | unclear（初判，定级在 digest）
 seam: none              # 六时刻 | read-path | supply | reasoning | training | none
 execution_form: unknown # engine | compiled | context | label | none | unknown（初判，定级在 digest）

@@ -15,6 +15,7 @@ rq: [RQ2, RQ4]
 3. **复合动作的可逆性**：单步都可逆，组合可能不可逆；有没有可计算的判定？
 4. **提交边界**（`01-L13/L14` 之外的授权判据）：Commit Boundary 自述是概念架构，缺实现与实证；**写路径**是否真的落地？**读路径**已有开源实现（trustgraph），已在 [seams](../seams.md#轴外位置可记录但不是六时刻) 登记为轴外位置 `read-path`；等第二个独立实现再决定是否升第七时刻。
 5. **推理期约束**（OntoAct、多 agent 诊断）与动作期约束是否应合为一派？判据来源相同，但介入位置不同。
+6. **访问控制策略层**：标签层有 Glyph，执行层有 trustgraph；但策略语言/冲突消解/默认策略/审计没有来源（[access-control G1/G2](./access-control/frontier.md)）。
 
 ## 信号源
 
@@ -46,6 +47,7 @@ rq: [RQ2, RQ4]
 | Safety monitors for agentic systems（2610.20960） | 运行时监控/安全监视器 | 待扫描 | 读摘要 |
 | OpenPort Protocol（2602.20196） | 工具访问的安全治理规范；偏工程 | 待扫描 | 只作 T2 线索 |
 | trustgraph（开源） | 读路径 SHACL-AF 策略过滤；写路径 commit gate 仍无 | 已入档 | 验证 fail-open 与对象方向；判断读/写是否两个时刻 |
+| OPA（开源） | 通用策略引擎；补访问控制策略层；不解析本体/不消费 Glyph 标签 | 已入档（adjunct） | 接 label→policy、冲突/审计测试 |
 
 ## 入档判据
 

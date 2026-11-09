@@ -12,9 +12,9 @@ parent: ../README.md
 
 | 指标 | 工程建议（`推测`） | 要什么数据 | 现在有什么 |
 |---|---|---|---|
-| CQ 覆盖 | 目标消费者 ≥80% 的 CQ 能被执行 | CQ 清单 + 查询/校验 | 外部 CQ 方法；无本域数据 |
+| CQ 覆盖 | 目标消费者 ≥80% 的 CQ 能被执行 | CQ 清单 + 查询/校验 | 无 in-scope CQ 来源；无本域数据 |
 | 负例通过 | 每条约束至少 1 个已知违反 + 1 个干净样本 | 负例集 | 02 R0/R5 的负例做法 |
-| 公理候选质量 | 候选 + 人审；不设全自动线 | 抽样人审 | 外部 F1 0.218–0.642；单域 |
+| 公理候选质量 | 候选 + 人审；不设全自动线 | 抽样人审 | 无 in-scope 公理 benchmark（2512 已删）；只能自域抽样 |
 | 下游消费 | 真实/shadow 消费者加载本体 | 调用日志 | 多数外部工作未测 |
 | 版本/来源 | 每个类/公理有来源与版本 | 台账 | 05 的 representation 做法 |
 
@@ -24,10 +24,10 @@ parent: ../README.md
 
 | 指标 | 工程建议（`推测`） | 要什么数据 | 现在有什么 |
 |---|---|---|---|
-| execution accuracy | 在自域 ≥ 0.8 起步，按风险定 | 问题-SPARQL-答案集 | 外部 benchmark；单域 |
-| 空结果率 | 按域设上限；空结果要分“覆盖不足/排错” | query 日志 | 外部 schema grounding 论文 |
-| schema 覆盖 | 目标问题里的 predicate 在 schema slice 内 | schema slice + query | 外部 SchemaForge/SAGA |
-| 纠错净收益 | 纠错后准确率升、正确查询不被改坏 | 配对样本 | GGC 的选择性纠错 |
+| execution accuracy | 在自域 ≥ 0.8 起步，按风险定 | 问题-SPARQL-答案集 | E-21（三条路线各单设置）；无本域数据 |
+| 空结果率 | 按域设上限；空结果要分“覆盖不足/排错” | query 日志 | E-21 的 GGC 未测空结果；无本域日志 |
+| schema 覆盖 | 目标问题里的 predicate 在 schema slice 内 | schema slice + query | SAGA/SchemaForge 是 signal；E-21 不支撑 |
+| 纠错净收益 | 纠错后准确率升、正确查询不被改坏 | 配对样本 | E-21（GGC 无 2×2 配对）；自域另测 |
 | 延迟/token | 按业务预算 | 账本 | 02 的 ledger 字段 |
 
 **停**：空结果率高且分不清原因、schema 覆盖不足、纠错改坏正确查询 → 先修 schema/检索，不加 agent。
@@ -36,11 +36,13 @@ parent: ../README.md
 
 | 指标 | 工程建议（`推测`） | 要什么数据 | 现在有什么 |
 |---|---|---|---|
-| 权限覆盖 | 应受控的文档/节点 100% 有策略 | policy + 用例 | VAULT/trustgraph 的机制 |
-| 泄漏率 | 0（含 object 方向） | 异常/对象用例 | R8 只有 subject 侧 |
+| 权限覆盖 | 应受控的文档/节点 100% 有策略 | policy + 用例 | E-22（标签层）+ E-20（执行层）；策略层无领域来源（OPA adjunct） |
+| 泄漏率 | 0（含 object 方向） | 异常/对象用例 | E-20 只删 subject；object 方向仍缺 |
 | provenance | 每条结论可回指来源/版本/时间 | 审计日志 | 03 的 evidence 边界 |
 | 审计可追 | 谁、何时、基于哪条证据/策略 | promotion/decision log | 02 R9 设计 |
-| 输出校验 | 关键输出有 pass/flag/unknown | 校验报告 | 外部 assurance 契约 |
+| 输出校验 | 关键输出有 pass/flag/unknown | 校验报告 | signal（2609）；无 E |
+
+**E-21/E-22 只支撑机制与条件，不支撑自域数字**；5.1–5.3 的“工程建议”仍是 `推测`。
 
 **停**：没有 policy、没有审计存储、没有 `user_context`、没有失败样本 → 不做硬授权。
 

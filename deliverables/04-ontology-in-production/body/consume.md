@@ -18,11 +18,10 @@ parent: ../README.md
 
 ## B.2 KG 构建：schema 先于抽取
 
-外部信号（未入库）：
+外部信号（未入库，仅作旁证；不引旧数字）：
 
-- [工业 KG](https://arxiv.org/abs/2609.31663)：法语电网事故报告，7B–32B 本地模型；schema-guided prompting 明显提升抽取。
+- [工业 KG](https://arxiv.org/abs/2609.31663)：法语电网事故报告，schema-guided prompting 的工程做法。
 - [法律 KG](https://arxiv.org/abs/2607.24551)：法规本体 + 闭式抽取；predicate normalization 与 domain-range 校验是 refinement 重点。
-- [Ontology Population](https://arxiv.org/abs/2411.01612)：模块化本体提示，约 90% triples（单域）。
 
 **做法**：
 
@@ -33,14 +32,15 @@ parent: ../README.md
 
 ## B.3 Text2SPARQL：瓶颈常在 grounding
 
-外部信号（未入库）：
+**E-21（引）**：
 
-- [CK25](https://zenodo.org/records/16912605)：企业 KG + ontology + query catalog；Text2SPARQL 参考数据。
-- [GGC](https://arxiv.org/abs/2607.28082)：selective correction；query-level accuracy **90.23%→98.33%**，纠错开销 **−45%**。
-- [SAGA](https://arxiv.org/abs/2607.14494)：**type-blind grounding** 会生成看似合理、语义不兼容的 triple pattern；schema-aware 过滤提升 F1。
-- [SchemaForge](https://arxiv.org/abs/2508.01815)：异构 KG 的 schema-slice alignment；平均 **+11.50pp**，Spider4SPARQL **54.86→64.18**。
-- [Build2SPARQL](https://arxiv.org/abs/2610.00224)：201 KGs、6,136 queries、30,680 questions；zero-shot 0.2–20% → three-shot 56–65%。
-- [Researcher Agents](https://arxiv.org/abs/2608.07700)：瓶颈是 predicate selection，不是语法。
+- **GGC**：生成后选择性纠错；MCQA（电影域、单 KG、31,570 题、Llama-3.2-3B 单骨干）答案集匹配 **90.23%→98.33%**；全量纠错只到 92.34%；45% 是相对全量纠错的墙钟（比单跑 +10%）。
+- **NLKGQ**：完整 OWL 放进单次上下文，零样本生成；DBLP-QuAD 3.1（单 snapshot、作者修订参考）**89.9% Match / 81.3% Exact**；Match 允许 superset。
+- **KGVoyager**：不依赖 ontology/examples 的 agentic navigation；4 个小型 benchmark 平均 F1 **64.6 vs 60.9（+3.7pp，不是 4×）**；只要 endpoint + class index。
+
+外部信号（未入库，仅作旁证）：SAGA、SchemaForge、Build2SPARQL、Researcher Agents。**不再引 CK25/SPARQL-LLM**。
+
+**工程执行层候选**：Qlever（SPARQL 1.1 运行时；不做 OWL 推理；未入 E）。
 
 **做法**：
 
@@ -51,7 +51,7 @@ parent: ../README.md
 
 ## B.4 语义层 / OBDA / MCP
 
-外部信号（未入库）：
+行业信号（厂商指南，不作效果依据）：
 
 - [AWS 语义层指南](https://docs.aws.amazon.com/prescriptive-guidance/latest/semantic-layer-agentic-ai-ontology-reasoning-virtual-knowledge-graph/semantic-layer-agentic-ai-ontology-reasoning-virtual-knowledge-graph.html)：Data/Knowledge/Intelligence/Orchestration 四层；OBDA virtual KG；MCP/A2A；SHACL；human-in-the-loop governance。
 
@@ -83,6 +83,8 @@ verify: {executed, answer_type_ok, citations[], verdict}
 | schema 覆盖 | 目标 predicate 在 slice 内 | schema/query |
 | 纠错净收益 | 改对 > 改坏 | 配对样本 |
 | 延迟/token | 业务预算 | 账本 |
+
+**E-21 的边界**：三条路线各一个单设置，没有头对头；自域 execution accuracy 仍要自己量，不能拿 98.33/89.9/64.6 当跨域基线。
 
 ## B.7 停 / 反模式
 

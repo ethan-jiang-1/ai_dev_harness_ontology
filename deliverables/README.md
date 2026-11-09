@@ -37,7 +37,7 @@ updated: 2026-11-09
 | [02-engineering-playbook](./02-engineering-playbook/README.md) | 选位置/形态、R0–R12、开源与论文指示分级、账本/成本/上线、验收与 stop | 步骤 + 接口 + 验收 | draft | E-xx + 各派 mechanism |
 | [03-mechanism-reference](./03-mechanism-reference/README.md) | 为什么是六个位置、三根分类轴怎么分、15 条边界 | 入口 + 六张位置卡 + 谱外页 + 三张横切页 + 证据台账 | draft | E-xx + [topics/README](../topics/README.md) |
 | └ [附录：约束强度谱](./03-mechanism-reference/appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字）；位置细节以卡为准 | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
-| [04-ontology-in-production](./04-ontology-in-production/README.md) | 本体怎么建到可消费、怎么查、怎么治 | 建 / 用 / 治三分册 + 验收 | draft | E-xx + 05/03/01 topics；外部信号未入库 |
+| [04-ontology-in-production](./04-ontology-in-production/README.md) | 本体怎么建到可消费、怎么查、怎么治 | 建 / 用 / 治三分册 + 验收 | draft | E-xx（含 E-21/E-22）+ 03/querying/01/access-control；未入库 signal |
 
 > `_plans/` 是[工作底稿](./_plans/README.md)，不是交付物；不进对外阅读路径，也不构成 E。
 
@@ -111,7 +111,7 @@ updated: 2026-11-09
 
 01 的详细执行计划见 [plan.md](./_plans/01-capability-status.md)：覆盖审计、现有 digest 回抽、新 `src/` 来源、WBS、排期、DoD 与停止规则。
 
-04 的 topics/src 支撑计划见 [04-ontology-in-production.md](./_plans/04-ontology-in-production.md)：5+1 intake、3 个 topics 页面、P0–P5。
+04 的 topics/src 支撑计划见 [04-ontology-in-production.md](./_plans/04-ontology-in-production.md)：4+1 intake（≥2026-07，US/China/Germany/Singapore）、2 个 topics 页面、2 条新 E、P0–P4 + P2.5/P2.6。
 
 ## handbook 的去留（2026-11-09）
 
