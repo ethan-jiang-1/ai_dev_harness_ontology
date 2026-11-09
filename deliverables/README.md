@@ -62,9 +62,9 @@ updated: 2026-11-09
 
 ### 每份的阅读顺序
 
-- **01**：0 → [地图](./01-capability-status/sections/map.md) → [能力条目](./01-capability-status/capabilities/README.md)（A→B→C→D）→ [边界](./01-capability-status/sections/boundaries.md) → [验收](./01-capability-status/sections/acceptance.md) → [关系](./01-capability-status/sections/relations.md)。
-- **02**：0 → [地图](./02-engineering-playbook/sections/map.md) → [R0 + 一条 recipe](./02-engineering-playbook/sections/approach.md) → [边界](./02-engineering-playbook/sections/boundaries.md) → [验收](./02-engineering-playbook/sections/acceptance.md) → [关系](./02-engineering-playbook/sections/relations.md)。
-- **03**：0 → [地图](./03-mechanism-reference/sections/map.md) → [位置卡](./03-mechanism-reference/positions/README.md)（context→…→commit→outside）→ [横切页](./03-mechanism-reference/across-positions/README.md) → [边界](./03-mechanism-reference/sections/boundaries.md) → [验收](./03-mechanism-reference/sections/acceptance.md) → [关系](./03-mechanism-reference/sections/relations.md)。
+- **01**（[GUIDE](./01-capability-status/GUIDE.md)）：0 → [地图](./01-capability-status/sections/map.md) → [能力条目](./01-capability-status/capabilities/README.md)（A→B→C→D）→ [边界](./01-capability-status/sections/boundaries.md) → [验收](./01-capability-status/sections/acceptance.md) → [关系](./01-capability-status/sections/relations.md)。
+- **02**（[GUIDE](./02-engineering-playbook/GUIDE.md)）：0 → [地图](./02-engineering-playbook/sections/map.md) → [R0 + 一条 recipe](./02-engineering-playbook/sections/approach.md) → [边界](./02-engineering-playbook/sections/boundaries.md) → [验收](./02-engineering-playbook/sections/acceptance.md) → [关系](./02-engineering-playbook/sections/relations.md)。
+- **03**（[GUIDE](./03-mechanism-reference/GUIDE.md)）：0 → [地图](./03-mechanism-reference/sections/map.md) → [位置卡](./03-mechanism-reference/positions/README.md)（context→…→commit→outside）→ [横切页](./03-mechanism-reference/across-positions/README.md) → [边界](./03-mechanism-reference/sections/boundaries.md) → [验收](./03-mechanism-reference/sections/acceptance.md) → [关系](./03-mechanism-reference/sections/relations.md)。
 
 **反向加载**：从 [01 §5.2](./01-capability-status/sections/acceptance.md#52-期待与数据需求验收规格)/[plan](./_plans/01-capability-status.md)、[02 §3.1](./02-engineering-playbook/sections/approach.md#31-十二条工程做法r0r12)、[03 §2.3](./03-mechanism-reference/sections/map.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
 
@@ -75,7 +75,7 @@ updated: 2026-11-09
 | 节 | 回答什么 | 01 现状 | 02 工程 | 03 机制 |
 |---|---|---|---|---|
 | **0 一页结论** | 这份东西一句话是什么、给谁、最重要三句 | README §0 | README §0 | README §0 |
-| **1 导读** | 先读哪份、按任务/时间怎么走 | 本页导读 | 本页导读 | 本页导读 |
+| **1 导读** | 先读哪份、按任务/时间怎么走 | `GUIDE.md` | `GUIDE.md` | `GUIDE.md` |
 | **2 地图** | 本份的核心框架（矩阵 / 五步法 / 四轴六位置） | `sections/map.md` | `sections/map.md` | `sections/map.md` |
 | **3 主体** | 逐项：能力 / recipe / 位置卡 | `capabilities/` | `recipes/` + `sections/approach.md` | `positions/` |
 | **4 边界** | 证据等级、不能证明、反例/反模式 | `sections/boundaries.md` | `sections/boundaries.md` | `sections/boundaries.md` |
@@ -89,13 +89,14 @@ updated: 2026-11-09
 | 角色 | 01 现状 | 02 工程 | 03 机制 |
 |---|---|---|---|
 | 索引 | `README.md`（只放 0/目录/关注） | `README.md` | `README.md` |
+| 导读 | `GUIDE.md` | `GUIDE.md` | `GUIDE.md` |
 | 分节 | `sections/`（map/boundaries/acceptance/relations） | `sections/`（map/approach/boundaries/acceptance/relations） | `sections/`（map/boundaries/acceptance/relations） |
 | 主体 | `capabilities/` + `README.md` | `recipes/` + `README.md`；总览在 `sections/approach.md` | `positions/` + `README.md` |
 | 支撑 | — | `operations/` + `README.md` | `across-positions/` + `README.md` |
 | 证据 | `data/` + `README.md` | `appendices/traceability.md` | `evidence/` + `README.md` |
 | 附录 | — | `appendices/` + `README.md` | `appendix-constraint-spectrum.md` |
 
-**规则**：README 只做索引；正文按「分节 / 主体 / 支撑 / 证据 / 附录」放，不把长文塞回 README。每个目录都有 `README.md`，用同一张索引表。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG；README 只嵌一张。
+**规则**：README 只做索引；正文按「分节 / 主体 / 支撑 / 证据 / 附录」放，不把长文塞回 README。每个目录都有 `README.md`，用同一张索引表。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG；每份 `GUIDE.md` 嵌本份图，README 不再嵌图。
 
 ## 期待 → 数据（验收规格）
 

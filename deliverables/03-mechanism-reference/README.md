@@ -10,9 +10,8 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 
 > **读者**：架构师 / 研究者 ｜ **回答**：为什么是这些位置/形态、证据边界在哪 ｜ **不回答**：具体怎么做（去 02）、今天能做成什么（去 01）。
 
-> 完整阅读顺序见 [deliverables/README 导读](../README.md#导读先读哪份按什么顺序)。
+> **怎么用**：本页只做索引；先读本份 [GUIDE.md](./GUIDE.md)。
 
-<img src="../_figures/03-six-positions.svg" alt="03 六个位置" width="100%">
 
 > **这不是一本手册，也不是教程。** 它是交付物的「依据层」：解释为什么把本体接在六个位置、三根分类轴怎么分、每条判断的证据边界在哪。
 >
@@ -34,6 +33,7 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 
 | 节 | 文件 | 内容 |
 |---|---|---|
+| 导读 | [GUIDE.md](./GUIDE.md) | 先读哪一页、按什么顺序 |
 | 2 地图 | [sections/map.md](./sections/map.md) | 主张类型、四轴、六位置、强度矩阵 |
 | 3 主体 | [positions/README.md](./positions/README.md) | 六张位置卡 + 三张横切页索引 |
 | 4 边界 | [sections/boundaries.md](./sections/boundaries.md) | 15 条边界摘要；全文在 [boundaries.md](./evidence/boundaries.md) |

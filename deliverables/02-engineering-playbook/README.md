@@ -10,9 +10,8 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 > **读者**：工程负责人 / 架构师 ｜ **回答**：拿本体做某件事，具体怎么做 ｜ **不回答**：值不值得做（去 01）、为什么是这些位置（去 03）。
 
-> 完整阅读顺序见 [deliverables/README 导读](../README.md#导读先读哪份按什么顺序)。
+> **怎么用**：本页只做索引；先读本份 [GUIDE.md](./GUIDE.md)。
 
-<img src="../_figures/02-recipes-map.svg" alt="02 选一条 recipe" width="100%">
 
 > 这份交付物回答：**本体拿进来之后，到底能帮什么；如果我要做某件事，工程上从哪一步开始、接口长什么样、开源/论文里有没有能照抄的东西。**
 >
@@ -39,6 +38,7 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 | 节 | 文件 | 内容 |
 |---|---|---|
+| 导读 | [GUIDE.md](./GUIDE.md) | 先读哪一页、按什么顺序 |
 | 2 地图 | [sections/map.md](./sections/map.md) | 五步法、定错、选位置/形态 |
 | 3 主体 | [sections/approach.md](./sections/approach.md) | R0–R12 索引、开源、指示分级、架构、路线 |
 | 4 边界 | [sections/boundaries.md](./sections/boundaries.md) | 反模式、不能证明什么 |
