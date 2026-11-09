@@ -172,7 +172,7 @@ open-source/{org}-{repo}/
 
 1. **落原文**：PDF 放 `src/papers/{arxiv_id}-{slug}/`，在 manifest 登记。
 2. **转 MD**：`paper.md` + `references.md` + `appendix.md`；检查页码标记。
-3. **写 card**：元数据 + 一句话 + 问题/设定 + 图表索引 + 作者局限；`reading`/`provenance` 如实。
+3. **写 card**：元数据 + 一句话 + 问题/设定 + 图表索引 + 作者局限；`reading`/`provenance` 如实，并填 `evidence_role` / `execution_form` / `subtopic`（多归位用 `also_supports`）。
 4. **写 digest**：按 §3 骨架；先写「三句话」，再补术语/方法/数字/边界/工程。
 5. **抽图**：2–3 张承载机制/结果的图；带页码、出处、「看什么」。
 6. **落 topics**：更新派 `sources.md`（内容链 digest）→ `claims.md` / 子主题 dashboard；跨派才动 conclusions。

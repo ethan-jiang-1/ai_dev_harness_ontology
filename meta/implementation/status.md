@@ -1,7 +1,7 @@
 # Pilot Readiness · status
 
 > 计划：[plan.md](./plan.md)。  
-> 状态：Phase 0 进行中；3 个 EXP 逐个建，不并行开三个半成品。
+> 状态：Phase 0–5 的 v0 已完成；D0 资产门未过，试点暂不可开跑。3 个 EXP 逐个建，不并行开三个半成品。
 
 ## Phase
 

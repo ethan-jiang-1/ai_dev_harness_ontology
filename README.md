@@ -11,7 +11,7 @@
 | 想知道 | 去 |
 |---|---|
 | 研究问题与假设 | [THESIS](./THESIS.md) |
-| 六派地图、子主题、三轴 | [topics/README](./topics/README.md) |
+| 六派地图、子主题、四轴 | [topics/README](./topics/README.md) |
 | 跨主题结论（E-xx） | [topics/conclusions](./topics/conclusions.md) |
 | 时刻 / 接缝 | [topics/seams](./topics/seams.md) |
 | 控制回路七部件 | [topics/00-harness](./topics/00-harness/README.md) |

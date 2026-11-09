@@ -190,6 +190,23 @@ def main() -> int:
             if not scalar(card, "subtopic"):
                 warnings.append(f"no subtopic: src/papers/{d}/card.md")
 
+    # 4b. evidence role / execution form coverage
+    role_counts = Counter()
+    form_counts = Counter()
+    for d in paper_dirs:
+        card, _ = parse_frontmatter(open(os.path.join(papers_dir, d, "card.md"), encoding="utf-8").read())
+        if not card:
+            errors.append(f"no frontmatter: src/papers/{d}/card.md")
+            continue
+        for key in ("evidence_role", "execution_form"):
+            value = scalar(card, key)
+            if not value:
+                errors.append(f"missing {key}: src/papers/{d}/card.md")
+        if scalar(card, "evidence_role") in EVIDENCE_ROLE:
+            role_counts[scalar(card, "evidence_role")] += 1
+        if scalar(card, "execution_form") in EXECUTION_FORM:
+            form_counts[scalar(card, "execution_form")] += 1
+
     # 5. manifest coverage
     manifest = os.path.join(papers_dir, "manifest.md")
     if os.path.exists(manifest):
@@ -214,6 +231,14 @@ def main() -> int:
         card, _ = parse_frontmatter(open(os.path.join(base, "card.md"), encoding="utf-8").read())
         if card and not scalar(card, "commit"):
             errors.append(f"no commit pin: src/open-source/{d}/card.md")
+        if card:
+            for key in ("evidence_role", "execution_form", "seam"):
+                if not scalar(card, key):
+                    errors.append(f"missing {key}: src/open-source/{d}/card.md")
+            if scalar(card, "evidence_role") in EVIDENCE_ROLE:
+                role_counts[scalar(card, "evidence_role")] += 1
+            if scalar(card, "execution_form") in EXECUTION_FORM:
+                form_counts[scalar(card, "execution_form")] += 1
 
     # 7. conclusion level counts (section based; rows do not repeat the level)
     counts = Counter()
@@ -226,12 +251,20 @@ def main() -> int:
             key = {"已核（一手原文摘要）": "已核", "推测（未核原文）": "推测"}.get(section, section)
             counts[key] += 1
     if counts["已核"] != 17 or counts["推测"] != 2:
-        warnings.append(f"conclusion levels changed: {dict(counts)} (README/checklist may need update)")
+        warnings.append(f"conclusion levels changed: {dict(counts)} (meta/state may need update)")
+    expected_roles = {"execution-test": 9, "mechanism-only": 8, "harness-evidence": 6, "boundary-ruler": 3}
+    if dict(role_counts) != expected_roles:
+        errors.append(f"evidence_role counts: expected {expected_roles}, found {dict(role_counts)}")
+    expected_forms = {"engine": 4, "compiled": 7, "context": 2, "label": 1, "none": 12}
+    if dict(form_counts) != expected_forms:
+        errors.append(f"execution_form counts: expected {expected_forms}, found {dict(form_counts)}")
 
     # 8. summary
     print(f"files: {len(files)}  papers: {len(paper_dirs)}  open-source: {len(oss_projects)}")
     print(f"defined: E={len(defined_e)} Q={len(defined_q)} C={len(defined_c)} L={len(defined_l)}")
     print(f"conclusion levels: {dict(counts)}")
+    print(f"evidence_role: {dict(role_counts)}")
+    print(f"execution_form: {dict(form_counts)}")
     if warnings:
         print(f"\nWARNINGS ({len(warnings)})")
         for w in warnings:

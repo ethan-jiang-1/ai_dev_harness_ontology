@@ -36,7 +36,7 @@ updated: 2026-11-09
 
 ## 历史归档（不要当现行规则）
 
-[archive/2026-11/](./archive/2026-11/) 存放 2026-11-07～09 的消化计划、质量计划/报告、digest/card 审计、critic 抽样与全审（full-audit）。这些文件已标 `status: superseded`，只用于追溯“当时怎么判的”，**不要用来指导现在的写入**。
+[archive/2026-11/](./archive/2026-11/README.md) 存放 2026-11-07～09 的消化计划、质量计划/报告、digest/card 审计、critic 抽样与全审（full-audit）。这些文件已标 `status: superseded`，只用于追溯“当时怎么判的”，**不要用来指导现在的写入**。
 
 ## 一条规则
 

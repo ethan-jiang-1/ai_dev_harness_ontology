@@ -2,7 +2,7 @@
 status: draft
 updated: 2026-11-08
 rq: [RQ5]
-evidence: [E-04, E-08, E-12, E-13, E-14, E-15, E-17]
+evidence: [E-04, E-08, E-12, E-13, E-14, E-15, E-17, E-19]
 ---
 
 # 落地经济学：什么时候值得

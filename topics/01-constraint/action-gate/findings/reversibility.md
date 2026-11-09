@@ -14,7 +14,7 @@
 - **等级**：`已核`（POLAR 一手正文）。
 - **条件**：18 个 model–domain 格仅 8 个改善；airline 四个模型 +0.11–0.18；slope −0.76/−0.67/−0.31（R² 0.92/0.98/0.65，六点描述性拟合）。
 - **反例/边界**：不是部署阈值；retail 的失败可能是任务形态，不是机制失败；gpt-oss-120B retail −0.242。
-- **来源**：[POLAR 卡](../../../../src/papers/2610.08082-polar/card.md) · [E-04 / E-13](../../../conclusions.md)
+- **来源**：[POLAR digest](../../../../src/papers/2610.08082-polar/digest.md) · [E-04 / E-13](../../../conclusions.md)
 
 ## F3
 

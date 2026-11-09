@@ -22,7 +22,7 @@ updated: 2026-11-09
 | 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
 | 实验 | 6 个协议 + 1 个形态消融（EXP-007 提案）；D0 资产门未签核，EXP-004/005/006 暂不可开跑 |
 | 交付物 | 手册大纲 7 章；正文未写 |
-| 最后自检 | 2026-11-09，`python3 meta/tools/check_repo.py`（见下） |
+| 最后自检 | 2026-11-09 09:35，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
 
 ## 当前阻塞
 
@@ -32,10 +32,10 @@ updated: 2026-11-09
 
 ## 本轮修复（2026-11-09）
 
-- E 层：全部 E-xx 出处改链 digest；E-04 去掉“支撑 P3”的范畴错误，改标 P3a；Q-03 收窄到单基准/单 gate；outline 第 6 章去掉“reward 低估”的方向断言；EXP-005 把“合法意图”降回 `推测`；pilot 去掉“结构判据”标签。
+- E 层：全部 E-xx 出处改链 digest（17 条）；E-04 去掉“支撑 P3”的范畴错误，改标 P3a，并新增“E-04 能/不能支撑什么”范围框；Q-03 收窄到单基准/单 gate；outline 第 6 章去掉“reward 低估”的方向断言；EXP-005 把“合法意图”降回 `推测`；pilot 去掉“结构判据”标签。E-04 共 37 处引用，4 类过度解读（结构有效 / P3b / reward 低估 / 合法意图）已修。
 - 硬矛盾：E-05 错挂回改；02-L2 改为“模型自评”；开源接缝改为 `read-path` / `supply` / `none`；manifest 合并为 22 篇单账；experiments 计数与状态修正；GLOSSARY 工位改为 3 个；P3 拆 P3a/P3b。
-- 结构：新增 `execution_form` 轴（[topics/execution-forms.md](../topics/execution-forms.md)）、`evidence_role`、`also_supports`；E 行影响列改用 P1a/P1b/P1c/P2/P3a/P3b；薄子主题标记；L1/L2/L3 定义。
-- 账本：meta 索引 + 归档；state.md（本页）；可执行自检（ADR 0005）。
+- 结构：新增 `execution_form` 轴（[topics/execution-forms.md](../topics/execution-forms.md)）、`evidence_role`、`also_supports`；26 个来源全部落字段（9/4/6/3；engine 4 / compiled 7 / context 2 / label 1 / none 12）；E 行影响列改用 P1a/P1b/P1c/P2/P3a/P3b；16 个薄子主题标记；L1/L2/L3 定义与长度门重写；EXP-007 形态消融提案。
+- 账本：meta 索引 + 归档（8 个一次性文档 + full-audit）；state.md（本页）；可执行自检（ADR 0005）；manifest 合并为 22 篇单账（含批次列），删除 manifest-scan。
 
 ## 怎么刷新
 
