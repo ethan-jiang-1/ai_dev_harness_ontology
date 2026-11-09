@@ -39,12 +39,12 @@ updated: 2026-11-09
 **怎么读**：
 
 - 只有 10 分钟 → [01 §0 一页结论](./01-capability-status/README.md#0-一页结论) + [02 §0 一页结论](./02-engineering-playbook/README.md#0-一页结论)。
-- 手上有一个具体任务 → [02 §2 地图](./02-engineering-playbook/README.md#2-地图先定错再选位置形态) → §3 主体（R0–R12）。
-- 要说服别人/自查边界 → [03 §2.3 六位置表](./03-mechanism-reference/README.md#23-六个位置一页表) + [boundaries](./03-mechanism-reference/boundaries.md)。
+- 手上有一个具体任务 → [02 §2 地图](./02-engineering-playbook/sections/map.md) → §3 主体（R0–R12）。
+- 要说服别人/自查边界 → [03 §2.3 六位置表](./03-mechanism-reference/sections/map.md#23-六个位置一页表) + [boundaries](./03-mechanism-reference/evidence/boundaries.md)。
 - 想查某个位置的机制 → [03 positions](./03-mechanism-reference/positions/context.md)（六张卡，统一 8 字段）。
 - 想读完整论证 → [附录：约束强度谱](./03-mechanism-reference/appendix-constraint-spectrum.md)。
 
-**反向加载**：从 [01 §5.2](./01-capability-status/README.md#52-期待与数据需求验收规格)/[plan](./_plans/01-capability-status.md)、[02 §3.1](./02-engineering-playbook/README.md#31-十二条工程做法r0r12)、[03 §2.3](./03-mechanism-reference/README.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
+**反向加载**：从 [01 §5.2](./01-capability-status/sections/acceptance.md#52-期待与数据需求验收规格)/[plan](./_plans/01-capability-status.md)、[02 §3.1](./02-engineering-playbook/sections/approach.md#31-十二条工程做法r0r12)、[03 §2.3](./03-mechanism-reference/sections/map.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
 
 ## 统一阅读结构
 
@@ -52,19 +52,32 @@ updated: 2026-11-09
 
 | 节 | 回答什么 | 01 现状 | 02 工程 | 03 机制 |
 |---|---|---|---|---|
-| **0 一页结论** | 这份东西一句话是什么、给谁、最重要三句 | §0 | §0 | §0 |
-| **1 怎么读** | 按角色/任务/时间怎么加载；与另外两份什么关系 | §1 | §1 | §1 |
-| **2 地图** | 本份的核心框架（矩阵 / 五步法 / 四轴六位置） | §2 | §2 | §2 |
-| **3 主体** | 逐项：能力 / recipe / 位置卡 | §3 | §3 | §3 |
-| **4 边界** | 证据等级、不能证明、反例/反模式 | §4 | §4 | §4 |
-| **5 验收** | 指标、stop、缺口、期待与数据需求 | §5 | §5 | §5 |
-| **6 关系与维护** | 与另外两份的关系、附录、更新规则 | §6 | §6 | §6 |
+| **0 一页结论** | 这份东西一句话是什么、给谁、最重要三句 | README §0 | README §0 | README §0 |
+| **1 怎么读** | 按角色/任务/时间怎么加载；目录在哪 | README §1 | README §1 | README §1 |
+| **2 地图** | 本份的核心框架（矩阵 / 五步法 / 四轴六位置） | `sections/map.md` | `sections/map.md` | `sections/map.md` |
+| **3 主体** | 逐项：能力 / recipe / 位置卡 | `capabilities/` | `recipes/` + `sections/approach.md` | `positions/` |
+| **4 边界** | 证据等级、不能证明、反例/反模式 | `sections/boundaries.md` | `sections/boundaries.md` | `sections/boundaries.md` |
+| **5 验收** | 指标、stop、缺口、期待与数据需求 | `sections/acceptance.md` | `sections/acceptance.md` | `sections/acceptance.md` |
+| **6 关系与维护** | 与另外两份的关系、附录、更新规则 | `sections/relations.md` | `sections/relations.md` | `sections/relations.md` |
 
 **同构不等于同文**：01 的主体是「能力条目」，02 是「recipe 条目」，03 是「位置卡」；每类条目都必须有 **一句话 / 适用 / 证据等级 / 边界 / 去哪** 这五个字段。
 
+### 目录契约
+
+| 角色 | 01 现状 | 02 工程 | 03 机制 |
+|---|---|---|---|
+| 索引 | `README.md`（只放 0/1/目录/关注） | `README.md` | `README.md` |
+| 分节 | `sections/`（02/04/05/06） | `sections/`（02–06） | `sections/`（02/04/05/06） |
+| 主体 | `capabilities/` + `README.md` | `recipes/` + `README.md`；总览在 `sections/approach.md` | `positions/` + `README.md` |
+| 支撑 | — | `operations/` + `README.md` | `across-positions/` + `README.md` |
+| 证据 | `data/` + `README.md` | `appendices/traceability.md` | `evidence/` + `README.md` |
+| 附录 | — | `appendices/` + `README.md` | `appendix-constraint-spectrum.md` |
+
+**规则**：README 只做索引；正文按「分节 / 主体 / 支撑 / 证据 / 附录」放，不把长文塞回 README。每个目录都有 `README.md`，用同一张索引表。
+
 ## 期待 → 数据（验收规格）
 
-三份 README 的第 5 节都有一节「期待与数据需求」：把交付物要回答的问题写成**可证伪的期待**，再倒推「支持它需要什么数据、现在有什么、缺什么」。
+三份交付物的 `sections/acceptance.md` 都有一节「期待与数据需求」：把交付物要回答的问题写成**可证伪的期待**，再倒推「支持它需要什么数据、现在有什么、缺什么」。
 
 它的作用不是承诺结果，而是让缺口显形：**量不出「支持它需要的数据」，就说明这条期待还停在推测。** 这是交付物的验收规格（非 E），不是新结论；数据回 `topics/` 或 `frontier` 补，不在交付物里补。
 
@@ -84,7 +97,7 @@ updated: 2026-11-09
 
 | 交付物 | 形态 | 状态 | 依据 |
 |---|---|---|---|
-| 一页图：约束强度谱 | 图 | 待画 | [03 §2.4](./03-mechanism-reference/README.md#24-强度覆盖率直线是摘要矩阵是操作定义) + [coverage 矩阵](./03-mechanism-reference/cross-cutting/coverage.md)（H/D，不是 E 结论） |
+| 一页图：约束强度谱 | 图 | 待画 | [03 §2.4](./03-mechanism-reference/sections/map.md#24-强度覆盖率直线是摘要矩阵是操作定义) + [coverage 矩阵](./03-mechanism-reference/across-positions/coverage.md)（H/D，不是 E 结论） |
 | Deck：给工程团队的 30 分钟 | 幻灯片 | 待做 | 02 §0 一页结论、§3.1 R 索引、§3.4 参考架构 |
 | 案例页：一个端到端示例 | Markdown | 示意已写；真实场景待补 | [02 附录 C](./02-engineering-playbook/appendices/case.md)；标 illustrative，不是部署 |
 

@@ -221,7 +221,7 @@ target: deliverables/01-capability-status 的 E1–E9
 | P0 入档 | 完成 2 篇 | [2610.16838 digest](../../src/papers/2610.16838-same-operation-different-permission/digest.md)（L2；harness-evidence / none）；[2607.22868 digest](../../src/papers/2607.22868-what-can-be-enforced/digest.md)（L2；harness-evidence / none）；均不升 E；manifest 24 篇 |
 | E5 校准理论 | 完成（已入档 L2） | [e5 校准理论](../01-capability-status/data/e5-calibration-theory.md)：NP false-block/miss 前沿；δ=.05 时每个 judge 都 block-all；δ=.10 false block .78；false-veto 应报前沿不是单点 |
 | P1/P2 源扫描 | 完成（摘要级） | [P1/P2 扫描](../01-capability-status/data/p1-p2-source-scan.md)：无第二个 read-path；E9 有 Suite v0 候选（harness 级）；E1/E2 无跨域复现 |
-| D1 verdict | 完成第一轮 | [01 §2.4](../01-capability-status/README.md#24-e1e9-verdict2026-11-09-第一轮) 与 [§9](../01-capability-status/README.md#9-期待与数据需求验收规格)：5 条 `supported（限定）`、1 条 `conditional`、3 条 `unknown` |
+| D1 verdict | 完成第一轮 | [01 §2.4](../01-capability-status/sections/map.md#24-e1e9-verdict2026-11-09-第一轮) 与 [§9](../01-capability-status/sections/acceptance.md#52-期待与数据需求验收规格)：5 条 `supported（限定）`、1 条 `conditional`、3 条 `unknown` |
 
 **下一步（按 P0）**：
 

@@ -44,6 +44,6 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-12, E-13, E-15, E-16, E-17, E-18, E-2
 
 ## 3. 维护
 
-- 新 E 或 E 的限定变化 → 先改 [conclusions](../../topics/conclusions.md)，再回改本页。
+- 新 E 或 E 的限定变化 → 先改 [conclusions](../../../topics/conclusions.md)，再回改本页。
 - 本页不新增边界；新边界必须来自新的 E/L 或新的反例。
 - 原附录 §3.7 与本页不一致时，以本页为准；附录保留历史论证。

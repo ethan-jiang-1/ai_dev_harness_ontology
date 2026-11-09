@@ -77,5 +77,5 @@ evidence: [E-01, E-08, E-12, E-14]
 
 - 机制：[projection/mechanism](../../../topics/03-knowledge/projection/mechanism.md) · [compilation/mechanism](../../../topics/03-knowledge/compilation/mechanism.md)
 - 判断：[03-knowledge/README](../../../topics/03-knowledge/README.md) · [conclusions](../../../topics/conclusions.md) E-01/E-08/E-12/E-14
-- 施工：[02 R1–R3](../../02-engineering-playbook/README.md#4-十二条工程做法r0r12) · [01 能力 1–3](../../01-capability-status/README.md#22-一张表)
+- 施工：[02 R1–R3](../../02-engineering-playbook/sections/approach.md#31-十二条工程做法r0r12) · [01 能力 1–3](../../01-capability-status/sections/map.md#22-一张表)
 - 长版论证：[附录 §3.4.1](../appendix-constraint-spectrum.md#341-context最广也最容易被忽略)

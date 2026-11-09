@@ -43,7 +43,7 @@ evidence: [E-01, E-04, E-12, E-18, E-20]
 
 ## 3. 研究组合（如果继续）
 
-> 与 [01 的 D1 计划](../_plans/01-capability-status.md) 共享部分目标；本表只列会改变 03 句子的项，不重复 01 的全部证据补齐。
+> 与 [01 的 D1 计划](../../_plans/01-capability-status.md) 共享部分目标；本表只列会改变 03 句子的项，不重复 01 的全部证据补齐。
 
 | 优先级 | 项 | 会改变 03 的哪句 | 检索/来源 | Timebox | 失败时 |
 |---|---|---|---|---|---|
@@ -67,11 +67,11 @@ evidence: [E-01, E-04, E-12, E-18, E-20]
 ## 5. 什么会改变这份缺口表
 
 - 任一项研究命中 → 先改对应位置卡与 `boundaries.md`，再改本页状态。
-- E 的限定变化 → 先改 [conclusions](../../topics/conclusions.md)，再回改 03。
+- E 的限定变化 → 先改 [conclusions](../../../topics/conclusions.md)，再回改 03。
 - 出现新的可证伪期待（M6+）→ 先写进 topics 的 frontier，不在 03 里发明。
 
 ## 6. 上游
 
-- [01 现状 · 期待与数据需求](../01-capability-status/README.md#9-期待与数据需求验收规格)
-- [02 · 期待与数据需求](../02-engineering-playbook/README.md#13-期待与数据需求验收规格)
+- [01 现状 · 期待与数据需求](../../01-capability-status/sections/acceptance.md#52-期待与数据需求验收规格)
+- [02 · 期待与数据需求](../../02-engineering-playbook/sections/acceptance.md#53-期待与数据需求验收规格)
 - 各派 `frontier.md`；本页只做 03 的汇总，不复制候选。

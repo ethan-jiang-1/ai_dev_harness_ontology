@@ -86,4 +86,4 @@ evidence: [E-20]
 - [topics/execution-forms.md](../../../topics/execution-forms.md)（五档、26 源初判、代码核对、执行链）
 - [topics/seams.md](../../../topics/seams.md)（六时刻 + 轴外位置）
 - [conclusions](../../../topics/conclusions.md) 的 E-20
-- [02 §3/§5](../../02-engineering-playbook/README.md#3-选形态五种别把-context-当低配-engine)（选型与开源参考）
+- [02 §3/§5](../../02-engineering-playbook/sections/map.md#24-选形态五种别把-context-当低配-engine)（选型与开源参考）

@@ -84,5 +84,5 @@ OA-RAG 的实际做法：`DESCRIBE` 取 concept card，`ASK` 问 reasoner 是否
 
 - 机制：[evidence/mechanism](../../../topics/02-judgment/evidence/mechanism.md)
 - 判断：[02-judgment/README](../../../topics/02-judgment/README.md) · [conclusions](../../../topics/conclusions.md) E-03
-- 施工：[02 R4（recipes）](../../02-engineering-playbook/recipes/README.md) · [01 能力 4](../../01-capability-status/README.md#22-一张表)
+- 施工：[02 R4（recipes）](../../02-engineering-playbook/recipes/README.md) · [01 能力 4](../../01-capability-status/sections/map.md#22-一张表)
 - 长版论证：[附录 §3.4.3](../appendix-constraint-spectrum.md#343-evidence输出时的证据契约)
