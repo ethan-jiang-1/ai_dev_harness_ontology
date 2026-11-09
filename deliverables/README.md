@@ -41,11 +41,15 @@ updated: 2026-11-09
 - 要说服别人/自查边界 → [03 §3 六位置表](./03-mechanism-reference/README.md#3-六个位置一页表) + §5 十五条边界。
 - 想读完整论证 → [附录：约束强度谱](./03-mechanism-reference/appendix-constraint-spectrum.md)。
 
+**反向加载**：从 [01 §9](./01-capability-status/README.md#9-期待与数据需求验收规格)/[plan](./01-capability-status/plan.md)、[02 §4](./02-engineering-playbook/README.md#4-九条工程做法r1r9)、[03 §3](./03-mechanism-reference/README.md#3-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
+
 ## 期待 → 数据（验收规格）
 
 三份 README 的末尾都有一节「期待与数据需求」：把交付物要回答的问题写成**可证伪的期待**，再倒推「支持它需要什么数据、现在有什么、缺什么」。
 
 它的作用不是承诺结果，而是让缺口显形：**量不出「支持它需要的数据」，就说明这条期待还停在推测。** 这是交付物的验收规格（非 E），不是新结论；数据回 `topics/` 或 `frontier` 补，不在交付物里补。
+
+01 的详细执行计划见 [plan.md](./01-capability-status/plan.md)：覆盖审计、现有 digest 回抽、新 `src/` 来源、WBS、排期、DoD 与停止规则。
 
 ## handbook 的去留（2026-11-09）
 

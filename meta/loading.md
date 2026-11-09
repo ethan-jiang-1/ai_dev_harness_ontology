@@ -39,10 +39,46 @@
 | 跑一次研究 | 子主题 `prompt.md` + 相关卡 | 全仓 |
 | 加原文/卡 | [src/README](../src/README.md) + `_templates/`（论文 / 材料 / 开源三套） | topics |
 | 读一个开源项目 | [open-source/README](../src/open-source/README.md) + 该项目 `digest.md` | 其他项目、全部论文 |
-| 做交付 | [conclusions](../topics/conclusions.md) + [deliverables/README](../deliverables/README.md) | src 原文 |
+| 做 01 现状 | [01 §9](../deliverables/01-capability-status/README.md#9-期待与数据需求验收规格) + [plan](../deliverables/01-capability-status/plan.md) + [conclusions](../topics/conclusions.md) E 表 + 对应派 `sources.md`/子主题 + 指定 digest §4/§5 | 其他派、`card.md`/`references.md`/`appendix.md` |
+| 做 02 工程 | [02 §0–§4](../deliverables/02-engineering-playbook/README.md) + 对应子主题 `mechanism.md` + [execution-forms](../topics/execution-forms.md) + 4 个开源 digest | 22 篇 `paper.md`、`card.md`、其他派 |
+| 做 03 机制 | [03 §3/§5](../deliverables/03-mechanism-reference/README.md) + [conclusions](../topics/conclusions.md) + [附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md) §3.7/§3.8 | `src/` 原文、其他派 `mechanism.md` |
 | 用模型做第二意见（不用于实验） | [meta/models](./models.md) | 本地模型/实验被试 |
 | 查结构决策 | [adr/](../adr/README.md)（0001–0008） | 全部 meta |
 | 查 meta 有什么 | [meta/README](./README.md)：现行 / 模板 / 历史 | `archive/` |
+
+## 从交付物倒查（反向加载）
+
+> 三个交付物是三种「下游规格」。不要从 `src/papers/manifest.md` 开始扫；从交付物的期待出发，沿链走到「够回答」就停。
+
+```
+D1 期待 → plan.md H1–H6 → topics 子主题 → digest §4/§5 → paper.md 指定节
+D2 recipe → topics/<子主题>/mechanism.md → digest §6.5 → open-source digest/代码
+D3 边界 → conclusions E 表 → digest §5/§9 → 附录 §3.7/§3.8
+```
+
+| 交付物 | 起点 | 走到哪停 | 默认不读 |
+|---|---|---|---|
+| 01 现状 | `01/README §9` + `plan.md` | 能填出 E1–E9 的 verdict + boundary | 全部 `paper.md`（只读指定节）、`card.md`（只作 provenance）、`references.md`/`appendix.md`、其他派 |
+| 02 工程 | `02/README §0 决策图 + §4 R1–R9` | 能写出接口/字段/验收/停线 | 22 篇论文正文、其他派 mechanism、`conclusions` 全表 |
+| 03 机制 | `03/README §3/§5` | 能指到 E-xx 与「不能证明什么」 | `src/` 原文、其他派 mechanism、全部 `paper.md` |
+
+**三条反向规则**：
+
+1. **从 E 倒查，不从 manifest 顺读。** E 行已经链到 digest；digest 不够再回 `paper.md` 的指定表/节。
+2. **`digest.md` 是默认入口，`card.md` 只补 provenance。** 不要先读 card 再读 digest；没有 digest 的来源不算入库。
+3. **每份交付物只带自己的「不读」清单。** 01 不读其他派，02 不读论文正文，03 不读 `src/` 原文；跨交付物需要时，回到 `deliverables/README` 的「怎么读」。
+
+**支持层契约（`topics/` / `src/` 必须先满足）**：
+
+| 层 | 要提供 | 现在怎么落地 | 不满足时 |
+|---|---|---|---|
+| topics | 每个 E 行链 digest；每个未关缺口在派/子主题 `frontier.md` 有 G/N，写「关闭它需要什么」 | `conclusions` E 表 + 派 `frontier`；E 行反向读 digest §4/§5 | 不升 E；留在 `frontier` |
+| topics | E 只在 `conclusions`；`sources.md` 只做 L/digest 索引，不复制 E 表 | `conclusions` 是唯一 E 表；`sources.md` 保持 L | 出现两份 E 就回退 |
+| src | digest §4/§5/§6/§8 编号稳定；§4 数字、§5 边界、§6 工程、§8 回链 | [src/README](../src/README.md) 的 digest 契约；模板固定骨架 | 反向读不到就回 `paper.md` 指定节 |
+| src | `card.md` 不承载判断；`references.md`/`appendix.md` 默认不读 | [src/README](../src/README.md) §0/§3 | 不要把 card 当 digest |
+| deliverables | 每份 README 有「加载集」；新增交付物先写期待与加载集 | 三份 README 的「加载集」表 | 没有加载集不算交付物 |
+
+> **落地顺序**：先保证 topics/src 的契约（E→digest、frontier G/N、digest 四节、card 边界），再开始 D1 的 E1–E9 倒逼。契约不满足时，倒逼会退化成「从 manifest 顺读」，又变成乱忙。
 
 ## 三条规则
 

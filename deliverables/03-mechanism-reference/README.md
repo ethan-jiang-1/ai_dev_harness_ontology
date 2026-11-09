@@ -12,6 +12,15 @@ basis: E-01–E-20, C-03; topics/README 四轴
 >
 > 原《本体在 harness 里如何被执行》7 章、4–6 万字的书稿计划已废弃，**也没有保留独立的 handbook**。唯一值得留的是第三章的论证，现在作为本目录的长版附录 [appendix-constraint-spectrum.md](./appendix-constraint-spectrum.md)（约 0.97 万字）；原大纲与规划已删除，git 历史保留。理由：书稿没有独立角色、后四章缺证据、主线过强。见 [deliverables/README](../README.md#handbook-的去留2026-11-09)。
 
+## 加载集（按需披露）
+
+| 要做 | 只读 | 不读 |
+|---|---|---|
+| 查某条判断的边界 | 本页 §3/§5 + [conclusions](../../topics/conclusions.md) 的 E 行 + [附录 §3.7/§3.8](./appendix-constraint-spectrum.md#37-本章不能证明什么) | `src/` 原文、其他派 `mechanism.md`、全部 `paper.md` |
+| 查为什么是六个位置 | 本页 §3/§4 + 附录 §3.4/§3.6 | 22 篇论文正文 |
+
+> 反向链见 [meta/loading §从交付物倒查](../../meta/loading.md#从交付物倒查反向加载)：边界 → E 行 → digest §5/§9 → 附录。
+
 ## 1. 三份交付物的分工
 
 | 交付物 | 回答 | 读者 | 形态 |

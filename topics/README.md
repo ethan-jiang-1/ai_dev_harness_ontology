@@ -125,6 +125,14 @@ updated: 2026-11-09
 - **找前沿** → 各派 `frontier.md`：前沿问题、信号源、检索式、候选队列。
 - **找局部判断** → 各派 [claims.md](./01-constraint/claims.md)：`L-xx`，尚未升到 E-xx。
 
+> **反向读法（不计入七种）**：从交付物的期待倒查证据 → [meta/loading §从交付物倒查](../meta/loading.md#从交付物倒查反向加载)。01 从 E1–E9 倒查，02 从 recipe 倒查，03 从边界倒查；不要从 `src/` 正着扫。
+
+| 从哪来 | 先去 | 再去 | 缺的数 |
+|---|---|---|---|
+| 01 期待 | [conclusions](./conclusions.md) E 行 | digest §4/§5 | 对应派 `frontier.md` |
+| 02 recipe | 子主题 `mechanism.md` | digest §6 | 对应派 `frontier.md` |
+| 03 边界 | [conclusions](./conclusions.md) E 行 | digest §5/§9 | [附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md) §3.7 |
+
 ## 论文进库的前置：低噪声三件套
 
 新论文进 `src/papers/{arxiv_id}-{slug}/` 后，**先转换，再建卡，再消化**：

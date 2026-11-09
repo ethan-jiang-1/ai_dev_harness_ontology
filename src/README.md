@@ -64,6 +64,10 @@ src/
 
 `card.md` 与 `digest.md` 都从原文来，但**不是上下游关系**：card 是来源登记，digest 是消化正文。下游不需要先读 card；**没有 digest 的源材料，不算进过流水线**。
 
+**反向加载（从交付物倒查）**：不要从 `papers/manifest.md` 顺读。走 `conclusions` 的 E 行 → 该 E 链的 `digest.md` §4/§5 → 只有 digest 不够时才回 `paper.md` 的指定表/节。`card.md` 只在需要 provenance 时读；`references.md` / `appendix.md` 默认不读。三条交付物的具体反向链见 [meta/loading](../meta/loading.md#从交付物倒查反向加载)。
+
+**反向阅读锚点（digest 契约）**：§4「结果：数字与条件」、§5「这些数字不能说明什么」、§6「工程上怎么用」、§8「与仓库判断的关系」——这四节编号固定，不重排；新增内容放 §9/§10。反向读不到 §4/§5 时，才回 `paper.md` 的指定表/节。
+
 ## 1. 论文的规则（`papers/`）
 
 网页的规则见 [web/README](./web/README.md)；开源项目的规则见 §1.1。三类共用的是 §0 的角色关系与 §4 的字段纪律。

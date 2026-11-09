@@ -16,6 +16,15 @@ basis: E-01–E-20, C-01–C-04
 >
 > **A/B/C/D 是交付层的排序，不是新的 E。** 它只把 E 的限定读成「工程上能不能先做」；排序依据写在 §2.1，改变排序要回到 `topics/` 改证据，不是在交付物里改标签。
 
+## 加载集（按需披露）
+
+| 要做 | 只读 | 不读 |
+|---|---|---|
+| 判断某条期待是什么 verdict | 本页 §2/§5/§9 + [plan.md](./plan.md) + [conclusions](../../topics/conclusions.md) E 表 + 对应派 `sources.md`/子主题 + 指定 digest §4/§5 | 其他派、`card.md`/`references.md`/`appendix.md`、全部 `paper.md` |
+| 改能力地图的分层 | 本页 §2 + 对应派 README + [execution-forms](../../topics/execution-forms.md) | 全部论文正文 |
+
+> 反向链见 [meta/loading §从交付物倒查](../../meta/loading.md#从交付物倒查反向加载)：从 E 倒查，不从 `src/papers/manifest.md` 顺读。
+
 ## 0. 一页结论
 
 | 判定 | 清单 | 一句话 |
@@ -257,3 +266,5 @@ trustgraph 在查询结果返回前跑 SHACL-AF 策略，命中 `tg-pol:blocks` 
 | E9 | 跨运行产物收敛可度量（投影覆盖率/归因规则） | 同一输入的重复运行；投影覆盖率；漂移归因 | 设计提案 | 实现；度量 |
 
 **怎么用**：每条期待都是一次 go/no-go 的候选；先量「支持它需要的数据」那一列，量不出来就写「未知」，不要用「通用经验」补。
+
+**详细执行计划**：[plan.md](./plan.md)（覆盖审计、现有 digest 回抽、需要新 `src/` 的来源、WBS、排期、DoD、停止规则）。

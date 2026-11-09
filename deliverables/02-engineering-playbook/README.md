@@ -16,6 +16,15 @@ basis: E-01–E-20, C-03; topics 各派 mechanism
 >
 > **R1–R9 是从 `topics/` 各派 `mechanism.md` 抽取的工程配方，不是新的 E。** 它们回答「怎么做」，不回答「做了有没有用」；效应量仍以 E-xx 为准。
 
+## 加载集（按需披露）
+
+| 要做 | 只读 | 不读 |
+|---|---|---|
+| 选 recipe / 定接口 | 本页 §0 决策图 + §1–§4 + 对应子主题 `mechanism.md` + [execution-forms](../../topics/execution-forms.md) + 4 个开源 digest | 22 篇 `paper.md`、`card.md`/`references.md`/`appendix.md`、其他派 |
+| 定验收/停线 | 本页 §9 + 对应 `mechanism.md` 的「实施与客户价值」 + [01 §5](../01-capability-status/README.md#5-距离还差什么差多远) | `conclusions` 全表 |
+
+> 反向链见 [meta/loading §从交付物倒查](../../meta/loading.md#从交付物倒查反向加载)：recipe → mechanism → digest §6.5。
+
 ## 0. 一句话与五步法
 
 **本体的工程问题不是「建什么本体」，而是「把哪条判据放在哪个时刻、以什么形态执行、用什么尺子验收」。**

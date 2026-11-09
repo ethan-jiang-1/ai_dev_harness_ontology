@@ -22,7 +22,7 @@ updated: 2026-11-09
 | 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
 | 交付物 | 3 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference；03 内含约束强度谱长版附录（约 0.97 万字）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-09 14:40，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
+| 最后自检 | 2026-11-09 15:00，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
 
 ## 当前边界（不是阻塞）
 
@@ -37,9 +37,12 @@ updated: 2026-11-09
 - **没有独立 handbook**：原 7 章、4–6 万字书稿计划废弃；唯一保留的是原第三章，现为 [03 的长版附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md)。原 outline / planning-notes / handbook README 已删除，git 历史保留。理由：书稿无独立角色、后四章缺证据、主线过强。
 - **E-16 数字口径修正**：conclusions、ch03、01-constraint/sources、01-constraint/claims 的注记原来写成 `Tacit-FLE 64.3/66.7/65.0% vs IfR 64.3–65.0%`，与 OntoAct digest（Table 1）不符；改为 `78.6/83.3/90.0% vs IfR 64.3/66.7/65.0%`。这是转写错误，不是新判断；01-L11 原本就是对的。
 - **交付物 README**：清单改为三个子目录（01 判断 / 02 操作 / 03 依据）+ 03 的附录；新增「handbook 的去留」与待做（图/Deck/案例页）。
+- **01 证据计划**：新增 [plan.md](../deliverables/01-capability-status/plan.md)：E1–E9 的覆盖审计、现有 digest 回抽（H1–H6）、新 `src/` 来源（P0/P1/P2）、WBS、排期、DoD 与停止规则。定位是工作计划，不是结论。
+- **反向加载**：[meta/loading](./loading.md#从交付物倒查反向加载) 新增「从交付物倒查」三条链（01 期待→plan→digest；02 recipe→mechanism→digest；03 边界→E→附录）；三份 README 加「加载集」表；[topics/README](../topics/README.md) 与 [src/README](../src/README.md) 加反向读法指针。
+- **支持层契约**：[meta/loading](./loading.md) 加「支持层契约」；[conclusions](../topics/conclusions.md) 加反向阅读规则（E→digest §4/§5→frontier）；[topics/README](../topics/README.md) 加反向路由表；[src/README](../src/README.md) 加 digest 四节锚点；[plan](../deliverables/01-capability-status/plan.md) 加 E1–E9 → frontier 指针。目的：先保证 E→digest→frontier 可走，再开始倒逼。
 - **验收规格**：三份 README 末尾各加「期待与数据需求」：把期待写成可证伪句，列出「支持它需要的数据 / 现在的证据 / 缺口」。作用是逆向暴露证据缺口，不是新结论。
 - **术语**：GLOSSARY 新增「评测账本（Evaluation Ledger）」，与「台账」区分；交付物里的 `p_h`/false-veto/审批成本都指前者。
-- 自检：`python3 meta/tools/check_repo.py` 通过（328 文件 / 22 论文 / 4 开源；E=20，Q=3，C=4，L=65）。
+- 自检：`python3 meta/tools/check_repo.py` 通过（329 文件 / 22 论文 / 4 开源；E=20，Q=3，C=4，L=65）。
 
 ## 2026-11-09 手册第三章初稿
 
