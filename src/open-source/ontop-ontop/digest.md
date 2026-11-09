@@ -61,6 +61,7 @@ ontop query -m mapping.ttl -t ontology.ttl -q query.rq -p db.properties
 - **本体在构造期就进重写器**：`QuestQueryProcessor` 构造时 `rewriter.setTBox(obdaSpecification.getSaturatedTBox())`。
 - **重写与展开分离**：`rewrite` 管 TBox 蕴含，`QueryUnfolder` 管映射展开；两者都在生成 SQL 之前。
 - `ontop validate` 只做本体+映射校验，不需要查询。
+- **2026-11-09 代码核对（pin `964dbb7`）**：`QuestQueryProcessor.java:31` 类、构造器 `rewriter.setTBox(getSaturatedTBox())`、`:79` `reformulateIntoNativeQuery`；`QuestStatement.java:131` 调用执行。
 
 ## 4. 接缝判定
 

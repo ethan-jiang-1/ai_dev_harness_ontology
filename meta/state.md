@@ -22,14 +22,14 @@ updated: 2026-11-09
 | 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
 | 实验 | 4 个协议（EXP-001/002/003 + EXP-007）；无外部资产前置 |
 | 交付物 | 手册大纲 7 章；正文未写 |
-| 最后自检 | 2026-11-09 09:53，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
+| 最后自检 | 2026-11-09 11:18，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
 
 ## 当前边界（不是阻塞）
 
 1. **无外部资产请求**：D0/试点线已于 2026-11-09 删除；不再需要具名域、日志、题库、人或单价。
 2. **独立复现仍是空缺**：不影响 desk research；若要升「已证」，需自己跑 EXP-007 或找到公开可复现数据。
 3. **独立人类抽检**：只在对外交付时需要；内部研究不阻塞。
-4. **开源执行线**：可自主推进；需第二个独立实现才能决定是否升第七时刻。
+4. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 仍只有 1 个实现，需第二个才能决定是否升第七时刻。
 
 ## 扫描状态（全局视图）
 
@@ -53,6 +53,21 @@ updated: 2026-11-09
 - 删除 `experiments/EXP-004-narrow-deep-k1.md`、`EXP-005-action-gate-shadow.md`、`EXP-006-ontology-checker.md`、`_pilot-template.md`。
 - 不再请求具名域、日志、题库、人或单价；外部客户试点不是本仓库的路径。
 - git 历史保留；若以后真要做企业试点，可从历史恢复，但不在门厅出现。
+
+## 执行形态代码核对（2026-11-09）
+
+在 card 所 pin 的 commit 上读代码（未跑测试；不改结论等级为「已证」）：
+
+| 项目 | commit | `seam` | `execution_form` | 核对要点 |
+|---|---|---|---|---|
+| trustgraph | `184f622` | `read-path` | `engine` | SHACL-AF 策略求值；fail-open；只删 subject 侧；31 条策略测试存在 |
+| semantica | `39cf721` | `checker` | `compiled` | 本体→SHACL；pyshacl `inference="none"`；CLI 校验 |
+| ontop | `964dbb7` | `supply` | `engine` | TBox 饱和 + 查询重写 → SQL；不是 gate |
+| open-ontologies | `375fbc4` | `none` | `engine` | SHACL→SPARQL / verified Core；影响报告 + CI 规则门；不是单次写授权 |
+
+写入位置：[topics/execution-forms.md](../topics/execution-forms.md#代码级核对2026-11-09)（矩阵 + 4 条代码级判断）、[seams](../topics/seams.md#轴外位置可记录但不是六时刻)、4 个 digest 的「2026-11-09 代码核对」段、checker F7 的接口边界。
+
+关键发现：`engine` 不是一种语义（OWL 重写 / SHACL-AF / SHACL 校验）；执行 ≠ 健全（trustgraph fail-open）；执行 ≠ 授权（open-ontologies 只做 CI/报告）；三态在 JSON 保留、在 shell 退出码被折叠。
 
 ## 本轮修复（2026-11-09）
 

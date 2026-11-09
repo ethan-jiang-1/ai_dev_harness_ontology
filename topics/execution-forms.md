@@ -29,6 +29,8 @@ rq: [RQ1, RQ2, RQ5]
 
 **注意**：`compiled` 与 `engine` 的区别是「有没有一个显式的编译步骤」；`context` 不是「弱执行」，是「不执行，只供给」。不要把 `context` 当成 `engine` 的低配版——它们回答的是不同问题。
 
+`engine` 是统称：代码核对发现它至少覆盖 OWL 2 QL 查询重写（ontop）、SHACL-AF 策略求值（trustgraph）、SHACL 校验（semantica）、SHACL→SPARQL/verified Core（open-ontologies）四种语义。计数时不要把四种合成一个「强执行」。
+
 ## 26 个来源的初判
 
 计数：`engine` 4 / `compiled` 7 / `context` 2 / `label` 1 / `none` 12。
@@ -62,11 +64,29 @@ rq: [RQ1, RQ2, RQ5]
 | MIOE | `none` | 测模型内部表示，不是 harness 执行 | 尺子 |
 | SFE-O | `none` | OWL 表达力够，但约束未落成可执行 SHACL | 表示边界 |
 
-> 初判来自各 digest 的 §3/§4/§8；与卡片 `execution_form` 保持一致。改一档要同时改卡、本页与 digest 的判定段。
+> 初判来自各 digest 的 §3/§4/§8；与卡片 `execution_form` 保持一致。改一档要同时改卡、本页与 digest 的判定段。4 个开源项目已在 pin commit 上做代码级核对，见下节。
+
+## 代码级核对（2026-11-09）
+
+在 card 所 pin 的 commit 上，把 4 个开源项目的执行路径读了一遍（只读代码，未跑测试）。四者都算「执行」，但语义不同：
+
+| 项目（commit） | 位置 | 形态 | 代码实际做什么 | 不做什么 |
+|---|---|---|---|---|
+| trustgraph `184f622` | `read-path` | `engine` | `policy_filter.py` 从 `urn:graph:policy` 加载 SHACL-AF NodeShape；对候选节点跑 `sh:SPARQLTarget` + `sh:SPARQLRule`；`tg-pol:blocks` 默认 true；被 block 的 **subject 侧**三元组从查询结果删除；接在 `policy/triples/service.py` 返回前 | 不是动作前 gate；不做 OWL 推理；异常 fail-open；只删 subject 侧 |
+| semantica `39cf721` | `checker` | `compiled` | `OntologyEngine.to_shacl` 从 ontology dict 派生 SHACL；`validate_graph`/`run_shacl_validation` 调 pyshacl，`inference="none"`；CLI `validate shacl` | 不在 agent loop 内自动调用；不做 OWL 推理；没有 catch/FA 测量 |
+| ontop `964dbb7` | `supply` | `engine` | `QuestQueryProcessor` 构造时 `rewriter.setTBox(saturatedTBox)`；`reformulateIntoNativeQuery` 做 rewrite → unfold → SQL；`QuestStatement` 执行 | 不是 gate；不校验输出；不是 LLM agent |
+| open-ontologies `375fbc4` | `none`（工具面；CI 规则门，不是回路授权） | `engine` | 默认 `ShaclValidator` 把 SHACL 约束编译成 SPARQL 交 Oxigraph；`--verified` 走 `oo-shacl`（0/2/3，3=undetermined，`Certified`）；`closure_diff` 报蕴含损失 | 不授权单次写/落盘；`enforce` 是 CI 规则门；外层 CLI 把 `conforms:null` 映射为 exit 2；未跑 |
+
+**四条代码级判断**（`已核（代码）`；只读代码，不等于跑通）：
+
+1. **`engine` 不是一种语义。** ontop 是 OWL 2 QL 的 TBox 饱和 + 查询重写；semantica 是 SHACL 校验且 `inference="none"`；trustgraph 是 SHACL-AF 策略求值；open-ontologies 是 SHACL→SPARQL 或 verified Core。四者都叫「执行」，只有 ontop 动 TBox 蕴含。
+2. **执行 ≠ 健全。** trustgraph 在 target/rule 异常时返回 False/None，无策略直接放行；且 `_triple_blocked` 只查 `triple.s`。read-path 是 best-effort gate，不是强闸门。
+3. **执行 ≠ 授权。** open-ontologies 有真求值器、影响报告与 `enforce` CI 规则门，但没有单次写授权/commit gate；semantica 是 CLI 校验，不在回路内。唯一 read-path gate 仍是 trustgraph，不够第二个独立实现，`read-path` 保持轴外。
+4. **三态在接口上会被折叠。** `oo-shacl` 的 exit 3（undetermined）进入 wrapper 后变成 `conforms: null`；外层 `gate_exit_code` 把 null 映射为 exit 2，与解析失败同码。JSON 保留第三态，shell 退出码不保留——这是「执行形态」之外的一个接口层发现。
 
 ## 它改变了什么
 
-1. **把「本体有没有用」拆成「哪种形态、在哪一格」**。`engine`/`compiled` 才谈得上执行；`context` 谈的是供给；`label` 只是命名。
+1. **把「本体有没有用」拆成「哪种形态、在哪一格」**。`engine`/`compiled` 才谈得上执行；`context` 谈的是供给；`label` 只是命名。但 `engine` 内部至少四种语义（见代码核对），不能把「有引擎」当成一个强度刻度。
 2. **解释了 E 层的配比**。19 条 E 里有多条来自 `none` 形态的来源（E-01/E-07/E-08/E-09/E-14/E-15/E-18），它们支撑的是 harness/度量命题，不是「本体执行」命题。
 3. **给实验一个缺口**。现有实验多在换位置（EXP-003），缺「同一接缝、同一内容、只换形态」的消融；见 [EXP-007](../experiments/EXP-007-form-ablation.md)（提案）。
 

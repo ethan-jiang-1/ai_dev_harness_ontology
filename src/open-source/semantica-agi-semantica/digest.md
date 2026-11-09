@@ -70,6 +70,7 @@ ontology dict
 - `run_shacl_validation` 把 `sh:sourceShape` 回填成 `minCount/maxCount/datatype/class`，用于英文解释；代码注释明确 **`sh:qualifiedMinCount/qualifiedMaxCount` 未处理**，会退化成 `?`。
 - `inference="none"`：校验前不做 OWL 演绎；`validate_graph` 没有暴露推理参数。
 - 依赖：`pyshacl` 是可选 extra（`semantica[shacl]`）；导入 `semantica.ontology` 会拉 numpy/scipy/pydantic 等重依赖。
+- **2026-11-09 代码核对（pin `39cf721`）**：`engine.py:200` `to_shacl`、`:313` `validate_graph`；`ontology_validator.py:148` `run_shacl_validation`、`:194` `pyshacl.validate(inference="none")`。
 
 ## 4. 接缝判定
 

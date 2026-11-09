@@ -70,6 +70,7 @@ TriplesQueryRequest（可带 user_context）
 - **三处缓存**：查询结果 30s（`QueryCache`）、编译后的 SPARQL 64 条（`SparqlCache`）、节点判定 60s（`NodeDeterminationCache`，key 含 user context 哈希）。
 - **hydrate 的规模**：每个候选节点 × 每个「从 ?this 可达的谓词」一次查询；谓词由 SPARQL 代数遍历得到（支持多跳、OPTIONAL/UNION）。
 - **失败路径**：见 §6——target 抛异常 → 当作不命中；rule 抛异常 → 无判定；缺 `sh:select`/`sh:construct` → 跳过该策略；无策略 → 全量返回。**整体是 fail-open**；只有「有策略但没传 user_context」是 fail-closed。
+- **2026-11-09 代码核对（pin `184f622`）**：`policy_filter.py` 的 `apply`、`_triple_blocked`（只查 `triple.s`）与异常返回 False/None 与上文一致；`tests/unit/test_policy/test_policy_filter.py` 有 31 条测试（存在，未重跑）。
 
 ## 4. 接缝判定
 

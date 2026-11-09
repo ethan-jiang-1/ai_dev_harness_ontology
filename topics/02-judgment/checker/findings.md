@@ -69,7 +69,8 @@
 - **等级**：已核（代码；本次未跑起来）。
 - **条件**：适用于任何「部分覆盖」的 checker：shapes 不完整、约束被 skip、样本抽样、离线标注集缺答案。
 - **含义**：checker 的度量要同时报三个数：checked / passed / undetermined（或 skipped）；否则 catch 与 FA 都不可比。这直接约束 G1/G5 的评测口径。
-- **来源**：[open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md) §3–§5；`src/shacl_verified.rs`、`src/shacl.rs`。
+- **接口边界（2026-11-09 代码核对）**：exit 3 是 `oo-shacl` 子进程的；外层 `gate_exit_code` 把 `conforms:null` 映射为 exit 2，与解析失败同码。三态在 JSON 里保留（`conforms:null` + `undetermined`），在 shell 退出码里被折叠。引用「exit 3」时必须说明是哪一层。
+- **来源**：[open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md) §3–§5；`src/shacl_verified.rs`、`src/shacl.rs`、`src/main.rs` 的 `gate_exit_code`。
 
 ## F8 · 覆盖与保证不可兼得
 

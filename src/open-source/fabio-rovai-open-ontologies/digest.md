@@ -58,6 +58,7 @@ open-ontologies --data-dir DIR shacl --shapes shapes.ttl
  → shacl_verified::validate_verified
      → 拒绝 sh:sparql / 用户自定义组件（W3C 120 条里 22 条）
      → 0 = verdict；2 = 文件读失败；3 = undetermined（没检查完）
+     （这是 oo-shacl 子进程的码；外层 CLI 见 §3 的代码核对）
  → 「conforms: true」只由机器检查过的定理覆盖
 
 # 变更影响
@@ -69,7 +70,9 @@ open-ontologies diff old.ttl new.ttl → OntologyService::diff → JSON
 实现细节（可核对）：
 
 - **两条求值路径不是 superset 关系**：默认路径支持 `sh:sparql` 但会 skip 一些约束；verified 路径覆盖 SHACL Core 但拒绝 `sh:sparql`。CLI 明确拒绝把 `--verified` 和 `--valid-at/--as-of/--all-versions` 合用（否则 scope 会被静默丢弃）。
-- **undetermined 有独立 exit code 3**：代码注释说得很直白——「conforms」与「我没检查完」不能合并。
+- **undetermined 有独立 exit code 3**：代码注释说得很直白——「conforms」与「我没检查完」不能合并。**但这是 `oo-shacl` 子进程的码**；外层 `gate_exit_code` 把 `conforms:null` 映射为 exit 2，与解析失败同码。JSON 保留 `conforms:null` + `undetermined`，shell 退出码不保留第三态。
+- **2026-11-09 代码核对（pin `375fbc4`）**：`src/shacl.rs` 确认默认路径把核心约束编译为 SPARQL 交 Oxigraph；`src/shacl_verified.rs` 确认 verified 包装 `oo-shacl` 的 0/2/3；`src/main.rs:1822` 的 `gate_exit_code` 确认外层把 null 折叠成 2。
+- **`enforce` 是 CI 规则门，不是 commit 授权**：`Gate::Enforce` 在任一 `severity=error` 时 exit 1，但它检查的是规则包（orphan class/missing domain 等），不对单次写/落盘签发授权。
 - **变更报告带「gaming direction」**：`headline_gaming_direction` 明说 headline 指标可以被「缩小投影词表」刷低；报告把方向写进 payload，而不是只写文档。
 - **MCP**：`src/server.rs` 用 `rmcp` 暴露工具；工具面可按 profile 裁剪（`--tool-profile`）。
 

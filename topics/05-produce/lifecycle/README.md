@@ -47,7 +47,7 @@ evidence: [E-02, E-05]
 
 这四段是框架性归纳（`推测`），不是三篇 digest 直接测出来的：CASTON 落在第 2 段，Evontree 落在第 1/4 段，FIRME 落在第 3 段。阶段 2 到 4 的共同难点：**没有人对「这个本体今天仍然成立」负责。** 与代码不同，本体没有测试，失效是静默的。
 
-**工具侧的部分反例（`已核`，代码；未跑）**：open-ontologies 把本体变更做成可执行检查——SHACL 校验（默认路径会列 `skipped_constraints`；verified 路径有 `undetermined`/exit 3）、闭包差分（丢了哪些蕴含、带证书与 exit code）。所以更准确的说法是：**本体没有回归测试，但可以有一致性/约束检查**；工具让失效可见，不替人负责语义正确。引用时不要把「有检查」写成「有测试」。详见 [open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md)。
+**工具侧的部分反例（`已核`，代码；未跑）**：open-ontologies 把本体变更做成可执行检查——SHACL 校验（默认路径会列 `skipped_constraints`；verified 路径的 `oo-shacl` 用 exit 3 = undetermined，外层 CLI 再把 `conforms:null` 映射为 exit 2）、闭包差分（丢了哪些蕴含、带证书与 exit code）。所以更准确的说法是：**本体没有回归测试，但可以有一致性/约束检查**；工具让失效可见，不替人负责语义正确。引用时不要把「有检查」写成「有测试」。详见 [open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md)。
 
 ## 失效模式
 

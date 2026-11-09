@@ -61,7 +61,7 @@
 - **判断**：trustgraph 的策略求值器在错误路径上放行：`sh:SPARQLTarget` 抛异常 → 当作不命中；`sh:SPARQLRule` 抛异常 → 无判定；策略缺 `sh:select`/`sh:construct` → 跳过该策略；没有任何策略 → 原样返回。只有「有策略 + 请求未带 user_context」是 fail-closed。
 - **等级**：已核（代码；`policy_filter.py: _run_sparql_target/_run_sparql_rule`、`PolicyFilter.apply`）。
 - **含义**：授权执行器的错误路径决定它是「安全默认」还是「可用性优先」。读路径实现选了可用性；引用它做安全论证时必须写清，且需要异常注入测试（当前没有）。
-- **来源**：[trustgraph digest](../../../src/open-source/trustgraph-ai-trustgraph/digest.md) §3/§6。
+- **来源**：[trustgraph digest](../../../src/open-source/trustgraph-ai-trustgraph/digest.md) §3/§6；2026-11-09 在 pin `184f622` 上核对 `policy_filter.py`。
 
 ## F7 · 读路径过滤只删 subject 侧
 
