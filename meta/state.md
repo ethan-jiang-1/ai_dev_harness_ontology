@@ -22,7 +22,7 @@ updated: 2026-11-09
 | 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
 | 实验 | 6 个协议 + 1 个形态消融（EXP-007 提案）；D0 资产门未签核，EXP-004/005/006 暂不可开跑 |
 | 交付物 | 手册大纲 7 章；正文未写 |
-| 最后自检 | 2026-11-09 09:56，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
+| 最后自检 | 2026-11-09 10:05，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
 
 ## 当前阻塞
 
