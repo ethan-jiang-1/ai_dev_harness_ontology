@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-08
+updated: 2026-11-09
 ---
 
 # 03 知识派：怎么让它知道得对
@@ -22,6 +22,8 @@ updated: 2026-11-08
 |---|---|---|---|---|
 | [projection](./projection/README.md) | 把领域知识投影成文本/JSON/工具 | `draft`，已拆 F/G | 4 F / 5 G | dashboard |
 | [compilation](./compilation/README.md) | 把证据预编译成 claim–leaf 工件 | `draft`，已拆 F/G | 11 F / 8 G | dashboard |
+
+**薄页（<2 篇独立来源）**：projection（1 篇，单工厂）、compilation（2 篇，同一 CAI 的两种切法）。薄页的结论不能外推为跨域规律。
 
 ## 本派当前判断
 

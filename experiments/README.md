@@ -7,6 +7,10 @@ updated: 2026-11-08
 
 流水线的旁路。这里只放**实验设计/协议**，实现产物在仓库外，靠实验编号回链（见 [ADR 0001](../adr/0001-research-repo-over-code.md)）。
 
+## 当前阻塞
+
+EXP-004/005/006 已冻结为试点协议，但 **D0 外部资产门未签核**（具名域、≥500 条带 state_hash 日志、200 题+gold、K2 的 3 人、单价/人时），暂不可开跑。详见 [meta/implementation/status.md](../meta/implementation/status.md) 与 [meta/state.md](../meta/state.md)。EXP-007 不依赖客户资产，可用合成域先做 v0。
+
 ## 为什么需要
 
 目前全仓库最强的结论等级是「已核原文摘要」——**没有一个结论是独立复现的**。所有判断都继承他人的实验条件，我们无法确认这些条件是否是我们的条件。
@@ -18,9 +22,10 @@ updated: 2026-11-08
 | EXP-001 | 同一 harness 下，结构化工件有没有用 | 设计中 | E-01 / E-08 | [EXP-001](./EXP-001-structured-artifacts.md) |
 | EXP-002 | 判定器的漏检/误报曲线，而非单一 accuracy | 未开始 | E-02 | [EXP-002](./EXP-002-checker-fp-fn.md) |
 | EXP-003 | 同一本体放在不同接缝（上下文/判定/授权）的差异 | 未开始 | E-04 / C-03 | [EXP-003](./EXP-003-seam-position.md) |
-| EXP-004 | K0/K1/K2：塔的边际是否 ≥15pp | v0 draft | E-12 / 03-L1 | [EXP-004](./EXP-004-narrow-deep-k1.md) |
-| EXP-005 | 可逆性路由 shadow 的 false-veto 能否 ≤5% | v0 draft | E-15 / E-04 | [EXP-005](./EXP-005-action-gate-shadow.md) |
-| EXP-006 | data-derived checker 能否在空结果重试上提供增量 catch | v0 draft | E-02 | [EXP-006](./EXP-006-ontology-checker.md) |
+| EXP-004 | K0/K1/K2：塔的边际是否 ≥15pp | 设计中（v0 协议已落） | E-12 / 03-L1 | [EXP-004](./EXP-004-narrow-deep-k1.md) |
+| EXP-005 | 可逆性路由 shadow 的 false-veto 能否 ≤5% | 设计中（v0 协议已落） | E-15 / E-04 | [EXP-005](./EXP-005-action-gate-shadow.md) |
+| EXP-006 | data-derived checker 能否在空结果重试上提供增量 catch | 设计中（v0 协议已落） | E-02 | [EXP-006](./EXP-006-ontology-checker.md) |
+| EXP-007 | 同一接缝、只换执行形态（engine/compiled/context/label） | 未开始 | P1a / P2 | [EXP-007](./EXP-007-form-ablation.md) |
 
 ## 状态
 

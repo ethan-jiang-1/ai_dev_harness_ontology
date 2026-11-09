@@ -2,21 +2,23 @@
 
 这个仓库不要求一次读完。**先读路由，再按任务加载。**
 
-## 15 分钟路径
+## 15 分钟路径（只够“读懂”，不够“改仓”）
 
 1. [README](../README.md) §1-3：问题、三个工位、六派。
-2. [THESIS](../THESIS.md) 的「研究问题」：RQ1-RQ5。
-3. [AGENTS](../AGENTS.md) 的「先定位工位」表。
-4. [topics/README](../topics/README.md)：三轴 + 4+1+1。
-5. 任选一派 README，读它的「本目录怎么长」。
+2. [THESIS](../THESIS.md) 的「研究问题」与 P1a/P1b/P1c、P2、P3a/P3b。
+3. [AGENTS](../AGENTS.md) 的「先定位落点」表。
+4. [topics/README](../topics/README.md)：三轴 + 4+1+1；[execution-forms](../topics/execution-forms.md)：第四根形态轴。
+5. [conclusions](../topics/conclusions.md)：E-01…E-19 的等级与出处；至少读 E-01、E-04。
+6. 任选一派 README，读它的「本目录怎么长」。
 
-到这里已经够接手；下面的内容按任务再开。
+到这里你能复述“它在研究什么”。**要安全地改仓库，还不够**：再加 [src/README](../src/README.md) §5（入库流程）、[meta/conventions](./conventions.md)（字段）、[meta/state](./state.md)（当前计数/阻塞）。实际加载约 2,800–3,000 行，是上面路径的 6–9 倍——这是“接手”的真实成本，不是 15 分钟。
 
 ## 按任务加载
 
 | 你要做什么 | 只加载 | 先不要加载 |
 |---|---|---|
 | 了解仓库 | README §1-3、THESIS 的 RQ | 全部 topics |
+| 看当前状态/阻塞 | [meta/state](./state.md) | 全部 archive |
 | 找一条结论 | [conclusions](../topics/conclusions.md) 的 `E-xx` | 全部卡片 |
 | 找本派判断 | `topics/<派>/claims.md` 的 `L-xx` | 其他派 |
 | 在一个派内干活 | 该派 README + `claims.md` + `sources.md` + `frontier.md` | 其他派 |
@@ -25,13 +27,19 @@
 | 加原文/卡 | [src/README](../src/README.md) + `_templates/`（论文 / 材料 / 开源三套） | topics |
 | 读一个开源项目 | [open-source/README](../src/open-source/README.md) + 该项目 `digest.md` | 其他项目、全部论文 |
 | 做交付 | [conclusions](../topics/conclusions.md) + [deliverables/README](../deliverables/README.md) | src 原文 |
-| 设计验证 | [experiments/README](../experiments/README.md) + 对应 E-xx | 全部卡片 |
+| 设计验证 | [experiments/README](../experiments/README.md) + 对应 E-xx / P | 全部卡片 |
+| 查结构决策 | [adr/](../adr/)（4 条决策 + 自检例外） | 全部 meta |
+| 查 meta 有什么 | [meta/README](./README.md)：现行 / 模板 / 历史 | `archive/` |
 
 ## 三条规则
 
 1. **`E-xx` 才是对外结论。** `E-xx` 在 `topics/conclusions.md`，可被 `deliverables/` 引用；`L-xx` 只在本派 `claims.md` 里工作，进交付物前必须先升 `E-xx`。
 2. **派内工作只读该派目录。** 需要跨派时，先读 `conclusions` 的对应 `E-xx`，再回派里看细节；不要从派根开始把所有派扫一遍。
-3. **`status` 不是“完成度”。** `seed` = 结构在、内容已开始、未交叉核对；不是空。`draft` = 论证完整、可能变。先看内容，不要因为 `seed` 跳过。
+3. **`status` 不是“完成度”。** `seed` = 结构在、内容已开始、未交叉核对；`draft` = 论证完整、可能变；`superseded` = 已归档的历史文档。先看内容，不要因为 `seed` 跳过。
+
+## 计数只有一个权威
+
+README、checklist、manifest 不再各写一套“当前有多少”。**计数与阻塞只看 [meta/state](./state.md)**；`python3 meta/tools/check_repo.py` 是机器可核的那一半。
 
 ## 为什么不做一个总索引
 
@@ -44,3 +52,5 @@
 - 卡片 → `sources.md` → `claims.md` → `conclusions` 的 promote 路径；
 - 交付物只引 `E-xx`；
 - 发现冲突时，回 `claims.md` 与 `conclusions.md` 各改一处，别在交付物里调和。
+
+它也不解决“历史快照冒充现行规则”：那由 [meta/README](./README.md) 的分栏与 `archive/` 解决。

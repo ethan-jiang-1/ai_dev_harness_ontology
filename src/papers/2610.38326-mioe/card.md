@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2610.38326
 title: Can LLMs Faithfully Solve Ontology Engineering Tasks? A Mechanistic Interpretability Study
 authors: Bohui Zhang, Albert Meroño-Peñuela, Elena Simperl
@@ -11,6 +11,9 @@ pdf: 2610.38326-mioe.pdf
 direction: 3
 home: topics/06-measure
 subtopic: mechanism
+also_supports: []
+evidence_role: boundary-ruler
+execution_form: none
 updates:
   - topics/06-measure/mechanism/README.md
   - topics/06-measure/claims.md

@@ -10,8 +10,10 @@
 - 研究问题与假设：[THESIS](./THESIS.md)
 - 术语（动笔前先对齐用词）：[GLOSSARY](./GLOSSARY.md)
 - 按需加载（渐进披露）：[meta/loading](./meta/loading.md)
+- 当前状态与阻塞：[meta/state](./meta/state.md)
+- meta 里有什么：[meta/README](./meta/README.md)
 
-## 先定位工位
+## 先定位落点
 
 | 你在做什么 | 落点 |
 |---|---|
@@ -55,6 +57,7 @@
 
 ## 写之后
 
+- 跑 `python3 meta/tools/check_repo.py`；失败不提交。
 - 问一句「这次动笔改变了哪条判断」：改了 → 先写本派 `claims.md`；跨派或进交付物才升 [conclusions](./topics/conclusions.md)；没改 → 只补来源。
 - 如果修正了旧判断，回改所有引用它的主题页，并在 `card.md` / `digest.md` 的 `updates:` 登记。
 - 更新被改文件的 `updated` 与 `status`，并在 [src 台账](./src/README.md) 记一笔。
@@ -74,4 +77,4 @@
 - 不把派内局部判断直接写进 `conclusions.md`；先写本派 `claims.md`。
 - 不把 `runs/` 里的输出直接当 README 结论；先审 run，再升 `claims.md` / README。
 - 不用 `card.md` 当消化正文；`digest.md` 必须自包含，下游不需要先读 card。
-- 不引入代码目录。验证性实现放仓库外，靠 `EXP-xxx` 编号回链。
+- 不引入代码目录。验证性实现放仓库外，靠 `EXP-xxx` 编号回链。**唯一例外**是 `meta/tools/` 的只读自检（[ADR 0005](./adr/0005-repo-self-check.md)），不承载研究逻辑。

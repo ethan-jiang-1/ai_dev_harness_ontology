@@ -13,10 +13,12 @@ scan_date: 2026-11-09
 stars_at_scan: 1016
 last_push: 2026-11-04
 ontology_role: core
-seam: none
-execution: executed
+seam: supply
+execution_form: engine
+evidence_role: mechanism-only
 home: topics/03-knowledge
 subtopic:
+also_supports: []
 updates: []
 ---
 

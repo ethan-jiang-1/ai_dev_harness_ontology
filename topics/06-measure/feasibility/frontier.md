@@ -27,7 +27,7 @@
 
 ## digest 吸收边界（G-X）
 
-> 本页引用一律写 arXiv 编号或论文名，不用审计矩阵的 D-ID——`absorption-matrix.md` 的 D-03、D-06–D-10 与 [digest-ledger](../../../meta/full-audit/digest-ledger.md) 不一致（例：矩阵 D-03=POLAR、D-06=CASEL、D-10=Grid；ledger D-03=CASEL、D-06=FIRME、D-10=POLAR）。矩阵侧待整表对齐，不在本页范围。
+> 本页引用一律写 arXiv 编号或论文名，不用审计矩阵的 D-ID——`absorption-matrix.md` 的 D-03、D-06–D-10 与 [digest-ledger](../../../meta/archive/2026-11/full-audit/digest-ledger.md) 不一致（例：矩阵 D-03=POLAR、D-06=CASEL、D-10=Grid；ledger D-03=CASEL、D-06=FIRME、D-10=POLAR）。矩阵侧待整表对齐，不在本页范围。
 
 | digest 工程发现 | 状态 | 落在哪 / 为什么不进来 |
 |---|---|---|

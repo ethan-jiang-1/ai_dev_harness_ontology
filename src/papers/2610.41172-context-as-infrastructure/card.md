@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2610.41172
 title: Context as Infrastructure - Knowledge Compilation for Retrieval in Agentic Systems with Harnesses
 authors: Zhichang Yu, Baining Cao, Sbaaoui Idriss, et al.（infiniflow / RAGFlow）
@@ -11,6 +11,9 @@ pdf: 2610.41172-context-as-infrastructure.pdf
 direction: 3
 home: topics/03-knowledge
 subtopic: compilation
+also_supports: []
+evidence_role: harness-evidence
+execution_form: none
 updates:
   - topics/03-knowledge/compilation/README.md
   - topics/03-knowledge/compilation/findings.md

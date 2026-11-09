@@ -13,10 +13,12 @@ scan_date: YYYY-MM-DD
 stars_at_scan: 0        # 只作影响力参考，不是质量证明
 last_push: YYYY-MM-DD
 ontology_role: unclear  # core | adjunct | none | unclear（初判，定级在 digest）
-seam: none              # action-gate | evidence | checker | commit-gate | memory | determinism | none
-execution: unknown      # executed | context | mixed | none | unknown（初判，定级在 digest）
+seam: none              # 六时刻 | read-path | supply | reasoning | training | none
+execution_form: unknown # engine | compiled | context | label | none | unknown（初判，定级在 digest）
+evidence_role: mechanism-only  # execution-test | mechanism-only | harness-evidence | boundary-ruler
 home:                   # 归位：topics/<派>
 subtopic:
+also_supports: []
 updates: []             # 本卡修正后需要回改的 topics 文档
 ---
 

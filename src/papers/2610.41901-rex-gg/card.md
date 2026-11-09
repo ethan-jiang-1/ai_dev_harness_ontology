@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 摘要级
 provenance: 原文摘要
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2610.41901
 title: ReX-GG: a LLM Ensemble Pipeline for Relation-extraction and Graph Generation
 authors: Giacomo Magnifico, Eduard Barbu（塔尔图大学）
@@ -11,6 +11,9 @@ pdf: 2610.41901-rex-gg.pdf
 direction: 2
 home: topics/05-produce
 subtopic: generation
+also_supports: []
+evidence_role: harness-evidence
+execution_form: label
 updates: []
 ---
 

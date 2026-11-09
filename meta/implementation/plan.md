@@ -5,7 +5,7 @@
 ## 0. 起点
 
 - 全审已完成：22/22 digest E3+、12/12 L3 E4、20/20 topic A4、G-X 20/20、8 个 V3 设计。
-- 报告：[条件 go（仅内部试点）/ 对外 no-go](../full-audit/report.md)。
+- 报告：[条件 go（仅内部试点）/ 对外 no-go](../archive/2026-11/full-audit/report.md)。
 - 已选 3 个试点：
   1. N&D：K1 命名+单位（最便宜，先做）。
   2. action-gate：shadow 可逆性路由。

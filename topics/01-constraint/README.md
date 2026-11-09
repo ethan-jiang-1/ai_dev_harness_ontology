@@ -7,9 +7,9 @@ updated: 2026-11-09
 
 ## 核心主张
 
-**安全是结构问题，不是判断问题。**
+**安全应作为结构问题来问，不是让模型给判断。**（`推测`，组织假设）
 
-POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是否存在一个可接受的逆操作序列**」——后者的答案是结构性的、可审计的；前者只是一个标签，而标签无法被验证。
+POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是否存在一个可接受的逆操作序列**」——后者的答案是结构性的、可审计的；前者只是一个标签，而标签无法被验证。但 POLAR 的实测只到「有逆序列」：T1-only 接近 blanket veto，结构贡献未被隔离（[01-L6](./claims.md)）。**这是本派的方向性主张，不是已被证明的结论。**
 
 这一派的判据尽量不依赖模型**自评**，而依赖可检查的世界状态/本体事实。但各子机制做到的程度不同：action-gate 查运行时状态，reasoning-gate 的候选仍由 LLM 提出、只验证条件，commit-gate 的**写路径**仍是概念设计、无实现（读路径已有开源实现，见 [commit-gate F5](./commit-gate/findings.md)）。这不是说它是唯一不依赖模型输出的一派。
 
@@ -20,6 +20,8 @@ POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是�
 | [action-gate](./action-gate/README.md) | 动作前：可逆性够不够、该分配多少审查 | `draft`，已拆 F/G | 6 F / 5 G | dashboard → findings |
 | [commit-gate](./commit-gate/README.md) | 落盘前：证据够不够授权持久化 | `seed`，已拆 F/G | 7 F / 4 G | dashboard |
 | [reasoning-gate](./reasoning-gate/README.md) | 推理期：条件成不成立、知识源怎么取 | `draft`，已拆 F/G | 4 F / 4 G | dashboard |
+
+**薄页（<2 篇独立来源）**：commit-gate（1 篇概念架构 + trustgraph 读路径支持）。薄页只作候选/边界，不承担稳定判断。
 
 ## 本派当前判断
 

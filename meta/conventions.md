@@ -36,7 +36,9 @@ updated: 2026-11-09
 | 字段 | 用在哪 | 取值 | 含义 |
 |---|---|---|---|
 | `status` | 所有文档 | `seed` / `draft` / `stabilized` / `superseded` | 文档成熟度，不代表篇幅 |
-| `home` / `subtopic` | 源卡 / digest | `topics/<派>` / `<子主题>` | 归位；移动子主题只改 `subtopic` |
+| `home` / `subtopic` / `also_supports` | 源卡 / digest | `topics/<派>` / `<子主题>` / `[<子主题>]` | 归位；移动子主题只改 `subtopic`；一篇论文喂多个子主题时，主归位放 `subtopic`，其余放 `also_supports` |
+| `evidence_role` | 源卡 | `execution-test` / `mechanism-only` / `harness-evidence` / `boundary-ruler` | 对中心问题提供哪类证据：真的测了本体被执行 / 只提机制 / 提供 harness 证据 / 只做边界与尺子 |
+| `execution_form` | 源卡 | `engine` / `compiled` / `context` / `label` / `none` / `unknown` | 本体以什么形态被执行：引擎求值 / 编译成约束 / 作为上下文注入 / 只当标签 / 未执行 / 未判 |
 | `source_type` | `src/` 卡片 | `paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey` / `open-source` | 素材类型；证据天花板见 [source-types](./source-types.md) |
 | `reading` | 源卡 `card.md` | 论文/材料：`未读` / `综述级` / `摘要级` / `精读` / `已消化`；代码：`未读` / `已读代码` / `已跑通` | 读到什么程度；**不是证据等级** |
 | `provenance` | 源卡 `card.md` | 论文/材料：`原文正文` / `原文摘要` / `综述转述` / `未核`；代码：`一手代码` / `一手文档` / `未核` | 证据来自哪里 |
@@ -50,7 +52,7 @@ updated: 2026-11-09
 |---|---|---|
 | `commit` / `release` / `license` | SHA 或 tag / tag / SPDX | 版本与许可；不 pin commit 不算入库 |
 | `scan_date` / `stars_at_scan` / `last_push` | 日期 / 数字 / 日期 | 扫描快照；star 只作影响力参考 |
-| `ontology_role` / `seam` / `execution` | `core/adjunct/none/unclear` / 六时刻或 `none` / `executed/context/mixed/none/unknown` | 本体地位、接缝、执行形态；只写初判，定级在 digest |
+| `ontology_role` / `seam` / `execution_form` | `core/adjunct/none/unclear` / 六时刻 + `read-path/supply/reasoning/training/none` / `engine/compiled/context/label/none/unknown` | 本体地位、接缝/轴外位置、执行形态；只写初判，定级在 digest。旧的 `execution` 字段已由 `execution_form` 取代 |
 
 `status` 的判据：
 
@@ -70,6 +72,16 @@ updated: 2026-11-09
 | 一手正文 / 一手摘要 | 已核 |
 | 转述 / 待核 | 推测 |
 | 反例 / 冲突 | 存疑 |
+
+## 阅读深度（L1/L2/L3）
+
+| 档 | 读到哪 | digest 目标长度 | 用途 |
+|---|---|---|---|
+| L1 | 摘要 + 结论 + 局限 | 100–240 行 | 一页判断；只作边界/候选证据 |
+| L2 | 正文主要节 + 关键表 | 160–260 行 | 标准消化；可进子主题 F |
+| L3 | 正文 + 关键表/图 + 附录按需 | 250–360 行 | 深消化；可支撑 E/L 的核心证据 |
+
+长度是目标，不是门：**自包含优先**。L1 的“一页判断”指结论页，不要求整个 digest 只有一页。L1/L2/L3 是阅读深度，不是证据等级，也不是文档 `status`。
 
 ## 命名
 

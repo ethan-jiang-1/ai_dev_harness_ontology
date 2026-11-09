@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2610.37809
 title: What Does an Ontology Catch? Curated, LLM-Generated and Data-Derived Ontologies as Checkers of LLM Agents over Knowledge Graphs
 authors: Michal Orzechowski, Rund Tawfiq, Tomasz Kosciolek
@@ -11,6 +11,9 @@ pdf: 2610.37809-what-does-an-ontology-catch.pdf
 direction: 1
 home: topics/02-judgment
 subtopic: checker
+also_supports: []
+evidence_role: execution-test
+execution_form: compiled
 updates:
   - topics/02-judgment/checker/README.md
   - topics/02-judgment/claims.md

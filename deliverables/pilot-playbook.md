@@ -1,6 +1,6 @@
 # 试点 playbook：90 天，只做三个
 
-> 依据：全审 [report](../meta/full-audit/report.md) 的“条件 go（内部试点）/ 对外 no-go”。  
+> 依据：全审 [report](../meta/archive/2026-11/full-audit/report.md) 的“条件 go（内部试点）/ 对外 no-go”。  
 > 本 playbook 只重组已有 E/L，不新增判断；设计/阈值标 `推测`。  
 > 实现产物在仓库外；实验协议见 [experiments](../experiments/README.md)。
 
@@ -75,14 +75,14 @@
 ## 6. 可引用的判断（不新增）
 
 - 投影/知识供给：E-12（K1 最大层、H3 未支持、物理深度未测）；E-01（被测量的结构化工件无准确率增益）。
-- 护栏：E-15（harm–approval–cost 前沿；τ=∞；NoRev=verify-only）；E-04（结构判据/能力反向）。
+- 护栏：E-15（harm–approval–cost 前沿；τ=∞；NoRev=verify-only）；E-04（结构贡献未隔离；强模型/retail 回退）；E-13（六点拟合，不可当预测曲线）。
 - 判定器：E-02（三源权衡；空结果基线；precision 口径）。
 - 度量：E-18（配置当系统变量；54% 限定真实尝试）；C-03（按机制类型选尺）。
 - 全部证据等级见 [conclusions](../topics/conclusions.md)；本 playbook 不升 E。
 
 ## 7. 回链
 
-- 全审：[report](../meta/full-audit/report.md) · [value-trace](../meta/full-audit/value-trace.md)
+- 全审：[report](../meta/archive/2026-11/full-audit/report.md) · [value-trace](../meta/archive/2026-11/full-audit/value-trace.md)
 - 试点计划：[meta/implementation/plan.md](../meta/implementation/plan.md)
 - 成本：[cost-model](../meta/implementation/cost-model.md)
 - 实验：[experiments](../experiments/README.md)

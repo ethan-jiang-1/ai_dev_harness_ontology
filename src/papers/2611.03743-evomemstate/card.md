@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2611.03743
 title: EvoMemState: Evolving Memory State for Personal Agents
 authors: Zhishang Xiang, Yunbo Tang, Zhongqiao Liu, et al.（厦门大学等）
@@ -11,6 +11,9 @@ pdf: 2611.03743-evomemstate.pdf
 direction: 4
 home: topics/04-state
 subtopic: memory
+also_supports: []
+evidence_role: execution-test
+execution_form: compiled
 updates:
   - topics/04-state/memory/README.md
   - topics/04-state/claims.md

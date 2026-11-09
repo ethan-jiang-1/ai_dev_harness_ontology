@@ -14,9 +14,11 @@ stars_at_scan: 14475
 last_push: 2026-11-08
 ontology_role: core
 seam: checker
-execution: mixed
+execution_form: compiled
+evidence_role: mechanism-only
 home: topics/03-knowledge
 subtopic:
+also_supports: []
 updates: []
 ---
 

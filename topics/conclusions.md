@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-09
 ---
 
 # 结论总表
@@ -19,25 +19,27 @@ updated: 2026-11-07
 
 | 编号 | 结论 | 出处 | 影响 |
 |---|---|---|---|
-| E-01 | 在足够强的检索 harness 下，**被测量的**结构化工件（摘要树、PageIndex 大纲、wiki、entity graph）在 **FRAMES** 上无可检出的准确率增益；PageIndex 式大纲在同规模下反而退化。**本体、timeline、mind map、session memory 在 Table 1 是 not measured，不能算进这个结论。** 作者自述这些工件的回报在**部署层**（治理、跨源集成、上手、时序定向、连续性），而准确率基准看不见；但其部署 ledger 为空，**这是作者主张，不是观测**。限定：单基准、单 compiler/answer model、无 CI | [CAI digest](../src/papers/2610.41172-context-as-infrastructure/digest.md) | **支撑 P1**（价值在约束与控制） |
-| E-02 | 三种本体来源（专家 / LLM 生成 / 数据挖掘）在漏检与误报上各有偏向，无单一向优：真实答案 catch/FA 为 curated 18.9/16.8、data-derived 8.2/3.5、masked LLM 5.0/1.8；precision（**人工故障、25% 错答案假设**）为 57.1/72.3/93.7；curated 精确度**仅略优于随机**（+1.6 点，CI 跨零）；按发布状态使用的 curated schema 可能**与自身数据矛盾**。空结果重试在人工 fault 上 catch 79.2%、FA 0%，是关键基线 | [What Does an Ontology Catch digest](../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) | **支撑 P3**（判定是权衡）；给出判定器评估基线 |
-| E-03 | 强制每个答案报告所用作证据的本体观察 + 接地等级（entailed/supported/related/unrelated），在三个大本体、六个医学 QA 任务、2 backbone 上整体最优：平均 50.5%/68.1%；Tests 1–2 +10–15pp；Test 3 同 8k 预算 84.9% vs 66.7%，9.7k vs 96.7k tokens/问。限定：等级是**模型自评**、未校准；检索是主瓶颈（gold evidence 完整检索 MCQ 61.7% vs OQ 23.6%） | [OA-RAG](../src/papers/2610.36335-oa-rag/card.md) | 支撑 P1、P2；接地等级是弱信号 |
-| E-04 | 用两层本体对工具调用打可逆性分、执行前剪枝：τ²-bench 上六个模型中四个在 airline 域提升 0.11–0.18；**但 18 个模型-域组合仅 8 个整体改善，retail 与更强模型常回退**；作者声明 reward 不是防止伤害的直接度量。**T1-only 接近 blanket veto，增益却不比 full 小——结构反向组合的贡献未被隔离** | [POLAR](../src/papers/2610.08082-polar/card.md) | **支撑 P3**，**削弱**「护栏总是更好」；也削弱「结构本身有效」 |
-| E-05 | 本体在记忆系统中承担**对齐与印证条件**（跨期身份 registry、双模态互证），而非自由推理；克制的用法更易落地。alias memory 让 final-period CMR +7.8–12.1 pp（4 settings），human-audit recall +22.5–29.0 pp，semantic matching token −40.3%。限定：专有数据、3 period、无年度周期；未匹配≠关系结束 | [FIRME](../src/papers/2610.40482-firme/card.md) | 支撑 P1（能力与意图分离）；04 state 的核心一手证据 |
-| E-06 | 本体接地类任务的失败多来自**工作流**：输入不足、领域接地弱、模板与词汇缺口、校验弱、非局部修复。作者把它组织成五角色（Input/Generator/Output/Validator/Repairer）+ 七诊断变量；**语法通过不等于语义充分**。限定：position paper、单案例、无量化分布 | [Before Blaming the LLM](../src/papers/2610.35267-diagnose-workflow/card.md) | **直接支撑 P2**；可作 EXP-002 诊断表 |
-| E-07 | 形式化器存在 solver-like behavior：轨迹里算出答案，程序只做复述。2,000 generations：85% traces 含 SLB（BlocksWorld PDDL 例外 51%）、24% reasoning token 是 SLB；163/1,791 程序继承 reasoning answer；reasoning answer 错时 hardcoded 0/19 正确、independent 32% 正确。伤害有二——token 成本只在 2/4 数据集随规模上升（Meeting 3,873→10,971、Zebra 532→4,148；Calendar/BlocksWorld 不增；Qwen Calendar 约 3×/+54%、GPT-OSS −31%），不是普遍规律；形式化保证失效 | [SLB digest](../src/papers/2611.02395-solver-like-behavior/digest.md) | 支撑 P2（判据须能看中间） |
-| E-08 | 「主张-证据叶子」的导航树是唯一被测出正收益的工件：证据充分时查询 token −91%，不充分时 +1.9%，**平均 −38%**；盈亏平衡充分率 2%，实测约 43%。限定：单基准 FRAMES、单 compiler/answer model、无 CI；平均 −38% 是条件混合，不能当上线依据 | [CAI](../src/papers/2610.41172-context-as-infrastructure/card.md) | 支撑「编译解决预算，不解决准确率」 |
-| E-12 | 同一份知识，**投影成文的 pooled element score 最高**（0.777 > JSON 0.717 > 查询 0.638 > 检索 0.597），但**不是普适排序**：GLM-5.2 的 JSON 0.900 反超文本 0.891；Qwen 的工具 0.407 低于文档检索 0.538；工具是事后描述性条件、非受控。避坑率 0.605→0.802（+19.8pp，OR 5.45，p=6.0×10⁻⁷），但**K0→K1 命名+单位已有 +54.6pp**，塔只再加 +19.8pp；物理深度未测，H3（事故记录）K4 0.644 vs K4x 0.645 未支持。限定：n=1 工厂、9 任务、答案基本写在文本里 | [N&D digest](../src/papers/2610.11768-narrow-and-deep/digest.md) | 支撑 03 知识派；与 E-01 并列构成 C-04 |
-| E-13 | 约束类机制的增益**随模型基线能力升高而缩小**：airline/retail/telecom 斜率约 −0.76/−0.67/−0.31（R² 0.92/0.98/0.65），但这是六点描述性拟合，**给不出零交叉的部署阈值** | [POLAR](../src/papers/2610.08082-polar/card.md) | 强化 E-04，划定 01 约束派的适用边界；不可当预测曲线 |
-| E-14 | 编译的盈亏平衡是**条件性**的：无限视野 `p_h > 2%`，有限视野 `p_min = 2% + c/(0.929Q)`；平均 −38% 是 hit/miss 混合，不能当上线依据；证据替换用检索轮次换 token，配对子集时延约 **3×** | [CAI](../src/papers/2610.41172-context-as-infrastructure/card.md) | 支撑 RQ5；把「编译值不值」变成可算的门槛 |
-| E-15 | 护栏/分配机制应报 **harm–approval–cost 前沿**，不是单一 HSR：CASEL 模拟（20 seeds、120k actions）HSR 14.75%→7.02%、审批 8.7%；最低 HSR 是 Consequence-Menu 4.38%（审批 13.8%），Risk-Menu 5.82%（审批 12.6%）；CASEL 用约 30% 更少审批达到相近 harm。**主表 CASEL 在 τ=∞（阈值关闭）下；不是所有方法同 menu/cost**。full ledger 在 harm–compute 面被支配，但在低审批端（4.3% approvals / 11.82% HSR）是前沿点。限定：模拟、γ_m 假设、审批疲劳未建模 | [CASEL digest](../src/papers/2610.36570-casel/digest.md) | 支撑 RQ4/RQ5；把「护栏值不值」变成三维前沿 |
-| E-16 | **推理期约束的形式决定它是天花板还是护栏**：限制知识源（curated KG）可能封顶；验证条件（三值 ⊤/⊥/?） + 假设 revision 可同时提高成功率与减少无效干预（Tacit-FLE **64.3/66.7/65.0%** vs IfR 64.3–65.0%，SI **1.6–2.4** vs 6.4–17.8；Mars 15.92 vs 10.64；ALFWorld 98.5% vs 96.3%）。限定：模拟、固定 schema、无真实工厂 | [OntoAct digest](../src/papers/2610.21983-ontoact/digest.md) | 支撑 P1/P2；refine 01-L3 |
-| E-17 | **记忆是状态，不是事实集合**：Persistent Facts + Relational State（有效性/scope/更新/冲突）+ Reasoning State（当前请求怎么用）。EvoMemState 四基准：Complete Retrieval 85.6%（与最好 baseline 相当），但 Acc@complete 70.8/68.5（+11.5/+31.2）；去掉 Relational −8.9/−6.4，去掉 Reasoning −8.0/−15.0，去掉 RL −7.9/−16.4；reasoning state 跨 6 系统 +0.2–4.9。限定：文本 only、需训练信号 | [EvoMemState](../src/papers/2611.03743-evomemstate/card.md) | 支撑 04 状态派；「会用」比「检索到」更关键 |
-| E-09 | SLB 的规模与干预：85% traces、24% token、77–89% 程序仍独立重算；SLB 与准确率无关联（ratio +0.1 → +0.007）；placeholders 减 SLB token **97%** 而准确率 +2.6（不降）；cautionary prompts 只减约 1/4；batching 准确率 −5.9。形式语言是最大解释变量（Python > Z3/PDDL，0.03–0.20 ratio）。限定：3 模型/4 CSP/2 FL、单次生成、闭源无 trace | [SLB](../src/papers/2611.02395-solver-like-behavior/card.md) | 支撑 06 trace；把「SLB 可移除」从推测升为已核 |
-| E-10 | 本体预测机制上可干预，但无法与类别辅助信息干净分离：单层 Disentangle 点估计 MDAS 0.592 vs DAS 0.584，但单 seed、无 CI，不宜当稳定排序；MDAS 的 Cause 0.527/Iso 0.658 与 DAS 0.589/0.579 反向。SAE 0.412/0.371；多任务 +0.081 Iso / −0.052 Cause 是 **best-vs-best 配对差**，不是整体平均；四层 DAS 512×4 0.667，Δ 基线是单层同总维 0.565，不是 0.584。正确本体预测本身不意味着干净的内在本体；分离按类别而异 | [MIOE digest](../src/papers/2610.38326-mioe/digest.md) | 支撑 06 mechanism；从「综述转述/推测」升为已核 |
-| E-18 | **agent 评测应把配置当系统变量**：4 tasks × 432 cells × 5 runs（8,640 runs；18,240 trajectories）中，**54%** score variance 来自重复同一配置的 run-to-run 噪声（限定为**真实尝试/过 hurdle**；不排除 hurdle 失败为 39.4%、排除后 46.1%）；Information 轴影响 > Model > Reasoning > Budget > Verification；信息同时降成本/改善校准；预算只在信息/模型足够时有用；**验证行为靠工具不靠 prompt**（prompt 19→22%，oracle 翻三倍）；agent 99.8% 仍用弱 specialist。限定：4 tasks/2 domains、排除 memory/multi-agent | [Agents digest](../src/papers/2610.01618-agents-are-systems/digest.md) | 支撑 06 metrics；REPLACE 单次 score 评测 |
+| E-01 | 在足够强的检索 harness 下，**被测量的**结构化工件（摘要树、PageIndex 大纲、wiki、entity graph）在 **FRAMES** 上无可检出的准确率增益；PageIndex 式大纲在同规模下反而退化。**本体、timeline、mind map、session memory 在 Table 1 是 not measured，不能算进这个结论。** 作者自述这些工件的回报在**部署层**（治理、跨源集成、上手、时序定向、连续性），而准确率基准看不见；但其部署 ledger 为空，**这是作者主张，不是观测**。限定：单基准、单 compiler/answer model、无 CI | [CAI digest](../src/papers/2610.41172-context-as-infrastructure/digest.md) | 支撑 P1a/P1c（价值在约束/注入有条件）；**不支撑 P1b**（ontology 在原文是 not measured） |
+| E-02 | 三种本体来源（专家 / LLM 生成 / 数据挖掘）在漏检与误报上各有偏向，无单一向优：真实答案 catch/FA 为 curated 18.9/16.8、data-derived 8.2/3.5、masked LLM 5.0/1.8；precision（**人工故障、25% 错答案假设**）为 57.1/72.3/93.7；curated 精确度**仅略优于随机**（+1.6 点，CI 跨零）；按发布状态使用的 curated schema 可能**与自身数据矛盾**。空结果重试在人工 fault 上 catch 79.2%、FA 0%，是关键基线 | [What Does an Ontology Catch digest](../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) | 支撑 P3a/P3b（判定权衡 + 来源偏向）；给出判定器评估基线 |
+| E-03 | 强制每个答案报告所用作证据的本体观察 + 接地等级（entailed/supported/related/unrelated），在三个大本体、六个医学 QA 任务、2 backbone 上整体最优：平均 50.5%/68.1%；Tests 1–2 +10–15pp；Test 3 同 8k 预算 84.9% vs 66.7%，9.7k vs 96.7k tokens/问。限定：等级是**模型自评**、未校准；检索是主瓶颈（gold evidence 完整检索 MCQ 61.7% vs OQ 23.6%） | [OA-RAG](../src/papers/2610.36335-oa-rag/digest.md) | 支撑 P1a/P2；接地等级是弱信号（P1c 的边界） |
+| E-04 | 用两层本体对工具调用打可逆性分、执行前剪枝：τ²-bench 上六个模型中四个在 airline 域提升 0.11–0.18；**但 18 个模型-域组合仅 8 个整体改善，retail 与更强模型常回退**；作者声明 reward 不是防止伤害的直接度量。**T1-only 接近 blanket veto，增益却不比 full 小——结构反向组合的贡献未被隔离** | [POLAR](../src/papers/2610.08082-polar/digest.md) | 支撑 **P3a**（判定/护栏权衡）；**不支撑 P3b**（未测来源）、不支撑「结构已被证明有效」；削弱「护栏总是更好」 |
+| E-05 | 本体在记忆系统中承担**对齐与印证条件**（跨期身份 registry、双模态互证），而非自由推理；克制的用法更易落地。alias memory 让 final-period CMR +7.8–12.1 pp（4 settings），human-audit recall +22.5–29.0 pp，semantic matching token −40.3%。限定：专有数据、3 period、无年度周期；未匹配≠关系结束 | [FIRME](../src/papers/2610.40482-firme/digest.md) | 支撑 P1a（能力与意图分离）+ P2（同一抽取器，换状态结构效果不同）；04 核心证据 |
+| E-06 | 本体接地类任务的失败多来自**工作流**：输入不足、领域接地弱、模板与词汇缺口、校验弱、非局部修复。作者把它组织成五角色（Input/Generator/Output/Validator/Repairer）+ 七诊断变量；**语法通过不等于语义充分**。限定：position paper、单案例、无量化分布 | [Before Blaming the LLM](../src/papers/2610.35267-diagnose-workflow/digest.md) | 支撑 **P2**（同一模型，换工作流结果不同）；可作 EXP-002 诊断表 |
+| E-07 | 形式化器存在 solver-like behavior：轨迹里算出答案，程序只做复述。2,000 generations：85% traces 含 SLB（BlocksWorld PDDL 例外 51%）、24% reasoning token 是 SLB；163/1,791 程序继承 reasoning answer；reasoning answer 错时 hardcoded 0/19 正确、independent 32% 正确。伤害有二——token 成本只在 2/4 数据集随规模上升（Meeting 3,873→10,971、Zebra 532→4,148；Calendar/BlocksWorld 不增；Qwen Calendar 约 3×/+54%、GPT-OSS −31%），不是普遍规律；形式化保证失效 | [SLB digest](../src/papers/2611.02395-solver-like-behavior/digest.md) | 支撑 P2/C-03（判据须能看中间）；不直接支撑本体增益 |
+| E-08 | 「主张-证据叶子」的导航树是唯一被测出正收益的工件：证据充分时查询 token −91%，不充分时 +1.9%，**平均 −38%**；盈亏平衡充分率 2%，实测约 43%。限定：单基准 FRAMES、单 compiler/answer model、无 CI；平均 −38% 是条件混合，不能当上线依据 | [CAI](../src/papers/2610.41172-context-as-infrastructure/digest.md) | 支撑 P1a/RQ5（编译省预算，不解决准确率） |
+| E-12 | 同一份知识，**投影成文的 pooled element score 最高**（0.777 > JSON 0.717 > 查询 0.638 > 检索 0.597），但**不是普适排序**：GLM-5.2 的 JSON 0.900 反超文本 0.891；Qwen 的工具 0.407 低于文档检索 0.538；工具是事后描述性条件、非受控。避坑率 0.605→0.802（+19.8pp，OR 5.45，p=6.0×10⁻⁷），但**K0→K1 命名+单位已有 +54.6pp**，塔只再加 +19.8pp；物理深度未测，H3（事故记录）K4 0.644 vs K4x 0.645 未支持。限定：n=1 工厂、9 任务、答案基本写在文本里 | [N&D digest](../src/papers/2610.11768-narrow-and-deep/digest.md) | 支撑 P1b/P1c（薄语义层先起量、条件性）；不支撑 P1a（这是知识供给）；与 E-01 并列构成 C-04 |
+| E-13 | 约束类机制的增益**随模型基线能力升高而缩小**：airline/retail/telecom 斜率约 −0.76/−0.67/−0.31（R² 0.92/0.98/0.65），但这是六点描述性拟合，**给不出零交叉的部署阈值** | [POLAR](../src/papers/2610.08082-polar/digest.md) | 强化 E-04；P1a 的适用边界；六点描述性拟合，不可当预测曲线 |
+| E-14 | 编译的盈亏平衡是**条件性**的：无限视野 `p_h > 2%`，有限视野 `p_min = 2% + c/(0.929Q)`；平均 −38% 是 hit/miss 混合，不能当上线依据；证据替换用检索轮次换 token，配对子集时延约 **3×** | [CAI](../src/papers/2610.41172-context-as-infrastructure/digest.md) | 支撑 RQ5/P1a（把「编译值不值」变成可算门槛） |
+| E-15 | 护栏/分配机制应报 **harm–approval–cost 前沿**，不是单一 HSR：CASEL 模拟（20 seeds、120k actions）HSR 14.75%→7.02%、审批 8.7%；最低 HSR 是 Consequence-Menu 4.38%（审批 13.8%），Risk-Menu 5.82%（审批 12.6%）；CASEL 用约 30% 更少审批达到相近 harm。**主表 CASEL 在 τ=∞（阈值关闭）下；不是所有方法同 menu/cost**。full ledger 在 harm–compute 面被支配，但在低审批端（4.3% approvals / 11.82% HSR）是前沿点。限定：模拟、γ_m 假设、审批疲劳未建模 | [CASEL digest](../src/papers/2610.36570-casel/digest.md) | 支撑 P3a（harm–approval–cost 权衡）+ RQ4/RQ5 |
+| E-16 | **推理期约束的形式决定它是天花板还是护栏**：限制知识源（curated KG）可能封顶；验证条件（三值 ⊤/⊥/?） + 假设 revision 可同时提高成功率与减少无效干预（Tacit-FLE **64.3/66.7/65.0%** vs IfR 64.3–65.0%，SI **1.6–2.4** vs 6.4–17.8；Mars 15.92 vs 10.64；ALFWorld 98.5% vs 96.3%）。限定：模拟、固定 schema、无真实工厂 | [OntoAct digest](../src/papers/2610.21983-ontoact/digest.md) | 支撑 P1a/P2；refine 01-L3 |
+| E-17 | **记忆是状态，不是事实集合**：Persistent Facts + Relational State（有效性/scope/更新/冲突）+ Reasoning State（当前请求怎么用）。EvoMemState 四基准：Complete Retrieval 85.6%（与最好 baseline 相当），但 Acc@complete 70.8/68.5（+11.5/+31.2）；去掉 Relational −8.9/−6.4，去掉 Reasoning −8.0/−15.0，去掉 RL −7.9/−16.4；reasoning state 跨 6 系统 +0.2–4.9。限定：文本 only、需训练信号 | [EvoMemState](../src/papers/2611.03743-evomemstate/digest.md) | 支撑 P1a/P2（同一 memory backend，加 reasoning state 效果变）；04 核心 |
+| E-09 | SLB 的规模与干预：85% traces、24% token、77–89% 程序仍独立重算；SLB 与准确率无关联（ratio +0.1 → +0.007）；placeholders 减 SLB token **97%** 而准确率 +2.6（不降）；cautionary prompts 只减约 1/4；batching 准确率 −5.9。形式语言是最大解释变量（Python > Z3/PDDL，0.03–0.20 ratio）。限定：3 模型/4 CSP/2 FL、单次生成、闭源无 trace | [SLB](../src/papers/2611.02395-solver-like-behavior/digest.md) | 支撑 06 trace；把「SLB 可移除」从推测升为已核；不直接支撑本体增益 |
+| E-10 | 本体预测机制上可干预，但无法与类别辅助信息干净分离：单层 Disentangle 点估计 MDAS 0.592 vs DAS 0.584，但单 seed、无 CI，不宜当稳定排序；MDAS 的 Cause 0.527/Iso 0.658 与 DAS 0.589/0.579 反向。SAE 0.412/0.371；多任务 +0.081 Iso / −0.052 Cause 是 **best-vs-best 配对差**，不是整体平均；四层 DAS 512×4 0.667，Δ 基线是单层同总维 0.565，不是 0.584。正确本体预测本身不意味着干净的内在本体；分离按类别而异 | [MIOE digest](../src/papers/2610.38326-mioe/digest.md) | 支撑 06 mechanism（内部本体不干净）；不直接支撑 P1/P2 |
+| E-18 | **agent 评测应把配置当系统变量**：4 tasks × 432 cells × 5 runs（8,640 runs；18,240 trajectories）中，**54%** score variance 来自重复同一配置的 run-to-run 噪声（限定为**真实尝试/过 hurdle**；不排除 hurdle 失败为 39.4%、排除后 46.1%）；Information 轴影响 > Model > Reasoning > Budget > Verification；信息同时降成本/改善校准；预算只在信息/模型足够时有用；**验证行为靠工具不靠 prompt**（prompt 19→22%，oracle 翻三倍）；agent 99.8% 仍用弱 specialist。限定：4 tasks/2 domains、排除 memory/multi-agent | [Agents digest](../src/papers/2610.01618-agents-are-systems/digest.md) | 支撑 P2（配置轴）+ 06 metrics；REPLACE 单次 score 评测 |
 
 > E-06 的论文发现是「已核」；把它推广为「漂移=输入不完备」是仓库推断，标 `推测`。两者不要混。
+>
+> **出处纪律（2026-11-09）**：本页 E-xx 出处一律链 `digest.md`；`card.md` 只用于 `src` 台账的 provenance，不再作为结论出处。影响列的 P1a/P1b/P1c/P2/P3a/P3b 定义见 [THESIS](../THESIS.md#工作假设与反驳条件)。
 
 ## 推测（未核原文）
 
@@ -52,7 +54,7 @@ updated: 2026-11-07
 |---|---|---|
 | Q-01 | 「本体越完备效果越好」 | 与 E-01 冲突；完备性与可判定性在工程上反向 |
 | Q-02 | 「多智能体优于单体」 | 缺少在同等上下文预算下的对照 |
-| Q-03 | 「护栏必然提升任务表现」 | 已被 E-04 直接否证（18 格仅 8 格改善；强模型/retail 回退）；保留作反例索引，不再作为待验假设 |
+| Q-03 | 「护栏必然提升任务表现」 | E-04 在 τ²-bench/单 gate/6 模型上否证了「护栏必然提升 reward」；不能外推为所有护栏/所有度量；保留作反例索引 |
 
 ## 冲突
 
@@ -68,3 +70,21 @@ C-03 是当前最有价值的一条：它把「正面证据 vs 负面证据」�
 **能力梯度不是一条线（`推测`，Wave 1 综合）。** 约束类收益随基线能力上升而下降（E-13）；知识投影的增益**不随容量上升**（E-12，H2 p=0.85），9B 带投影 0.737 > 750B 不带 0.672。两者不矛盾：护栏**替代**判断，投影**补充**知识。待 Wave 2/3 的 CASEL、OntoAct、Grid Agents 验证。
 
 冲突不消除，保留在表里。
+
+## 生命周期
+
+E-xx 不是一次写死。每条有一个状态；改 E 之前先读对应 digest 的 §5（不能说明什么）。
+
+| 状态 | 含义 | 当前 |
+|---|---|---|
+| `active` | 未被反例推翻；按限定使用 | 除下列外默认 |
+| `contested` | 主结论可站，但某个读法/外推被削弱 | E-04（“结构有效”的读法被 T1-only 削弱）、E-12（排序非普适）、E-15（模拟，非部署） |
+| `superseded` | 被新证据取代；保留编号与指针 | 暂无 |
+
+“什么会改变它”写在每条 digest 的 §5 与 §9；本页不重复。**不要把 `contested` 当成降级**：它表示限定条件已经写清，仍可引用。
+
+## 悬空结论（未归派）
+
+当前无。
+
+新派成立前，把“跨派、但暂时没有归属”的判断先记在这里；同一方向累计 ≥3 条，再按 [topic 协议](../meta/topic-research-protocol.md) 立派。不要把单条判断直接写成新派。

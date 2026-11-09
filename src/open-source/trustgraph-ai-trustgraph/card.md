@@ -13,10 +13,12 @@ scan_date: 2026-11-09
 stars_at_scan: 2902
 last_push: 2026-11-08
 ontology_role: core
-seam: none
-execution: mixed
+seam: read-path
+execution_form: engine
+evidence_role: mechanism-only
 home: topics/01-constraint
 subtopic:
+also_supports: []
 updates: []
 ---
 

@@ -30,13 +30,16 @@
 
 > **本体在 harness 的控制回路里，究竟以什么形式被执行？**
 
-三条工作假设（细节与反驳条件见 [THESIS](./THESIS.md)）：
+三条工作假设（2026-11-09 拆成可分别检验的子命题；细节与反驳条件见 [THESIS](./THESIS.md)）：
 
 | # | 假设 | 若成立意味着 |
 |---|---|---|
-| P1 | 本体的价值在**约束与控制**，不在语义注入的准确率 | 「上本体提准确率」类论证应被降权 |
-| P2 | harness 是本体得以「被执行」的那一半 | 本体工程不能脱离 harness 单独立项 |
-| P3 | 判定质量是**权衡**——漏检与误报此消彼长 | 不存在「好本体」这种单一量 |
+| P1a | 本体的价值在**约束与控制**；用准确率度量会低估它 | 「上本体提准确率」类论证应被降权 |
+| P1b | **薄语义层**（命名/单位/槽位）先起量，深度结构的边际更小 | 先对齐词汇与单位，再谈本体深度 |
+| P1c | 注入增益是**任务形态的函数**，不是普遍常数 | 不承诺跨域准确率增益 |
+| P2 | **位置/形态**改变本体效果；不存在位置无关的收益 | 本体工程不能脱离 harness 单独立项 |
+| P3a | 判定质量是**权衡**——漏检/误报/审批此消彼长 | 不存在单一向优的判定器 |
+| P3b | 不存在单一向优的**本体来源** | curated / LLM / 数据挖掘各有偏向 |
 
 ## 2. 目录 = 流水线
 
@@ -74,15 +77,18 @@
 | [05 生产](./topics/05-produce/README.md) | 本体从哪来、怎么修 | 来源影响可信度（推测）；精化比新建常见（推测） |
 | [06 测量](./topics/06-measure/README.md) | 它到底有没有用 | 答对≠内部有本体；失败多归工作流 |
 
-六派是 **4+1+1**：`01-04` 回路内，`05` 回路前，`06` 回路外。底座是 [00-harness](./topics/00-harness/README.md)（控制回路七部件）。三轴说明、边界规则、强度谱见 [topics/README](./topics/README.md)。
+六派是 **4+1+1**：`01-04` 回路内，`05` 回路前，`06` 回路外。底座是 [00-harness](./topics/00-harness/README.md)（控制回路七部件）。四轴说明、边界规则、强度谱见 [topics/README](./topics/README.md)；形态轴见 [execution-forms](./topics/execution-forms.md)。
 
 ## 4. 当前状态
 
-- `src/` — 22 个论文目录（20 基础 + 2 扫描）；每目录 PDF + 三份 MD + `card.md` + `digest.md`（L1 一页判断）+ `figures/`；1 张材料卡 + manifest。
-- `topics/` — 六派成文；17 条已核 + 2 条推测 + 3 条存疑 + 4 条冲突；新增 [06-measure/feasibility](./topics/06-measure/feasibility/README.md)。
+- `src/` — 22 个论文目录（20 基础 + 2 扫描）；每目录 PDF + 三份 MD + `card.md` + `digest.md` + `figures/`；4 个开源项目（已 pin commit、已消化）；1 张材料卡 + 一本合并后的 [manifest](./src/papers/manifest.md)。
+- `topics/` — 六派成文；17 条已核 + 2 条推测 + 3 条存疑 + 4 条冲突；26 个来源里 **9 篇把本体当被测变量并测了执行效果**，其余是机制/评测/边界证据（见各卡 `evidence_role`）。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
 - `deliverables/` — 手册大纲 7 章。
+- `experiments/` — 6 个协议，其中 3 个已冻结为试点（EXP-004/005/006）；**D0 资产门未签核，暂不可开跑**。
 
-**最大空缺是没有一条结论被独立复现。** 三个实验待做，见 [experiments](./experiments/README.md)；部署层回报、false-veto/false-defer、维护成本仍缺量化。
+**最大空缺是没有一条结论被独立复现。** 全审结论是「内部可签 / 对外 no-go」；当前真正的瓶颈是 [D0 外部资产](./meta/state.md)（具名域、日志、题库、人、单价），不是再读论文。部署层回报、false-veto/false-defer、维护成本仍缺量化。
+
+自检：`python3 meta/tools/check_repo.py`（链接、枚举、ID、清单、计数；见 [ADR 0005](./adr/0005-repo-self-check.md)）。
 
 ## 5. 怎么增长
 

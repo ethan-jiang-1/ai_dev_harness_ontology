@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-08
+updated: 2026-11-09
 ---
 
 # 05 生产派：本体从哪来、怎么修
@@ -24,6 +24,8 @@ updated: 2026-11-08
 | [modeling](./representation/modeling.md) | 规范如何压缩自由度 | 机制页 | — | 本页 |
 
 > 计数以各子主题 dashboard 为准（2026-11-08）。
+
+**薄页（<2 篇独立来源）**：refinement（1 篇）、representation（1 篇）、lifecycle（1 篇）。薄页只作候选/边界，不承担稳定判断。
 
 ## 本派当前判断
 

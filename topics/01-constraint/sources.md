@@ -14,6 +14,6 @@ updated: 2026-11-09
 | [CASEL digest](../../src/papers/2610.36570-casel/digest.md) | paper | 精读 | 01-L4, 01-L5, 01-L8, 01-L9, 01-L10 | [card](../../src/papers/2610.36570-casel/card.md)（provenance）；模拟；γ_m 假设；主表 `τ̂=∞`；NoRev 非单变量 |
 | [trustgraph digest](../../src/open-source/trustgraph-ai-trustgraph/digest.md) | open-source | 已读代码 | 01-L13 / commit-gate F5 | [card](../../src/open-source/trustgraph-ai-trustgraph/card.md)（provenance）；读路径 SHACL-AF 策略过滤，31 条单测已跑；写路径 commit gate 未定位 |
 
-> **本派没有 Commit Boundary 的 E-xx**：`01-L13/L14` 只在派内使用。`conclusions` 的 E-05 是 FIRME；Commit Boundary digest 的 `claims: [E-05]` 与 §8 的 E-05 回链都是错挂，01 侧已解除引用（digest 待回改）。
+> **本派没有 Commit Boundary 的 E-xx**：`01-L13/L14` 只在派内使用。`conclusions` 的 E-05 是 FIRME；Commit Boundary digest 的 `claims: [E-05]` 与 §8 的 E-05 回链都是错挂，**2026-11-09 已回改**（`claims: []`，§8 改为“不挂 E-xx”）。
 >
-> **数字口径**：01-L11 用 OntoAct digest 的 `64.3/66.7/65.0`、SI `1.6–2.4`；`conclusions` 的 E-16 仍是旧区间，待跨派回改。CASEL 主表是 `τ̂=∞`，不要把 7.02% 当阈值开启后的结果。
+> **数字口径**：01-L11 用 OntoAct digest 的 `64.3/66.7/65.0`、SI `1.6–2.4`；`conclusions` 的 E-16 已于 2026-11-09 按同口径回改。CASEL 主表是 `τ̂=∞`，不要把 7.02% 当阈值开启后的结果。

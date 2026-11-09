@@ -71,7 +71,7 @@ _Avoid_: 插件、工具（工具粒度更细）
 ### 流水线
 
 **工位（Station）**:
-流水线中的一个产出入库位置，共四个：吸纳、精读、沉淀、交付。
+流水线的三个产出入库位置：`src/`（吸纳 + 精读）、`topics/`（沉淀）、`deliverables/`（交付）。吸纳与精读是 `src/` 内的两步，不是独立工位；AGENTS 的「落点」表是任务，不是工位。
 _Avoid_: 阶段、环节、chapter
 
 **台账（Ledger）**:
@@ -89,3 +89,11 @@ _Avoid_: 引用、参考、来源
 **接缝权重（Seam Weight）**:
 本仓库用于排序研究优先级的判断：某个接缝位置能改变多少条结论。权重高者先做。
 _Avoid_: 优先级、重要性
+
+**执行形态（Execution Form）**:
+本体被机器使用的方式：引擎求值（engine）、编译成约束（compiled）、作为上下文注入（context）、只当标签（label）、未执行（none）。与「位置」正交。
+_Avoid_: 执行方式、接入方式
+
+**证据角色（Evidence Role）**:
+一个来源对中心问题提供哪类证据：真的测了本体被执行（execution-test）、只提机制（mechanism-only）、提供 harness 证据（harness-evidence）、只做边界与尺子（boundary-ruler）。
+_Avoid_: 证据等级（那是置信度）、来源类型

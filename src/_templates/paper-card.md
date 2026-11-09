@@ -10,7 +10,10 @@ authors:
 pdf: <stem>.pdf          # 同目录 PDF
 direction:               # 源综述分类 1-4；前沿扫描用 5
 home:                    # 归位：topics/<派>
-subtopic:                # 子主题目录（可空）
+subtopic:                # 子主题目录（主归位，可空）
+also_supports: []        # 其余被喂到的子主题（可空）
+evidence_role: execution-test  # execution-test | mechanism-only | harness-evidence | boundary-ruler
+execution_form: unknown  # engine | compiled | context | label | none | unknown
 updates: []              # 本卡修正后需要回改的 topics 文档
 ---
 

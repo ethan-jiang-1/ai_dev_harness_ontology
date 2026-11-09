@@ -1,9 +1,9 @@
 ---
 status: draft
-updated: 2026-11-08
+updated: 2026-11-09
 quality: C
 based_on: card.md
-claims: [E-05]
+claims: []
 ---
 
 # Commit Boundary：能推理的证据，不等于能授权的证据
@@ -220,10 +220,10 @@ Entity resolution（ER）：判断两个 mention 是不是同一实体。agentic
 
 ## 8. 与仓库判断的关系
 
-- **E-05（已核）**：本体承担对齐与印证条件；commit gate 用 claim-specific 命题/证据，不让本体自由推理。
-- **01-L13**：可推理 ≠ 可授权；`UNVERIFIED` 不能当 positive authorization support。
-- **01-L14**：同源检索不算独立确认；「没检测到冲突」不是 positive support。
-- **P1/P2**：价值在约束/授权；同一证据，换 commit contract，行为不同。
+- **不挂 E-xx**：Commit Boundary 是概念架构，无实现、无量化，**不能升 E，也不能支撑「本体提升效果」**。此前的 `claims: [E-05]` 是错挂；E-05 属 FIRME。
+- **01-L13（派内，已核概念）**：可推理 ≠ 可授权；`UNVERIFIED` 不能当 positive authorization support。
+- **01-L14（派内，已核概念）**：同源检索不算独立确认；「没检测到冲突」不是 positive support。
+- **P1a/P2（方向性读法，非效果证据）**：价值在约束/授权；同一证据，换 commit contract，行为不同。没有实现，不能当实测结论。
 
 ## 9. 还没解决 / 下一步
 

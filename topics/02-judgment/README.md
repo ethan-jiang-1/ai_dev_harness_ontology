@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-08
+updated: 2026-11-09
 ---
 
 # 02 判定派：怎么知道它做错了
@@ -18,6 +18,8 @@ updated: 2026-11-08
 | [checker](./checker/README.md) | 输出后：本体当语义判据，漏检/误报怎么换 | `draft`，已拆 F/G | 5 F / 5 G | dashboard |
 | [evidence](./evidence/README.md) | 输出时：答案带什么证据、接地等级怎么报 | `draft`，已拆 F/G | 3 F / 4 G | dashboard |
 | [calibration](./calibration/README.md) | 判定器的曲线与代价 | `seed`，待拆 | — | 机制页 |
+
+**薄页（<2 篇独立来源）**：checker（1 篇）、evidence（1 篇）、calibration（0 篇，待建）。薄页只作候选/边界，不承担稳定判断。
 
 ## 本派当前判断
 

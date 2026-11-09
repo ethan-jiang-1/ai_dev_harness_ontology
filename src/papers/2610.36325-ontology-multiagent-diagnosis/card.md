@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2610.36325
 title: Ontology-guided multi-agent reasoning for explainable differential diagnosis
 authors: Roxana Ramona Szomiu, George Ursu, Adrian Groza（UTCN）
@@ -11,6 +11,9 @@ pdf: 2610.36325-ontology-multiagent-diagnosis.pdf
 direction: 1
 home: topics/01-constraint
 subtopic: reasoning-gate
+also_supports: []
+evidence_role: execution-test
+execution_form: compiled
 updates:
   - topics/01-constraint/reasoning-gate/README.md
   - topics/01-constraint/claims.md

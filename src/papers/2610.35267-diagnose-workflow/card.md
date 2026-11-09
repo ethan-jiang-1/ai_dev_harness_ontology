@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2610.35267
 title: Before Blaming the LLM, Diagnose the Workflow: A Role-Level Difficulty Profile for Translating Natural Language into Ontology-Grounded Statements
 authors: Liang Zhang, Benoît Daireaux, Sergey Alyaev（NORCE）
@@ -11,6 +11,9 @@ pdf: 2610.35267-diagnose-workflow.pdf
 direction: 3
 home: topics/06-measure
 subtopic: failure-attribution
+also_supports: []
+evidence_role: mechanism-only
+execution_form: none
 updates:
   - topics/06-measure/failure-attribution/README.md
   - topics/06-measure/claims.md

@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2611.03534
 title: An Agentic Framework for Automated Power System Studies and Grid Connection Assessment
 authors: MaoXun Huang, Kshitij Kapoor, Eli Louise（Grid Agents）
@@ -11,6 +11,9 @@ pdf: 2611.03534-power-system-agentic.pdf
 direction: 1
 home: topics/03-knowledge
 subtopic: compilation
+also_supports: []
+evidence_role: harness-evidence
+execution_form: context
 updates:
   - topics/03-knowledge/compilation/README.md
   - topics/03-knowledge/claims.md

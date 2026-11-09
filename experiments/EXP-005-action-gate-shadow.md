@@ -2,7 +2,7 @@
 id: EXP-005
 status: draft
 experiment_status: 设计中
-updated: 2026-11-08
+updated: 2026-11-09
 rq: [RQ4]
 targets: [E-15, E-04]
 artifact: pending（shadow 回放/实现产物在仓库外）
@@ -19,7 +19,7 @@ artifact: pending（shadow 回放/实现产物在仓库外）
 | 若结果为 A | 则 |
 |---|---|
 | false-veto 上界 ≤5%、保留率 20–95%、κ≥0.6 | 可进第二 sprint（线上灰度/授权层）；E-15 的“shadow 先验”在本域成立 |
-| false-veto >5% | 硬 veto 不可上线；降 advisory 或停；E-04 的“强模型/合法意图回退”在本域被支持 |
+| false-veto >5% | 硬 veto 不可上线；降 advisory 或停；E-04 的强模型 reward 回退在本域被支持；合法意图误拦是 authorization F4 的推测，不能算 E-04 结论 |
 | 保留率 <20% 或 >95% | 阈值失效；τ 要重校准，不能拿这组数谈效果 |
 | T1-only≈full 且 false-veto 无改善 | 结构贡献不成立；停，不再建多模式（需另立配对实验） |
 | 拿不到真实状态投影 | 不做硬 veto；只做记录，实验降级为 audit-only |

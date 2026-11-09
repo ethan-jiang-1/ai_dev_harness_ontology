@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2610.36335
 title: OA-RAG: Ontology-based Agentic RAG for Faithful LLM Reasoning
 authors: Hui Yang, Jiaoyan Chen, Yongsheng Gao
@@ -11,6 +11,9 @@ pdf: 2610.36335-oa-rag.pdf
 direction: 1
 home: topics/02-judgment
 subtopic: evidence
+also_supports: []
+evidence_role: execution-test
+execution_form: engine
 updates:
   - topics/02-judgment/evidence/README.md
   - topics/02-judgment/claims.md

@@ -9,17 +9,18 @@ updated: 2026-11-07
 
 分类轴是**本体凭什么起作用**，不是主题。每一派回答一个工程问题，流派差异在目录名上就能看出来。
 
-## 三个轴
+## 四根轴
 
-`topics/` 不是按一个维度切的。它有三条正交的轴：
+`topics/` 不是按一个维度切的。它有四条正交的轴：
 
 | 轴 | 问什么 | 载体 |
 |---|---|---|
 | 派轴 | 本体凭什么起作用 | `01-06/` |
 | 部件轴 | 本体接在机器的哪里 | [`00-harness/`](./00-harness/README.md) |
 | 时刻轴 | 本体在哪个时刻介入 | [`seams.md`](./seams.md) |
+| 形态轴 | 机器拿本体做了什么（引擎/编译/上下文/标签） | [`execution-forms.md`](./execution-forms.md) |
 
-另有两条横切索引：[conclusions](./conclusions.md)（证据）与 [domains](./domains.md)（领域）。
+另有两条横切索引：[conclusions](./conclusions.md)（证据）与 [domains](./domains.md)（领域）。形态轴不是索引，是第四根轴。
 
 派轴内部还可以再分**子主题**（`topics/<派>/<子主题>/README.md`）；那不是第四条轴，是派轴的第二层。派 README 只做地图，详细机制在子主题。
 
@@ -111,7 +112,8 @@ updated: 2026-11-07
 - **找工程思路** → 01 → 02 → 03：哪里最硬、代价是什么。
 - **找证据强度** → 06 → [conclusions](./conclusions.md)：哪些已核、哪些只是推测。
 - **找落地路径** → 05 → 03 → 01：先有本体，再让它被看见，最后让它能拦住东西。
-- **找时刻** → [seams.md](./seams.md)：六个接缝、选择规则、到派与部件的 crosswalk。
+- **找时刻** → [seams.md](./seams.md)：六个接缝、轴外位置、选择规则、到派与部件的 crosswalk。
+- **找形态** → [execution-forms.md](./execution-forms.md)：引擎求值/编译/上下文/标签，以及 26 个来源的初判。
 - **找前沿** → 各派 `frontier.md`：前沿问题、信号源、检索式、候选队列。
 - **找局部判断** → 各派 [claims.md](./01-constraint/claims.md)：`L-xx`，尚未升到 E-xx。
 
@@ -141,4 +143,4 @@ updated: 2026-11-07
 
 **本页只做索引**：各派内部结构见各派 README 的「本目录怎么长」。新增子主题只改该派目录，不要求改本页；只有新派/跨派关系变化才动这里。
 
-新派不轻易开——先在 [conclusions](./conclusions.md) 记为「悬空结论」，累积三条以上再立派。横切的领域差异集中在 [domains](./domains.md)，不单独成派。
+新派不轻易开——先在 [conclusions](./conclusions.md#悬空结论未归派) 记为「悬空结论」，累积三条以上再立派。横切的领域差异集中在 [domains](./domains.md)，不单独成派。

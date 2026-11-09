@@ -9,7 +9,7 @@ updated: 2026-11-09
 
 | ID | 判断 | 等级 | 证据 | 备注 |
 |---|---|---|---|---|
-| 01-L1 | 安全是结构问题：问「是否存在可接受的逆操作序列」，而不是让模型给安全标签 | 已核 | E-04 / POLAR | 本派核心；只到「有逆序列」，不保证逆执行成功，也不判意图/授权 |
+| 01-L1 | 安全应作为**结构问题**来问：问「是否存在可接受的逆操作序列」，而不是让模型给安全标签 | **推测（组织假设）** | POLAR 作者立场；实测边界见 01-L6 | 本派的方向性主张，不是实测结论；POLAR 只到「有逆序列」，结构贡献未隔离，不保证逆执行成功，也不判意图/授权 |
 | 01-L2 | 约束类机制的增益随模型基线能力升高而缩小 | 已核 | E-13 / POLAR | 六点描述性拟合，给不出零交叉阈值；证据仅 POLAR 三域六模型，不能当所有约束机制的能力曲线 |
 | 01-L3 | 推理期约束的形式决定天花板/护栏：限制知识源（curated KG）可能封顶（Q4DX 上 Jaundice/Vertigo 恒 0）；验证条件（OntoAct 三值逻辑）不一定封顶 | 已核 | OntoAct / 多 agent 诊断 | 两项任务形态不同，不是头对头；elimination 上 IfR 匹配/超过 OntoAct |
 | 01-L4 | 多模式分配不是单轴更省：CASEL 相对 Uncertainty-Menu 审批更多（8.7% vs 6.9%）、task success 低 1.78 pp；相对 Risk-Menu 是「相近 harm、审批少约 30%」 | 已核（模拟） | CASEL | 20 seeds/120k actions；主表 τ̂=∞；γ_m 假设；不是部署 |
@@ -25,4 +25,4 @@ updated: 2026-11-09
 | 01-L14 | 同源检索（hypothesis 诱导的多个结果）不算独立确认；「没检测到冲突」也不是 positive support | 已核（概念） | Commit Boundary | 上游 dependency lineage 未解决；未升 E |
 | 01-L15 | 推理期条件闸门只拦有适用 axiom 的动作；缺证据转 unresolved/观察，不是覆盖所有动作的安全保证 | 已核 | OntoAct / 多 agent 诊断 | 覆盖率是缺口（reasoning-gate F4/G1）；三环境模拟；作者明确不声称可部署 |
 
-> **跨页缺口（本次不动 conclusions）**：Commit Boundary 仍是概念架构，未升 E；`conclusions` 的 E-05 属 FIRME，不属于本派，`src/papers/2610.37407-commit-boundary/digest.md` 的 `claims: [E-05]` 是错挂。`E-16` 仍写 Tacit-FLE `64.3–65.0%` / SI `1.9–2.4`，与 OntoAct digest 的 `64.3/66.7/65.0`、SI `1.6–2.4` 不一致；01-L11 已按 digest 校正。
+> **跨页缺口（2026-11-09 已修）**：Commit Boundary 仍是概念架构，未升 E；`conclusions` 的 E-05 属 FIRME，不属于本派，`src/papers/2610.37407-commit-boundary/digest.md` 的 `claims: [E-05]` 已改为空并回写 §8。E-16 已按 OntoAct digest 的 `64.3/66.7/65.0`、SI `1.6–2.4` 校正。

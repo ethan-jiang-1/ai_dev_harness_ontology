@@ -43,7 +43,8 @@ claims: []             # 关联的 E-xx / L-xx；没有就留空
 | 有外部判据（判据来自本体，不是模型自评） | | |
 | 有阻断能力（违反可剪动作/拒输出/阻落盘） | | |
 | 位置明确（能指到回路某一时刻） | | |
-| 对应六时刻（action-gate / evidence / checker / commit-gate / memory / determinism / 不是接缝） | | |
+| 对应六时刻或轴外位置（action-gate / evidence / checker / commit-gate / memory / determinism / read-path / supply / reasoning / training / 不是接缝） | | |
+| 执行形态（engine / compiled / context / label / none） | | |
 
 三者同时成立才算接缝；只有第一条是「知识注入」，只有第二条是「硬编码规则」。
 

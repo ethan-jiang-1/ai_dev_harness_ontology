@@ -38,7 +38,7 @@ evidence: [E-06]
 | 还缺什么、下一步 | [frontier](./frontier.md) |
 | 原始论文 | [Diagnose digest](../../../src/papers/2610.35267-diagnose-workflow/digest.md) · [Multi-agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md) |
 
-> 编号沿用 [digest ledger](../../../meta/full-audit/digest-ledger.md)：D-11 = Diagnose，D-15 = Multi-agent。
+> 编号沿用 [digest ledger](../../../meta/archive/2026-11/full-audit/digest-ledger.md)：D-11 = Diagnose，D-15 = Multi-agent。
 
 ## 边界
 

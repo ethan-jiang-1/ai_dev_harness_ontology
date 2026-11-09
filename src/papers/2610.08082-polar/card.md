@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2610.08082
 title: "POLAR: Ontology-Guided Risk Prevention for Tool-Calling LLM Agents"
 authors: Yunju Kang, Seonghyeon Cho, Irene Li, Yeo-Chan Yoon, Chanjun Park
@@ -11,6 +11,9 @@ pdf: 2610.08082-polar.pdf
 direction: 1
 home: topics/01-constraint
 subtopic: action-gate
+also_supports: []
+evidence_role: execution-test
+execution_form: compiled
 updates:
   - topics/01-constraint/action-gate/README.md
   - topics/01-constraint/action-gate/findings.md

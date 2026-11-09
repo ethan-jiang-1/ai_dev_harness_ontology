@@ -2,7 +2,7 @@
 
 > 只写「怎么诊断」。判断回 [findings](./findings.md)，边界/下一步回 [frontier](./frontier.md)。
 >
-> 编号沿用 [digest ledger](../../../meta/full-audit/digest-ledger.md)：D-11 = [Diagnose digest](../../../src/papers/2610.35267-diagnose-workflow/digest.md)，D-15 = [Multi-agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md)。
+> 编号沿用 [digest ledger](../../../meta/archive/2026-11/full-audit/digest-ledger.md)：D-11 = [Diagnose digest](../../../src/papers/2610.35267-diagnose-workflow/digest.md)，D-15 = [Multi-agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md)。
 
 ## 问题
 

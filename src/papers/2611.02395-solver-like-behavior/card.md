@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2611.02395
 title: Solver-Like Behavior in Large Language Models as Formalizers
 authors: Rikhil Amonkar, Stuti Mohan, Kevin Nguyen, Ceyhun Efe Kayan, Ronan Le Bras, Li Zhang（Drexel / AI2）
@@ -11,6 +11,9 @@ pdf: 2611.02395-solver-like-behavior.pdf
 direction: 3
 home: topics/06-measure
 subtopic: trace
+also_supports: []
+evidence_role: harness-evidence
+execution_form: none
 updates:
   - topics/06-measure/trace/README.md
   - topics/06-measure/claims.md

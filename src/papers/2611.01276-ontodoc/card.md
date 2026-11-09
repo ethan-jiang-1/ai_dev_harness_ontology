@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2611.01276
 title: OntoDoc: Automatically Generating Ontology Resource Descriptions
 authors: Juan Guajardo Gutierrez, Mike Tran, Nasim Shirvani Mahdavi, Chengkai Li
@@ -11,6 +11,9 @@ pdf: 2611.01276-ontodoc.pdf
 direction: 2
 home: topics/05-produce
 subtopic: generation
+also_supports: []
+evidence_role: mechanism-only
+execution_form: none
 updates:
   - topics/05-produce/generation/README.md
   - topics/05-produce/claims.md

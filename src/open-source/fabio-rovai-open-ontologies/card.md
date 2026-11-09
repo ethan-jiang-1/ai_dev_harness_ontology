@@ -13,10 +13,12 @@ scan_date: 2026-11-09
 stars_at_scan: 2848
 last_push: 2026-11-04
 ontology_role: core
-seam: commit-gate
-execution: executed
+seam: none
+execution_form: engine
+evidence_role: mechanism-only
 home: topics/05-produce
 subtopic: lifecycle
+also_supports: []
 updates: []
 ---
 

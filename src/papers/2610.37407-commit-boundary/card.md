@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2610.37407
 title: "Constraining the Commit Boundary: A DIO/ODI-Informed Authorization Guardrail for Agentic Entity Resolution"
 authors: Daniel Beránek
@@ -11,6 +11,9 @@ pdf: 2610.37407-commit-boundary.pdf
 direction: 1
 home: topics/01-constraint
 subtopic: commit-gate
+also_supports: []
+evidence_role: mechanism-only
+execution_form: none
 updates:
   - topics/01-constraint/commit-gate/README.md
   - topics/01-constraint/claims.md

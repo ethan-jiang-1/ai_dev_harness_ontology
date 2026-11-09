@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2610.21983
 title: "OntoAct: Hypothesis-Based Neuro-Symbolic Agents through Ontological Abstraction"
 authors: Donghyeok Lee, Bong Gyun Kang, Junyong Ahn, Sungroh Yoon（首尔大学）
@@ -11,6 +11,9 @@ pdf: 2610.21983-ontoact.pdf
 direction: 4
 home: topics/01-constraint
 subtopic: reasoning-gate
+also_supports: []
+evidence_role: execution-test
+execution_form: compiled
 updates:
   - topics/01-constraint/reasoning-gate/README.md
   - topics/01-constraint/claims.md

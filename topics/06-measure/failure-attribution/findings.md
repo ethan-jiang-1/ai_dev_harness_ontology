@@ -2,7 +2,7 @@
 
 > `F` 编号是子主题局部编号；跨页引用写 `failure-attribution/Fx`。
 >
-> 编号沿用 [digest ledger](../../../meta/full-audit/digest-ledger.md)：D-11 = [Diagnose](../../../src/papers/2610.35267-diagnose-workflow/digest.md)，D-15 = [Multi-agent](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md)。
+> 编号沿用 [digest ledger](../../../meta/archive/2026-11/full-audit/digest-ledger.md)：D-11 = [Diagnose](../../../src/papers/2610.35267-diagnose-workflow/digest.md)，D-15 = [Multi-agent](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md)。
 
 ## 索引
 

@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-08
+updated: 2026-11-09
 ---
 
 # 04 状态派：怎么让它记得对
@@ -20,6 +20,8 @@ updated: 2026-11-08
 | [memory](./memory/README.md) | 事实集合 vs 状态；两层状态 | `draft`，已拆 F/G | 5 F / 5 G | dashboard |
 | [identity](./identity/README.md) | 跨源、跨期的同一性 | `draft`，已拆 F/G | 4 F / 5 G | dashboard |
 | [determinism](./determinism/README.md) | 跨运行的一致性锚点 | `seed`，薄页（未拆 F/G） | 3 / 3（未编号） | README（薄页） |
+
+**薄页（<2 篇独立来源）**：identity（0 篇主归位；FIRME 经 `also_supports` 供给）、determinism（0 篇，设计提案）。薄页只作候选/边界，不承担稳定判断。
 
 ## 本派当前判断
 

@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-08
+updated: 2026-11-09
 ---
 
 # 06 测量派：它到底有没有用
@@ -26,6 +26,8 @@ updated: 2026-11-08
 | [feasibility](./feasibility/README.md) | 值不值得 | 4 F / 5 G | 位置×成本×使能条件；三个可算的盈亏平衡 |
 
 五个子主题各有独立目录：`mechanism/`、`failure-attribution/`、`trace/`、`metrics/`、`feasibility/`。本页只做地图；详细度量在各子主题。
+
+**薄页（<2 篇独立来源）**：mechanism（1 篇）、failure-attribution（1 篇）、trace（1 篇）、metrics（1 篇）、feasibility（0 篇，横切综合）。尺子类薄页可以引用，但要标“单来源”。
 
 ## 双重身份
 

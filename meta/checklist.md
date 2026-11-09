@@ -13,7 +13,8 @@
 - 文档：`status` ∈ {`seed`, `draft`, `stabilized`, `superseded`}。
 - 笔记：`source_type` ∈ {`paper`, `preprint`, `blog`, `engineering`, `standard`, `talk`, `survey`, `open-source`}；`reading` ∈ {`未读`, `综述级`, `摘要级`, `精读`, `已消化`}（代码卡另可用 `已读代码` / `已跑通`）；`provenance` ∈ {`原文正文`, `原文摘要`, `综述转述`, `未核`}（代码卡另可用 `一手代码` / `一手文档`）；`home` 指向 `topics/<派>`，`subtopic` 指向子主题。
 - 论文 digest：`quality` ∈ {`A`, `B`, `C`}；`based_on: card.md` 指向同目录的来源卡。
-- 开源卡：`commit` 已 pin；`scan_date` / `stars_at_scan` / `last_push` 齐全；`ontology_role` ∈ {`core`, `adjunct`, `none`, `unclear`}；`seam` 取六时刻之一或 `none`；`execution` ∈ {`executed`, `context`, `mixed`, `none`, `unknown`}。
+- 开源卡：`commit` 已 pin；`scan_date` / `stars_at_scan` / `last_push` 齐全；`ontology_role` ∈ {`core`, `adjunct`, `none`, `unclear`}；`seam` 取六时刻 + `read-path` / `supply` / `reasoning` / `training` / `none`；`execution_form` ∈ {`engine`, `compiled`, `context`, `label`, `none`, `unknown`}；`evidence_role` ∈ {`execution-test`, `mechanism-only`, `harness-evidence`, `boundary-ruler`}。
+- 论文卡：`evidence_role` 与 `execution_form` 齐全；一篇喂多个子主题时，`subtopic` 主归位 + `also_supports` 列出其余。
 - 实验：`experiment_status` ∈ {`未开始`, `设计中`, `运行中`, `已完成`, `已放弃`}。
 - 交付：`deliverable_status` ∈ {`draft`, `stable`, `frozen`}。
 - `updated` 是最后一次实质修订，不是搬家日期。
@@ -28,12 +29,14 @@
 
 ## 4. 计数
 
-- 22 个论文目录（20 基础 + 2 扫描）；每目录一个 `<stem>.pdf`、`paper.md` / `references.md` / `appendix.md`、`card.md`、`digest.md`；1 张材料卡。
+**当前计数只看 [meta/state](./state.md)**；本节只列结构性不变量，不再抄数字。
+
+- 论文目录数 = manifest 行数；每目录一个 `<stem>.pdf`、`paper.md` / `references.md` / `appendix.md`、`card.md`、`digest.md`。
 - 开源：磁盘目录数 = 有 `card.md` 的项目数；有 `digest.md` 的才是「已消化」；没有 digest 的不计入。
-- 6 派 / 6 个 `frontier.md` / 6 个 `claims.md` / 6 个 `sources.md` / 6 个时刻。
+- 6 派 / 6 个 `frontier.md` / 6 个 `claims.md` / 6 个 `sources.md` / 6 个硬时刻 + 轴外位置。
 - 06 有 5 个子主题（mechanism / failure-attribution / trace / metrics / feasibility）。
-- README 的统计与 `conclusions.md` 的实际行数一致：17 已核 / 2 推测 / 3 存疑 / 4 冲突。
 - 标题里的「N 种读法」与下面的条目数一致。
+- 自检脚本能数的（论文/开源/ID/枚举/链接），以脚本输出为准。
 
 ## 5. 术语
 
@@ -62,5 +65,5 @@
 - 有「三句话 / 问题 / 术语 / 方法 / 数字与条件 / 不能说明什么 / 工程用法 / 质量边界 / 与仓库判断 / 未解决」。
 - 每个数字带数据、模型、样本量、设置；没有裸数字；关键数字带表号/页码。
 - 不靠「详见 card」补上下文；链接只放原文/代码。
-- 长度：L3 150–250 行；L2 100–200；L1 50–100。
-- 过 [digest-audit](./digest-audit.md) 的标准。
+- 长度：L3 250–360 行；L2 160–260；L1 100–240（目标，不是门；自包含优先）。
+- 过 [digest-audit](archive/2026-11/digest-audit.md) 的标准。

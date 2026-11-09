@@ -17,8 +17,7 @@ updated: 2026-11-09
 ```
 src/
 ├── papers/
-│   ├── manifest.md
-│   ├── manifest-scan.md
+│   ├── manifest.md          # 全仓唯一论文登记（22 篇，含批次列）
 │   └── {arxiv_id}-{slug}/
 │       ├── {arxiv_id}-{slug}.pdf     # 原文，只读
 │       ├── paper.md                  # 正文全文 MD（保留页码标记）
@@ -133,7 +132,7 @@ open-source/{org}-{repo}/
 10. `## 9. 还没解决 / 下一步`：可实验的问题优先。
 11. `## 10. 原文`：arXiv/代码链接。
 
-**长度**：L3 约 150–250 行；L2 约 100–200 行；L1 约 50–100 行。L1 可以短，但仍要自包含。
+**长度**：L3 约 250–360 行；L2 约 160–260 行；L1 约 100–240 行。长度是目标不是门；**自包含优先**，L1 的判断可以只有一页，digest 仍可写长。定义见 [conventions](../meta/conventions.md#阅读深度l1l2l3)。
 
 **禁止**：
 
@@ -150,7 +149,9 @@ open-source/{org}-{repo}/
 | `source_type` | `paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey` / `open-source` | 素材类型；证据天花板见 [source-types](../meta/source-types.md) |
 | `reading` | 论文/材料：`未读` / `综述级` / `摘要级` / `精读` / `已消化`；代码：`未读` / `已读代码` / `已跑通` | 读到什么程度（写在 card） |
 | `provenance` | 论文/材料：`原文正文` / `原文摘要` / `综述转述` / `未核`；代码：`一手代码` / `一手文档` / `未核` | 证据来自哪里（写在 card） |
-| `home` / `subtopic` | `topics/<派>` / `<子主题>` | 归位；移动子主题只改 `subtopic` |
+| `home` / `subtopic` / `also_supports` | `topics/<派>` / `<子主题>` / `[<子主题>]` | 归位；移动子主题只改 `subtopic`；一篇喂多个子主题时，主归位放 `subtopic`，其余放 `also_supports` |
+| `evidence_role` | `execution-test` / `mechanism-only` / `harness-evidence` / `boundary-ruler` | 对中心问题提供哪类证据 |
+| `execution_form` | `engine` / `compiled` / `context` / `label` / `none` / `unknown` | 本体以什么形态被执行；见 [execution-forms](../topics/execution-forms.md) |
 | `quality` | `A` / `B` / `C` | 证据强度粗分（写在 digest）；定义见 [conventions](../meta/conventions.md#字段与词汇) |
 
 开源卡另有三组字段（不进论文卡）：
@@ -159,9 +160,9 @@ open-source/{org}-{repo}/
 |---|---|---|
 | `commit` / `release` / `license` | SHA/tag / tag / SPDX | 版本与许可；**不 pin 不算入库** |
 | `scan_date` / `stars_at_scan` / `last_push` | 日期 / 数字 / 日期 | 扫描快照；star 只作影响力参考 |
-| `ontology_role` / `seam` / `execution` | `core/adjunct/none/unclear` / 六时刻或 `none` / `executed/context/mixed/none/unknown` | 本体地位、接缝、执行形态；**只写初判，定级在 digest** |
+| `ontology_role` / `seam` / `execution_form` | `core/adjunct/none/unclear` / 六时刻 + `read-path/supply/reasoning/training/none` / `engine/compiled/context/label/none/unknown` | 本体地位、接缝/轴外位置、执行形态；**只写初判，定级在 digest**；旧 `execution` 字段已由 `execution_form` 取代 |
 
-`seam` 的取值来自 [topics/seams.md](../topics/seams.md) 的六个时刻：`action-gate` / `evidence` / `checker` / `commit-gate` / `memory` / `determinism`。不是接缝（如纯供给、推理内核）写 `none`，并在 digest 里说明。
+`seam` 的取值来自 [topics/seams.md](../topics/seams.md)：六个硬时刻（`action-gate` / `evidence` / `checker` / `commit-gate` / `memory` / `determinism`）+ 四个轴外位置（`read-path` / `supply` / `reasoning` / `training`）+ `none`。不是接缝写 `none`，并在 digest 里说明是“回路外”还是“尚未判定”。
 
 正文推断句至少标一次 `已核` / `推测` / `存疑`；没有标的按 `推测`。
 
@@ -175,7 +176,7 @@ open-source/{org}-{repo}/
 4. **写 digest**：按 §3 骨架；先写「三句话」，再补术语/方法/数字/边界/工程。
 5. **抽图**：2–3 张承载机制/结果的图；带页码、出处、「看什么」。
 6. **落 topics**：更新派 `sources.md`（内容链 digest）→ `claims.md` / 子主题 dashboard；跨派才动 conclusions。
-7. **自检**：过 [checklist](../meta/checklist.md) 与 [digest-audit](../meta/digest-audit.md) 标准。
+7. **自检**：过 [checklist](../meta/checklist.md) 与 [digest-audit](../meta/archive/2026-11/digest-audit.md) 标准。
 
 ### 5.2 开源项目
 
@@ -200,7 +201,7 @@ open-source/{org}-{repo}/
 
 ## 7. 已知缺口
 
-- 22 篇都有 card + digest；**digest 已全部重写为自包含版本**（L3 150–250 行、L2 100–200、L1 50–100）；审计表见 [digest-audit](../meta/digest-audit.md)。
+- 22 篇都有 card + digest；**digest 已全部重写为自包含版本**（L3 250–360 行、L2 160–260、L1 100–240）；历史审计表见 [digest-audit](../meta/archive/2026-11/digest-audit.md)。
 - L1 4 篇只到一页判断（Peeling/Evontree/SFE-O/ReX-GG），没有深读正文。
 - 部署层回报、false-veto/false-defer、维护成本仍缺量化。
 - 部分论文有 v2/v3 版本，当前取下载当日最新版；版本变化可能改变结论。

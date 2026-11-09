@@ -3,7 +3,7 @@ status: draft
 source_type: preprint
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: 2610.21466
 title: Ontology Refinement with Embeddings and LLMs - A Case Study on CASTON
 authors: Hui Yang, Ziyu Li, Xuan Liu, Anders Jarfors, He Tan, Jiaoyan Chen
@@ -11,6 +11,9 @@ pdf: 2610.21466-caston-refinement.pdf
 direction: 2
 home: topics/05-produce
 subtopic: refinement
+also_supports: []
+evidence_role: mechanism-only
+execution_form: none
 updates:
   - topics/05-produce/refinement/README.md
   - topics/05-produce/claims.md
