@@ -59,7 +59,7 @@
 
 | 工位 | 职责 | 完成信号 |
 |---|---|---|
-| [`src/`](./src/) | 一篇一目录：PDF + `paper.md` / `references.md` / `appendix.md` + `card.md` + `digest.md` + `figures/` | 原文落盘 + 三份 MD 齐 + digest 有 `quality` |
+| [`src/`](./src/) | 一篇一目录：PDF + `paper.md` / `references.md` / `appendix.md` + `card.md` + `digest.md` + `figures/`（有图才建） | 原文落盘 + 三份 MD 齐 + digest 有 `quality` |
 | [`topics/`](./topics/) | 按六派沉淀；派 README 是地图，子主题 README 是 dashboard | 结论带等级，冲突显式保留，gap/next 可见 |
 | [`deliverables/`](./deliverables/) | 手册、Deck、图等对外物 | 每条可反查回 topics |
 
@@ -86,8 +86,8 @@
 
 ## 4. 当前状态
 
-- `src/` — 22 个论文目录（20 基础 + 2 扫描）；每目录 PDF + 三份 MD + `card.md` + `digest.md` + `figures/`；4 个开源项目（已 pin commit、已消化）；1 张材料卡 + 一本合并后的 [manifest](./src/papers/manifest.md)。
-- `topics/` — 六派成文；17 条已核 + 2 条推测 + 3 条存疑 + 4 条冲突；22 篇论文里 **9 篇把本体当被测变量并测了执行效果**，4 篇只提机制、6 篇是 harness 证据、3 篇是边界/尺子（见各卡 `evidence_role`）；4 个开源项目提供代码级机制证据。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
+- `src/` — 22 个论文目录（20 基础 + 2 扫描）；每目录 PDF + 三份 MD + `card.md` + `digest.md`（有图则 `figures/`）；4 个开源项目（已 pin commit、已消化）；1 张材料卡 + 一本合并后的 [manifest](./src/papers/manifest.md)。
+- `topics/` — 六派成文；17 条已核 + 2 条推测 + 3 条存疑 + 4 条冲突；22 篇论文里 **9 篇把本体当被测变量并测了执行效果**（8 篇在 agent 回路内，Evontree 在训练侧），4 篇只提机制、6 篇是 harness 证据、3 篇是边界/尺子（见各卡 `evidence_role`）；4 个开源项目提供代码级机制证据。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
 - `deliverables/` — 手册大纲 7 章。
 - `experiments/` — 7 个协议（6 个通用 + 1 个形态消融），其中 3 个已冻结为试点（EXP-004/005/006）；**D0 资产门未签核，暂不可开跑**。
 
