@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif">
+  <rect width="1000" height="560" fill="#fbfbf9"/>
+  <text x="40" y="42" font-size="22" font-weight="600" fill="#111">本体 × LLM 应用：外部问题地图</text>
+  <text x="40" y="68" font-size="13" fill="#666">越靠左上越像“建与查”，越靠右下越像“治与算账”；橙色 = 我们 01–03 的明显缺口</text>
+
+  <g font-size="12">
+    <rect x="40" y="100" width="215" height="120" rx="10" fill="#fff4ea" stroke="#a8642d"/>
+    <text x="58" y="128" font-size="15" font-weight="700" fill="#5e3518">本体工程</text>
+    <text x="58" y="152">CQ → 候选 → 公理</text>
+    <text x="58" y="172">对齐 / 精化 / 评估</text>
+    <text x="58" y="196" fill="#a8642d">缺口：04</text>
+
+    <rect x="270" y="100" width="215" height="120" rx="10" fill="#fff4ea" stroke="#a8642d"/>
+    <text x="288" y="128" font-size="15" font-weight="700" fill="#5e3518">KGQA / Text2SPARQL</text>
+    <text x="288" y="152">schema grounding</text>
+    <text x="288" y="172">type state / 纠错</text>
+    <text x="288" y="196" fill="#a8642d">缺口：05</text>
+
+    <rect x="500" y="100" width="215" height="120" rx="10" fill="#eef5ff" stroke="#3b6ea5"/>
+    <text x="518" y="128" font-size="15" font-weight="700" fill="#1d3f5e">语义层 / Agent</text>
+    <text x="518" y="152">MCP / A2A / virtual KG</text>
+    <text x="518" y="172">工具发现 / OBDA</text>
+    <text x="518" y="196" fill="#3b6ea5">部分：02</text>
+
+    <rect x="730" y="100" width="230" height="120" rx="10" fill="#fdeeee" stroke="#a33b3b"/>
+    <text x="748" y="128" font-size="15" font-weight="700" fill="#5e2020">信任 / 治理</text>
+    <text x="748" y="152">权限 / 来源 / 时效</text>
+    <text x="748" y="172">输出校验 / 审计</text>
+    <text x="748" y="196" fill="#a33b3b">缺口：07</text>
+
+    <rect x="40" y="270" width="215" height="120" rx="10" fill="#f2f2ef" stroke="#888"/>
+    <text x="58" y="298" font-size="15" font-weight="700">评测 / 基准</text>
+    <text x="58" y="322">CQ / reasoner-verified</text>
+    <text x="58" y="342">LLM judge / OAEI</text>
+    <text x="58" y="366" fill="#777">缺口：08</text>
+
+    <rect x="270" y="270" width="215" height="120" rx="10" fill="#f2f2ef" stroke="#888"/>
+    <text x="288" y="298" font-size="15" font-weight="700">知识一致性</text>
+    <text x="288" y="322">文本/表格/KG 冲突</text>
+    <text x="288" y="342">时效 / 缺口</text>
+    <text x="288" y="366" fill="#777">边缘：04/06</text>
+
+    <rect x="500" y="270" width="215" height="120" rx="10" fill="#eefaf2" stroke="#2f7d54"/>
+    <text x="518" y="298" font-size="15" font-weight="700" fill="#194d33">领域落地</text>
+    <text x="518" y="322">法律 / 工业 / 医疗</text>
+    <text x="518" y="342">电网 / 建筑</text>
+    <text x="518" y="366" fill="#2f7d54">部分：01/02</text>
+
+    <rect x="730" y="270" width="230" height="120" rx="10" fill="#f2f2ef" stroke="#888"/>
+    <text x="748" y="298" font-size="15" font-weight="700">成本 / 组织</text>
+    <text x="748" y="322">LLM 分类 vs 本体</text>
+    <text x="748" y="342">维护 / 技能 / 算账</text>
+    <text x="748" y="366" fill="#777">缺口：05/02</text>
+  </g>
+
+  <rect x="40" y="430" width="920" height="94" rx="10" fill="#f7f7f4" stroke="#bbb"/>
+  <text x="60" y="456" font-size="13" font-weight="700">一句话</text>
+  <text x="60" y="480" font-size="12" fill="#444">外部最热的是「建得出来、查得动、治得住」；我们 01–03 主要回答「接在哪、怎么执行、凭什么」。</text>
+  <text x="60" y="502" font-size="12" fill="#777">所以最该补的是：04 本体工程 → 05 KGQA → 07 治理；06 语义层与 08 评测更像支撑/附录。</text>
+</svg>

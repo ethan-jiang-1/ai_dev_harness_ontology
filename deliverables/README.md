@@ -6,7 +6,7 @@ updated: 2026-11-09
 
 流水线的第三个工位。把 `topics/` 里已经站得住的判断，重新组织成**对外可用的形态**：手册、Deck、图、讲稿。
 
-<img src="./_figures/three-layers.svg" alt="三份交付物的阅读顺序" width="100%">
+<img src="./_figures/three-layers.svg" alt="三个层次的阅读顺序" width="100%">
 
 ## 抽取规则
 
@@ -15,9 +15,9 @@ updated: 2026-11-09
 3. **每条可反查。** 交付物的每个要点都要能指回主题文档或结论编号。做不到，说明它还没被消化。
 4. **标注可信度。** 已核与推测必须区分开——对外物最容易犯的错是把推测写成既成事实。
 
-## 三个子目录 = 三种交付物
+## 四个子目录 = 3 层 + 1 条生命周期
 
-三层，不是三本平行的书：
+前三层回答「判断 / 操作 / 依据」；04 把三者串成「建 → 用 → 治」的落地生命周期。
 
 ```
 01-capability-status/     判断层：今天能做成什么、不能承诺什么
@@ -27,6 +27,8 @@ updated: 2026-11-09
         │
         ▼
 03-mechanism-reference/   依据层：为什么是这些位置/形态，边界在哪
+
+04-ontology-in-production/ 生命周期：建 → 用 → 治（跨三层）
 ```
 
 | 子目录 | 回答什么 | 形态 | 状态 | 依据 |
@@ -35,12 +37,13 @@ updated: 2026-11-09
 | [02-engineering-playbook](./02-engineering-playbook/README.md) | 选位置/形态、R0–R12、开源与论文指示分级、账本/成本/上线、验收与 stop | 步骤 + 接口 + 验收 | draft | E-xx + 各派 mechanism |
 | [03-mechanism-reference](./03-mechanism-reference/README.md) | 为什么是六个位置、三根分类轴怎么分、15 条边界 | 入口 + 六张位置卡 + 谱外页 + 三张横切页 + 证据台账 | draft | E-xx + [topics/README](../topics/README.md) |
 | └ [附录：约束强度谱](./03-mechanism-reference/appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字）；位置细节以卡为准 | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
+| [04-ontology-in-production](./04-ontology-in-production/README.md) | 本体怎么建到可消费、怎么查、怎么治 | 建 / 用 / 治三分册 + 验收 | draft | E-xx + 05/03/01 topics；外部信号未入库 |
 
-> `_plans/` 是[工作底稿](./_plans/README.md)，不是第四种交付物；不进对外阅读路径，也不构成 E。
+> `_plans/` 是[工作底稿](./_plans/README.md)，不是交付物；不进对外阅读路径，也不构成 E。
 
 ## 导读：先读哪份、按什么顺序
 
-**一句话**：01 判断值不值得做；02 决定怎么做；03 查凭什么。
+**一句话**：01 判断值不值得做；02 决定怎么做；03 查凭什么；04 从建到用再到治。
 
 ### 按任务
 
@@ -50,57 +53,59 @@ updated: 2026-11-09
 | 有一个具体任务 | [01 地图](./01-capability-status/sections/map.md)（A/B） | [02 地图](./02-engineering-playbook/sections/map.md) → [02 主体](./02-engineering-playbook/sections/approach.md)（R0 + 一条 recipe） | 03 附录、`src/` |
 | 要评审/说服别人 | [03 地图](./03-mechanism-reference/sections/map.md) + [证据边界](./03-mechanism-reference/sections/boundaries.md) | [01 验收](./01-capability-status/sections/acceptance.md) + [02 边界](./02-engineering-playbook/sections/boundaries.md) | `src/` 原文 |
 | 要落地一个接缝 | [02 地图](./02-engineering-playbook/sections/map.md) → [R0 + recipe](./02-engineering-playbook/sections/approach.md) | [02 运行](./02-engineering-playbook/operations/README.md) + [02 验收](./02-engineering-playbook/sections/acceptance.md) | 01 全篇 |
+| 要建/查/治一个本体应用 | [04 地图](./04-ontology-in-production/sections/map.md) | [04 建/用/治](./04-ontology-in-production/body/README.md) | 01/03 全篇 |
 | 要查某条判断的边界 | [03 地图](./03-mechanism-reference/sections/map.md) + 对应 position | [03 证据](./03-mechanism-reference/evidence/README.md) | 02 全篇 |
 
 ### 按时间
 
 | 时间 | 读什么 | 得到什么 |
 |---|---|---|
-| 10 分钟 | 本页图 + [01 §0](./01-capability-status/README.md#0-一页结论) + [02 §0](./02-engineering-playbook/README.md#0-一页结论) | 知道三份分工与「先做什么」 |
+| 10 分钟 | 本页图 + [01 §0](./01-capability-status/README.md#0-一页结论) + [02 §0](./02-engineering-playbook/README.md#0-一页结论) | 知道四份分工与「先做什么」 |
 | 1 小时 | 01 地图 + 02 地图 + 02 主体（R0） | 能选一个接缝/一条 recipe |
-| 半天 | 三份 0–6 | 能写 go/no-go 与边界评审 |
+| 半天 | 四份 0–6 | 能写 go/no-go 与边界评审 |
 
 ### 每份的阅读顺序
 
 - **01**（[GUIDE](./01-capability-status/GUIDE.md)）：0 → [地图](./01-capability-status/sections/map.md) → [能力条目](./01-capability-status/capabilities/README.md)（A→B→C→D）→ [边界](./01-capability-status/sections/boundaries.md) → [验收](./01-capability-status/sections/acceptance.md) → [关系](./01-capability-status/sections/relations.md)。
 - **02**（[GUIDE](./02-engineering-playbook/GUIDE.md)）：0 → [地图](./02-engineering-playbook/sections/map.md) → [R0 + 一条 recipe](./02-engineering-playbook/sections/approach.md) → [边界](./02-engineering-playbook/sections/boundaries.md) → [验收](./02-engineering-playbook/sections/acceptance.md) → [关系](./02-engineering-playbook/sections/relations.md)。
 - **03**（[GUIDE](./03-mechanism-reference/GUIDE.md)）：0 → [地图](./03-mechanism-reference/sections/map.md) → [位置卡](./03-mechanism-reference/positions/README.md)（context→…→commit→outside）→ [横切页](./03-mechanism-reference/across-positions/README.md) → [边界](./03-mechanism-reference/sections/boundaries.md) → [验收](./03-mechanism-reference/sections/acceptance.md) → [关系](./03-mechanism-reference/sections/relations.md)。
+- **04**（[GUIDE](./04-ontology-in-production/GUIDE.md)）：0 → [地图](./04-ontology-in-production/sections/map.md) → [建](./04-ontology-in-production/body/build.md) → [用](./04-ontology-in-production/body/consume.md) → [治](./04-ontology-in-production/body/govern.md) → [边界](./04-ontology-in-production/sections/boundaries.md) → [验收](./04-ontology-in-production/sections/acceptance.md) → [关系](./04-ontology-in-production/sections/relations.md)。
 
 **反向加载**：从 [01 §5.2](./01-capability-status/sections/acceptance.md#52-期待与数据需求验收规格)/[plan](./_plans/01-capability-status.md)、[02 §3.1](./02-engineering-playbook/sections/approach.md#31-十二条工程做法r0r12)、[03 §2.3](./03-mechanism-reference/sections/map.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
 
 ## 统一阅读结构
 
-三份交付物内容不同，但**对读者的骨架是同一套**。每份开头都有一张同样的读者卡（读者 / 回答 / 不回答），然后从同一层进入：
+四份交付物内容不同，但**对读者的骨架是同一套**。每份开头都有一张同样的读者卡（读者 / 回答 / 不回答），然后从同一层进入：
 
-| 节 | 回答什么 | 01 现状 | 02 工程 | 03 机制 |
-|---|---|---|---|---|
-| **0 一页结论** | 这份东西一句话是什么、给谁、最重要三句 | README §0 | README §0 | README §0 |
-| **1 导读** | 先读哪份、按任务/时间怎么走 | `GUIDE.md` | `GUIDE.md` | `GUIDE.md` |
-| **2 地图** | 本份的核心框架（矩阵 / 五步法 / 四轴六位置） | `sections/map.md` | `sections/map.md` | `sections/map.md` |
-| **3 主体** | 逐项：能力 / recipe / 位置卡 | `capabilities/` | `recipes/` + `sections/approach.md` | `positions/` |
-| **4 边界** | 证据等级、不能证明、反例/反模式 | `sections/boundaries.md` | `sections/boundaries.md` | `sections/boundaries.md` |
-| **5 验收** | 指标、stop、缺口、期待与数据需求 | `sections/acceptance.md` | `sections/acceptance.md` | `sections/acceptance.md` |
-| **6 关系与维护** | 与另外两份的关系、附录、更新规则 | `sections/relations.md` | `sections/relations.md` | `sections/relations.md` |
+| 节 | 回答什么 | 01 现状 | 02 工程 | 03 机制 | 04 落地 |
+|---|---|---|---|---|---|
+| **0 一页结论** | 这份东西一句话是什么、给谁、最重要三句 | README §0 | README §0 | README §0 | README §0 |
+| **1 导读** | 先读哪份、按任务/时间怎么走 | `GUIDE.md` | `GUIDE.md` | `GUIDE.md` | `GUIDE.md` |
+| **2 地图** | 本份的核心框架（矩阵 / 五步法 / 四轴六位置 / 生命周期） | `sections/map.md` | `sections/map.md` | `sections/map.md` | `sections/map.md` |
+| **3 主体** | 逐项：能力 / recipe / 位置卡 / 建用治 | `capabilities/` | `recipes/` + `sections/approach.md` | `positions/` | `body/` |
+| **4 边界** | 证据等级、不能证明、反例/反模式 | `sections/boundaries.md` | `sections/boundaries.md` | `sections/boundaries.md` | `sections/boundaries.md` |
+| **5 验收** | 指标、stop、缺口、期待与数据需求 | `sections/acceptance.md` | `sections/acceptance.md` | `sections/acceptance.md` | `sections/acceptance.md` |
+| **6 关系与维护** | 与另外两份的关系、附录、更新规则 | `sections/relations.md` | `sections/relations.md` | `sections/relations.md` | `sections/relations.md` |
 
-**同构不等于同文**：01 的主体是「能力条目」，02 是「recipe 条目」，03 是「位置卡」；每类条目都必须有 **一句话 / 适用 / 证据等级 / 边界 / 去哪** 这五个字段。
+**同构不等于同文**：01 的主体是「能力条目」，02 是「recipe 条目」，03 是「位置卡」，04 是「建/用/治三分册」；前三类条目都必须有 **一句话 / 适用 / 证据等级 / 边界 / 去哪** 这五个字段。
 
 ### 目录契约
 
-| 角色 | 01 现状 | 02 工程 | 03 机制 |
-|---|---|---|---|
-| 索引 | `README.md`（只放 0/目录/关注） | `README.md` | `README.md` |
-| 导读 | `GUIDE.md` | `GUIDE.md` | `GUIDE.md` |
-| 分节 | `sections/`（map/boundaries/acceptance/relations） | `sections/`（map/approach/boundaries/acceptance/relations） | `sections/`（map/boundaries/acceptance/relations） |
-| 主体 | `capabilities/` + `README.md` | `recipes/` + `README.md`；总览在 `sections/approach.md` | `positions/` + `README.md` |
-| 支撑 | — | `operations/` + `README.md` | `across-positions/` + `README.md` |
-| 证据 | `data/` + `README.md` | `appendices/traceability.md` | `evidence/` + `README.md` |
-| 附录 | — | `appendices/` + `README.md` | `appendix-constraint-spectrum.md` |
+| 角色 | 01 现状 | 02 工程 | 03 机制 | 04 落地 |
+|---|---|---|---|---|
+| 索引 | `README.md`（只放 0/目录/关注） | `README.md` | `README.md` | `README.md` |
+| 导读 | `GUIDE.md` | `GUIDE.md` | `GUIDE.md` | `GUIDE.md` |
+| 分节 | `sections/`（map/boundaries/acceptance/relations） | `sections/`（map/approach/boundaries/acceptance/relations） | `sections/`（map/boundaries/acceptance/relations） | `sections/`（map/boundaries/acceptance/relations） |
+| 主体 | `capabilities/` + `README.md` | `recipes/` + `README.md`；总览在 `sections/approach.md` | `positions/` + `README.md` | `body/`（build/consume/govern）+ `README.md` |
+| 支撑 | — | `operations/` + `README.md` | `across-positions/` + `README.md` | — |
+| 证据 | `data/` + `README.md` | `appendices/traceability.md` | `evidence/` + `README.md` | `evidence/` + `README.md` |
+| 附录 | — | `appendices/` + `README.md` | `appendix-constraint-spectrum.md` | — |
 
 **规则**：README 只做索引；正文按「分节 / 主体 / 支撑 / 证据 / 附录」放，不把长文塞回 README。每个目录都有 `README.md`，用同一张索引表。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG；每份 `GUIDE.md` 嵌本份图，README 不再嵌图。
 
 ## 期待 → 数据（验收规格）
 
-三份交付物的 `sections/acceptance.md` 都有一节「期待与数据需求」：把交付物要回答的问题写成**可证伪的期待**，再倒推「支持它需要什么数据、现在有什么、缺什么」。
+四份交付物的 `sections/acceptance.md` 都有一节「期待与数据需求」：把交付物要回答的问题写成**可证伪的期待**，再倒推「支持它需要什么数据、现在有什么、缺什么」。
 
 它的作用不是承诺结果，而是让缺口显形：**量不出「支持它需要的数据」，就说明这条期待还停在推测。** 这是交付物的验收规格（非 E），不是新结论；数据回 `topics/` 或 `frontier` 补，不在交付物里补。
 
@@ -110,7 +115,7 @@ updated: 2026-11-09
 
 **没有独立的 handbook。** 原《本体在 harness 里如何被执行》7 章、4–6 万字的书稿计划已废弃：
 
-- 书稿没有独立角色——01/02/03 已经把「判断/操作/依据」三层分开，再写一本会把它们混回去。
+- 书稿没有独立角色——01–04 已经把「判断/操作/依据/落地」分开，再写一本会把它们混回去。
 - 第四章缺一手失败复盘、第六章缺按机制分派的度量方案、第七章是案例不是对照；按仓库规则，写不动的地方是研究没做完，不应在交付物里绕过去。
 - 主线「价值不在知道更多，而在让不该发生的事不发生」接近 P1a，但 E-01 的 ontology 是 `not measured`、E-04 的结构贡献未隔离；附录已把它收窄为「强端不是更好，是更窄」。
 
