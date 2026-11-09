@@ -126,7 +126,7 @@ updated: 2026-11-09
 ## 2026-11-09 02 工程手册 v2
 
 - **结构**：02 改为「README 门厅 + `recipes/`（R0–R12）+ `operations/`（账本/评测/成本/上线/领域）+ `appendices/`（接口/追溯/案例）」；README 保留决策图与 R 索引，细节下沉到分片，避免单页继续膨胀。
-- **三份同构**：01/02/03 统一为 `0 一页结论 / 1 怎么读 / 2 地图 / 3 主体 / 4 边界 / 5 验收 / 6 关系与维护`；README 只做索引 + 阅读顺序 + 导航图，`sections/` 放 2/4/5/6，主体分别是 `capabilities/` / `recipes/` / `positions/`，条目字段统一为「一句话/适用/证据等级/边界/去哪」。01 的旧 `plan.md` 移到 [`deliverables/_plans/`](../deliverables/_plans/README.md)，不占交付正文章节。
+- **三份同构**：01/02/03 统一为 `0 一页结论 / 1 怎么读 / 2 地图 / 3 主体 / 4 边界 / 5 验收 / 6 关系与维护`；导读集中在 [deliverables/README](../deliverables/README.md)；子 README 只做索引 + 一张导航图，`sections/` 放 2/4/5/6，主体分别是 `capabilities/` / `recipes/` / `positions/`，条目字段统一为「一句话/适用/证据等级/边界/去哪」。01 的旧 `plan.md` 移到 [`deliverables/_plans/`](../deliverables/_plans/README.md)，不占交付正文章节。
 - **新增**：R0 本体可执行性体检（四项准入：名字/单位、声明、覆盖、执行落点）；R10 离线/CI SHACL；R11 OBDA 查询重写；R12 受监管供给（citation + solver + 人签核）。R1–R9 保留编号，避免 01/03 的 R 引用漂移。
 - **R8 第二实现**：外部扫描发现 `Matdata-eu/sparql-guard`（Apache-2.0，HEAD `6b68d769`）：TS 代理 + 查询重写，fail-closed、subject+object 两侧、有一组 vitest 用例（外部复核 76/76 通过，未在仓库内复跑）；**未按仓库标准入库**（单作者/1★/无 harness 调用点/无泄漏率）。它只说明 read-path 是 family（post-filter vs query rewrite），不升第七时刻，也不改 01 的 B 评级。候选记在 [commit-gate frontier](../topics/01-constraint/commit-gate/frontier.md)。
 - **证据边界**：false-veto、grounding 校准、commit 写路径、第二 read-path 调用点仍缺；02 只写测量协议与 stop，不写「已解决」。

@@ -10,6 +10,8 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 > **读者**：工程负责人 / 架构师 ｜ **回答**：拿本体做某件事，具体怎么做 ｜ **不回答**：值不值得做（去 01）、为什么是这些位置（去 03）。
 
+> 完整阅读顺序见 [deliverables/README 导读](../README.md#导读先读哪份按什么顺序)。
+
 <img src="../_figures/02-recipes-map.svg" alt="02 选一条 recipe" width="100%">
 
 > 这份交付物回答：**本体拿进来之后，到底能帮什么；如果我要做某件事，工程上从哪一步开始、接口长什么样、开源/论文里有没有能照抄的东西。**
@@ -32,35 +34,6 @@ basis: E-01–E-20, C-03; recipes R0–R12
 4. **证据只到 E-xx**：recipe 是工程配方，不是新结论；效应量仍看 E-xx 的限定。
 5. **如果只做一件事**：R0 + 账本 + K1；不要先建整座塔。
 
-
-## 1. 怎么读
-
-### 1.1 加载集（按需披露）
-
-| 要做 | 只读 | 不读 |
-|---|---|---|
-| 10 分钟判断要不要做 | §0 + [§3.1 R 索引](./sections/approach.md#31-十二条工程做法r0r12) + [01 §0](../01-capability-status/README.md#0-一页结论) | 全部 recipe |
-| 选一条 recipe / 定接口 | §0 + §1 + [§2](./sections/map.md) + [§3](./sections/approach.md) + 对应 recipe + [appendices/interfaces](appendices/interfaces.md) + [execution-forms](../../topics/execution-forms.md) | 24 篇 `paper.md`、`card.md`/`references.md`/`appendix.md`、其他派 |
-| 定验收/停线 | [§5](./sections/acceptance.md) + [operations/ledger](operations/ledger.md) + [operations/evaluation](operations/evaluation.md) + 对应 `mechanism.md` | `conclusions` 全表 |
-| 做预算 | [§3.5](./sections/approach.md#35-最小落地路线) + [operations/cost](operations/cost.md) + 对应 recipe §7 | 全部论文 |
-| 上线/回滚 | [operations/rollout](operations/rollout.md) + [operations/domains](operations/domains.md) | 其他 recipe |
-
-> 反向链：recipe → `mechanism.md` → digest §6.5；见 [meta/loading §从交付物倒查](../../meta/loading.md#从交付物倒查反向加载)。
-
-### 1.2 推荐阅读顺序
-
-1. **0 一页结论**：先知道这份交付物只回答「怎么做」。
-2. **2 地图**：看五步法、定错、选位置/形态，先有判断框架。
-3. **3 主体**：先读 R0 准入，再按你的错误类型选**一条** recipe；不要从 R1 读到 R12。
-4. **4 边界**：看反模式与「不能证明什么」。
-5. **5 验收**：看 stop、缺口与期待，决定 shadow 怎么做。
-6. **6 关系**：需要时再跳 01/03。
-
-| 时间 | 读什么 | 得到什么 |
-|---|---|---|
-| 10 分钟 | 0 + [2 地图](./sections/map.md) | 知道该选哪个接缝/形态 |
-| 1 小时 | 0 + [2](./sections/map.md) + [3 主体](./sections/approach.md)（R0 + 一条 recipe） | 能写出接口/字段/验收 |
-| 深读 | 0–6 + `recipes/` + `operations/` | 能跑一个 shadow 并做 go/no-go |
 
 ## 目录
 

@@ -10,6 +10,8 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 
 > **读者**：架构师 / 研究者 ｜ **回答**：为什么是这些位置/形态、证据边界在哪 ｜ **不回答**：具体怎么做（去 02）、今天能做成什么（去 01）。
 
+> 完整阅读顺序见 [deliverables/README 导读](../README.md#导读先读哪份按什么顺序)。
+
 <img src="../_figures/03-six-positions.svg" alt="03 六个位置" width="100%">
 
 > **这不是一本手册，也不是教程。** 它是交付物的「依据层」：解释为什么把本体接在六个位置、三根分类轴怎么分、每条判断的证据边界在哪。
@@ -27,35 +29,6 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 - **承重墙是 M1/M2。** 没有同本体跨位置对照，也没有覆盖率测量；这份参考能给出分类与边界，不能给出效应量。
 
 
-
-## 1. 怎么读
-
-### 1.1 加载集（按需披露）
-
-| 要做 | 只读 | 不读 |
-|---|---|---|
-| 查某个位置 | [positions/README.md](./positions/README.md) | 附录全文、其他位置卡、`src/` 原文 |
-| 查某条判断的边界 | [boundaries.md](./evidence/boundaries.md) + [evidence-ledger.md](./evidence/ledger.md) + [conclusions](../../topics/conclusions.md) 的 E 行 | `src/` 原文、其他派 `mechanism.md`、全部 `paper.md` |
-| 查为什么是六个位置 | [§2 地图](./sections/map.md) + [§3 主体](./positions/README.md) + [coverage](./across-positions/coverage.md) + [execution-forms](./across-positions/execution-forms.md) | 全部论文正文 |
-| 查下一步研究什么 | [gaps.md](./evidence/gaps.md) + 各派 `frontier.md` | 本页不复制候选 |
-
-> 反向链见 [meta/loading §从交付物倒查](../../meta/loading.md#从交付物倒查反向加载)：边界 → E 行 → digest §5/§9 → 附录。
-
-
-### 1.2 推荐阅读顺序
-
-1. **0 一页结论**：先知道「强度不是好坏，强端更窄」。
-2. **2 地图**：看主张类型、四轴、六位置表；不要先读附录。
-3. **3 主体**：按 context → memory → evidence → checker → action → commit → outside 读位置卡。
-4. **4 边界**：看 15 条边界里最常被越过的 5 条。
-5. **5 验收**：看 M1–M5 与缺口。
-6. **6 关系**：需要时再跳 01/02。
-
-| 时间 | 读什么 | 得到什么 |
-|---|---|---|
-| 10 分钟 | 0 + [2.3 六位置表](./sections/map.md#23-六个位置一页表) | 知道六个位置问什么 |
-| 1 小时 | 0 + [2](./sections/map.md) + [3 主体](./positions/README.md) | 能指到某个位置卡与边界 |
-| 深读 | 0–6 + `positions/` + `across-positions/` + `evidence/` | 能复述机制、证据、不能证明什么 |
 
 ## 目录
 

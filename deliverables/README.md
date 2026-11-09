@@ -38,13 +38,33 @@ updated: 2026-11-09
 
 > `_plans/` 是[工作底稿](./_plans/README.md)，不是第四种交付物；不进对外阅读路径，也不构成 E。
 
-**怎么读**：
+## 导读：先读哪份、按什么顺序
 
-- 只有 10 分钟 → [01 §0 一页结论](./01-capability-status/README.md#0-一页结论) + [02 §0 一页结论](./02-engineering-playbook/README.md#0-一页结论)。
-- 手上有一个具体任务 → [02 §2 地图](./02-engineering-playbook/sections/map.md) → §3 主体（R0–R12）。
-- 要说服别人/自查边界 → [03 §2.3 六位置表](./03-mechanism-reference/sections/map.md#23-六个位置一页表) + [boundaries](./03-mechanism-reference/evidence/boundaries.md)。
-- 想查某个位置的机制 → [03 positions](./03-mechanism-reference/positions/context.md)（六张卡，统一 8 字段）。
-- 想读完整论证 → [附录：约束强度谱](./03-mechanism-reference/appendix-constraint-spectrum.md)。
+**一句话**：01 判断值不值得做；02 决定怎么做；03 查凭什么。
+
+### 按任务
+
+| 你手上是什么 | 先读 | 再读 | 不用读 |
+|---|---|---|---|
+| 只有一个模糊想法 | [01 §0](./01-capability-status/README.md#0-一页结论) + 本页图 | [01 地图](./01-capability-status/sections/map.md) | 02 `recipes/`、03 `positions/` |
+| 有一个具体任务 | [01 地图](./01-capability-status/sections/map.md)（A/B） | [02 地图](./02-engineering-playbook/sections/map.md) → [02 主体](./02-engineering-playbook/sections/approach.md)（R0 + 一条 recipe） | 03 附录、`src/` |
+| 要评审/说服别人 | [03 地图](./03-mechanism-reference/sections/map.md) + [证据边界](./03-mechanism-reference/sections/boundaries.md) | [01 验收](./01-capability-status/sections/acceptance.md) + [02 边界](./02-engineering-playbook/sections/boundaries.md) | `src/` 原文 |
+| 要落地一个接缝 | [02 地图](./02-engineering-playbook/sections/map.md) → [R0 + recipe](./02-engineering-playbook/sections/approach.md) | [02 运行](./02-engineering-playbook/operations/README.md) + [02 验收](./02-engineering-playbook/sections/acceptance.md) | 01 全篇 |
+| 要查某条判断的边界 | [03 地图](./03-mechanism-reference/sections/map.md) + 对应 position | [03 证据](./03-mechanism-reference/evidence/README.md) | 02 全篇 |
+
+### 按时间
+
+| 时间 | 读什么 | 得到什么 |
+|---|---|---|
+| 10 分钟 | 本页图 + [01 §0](./01-capability-status/README.md#0-一页结论) + [02 §0](./02-engineering-playbook/README.md#0-一页结论) | 知道三份分工与「先做什么」 |
+| 1 小时 | 01 地图 + 02 地图 + 02 主体（R0） | 能选一个接缝/一条 recipe |
+| 半天 | 三份 0–6 | 能写 go/no-go 与边界评审 |
+
+### 每份的阅读顺序
+
+- **01**：0 → [地图](./01-capability-status/sections/map.md) → [能力条目](./01-capability-status/capabilities/README.md)（A→B→C→D）→ [边界](./01-capability-status/sections/boundaries.md) → [验收](./01-capability-status/sections/acceptance.md) → [关系](./01-capability-status/sections/relations.md)。
+- **02**：0 → [地图](./02-engineering-playbook/sections/map.md) → [R0 + 一条 recipe](./02-engineering-playbook/sections/approach.md) → [边界](./02-engineering-playbook/sections/boundaries.md) → [验收](./02-engineering-playbook/sections/acceptance.md) → [关系](./02-engineering-playbook/sections/relations.md)。
+- **03**：0 → [地图](./03-mechanism-reference/sections/map.md) → [位置卡](./03-mechanism-reference/positions/README.md)（context→…→commit→outside）→ [横切页](./03-mechanism-reference/across-positions/README.md) → [边界](./03-mechanism-reference/sections/boundaries.md) → [验收](./03-mechanism-reference/sections/acceptance.md) → [关系](./03-mechanism-reference/sections/relations.md)。
 
 **反向加载**：从 [01 §5.2](./01-capability-status/sections/acceptance.md#52-期待与数据需求验收规格)/[plan](./_plans/01-capability-status.md)、[02 §3.1](./02-engineering-playbook/sections/approach.md#31-十二条工程做法r0r12)、[03 §2.3](./03-mechanism-reference/sections/map.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
 
@@ -55,7 +75,7 @@ updated: 2026-11-09
 | 节 | 回答什么 | 01 现状 | 02 工程 | 03 机制 |
 |---|---|---|---|---|
 | **0 一页结论** | 这份东西一句话是什么、给谁、最重要三句 | README §0 | README §0 | README §0 |
-| **1 怎么读** | 按角色/任务/时间怎么加载；目录在哪 | README §1 | README §1 | README §1 |
+| **1 导读** | 先读哪份、按任务/时间怎么走 | 本页导读 | 本页导读 | 本页导读 |
 | **2 地图** | 本份的核心框架（矩阵 / 五步法 / 四轴六位置） | `sections/map.md` | `sections/map.md` | `sections/map.md` |
 | **3 主体** | 逐项：能力 / recipe / 位置卡 | `capabilities/` | `recipes/` + `sections/approach.md` | `positions/` |
 | **4 边界** | 证据等级、不能证明、反例/反模式 | `sections/boundaries.md` | `sections/boundaries.md` | `sections/boundaries.md` |
@@ -68,7 +88,7 @@ updated: 2026-11-09
 
 | 角色 | 01 现状 | 02 工程 | 03 机制 |
 |---|---|---|---|
-| 索引 | `README.md`（只放 0/1/目录/关注） | `README.md` | `README.md` |
+| 索引 | `README.md`（只放 0/目录/关注） | `README.md` | `README.md` |
 | 分节 | `sections/`（map/boundaries/acceptance/relations） | `sections/`（map/approach/boundaries/acceptance/relations） | `sections/`（map/boundaries/acceptance/relations） |
 | 主体 | `capabilities/` + `README.md` | `recipes/` + `README.md`；总览在 `sections/approach.md` | `positions/` + `README.md` |
 | 支撑 | — | `operations/` + `README.md` | `across-positions/` + `README.md` |

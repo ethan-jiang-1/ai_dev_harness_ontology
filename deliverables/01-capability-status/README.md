@@ -14,7 +14,7 @@ basis: E-01–E-20, C-01–C-04
 
 > 这份交付物回答三个问题：**现在能确定做成什么、哪些只是能试点、哪些还差得远。** 它不介绍本体，也不教怎么建；它只把 `topics/` 里的判断摆成一张可决策的地图。
 >
-> **读法**：先看 §0 的一页结论与 §0.1 的三句话；再看 [§2 地图](./sections/map.md)；需要细节跳到 [§3 主体](./capabilities/README.md)；要知道「还差什么」看 [§5 验收](./sections/acceptance.md)。
+> **怎么用**：本页只做索引；完整阅读顺序见 [deliverables/README 导读](../README.md#导读先读哪份按什么顺序)。
 >
 > **证据等级**：本仓库没有独立复现，最高等级是 `已核`。所以下文「能落地」只表示「有实现/有公式 + 一手证据 + 边界可写进验收」，**不表示「已证」**。`推测` 的工程建议会单独标出。
 >
@@ -64,32 +64,6 @@ basis: E-01–E-20, C-01–C-04
 
 
 
-
-## 1. 怎么读
-
-### 1.1 加载集（按需披露）
-
-| 要做 | 只读 | 不读 |
-|---|---|---|
-| 判断某条期待是什么 verdict | [§2 地图](./sections/map.md) / [§5 验收](./sections/acceptance.md) + [plan](../_plans/01-capability-status.md) + [conclusions](../../topics/conclusions.md) E 表 + 对应派 `sources.md`/子主题 + 指定 digest §4/§5 | 其他派、`card.md`/`references.md`/`appendix.md`、全部 `paper.md` |
-| 改能力地图的分层 | [§2 地图](./sections/map.md) + 对应派 README + [execution-forms](../../topics/execution-forms.md) | 全部论文正文 |
-
-> 反向链见 [meta/loading §从交付物倒查](../../meta/loading.md#从交付物倒查反向加载)：从 E 倒查，不从 `src/papers/manifest.md` 顺读。
-
-### 1.2 推荐阅读顺序
-
-1. **0 一页结论**：先知道 A/B/C/D 和「最确定的一件事」。
-2. **2 地图**：看能力矩阵与 E1–E9 verdict，知道每项判定从哪来。
-3. **3 主体**：按 A → B → C → D 读能力条目；先读 A，再读你关心的 B。
-4. **4 边界**：看「不能当工作前提」与反向清单。
-5. **5 验收**：看距离与期待，决定要不要立项。
-6. **6 关系**：需要时再跳 02/03。
-
-| 时间 | 读什么 | 得到什么 |
-|---|---|---|
-| 10 分钟 | 0 + [2 地图](./sections/map.md) | 知道结论、A/B/C/D 与最大风险 |
-| 1 小时 | 0 + [2](./sections/map.md) + [3 主体](./capabilities/README.md)（先 A/B） | 能指到具体能力与证据 |
-| 深读 | 0–6 全部 | 能复述条件、边界、验收与缺口 |
 
 ## 目录
 
