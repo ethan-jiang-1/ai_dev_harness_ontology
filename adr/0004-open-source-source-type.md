@@ -15,7 +15,7 @@
 4. **模板集中**：`src/_templates/` 新增 `open-source-card.md` / `open-source-digest.md` / `open-source-code-map.md`；源材料子目录不再自带模板。
 5. **证据天花板**：`source_type: open-source` 以代码为一手原文，定位到 `文件:符号` 可到 `已核`；`已证` 需 `EXP-xxx` 在仓库外复现。README/star/单测覆盖率不能升等级；跑通官方示例只证明能执行。
 6. **候选与入库分离**：候选池、选择标准、状态表在 `src/open-source/README.md`；只有建了 `card.md` 才在磁盘上开目录。
-7. **不复活试点线**：`meta/implementation/` 的 D0 资产要求不适用于本类源材料。
+7. **不设试点线**：D0/客户资产前置已于 2026-11-09 删除；本类源材料不需要外部资产。
 
 ## 后果
 

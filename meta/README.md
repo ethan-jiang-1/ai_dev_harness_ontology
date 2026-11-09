@@ -32,7 +32,6 @@ updated: 2026-11-09
 |---|---|---|
 | [open-source-digestion-plan.md](./open-source-digestion-plan.md) | 开源项目怎么吸收进 topics | 现行（2026-11-09） |
 | [open-source-absorption.md](./open-source-absorption.md) | 代码发现 → topics 的吸收矩阵 | 现行（2026-11-09） |
-| [implementation/](./implementation/README.md) | 试点线：D0 门、协议、成本、playbook | **blocked**（D0 资产未签核） |
 
 ## 历史归档（不要当现行规则）
 

@@ -72,4 +72,4 @@ curated / LLM 生成 / 数据挖掘的漏检与误报偏向；判定器精度只
 | 第四章的反例 | 缺工程侧的一手复盘 |
 | 第六章全章 | 度量方案尚未提出 |
 
-这三处对应 [experiments](../../experiments/README.md) 的协议；其中三个已冻结为试点（EXP-004/005/006），形态消融见 EXP-007。
+这三处对应 [experiments](../../experiments/README.md) 的协议；形态消融见 EXP-007。

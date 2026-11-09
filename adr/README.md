@@ -15,5 +15,6 @@ updated: 2026-11-09
 | [0004](./0004-open-source-source-type.md) | 新增第三类源材料 open-source | 不 vendor，pin commit，代码是一手原文 |
 | [0005](./0005-repo-self-check.md) | 允许 `meta/tools/` 的只读自检 | 文档纪律需要可执行的门，不是代码仓 |
 | [0006](./0006-execution-form-axis.md) | 增加执行形态轴 | 位置与形态正交；形态不建目录，建横切页 |
+| [0007](./0007-no-external-asset-gate.md) | 不设外部资产前置 | 删除 D0/试点线；agent 不得自行创造人类前置 |
 
 **新增 ADR 的判据**：改变目录/层级/字段契约，或引入新的源类型/验证方式。只改内容判断，不写 ADR。

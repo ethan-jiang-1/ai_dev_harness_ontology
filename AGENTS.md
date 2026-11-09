@@ -79,3 +79,4 @@
 - 不把 `runs/` 里的输出直接当 README 结论；先审 run，再升 `claims.md` / README。
 - 不用 `card.md` 当消化正文；`digest.md` 必须自包含，下游不需要先读 card。
 - 不引入代码目录。验证性实现放仓库外，靠 `EXP-xxx` 编号回链。**唯一例外**是 `meta/tools/` 的只读自检（[ADR 0005](./adr/0005-repo-self-check.md)），不承载研究逻辑。
+- 不自行设置要求用户提供资产/人/价/签核的 gate。要设必须先经用户明确同意（[ADR 0007](./adr/0007-no-external-asset-gate.md)）。
