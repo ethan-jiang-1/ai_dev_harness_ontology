@@ -3,7 +3,7 @@ status: draft
 deliverable_status: draft
 updated: 2026-11-09
 target: 工程负责人 / 架构师
-basis: E-01–E-20, C-03; topics 各派 mechanism
+basis: E-01–E-20, C-03; recipes R0–R12
 ---
 
 # 02 · 工程实施：把本体接进 harness 的做法
@@ -14,16 +14,19 @@ basis: E-01–E-20, C-03; topics 各派 mechanism
 >
 > **证据等级**：接口/公式/代码锚点标 `已核` 或 `已核（代码）`；工程配方、阈值、人日估算标 `推测`。交付物只引 E-xx，细节回 `topics/`。
 >
-> **R1–R9 是从 `topics/` 各派 `mechanism.md` 抽取的工程配方，不是新的 E。** 它们回答「怎么做」，不回答「做了有没有用」；效应量仍以 E-xx 为准。
+> **R0–R12 是从 `topics/` 各派 `mechanism.md` 与代码级核对抽取的工程配方，不是新的 E。** 它们回答「怎么做」，不回答「做了有没有用」；效应量仍以 E-xx 为准。
 
 ## 加载集（按需披露）
 
 | 要做 | 只读 | 不读 |
 |---|---|---|
-| 选 recipe / 定接口 | 本页 §0 决策图 + §1–§4 + 对应子主题 `mechanism.md` + [execution-forms](../../topics/execution-forms.md) + 4 个开源 digest | 22 篇 `paper.md`、`card.md`/`references.md`/`appendix.md`、其他派 |
-| 定验收/停线 | 本页 §9 + 对应 `mechanism.md` 的「实施与客户价值」 + [01 §5](../01-capability-status/README.md#5-距离还差什么差多远) | `conclusions` 全表 |
+| 10 分钟判断要不要做 | 本页 §0 + §4 的 R 索引 + [01 §0](../01-capability-status/README.md#0-一页结论) | 全部 recipe |
+| 选一条 recipe / 定接口 | 本页 §1–§4 + 对应 recipe + [appendices/interfaces](appendices/interfaces.md) + [execution-forms](../../topics/execution-forms.md) | 24 篇 `paper.md`、`card.md`/`references.md`/`appendix.md`、其他派 |
+| 定验收/停线 | 本页 §9 + [operations/ledger](operations/ledger.md) + [operations/evaluation](operations/evaluation.md) + 对应 `mechanism.md` | `conclusions` 全表 |
+| 做预算 | 本页 §8 + [operations/cost](operations/cost.md) + 对应 recipe §7 | 全部论文 |
+| 上线/回滚 | [operations/rollout](operations/rollout.md) + [operations/domains](operations/domains.md) | 其他 recipe |
 
-> 反向链见 [meta/loading §从交付物倒查](../../meta/loading.md#从交付物倒查反向加载)：recipe → mechanism → digest §6.5。
+> 反向链：recipe → `mechanism.md` → digest §6.5；见 [meta/loading §从交付物倒查](../../meta/loading.md#从交付物倒查反向加载)。
 
 ## 0. 一句话与五步法
 
@@ -32,35 +35,56 @@ basis: E-01–E-20, C-03; topics 各派 mechanism
 五步：
 
 1. **定错**：你要防的是什么错？可逆吗？会扩散吗？
-2. **选位置**：动作前 / 输出时 / 输出后 / 落盘前 / 跨轮 / 跨运行；或者轴外的读路径/供给。
-3. **选形态**：engine（引擎求值）/ compiled（编译成约束）/ context（注入）/ label（只当标签）。
-4. **定接口**：这个位置拿得到什么事实？输出什么字段？三态怎么表示？
+2. **准入**：本体能被执行吗？先过 R0。
+3. **选位置**：动作前 / 输出时 / 输出后 / 落盘前 / 跨轮 / 跨运行；或者轴外的读路径/供给。
+4. **选形态 + 定接口**：engine / compiled / context / label；这个位置拿得到什么事实？输出什么字段？三态怎么表示？
 5. **定尺子**：按机制选指标；先建账本，再谈效果。
 
 **先看你要做什么：**
 
 ```
 你要让本体帮你做什么？
+├─ 还没确认本体能不能用 ──────────▶ R0（准入体检）
 ├─ 让模型知道得对 ──────────────▶ R1（K1）/ R2（投影）/ R3（编译）
 ├─ 让产出可审计 ────────────────▶ R4（证据契约）
 ├─ 让错误被抓住 ────────────────▶ R5（checker）
 ├─ 让不该做的动作做不了 ────────▶ R6（可逆性闸）
 ├─ 让跨轮记得对 ────────────────▶ R7（身份/记忆）
 ├─ 让检索结果可见/不可见 ───────▶ R8（读路径）
-└─ 让落盘有授权 ────────────────▶ R9（只能设计，无实现）
+├─ 让落盘有授权 ────────────────▶ R9（只能设计，无实现）
+├─ 做离线/CI 校验 ──────────────▶ R10（SHACL）
+├─ 用本体编译查询 ──────────────▶ R11（OBDA）
+└─ 受监管、要引用/solver/签核 ──▶ R12（受监管供给）
 ```
 
 ## 1. 先定错：五个问题
 
 | 问题 | 如果答案是 | 去哪 |
 |---|---|---|
-| 错误可逆吗？ | 可撤销 | 判定/checker 优先 |
+| 错误可逆吗？ | 可撤销 | 判定/checker 优先（R5） |
 | 错误会扩散到下游吗？ | 会 | 加 evidence/checker；不要只做事后审计 |
-| 错误会污染后续轮次吗？ | 会 | memory/身份 |
-| 错误不可逆且代价高吗？ | 是 | 动作前/落盘前 |
+| 错误会污染后续轮次吗？ | 会 | memory/身份（R7） |
+| 错误不可逆且代价高吗？ | 是 | 动作前/落盘前（R6/R9） |
 | 判定所需事实拿得到吗？ | 拿不到 | 先补状态/观测；不要做硬闸 |
 
 > 这五个问题不是评分卡，是**排除法**：答不出「错误是什么/可逆吗」，就不要选机制。组织建议（非 E）。
+
+### 1.1 分诊表（组织建议，非 E）
+
+> 依据 E-06 的五角色/七变量与 [06/failure-attribution](../../topics/06-measure/failure-attribution/mechanism.md)；分诊本身没有效应量。
+
+| 失败表现 | 更像哪类问题 | 先看 | 不要先做 |
+|---|---|---|---|
+| 叫错名字、单位混、槽位对不上 | 词汇/数据契约 | R1 | R2/R3 |
+| 答案对但没依据、无法审计 | 输出契约 | R4 | R5（不能补检索） |
+| 类型/关系/模式错 | 结构判据 | R5 | R4（不检查语义） |
+| 不可逆动作被执行 | 动作授权 | R6 | R8（只读） |
+| 同一实体跨期碎裂/错并 | 身份/状态 | R7 | R3（检索） |
+| 检索结果越权可见 | 读路径 | R8 | R6（动作前） |
+| 错误变更落盘 | 写授权 | R9（设计） | R6（动作前） |
+| 产物需要法规引用/solver/签核 | 受监管工作流 | R12 | 只做 R2 |
+
+**分诊的出口**：一条错误只能落到一个「先看」；落不下，说明还没定义错误，不要选机制。
 
 ## 2. 选位置：六个时刻 + 四个轴外位置
 
@@ -79,11 +103,16 @@ basis: E-01–E-20, C-03; topics 各派 mechanism
 
 **选择规则**（组织建议，非 E）：
 
-- 可撤销、会扩散 → evidence + checker。
-- 会污染后续轮次 → memory。
-- 不可逆、对外 → action。
-- 不可逆、持久化 → commit（但先看 R9：现在没有实现）。
-- 要求可复现 → determinism（同样没有实现）。
+- 可撤销、会扩散 → R4 + R5。
+- 会污染后续轮次 → R7。
+- 不可逆、对外 → R6。
+- 不可逆、持久化 → R9（先看：没有实现）。
+- 要求可复现 → determinism（没有实现）。
+- 离线/CI 数据质量 → R10；关系库查询 → R11。
+
+**R0 不是位置**：它是准入；四项检查不过，位置选了也白选。
+
+**R10/R11 不新增时刻**：R10 是输出后/离线的 CI 校验；R11 是供给/查询编译。它们改变「在哪跑」，不改变六时刻分类。
 
 ## 3. 选形态：五种，别把 context 当低配 engine
 
@@ -97,215 +126,55 @@ basis: E-01–E-20, C-03; topics 各派 mechanism
 
 **一个反直觉的结论**：`engine` 内部至少四种语义（E-20）；「有引擎」不是强度刻度。选型时先问「机器到底做了什么」，再问「它能不能改变走向」。
 
-## 4. 九条工程做法（R1–R9）
-
-> 每条都按「目标—接缝/形态—最小数据契约—做法—证据—验收/停」写。接口字段和阈值多数是工程配方（`推测`）；效应量来自 E-xx。
-
-### R1 · K1 语义层：先把名字和单位对齐
-
-**目标**：用最低成本拿到已测最大的一层知识增益。
-
-**接缝/形态**：供给 / `context`。
-
-**最小数据契约**：tag registry `{label, unit, quality_flag, aliases[]}`；slot map `{entity_type, slot, unit}`。
-
-**做法**：
-
-1. 从历史误判里选 3 个代表性任务，标出 primary trap。
-2. 统一命名、单位、别名；补单位换算；不改结构。
-3. 用同一模型回放 K0/K1；报 primary-trap avoidance，不只看总分。
-
-**证据**：K0→K1 +54.6pp（E-12；单工厂、9 任务、答案基本写在文本里）。
-
-**验收/停**：3 个任务的 primary-trap avoidance ≥0.90（工程建议），且剩余 trap 与深知识无关 → 停在 K1，不建塔。
-
-### R2 · 知识投影：把领域知识写成固定分节的文本
-
-**目标**：让模型在封闭域「知道得对」，而不是「查得到」。
-
-**接缝/形态**：供给 / `context`。
-
-**最小数据契约**：
-
-- 投影头：`system_id, tower_version, projection_version, generated_at, covered_sections, projection_chars, rubric_version`。
-- 投影体：固定分节顺序（概览 → tags/bindings → assumptions → derivations → knowledge → 安全边界），每条陈述带 `[node_id]`。
-- 映射表：`statement_id → node_id`（与投影同版本）。
-
-**做法**：
-
-1. 先做 K1；K1 不够再做投影。
-2. 从描述记录生成约 45k 字符的文本；冻结分节顺序，顺序变更按行为变更处理（打乱句序 0.777→0.685）。
-3. 本体/投影/知识节点同步；tag/单位/假设/推导任一变更 → 重生成 + 递增版本。
-4. 运行教训在抽取时并入 knowledge node，不要让 agent 查询时自己查日志（日志检索 4/80 次被调用）。
-
-**证据**：K1→K2 +19.8pp；文本 pooled 0.777，但排序非普适；9B 带投影 0.737 > 750B 不带 0.672（E-12）。
-
-**验收/停**：K2 相对 K1 <5pp → 停；投影 >60k 字符或维护 >2 人周/月 → 停；工具调用率 <20% → 不把审计寄托在工具上。
-
-### R3 · 证据编译：只买 claim + 逐字 span
-
-**目标**：在重复检索多的语料上省 token，不承诺准确率。
-
-**接缝/形态**：供给 / `compiled`。
-
-**最小数据契约**：claim index `{claim_id, text, span_start, span_end, chunk_id, source_version, extractor_version, acl}`；per-tool policy `off|compiled-only|compiled-first`；评测表 `{query_id, arm, hit/miss, token_in/out, latency, rounds, gate_verdict, citations}`。
-
-> claim–leaf = 主张 + 逐字证据 span 的叶子节点；不是摘要，也不是整段 chunk。
-
-**做法**：
-
-1. 先跑基线：同语料、同 harness 的准确率、token/问、p95、轮次。
-2. compiler v0 只抽 claim + span；span 对不上就丢，不让模型修。
-3. 保留原词法检索器；树只做 carrier，不做 router；默认证据替换 + raw chunk fallback。
-4. 量 `p_h`、miss penalty、`c`、`Q`；算 `p_min = 2% + c/(0.929Q)`。
-
-**证据**：hit −91%、miss +1.9%、平均 −38%；准确率 neutral；PageIndex 在 FRAMES 规模为负；配对子集时延约 3×（E-08/E-14）。
-
-**验收/停**：`p_h < p_min` → 停，转 harness 侧（收紧读预算、改停策略、缓存、并行检索）；p95 超预算 → 只在小片流量灰度；span 覆盖 <50% → 不买。
-
-### R4 · 输出证据契约：让答案带依据和接地等级
-
-**目标**：把「无根据的结论」变成可审计的字段。
-
-**接缝/形态**：输出时 / `compiled` 或 `context`。
-
-**最小数据契约**：`{answer, observations[], grounding: entailed|supported|related|unrelated}`；E=∅ 时不报 grounding；observations 引用 concept card / ASK / SELECT bindings。
-
-> grounding = 接地等级，描述答案与本体观察的关系强度；它不是本仓库的证据等级（已核/推测/存疑）。
-
-**做法**：
-
-1. 生成 concept cards（1–2k 字符/卡）；接 `DESCRIBE` / `ASK` / `SELECT`；空结果走 BM25 fallback。
-2. 名字链接：精确 → 多义候选 → 未知名字先 BM25 取候选再重排。
-3. 200 题回放；报检索率、引用率、每问 calls/tokens；grounding 等级单独校准。
-
-**证据**：平均 50.5%/68.1%；Tests 1–2 +10–15pp；同 8k 预算 84.9% vs 66.7%；等级是模型自评、未校准；检索是主瓶颈（E-03）。
-
-**验收/停**：检索率 <50% → 先修检索；未知 IRI >20% → 先补本体；tool actions >10 或 generated tokens >5,000 → 停/降级；grounding 通胀（entailed+supported >90%）→ 抽样校准，不自动放行。
-
-### R5 · 输出后 checker：先超过空结果重试
-
-**目标**：用本体当外部判据，查出结构/声明/模式错误。
-
-**接缝/形态**：输出后 / `compiled`（本体→SHACL/checker）或 `engine`。
-
-**最小数据契约**：输入 `{query, bindings, ontology/schema, data_summary}`；输出 `{verdict: pass|flag|unknown, constraint_id, query_fragment, message, evidence}`；unknown 不阻断。
-
-**做法**：
-
-1. 先建空结果重试基线；只有能抓「有结果但答错」的增量，才建 checker。
-2. 选来源：data-derived（FA 低）或 curated（catch 高但 FA 高）；不要盲目组合；curated 先审计/补声明。
-3. 200 题回放；报 catch / FA / precision / per-1k cost；人工抽 50 条。
-4. 三态显式化：pass / flag / unknown；不要把 unknown 合并进 pass。
-
-**证据**：curated catch/FA 18.9/16.8、data-derived 8.2/3.5、masked LLM 5.0/1.8；precision 57.1/72.3/93.7；空结果重试 catch 79.2/FA 0；LLM judge 40 修好/83 修坏（E-02）。E-20 的代码核对发现第三态在 shell 退出码被折叠。
-
-**验收/停**：增量 catch <5pp 或 FA >15% → 停；per-1k 成本 >人工审核 1/3 → 停；语义错为主 → 换 LLM judge/人工，但 judge 要先测净修复（fixed − corrupted）/成本/稳定性。
-
-### R6 · 动作前可逆性闸：只在不可逆、高代价、弱模型时试
-
-**目标**：在副作用发生前，按「是否存在可接受的逆操作序列」剪枝/审批。
-
-**接缝/形态**：动作前 / `compiled`。
-
-**最小数据契约**：
-
-- Layer A：静态动作本体，mutating tool 的 T1–T5 逆关系 + curator 权重。T1 精确逆；T2 边界内可逆；T3 可补偿但有损；T4 不可逆消费；T5 外部副作用（fail-closed）。
-- Layer B：状态投影 `slot(entity,id)=value` + `state_hash`。
-- 输出：`{decision, phi, pi, bottleneck}`；`APPROVE|VETO|ESCALATE` 是 DecisionPolicy，不是本体。
-- 日志：`{tool, entity, tier, phi, tau, decision, reason}` + 审批人/时间/回滚。
-
-**做法**：
-
-1. 列 mutating tools / 槽位；写 T1/T4/T5 本体 v0。
-2. 接只读状态；反向搜索深度 3–5、环路检测；多候选取 `max min φ`，同分取最短；τ=0.80 按域保留率校准，不跨域照搬。
-3. shadow 200–500 决策；标 100 条 blocked 的 false-veto；报 harm/审批/task success。
-4. 先做可逆性路由 + shadow；不要一上来做六模式分配（CASEL 的 `γ_m` 是假设）。
-
-**证据**：airline 4/6 模型 +0.11–0.18；18 格仅 8 改善；retail/强模型回退；T1-only ≈ blanket veto；false-veto 未测（E-04）。CASEL 的 harm–approval–cost 前沿是模拟，无本体变量（E-15）。
-
-**验收/停**：shadow false-veto >5% → 降 advisory/停；同轨迹配对 Δ≤0 且 T1-only≈full → 结构贡献不成立，停；保留率 <20% 或 >95% → 阈值失效；拿不到真实状态 → 不做硬 veto。
-
-### R7 · 跨轮身份/记忆：先 registry，再状态
-
-**目标**：让同一实体跨期可对齐，让冲突/失效可保留。
-
-**接缝/形态**：跨轮 / `compiled`。
-
-**最小数据契约**：
-
-- registry `{canonical_id, type, normalized_name, aliases[], first_seen, last_seen, source_version}`。
-- edge `{head_id, target_id, relation, source_indicator, observations[], state, score, first/last_seen}`。
-- relational state `{fact_id, validity, scope, supersedes[], conflicts[], concept_id}`。
-- reasoning state `{request_id, used_facts[], roles[], priority[]}`（每请求生成，不回写事实）。
-- match log `{surface, layer_hit, score, anchor, alias_written, period}`。
-
-**做法**：
-
-1. 从 CRM/通讯录导出稳定 head + canonical name；冻结「speaker 变、head 不变」。
-2. registry v0：identifier → normalized name → learned alias → semantic fallback；alias 持久化；记录命中层级。
-3. 200–500 份文档过抽取；按 head + typed target 建边；落五态 + σ；`SUPERSEDES`/`CONFLICTS_WITH` 先用人工规则。
-4. 评测三层：抽取（round-trip/归一化）、身份（CMR = MMR × merge precision、reattachment recall）、状态（Complete Retrieval、Acc@complete）。CMR 是跨期匹配率；单看 CMR 会把「合并更激进」误判成进步，要和 merge precision 一起看。
-5. 写侧 merge/split 只进队列，不自动落盘；`UNVERIFIED` 只进推理，不授权。
-
-**证据**：alias CMR +7.8–12.1pp；EvoMem Acc@complete +11.5/+31.2；merge precision 85.6–97.5%；false merge 污染未测（E-05/E-17）。
-
-**验收/停**：merge precision <90% 或 alias 增益 <5pp → 停/回滚（90% 是预登记线，FIRME 自身部分设置已低于 90%，按域重标）；Complete Retrieval <80% → 先修检索；冲突 >20% → 先修冲突；没有训练信号 → 不训 GRPO。
-
-### R8 · 读路径过滤：只做可见性，不要当授权
-
-**目标**：在检索结果进入上下文前，按用户上下文过滤。
-
-**接缝/形态**：`read-path` / `engine`。
-
-**最小数据契约**：策略图 `urn:graph:policy`；SHACL-AF（SHACL Advanced Features）`NodeShape` + `sh:SPARQLTarget` + `sh:SPARQLRule` + `tg-pol:blocks`；请求带 `user_context`。
-
-**做法**：
-
-1. 有策略时，缺 `user_context` 直接报错（fail-closed）。
-2. 对候选节点跑 target + rule；命中 block 的节点剔除。
-3. 明确写清：异常时 fail-open、只删 subject 侧、首命中即停、缓存 30–60s。
-4. 构造异常 policy 和 object 方向用例，先测泄漏，再上线。
-
-**证据**：trustgraph 代码级；fail-open、只删 subject、单实现（E-20）。
-
-**验收/停**：需要对象方向也受控、需要写授权、需要审计级「为什么允许」→ 这个实现不够；先补第二个独立实现，再谈升时刻。
-
-### R9 · 落盘前授权：现在只能设计，不要声称已落地
-
-**目标**：把「可推理的证据」与「有权推动持久化的证据」分开。
-
-**接缝/形态**：落盘前 / 无实现（设计）。
-
-**最小数据契约**：
-
-- `mutation_context {mutation_id, class, head_id, target_id, policy_version, snapshot_id}`。
-- `q_m[] {claim_id, predicate, scope, version}`。
-- `evidence {obs_id, claim_id, role, provenance, hypothesis_id, source_id}`。
-- `promotion {claim_id, obs_id, role, validation_basis, policy_version, promoted_by, promoted_at}`。
-- `verdict {status: PASS|BREACH|UNKNOWN_EVIDENCE, failed_claims[], unresolved[], scope_valid, versions_valid}`。
-
-**做法**：
-
-1. 先做一个 mutation class（如 person merge），不要覆盖所有写路径。
-2. 证据齐 + 冲突清 + 版本有效三条全过才 commit；`UNVERIFIED` 只进推理。
-3. 两阶段：Phase 1 授权 proposed；Phase 2 验证 realized；同 snapshot 检查 scope/version。
-4. 先测 false-defer：20–50 条样本。
-
-**证据**：只有概念架构；四个开源项目里没有单次写授权（E-20）。false-defer 未测。
-
-**验收/停**：没有 domain policy/审计存储/事务/可控写路径 → 不做；false-defer >20% → 放宽 claim/补证据；unresolved >10% → 先解决冲突。
+<a id="4-九条工程做法r1r9"></a>
+## 4. 十二条工程做法（R0–R12）
+
+> 本节只做索引；完整配方（十字段：目标/前提/接口/步骤/证据/成本/验收/失效/锚点）在 [`recipes/`](recipes/README.md)。每条 recipe 都与 E-xx 和 mechanism.md 对齐；见 [appendices/traceability](appendices/traceability.md)。
+
+| R | 一句话 | 接缝/形态 | 主证据 | 成熟度 | 完整配方 |
+|---|---|---|---|---|---|
+| **R0** | 先证明本体能被执行（名字/单位、声明、覆盖、落点） | 准入 | E-02/E-03/E-12/E-20 | 配方 | [readiness](recipes/readiness.md) |
+| **R1** | 先把名字、单位、别名对齐；K1 够就停 | 供给 / context | E-12 | A | [knowledge](recipes/knowledge.md#r1--k1-语义层先把名字和单位对齐) |
+| **R2** | 固定分节文本投影；先 K1 再投影 | 供给 / context | E-12 | B | [knowledge](recipes/knowledge.md#r2--知识投影把领域知识写成固定分节的文本) |
+| **R3** | 只买 claim+span；先算 `p_min` | 供给 / compiled | E-08/E-14 | B | [knowledge](recipes/knowledge.md#r3--证据编译只买-claim--逐字-span) |
+| **R4** | 输出带观察与 grounding；等级要校准 | 输出时 / compiled | E-03 | B | [judgment](recipes/judgment.md#r4--输出证据契约让答案带依据和接地等级) |
+| **R5** | 先超过空结果重试；catch/FA 分开 | 输出后 / compiled | E-02 | B | [judgment](recipes/judgment.md#r5--输出后-checker先超过空结果重试) |
+| **R6** | 只在不可逆/高代价/弱模型时试；先 shadow | 动作前 / compiled | E-04/E-15 | B | [constraint](recipes/constraint.md#r6--动作前可逆性闸只在不可逆高代价弱模型时试) |
+| **R7** | 先 registry，再状态；CMR 与 precision 同看 | 跨轮 / compiled | E-05/E-17 | B | [state](recipes/state.md) |
+| **R8** | 只做可见性，不当授权；已入库单实现/ fail-open 未修 | read-path / engine | E-20 | B（条件性） | [constraint](recipes/constraint.md#r8--读路径过滤只做可见性不要当授权) |
+| **R9** | 只能设计，不能声称落地 | 落盘前 / 无实现 | E-20 | C | [constraint](recipes/constraint.md#r9--落盘前授权现在只能设计不要声称已落地) |
+| **R10** | 离线/CI SHACL；三态不可折叠 | 离线/CI / compiled | E-20 | A | [axis-out](recipes/axis-out.md#r10--离线ci-shacl把没检查完做成第三态) |
+| **R11** | 查询时编译；不是闸/判定器 | supply / engine | E-20 | A | [axis-out](recipes/axis-out.md#r11--obda-查询重写本体在查询编译时被执行) |
+| **R12** | 证据 + solver + 人签核；不是准确率项目 | 供给+输出+人 | Grid | B（benchmark） | [regulated](recipes/regulated.md) |
+
+### 4.1 为什么 R0 在 R1 前
+
+- 02 假设「你已经有一份领域本体」；但「有」不等于「能执行」。
+- R0 的四检（名字/单位、声明、覆盖、落点）任何一项不过，R1–R12 都会在沙上：投影抄错单位、checker 误报、action gate 拿过期状态做硬 veto。
+- R0 只要有现成任务/样本，30–60 分钟即可；它不建本体，只决定「先修哪一项」。
+
+### 4.2 三条典型组合
+
+| 场景 | 先做 | 后做 | 不要做 |
+|---|---|---|---|
+| 工业设备知识问答 | R0 → R1 | 若 K1 不够 → R2 → R5 | 一上来建塔/上写路径 |
+| 受监管工程（法规+solver） | R0 → R12（含 citation/solver/签核） | R10（CI 校验） | 只做 R2 投影，不做 solver/签核 |
+| 跨期客户/身份 | R0 → R7 | R9（设计，先 shadow） | 直接自动 merge |
+
+**不要一次上三条。** 先一条 shadow，拿到自己的 `p_h`/false-veto/FA，再扩。
 
 ## 5. 开源参考实现：能抄什么，别抄什么
 
 | 项目（commit） | 位置 | 形态 | 能抄 | 别抄 | 代码锚点 |
 |---|---|---|---|---|---|
-| trustgraph `184f622` | `read-path` | `engine` | 策略图 + `user_context` 契约；SHACL-AF target/rule | fail-open、只删 subject、单实现 | `policy_filter.py` |
+| trustgraph `184f622` | `read-path` | `engine` | 策略图 + `user_context` 契约；SHACL-AF target/rule | fail-open、只删 subject、已入库单实现 | `policy_filter.py` |
 | semantica `39cf721` | `checker` | `compiled` | 本体→SHACL 的派生路径；pyshacl `inference="none"` | 把 CLI 校验当 in-loop；派生 shapes 未测 | `OntologyEngine.to_shacl` |
 | ontop `964dbb7` | `supply` | `engine` | TBox 饱和 + 查询重写 → SQL；R2RML 映射 | 把它当闸/判定器；只支持 OWL 2 QL | `QuestQueryProcessor` |
 | open-ontologies `375fbc4` | `none`（工具面/CI） | `engine` | JSON 三态（通过/违反/未检查完）；`closure_diff` 影响报告；verified/Core 边界 | 把它当写授权；只看 shell 退出码（第三态会被折叠）；本次未跑通 | `shacl.rs` / `shacl_verified.rs` |
 
-> 出处：E-20 与 [execution-forms](../../topics/execution-forms.md#代码级核对2026-11-09)。四者都是只读代码、未做对照实验；**代码能跑 ≠ 机制有效**。要读代码细节，从 execution-forms 的代码核对段进 4 个 digest；本页只抽接口与边界。
+> 出处：E-20 与 [execution-forms](../../topics/execution-forms.md#代码级核对2026-11-09)。四者都是只读代码、未做对照实验；**代码能跑 ≠ 机制有效**。
+
+**第二 read-path 实现（外部扫描线索，未入库）**：2026-11-09 定向扫描发现 [`Matdata-eu/sparql-guard`](https://github.com/Matdata-eu/sparql-guard)（Apache-2.0，HEAD `6b68d769`）：TS 写的 SPARQL 代理，用 **查询重写** 而不是返回后过滤；fail-closed、subject+object 两侧、SHACL Core 子集；有一组 vitest 用例（外部复核报告 76/76 通过，未在仓库内复跑）。它**不是**已入库证据：单作者、1★、无 harness 调用点、无泄漏率/时延测量；而且它把「read-path」拆成两种执行点（返回后过滤 vs 查询重写）。所以：**read-path 至少有两种执行点，但 seam 语义未定；01 的 B 评级不因此升级。**
 
 ## 6. 论文/开源给的「准确指示」到什么程度
 
@@ -325,8 +194,9 @@ basis: E-01–E-20, C-03; topics 各派 mechanism
 ```
 request
   │
+  ├─▶ R0 准入（名字/单位/声明/覆盖/落点）
   ▼
-context builder ──◀ K1 / 投影 / 编译（03）
+context builder ──◀ R1 K1 / R2 投影 / R3 编译（03）
   │
   ▼
 agent
@@ -351,31 +221,45 @@ output
 **读法**：
 
 - 不是每个位置都要上；按 §1 的错误性质选 1–2 个。
-- 每个箭头都要有数据契约；没有契约的「接缝」只是概念。
+- 每个箭头都要有数据契约；没有契约的「接缝」只是概念。逐箭头字段见 [appendices/interfaces](appendices/interfaces.md)。
 - `commit gate` 标注为「设计、无实现」：它没有实现（E-20）。
+- 离线/CI（R10）与 OBDA（R11）不在主回路；不要画进「实时链路」。
 
 ## 8. 最小落地路线
 
 | 阶段 | 时间 | 做什么 | 产出 | 出口 |
 |---|---|---|---|---|
-| 0 | 3–5 天 | 建账本：token/时延/决策/审批/回滚；跑基线 | 账本 schema + 基线分布 | 能按机制出分布 |
-| 1 | 2 周 | K1 + 一个接缝 shadow（投影/checker/action 三选一） | 回放结果 + 工时 | 有增量，且不是平均掩盖 |
+| 0 | 3–5 天 | R0 准入 + 建账本：token/时延/决策/审批/回滚；跑基线 | `readiness_report` + 账本 schema + 基线分布 | 能按机制出分布 |
+| 1 | 2 周 | R1 + 一个接缝 shadow（R2/R5/R6 三选一） | 回放结果 + 工时 + 噪声地板 | 有增量，且不是平均掩盖 |
 | 2 | 2 周 | 扩样本；标 false-veto/FA；算 stop 线 | go/no-go memo | 过门/停 |
 
 **不要**：同时上三个接缝；先建整座塔；用平均 −38% 立项；没有账本就上机制。
+
+**配套**：
+
+- 账本字段 → [operations/ledger](operations/ledger.md)
+- 噪声/样本/预注册 → [operations/evaluation](operations/evaluation.md)
+- 成本/TCO → [operations/cost](operations/cost.md)
+- 上线/回滚/审批 → [operations/rollout](operations/rollout.md)
+- 域约束 → [operations/domains](operations/domains.md)
 
 ## 9. 验收与 stop：按机制选尺
 
 | 机制 | 主指标 | 过程指标 | 反事实 | 停线（工程建议，非 E） |
 |---|---|---|---|---|
+| R0 | 四项检查 pass/flag/unknown | 修复清单 | 无检查直接上 | 任一 unknown 当 pass |
 | K1 | primary-trap avoidance | token | K0 | 剩余 trap 与深知识无关 → 停 |
 | 投影 | primary-trap/element | 字符数/维护人日 | K1 | <5pp、>60k、>2 人周/月 |
 | 编译 | token/问、p95 | `p_h`/miss、`c`、`Q` | 词法检索 | `p_h < p_min` |
 | evidence | 准确率、引用率 | 检索率、grounding 校准 | 纯文本 RAG | 检索率 <50% |
 | checker | 增量 catch、FA、净修复 | per-1k 成本 | 空结果重试 | catch <5pp、FA >15% |
-| action | harm、审批、false-veto、task success | 保留率、φ | 不上护栏 | false-veto >5% |
+| action | harm、审批、false-veto、task success | 保留率、φ、miss–false-block 前沿 | 不上护栏 | 在 miss 预算下 false-block 前沿不可接受（不要用单点 5%） |
 | memory | CMR、merge precision、Acc@complete | 抽取层误差 | 不做 registry | precision <90% |
-| read-path | 泄漏率、误拦 | 延迟 | 不过滤 | fail-open 未修 |
+| read-path | 泄漏率、误拦 | 延迟 | 不过滤 | fail-open 未修/object 方向未测 |
+| commit | false-defer、unresolved、审计可追 | 人审工时 | 直接 merge | >20%、>10%、不可追 |
+| 离线 SHACL | 负例检出、干净误报 | checked/passed/undetermined | 无 CI | 三态折叠/覆盖不明 |
+| OBDA | 查询结果一致、时延 | 映射/本体版本 | 手写 SQL | 需要 DL/事务写入 |
+| 受监管 | citation precision、strict-pass 违规 | 人签核分钟 | 人工流程/只做检索 | 违规 >0、精度 <0.95 |
 
 ## 10. 反模式
 
@@ -391,10 +275,25 @@ output
 10. **把 commit gate 概念当实现。** 没有实现、没有 false-defer 数据（E-20）。
 11. **把本体质量当落地条件。** 落地取决于「位置 × 成本 × 使能条件」，不是本体多完整（E-19，`推测`）。
 12. **没有账本就上机制。** 算不出 false-veto/`p_h`/审批成本，就无法 go/no-go。
+13. **跳过 R0。** 名字/单位/声明/覆盖不过，后面全是沙上。
+14. **把离线 SHACL 当 in-loop。** CLI 校验不等于输出后自动拒收；要自己接。
+15. **把 OBDA 当判定器。** 它只改变「能查到什么」，不校验答案。
+16. **把 R12 的 99.9% 当部署。** 它相对最强 agent baseline 只高 0.5pp；benchmark 不是运营商规模。
+17. **把 blocked 当正确拒绝。** 被 block 可能是 review 失败/不可用；要同操作、不同权限成对测，并同时报合法放行。
 
 ## 11. 还缺什么
 
-与 [01 现状 §5](../01-capability-status/README.md#5-距离还差什么差多远) 同一张缺口表：false-veto 标注、写路径实现、独立复现、跨域效度、接地等级校准、第二个 read-path 实现、跨运行确定性、单位成本、多智能体共享本体。
+| 缺口 | 现在有什么 | 缺什么 | 对 02 的影响 |
+|---|---|---|---|
+| false-veto | E-04 明确未测；blocked log 无 harm/授权标签 | 100 条 blocked 人工标注；同轨迹配对 | R6 只能 shadow；不能承诺「误拦 ≤5%」 |
+| 写路径授权 | Commit Boundary 概念；E-20 无实现 | 一个 mutation class 的实现 + 20–50 false-defer | R9 只能设计 |
+| 第二 read-path | trustgraph 一个；外部扫描有 sparql-guard 候选（未入库） | 第二实现（入库）+ harness 调用点 + 泄漏率/时延 | R8 保持条件性；不升第七时刻 |
+| 接地等级校准 | E-03 自评、未校准 | 每级 100–200 条独立标注 | R4 只能排序/人工分流 |
+| 跨域效度 | 单工厂/单基准/专有数据 | 更多独立域/基准 | R1–R7 阈值要重标 |
+| 独立复现 | 20 条 E 无 `已证` | 仓库外复现 + EXP 指针 | 所有效应量仍是 `已核`/`推测` |
+| 单位成本 | 公式有，单价空 | 人周价/审批分钟价/事故成本 | 不能出 build/buy 点估计 |
+| 跨运行确定性 | 设计提案 | 实现 + 度量 | 不写成 R |
+| 多智能体共享本体 | 空白 | 可判定设计 + 证据 | 不写成 R |
 
 **这些不是本交付物的前置**；它们是下一步研究/工程的方向。
 
@@ -410,14 +309,26 @@ output
 
 | Recipe | 期待（可证伪） | 支持它需要的数据 | 现在的来源 | 缺口 |
 |---|---|---|---|---|
+| R0 | 四项检查能预测「能不能执行」 | 30–60 分钟检查 + 后续失败记录 | 工程配方 | 无对照 |
 | R1 K1 | 目标域 primary-trap avoidance ≥0.90 | K0/K1 回放；3 任务；trap 标注 | E-12 | 跨域 |
 | R2 投影 | K2 相对 K1 ≥ +5pp，且 ≤60k 字符、维护 ≤2 人周/月 | K1/K2 回放；字符；维护工时；顺序消融 | E-12 | 跨域；多设备 |
 | R3 编译 | `p_h ≥ p_min`，p95 不超预算 | `p_h`/miss/`c`/`Q`/p95/span 覆盖 | E-14 | 自己的流量 |
 | R4 证据契约 | 检索率 ≥50%，引用率 ≥85%，grounding 可校准 | 200 题；检索率/引用率/等级标注 | E-03 | 等级校准；句级 span |
 | R5 checker | 增量 catch ≥5pp、FA ≤15%、净修复 >0 | 200 题；空结果基线；catch/FA/per-1k/净修复 | E-02 | 自己的故障分布 |
-| R6 动作闸 | false-veto ≤5%，harm 降，task success 不降 >2pp | 200–500 shadow；100 blocked 标注；四轴指标 | E-04/E-15 | false-veto；同轨迹配对 |
+| R6 动作闸 | 在 miss 预算下报 false-block 前沿；低 miss 不能靠 block-all；harm 降，task success 不降 >2pp | 200–500 shadow；100 blocked 标注；四轴指标 + 前沿 | E-04/E-15；[E5 校准理论](../01-capability-status/data/e5-calibration-theory.md) | false-veto；同轨迹配对 |
 | R7 记忆 | CMR/Acc@complete ≥ +10pp，merge precision ≥90% | registry on/off；200 units；三层评测 | E-05/E-17 | 自己的域；传播 |
-| R8 读路径 | 泄漏率 0（含 object 方向），误拦可接受 | 第二实现；异常/对象用例；延迟 | E-20 | 第二实现 |
+| R8 读路径 | 泄漏率 0（含 object 方向），误拦可接受 | 第二实现；异常/对象用例；延迟 | E-20 | 第二实现/调用点 |
 | R9 落盘授权 | false-defer ≤20%，unresolved ≤10%，审计可追 | 一个 mutation class 实现；20–50 样本 | 概念 | 实现；标签 |
+| R10 离线 SHACL | 负例 100% 检出、干净误报 ≤5%、三态可报 | 负例集；派生 vs 手写；CI | E-20 | 派生 shapes 质量 |
+| R11 OBDA | 查询结果与手写 SQL 一致；有/无本体消融可解释 | 映射/本体/查询集；SQL 日志 | E-20 | agent 集成/规模 |
+| R12 受监管 | citation ≥0.95、strict-pass 违规 0、签核可追 | 20–50 单；citation/state/签核 | Grid | 真实运营商/客户指标 |
 
 **怎么用**：每条期待对应一个 stop line；先量「支持它需要的数据」那一列，量不出来就停在这一步，不要用「平均收益」替代。
+
+## 14. 附录
+
+- [A · 接口总表](appendices/interfaces.md)：R0–R12 的字段、三态、版本。
+- [B · 追溯表](appendices/traceability.md)：R → E → mechanism → 边界；与 01/03 的 crosswalk。
+- [C · 端到端示例](appendices/case.md)：示意走查，不是部署。
+- [recipes/](recipes/README.md)：13 条完整配方。
+- [operations/](operations/ledger.md)：账本、评测、成本、上线、领域。

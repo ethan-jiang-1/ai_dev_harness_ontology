@@ -101,3 +101,31 @@ _Avoid_: 执行方式、接入方式
 **证据角色（Evidence Role）**:
 一个来源对中心问题提供哪类证据：真的测了本体被执行（execution-test）、只提机制（mechanism-only）、提供 harness 证据（harness-evidence）、只做边界与尺子（boundary-ruler）。
 _Avoid_: 证据等级（那是置信度）、来源类型
+
+**失效类别（Failure Class）**:
+按坏结果的类型划分的类（如不可逆动作、语义错误产出、错误落盘），不按机制、来源或论文。用于把「覆盖率」拆成可逐格反驳的分类，而不是合成百分比。见 [coverage](./topics/06-measure/metrics/coverage.md)。
+_Avoid_: 失效模式（那是单个机制的失败方式）、错误类型（太泛）
+
+**覆盖率（Coverage）**:
+某个位置能碰到的失效类别集合；本仓库只做分类（`●` 能阻断 / `◐` 能发现或部分影响 / `○` 碰不到 / `?D` 只有设计），不合成单一百分比。它是组织假设的操作化，不是测量。
+_Avoid_: 召回率、命中率、覆盖率百分比
+
+**执行链（Enforcement Chain）**:
+本体在 harness 里的五层工序：求值（evaluate）→ 决策（decide）→ 执行（enforce）→ 授权（authorize）→ 审计（audit）。用于区分「机器算出了什么」与「机器有没有权改变世界」；见 [execution-forms](./topics/execution-forms.md#执行链求值决策执行授权审计)。
+_Avoid_: 调用链（那是代码路径）、流水线（那是仓库工位）
+
+**工程配方（Recipe）**:
+`deliverables/02-engineering-playbook` 里的 R0–R12：回答「怎么做」，不回答「做了有没有用」。它不是 E；效应量仍以 `E-xx` 为准。
+_Avoid_: 结论、最佳实践
+
+**Primary-trap avoidance**:
+在预先标出的「最常掉进去的坑」上不犯错的 trial 比例；与 element score 分开报，避免总分掩盖 trap 没动。见 [R1/R2](./deliverables/02-engineering-playbook/recipes/knowledge.md)。
+_Avoid_: 准确率、总分
+
+**False veto / false denial**:
+被 gate 拦下、但本可合法执行且低 harm 的动作比例；没有授权/伤害标签就不能算。与 retention、block count 区分。见 [R6](./deliverables/02-engineering-playbook/recipes/constraint.md)。
+_Avoid_: 误报率（那是 checker 口径）、拦截率
+
+**`p_h` / `p_min`**:
+`p_h` 是证据充分、可替换的查询比例；`p_min = 2% + c/(0.929Q)` 是编译的盈亏平衡。`p_h` 不是答对率（φ 另算）。见 [R3](./deliverables/02-engineering-playbook/recipes/knowledge.md)。
+_Avoid_: 命中率、准确率

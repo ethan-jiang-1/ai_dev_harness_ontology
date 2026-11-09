@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-09
 ---
 
 # 06 测量派 · 局部结论
@@ -23,3 +23,4 @@ updated: 2026-11-07
 | 06-L12 | Agent 很少拒绝弱 specialist：mmlu-astronomy 上 99.8% 仍用 AstroSage；给 oracle 也不显著改善 | 已核 | E-18 | authority bias/探索不足 |
 | 06-L13 | 落地经济学：值不值得不是本体质量，是「位置 × 成本 × 使能条件」；没有单一答案 | 推测 | E-08/E-13/E-14/E-15 | 见 [feasibility](./feasibility/README.md) |
 | 06-L14 | 没有一条适用于所有机制的能力曲线：约束类随能力下降，知识投影不随容量上升 | 推测 | E-13 / E-12 | Wave 1 综合 |
+| 06-L15 | 覆盖率可按「七类失效 × 八位置」分类；位置是专门化的，不能排成一条强度线，也不能合成百分比 | 推测 | [coverage](./metrics/coverage.md) / C-03 | 设计分类，非测量；矩阵逐格可反驳 |

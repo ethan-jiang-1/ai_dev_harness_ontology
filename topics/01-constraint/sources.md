@@ -12,6 +12,8 @@ updated: 2026-11-09
 | [OntoAct digest](../../src/papers/2610.21983-ontoact/digest.md) | preprint | 精读 | 01-L3 / 01-L11 / 01-L12 / 01-L15 | [card](../../src/papers/2610.21983-ontoact/card.md)（provenance）；三值条件 + 假设 revision；Tacit-FLE 三个规模；elimination 上 IfR 匹配/超过 |
 | [多 agent 差分诊断 digest](../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md) | preprint | 精读 | 01-L3 / 01-L15 | [card](../../src/papers/2610.36325-ontology-multiagent-diagnosis/card.md)（provenance）；Q4DX 单基准；curated KG 未覆盖诊断恒 0 |
 | [CASEL digest](../../src/papers/2610.36570-casel/digest.md) | paper | 精读 | 01-L4, 01-L5, 01-L8, 01-L9, 01-L10 | [card](../../src/papers/2610.36570-casel/card.md)（provenance）；模拟；γ_m 假设；主表 `τ̂=∞`；NoRev 非单变量 |
+| [Same Operation, Different Permission digest](../../src/papers/2610.16838-same-operation-different-permission/digest.md) | preprint | 精读 | —（E-04 边界） | [card](../../src/papers/2610.16838-same-operation-different-permission/card.md)（provenance）；同操作/不同权限的 guardrail 评测；无本体、非 commit gate；不升 E |
+| [What Can Be Enforced? digest](../../src/papers/2607.22868-what-can-be-enforced/digest.md) | preprint | 精读 | —（E-04 边界） | [card](../../src/papers/2607.22868-what-can-be-enforced/card.md)（provenance）；false-block/miss 前沿 + conformal 校准 + 闭环；理论/诊断；无本体；不升 E |
 | [trustgraph digest](../../src/open-source/trustgraph-ai-trustgraph/digest.md) | open-source | 已读代码 | 01-L13 / commit-gate F5 | [card](../../src/open-source/trustgraph-ai-trustgraph/card.md)（provenance）；读路径 SHACL-AF 策略过滤，31 条单测已跑；写路径 commit gate 未定位 |
 
 > **本派没有 Commit Boundary 的 E-xx**：`01-L13/L14` 只在派内使用。`conclusions` 的 E-05 是 FIRME；Commit Boundary digest 的 `claims: [E-05]` 与 §8 的 E-05 回链都是错挂，**2026-11-09 已回改**（`claims: []`，§8 改为“不挂 E-xx”）。

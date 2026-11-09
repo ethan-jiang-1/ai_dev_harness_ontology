@@ -40,8 +40,8 @@
 | 加原文/卡 | [src/README](../src/README.md) + `_templates/`（论文 / 材料 / 开源三套） | topics |
 | 读一个开源项目 | [open-source/README](../src/open-source/README.md) + 该项目 `digest.md` | 其他项目、全部论文 |
 | 做 01 现状 | [01 §9](../deliverables/01-capability-status/README.md#9-期待与数据需求验收规格) + [plan](../deliverables/01-capability-status/plan.md) + [conclusions](../topics/conclusions.md) E 表 + 对应派 `sources.md`/子主题 + 指定 digest §4/§5 | 其他派、`card.md`/`references.md`/`appendix.md` |
-| 做 02 工程 | [02 §0–§4](../deliverables/02-engineering-playbook/README.md) + 对应子主题 `mechanism.md` + [execution-forms](../topics/execution-forms.md) + 4 个开源 digest | 22 篇 `paper.md`、`card.md`、其他派 |
-| 做 03 机制 | [03 §3/§5](../deliverables/03-mechanism-reference/README.md) + [conclusions](../topics/conclusions.md) + [附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md) §3.7/§3.8 | `src/` 原文、其他派 `mechanism.md` |
+| 做 02 工程 | [02 §0–§4](../deliverables/02-engineering-playbook/README.md) + 对应 recipe + 子主题 `mechanism.md` + [execution-forms](../topics/execution-forms.md) + 4 个开源 digest | 24 篇 `paper.md`、`card.md`、其他派 |
+| 做 03 机制 | [03 §3/§4](../deliverables/03-mechanism-reference/README.md) + `positions/<位置>.md` + [boundaries](../deliverables/03-mechanism-reference/boundaries.md) + [conclusions](../topics/conclusions.md)；长版论证再看[附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md) §3.1–3.3/§3.7 | `src/` 原文、其他派 `mechanism.md`、全部 `paper.md` |
 | 用模型做第二意见（不用于实验） | [meta/models](./models.md) | 本地模型/实验被试 |
 | 查结构决策 | [adr/](../adr/README.md)（0001–0008） | 全部 meta |
 | 查 meta 有什么 | [meta/README](./README.md)：现行 / 模板 / 历史 | `archive/` |
@@ -59,7 +59,7 @@ D3 边界 → conclusions E 表 → digest §5/§9 → 附录 §3.7/§3.8
 | 交付物 | 起点 | 走到哪停 | 默认不读 |
 |---|---|---|---|
 | 01 现状 | `01/README §9` + `plan.md` | 能填出 E1–E9 的 verdict + boundary | 全部 `paper.md`（只读指定节）、`card.md`（只作 provenance）、`references.md`/`appendix.md`、其他派 |
-| 02 工程 | `02/README §0 决策图 + §4 R1–R9` | 能写出接口/字段/验收/停线 | 22 篇论文正文、其他派 mechanism、`conclusions` 全表 |
+| 02 工程 | `02/README §0 决策图 + §4 R0–R12 + recipes/` | 能写出接口/字段/验收/停线 | 24 篇论文正文、其他派 mechanism、`conclusions` 全表 |
 | 03 机制 | `03/README §3/§5` | 能指到 E-xx 与「不能证明什么」 | `src/` 原文、其他派 mechanism、全部 `paper.md` |
 
 **三条反向规则**：

@@ -17,7 +17,7 @@ updated: 2026-11-09
 ```
 src/
 ├── papers/
-│   ├── manifest.md          # 全仓唯一论文登记（22 篇，含批次列）
+│   ├── manifest.md          # 全仓唯一论文登记（24 篇，含批次列）
 │   └── {arxiv_id}-{slug}/
 │       ├── {arxiv_id}-{slug}.pdf     # 原文，只读
 │       ├── paper.md                  # 正文全文 MD（保留页码标记）
@@ -198,14 +198,14 @@ open-source/{org}-{repo}/
 | 材料 | 卡 / 消化 | 阅读 / 来源 | 已喂到 |
 |---|---|---|---|
 | 老刘说NLP · 本体4方向20工作（2026-11-04） | [otology.card.md](./web/weixin-laoliu/otology.card.md) | 已消化 / 综述转述 | `topics/conclusions.md`、`topics/README.md`、`topics/05-produce/lifecycle/README.md`、`topics/domains.md` |
-| 22 篇论文（20 基础 + 2 扫描） | 各目录 `card.md` / `digest.md` | L3 12 篇 / L2 6 篇 / L1 4 篇 | 六派 README、claims、conclusions（E-01…E-20） |
+| 24 篇论文（20 基础 + 4 扫描） | 各目录 `card.md` / `digest.md` | L3 12 篇 / L2 8 篇 / L1 4 篇 | 六派 README、claims、conclusions（E-01…E-20） |
 | 开源项目 | 状态与进度见 [open-source/README](./open-source/README.md)；未建卡的不算入库 | 4 个本轮全部已消化；3 个 <1,000★ 已删除 | `topics/01-constraint`（commit-gate F5–F7）、`topics/02-judgment`（checker F7–F8）、`topics/05-produce`（generation F7、lifecycle 判断 4）、`topics/03-knowledge`（frontier） |
 
 > 论文按篇记；开源按项目记在 `open-source/README` 的状态表里，本页只留总账——**一处明细，一处总账，不重复**。
 
 ## 7. 已知缺口
 
-- 22 篇都有 card + digest；**digest 已全部重写为自包含版本**（L3 250–360 行、L2 160–260、L1 100–240）；历史审计表见 [digest-audit](../meta/archive/2026-11/digest-audit.md)。
+- 24 篇都有 card + digest；**digest 已全部重写为自包含版本**（L3 250–360 行、L2 160–260、L1 100–240）；历史审计表见 [digest-audit](../meta/archive/2026-11/digest-audit.md)。
 - L1 4 篇只到一页判断（Peeling/Evontree/SFE-O/ReX-GG），没有深读正文。
 - 部署层回报、false-veto/false-defer、维护成本仍缺量化。
 - 部分论文有 v2/v3 版本，当前取下载当日最新版；版本变化可能改变结论。

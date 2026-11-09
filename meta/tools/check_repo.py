@@ -170,8 +170,8 @@ def main() -> int:
         d for d in os.listdir(papers_dir)
         if os.path.isdir(os.path.join(papers_dir, d)) and not d.startswith("_")
     )
-    if len(paper_dirs) != 22:
-        errors.append(f"paper directories: expected 22, found {len(paper_dirs)}")
+    if len(paper_dirs) != 24:
+        errors.append(f"paper directories: expected 24, found {len(paper_dirs)}")
     for d in paper_dirs:
         base = os.path.join(papers_dir, d)
         required = ["card.md", "digest.md", "paper.md", "references.md", "appendix.md"]
@@ -277,10 +277,10 @@ def main() -> int:
             counts[key] += 1
     if counts["已核"] != 18 or counts["推测"] != 2:
         warnings.append(f"conclusion levels changed: {dict(counts)} (meta/state may need update)")
-    expected_roles = {"execution-test": 9, "mechanism-only": 8, "harness-evidence": 6, "boundary-ruler": 3}
+    expected_roles = {"execution-test": 9, "mechanism-only": 8, "harness-evidence": 8, "boundary-ruler": 3}
     if dict(role_counts) != expected_roles:
         errors.append(f"evidence_role counts: expected {expected_roles}, found {dict(role_counts)}")
-    expected_forms = {"engine": 4, "compiled": 7, "context": 2, "label": 1, "none": 12}
+    expected_forms = {"engine": 4, "compiled": 7, "context": 2, "label": 1, "none": 14}
     if dict(form_counts) != expected_forms:
         errors.append(f"execution_form counts: expected {expected_forms}, found {dict(form_counts)}")
 

@@ -161,12 +161,14 @@ target: deliverables/01-capability-status 的 E1–E9
 
 **完成判据（DoD）**：
 
-- [ ] E1–E9 每条都有 verdict，且 verdict 后有 evidence pointer。
-- [ ] 所有 `unknown` 都写了「找过哪里、为什么没找到」。
-- [ ] 新增 E 都有 digest/代码出处 + 限定；没有「概念升 E」。
-- [ ] D1 §2 的 A/B/C 与 §9 的 verdict 不矛盾。
-- [ ] D2 的 stop 线、D3 的边界与 D1 一致。
-- [ ] `python3 meta/tools/check_repo.py` 通过；`meta/state.md` 更新。
+- [x] E1–E9 每条都有 verdict，且 verdict 后有 evidence pointer。
+- [x] 所有 `unknown` 都写了「找过哪里、为什么没找到」。
+- [x] 新增 E 都有 digest/代码出处 + 限定；没有「概念升 E」。
+- [x] D1 §2 的 A/B/C 与 §9 的 verdict 不矛盾。
+- [x] D2 的 stop 线、D3 的边界与 D1 一致。
+- [x] `python3 meta/tools/check_repo.py` 通过；`meta/state.md` 更新。
+
+> **2026-11-09 第一轮完成**：E5 false-veto / E8 commit gate 仍 `unknown`，但已从「没有评测方法」推进到「有授权 benchmark + false-block/miss 前沿」；E7 仍缺第二个 read-path；E9 仍缺本体锚点实现。下一轮可继续这些 P1/P2，不阻塞 D1 的 verdict。
 
 ## 8. 停止规则与反模式
 
@@ -205,3 +207,25 @@ target: deliverables/01-capability-status 的 E1–E9
 | E9 | 跨运行收敛度量 | [04/determinism/README](../../topics/04-state/determinism/README.md) 开放问题 |
 
 **用法**：如果某个期待找不到 frontier 指针，说明它的缺口还没被登记；先补 `frontier.md` 的 G/N，再谈补 `src/`。这是「支持层先落地」的顺序。
+
+## 11. 进度（2026-11-09 第一轮）
+
+| 项 | 状态 | 产出 |
+|---|---|---|
+| H1 POLAR | 完成 | [e5 数据表](./data/e5-false-veto.md)：1,745 blocked 无标签；false-veto `unknown`；保留率/tier 已抽 |
+| H2 CAI | 完成 | [e3 数据表](./data/e3-compilation.md)：`p_min` 公式、43% 是反推、φ 未测、门实现不一致 |
+| H3 Catch | 完成 | [e4 数据表](./data/e4-checker.md)：data-derived 在 UniProt 真实答案上过 +5pp/FA≤15%；curated FA 16.8% 超线 |
+| H4 FIRME/EvoMem | 完成 | [e6 数据表](./data/e6-memory.md)：alias +7.8–12.1pp；非全部设置过 +10pp/90%；跨域未知 |
+| H5/H6 代码 | 完成（只读，未重跑） | [e7/e8 代码](./data/e7-e8-code.md)：trustgraph 只删 subject、fail-open；四项目无写授权 |
+| P0 源扫描 | 完成（摘要级） | [P0 扫描](./data/p0-source-scan.md)：2610.16838（授权 benchmark，go）、2607.22868（false-block/miss 前沿，go）；无 commit gate 实现 |
+| P0 入档 | 完成 2 篇 | [2610.16838 digest](../../src/papers/2610.16838-same-operation-different-permission/digest.md)（L2；harness-evidence / none）；[2607.22868 digest](../../src/papers/2607.22868-what-can-be-enforced/digest.md)（L2；harness-evidence / none）；均不升 E；manifest 24 篇 |
+| E5 校准理论 | 完成（已入档 L2） | [e5 校准理论](./data/e5-calibration-theory.md)：NP false-block/miss 前沿；δ=.05 时每个 judge 都 block-all；δ=.10 false block .78；false-veto 应报前沿不是单点 |
+| P1/P2 源扫描 | 完成（摘要级） | [P1/P2 扫描](./data/p1-p2-source-scan.md)：无第二个 read-path；E9 有 Suite v0 候选（harness 级）；E1/E2 无跨域复现 |
+| D1 verdict | 完成第一轮 | [01 §2.4](../01-capability-status/README.md#24-e1e9-verdict2026-11-09-第一轮) 与 [§9](../01-capability-status/README.md#9-期待与数据需求验收规格)：5 条 `supported（限定）`、1 条 `conditional`、3 条 `unknown` |
+
+**下一步（按 P0）**：
+
+1. 落盘 2610.16838，建卡 + L2 digest；抽 false-block/authorized-pass；决定是否改 E5/E8 的 verdict。
+2. 读 2607.22868 正文的 false-block/miss 前沿与校准；若可复用，写进 E5 的边界，不急着升 E。
+3. 继续扫第二个 read-path 实现（P1）；没有就保持 `unknown`。
+4. 把新证据回写 `topics/` 的 frontier/claims，再回改 D1/D2/D3 与 `meta/state`。

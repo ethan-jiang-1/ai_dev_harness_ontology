@@ -50,4 +50,5 @@ evidence: []
 
 - 派：[01 约束](../README.md) · 本派 claims：[01-L13 / 01-L14](../claims.md)（未升 E）
 - 相邻：[action-gate](../action-gate/README.md) · [reasoning-gate](../reasoning-gate/README.md)
+- 执行链分层（求值 / 决策 / 执行 / 授权 / 审计）：[execution-forms](../../execution-forms.md#执行链求值决策执行授权审计)
 - 记忆写入：[04 memory](../../04-state/memory/README.md) · [identity](../../04-state/identity/README.md)

@@ -35,6 +35,26 @@
 5. **能读中间。** formalizer 看 trace；agent 看轨迹；checker 看 catch/FA；记忆看 retrieval completeness 与 conditional accuracy。
 6. **按配置轴做敏感性分析。** 五轴全因子或分组对照；预算只在信息/模型足够时有用，单轴归因要标「交互未测」（`推测`）。
 
+## 按位置分派（八行，设计）
+
+> 2026-11-09：把原来的四行框架扩到八个位置。表是**设计（`推测`）**，不是已验证的方法；证据列只指已有 E，不指新实验。覆盖率（能不能碰到）见 [coverage](./coverage.md)；本表回答（碰到后量什么）。
+
+| 位置 | 失效形态 | 主指标 | 过程指标 | 非对称代价 | 基线 | stop（工程门，非 E） | 证据 |
+|---|---|---|---|---|---|---|---|
+| context | 不准 / 内部没有 | primary-trap avoidance；element score；任务准确率 | token/问、p95、投影字符数、顺序版本 | 知识没覆盖（漏） vs 投影太长/顺序错（误） | K1 命名+单位；纯文本 RAG | K2−K1 <5pp；投影 >60k 字符；维护 >2 人周/月 | E-12 / E-14 / E-01 |
+| memory | 做错 / 内部没有 | CMR；Acc@complete | merge precision；reattachment recall；抽取 round-trip | false merge vs false split/漏配 | 不做 registry；LLM-Norm | merge precision <90%；Complete Retrieval <80%；冲突 >20% | E-05 / E-17 |
+| evidence | 不准 / 输出对了 | 准确率；引用率 | 检索率；grounding 校准；tool calls/tokens | 无依据（漏） vs 过度引用/等级通胀（误） | 纯文本 RAG | 检索率 <50%；grounding 通胀 >90%；无独立标注 | E-03 |
+| checker | 做错 | 增量 catch；FA | per-1k 成本；flag rate；净修复（fixed−corrupted） | 漏检 vs 误报后修坏 | 空结果重试 | 增量 catch <5pp；FA >15%；净修复 ≤0 | E-02 / E-20 |
+| action | 做错 / 没做 | harm/HSR；false-veto；审批量 | 保留率；p95；回滚率 | 误拦合法动作 vs 漏放有害动作 | 不上护栏；blanket veto | false-veto >5%；task success 降 >2pp；保留率 <20% 或 >95% | E-04 / E-13 / E-15 / E-16 |
+| commit | 做错 / 没做 | false-defer；false merge；授权正确率 | unresolved 率；审计完整率；重入时延 | 误 defer 正确变更 vs 误放行错误变更 | 不做 gate；直接 merge | false-defer >20%；unresolved >10%；无审计/事务 | E-20（否定性）+ 设计 |
+| read-path | 做错 | 泄漏率（subject/object）；误拦率 | p95；缓存命中；策略异常率 | 泄漏 vs 误拦 | 不过滤 | fail-open 未修；object 方向泄漏；只有 1 个实现 | E-20 |
+| determinism | 没做 | 收敛/漂移（结构投影差异）；重复运行一致率 | anchor 覆盖率；归因命中率；重放成本 | 假收敛 vs 假漂移 | 同输入重复运行；无锚点 | 无度量/无实现；漂移无法归因 | 设计（无 E） |
+
+> 读表三条：  
+> 1. **主指标跟着失效形态走**；没有「所有位置都看 accuracy」这回事。  
+> 2. **非对称代价必须成对报**；漏/误、false-veto/漏放、false-defer/误放行不能合成一个数。  
+> 3. **stop 是工程门，不是论文阈值**；没有基线/噪声带时，先写「不可判」，不写「无差异」。
+
 ## 失效模式
 
 - **平均掩盖两端。** CAI 的 −38% 是 −91% 与 +1.9% 的混合。

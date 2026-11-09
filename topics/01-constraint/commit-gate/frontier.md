@@ -31,3 +31,4 @@
 | 实现版 commit gate | 从概念到 false-defer | 待扫描 | N1 |
 | trustgraph 读路径策略引擎 | 授权判据的独立执行者；不是 commit gate | 已核（代码） | 验证 fail-open 与对象方向 |
 | 冲突降级语义 | 域差异 | 待扫描 | N2 |
+| [Matdata-eu/sparql-guard](https://github.com/Matdata-eu/sparql-guard) | 第二 read-path 实现候选：TS 代理 + 查询重写；fail-closed、subject+object 两侧、76 tests；未按仓库标准入库（单作者/1★） | 外部代码复核（未入库） | 复核异常/对象方向；决定是否建卡 |

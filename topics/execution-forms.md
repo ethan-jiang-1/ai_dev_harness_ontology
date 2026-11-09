@@ -86,11 +86,32 @@ rq: [RQ1, RQ2, RQ5]
 
 > 以上 4 条已收进 [E-20](./conclusions.md)（`已核（代码）`）；不升 `已证`，因为没有跑测试和对照实验。
 
+## 执行链：求值、决策、执行、授权、审计
+
+> 2026-11-09：把 E-20 的四个项目放在同一条链上。这是**分析框架（`推测`）**，不是新 E；它只回答「机器算出了什么」与「机器有没有权改变世界」的区别。
+
+| 层 | 问什么 | 典型输出 | E-20 里的例子 | 这一层的失败 |
+|---|---|---|---|---|
+| 求值 evaluate | 本体算出了什么？ | 蕴含/违反/查询结果/重写查询 | ontop 的 TBox 饱和 + 查询重写；semantica 的 `to_shacl` + pyshacl；trustgraph 的 SHACL-AF；open-ontologies 的 SHACL→SPARQL | 求值错、`inference="none"` 不展开、skip、fail-open |
+| 决策 decide | 通过/违反/未检查完？放行/拒绝/升级？ | pass / flag / unknown；approve / veto / escalate | trustgraph 的 `tg-pol:blocks`；open-ontologies 的 verified 三态 | 第三态被折叠、策略缺失、unknown 并进 pass |
+| 执行 enforce | 真的改变走向了吗？ | 删/拦/拒/放；CI 失败 | trustgraph 从查询结果删除 subject 侧三元组；open-ontologies 的 `enforce` CI 规则门 | 只删 subject、fail-open、只做报告 |
+| 授权 authorize | 谁有权推动写？证据够不够？ | PASS / BREACH / UNKNOWN_EVIDENCE；promotion | 无（commit-gate 是概念架构） | 无实现、false-defer、批准越界复用 |
+| 审计 audit | 为什么允许/拒绝？能重放吗？ | 影响报告、JSON 三态、promotion 记录 | open-ontologies 的 `closure_diff`；JSON 保留第三态 | 日志不可追、shell 退出码丢第三态 |
+
+三条读法（`推测`，框架不是 E）：
+
+1. **求值 ≠ 执行。** 一个 engine 可以只算不拦：ontop 把 SPARQL 重写成 SQL，semantica 只在 CLI 里校验；也可以算了才拦：trustgraph 在查询返回前删除被 block 的 subject 侧三元组。
+2. **执行 ≠ 授权。** CI 规则门、读路径过滤都不是单次写授权；open-ontologies 有 `enforce`，但没有 commit gate。不能因为「有 enforce」就说「已授权」。
+3. **授权 ≠ 正确。** commit gate 只保证按 contract 执行，不保证 policy 本身对；policy 错时，gate 会把错误执行得更一致。
+
+这条链不增加新位置：它把六位置里的 `checker`/`action`/`commit` 与轴外 `read-path`/`supply` 放在同一张工序图上。位置与形态仍按 [seams](./seams.md) 与本文「五档」判。
+
 ## 它改变了什么
 
 1. **把「本体有没有用」拆成「哪种形态、在哪一格」**。`engine`/`compiled` 才谈得上执行；`context` 谈的是供给；`label` 只是命名。但 `engine` 内部至少四种语义（见代码核对），不能把「有引擎」当成一个强度刻度。
 2. **解释了 E 层的配比**。E 层里有多条来自 `none` 形态的来源（E-01/E-07/E-08/E-09/E-14/E-15/E-18），它们支撑的是 harness/度量命题，不是「本体执行」命题。
 3. **它给了一个可证伪的问题，但不强制现在做实验**。同一接缝、同一内容、只换形态的消融是一个未来问题；需要时另立，不设默认实验线。
+4. **执行链把「求值/决策/执行/授权/审计」分开。** 四个项目分别落在不同层；同一 `engine` 可能只求值不执行，执行也可能没有授权（E-20）。这张链不增加新位置，只防止把「有引擎」读成「会拦/有授权」。
 
 ## 开放问题
 

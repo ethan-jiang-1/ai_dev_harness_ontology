@@ -34,3 +34,5 @@
 | POLAR 后续 / 动态门 | 可能解决强模型回退 | 待扫描 | N2 |
 | CASEL 部署版 | γ_m/审批成本的实测 | 待扫描 | N3 |
 | Saga/事务补偿线 | 复合可逆性 | 待扫描 | G2 |
+| Same Operation, Different Permission（2610.16838） | 同操作、不同权限的 guardrail 评估；直接测「被 block 的合法授权」；可补 POLAR 无授权标签 | 已入档（L2） | 抽 false-block/authorized-pass；看能否设计「同本体、不同授权」的成对评测；不升 E |
+| What Can Be Enforced?（2607.22868） | false-block/miss 前沿 + conformal 校准 + 闭环前沿；把「误拦」从不可测推进到可校准 | 已入档（L2） | 把 T2 前沿搬到本体 checker；只作 E5 边界，不急着升 E |

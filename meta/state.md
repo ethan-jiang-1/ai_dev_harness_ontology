@@ -13,23 +13,41 @@ updated: 2026-11-09
 | 项 | 值 |
 |---|---|
 | 阶段 | 内部研究档案；不做对外客户交付，因此不设客户资产/签核前置 |
-| 论文 | 22 个目录（20 基础 + 2 扫描），全部有 PDF + 三份 MD + card + digest |
+| 论文 | 24 个目录（20 基础 + 4 扫描），全部有 PDF + 三份 MD + card + digest |
 | 开源 | 4 个项目（trustgraph / semantica / ontop / open-ontologies），已 pin commit、已消化 |
 | 主题 | 6 派 + 20 个子主题 + 00-harness 七部件 + 6 时刻 + 1 条形态轴 |
 | 结论 | 20 条 E：17 已核原文 + 1 已核代码 + 2 推测；3 条 Q；4 条 C |
-| 局部判断 | 65 条 L（01:15 / 02:9 / 03:11 / 04:7 / 05:9 / 06:14） |
-| 证据配比（22 篇） | 9 execution-test（8 回路上 + 1 训练侧）/ 4 mechanism-only / 6 harness-evidence / 3 boundary-ruler |
-| 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
-| 交付物 | 3 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference；03 内含约束强度谱长版附录（约 0.97 万字）；原 7 章书稿计划已废弃，没有独立 handbook |
+| 局部判断 | 66 条 L（01:15 / 02:9 / 03:11 / 04:7 / 05:9 / 06:15） |
+| 证据配比（24 篇） | 9 execution-test（8 回路上 + 1 训练侧）/ 4 mechanism-only / 8 harness-evidence / 3 boundary-ruler |
+| 执行形态（28 源） | engine 4 / compiled 7 / context 2 / label 1 / none 14 |
+| 交付物 | 3 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 接口/追溯/案例附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口），附录保留为长版论证（约 0.97 万字）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-09 15:00，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
+| 最后自检 | 2026-11-09 15:45，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（377 文件；E=20，Q=3，C=4，L=66；24 论文 / 4 开源） |
 
 ## 当前边界（不是阻塞）
 
 1. **无外部资产请求**：D0/试点线已于 2026-11-09 删除；不再需要具名域、日志、题库、人或单价。
 2. **独立复现仍是空缺**：不影响 desk research；若要升「已证」，需要独立复现，但不在本仓库做；不设实验目录，也不再用模型做实验被试。
 3. **独立人类抽检**：只在对外交付时需要；内部研究不阻塞。
-4. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 仍只有 1 个实现，需第二个才能决定是否升第七时刻。
+4. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 已入库仍只有 1 个实现（外部扫描另见 sparql-guard 候选，未入库），需第二实现 + harness 调用点才能决定是否升第七时刻。
+
+## 2026-11-09 D1 第一轮证据回抽
+
+- **数据表**：[e3](../deliverables/01-capability-status/data/e3-compilation.md) / [e4](../deliverables/01-capability-status/data/e4-checker.md) / [e5](../deliverables/01-capability-status/data/e5-false-veto.md) / [e6](../deliverables/01-capability-status/data/e6-memory.md) / [e7-e8](../deliverables/01-capability-status/data/e7-e8-code.md) / [P0 扫描](../deliverables/01-capability-status/data/p0-source-scan.md)。
+- **D1 verdict**：5 条 `supported（限定）`、1 条 `conditional`、3 条 `unknown`；见 [01 §2.4](../deliverables/01-capability-status/README.md#24-e1e9-verdict2026-11-09-第一轮) 与 [§9](../deliverables/01-capability-status/README.md#9-期待与数据需求验收规格)。
+- **关键结论**：E5 false-veto 仍 `unknown`（1,745 blocked 无标签）；E8 无写授权实现；E4 的 data-derived 在 UniProt 真实答案上过 +5pp/FA≤15%，curated FA 16.8% 超线；E6 只有部分设置过 +10pp/90%。
+- **P0 候选**：2610.16838（授权 benchmark，go）、2607.22868（false-block/miss 前沿，go）；尚无 commit gate 实现。
+- **topics 回写**：[02/checker F9](../topics/02-judgment/checker/findings.md#f9-用-d1-的5pp--fa15-阈值套-e-02) 已落账（data-derived 在 UniProt 真实答案上过 +5pp/FA≤15%；curated FA 超线）；其他数据表结论仍留在 deliverables 工作底稿，待第二轮决定是否升。
+- **下一步**：落盘 2610.16838；读 2607.22868 正文；复核 sparql-guard 候选（是否建卡/是否有 harness 调用点）。
+
+## 2026-11-09 D3 机制参考 v1.0 结构
+
+- **四层结构**：[03 README](../deliverables/03-mechanism-reference/README.md)（主张类型 E/C/H/D/G + 四轴 crosswalk + 六位置表）→ `positions/`（context/memory/evidence/checker/action/commit + outside）→ `cross-cutting/`（measurement/coverage/execution-forms）→ `evidence-ledger` / `boundaries` / `gaps`。
+- **上游合成件**：[execution-forms 执行链](../topics/execution-forms.md#执行链求值决策执行授权审计)（求值→决策→执行→授权→审计）；[metrics/coverage](../topics/06-measure/metrics/coverage.md)（七类失效 × 八位置矩阵）；[metrics/mechanism 八行分派](../topics/06-measure/metrics/mechanism.md#按位置分派八行设计)。
+- **关键修正**：「强度–覆盖率反向」保留为 H（摘要），矩阵为 D（操作定义）；矩阵显示位置是专门化的，**不能排成一条强度线**；`checker` 4 个 `●/◐`、`action` 3 个，不能按格子数排强弱。
+- **未新增 E；新增 1 条 L**：只抽取现有 E-01–E-20 与 C-03/C-04；分类设计记为 06-L15；commit 写路径、false-veto、M1 同本体跨位置仍标缺口。
+- **页码/主证据**：position 卡的 8 字段（机制/触发/能改变/拦不住/使能/证据/可证伪/上游）统一；六位置表与附录互链，附录降为长版论证。
+- 自检：`python3 meta/tools/check_repo.py` 通过（377 文件；E=20，Q=3，C=4，L=66；24 论文 / 4 开源）。
 
 ## 2026-11-09 交付物重构
 
@@ -104,6 +122,14 @@ updated: 2026-11-09
 - 硬矛盾：E-05 错挂回改；02-L2 改为“模型自评”；开源接缝改为 `read-path` / `supply` / `none`；manifest 合并为 22 篇单账；GLOSSARY 工位改为 3 个；P3 拆 P3a/P3b。
 - 结构：新增 `execution_form` 轴（[topics/execution-forms.md](../topics/execution-forms.md)，[ADR 0006](../adr/0006-execution-form-axis.md)）、`evidence_role`、`also_supports`；26 个来源全部落字段（9/4/6/3；engine 4 / compiled 7 / context 2 / label 1 / none 12）；E 行影响列改用 P1a/P1b/P1c/P2/P3a/P3b；15 个薄子主题标记；L1/L2/L3 定义与长度门重写。
 - 账本：meta 索引 + 归档（8 个一次性文档 + full-audit）；state.md（本页）；可执行自检（ADR 0005）；ADR 索引（含 0006）；manifest 合并为 22 篇单账（含批次列），删除 manifest-scan。
+
+## 2026-11-09 02 工程手册 v2
+
+- **结构**：02 改为「README 门厅 + `recipes/`（R0–R12）+ `operations/`（账本/评测/成本/上线/领域）+ `appendices/`（接口/追溯/案例）」；README 保留决策图与 R 索引，细节下沉到分片，避免单页继续膨胀。
+- **新增**：R0 本体可执行性体检（四项准入：名字/单位、声明、覆盖、执行落点）；R10 离线/CI SHACL；R11 OBDA 查询重写；R12 受监管供给（citation + solver + 人签核）。R1–R9 保留编号，避免 01/03 的 R 引用漂移。
+- **R8 第二实现**：外部扫描发现 `Matdata-eu/sparql-guard`（Apache-2.0，HEAD `6b68d769`）：TS 代理 + 查询重写，fail-closed、subject+object 两侧、有一组 vitest 用例（外部复核 76/76 通过，未在仓库内复跑）；**未按仓库标准入库**（单作者/1★/无 harness 调用点/无泄漏率）。它只说明 read-path 是 family（post-filter vs query rewrite），不升第七时刻，也不改 01 的 B 评级。候选记在 [commit-gate frontier](../topics/01-constraint/commit-gate/frontier.md)。
+- **证据边界**：false-veto、grounding 校准、commit 写路径、第二 read-path 调用点仍缺；02 只写测量协议与 stop，不写「已解决」。
+- 自检：`python3 meta/tools/check_repo.py` 通过（377 文件；E=20，Q=3，C=4，L=66；24 论文 / 4 开源）。
 
 ## 怎么刷新
 

@@ -30,18 +30,19 @@ updated: 2026-11-09
 | 子目录 | 回答什么 | 形态 | 状态 | 依据 |
 |---|---|---|---|---|
 | [01-capability-status](./01-capability-status/README.md) | 哪些能落地、哪些能试点、哪些只能设计；距离多远 | 判断 + 能力矩阵 | draft | E-01–E-20、C-01–C-04 |
-| [02-engineering-playbook](./02-engineering-playbook/README.md) | 选位置/形态、R1–R9、开源与论文指示分级、验收与 stop | 步骤 + 接口 + 验收 | draft | E-xx + 各派 mechanism |
-| [03-mechanism-reference](./03-mechanism-reference/README.md) | 为什么是六个位置、三条轴怎么分、15 条边界 | 参考 + 一页表 | draft | E-xx + [topics/README](../topics/README.md) |
-| └ [附录：约束强度谱](./03-mechanism-reference/appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字） | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
+| [02-engineering-playbook](./02-engineering-playbook/README.md) | 选位置/形态、R0–R12、开源与论文指示分级、账本/成本/上线、验收与 stop | 步骤 + 接口 + 验收 | draft | E-xx + 各派 mechanism |
+| [03-mechanism-reference](./03-mechanism-reference/README.md) | 为什么是六个位置、三根分类轴怎么分、15 条边界 | 入口 + 六张位置卡 + 谱外页 + 三张横切页 + 证据台账 | draft | E-xx + [topics/README](../topics/README.md) |
+| └ [附录：约束强度谱](./03-mechanism-reference/appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字）；位置细节以卡为准 | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
 
 **怎么读**：
 
 - 只有 10 分钟 → [01 §0 一页结论](./01-capability-status/README.md#0-一页结论) + [02 §0 决策图](./02-engineering-playbook/README.md#0-一句话与五步法)。
 - 手上有一个具体任务 → [02 §1 定错](./02-engineering-playbook/README.md#1-先定错五个问题) → §2 选位置 → §4 对应 R。
-- 要说服别人/自查边界 → [03 §3 六位置表](./03-mechanism-reference/README.md#3-六个位置一页表) + §5 十五条边界。
+- 要说服别人/自查边界 → [03 §3 六位置表](./03-mechanism-reference/README.md#3-六个位置一页表) + [boundaries](./03-mechanism-reference/boundaries.md)。
+- 想查某个位置的机制 → [03 positions](./03-mechanism-reference/positions/context.md)（六张卡，统一 8 字段）。
 - 想读完整论证 → [附录：约束强度谱](./03-mechanism-reference/appendix-constraint-spectrum.md)。
 
-**反向加载**：从 [01 §9](./01-capability-status/README.md#9-期待与数据需求验收规格)/[plan](./01-capability-status/plan.md)、[02 §4](./02-engineering-playbook/README.md#4-九条工程做法r1r9)、[03 §3](./03-mechanism-reference/README.md#3-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
+**反向加载**：从 [01 §9](./01-capability-status/README.md#9-期待与数据需求验收规格)/[plan](./01-capability-status/plan.md)、[02 §4](./02-engineering-playbook/README.md#4-十二条工程做法r0r12)、[03 §3](./03-mechanism-reference/README.md#3-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
 
 ## 期待 → 数据（验收规格）
 
@@ -65,9 +66,9 @@ updated: 2026-11-09
 
 | 交付物 | 形态 | 状态 | 依据 |
 |---|---|---|---|
-| 一页图：约束强度谱 | 图 | 待画 | [03 §4](./03-mechanism-reference/README.md#4-强度覆盖率反向组织假设不是-e) + E-01/E-04（组织假设，标注不是 E 结论） |
+| 一页图：约束强度谱 | 图 | 待画 | [03 §4](./03-mechanism-reference/README.md#4-强度覆盖率直线是摘要矩阵是操作定义) + [coverage 矩阵](./03-mechanism-reference/cross-cutting/coverage.md)（H/D，不是 E 结论） |
 | Deck：给工程团队的 30 分钟 | 幻灯片 | 待做 | 02 §0、§4、§7 |
-| 案例页：一个端到端示例 | Markdown | 待做 | 02 §7；需一个真实场景，当前没有 |
+| 案例页：一个端到端示例 | Markdown | 示意已写；真实场景待补 | [02 附录 C](./02-engineering-playbook/appendices/case.md)；标 illustrative，不是部署 |
 
 ## 交付阶段（`deliverable_status`）
 

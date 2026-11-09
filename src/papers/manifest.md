@@ -4,7 +4,7 @@ updated: 2026-11-09
 
 # 论文清单
 
-22 篇（20 基础 + 2 前沿扫描），全部从 arXiv 下载成功（2026-11-07），大小与页数已核对，标题取自 PDF 首页。每篇目录含 PDF、`paper.md`（正文）、`references.md`、`appendix.md`、`card.md`、`digest.md` 与 `figures/`（无图除外）。**这是全仓唯一的论文登记处；不再有第二本 manifest。**
+24 篇（20 基础 + 4 前沿扫描），全部从 arXiv 下载成功（2026-11-07 / 2026-11-09），大小与页数已核对，标题取自 PDF 首页。每篇目录含 PDF、`paper.md`（正文）、`references.md`、`appendix.md`、`card.md`、`digest.md` 与 `figures/`（无图除外）。**这是全仓唯一的论文登记处；不再有第二本 manifest。**
 
 方向编号沿用[源综述](../web/weixin-laoliu/otology.md)的分类，**不代表本仓库的归类**——本仓库按「语义是什么 / 语义在哪一步生效」重新归位，见 [topics/](../../topics/README.md)。
 
@@ -37,6 +37,8 @@ updated: 2026-11-09
 | 20 | 基础 | 2510.26683 | Evontree | 10 | 4 | [pdf](./2510.26683-evontree/2510.26683-evontree.pdf) | [✓](2510.26683-evontree/card.md) | [✓](2510.26683-evontree/digest.md) |
 | 21 | 扫描 | 2610.36570 | CASEL | 6 | 5 | [pdf](./2610.36570-casel/2610.36570-casel.pdf) | [✓](2610.36570-casel/card.md) | [✓](2610.36570-casel/digest.md) |
 | 22 | 扫描 | 2610.01618 | Agents Are Systems | 28 | 5 | [pdf](./2610.01618-agents-are-systems/2610.01618-agents-are-systems.pdf) | [✓](2610.01618-agents-are-systems/card.md) | [✓](2610.01618-agents-are-systems/digest.md) |
+| 23 | 扫描 | 2610.16838 | Same Operation, Different Permission | 23 | 5 | [pdf](./2610.16838-same-operation-different-permission/2610.16838-same-operation-different-permission.pdf) | [✓](2610.16838-same-operation-different-permission/card.md) | [✓](2610.16838-same-operation-different-permission/digest.md) |
+| 24 | 扫描 | 2607.22868 | What Can Be Enforced? | 26 | 5 | [pdf](./2607.22868-what-can-be-enforced/2607.22868-what-can-be-enforced.pdf) | [✓](2607.22868-what-can-be-enforced/card.md) | [✓](2607.22868-what-can-be-enforced/digest.md) |
 
 > 批次列：`基础` = 源综述首批 20 篇；`扫描` = 2026-11-07 前沿扫描新增 2 篇，**计入总数**。方向 5 = 前沿扫描，不属于源综述四类。
 
@@ -44,12 +46,12 @@ updated: 2026-11-09
 
 | 项 | 状态 |
 |---|---|
-| 22 篇 ID 有效、PDF 可下载 | 已核（2026-11-07） |
-| 22 篇标题与首页一致 | 已核（PDF 首页标题比对；扫描批按 arXiv 页） |
-| 摘要 + 结论 + 局限 | 22 篇全部读过（`reading: 摘要级`，精读篇目见 card） |
-| 建卡 | 22 篇全部成卡；每篇一个目录，卡为 `card.md` |
-| PDF → MD | 22 篇全部：`paper.md` + `references.md` + `appendix.md`（无附录的写说明） |
-| 正文消化 | 22 篇全部 `card.md` + `digest.md`；L3 12 篇、L2 6 篇、L1 4 篇（阅读深度定义见 [conventions](../../meta/conventions.md#字段与词汇)） |
-| 消化 digest | 22 篇全部；L1 4 篇只到一页判断 |
+| 24 篇 ID 有效、PDF 可下载 | 已核（2026-11-07 / 2026-11-09） |
+| 24 篇标题与首页一致 | 已核（PDF 首页标题比对；扫描批按 arXiv 页） |
+| 摘要 + 结论 + 局限 | 24 篇全部读过（`reading: 摘要级`，精读篇目见 card） |
+| 建卡 | 24 篇全部成卡；每篇一个目录，卡为 `card.md` |
+| PDF → MD | 24 篇全部：`paper.md` + `references.md` + `appendix.md`（无附录的写说明） |
+| 正文消化 | 24 篇全部 `card.md` + `digest.md`；L3 12 篇、L2 8 篇、L1 4 篇（阅读深度定义见 [conventions](../../meta/conventions.md#字段与词汇)） |
+| 消化 digest | 24 篇全部；L1 4 篇只到一页判断 |
 
 首批 8 篇做了综述转述与原文的逐条对照；其中 3 篇的综述转述**丢失了关键限定条件**，另 1 篇的转述与正文有出入。其余 14 篇为摘要级建卡，未逐条对照综述。记录在[综述卡片](../web/weixin-laoliu/otology.card.md#转述与原文的差异)。这是 `src/` 必须存在的直接理由。
