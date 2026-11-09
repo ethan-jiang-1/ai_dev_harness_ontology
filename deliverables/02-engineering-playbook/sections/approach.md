@@ -6,6 +6,8 @@ parent: ../README.md
 
 # 3. 主体：R0–R12 与参考实现
 
+> 本章回答：R0–R12 怎么选、开源/论文能抄什么、架构和路线怎么排。 ｜ 读完你应该能：选一条 recipe 并写出接口。
+
 <a id="4-九条工程做法r1r9"></a>
 <a id="4-十二条工程做法r0r12"></a>
 ### 3.1 十二条工程做法（R0–R12）
@@ -24,8 +26,8 @@ parent: ../README.md
 | **R7** | 先 registry，再状态；CMR 与 precision 同看 | 跨轮 / compiled | E-05/E-17 | B | [state](../recipes/state.md) |
 | **R8** | 只做可见性，不当授权；已入库单实现/ fail-open 未修 | read-path / engine | E-20 | B（条件性） | [constraint](../recipes/constraint.md#r8--读路径过滤只做可见性不要当授权) |
 | **R9** | 只能设计，不能声称落地 | 落盘前 / 无实现 | E-20 | C | [constraint](../recipes/constraint.md#r9--落盘前授权现在只能设计不要声称已落地) |
-| **R10** | 离线/CI SHACL；三态不可折叠 | 离线/CI / compiled | E-20 | A | [axis-out](../recipes/axis-out.md#r10--离线ci-shacl把没检查完做成第三态) |
-| **R11** | 查询时编译；不是闸/判定器 | supply / engine | E-20 | A | [axis-out](../recipes/axis-out.md#r11--obda-查询重写本体在查询编译时被执行) |
+| **R10** | 离线/CI SHACL；三态不可折叠 | 离线/CI / compiled | E-20 | A | [offline-and-obda](../recipes/offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态) |
+| **R11** | 查询时编译；不是闸/判定器 | supply / engine | E-20 | A | [offline-and-obda](../recipes/offline-and-obda.md#r11--obda-查询重写本体在查询编译时被执行) |
 | **R12** | 证据 + solver + 人签核；不是准确率项目 | 供给+输出+人 | Grid | B（benchmark） | [regulated](../recipes/regulated.md) |
 
 #### 3.1.1 为什么 R0 在 R1 前

@@ -224,6 +224,6 @@ per-1k cost = flag_rate × per-flagged cost × 1000
 
 - [checker 机制](../../../topics/02-judgment/checker/mechanism.md) 的「三种来源」「判定回路」「成本」「stop」。
 - Ontology Catch 的 catch/FA 口径、空结果基线、per-flagged 成本；不要抄「curated 权威」。
-- [open-ontologies 的三态](axis-out.md#r10--离线ci-shacl把没检查完做成第三态)；第三态是接口设计，不是效果证据。
+- [open-ontologies 的三态 ](offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态)；第三态是接口设计，不是效果证据。
 
 **出处**：[evidence 机制](../../../topics/02-judgment/evidence/mechanism.md) · [checker 机制](../../../topics/02-judgment/checker/mechanism.md) · [E-02/E-03](../../../topics/conclusions.md)

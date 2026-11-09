@@ -10,6 +10,8 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 
 > **读者**：架构师 / 研究者 ｜ **回答**：为什么是这些位置/形态、证据边界在哪 ｜ **不回答**：具体怎么做（去 02）、今天能做成什么（去 01）。
 
+<img src="../_figures/03-six-positions.svg" alt="03 六个位置" width="100%">
+
 > **这不是一本手册，也不是教程。** 它是交付物的「依据层」：解释为什么把本体接在六个位置、三根分类轴怎么分、每条判断的证据边界在哪。
 >
 > 2026-11-09 起，本目录从「一篇长附录」升级成四层：**入口（本页）→ 位置卡 → 横切页 → 证据台账/边界/缺口**。原第三章保留为长版论证 [appendix-constraint-spectrum.md](./appendix-constraint-spectrum.md)（约 0.97 万字）；附录是历史论证，位置细节以 `positions/` 为准。
@@ -40,25 +42,20 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 > 反向链见 [meta/loading §从交付物倒查](../../meta/loading.md#从交付物倒查反向加载)：边界 → E 行 → digest §5/§9 → 附录。
 
 
-### 1.2 三条阅读路径
+### 1.2 推荐阅读顺序
+
+1. **0 一页结论**：先知道「强度不是好坏，强端更窄」。
+2. **2 地图**：看主张类型、四轴、六位置表；不要先读附录。
+3. **3 主体**：按 context → memory → evidence → checker → action → commit → outside 读位置卡。
+4. **4 边界**：看 15 条边界里最常被越过的 5 条。
+5. **5 验收**：看 M1–M5 与缺口。
+6. **6 关系**：需要时再跳 01/02。
 
 | 时间 | 读什么 | 得到什么 |
 |---|---|---|
-| 10 分钟 | §0 + [§2.3 六位置表](./sections/map.md#23-六个位置一页表) | 知道六个位置问什么、为什么不是一条强度线 |
-| 1 小时 | §1 + [§2](./sections/map.md) + [§3](./positions/README.md) | 能指到某个位置卡、某条边界、某个缺口 |
-| 深读 | `positions/` + `across-positions/` + `boundaries.md` + `evidence-ledger.md` | 能复述机制、证据、不能证明什么 |
-
-
-### 1.3 读法
-
-- 想知道「这个机制能不能用」→ [01 §2 的能力矩阵](../01-capability-status/sections/map.md)。
-- 想知道「拿本体做 X 怎么做」→ [02 §3.1 的 R0–R12](../02-engineering-playbook/sections/approach.md#31-十二条工程做法r0r12)。
-- 想知道「为什么是这六个位置」→ [§2 地图](./sections/map.md) + [§3 主体](./positions/README.md) + [coverage](./across-positions/coverage.md) + [execution-forms](./across-positions/execution-forms.md)。
-- 想知道「这个位置该量什么」→ [measurement](./across-positions/measurement.md)。
-- 想知道「这条判断的边界」→ [boundaries.md](./evidence/boundaries.md) + [evidence-ledger.md](./evidence/ledger.md)。
-- 想知道「下一步研究什么」→ [gaps.md](./evidence/gaps.md) + 各派 `frontier.md`。
-
-
+| 10 分钟 | 0 + [2.3 六位置表](./sections/map.md#23-六个位置一页表) | 知道六个位置问什么 |
+| 1 小时 | 0 + [2](./sections/map.md) + [3 主体](./positions/README.md) | 能指到某个位置卡与边界 |
+| 深读 | 0–6 + `positions/` + `across-positions/` + `evidence/` | 能复述机制、证据、不能证明什么 |
 
 ## 目录
 

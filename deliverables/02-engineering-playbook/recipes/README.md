@@ -22,8 +22,8 @@ parent: ../README.md
 | [R7 身份/记忆](state.md) | 先 registry，再状态 | 跨轮 / compiled | B | E-05/E-17 |
 | [R8 读路径](constraint.md#r8--读路径过滤只做可见性不要当授权) | 只做可见性，不当授权 | read-path / engine | B（条件性） | E-20 |
 | [R9 落盘授权](constraint.md#r9--落盘前授权现在只能设计不要声称已落地) | 只能设计，不能声称落地 | 落盘前 / 无实现 | C | E-20 |
-| [R10 离线/CI SHACL](axis-out.md#r10--离线ci-shacl把没检查完做成第三态) | 把「没检查完」做成第三态 | 离线/CI / compiled | A | E-20 |
-| [R11 OBDA](axis-out.md#r11--obda-查询重写本体在查询编译时被执行) | 查询时编译，不预存语料 | supply / engine | A | E-20 |
+| [R10 离线/CI SHACL ](offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态) | 把「没检查完」做成第三态 | 离线/CI / compiled | A | E-20 |
+| [R11 OBDA ](offline-and-obda.md#r11--obda-查询重写本体在查询编译时被执行) | 查询时编译，不预存语料 | supply / engine | A | E-20 |
 | [R12 受监管供给](regulated.md) | 证据 + solver + 人签核 | 供给+输出+人 | B（benchmark） | Grid |
 
 ## 每条 recipe 的十字段

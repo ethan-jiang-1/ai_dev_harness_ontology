@@ -6,6 +6,10 @@ parent: ../README.md
 
 # 2. 地图：能力矩阵
 
+> 本章回答：能力矩阵怎么读、E1–E9 verdict 从哪来。 ｜ 读完你应该能：给一项能力判 A/B/C/D，并说出它的证据边界。
+
+<img src="../../_figures/01-capability-map.svg" alt="本章地图" width="100%">
+
 ### 2.1 判定口径
 
 | 判定 | 含义 | 不等于 |

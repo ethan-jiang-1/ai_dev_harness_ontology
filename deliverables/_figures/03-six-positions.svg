@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#eef5ff"/>
+      <stop offset="1" stop-color="#fdeeee"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="440" fill="#fbfbf9"/>
+  <text x="40" y="42" font-size="22" font-weight="600" fill="#111">03 六个位置：问的问题不同，不是六个都该做</text>
+  <text x="40" y="68" font-size="13" fill="#666">越往后越硬、越窄；但位置是专门化的，不能排成一条可排序的强度线</text>
+
+  <g font-size="12">
+    <rect x="40" y="110" width="140" height="96" rx="9" fill="#eef5ff" stroke="#3b6ea5"/>
+    <text x="56" y="138" font-size="15" font-weight="700" fill="#1d3f5e">context</text>
+    <text x="56" y="162">模型看到什么</text>
+    <text x="56" y="182">供给 / 投影 / 编译</text>
+    <text x="56" y="198" fill="#777">不阻断</text>
+
+    <rect x="196" y="110" width="140" height="96" rx="9" fill="#eef5ff" stroke="#3b6ea5"/>
+    <text x="212" y="138" font-size="15" font-weight="700" fill="#1d3f5e">memory</text>
+    <text x="212" y="162">下一轮记得什么</text>
+    <text x="212" y="182">registry / 状态</text>
+    <text x="212" y="198" fill="#777">只改状态</text>
+
+    <rect x="352" y="110" width="140" height="96" rx="9" fill="#f2f2ef" stroke="#888"/>
+    <text x="368" y="138" font-size="15" font-weight="700">evidence</text>
+    <text x="368" y="162">产出带什么依据</text>
+    <text x="368" y="182">grounding 等级</text>
+    <text x="368" y="198" fill="#777">只约束格式</text>
+
+    <rect x="508" y="110" width="140" height="96" rx="9" fill="#fff8e8" stroke="#a8791f"/>
+    <text x="524" y="138" font-size="15" font-weight="700" fill="#5e4410">checker</text>
+    <text x="524" y="162">产出对不对</text>
+    <text x="524" y="182">pass / flag / unknown</text>
+    <text x="524" y="198" fill="#777">能 flag</text>
+
+    <rect x="664" y="110" width="140" height="96" rx="9" fill="#fdeeee" stroke="#a33b3b"/>
+    <text x="680" y="138" font-size="15" font-weight="700" fill="#5e2020">action</text>
+    <text x="680" y="162">动作能不能做</text>
+    <text x="680" y="182">可逆性 / 审批</text>
+    <text x="680" y="198" fill="#777">能阻断</text>
+
+    <rect x="820" y="110" width="140" height="96" rx="9" fill="#fdeeee" stroke="#a33b3b"/>
+    <text x="836" y="138" font-size="15" font-weight="700" fill="#5e2020">commit</text>
+    <text x="836" y="162">证据够不够授权</text>
+    <text x="836" y="182">promotion / verdict</text>
+    <text x="836" y="198" fill="#777">设计，无实现</text>
+  </g>
+
+  <rect x="40" y="236" width="920" height="26" rx="13" fill="url(#g)" stroke="#ccc"/>
+  <text x="40" y="284" font-size="13" fill="#1d3f5e">弱 / 广</text>
+  <text x="840" y="284" font-size="13" fill="#5e2020">强 / 窄</text>
+  <text x="430" y="284" font-size="12" fill="#777">约束强度 →</text>
+
+  <rect x="40" y="312" width="920" height="96" rx="10" fill="#f7f7f4" stroke="#bbb"/>
+  <text x="60" y="338" font-size="13" font-weight="700">怎么读这张图</text>
+  <text x="60" y="362" font-size="12" fill="#444">1. 先问「我要防的错在哪个时刻」：动作前 → action；输出后 → checker；落盘前 → commit；跨轮 → memory。</text>
+  <text x="60" y="382" font-size="12" fill="#444">2. 再问「机器拿本体做了什么」：求值 / 编译 / 注入；有引擎 ≠ 会拦 ≠ 有授权（E-20）。</text>
+  <text x="60" y="402" font-size="12" fill="#777">3. 强度–覆盖率反向是 H（组织假设）；矩阵是 D（操作定义）。查 coverage，不查直线。</text>
+</svg>

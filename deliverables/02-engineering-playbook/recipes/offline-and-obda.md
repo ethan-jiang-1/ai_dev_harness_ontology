@@ -5,7 +5,7 @@ parent: ../README.md
 basis: E-20；execution-forms 代码核对；semantica / open-ontologies / ontop digest
 ---
 
-# R10–R11 · 轴外执行：离线/CI 校验与 OBDA
+# R10–R11 · 离线校验与 OBDA：不在回路里的执行
 
 > 这两条不在 agent 控制回路里，但它们是 01 里少数被评为 **A（可先落地）** 的能力。它们不改变模型走向，改变的是**数据/查询的可靠性**与**验证的时机**。
 >

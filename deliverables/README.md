@@ -6,6 +6,8 @@ updated: 2026-11-09
 
 流水线的第三个工位。把 `topics/` 里已经站得住的判断，重新组织成**对外可用的形态**：手册、Deck、图、讲稿。
 
+<img src="./_figures/three-layers.svg" alt="三份交付物的阅读顺序" width="100%">
+
 ## 抽取规则
 
 1. **只引结论，不引原文。** 交付物引用 [topics/conclusions](../topics/conclusions.md) 的编号（E-xx），不直接引 `src/`。未经消化的材料不能以成品面貌流出。
@@ -67,13 +69,13 @@ updated: 2026-11-09
 | 角色 | 01 现状 | 02 工程 | 03 机制 |
 |---|---|---|---|
 | 索引 | `README.md`（只放 0/1/目录/关注） | `README.md` | `README.md` |
-| 分节 | `sections/`（02/04/05/06） | `sections/`（02–06） | `sections/`（02/04/05/06） |
+| 分节 | `sections/`（map/boundaries/acceptance/relations） | `sections/`（map/approach/boundaries/acceptance/relations） | `sections/`（map/boundaries/acceptance/relations） |
 | 主体 | `capabilities/` + `README.md` | `recipes/` + `README.md`；总览在 `sections/approach.md` | `positions/` + `README.md` |
 | 支撑 | — | `operations/` + `README.md` | `across-positions/` + `README.md` |
 | 证据 | `data/` + `README.md` | `appendices/traceability.md` | `evidence/` + `README.md` |
 | 附录 | — | `appendices/` + `README.md` | `appendix-constraint-spectrum.md` |
 
-**规则**：README 只做索引；正文按「分节 / 主体 / 支撑 / 证据 / 附录」放，不把长文塞回 README。每个目录都有 `README.md`，用同一张索引表。
+**规则**：README 只做索引；正文按「分节 / 主体 / 支撑 / 证据 / 附录」放，不把长文塞回 README。每个目录都有 `README.md`，用同一张索引表。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG；README 只嵌一张。
 
 ## 期待 → 数据（验收规格）
 

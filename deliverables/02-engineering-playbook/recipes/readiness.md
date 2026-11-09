@@ -156,8 +156,8 @@ basis: E-02/E-03/E-12/E-20；SFE-O；checker F2
 ## 9. 交接
 
 - 名字/单位问题 → [R1](knowledge.md#r1--k1-语义层先把名字和单位对齐)
-- 声明/覆盖问题 → [R5](judgment.md#r5--输出后-checker先超过空结果重试) 或 [R10](axis-out.md#r10--离线ci-shacl把没检查完做成第三态)
-- 查询/映射问题 → [R11](axis-out.md#r11--obda-查询重写本体在查询编译时被执行)
+- 声明/覆盖问题 → [R5](judgment.md#r5--输出后-checker先超过空结果重试) 或 [R10 ](offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态)
+- 查询/映射问题 → [R11 ](offline-and-obda.md#r11--obda-查询重写本体在查询编译时被执行)
 - 消费者是投影 → [R2](knowledge.md#r2--知识投影把领域知识写成固定分节的文本)
 - 消费者是动作闸 → [R6](constraint.md#r6--动作前可逆性闸只在不可逆高代价弱模型时试)
 

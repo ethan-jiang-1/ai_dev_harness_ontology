@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#777"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#fbfbf9"/>
+  <text x="40" y="42" font-size="22" font-weight="600" fill="#111">02 选一条 recipe：先 R0，再按错误类型选</text>
+  <text x="40" y="68" font-size="13" fill="#666">不要同时上三条；先 shadow，再扩。每条完整配方在 recipes/</text>
+
+  <rect x="360" y="94" width="240" height="58" rx="10" fill="#fff4ea" stroke="#a8642d"/>
+  <text x="382" y="120" font-size="16" font-weight="700" fill="#5e3518">R0 准入体检</text>
+  <text x="382" y="140" font-size="12" fill="#5e3518">名字/单位 · 声明 · 覆盖 · 落点</text>
+
+  <g stroke="#777" stroke-width="1.6" fill="none">
+    <path d="M 360 123 L 180 196" marker-end="url(#a)"/>
+    <path d="M 360 123 L 300 196" marker-end="url(#a)"/>
+    <path d="M 480 152 L 480 196" marker-end="url(#a)"/>
+    <path d="M 600 123 L 660 196" marker-end="url(#a)"/>
+    <path d="M 600 123 L 800 196" marker-end="url(#a)"/>
+    <path d="M 480 152 L 232 380" marker-end="url(#a)"/>
+    <path d="M 480 152 L 700 380" marker-end="url(#a)"/>
+  </g>
+
+  <g font-size="12" fill="#333">
+    <rect x="40" y="200" width="240" height="88" rx="9" fill="#eefaf2" stroke="#2f7d54"/>
+    <text x="56" y="226" font-size="14" font-weight="700" fill="#194d33">知识供给</text>
+    <text x="56" y="250">R1 命名/单位 → R2 投影</text>
+    <text x="56" y="270">R3 编译（只省预算）</text>
+
+    <rect x="300" y="200" width="240" height="88" rx="9" fill="#eef5ff" stroke="#3b6ea5"/>
+    <text x="316" y="226" font-size="14" font-weight="700" fill="#1d3f5e">判定</text>
+    <text x="316" y="250">R4 证据契约（输出时）</text>
+    <text x="316" y="270">R5 checker（输出后）</text>
+
+    <rect x="560" y="200" width="360" height="88" rx="9" fill="#fdeeee" stroke="#a33b3b"/>
+    <text x="576" y="226" font-size="14" font-weight="700" fill="#5e2020">约束（强端）</text>
+    <text x="576" y="250">R6 动作前 ｜ R8 读路径 ｜ R9 落盘前（设计）</text>
+    <text x="576" y="270">R6 先 shadow；R8 单实现；R9 无实现</text>
+
+    <rect x="40" y="316" width="240" height="80" rx="9" fill="#f2f2ef" stroke="#888"/>
+    <text x="56" y="342" font-size="14" font-weight="700">状态</text>
+    <text x="56" y="366">R7 registry → 状态</text>
+
+    <rect x="300" y="316" width="240" height="80" rx="9" fill="#f2f2ef" stroke="#888"/>
+    <text x="316" y="342" font-size="14" font-weight="700">轴外执行</text>
+    <text x="316" y="366">R10 离线 SHACL ｜ R11 OBDA</text>
+
+    <rect x="560" y="316" width="360" height="80" rx="9" fill="#fff8e8" stroke="#a8791f"/>
+    <text x="576" y="342" font-size="14" font-weight="700" fill="#5e4410">受监管</text>
+    <text x="576" y="366">R12 citation + solver + 人签核</text>
+  </g>
+
+  <rect x="40" y="426" width="880" height="96" rx="10" fill="#f7f7f4" stroke="#bbb"/>
+  <text x="60" y="452" font-size="13" font-weight="700">选择口诀</text>
+  <text x="60" y="476" font-size="12" fill="#444">先过 R0；可撤销/会扩散 → R4+R5；会污染后续轮次 → R7；不可逆/对外 → R6；</text>
+  <text x="60" y="496" font-size="12" fill="#444">不可逆/持久化 → R9（设计）；离线/CI → R10；关系库查询 → R11；受监管 → R12。</text>
+  <text x="60" y="514" font-size="12" fill="#777">没有账本/标签时，先写测量协议，不要用平均收益立项。</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" fill="#fbfbf9"/>
+  <text x="40" y="42" font-size="22" font-weight="600" fill="#111">三份交付物：不同内容，同一套阅读顺序</text>
+  <text x="40" y="68" font-size="13" fill="#666">先判断值不值得做（01），再决定怎么做（02），最后查凭什么（03）</text>
+
+  <rect x="40" y="100" width="250" height="96" rx="10" fill="#eef5ff" stroke="#3b6ea5"/>
+  <text x="60" y="130" font-size="18" font-weight="600" fill="#1d3f5e">01 现状 · 判断层</text>
+  <text x="60" y="156" font-size="13" fill="#1d3f5e">哪些能落地 / 试点 / 只能设计</text>
+  <text x="60" y="176" font-size="13" fill="#1d3f5e">距离有多远</text>
+
+  <line x1="295" y1="148" x2="350" y2="148" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="355" y="100" width="250" height="96" rx="10" fill="#eefaf2" stroke="#2f7d54"/>
+  <text x="375" y="130" font-size="18" font-weight="600" fill="#194d33">02 工程 · 操作层</text>
+  <text x="375" y="156" font-size="13" fill="#194d33">选位置 / 形态 / 接口</text>
+  <text x="375" y="176" font-size="13" fill="#194d33">R0–R12 与验收</text>
+
+  <line x1="610" y1="148" x2="665" y2="148" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="670" y="100" width="250" height="96" rx="10" fill="#fff4ea" stroke="#a8642d"/>
+  <text x="690" y="130" font-size="18" font-weight="600" fill="#5e3518">03 机制 · 依据层</text>
+  <text x="690" y="156" font-size="13" fill="#5e3518">为什么是这些位置 / 形态</text>
+  <text x="690" y="176" font-size="13" fill="#5e3518">证据边界在哪</text>
+
+  <text x="40" y="248" font-size="14" font-weight="600" fill="#333">每份都按 0–6 展开；README 只做索引</text>
+  <g font-size="12" fill="#333">
+    <rect x="40" y="270" width="112" height="58" rx="8" fill="#f2f2ef" stroke="#bbb"/>
+    <text x="52" y="294" font-weight="600">0 一页结论</text>
+    <text x="52" y="314">给谁 / 最重要三句</text>
+
+    <rect x="162" y="270" width="112" height="58" rx="8" fill="#f2f2ef" stroke="#bbb"/>
+    <text x="174" y="294" font-weight="600">1 怎么读</text>
+    <text x="174" y="314">顺序 / 路径</text>
+
+    <rect x="284" y="270" width="112" height="58" rx="8" fill="#f2f2ef" stroke="#bbb"/>
+    <text x="296" y="294" font-weight="600">2 地图</text>
+    <text x="296" y="314">本份框架</text>
+
+    <rect x="406" y="270" width="112" height="58" rx="8" fill="#f2f2ef" stroke="#bbb"/>
+    <text x="418" y="294" font-weight="600">3 主体</text>
+    <text x="418" y="314">能力 / recipe / 位置</text>
+
+    <rect x="528" y="270" width="112" height="58" rx="8" fill="#f2f2ef" stroke="#bbb"/>
+    <text x="540" y="294" font-weight="600">4 边界</text>
+    <text x="540" y="314">不能证明什么</text>
+
+    <rect x="650" y="270" width="112" height="58" rx="8" fill="#f2f2ef" stroke="#bbb"/>
+    <text x="662" y="294" font-weight="600">5 验收</text>
+    <text x="662" y="314">stop / 缺口</text>
+
+    <rect x="772" y="270" width="112" height="58" rx="8" fill="#f2f2ef" stroke="#bbb"/>
+    <text x="784" y="294" font-weight="600">6 关系</text>
+    <text x="784" y="314">互链 / 维护</text>
+  </g>
+  <text x="40" y="376" font-size="12" fill="#777">读法：0 → 1 → 2 → 3 → 4 → 5 → 6；只有 10 分钟就读 0 + 2 的核心图。</text>
+</svg>
