@@ -22,12 +22,12 @@ updated: 2026-11-09
 | 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
 | 实验 | 4 个协议（EXP-001/002/003 + EXP-007）；无外部资产前置 |
 | 交付物 | 手册大纲 7 章；正文未写 |
-| 最后自检 | 2026-11-09 11:18，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
+| 最后自检 | 2026-11-09 11:35，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
 
 ## 当前边界（不是阻塞）
 
 1. **无外部资产请求**：D0/试点线已于 2026-11-09 删除；不再需要具名域、日志、题库、人或单价。
-2. **独立复现仍是空缺**：不影响 desk research；若要升「已证」，需自己跑 EXP-007 或找到公开可复现数据。当前环境没有模型 endpoint/本地模型，EXP-007 停在协议；这是工具前置，不是用户资产。
+2. **独立复现仍是空缺**：不影响 desk research；若要升「已证」，需自己跑 EXP-007 或找到公开可复现数据。当前可用 DeepSeek V4 Pro / Qwen 3.8 27B（OpenRouter）；EXP-007 代理试点已跑 16 次/模型，出现天花板效应，正式实验未开始。
 3. **独立人类抽检**：只在对外交付时需要；内部研究不阻塞。
 4. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 仍只有 1 个实现，需第二个才能决定是否升第七时刻。
 
@@ -53,6 +53,13 @@ updated: 2026-11-09
 - 删除 `experiments/EXP-004-narrow-deep-k1.md`、`EXP-005-action-gate-shadow.md`、`EXP-006-ontology-checker.md`、`_pilot-template.md`。
 - 不再请求具名域、日志、题库、人或单价；外部客户试点不是本仓库的路径。
 - git 历史保留；若以后真要做企业试点，可从历史恢复，但不在门厅出现。
+
+## EXP-007 代理试点（2026-11-09）
+
+- 16 次/模型：DeepSeek V4 Pro + Qwen 3.8 27B（OpenRouter）。
+- engine / compiled / context 均 4/4；label 0/4（DeepSeek）、1/4（Qwen），失败以 JSON 解析/空 content 为主。
+- 解释：**天花板效应**，任务太简单，engine 直接给 verdict 等于 oracle；不能支持或否定 P2。正式实验要更难、engine 要带覆盖缺口、label 对照要公平。
+- 详情：[experiments/EXP-007-form-ablation.md](../experiments/EXP-007-form-ablation.md#代理试点-v02026-11-09已完成不构成正式结果)。
 
 ## 执行形态代码核对（2026-11-09）
 

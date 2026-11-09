@@ -1,7 +1,7 @@
 ---
 id: EXP-007
 status: seed
-experiment_status: 未开始
+experiment_status: 设计中
 updated: 2026-11-09
 rq: [RQ1, RQ2, RQ5]
 targets: [P1a, P2, E-04, E-16]
@@ -36,9 +36,29 @@ artifact: 仓库外（未开始）
 - **度量**：主指标 = 不可逆错误放行率（false approve）+ false-veto；过程指标 = 覆盖率、审批/千次、token、时延。不用单一准确率替代（C-03）。
 - **分母**：按决策/轨迹；稀疏事件给最低样本与置信区间。
 
+## 代理试点 v0（2026-11-09，已完成；不构成正式结果）
+
+**目的**：在投入真 runner 前，先用当前可用的 DeepSeek 模型看四种形态有没有可观察差异。
+
+- 模型：`deepseek-v4-pro`（DeepSeek API，`temperature=0`，单次）。
+- 设计：4 个退款审批 case × 4 种形态 = 16 次调用；case 含阈值（>500）与角色（support agent 批准不算 manager 批准）。
+- 形态：`engine`（外部 SHACL 求值器返回 blocks=true/false）、`compiled`（if/else 规则）、`context`（政策散文）、`label`（只有类型标签，无阈值/规则）。
+- 结果：
+
+| 模型 | engine | compiled | context | label |
+|---|---:|---:|---:|---:|
+| DeepSeek V4 Pro | 4/4 | 4/4 | 4/4 | 0/4 |
+| Qwen 3.8 27B（OpenRouter） | 4/4 | 4/4 | 4/4 | 1/4 |
+
+label 的失败以 JSON 解析失败/空内容为主（Qwen 有 2 次 provider 返回空 content），不能当成“决策错误”解读。
+
+**解释（`推测`）**：这是**天花板效应**，不是“形态无用”。两个模型在 engine/compiled/context 上都满分；label 视图故意缺阈值，属于不公平的对照，模型只能拒答或猜。16 次/模型、单次调用，不能支持或否定 P2。
+
+**它改变了什么**：EXP-007 原设计需要改——case 要更难（冲突证据、歧义、需要多步核对），label 对照要公平（给标签 + 可查的阈值，或明确标为“信息不足”基线），engine 形态要走真实求值器而不是一句 verdict。更根本的是：**engine 一旦以 oracle verdict 出现，任务就退化成“照抄”，测不到形态差异**；正式实验要让 engine 也带不确定性/覆盖缺口，或者把任务设计成“验证器只覆盖一部分，剩余要 agent 判断”。**不要用纯文本 chat 代替执行形态实验。**
+
 ## 状态与阻塞
 
-- `experiment_status: 未开始`
+- `experiment_status: 设计中`（代理试点完成；正式实验未跑）
 - 需要：一个可控的工具调用沙箱 + 一份带约束的小本体 + 能注入四种形态的 runner + 一个可调用的模型 endpoint（或本地模型）。当前环境没有模型 endpoint，故停在协议；不请求用户提供资产。
 - 不依赖外部客户资产；可用合成域先做 v0。
 
