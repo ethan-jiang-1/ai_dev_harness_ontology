@@ -20,15 +20,15 @@ updated: 2026-11-09
 | 局部判断 | 65 条 L（01:15 / 02:9 / 03:11 / 04:7 / 05:9 / 06:14） |
 | 证据配比（22 篇） | 9 execution-test（8 回路上 + 1 训练侧）/ 4 mechanism-only / 6 harness-evidence / 3 boundary-ruler |
 | 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
-| 实验 | 4 个协议（EXP-001/002/003 + EXP-007）；无外部资产前置 |
+| 实验 | 3 个可选协议（EXP-001/002/003）；无外部资产/模型实验前置 |
 | 交付物 | 手册大纲 7 章；正文未写 |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不能当实验被试**；见 [models](./models.md) |
-| 最后自检 | 2026-11-09 11:35，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
+| 最后自检 | 2026-11-09 11:50，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
 
 ## 当前边界（不是阻塞）
 
 1. **无外部资产请求**：D0/试点线已于 2026-11-09 删除；不再需要具名域、日志、题库、人或单价。
-2. **独立复现仍是空缺**：不影响 desk research；若要升「已证」，需自己跑 EXP-007 或找到公开可复现数据。当前可用 DeepSeek V4 Pro / Qwen 3.8 27B（OpenRouter）；EXP-007 代理试点已跑 16 次/模型，出现天花板效应，正式实验未开始。
+2. **独立复现仍是空缺**：不影响 desk research；若要升「已证」，需要独立复现，但这不是当前任务。不再用模型做实验被试。
 3. **独立人类抽检**：只在对外交付时需要；内部研究不阻塞。
 4. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 仍只有 1 个实现，需第二个才能决定是否升第七时刻。
 
@@ -55,14 +55,6 @@ updated: 2026-11-09
 - 不再请求具名域、日志、题库、人或单价；外部客户试点不是本仓库的路径。
 - git 历史保留；若以后真要做企业试点，可从历史恢复，但不在门厅出现。
 
-## EXP-007 代理试点（2026-11-09）
-
-- 16 次/模型：DeepSeek V4 Pro + Qwen 3.8 27B（OpenRouter）。
-- engine / compiled / context 均 4/4；label 0/4（DeepSeek）、1/4（Qwen），失败以 JSON 解析/空 content 为主。
-- 解释：**天花板效应**，任务太简单，engine 直接给 verdict 等于 oracle；不能支持或否定 P2。正式实验要更难、engine 要带覆盖缺口、label 对照要公平。
-- 详情：[experiments/EXP-007-form-ablation.md](../experiments/EXP-007-form-ablation.md#代理试点-v02026-11-09已完成不构成正式结果)。
-- **Yovole 路径作废**：workflow subagent 会读仓库/调用工具（qwen 输出提到 runs/、checker），不是 raw chat；不能作实验被试。
-
 ## 执行形态代码核对（2026-11-09）
 
 在 card 所 pin 的 commit 上读代码（未跑测试；不改结论等级为「已证」）：
@@ -82,7 +74,7 @@ updated: 2026-11-09
 
 - E 层：全部 E-xx 出处改链 digest（17 条）；E-04 去掉“支撑 P3”的范畴错误，改标 P3a，并新增“E-04 能/不能支撑什么”范围框；Q-03 收窄到单基准/单 gate；outline 第 6 章去掉“reward 低估”的方向断言；合法意图归因降回 `推测`。E-04 共 37 处引用，4 类过度解读（结构有效 / P3b / reward 低估 / 合法意图）已修。
 - 硬矛盾：E-05 错挂回改；02-L2 改为“模型自评”；开源接缝改为 `read-path` / `supply` / `none`；manifest 合并为 22 篇单账；experiments 计数与状态修正；GLOSSARY 工位改为 3 个；P3 拆 P3a/P3b。
-- 结构：新增 `execution_form` 轴（[topics/execution-forms.md](../topics/execution-forms.md)，[ADR 0006](../adr/0006-execution-form-axis.md)）、`evidence_role`、`also_supports`；26 个来源全部落字段（9/4/6/3；engine 4 / compiled 7 / context 2 / label 1 / none 12）；E 行影响列改用 P1a/P1b/P1c/P2/P3a/P3b；16 个薄子主题标记；L1/L2/L3 定义与长度门重写；EXP-007 形态消融提案。
+- 结构：新增 `execution_form` 轴（[topics/execution-forms.md](../topics/execution-forms.md)，[ADR 0006](../adr/0006-execution-form-axis.md)）、`evidence_role`、`also_supports`；26 个来源全部落字段（9/4/6/3；engine 4 / compiled 7 / context 2 / label 1 / none 12）；E 行影响列改用 P1a/P1b/P1c/P2/P3a/P3b；16 个薄子主题标记；L1/L2/L3 定义与长度门重写。
 - 账本：meta 索引 + 归档（8 个一次性文档 + full-audit）；state.md（本页）；可执行自检（ADR 0005）；ADR 索引（含 0006）；manifest 合并为 22 篇单账（含批次列），删除 manifest-scan。
 
 ## 怎么刷新
