@@ -243,7 +243,7 @@ claims: [E-06]
 
 - **E-06（已核）**：本体接地类任务的失败多来自工作流；五角色 + 七变量；语法通过不等于语义充分。
 - **P2**：同一模型，换 input/context/template/validator，难度不同。
-- **06 failure-attribution**：七变量可作为 EXP-002 的诊断表。
+- **06 failure-attribution**：七变量可作为诊断表。
 - **05 生产**：vocabulary gap → 本体扩展；template fit → motif 库。
 
 ## 9. 还没解决 / 下一步

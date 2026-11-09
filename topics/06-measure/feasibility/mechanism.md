@@ -169,4 +169,3 @@
 
 - [findings](./findings.md) · [frontier](./frontier.md)
 - [metrics](../metrics/README.md) · [trace](../trace/README.md)
-- 实验：暂无对应 EXP（G1–G3）；[experiments](../../../experiments/README.md)

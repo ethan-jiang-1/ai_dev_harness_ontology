@@ -51,4 +51,4 @@ evidence: [E-04, E-08, E-12, E-13, E-14, E-15, E-17, E-19]
 - 结论：[E-04 / E-08 / E-12 / E-13 / E-14 / E-15 / E-17 / E-19](../../conclusions.md)
 - 派：[01](../../01-constraint/README.md) / [02](../../02-judgment/README.md) / [03](../../03-knowledge/README.md) / [04](../../04-state/README.md) / [05](../../05-produce/README.md)
 - 方法：[metrics](../metrics/README.md)、[trace](../trace/README.md)、[mechanism](../mechanism/README.md)
-- 实验：暂无对应 EXP（G1–G3 的部署测量未设计）；实验台见 [experiments](../../../experiments/README.md)
+- 实验：G1–G3 的部署测量未设计；本仓库不设实验目录，若未来在仓库外做再回链。

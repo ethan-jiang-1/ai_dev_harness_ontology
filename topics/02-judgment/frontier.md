@@ -42,7 +42,7 @@ rq: [RQ4, RQ5]
 | checker calibration 线 | 误报代价与校准 | 待扫描 | 用检索式 1/5 |
 | 串联判定 / cascade 线 | 早期误报放大 | 待扫描 | 用检索式 3 |
 | LOGicalThought（2510.01530） | 逻辑本体接地；四基准 +11.84%，negation +10.2、implication +13.2、defeasible +5.5 | 摘要已读 | 落盘 + 建卡；看“本体”具体形态 |
-| CORE-LLM-Bench（Zenodo 2026） | 受控神经符号基准；9,048 QA 实例、81,432 观测 | 摘要已读 | 先入候选；评估能否用于 EXP-002 |
+| CORE-LLM-Bench（Zenodo 2026） | 受控神经符号基准；9,048 QA 实例、81,432 观测 | 摘要已读 | 先入候选；评估能否用于自有标注集 |
 | Can We Trust LLM Judges（2609.12002） | judge 能力相关偏差 + 多 judge 校准 | 待扫描 | 读摘要；对应 checker 校准 |
 | Automating OntoClean Verification | 本体验证自动化 | 待扫描 | 与 05 共享 |
 
@@ -65,4 +65,4 @@ rq: [RQ4, RQ5]
 
 1. 读 What Does an Ontology Catch 正文，补三源 FP/FN 与域，重写 E-02 的限定。
 2. 用检索式 1/5 找 checker 校准/误报代价的工作。
-3. 为 EXP-002 设计一个最小标注集方案（谁能标、标多少、怎么算曲线）。
+3. 为误报/漏检曲线设计一个最小标注集方案（谁能标、标多少、怎么算曲线）；本仓库不设实验目录。

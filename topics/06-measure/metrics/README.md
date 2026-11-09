@@ -44,5 +44,4 @@ evidence: [C-03]
 ## 关联
 
 - 派：[06 测量](../README.md) · 冲突：[C-03](../../conclusions.md)
-- 实验：[EXP-003](../../../experiments/README.md)
 - 成本：[feasibility](../feasibility/README.md)

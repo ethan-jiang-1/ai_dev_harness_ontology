@@ -76,7 +76,7 @@
 - **指标分派表（本页主张的产物，一行一个机制）**：`mechanism_id, failure_form(做错|没做|慢|不准|内部没有|输出对了), primary_metric, process_metric, asymmetry_pair(漏/误), threshold, baseline_ref`。四行起步：闸门/授权、判定器、知识供给、agent 配置。`baseline_ref` 必须指向可重跑的基线，不能写「业界通常」。
 - **报表接口**：每次评测输出 `n_runs/config`、CI（论文用 bootstrap；水平自定）、completion、cost、calibration；非对称代价分开列，禁止合成 accuracy/precision 一列；`GAP_CLOSED` 在 `R≤B` 时写 `n/a`，方差要带 hurdle 分母。
 - **接受率 ≠ 正确率**：CAI 的 `p_h` 是证据门放行比例，不是放对比例；φ（false-accept rate）论文未测，需 100–400 条 accepted query 人工审计单独估（CAI §6.4/§6.5）；Ontology Catch 的部署度量给的是 100–400 条分层抽样 + Wilson CI（Ontology Catch §6.5）。任何「门通过率」进 memo，必须同页给 φ 或标「未知」。
-- **口径固定**：token 按每问总量、伤害按轨迹级、成本显式标 per-flagged/per-checked；换口径即不可比（[C-03](../../conclusions.md)）。评测与 [EXP-003](../../../experiments/README.md) 共用 `arm` 字段，位置变体就是 arm。
+- **口径固定**：token 按每问总量、伤害按轨迹级、成本显式标 per-flagged/per-checked；换口径即不可比（[C-03](../../conclusions.md)）。评测用 `arm` 字段区分位置变体；本仓库不设实验目录。
 
 ### 组织/成本
 
@@ -134,4 +134,3 @@
 
 - [findings](./findings.md) · [frontier](./frontier.md)
 - [trace](../trace/README.md) · [mechanism](../mechanism/README.md) · [failure-attribution](../failure-attribution/README.md)
-- [EXP-003](../../../experiments/README.md)

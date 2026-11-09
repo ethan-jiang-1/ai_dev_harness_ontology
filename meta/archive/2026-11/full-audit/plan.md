@@ -230,7 +230,7 @@
 - [quality-plan](../quality-plan.md)：管结构/自包含/一致性；本计划是更严的“工程 + 实施 + 价值”层。
 - [conclusions](../../../../topics/conclusions.md)：仍是跨派结论账本；全审只改“支撑是否足够”，不新增无证据结论。
 - [deliverables](../../../../deliverables/README.md)：全审通过后才抽取；V3 不足的 topic 不进交付物。
-- [experiments](../../../../experiments/README.md)：全审产出的 V3 是实验候选；不在这里跑。
+- `experiments/`（已删除，2026-11-09）：全审产出的 V3 曾是实验候选；不在这里跑。
 
 ## 12. 第一轮怎么开
 

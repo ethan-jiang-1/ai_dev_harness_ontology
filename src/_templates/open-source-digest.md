@@ -79,6 +79,6 @@ claims: []             # 关联的 E-xx / L-xx；没有就留空
 
 ## 10. 下一步
 
-- 要跑的最小实验（可编号到 `experiments/`）
+- 若要验证：写清仓库外最小实验；本仓库不设 `experiments/`
 - 要读的 issue / PR
 - 回 topics 的哪个 `frontier.md` / `claims.md`

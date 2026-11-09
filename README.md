@@ -20,7 +20,6 @@
 | 材料、卡、消化 | [src/README](./src/README.md) |
 | 落地成本 / 可行性 | [topics/06-measure/feasibility](./topics/06-measure/feasibility/README.md) |
 | 交付物 | [deliverables](./deliverables/README.md) |
-| 实验设计 | [experiments](./experiments/README.md) |
 | 写作约定与模板 | [meta/README](./meta/README.md) |
 | 当前计数与阻塞 | [meta/state](./meta/state.md) |
 | 按需加载 | [meta/loading](./meta/loading.md) |
@@ -63,7 +62,7 @@
 | [`topics/`](./topics/) | 按六派沉淀；派 README 是地图，子主题 README 是 dashboard | 结论带等级，冲突显式保留，gap/next 可见 |
 | [`deliverables/`](./deliverables/) | 手册、Deck、图等对外物 | 每条可反查回 topics |
 
-支撑目录：`experiments/`（实验设计，实现放仓库外）、`adr/`（结构决策）、`meta/`（约定与模板）。
+支撑目录：`adr/`（结构决策）、`meta/`（约定与模板）。
 
 **三条规矩**：单向不可反向（deliverables 只从 topics 抽）；上游可以领先下游；每级自带台账。
 
@@ -89,9 +88,8 @@
 - `src/` — 22 个论文目录（20 基础 + 2 扫描）；每目录 PDF + 三份 MD + `card.md` + `digest.md`（有图则 `figures/`）；4 个开源项目（已 pin commit、已消化）；1 张材料卡 + 一本合并后的 [manifest](./src/papers/manifest.md)。
 - `topics/` — 六派成文；18 条已核 + 2 条推测 + 3 条存疑 + 4 条冲突；22 篇论文里 **9 篇把本体当被测变量并测了执行效果**（8 篇在 agent 回路内，Evontree 在训练侧），4 篇只提机制、6 篇是 harness 证据、3 篇是边界/尺子（见各卡 `evidence_role`）；4 个开源项目提供代码级机制证据。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
 - `deliverables/` — 手册大纲 7 章。
-- `experiments/` — 3 个协议（EXP-001/002/003），都是可选设计；**不设模型实验前置**。
 
-**最大空缺是没有一条结论被独立复现。** 这是研究深度的缺口，不是阻塞：外部客户试点线已于 2026-11-09 删除，不再请求任何域/日志/题库/人/单价。当前可自主推进的是代码级执行证据与 digest 消化；实验只在有具体判断要验证时另立。部署层回报、false-veto/false-defer、维护成本仍缺量化。
+**最大空缺是没有一条结论被独立复现。** 这是研究深度的缺口，不是阻塞：外部客户试点线已于 2026-11-09 删除，不再请求任何域/日志/题库/人/单价。当前可自主推进的是代码级执行证据与 digest 消化；不设实验；若未来要做验证，在仓库外做并只留指针。部署层回报、false-veto/false-defer、维护成本仍缺量化。
 
 以上摘要数字以 [meta/state](./meta/state.md) 为准。自检：`python3 meta/tools/check_repo.py`（链接、枚举、ID、清单、计数；见 [ADR 0005](./adr/0005-repo-self-check.md)）。
 

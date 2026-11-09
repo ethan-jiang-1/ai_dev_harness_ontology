@@ -17,7 +17,6 @@
 - 论文 digest：`quality` ∈ {`A`, `B`, `C`}；`based_on: card.md` 指向同目录的来源卡。
 - 开源卡：`commit` 已 pin；`scan_date` / `stars_at_scan` / `last_push` 齐全；`ontology_role` ∈ {`core`, `adjunct`, `none`, `unclear`}；`seam` 取六时刻 + `read-path` / `supply` / `reasoning` / `training` / `none`；`execution_form` ∈ {`engine`, `compiled`, `context`, `label`, `none`, `unknown`}；`evidence_role` ∈ {`execution-test`, `mechanism-only`, `harness-evidence`, `boundary-ruler`}。
 - 论文卡：`evidence_role` 与 `execution_form` 齐全；一篇喂多个子主题时，`subtopic` 主归位 + `also_supports` 列出其余。
-- 实验：`experiment_status` ∈ {`未开始`, `设计中`, `运行中`, `已完成`, `已放弃`}。
 - 交付：`deliverable_status` ∈ {`draft`, `stable`, `frozen`}。
 - `updated` 是最后一次实质修订，不是搬家日期。
 

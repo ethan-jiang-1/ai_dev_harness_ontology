@@ -36,7 +36,6 @@
 | 查执行形态 | [topics/execution-forms.md](./topics/execution-forms.md) |
 | 找某派前沿/候选 | `topics/<派>/frontier.md`，方法见 [topic 协议](./meta/topic-research-protocol.md) |
 | 做成对外物 | `deliverables/`，只从 `topics/` 抽取 |
-| 设计验证 | `experiments/`，用 [实验模板](./experiments/_template.md) |
 
 `topics/` 内按**本体凭什么起作用**分六派：`01-constraint`（拦动作）、`02-judgment`（验产出）、`03-knowledge`（喂上下文）、`04-state`（跨轮记忆）、`05-produce`（造与修）、`06-measure`（量它有没有用），底座是 `00-harness`（控制回路七部件）。
 
