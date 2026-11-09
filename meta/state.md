@@ -20,9 +20,9 @@ updated: 2026-11-09
 | 局部判断 | 65 条 L（01:15 / 02:9 / 03:11 / 04:7 / 05:9 / 06:14） |
 | 证据配比（22 篇） | 9 execution-test（8 回路上 + 1 训练侧）/ 4 mechanism-only / 6 harness-evidence / 3 boundary-ruler |
 | 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
-| 交付物 | 手册大纲 7 章；规划建议已写；第三章正文初稿（约 0.97 万字）已写；其余章未写（不执行） |
+| 交付物 | 3 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference；03 内含约束强度谱长版附录（约 0.97 万字）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-09 13:20，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
+| 最后自检 | 2026-11-09 14:40，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
 
 ## 当前边界（不是阻塞）
 
@@ -31,11 +31,21 @@ updated: 2026-11-09
 3. **独立人类抽检**：只在对外交付时需要；内部研究不阻塞。
 4. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 仍只有 1 个实现，需第二个才能决定是否升第七时刻。
 
+## 2026-11-09 交付物重构
+
+- **三个子目录 = 三种交付物**：新增 [01 现状](../deliverables/01-capability-status/README.md)（能力矩阵：A 可先落地 / B 可试点 / C 只能设计 / D 反向；可当工作前提/不能当工作前提；距离表）、[02 工程实施](../deliverables/02-engineering-playbook/README.md)（五步法、R1–R9、4 个开源参考、论文/开源指示分级、参考架构、最小落地路线、验收表）、[03 机制参考](../deliverables/03-mechanism-reference/README.md)（三层分工、三条轴、六位置一页表、15 条边界）。
+- **没有独立 handbook**：原 7 章、4–6 万字书稿计划废弃；唯一保留的是原第三章，现为 [03 的长版附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md)。原 outline / planning-notes / handbook README 已删除，git 历史保留。理由：书稿无独立角色、后四章缺证据、主线过强。
+- **E-16 数字口径修正**：conclusions、ch03、01-constraint/sources、01-constraint/claims 的注记原来写成 `Tacit-FLE 64.3/66.7/65.0% vs IfR 64.3–65.0%`，与 OntoAct digest（Table 1）不符；改为 `78.6/83.3/90.0% vs IfR 64.3/66.7/65.0%`。这是转写错误，不是新判断；01-L11 原本就是对的。
+- **交付物 README**：清单改为三个子目录（01 判断 / 02 操作 / 03 依据）+ 03 的附录；新增「handbook 的去留」与待做（图/Deck/案例页）。
+- **验收规格**：三份 README 末尾各加「期待与数据需求」：把期待写成可证伪句，列出「支持它需要的数据 / 现在的证据 / 缺口」。作用是逆向暴露证据缺口，不是新结论。
+- **术语**：GLOSSARY 新增「评测账本（Evaluation Ledger）」，与「台账」区分；交付物里的 `p_h`/false-veto/审批成本都指前者。
+- 自检：`python3 meta/tools/check_repo.py` 通过（328 文件 / 22 论文 / 4 开源；E=20，Q=3，C=4，L=65）。
+
 ## 2026-11-09 手册第三章初稿
 
-- 新增 [ch03-constraint-spectrum.md](../deliverables/handbook/ch03-constraint-spectrum.md)：9 节、约 0.97 万中文字符；12 条 E + C-03；强度/覆盖率反向标组织假设；六个位置逐节；E-20 放 3.3。
-- 修正 [planning-notes.md](../deliverables/handbook/planning-notes.md)：第三章证据行补 E-02/E-03/E-05/E-14/E-17；图法改为派谱 spine + 六刻度；记录「准确率说法集中在弱端」的收窄。
-- 更新 [deliverables/README.md](../deliverables/README.md) 清单、[outline.md](../deliverables/handbook/outline.md) 第三章正文链接。
+- 原第三章现为 [03 的长版附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md)：9 节、约 0.97 万中文字符；12 条 E + C-03；强度/覆盖率反向标组织假设；六个位置逐节；E-20 放 3.3。
+- 原 planning-notes / outline 已删除（git 历史保留）；第三章证据行、图法与「准确率说法集中在弱端」的收窄记录不再有文件指针。
+- 更新 [deliverables/README.md](../deliverables/README.md) 清单。
 - 写作检验：topics 够用；六位置逐节未出现必须回写的判断缺口；已知缺口仍是 commit 写路径无实现、false-veto 未测、E-20 非效应量。
 - 自检：`python3 meta/tools/check_repo.py` 通过（327 文件 / 22 论文 / 4 开源；E=20，Q=3，C=4，L=65）。
 

@@ -16,4 +16,4 @@ updated: 2026-11-09
 
 > **本派没有 Commit Boundary 的 E-xx**：`01-L13/L14` 只在派内使用。`conclusions` 的 E-05 是 FIRME；Commit Boundary digest 的 `claims: [E-05]` 与 §8 的 E-05 回链都是错挂，**2026-11-09 已回改**（`claims: []`，§8 改为“不挂 E-xx”）。
 >
-> **数字口径**：01-L11 用 OntoAct digest 的 `64.3/66.7/65.0`、SI `1.6–2.4`；`conclusions` 的 E-16 已于 2026-11-09 按同口径回改。CASEL 主表是 `τ̂=∞`，不要把 7.02% 当阈值开启后的结果。
+> **数字口径**：01-L11 用 OntoAct digest 的 78.6/83.3/90.0%（IfR 64.3/66.7/65.0%）、SI `1.6–2.4`；`conclusions` 的 E-16 已于 2026-11-09 按同口径回改。CASEL 主表是 `τ̂=∞`，不要把 7.02% 当阈值开启后的结果。

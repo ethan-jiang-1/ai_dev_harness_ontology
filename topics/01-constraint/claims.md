@@ -25,4 +25,4 @@ updated: 2026-11-09
 | 01-L14 | 同源检索（hypothesis 诱导的多个结果）不算独立确认；「没检测到冲突」也不是 positive support | 已核（概念） | Commit Boundary | 上游 dependency lineage 未解决；未升 E |
 | 01-L15 | 推理期条件闸门只拦有适用 axiom 的动作；缺证据转 unresolved/观察，不是覆盖所有动作的安全保证 | 已核 | OntoAct / 多 agent 诊断 | 覆盖率是缺口（reasoning-gate F4/G1）；三环境模拟；作者明确不声称可部署 |
 
-> **跨页缺口（2026-11-09 已修）**：Commit Boundary 仍是概念架构，未升 E；`conclusions` 的 E-05 属 FIRME，不属于本派，`src/papers/2610.37407-commit-boundary/digest.md` 的 `claims: [E-05]` 已改为空并回写 §8。E-16 已按 OntoAct digest 的 `64.3/66.7/65.0`、SI `1.6–2.4` 校正。
+> **跨页缺口（2026-11-09 已修）**：Commit Boundary 仍是概念架构，未升 E；`conclusions` 的 E-05 属 FIRME，不属于本派，`src/papers/2610.37407-commit-boundary/digest.md` 的 `claims: [E-05]` 已改为空并回写 §8。E-16 已按 OntoAct digest 的 78.6/83.3/90.0%（IfR 64.3/66.7/65.0%）、SI `1.6–2.4` 校正。
