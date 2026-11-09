@@ -22,7 +22,7 @@ updated: 2026-11-09
 | 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
 | 交付物 | 手册大纲 7 章；规划建议已写；正文未写（不执行） |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-09 12:25，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
+| 最后自检 | 2026-11-09 12:30，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过 |
 
 ## 当前边界（不是阻塞）
 
@@ -68,6 +68,10 @@ updated: 2026-11-09
 写入位置：[topics/execution-forms.md](../topics/execution-forms.md#代码级核对2026-11-09)（矩阵 + 4 条代码级判断）、[seams](../topics/seams.md#轴外位置可记录但不是六时刻)、4 个 digest 的「2026-11-09 代码核对」段、checker F7 的接口边界。
 
 关键发现：`engine` 不是一种语义（OWL 重写 / SHACL-AF / SHACL 校验）；执行 ≠ 健全（trustgraph fail-open）；执行 ≠ 授权（open-ontologies 只做 CI/报告）；三态在 JSON 保留、在 shell 退出码被折叠。已升 [E-20](../topics/conclusions.md)（`已核（代码）`，不是 `已证`）。
+
+## 冷启动复测（2026-11-09）
+
+只读新 agent 复测：实际加载约 2,100 行 / 27 个文件；结论「能读懂，不能 15 分钟改仓」。首轮发现 4 处入口问题（loading 的 E-19/EXP/ADR 计数、README/state 的 18+2+3+4 计数、manifest 21–22 行断裂、topics/README updated），均已修复；复核 4/4 pass。`experiments/` 已无目录，D0/试点只在 ADR/归档/state 删除记录中。15 分钟路径已补 `meta/state`，并明确「只够读懂，不够改仓」。
 
 ## 薄页合并审计（2026-11-09）
 
