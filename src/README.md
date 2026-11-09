@@ -194,7 +194,7 @@ open-source/{org}-{repo}/
 | 材料 | 卡 / 消化 | 阅读 / 来源 | 已喂到 |
 |---|---|---|---|
 | 老刘说NLP · 本体4方向20工作（2026-11-04） | [otology.card.md](./web/weixin-laoliu/otology.card.md) | 已消化 / 综述转述 | `topics/conclusions.md`、`topics/README.md`、`topics/05-produce/lifecycle/README.md`、`topics/domains.md` |
-| 22 篇论文（20 基础 + 2 扫描） | 各目录 `card.md` / `digest.md` | L3 12 篇 / L2 6 篇 / L1 4 篇 | 六派 README、claims、conclusions（E-01…E-19） |
+| 22 篇论文（20 基础 + 2 扫描） | 各目录 `card.md` / `digest.md` | L3 12 篇 / L2 6 篇 / L1 4 篇 | 六派 README、claims、conclusions（E-01…E-20） |
 | 开源项目 | 状态与进度见 [open-source/README](./open-source/README.md)；未建卡的不算入库 | 4 个本轮全部已消化；3 个 <1,000★ 已删除 | `topics/01-constraint`（commit-gate F5–F7）、`topics/02-judgment`（checker F7–F8）、`topics/05-produce`（generation F7、lifecycle 判断 4）、`topics/03-knowledge`（frontier） |
 
 > 论文按篇记；开源按项目记在 `open-source/README` 的状态表里，本页只留总账——**一处明细，一处总账，不重复**。

@@ -87,7 +87,7 @@
 ## 4. 当前状态
 
 - `src/` — 22 个论文目录（20 基础 + 2 扫描）；每目录 PDF + 三份 MD + `card.md` + `digest.md`（有图则 `figures/`）；4 个开源项目（已 pin commit、已消化）；1 张材料卡 + 一本合并后的 [manifest](./src/papers/manifest.md)。
-- `topics/` — 六派成文；17 条已核 + 2 条推测 + 3 条存疑 + 4 条冲突；22 篇论文里 **9 篇把本体当被测变量并测了执行效果**（8 篇在 agent 回路内，Evontree 在训练侧），4 篇只提机制、6 篇是 harness 证据、3 篇是边界/尺子（见各卡 `evidence_role`）；4 个开源项目提供代码级机制证据。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
+- `topics/` — 六派成文；18 条已核 + 2 条推测 + 3 条存疑 + 4 条冲突；22 篇论文里 **9 篇把本体当被测变量并测了执行效果**（8 篇在 agent 回路内，Evontree 在训练侧），4 篇只提机制、6 篇是 harness 证据、3 篇是边界/尺子（见各卡 `evidence_role`）；4 个开源项目提供代码级机制证据。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
 - `deliverables/` — 手册大纲 7 章。
 - `experiments/` — 4 个协议（EXP-001/002/003 + 形态消融 EXP-007）；**不依赖外部客户资产，可直接开跑**。
 

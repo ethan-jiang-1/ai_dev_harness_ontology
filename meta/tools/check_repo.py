@@ -272,10 +272,10 @@ def main() -> int:
         if line.startswith("## "):
             section = line[3:].strip()
         m = re.match(r"\|\s*(E-\d+)\s*\|", line)
-        if m and section in {"已核（一手原文摘要）", "推测（未核原文）", "存疑", "冲突"}:
-            key = {"已核（一手原文摘要）": "已核", "推测（未核原文）": "推测"}.get(section, section)
+        if m and section in {"已核（一手原文摘要）", "已核（代码）", "推测（未核原文）", "存疑", "冲突"}:
+            key = {"已核（一手原文摘要）": "已核", "已核（代码）": "已核", "推测（未核原文）": "推测"}.get(section, section)
             counts[key] += 1
-    if counts["已核"] != 17 or counts["推测"] != 2:
+    if counts["已核"] != 18 or counts["推测"] != 2:
         warnings.append(f"conclusion levels changed: {dict(counts)} (meta/state may need update)")
     expected_roles = {"execution-test": 9, "mechanism-only": 8, "harness-evidence": 6, "boundary-ruler": 3}
     if dict(role_counts) != expected_roles:

@@ -16,7 +16,7 @@ updated: 2026-11-09
 | 论文 | 22 个目录（20 基础 + 2 扫描），全部有 PDF + 三份 MD + card + digest |
 | 开源 | 4 个项目（trustgraph / semantica / ontop / open-ontologies），已 pin commit、已消化 |
 | 主题 | 6 派 + 20 个子主题 + 00-harness 七部件 + 6 时刻 + 1 条形态轴 |
-| 结论 | 19 条 E：17 已核 / 2 推测；3 条 Q；4 条冲突 |
+| 结论 | 20 条 E：18 已核 / 2 推测；3 条 Q；4 条冲突 |
 | 局部判断 | 65 条 L（01:15 / 02:9 / 03:11 / 04:7 / 05:9 / 06:14） |
 | 证据配比（22 篇） | 9 execution-test（8 回路上 + 1 训练侧）/ 4 mechanism-only / 6 harness-evidence / 3 boundary-ruler |
 | 执行形态（26 源） | engine 4 / compiled 7 / context 2 / label 1 / none 12 |
@@ -67,7 +67,7 @@ updated: 2026-11-09
 
 写入位置：[topics/execution-forms.md](../topics/execution-forms.md#代码级核对2026-11-09)（矩阵 + 4 条代码级判断）、[seams](../topics/seams.md#轴外位置可记录但不是六时刻)、4 个 digest 的「2026-11-09 代码核对」段、checker F7 的接口边界。
 
-关键发现：`engine` 不是一种语义（OWL 重写 / SHACL-AF / SHACL 校验）；执行 ≠ 健全（trustgraph fail-open）；执行 ≠ 授权（open-ontologies 只做 CI/报告）；三态在 JSON 保留、在 shell 退出码被折叠。
+关键发现：`engine` 不是一种语义（OWL 重写 / SHACL-AF / SHACL 校验）；执行 ≠ 健全（trustgraph fail-open）；执行 ≠ 授权（open-ontologies 只做 CI/报告）；三态在 JSON 保留、在 shell 退出码被折叠。已升 [E-20](../topics/conclusions.md)（`已核（代码）`，不是 `已证`）。
 
 ## 本轮修复（2026-11-09）
 

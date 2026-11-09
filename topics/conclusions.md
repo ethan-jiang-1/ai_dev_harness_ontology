@@ -41,6 +41,16 @@ updated: 2026-11-09
 >
 > **出处纪律（2026-11-09）**：本页 E-xx 出处一律链 `digest.md`；`card.md` 只用于 `src` 台账的 provenance，不再作为结论出处。影响列的 P1a/P1b/P1c/P2/P3a/P3b 定义见 [THESIS](../THESIS.md#工作假设与反驳条件)。
 
+## 已核（代码）
+
+> 这一节是代码级核对，不是论文摘要。按 [ADR 0004](../adr/0004-open-source-source-type.md)，定位到 `文件:符号` 可到 `已核`；只读代码、未跑测试，不等于 `已证`。
+
+| 编号 | 结论 | 出处 | 影响 | 状态 |
+|---|---|---|---|---|
+| E-20 | 「本体被执行」不是单一形态：同一 `engine` 至少覆盖 OWL 2 QL 查询重写（ontop）、SHACL-AF 策略求值（trustgraph）、SHACL 校验（semantica）、SHACL→SPARQL/verified Core（open-ontologies）四种语义；执行不保证健全（trustgraph target/rule 异常 fail-open，且只删 subject 侧），也不等于写授权（open-ontologies 只做影响报告与 CI 规则门，不对单次写签发授权）。限定：4 个开源项目、pin commit、只读代码未跑测试；不能外推为所有 `engine` 实现 | [execution-forms 代码核对](../topics/execution-forms.md#代码级核对2026-11-09) · [trustgraph](../src/open-source/trustgraph-ai-trustgraph/digest.md) · [semantica](../src/open-source/semantica-agi-semantica/digest.md) · [ontop](../src/open-source/ontop-ontop/digest.md) · [open-ontologies](../src/open-source/fabio-rovai-open-ontologies/digest.md) | 支撑「形态是独立变量」这一前提；**不支撑效应量**（未跑对照）；把 `engine` 从强度刻度拆成语义类别；`read-path` 仍只有 1 个实现，保持轴外 | active |
+
+> E-20 是代码级综合，不是单篇 digest：四个 digest 提供逐项目证据，[execution-forms](../topics/execution-forms.md#代码级核对2026-11-09) 提供跨项目矩阵。引用时写「已核（代码）」，不要写成「已证」。
+
 ## 推测（未核原文）
 
 | 编号 | 结论 | 为什么仍是推测 | 状态 |

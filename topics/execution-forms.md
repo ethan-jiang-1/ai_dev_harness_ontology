@@ -84,10 +84,12 @@ rq: [RQ1, RQ2, RQ5]
 3. **执行 ≠ 授权。** open-ontologies 有真求值器、影响报告与 `enforce` CI 规则门，但没有单次写授权/commit gate；semantica 是 CLI 校验，不在回路内。唯一 read-path gate 仍是 trustgraph，不够第二个独立实现，`read-path` 保持轴外。
 4. **三态在接口上会被折叠。** `oo-shacl` 的 exit 3（undetermined）进入 wrapper 后变成 `conforms: null`；外层 `gate_exit_code` 把 null 映射为 exit 2，与解析失败同码。JSON 保留第三态，shell 退出码不保留——这是「执行形态」之外的一个接口层发现。
 
+> 以上 4 条已收进 [E-20](./conclusions.md)（`已核（代码）`）；不升 `已证`，因为没有跑测试和对照实验。
+
 ## 它改变了什么
 
 1. **把「本体有没有用」拆成「哪种形态、在哪一格」**。`engine`/`compiled` 才谈得上执行；`context` 谈的是供给；`label` 只是命名。但 `engine` 内部至少四种语义（见代码核对），不能把「有引擎」当成一个强度刻度。
-2. **解释了 E 层的配比**。19 条 E 里有多条来自 `none` 形态的来源（E-01/E-07/E-08/E-09/E-14/E-15/E-18），它们支撑的是 harness/度量命题，不是「本体执行」命题。
+2. **解释了 E 层的配比**。E 层里有多条来自 `none` 形态的来源（E-01/E-07/E-08/E-09/E-14/E-15/E-18），它们支撑的是 harness/度量命题，不是「本体执行」命题。
 3. **给实验一个缺口**。现有实验多在换位置（EXP-003），缺「同一接缝、同一内容、只换形态」的消融；见 [EXP-007](../experiments/EXP-007-form-ablation.md)（提案）。
 
 ## 开放问题
