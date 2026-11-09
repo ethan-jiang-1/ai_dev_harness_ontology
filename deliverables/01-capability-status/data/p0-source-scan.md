@@ -80,4 +80,4 @@ target: E5 false-veto / E7 read-path / E8 commit gate
 1. ~~落盘 2610.16838（P0），建卡 + L2 digest~~ **已完成**（2026-11-09）；下一步：把「同操作/不同权限」设计映射到本体 checker。
 2. ~~读 2607.22868 正文的 false-block/miss 前沿与校准部分~~ **已完成并入档**；下一步：把 T2 前沿搬到本体 checker，不急着升 E。
 3. 继续扫第二个 read-path 实现（P1）；没有就保持 `unknown`。
-4. 把本页结论回写 [plan](../plan.md) §4 的 P0 行与 D1 §9 的 verdict。
+4. 把本页结论回写 [plan](../../_plans/01-capability-status.md) §4 的 P0 行与 D1 §9 的 verdict。

@@ -8,6 +8,8 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 # 02 · 工程实施：把本体接进 harness 的做法
 
+> **读者**：工程负责人 / 架构师 ｜ **回答**：拿本体做某件事，具体怎么做 ｜ **不回答**：值不值得做（去 01）、为什么是这些位置（去 03）。
+
 > 这份交付物回答：**本体拿进来之后，到底能帮什么；如果我要做某件事，工程上从哪一步开始、接口长什么样、开源/论文里有没有能照抄的东西。**
 >
 > 它不建本体，也不评价本体质量；它假设你已经有（或能拿到）一份领域本体，问题是怎么让它被机器执行。
@@ -16,19 +18,45 @@ basis: E-01–E-20, C-03; recipes R0–R12
 >
 > **R0–R12 是从 `topics/` 各派 `mechanism.md` 与代码级核对抽取的工程配方，不是新的 E。** 它们回答「怎么做」，不回答「做了有没有用」；效应量仍以 E-xx 为准。
 
-## 加载集（按需披露）
+
+## 0. 一页结论
+
+**这份交付物只回答「怎么做」，不回答「做了有没有用」。**
+
+1. **先过 R0**：名字/单位、声明、覆盖、执行落点四项检查不过，后面的 recipe 都是沙上。
+2. **只选一条主 recipe**：按错误类型选 R1–R12；先 shadow，不要同时上三个。
+3. **每条 recipe 十字段**：目标/前提/接口/步骤/证据/成本/验收/失效/锚点；填不满的字段就是上游任务。
+4. **证据只到 E-xx**：recipe 是工程配方，不是新结论；效应量仍看 E-xx 的限定。
+5. **如果只做一件事**：R0 + 账本 + K1；不要先建整座塔。
+
+## 1. 怎么读
+
+### 1.1 加载集（按需披露）
 
 | 要做 | 只读 | 不读 |
 |---|---|---|
-| 10 分钟判断要不要做 | 本页 §0 + §4 的 R 索引 + [01 §0](../01-capability-status/README.md#0-一页结论) | 全部 recipe |
-| 选一条 recipe / 定接口 | 本页 §1–§4 + 对应 recipe + [appendices/interfaces](appendices/interfaces.md) + [execution-forms](../../topics/execution-forms.md) | 24 篇 `paper.md`、`card.md`/`references.md`/`appendix.md`、其他派 |
-| 定验收/停线 | 本页 §9 + [operations/ledger](operations/ledger.md) + [operations/evaluation](operations/evaluation.md) + 对应 `mechanism.md` | `conclusions` 全表 |
-| 做预算 | 本页 §8 + [operations/cost](operations/cost.md) + 对应 recipe §7 | 全部论文 |
+| 10 分钟判断要不要做 | 本页 §0 + §3.1 的 R 索引 + [01 §0](../01-capability-status/README.md#0-一页结论) | 全部 recipe |
+| 选一条 recipe / 定接口 | 本页 §0–§3 + 对应 recipe + [appendices/interfaces](appendices/interfaces.md) + [execution-forms](../../topics/execution-forms.md) | 24 篇 `paper.md`、`card.md`/`references.md`/`appendix.md`、其他派 |
+| 定验收/停线 | 本页 §5 + [operations/ledger](operations/ledger.md) + [operations/evaluation](operations/evaluation.md) + 对应 `mechanism.md` | `conclusions` 全表 |
+| 做预算 | 本页 §3.5 + [operations/cost](operations/cost.md) + 对应 recipe §7 | 全部论文 |
 | 上线/回滚 | [operations/rollout](operations/rollout.md) + [operations/domains](operations/domains.md) | 其他 recipe |
 
 > 反向链：recipe → `mechanism.md` → digest §6.5；见 [meta/loading §从交付物倒查](../../meta/loading.md#从交付物倒查反向加载)。
 
-## 0. 一句话与五步法
+### 1.2 三条阅读路径
+
+| 时间 | 读什么 | 得到什么 |
+|---|---|---|
+| 10 分钟 | §0 + §2 | 知道这份交付物的结论与地图 |
+| 1 小时 | §1 + §2 + §3 | 能指到具体能力/条目与证据 |
+| 深读 | §3 + §4 + §5 | 能复述条件、边界、验收与缺口 |
+
+
+
+<a id="0-一句话与五步法"></a>
+## 2. 地图：先定错、再选位置/形态
+
+### 2.1 五步法与决策树
 
 **本体的工程问题不是「建什么本体」，而是「把哪条判据放在哪个时刻、以什么形态执行、用什么尺子验收」。**
 
@@ -57,7 +85,9 @@ basis: E-01–E-20, C-03; recipes R0–R12
 └─ 受监管、要引用/solver/签核 ──▶ R12（受监管供给）
 ```
 
-## 1. 先定错：五个问题
+
+<a id="1-先定错五个问题"></a>
+### 2.2 先定错：五个问题
 
 | 问题 | 如果答案是 | 去哪 |
 |---|---|---|
@@ -69,7 +99,7 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 > 这五个问题不是评分卡，是**排除法**：答不出「错误是什么/可逆吗」，就不要选机制。组织建议（非 E）。
 
-### 1.1 分诊表（组织建议，非 E）
+#### 2.2.1 分诊表（组织建议，非 E）
 
 > 依据 E-06 的五角色/七变量与 [06/failure-attribution](../../topics/06-measure/failure-attribution/mechanism.md)；分诊本身没有效应量。
 
@@ -86,7 +116,9 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 **分诊的出口**：一条错误只能落到一个「先看」；落不下，说明还没定义错误，不要选机制。
 
-## 2. 选位置：六个时刻 + 四个轴外位置
+
+<a id="2-选位置六个时刻--四个轴外位置"></a>
+### 2.3 选位置：六个时刻 + 四个轴外位置
 
 | 位置 | 问什么 | 本体角色 | 能阻断 | 主要代价 | 主证据 |
 |---|---|---|---|---|---|
@@ -114,7 +146,9 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 **R10/R11 不新增时刻**：R10 是输出后/离线的 CI 校验；R11 是供给/查询编译。它们改变「在哪跑」，不改变六时刻分类。
 
-## 3. 选形态：五种，别把 context 当低配 engine
+
+<a id="3-选形态五种别把-context-当低配-engine"></a>
+### 2.4 选形态：五种，别把 context 当低配 engine
 
 | 形态 | 机器做什么 | 什么时候用 | 不代表 |
 |---|---|---|---|
@@ -126,8 +160,11 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 **一个反直觉的结论**：`engine` 内部至少四种语义（E-20）；「有引擎」不是强度刻度。选型时先问「机器到底做了什么」，再问「它能不能改变走向」。
 
+## 3. 主体：R0–R12 与参考实现
+
 <a id="4-九条工程做法r1r9"></a>
-## 4. 十二条工程做法（R0–R12）
+<a id="4-十二条工程做法r0r12"></a>
+### 3.1 十二条工程做法（R0–R12）
 
 > 本节只做索引；完整配方（十字段：目标/前提/接口/步骤/证据/成本/验收/失效/锚点）在 [`recipes/`](recipes/README.md)。每条 recipe 都与 E-xx 和 mechanism.md 对齐；见 [appendices/traceability](appendices/traceability.md)。
 
@@ -147,13 +184,13 @@ basis: E-01–E-20, C-03; recipes R0–R12
 | **R11** | 查询时编译；不是闸/判定器 | supply / engine | E-20 | A | [axis-out](recipes/axis-out.md#r11--obda-查询重写本体在查询编译时被执行) |
 | **R12** | 证据 + solver + 人签核；不是准确率项目 | 供给+输出+人 | Grid | B（benchmark） | [regulated](recipes/regulated.md) |
 
-### 4.1 为什么 R0 在 R1 前
+#### 3.1.1 为什么 R0 在 R1 前
 
 - 02 假设「你已经有一份领域本体」；但「有」不等于「能执行」。
 - R0 的四检（名字/单位、声明、覆盖、落点）任何一项不过，R1–R12 都会在沙上：投影抄错单位、checker 误报、action gate 拿过期状态做硬 veto。
 - R0 只要有现成任务/样本，30–60 分钟即可；它不建本体，只决定「先修哪一项」。
 
-### 4.2 三条典型组合
+#### 3.1.2 三条典型组合
 
 | 场景 | 先做 | 后做 | 不要做 |
 |---|---|---|---|
@@ -163,7 +200,8 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 **不要一次上三条。** 先一条 shadow，拿到自己的 `p_h`/false-veto/FA，再扩。
 
-## 5. 开源参考实现：能抄什么，别抄什么
+
+### 3.2 开源参考实现：能抄什么，别抄什么
 
 | 项目（commit） | 位置 | 形态 | 能抄 | 别抄 | 代码锚点 |
 |---|---|---|---|---|---|
@@ -176,7 +214,8 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 **第二 read-path 实现（外部扫描线索，未入库）**：2026-11-09 定向扫描发现 [`Matdata-eu/sparql-guard`](https://github.com/Matdata-eu/sparql-guard)（Apache-2.0，HEAD `6b68d769`）：TS 写的 SPARQL 代理，用 **查询重写** 而不是返回后过滤；fail-closed、subject+object 两侧、SHACL Core 子集；有一组 vitest 用例（外部复核报告 76/76 通过，未在仓库内复跑）。它**不是**已入库证据：单作者、1★、无 harness 调用点、无泄漏率/时延测量；而且它把「read-path」拆成两种执行点（返回后过滤 vs 查询重写）。所以：**read-path 至少有两种执行点，但 seam 语义未定；01 的 B 评级不因此升级。**
 
-## 6. 论文/开源给的「准确指示」到什么程度
+
+### 3.3 论文/开源给的「准确指示」到什么程度
 
 | 层级 | 能给什么 | 例子 | 能不能照抄 |
 |---|---|---|---|
@@ -189,7 +228,8 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 **结论**：论文/开源在**接口、公式、协议、参数**上给了可操作的指示；在**端到端架构**和**效应量**上没有。不要指望一篇论文给出「拿本体做 X」的完整 recipe；能抄的是零件，组装要自己测。
 
-## 7. 参考架构（组织建议，非 E）
+
+### 3.4 参考架构（组织建议，非 E）
 
 ```
 request
@@ -225,7 +265,8 @@ output
 - `commit gate` 标注为「设计、无实现」：它没有实现（E-20）。
 - 离线/CI（R10）与 OBDA（R11）不在主回路；不要画进「实时链路」。
 
-## 8. 最小落地路线
+
+### 3.5 最小落地路线
 
 | 阶段 | 时间 | 做什么 | 产出 | 出口 |
 |---|---|---|---|---|
@@ -243,25 +284,10 @@ output
 - 上线/回滚/审批 → [operations/rollout](operations/rollout.md)
 - 域约束 → [operations/domains](operations/domains.md)
 
-## 9. 验收与 stop：按机制选尺
 
-| 机制 | 主指标 | 过程指标 | 反事实 | 停线（工程建议，非 E） |
-|---|---|---|---|---|
-| R0 | 四项检查 pass/flag/unknown | 修复清单 | 无检查直接上 | 任一 unknown 当 pass |
-| K1 | primary-trap avoidance | token | K0 | 剩余 trap 与深知识无关 → 停 |
-| 投影 | primary-trap/element | 字符数/维护人日 | K1 | <5pp、>60k、>2 人周/月 |
-| 编译 | token/问、p95 | `p_h`/miss、`c`、`Q` | 词法检索 | `p_h < p_min` |
-| evidence | 准确率、引用率 | 检索率、grounding 校准 | 纯文本 RAG | 检索率 <50% |
-| checker | 增量 catch、FA、净修复 | per-1k 成本 | 空结果重试 | catch <5pp、FA >15% |
-| action | harm、审批、false-veto、task success | 保留率、φ、miss–false-block 前沿 | 不上护栏 | 在 miss 预算下 false-block 前沿不可接受（不要用单点 5%） |
-| memory | CMR、merge precision、Acc@complete | 抽取层误差 | 不做 registry | precision <90% |
-| read-path | 泄漏率、误拦 | 延迟 | 不过滤 | fail-open 未修/object 方向未测 |
-| commit | false-defer、unresolved、审计可追 | 人审工时 | 直接 merge | >20%、>10%、不可追 |
-| 离线 SHACL | 负例检出、干净误报 | checked/passed/undetermined | 无 CI | 三态折叠/覆盖不明 |
-| OBDA | 查询结果一致、时延 | 映射/本体版本 | 手写 SQL | 需要 DL/事务写入 |
-| 受监管 | citation precision、strict-pass 违规 | 人签核分钟 | 人工流程/只做检索 | 违规 >0、精度 <0.95 |
+## 4. 边界与反例
 
-## 10. 反模式
+### 4.1 反模式
 
 1. **把 context 当约束。** 投影里写规则 ≠ 规则被执行；硬约束另进 01/02。
 2. **把 engine 当授权。** 有求值器 ≠ 有 commit gate；open-ontologies 只做影响报告/CI 门（E-20）。
@@ -281,7 +307,30 @@ output
 16. **把 R12 的 99.9% 当部署。** 它相对最强 agent baseline 只高 0.5pp；benchmark 不是运营商规模。
 17. **把 blocked 当正确拒绝。** 被 block 可能是 review 失败/不可用；要同操作、不同权限成对测，并同时报合法放行。
 
-## 11. 还缺什么
+
+<a id="9-验收与-stop按机制选尺"></a>
+## 5. 验收与缺口
+
+### 5.1 验收与 stop：按机制选尺
+
+| 机制 | 主指标 | 过程指标 | 反事实 | 停线（工程建议，非 E） |
+|---|---|---|---|---|
+| R0 | 四项检查 pass/flag/unknown | 修复清单 | 无检查直接上 | 任一 unknown 当 pass |
+| K1 | primary-trap avoidance | token | K0 | 剩余 trap 与深知识无关 → 停 |
+| 投影 | primary-trap/element | 字符数/维护人日 | K1 | <5pp、>60k、>2 人周/月 |
+| 编译 | token/问、p95 | `p_h`/miss、`c`、`Q` | 词法检索 | `p_h < p_min` |
+| evidence | 准确率、引用率 | 检索率、grounding 校准 | 纯文本 RAG | 检索率 <50% |
+| checker | 增量 catch、FA、净修复 | per-1k 成本 | 空结果重试 | catch <5pp、FA >15% |
+| action | harm、审批、false-veto、task success | 保留率、φ、miss–false-block 前沿 | 不上护栏 | 在 miss 预算下 false-block 前沿不可接受（不要用单点 5%） |
+| memory | CMR、merge precision、Acc@complete | 抽取层误差 | 不做 registry | precision <90% |
+| read-path | 泄漏率、误拦 | 延迟 | 不过滤 | fail-open 未修/object 方向未测 |
+| commit | false-defer、unresolved、审计可追 | 人审工时 | 直接 merge | >20%、>10%、不可追 |
+| 离线 SHACL | 负例检出、干净误报 | checked/passed/undetermined | 无 CI | 三态折叠/覆盖不明 |
+| OBDA | 查询结果一致、时延 | 映射/本体版本 | 手写 SQL | 需要 DL/事务写入 |
+| 受监管 | citation precision、strict-pass 违规 | 人签核分钟 | 人工流程/只做检索 | 违规 >0、精度 <0.95 |
+
+
+### 5.2 还缺什么
 
 | 缺口 | 现在有什么 | 缺什么 | 对 02 的影响 |
 |---|---|---|---|
@@ -297,13 +346,9 @@ output
 
 **这些不是本交付物的前置**；它们是下一步研究/工程的方向。
 
-## 12. 与另外两份交付物的关系
 
-- **[01 现状](../01-capability-status/README.md)**：哪些能做、哪些不能。
-- **02（本份）**：拿本体做某件事的具体做法。
-- **[03 机制参考](../03-mechanism-reference/README.md)**：为什么是这些位置/形态，证据边界在哪。
-
-## 13. 期待与数据需求（验收规格）
+<a id="13-期待与数据需求验收规格"></a>
+### 5.3 期待与数据需求（验收规格）
 
 > 这一节不是结论，是**每条 recipe 的验收规格**：把「做完应该看到什么」写成可证伪的句子，再倒推要量什么。数据缺在哪里，就回 `topics/` 或 `frontier` 补。这是验收规格（非 E）。
 
@@ -325,10 +370,31 @@ output
 
 **怎么用**：每条期待对应一个 stop line；先量「支持它需要的数据」那一列，量不出来就停在这一步，不要用「平均收益」替代。
 
-## 14. 附录
+
+<a id="12-与另外两份交付物的关系"></a>
+## 6. 关系与维护
+
+### 6.1 与另外两份交付物的关系
+
+| 交付物 | 回答 | 读者 | 形态 |
+|---|---|---|---|
+| [01 现状](../01-capability-status/README.md) | 今天能做成什么、不能承诺什么 | 决策者/工程负责人 | 判断 + 矩阵 |
+| [02 工程实施](../02-engineering-playbook/README.md) | 拿本体做某件事，具体怎么做 | 工程负责人/架构师 | 步骤 + 接口 + 验收 |
+| [03 机制参考](../03-mechanism-reference/README.md) | 为什么是这些位置/形态，证据边界在哪 | 架构师/研究者 | 参考 + 边界 |
+
+**一句话**：01 告诉你「值不值得做」，02 告诉你「怎么做」，03 告诉你「凭什么这么说、说到哪为止」。
+
+
+### 6.2 附录
 
 - [A · 接口总表](appendices/interfaces.md)：R0–R12 的字段、三态、版本。
 - [B · 追溯表](appendices/traceability.md)：R → E → mechanism → 边界；与 01/03 的 crosswalk。
 - [C · 端到端示例](appendices/case.md)：示意走查，不是部署。
 - [recipes/](recipes/README.md)：13 条完整配方。
 - [operations/](operations/ledger.md)：账本、评测、成本、上线、领域。
+
+### 6.3 维护
+
+- 本页是 02 的门厅；新增/修改 recipe 先改 `recipes/`，再回本页索引。
+- 任何新判断先回 `topics/` 的 claims/E；02 不新增 E。
+- 每次改动后跑 `python3 meta/tools/check_repo.py`；坏链不提交。

@@ -20,9 +20,9 @@ updated: 2026-11-09
 | 局部判断 | 66 条 L（01:15 / 02:9 / 03:11 / 04:7 / 05:9 / 06:15） |
 | 证据配比（24 篇） | 9 execution-test（8 回路上 + 1 训练侧）/ 4 mechanism-only / 8 harness-evidence / 3 boundary-ruler |
 | 执行形态（28 源） | engine 4 / compiled 7 / context 2 / label 1 / none 14 |
-| 交付物 | 3 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 接口/追溯/案例附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口），附录保留为长版论证（约 0.97 万字）；原 7 章书稿计划已废弃，没有独立 handbook |
+| 交付物 | 3 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 接口/追溯/案例附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口），附录保留为长版论证（约 0.97 万字）；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-09 15:45，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（377 文件；E=20，Q=3，C=4，L=66；24 论文 / 4 开源） |
+| 最后自检 | 2026-11-09 16:45，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（378 文件；E=20，Q=3，C=4，L=66；24 论文 / 4 开源） |
 
 ## 当前边界（不是阻塞）
 
@@ -47,7 +47,7 @@ updated: 2026-11-09
 - **关键修正**：「强度–覆盖率反向」保留为 H（摘要），矩阵为 D（操作定义）；矩阵显示位置是专门化的，**不能排成一条强度线**；`checker` 4 个 `●/◐`、`action` 3 个，不能按格子数排强弱。
 - **未新增 E；新增 1 条 L**：只抽取现有 E-01–E-20 与 C-03/C-04；分类设计记为 06-L15；commit 写路径、false-veto、M1 同本体跨位置仍标缺口。
 - **页码/主证据**：position 卡的 8 字段（机制/触发/能改变/拦不住/使能/证据/可证伪/上游）统一；六位置表与附录互链，附录降为长版论证。
-- 自检：`python3 meta/tools/check_repo.py` 通过（377 文件；E=20，Q=3，C=4，L=66；24 论文 / 4 开源）。
+- 自检：`python3 meta/tools/check_repo.py` 通过（378 文件；E=20，Q=3，C=4，L=66；24 论文 / 4 开源）。
 
 ## 2026-11-09 交付物重构
 
@@ -55,9 +55,9 @@ updated: 2026-11-09
 - **没有独立 handbook**：原 7 章、4–6 万字书稿计划废弃；唯一保留的是原第三章，现为 [03 的长版附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md)。原 outline / planning-notes / handbook README 已删除，git 历史保留。理由：书稿无独立角色、后四章缺证据、主线过强。
 - **E-16 数字口径修正**：conclusions、ch03、01-constraint/sources、01-constraint/claims 的注记原来写成 `Tacit-FLE 64.3/66.7/65.0% vs IfR 64.3–65.0%`，与 OntoAct digest（Table 1）不符；改为 `78.6/83.3/90.0% vs IfR 64.3/66.7/65.0%`。这是转写错误，不是新判断；01-L11 原本就是对的。
 - **交付物 README**：清单改为三个子目录（01 判断 / 02 操作 / 03 依据）+ 03 的附录；新增「handbook 的去留」与待做（图/Deck/案例页）。
-- **01 证据计划**：新增 [plan.md](../deliverables/01-capability-status/plan.md)：E1–E9 的覆盖审计、现有 digest 回抽（H1–H6）、新 `src/` 来源（P0/P1/P2）、WBS、排期、DoD 与停止规则。定位是工作计划，不是结论。
+- **01 证据计划**：新增 [plan.md](../deliverables/_plans/01-capability-status.md)：E1–E9 的覆盖审计、现有 digest 回抽（H1–H6）、新 `src/` 来源（P0/P1/P2）、WBS、排期、DoD 与停止规则。定位是工作计划，不是结论。
 - **反向加载**：[meta/loading](./loading.md#从交付物倒查反向加载) 新增「从交付物倒查」三条链（01 期待→plan→digest；02 recipe→mechanism→digest；03 边界→E→附录）；三份 README 加「加载集」表；[topics/README](../topics/README.md) 与 [src/README](../src/README.md) 加反向读法指针。
-- **支持层契约**：[meta/loading](./loading.md) 加「支持层契约」；[conclusions](../topics/conclusions.md) 加反向阅读规则（E→digest §4/§5→frontier）；[topics/README](../topics/README.md) 加反向路由表；[src/README](../src/README.md) 加 digest 四节锚点；[plan](../deliverables/01-capability-status/plan.md) 加 E1–E9 → frontier 指针。目的：先保证 E→digest→frontier 可走，再开始倒逼。
+- **支持层契约**：[meta/loading](./loading.md) 加「支持层契约」；[conclusions](../topics/conclusions.md) 加反向阅读规则（E→digest §4/§5→frontier）；[topics/README](../topics/README.md) 加反向路由表；[src/README](../src/README.md) 加 digest 四节锚点；[plan](../deliverables/_plans/01-capability-status.md) 加 E1–E9 → frontier 指针。目的：先保证 E→digest→frontier 可走，再开始倒逼。
 - **验收规格**：三份 README 末尾各加「期待与数据需求」：把期待写成可证伪句，列出「支持它需要的数据 / 现在的证据 / 缺口」。作用是逆向暴露证据缺口，不是新结论。
 - **术语**：GLOSSARY 新增「评测账本（Evaluation Ledger）」，与「台账」区分；交付物里的 `p_h`/false-veto/审批成本都指前者。
 - 自检：`python3 meta/tools/check_repo.py` 通过（329 文件 / 22 论文 / 4 开源；E=20，Q=3，C=4，L=65）。
@@ -126,10 +126,11 @@ updated: 2026-11-09
 ## 2026-11-09 02 工程手册 v2
 
 - **结构**：02 改为「README 门厅 + `recipes/`（R0–R12）+ `operations/`（账本/评测/成本/上线/领域）+ `appendices/`（接口/追溯/案例）」；README 保留决策图与 R 索引，细节下沉到分片，避免单页继续膨胀。
+- **三份同构**：01/02/03 统一为 `0 一页结论 / 1 怎么读 / 2 地图 / 3 主体 / 4 边界 / 5 验收 / 6 关系与维护`；主体分别是能力条目/recipe/位置卡，条目字段统一为「一句话/适用/证据等级/边界/去哪」。01 的旧 `plan.md` 移到 [`deliverables/_plans/`](../deliverables/_plans/README.md)，不占交付正文章节。
 - **新增**：R0 本体可执行性体检（四项准入：名字/单位、声明、覆盖、执行落点）；R10 离线/CI SHACL；R11 OBDA 查询重写；R12 受监管供给（citation + solver + 人签核）。R1–R9 保留编号，避免 01/03 的 R 引用漂移。
 - **R8 第二实现**：外部扫描发现 `Matdata-eu/sparql-guard`（Apache-2.0，HEAD `6b68d769`）：TS 代理 + 查询重写，fail-closed、subject+object 两侧、有一组 vitest 用例（外部复核 76/76 通过，未在仓库内复跑）；**未按仓库标准入库**（单作者/1★/无 harness 调用点/无泄漏率）。它只说明 read-path 是 family（post-filter vs query rewrite），不升第七时刻，也不改 01 的 B 评级。候选记在 [commit-gate frontier](../topics/01-constraint/commit-gate/frontier.md)。
 - **证据边界**：false-veto、grounding 校准、commit 写路径、第二 read-path 调用点仍缺；02 只写测量协议与 stop，不写「已解决」。
-- 自检：`python3 meta/tools/check_repo.py` 通过（377 文件；E=20，Q=3，C=4，L=66；24 论文 / 4 开源）。
+- 自检：`python3 meta/tools/check_repo.py` 通过（378 文件；E=20，Q=3，C=4，L=66；24 论文 / 4 开源）。
 
 ## 怎么刷新
 
