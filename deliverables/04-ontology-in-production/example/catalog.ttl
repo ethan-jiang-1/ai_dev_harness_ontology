@@ -1,0 +1,39 @@
+@prefix : <https://ex.org/c#> .
+
+# 5 datasets / 5 tables / 13 columns / 9 tag individuals + 1 bad tag + 1 literal tag
+:ds_users a :Dataset . :ds_orders a :Dataset . :ds_hr a :Dataset .
+:ds_sales a :Dataset . :ds_legacy a :Dataset .
+
+:t_users a :Table ; :tableInDataset :ds_users .
+:t_orders a :Table ; :tableInDataset :ds_orders .
+:t_hr a :Table ; :tableInDataset :ds_hr .
+:t_sales a :Table ; :tableInDataset :ds_sales .
+:t_legacy a :Table ; :tableInDataset :ds_legacy .
+
+:col_email a :Column ; :columnOfTable :t_users . :t_users :hasColumn :col_email .
+:col_phone a :Column ; :columnOfTable :t_users . :t_users :hasColumn :col_phone .
+:col_name a :Column ; :columnOfTable :t_users . :t_users :hasColumn :col_name .
+:col_order_id a :Column ; :columnOfTable :t_orders . :t_orders :hasColumn :col_order_id .
+:col_amount a :Column ; :columnOfTable :t_orders . :t_orders :hasColumn :col_amount .
+:col_customer_email a :Column ; :columnOfTable :t_orders . :t_orders :hasColumn :col_customer_email .
+:col_ssn a :Column ; :columnOfTable :t_hr . :t_hr :hasColumn :col_ssn .
+:col_salary a :Column ; :columnOfTable :t_hr . :t_hr :hasColumn :col_salary .
+:col_dept a :Column ; :columnOfTable :t_hr . :t_hr :hasColumn :col_dept .
+:col_region a :Column ; :columnOfTable :t_sales . :t_sales :hasColumn :col_region .
+:col_revenue a :Column ; :columnOfTable :t_sales . :t_sales :hasColumn :col_revenue .
+:col_rep a :Column ; :columnOfTable :t_sales . :t_sales :hasColumn :col_rep .
+:col_legacy a :Column ; :columnOfTable :t_legacy . :t_legacy :hasColumn :col_legacy .
+
+:tag_email_1 a :Email ; :sensitivityLevel 3 . :col_email :hasTag :tag_email_1 .
+:tag_phone_1 a :Phone ; :sensitivityLevel 3 . :col_phone :hasTag :tag_phone_1 .
+:tag_name_1 a :Name ; :sensitivityLevel 2 . :col_name :hasTag :tag_name_1 .
+:tag_amount a :Financial ; :sensitivityLevel 3 . :col_amount :hasTag :tag_amount .
+:tag_email_2 a :Email ; :sensitivityLevel 3 . :col_customer_email :hasTag :tag_email_2 .
+:tag_ssn_1 a :SSN ; :sensitivityLevel 4 . :col_ssn :hasTag :tag_ssn_1 .
+:tag_salary a :Financial ; :sensitivityLevel 4 . :col_salary :hasTag :tag_salary .
+:tag_revenue a :Financial ; :sensitivityLevel 3 . :col_revenue :hasTag :tag_revenue .
+:tag_rep a :Name ; :sensitivityLevel 2 . :col_rep :hasTag :tag_rep .
+
+# 坏样本：tag 缺 level；column 的 hasTag 指向字面量
+:tag_unknown a :Tag .
+:col_legacy :hasTag "email" .

@@ -1,102 +1,107 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-10
 parent: ../README.md
 ---
 
-# B · 用：KG 构建、Text2SPARQL、语义层
+# B · 用：3 个 CQ 变成能跑的查询
 
-> 本章回答：本体建好后，怎么变成能被查的 KG/查询接口。 ｜ 读完你应该能：选 KG 构建 / Text2SPARQL / OBDA / 语义层，并写出查询契约。
+> 接 [A](./build.md)。示例是合成的（200 表 / 5,000 列）；标「示例」的数字只证明这张例子跑通。
 
-## B.1 三条路，不要混
+## B.1 路线：先看资产，三选一
 
-| 路线 | 做什么 | 什么时候用 | 不代表 |
-|---|---|---|---|
-| **KG 构建** | 文本 → 实体/关系/triples，按本体落图 | 有非结构化文本、需要结构化检索 | 抽取对 = 本体对 |
-| **Text2SPARQL** | 自然语言 → SPARQL → 执行 | 已有 KG/本体、问题需要结构化查询 | execution accuracy = 业务正确 |
-| **OBDA / 语义层** | 本体+映射 → SQL/virtual KG；agent 通过工具查 | 关系库稳定、想复用现有数据 | OBDA = NL→query |
+本例 substrate 是 RDF（无 entailment），走 KG + Text2SPARQL。选择顺序：RDF→KG；关系库→OBDA；有 KG 且数值/反连接→Text2SPARQL；否则 in-context/navigation。
 
-## B.2 KG 构建：schema 先于抽取
+| 你先有 | 选 | 判定键 |
+|---|---|---|
+| 关系库 + 稳定 schema + 映射 | OBDA（B.4） | 有库 → 不物化 |
+| 无 KG，来源非结构化 | KG 构建（用 A.3 的 12 类做 slice） | 无 KG 且要反连接 → 先建 |
+| 已有 KG，要数值过滤/反连接 | Text2SPARQL（B.2） | 有 KG → 生成查询 |
+| schema 小（11 类/5 属性）进得了 context | ontology-in-context | 小 → 全量 OWL |
+| schema 大、只有 endpoint | ontology-free navigation | 大 → 只给 class index |
 
-外部信号（未入库，仅作旁证；不引旧数字）：
+数据侧二选一（KG 构建 / OBDA）；查询侧三选一（Text2SPARQL / in-context / navigation），可与数据侧叠。三选一是选入口，不是排序（`E-21`）。
 
-- [工业 KG](https://arxiv.org/abs/2609.31663)：法语电网事故报告，schema-guided prompting 的工程做法。
-- [法律 KG](https://arxiv.org/abs/2607.24551)：法规本体 + 闭式抽取；predicate normalization 与 domain-range 校验是 refinement 重点。
+依据：模板（选路表）/ T:[03/querying §5](../../../topics/03-knowledge/querying/mechanism.md#5-工程接线给-04-b3-用)
 
-**做法**：
+## B.2 三条查询 + 空结果分因
 
-1. 先定 schema slice（哪些类/关系/约束），不要全本体塞 prompt；
-2. 抽取输出必须带 `subject/predicate/object`、source span、confidence；
-3. 用本体做类型/domain/range 校验；不通过进人审，不静默丢；
-4. 记录 `source_version/extractor_version`，支持重放。
+前缀：`PREFIX : <https://ex.org/c#>`、`PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>`；ABox 在 [catalog.ttl](../example/catalog.ttl)。
 
-## B.3 Text2SPARQL：瓶颈常在 grounding
+**CQ1** 哪些列是 `PII.Email`（含子类）
 
-**E-21（引）**：
-
-- **GGC**：生成后选择性纠错；MCQA（电影域、单 KG、31,570 题、Llama-3.2-3B 单骨干）答案集匹配 **90.23%→98.33%**；全量纠错只到 92.34%；45% 是相对全量纠错的墙钟（比单跑 +10%）。
-- **NLKGQ**：完整 OWL 放进单次上下文，零样本生成；DBLP-QuAD 3.1（单 snapshot、作者修订参考）**89.9% Match / 81.3% Exact**；Match 允许 superset。
-- **KGVoyager**：不依赖 ontology/examples 的 agentic navigation；4 个小型 benchmark 平均 F1 **64.6 vs 60.9（+3.7pp，不是 4×）**；只要 endpoint + class index。
-
-外部信号（未入库，仅作旁证）：SAGA、SchemaForge、Build2SPARQL、Researcher Agents。**不再引 CK25/SPARQL-LLM**。
-
-**工程执行层候选**：Qlever（SPARQL 1.1 运行时；不做 OWL 推理；未入 E）。
-
-**做法**：
-
-1. 先做 schema slice，不做全库检索；
-2. 维护类型状态（entity type / property domain-range / expected answer type）；
-3. 生成 → 执行 → 空结果/错误 → **选择性纠错**（只改高风险 query，不要全改）；
-4. 报 execution accuracy + 空结果率 + 纠错净收益；不要只报准确率。
-
-## B.4 语义层 / OBDA / MCP
-
-行业信号（厂商指南，不作效果依据）：
-
-- [AWS 语义层指南](https://docs.aws.amazon.com/prescriptive-guidance/latest/semantic-layer-agentic-ai-ontology-reasoning-virtual-knowledge-graph/semantic-layer-agentic-ai-ontology-reasoning-virtual-knowledge-graph.html)：Data/Knowledge/Intelligence/Orchestration 四层；OBDA virtual KG；MCP/A2A；SHACL；human-in-the-loop governance。
-
-**做法**：
-
-1. 先判断数据在关系库还是 RDF：关系库稳定 → OBDA/virtual KG；RDF/事件 → KG 查询；
-2. 给 agent 的工具面要小：`intent → schema slice → query → execute → verify`；
-3. 工具返回必须带 `source/version/query`，否则不能审计；
-4. 不要把“语义层”当“更懂业务的 prompt”；它是接口 + 映射 + 权限。
-
-## B.5 查询契约
-
-```text
-request: {question, user_context, domain, budget}
-schema_slice: {classes[], properties[], constraints[]}
-query: {sparql|sql, parameters, expected_type}
-result: {rows, empty_reason: coverage|query|data, latency}
-verify: {executed, answer_type_ok, citations[], verdict}
+```sparql
+SELECT ?col ?table WHERE {
+  ?col :hasTag ?t ; :columnOfTable ?table .
+  ?t a/rdfs:subClassOf* :Email .
+}
 ```
 
-**空结果要分因**：覆盖不足 / 查询写错 / 数据缺失；否则会把“schema 不够”误判成“模型不行”。
+期望 2 列 / 2 表。
 
-## B.6 验收
+**CQ2** 哪些表至少有一列等级 ≥3
 
-| 指标 | 工程建议（`推测`） | 数据 |
+```sparql
+SELECT DISTINCT ?table ?col WHERE {
+  ?col :columnOfTable ?table ; :hasTag ?t .
+  ?t :sensitivityLevel ?level .
+  FILTER(?level >= 3)
+}
+```
+
+期望 4 表 / 7 列。
+
+**CQ3** 哪些数据集有未打标列
+
+```sparql
+SELECT ?dataset (COUNT(?col) AS ?n) WHERE {
+  ?col a :Column ; :columnOfTable ?table .
+  ?table :tableInDataset ?dataset .
+  FILTER NOT EXISTS { ?col :hasTag ?t . ?t :sensitivityLevel ?l }
+} GROUP BY ?dataset
+```
+
+期望 4 数据集 ×1（fixture）。
+
+| 先问（假 →） | 处置 |
+|---|---|
+| `ASK { ?t a :Email }` | CQ1 覆盖不足 |
+| `ASK { ?t a :Email ; :sensitivityLevel ?l }` | CQ1 数据（有标签缺 level） |
+| `ASK { ?c :hasTag ?t . ?t a :Email }` | CQ1 查询/链接错 |
+| CQ3 `ASK { ?c :Column . FILTER NOT EXISTS { ?c :hasTag ?t . ?t :sensitivityLevel ?l } }` | 0 行是答案，不是 data |
+| `ASK { ?t :tableInDataset ?d }` | CQ3 覆盖（无 dataset 边） |
+
+记 `query_id`（`CQ1|CQ2|CQ3`）、执行器/snapshot/version：执行层只跑 SPARQL、不 entail、不解释空结果。
+
+依据：模板（3 条 SPARQL）/ T:[03/querying §5](../../../topics/03-knowledge/querying/mechanism.md#5-工程接线给-04-b3-用) / S:[Qlever](../../../src/open-source/ad-freiburg-qlever/digest.md)
+
+## B.3 纠错：只对高风险 query 做
+
+只把高风险 query 送 Gate→Corrector（GGC）；不做全量纠错。依据不是「纠错更好」，而是 `E-21` 里全量纠错 92.34%、选择性 98.33%，墙钟是全量纠错的 45%。无 2×2 改对/改坏配对、空结果不进 Gate，净收益只能自域配对测。
+
+依据：E-21 / T:[findings F1](../../../topics/03-knowledge/querying/findings.md) / gap
+
+## B.4 OBDA：标签留在关系库时
+
+本体 + R2RML 映射 → 虚拟 KG；SPARQL 在编译期重写成 SQL（ontop：TBox 饱和 + `reformulateIntoNativeQuery`）。先 `ontop validate`，再跑最小查询并存生成的 SQL；工具面只留 `sparql_query(query)`；做「去公理」消融再谈本体贡献。只支持 OWL 2 QL，不是 gate；OBDA ≠ NL→query。
+
+依据：E-20 / O-C08 / T:[02 R11](../../02-engineering-playbook/recipes/offline-and-obda.md) / S:[ontop](../../../src/open-source/ontop-ontop/digest.md)
+
+## B.5 验收
+
+| 指标 | 示例（20 题 smoke） | 工程建议（`推测`） |
 |---|---|---|
-| execution accuracy | 自域 ≥0.8 起步 | 问题-SPARQL-答案 |
-| 空结果率 | 按域设上限；分因 | query 日志 |
-| schema 覆盖 | 目标 predicate 在 slice 内 | schema/query |
-| 纠错净收益 | 改对 > 改坏 | 配对样本 |
-| 延迟/token | 业务预算 | 账本 |
+| execution accuracy | 17/20（85%） | 自域 ≥0.8 起步，按风险定 |
+| 空结果 | 2 条：覆盖 1、数据 1 | 必须分因 |
+| 延迟 p95 | 0.8 s | 按预算 |
 
-**E-21 的边界**：三条路线各一个单设置，没有头对头；自域 execution accuracy 仍要自己量，不能拿 98.33/89.9/64.6 当跨域基线。
+20 题只是 smoke；85%、0.8 s 是示例，不外推。
 
-## B.7 停 / 反模式
+依据：模板（验收表）/ E-21 / gap
 
-- schema 覆盖不足 → 先扩 schema，不加 agent；
-- 空结果率高分不清原因 → 先修覆盖/查询；
-- 纠错改坏正确 query → 收紧 gate；
-- 用 execution accuracy 当业务正确率 → 停；
-- 没有 `source/version` → 不可审计。
+## B.6 证据边界
 
-## B.8 不能证明
-
-- benchmark 数字跨域可迁移；
-- Text2SPARQL 能替代检索/人工；
-- OBDA 能回答开放域问题；
-- 语义层厂商架构能带来效果。
+- `E-21`：三条路线各单设置、无头对头 → 不能排序，不能当自域基线。
+- `E-20`：重写落到 SQL，不证明查询正确或本体独立贡献。
+- 示例数字只证明本例跑通；gap：空结果分布、纠错配对样本。
+- **停**：拿 85% 当生产正确率，或空结果不分因就调 prompt → 停。

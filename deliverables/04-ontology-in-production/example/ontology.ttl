@@ -1,0 +1,19 @@
+@prefix : <https://ex.org/c#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://ex.org/c#> owl:versionInfo "0.1.0" .
+
+:Dataset a owl:Class . :Table a owl:Class . :Column a owl:Class .
+:Tag a owl:Class . :PII rdfs:subClassOf :Tag .
+:Email rdfs:subClassOf :PII . :Phone rdfs:subClassOf :PII .
+:Name rdfs:subClassOf :PII . :Address rdfs:subClassOf :PII .
+:Financial rdfs:subClassOf :PII . :SSN rdfs:subClassOf :PII .
+
+:tableInDataset a owl:ObjectProperty ; rdfs:domain :Table ; rdfs:range :Dataset .
+:columnOfTable a owl:ObjectProperty ; rdfs:domain :Column ; rdfs:range :Table .
+:hasColumn a owl:ObjectProperty ; owl:inverseOf :columnOfTable .
+:hasTag a owl:ObjectProperty ; rdfs:domain :Column ; rdfs:range :Tag .
+:sensitivityLevel a owl:DatatypeProperty ; rdfs:domain :Tag ; rdfs:range xsd:integer .

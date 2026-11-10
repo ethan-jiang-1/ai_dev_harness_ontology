@@ -1,0 +1,12 @@
+{
+  "version": "0.3.0",
+  "rules": [
+    {"principal": "analyst", "action": "read", "kind": "column", "condition": "level<=2", "effect": "allow"},
+    {"principal": "analyst", "action": "read", "kind": "column", "condition": "level>=3", "effect": "deny"},
+    {"principal": "analyst", "action": "read", "kind": "column", "condition": "level=null", "effect": "deny"},
+    {"principal": "steward", "action": "read", "kind": "any", "effect": "allow"},
+    {"principal": "service", "action": "write", "kind": "any", "effect": "deny"},
+    {"principal": "any", "action": "read", "kind": "table|dataset", "effect": "skip"},
+    {"principal": "any", "action": "any", "kind": "any", "effect": "deny"}
+  ]
+}

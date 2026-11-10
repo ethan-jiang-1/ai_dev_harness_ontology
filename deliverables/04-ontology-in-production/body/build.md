@@ -1,92 +1,81 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-10
 parent: ../README.md
 ---
 
-# A · 建：从 CQ 到可消费本体
+# A · 建：从契约到 `build_report`
 
-> 本章回答：怎么用 CQ/负例/评估把本体做到“下游能用”。 ｜ 读完你应该能：写出一份 `build_report`，而不是一版 OWL 文件。
+## A.1 消费者契约（产物）
 
-## A.1 先定消费者和 CQ
+五格写不出就停；本 fixture（[example](../example/README.md)）：
 
-**不要先建类层次。** 先写：
+| consumer | principal | moment | answers / refuses | load |
+|---|---|---|---|---|
+| UI | steward | 页面加载 | 答 Email 列；不拒 | SPARQL endpoint |
+| agent | steward | 查询时 | 答 4 表/7 列；不拒 | SPARQL endpoint |
+| governance | analyst | 夜间 | 答未打标数据集（4）；拒 level ≥3 列 | SPARQL endpoint |
 
-- 消费者是谁：agent、查询接口、checker、CI、人；
-- 它要回答/拒绝什么；
-- 3–10 个 CQ（competency questions），每个 CQ 对应一个可执行检查；
-- 每个约束至少 1 个已知违反 + 1 个干净样本（负例）。
+tag 是 `:Email` 等类的实例，CQ1 用 `?t a/rdfs:subClassOf*`；拒绝单位 = 列（triple subject）。
 
-**没有 CQ/消费者/负例 → 停。** 这不是“本体工程”，是无法验收的文档工作。
+### CQ 只是模板词：须在契约行可执行
 
-## A.2 候选生成：LLM 只做候选
+①`?col :hasTag ?t . ?t a/rdfs:subClassOf* :Email`（UI）；②`sensitivityLevel ≥ 3` + `columnOfTable` 反查（agent）；③`FILTER NOT EXISTS { ?col :hasTag ?t }`（治理）。
 
-**本轮不升级**：没有 2026-07 后、in-scope 的生成/公理/CQ 评估一手来源；2025 的 2503/2512/2507 已删除，不再引数字。以下是工程做法，不是研究结论。
+依据：T:05/representation 机制/建模 · 模板 · gap（无 CQ）
 
-**做法**：
+## A.2 表示档位：按消费者选
 
-1. 用 CQ + 领域样本生成候选类/属性/公理；
-2. 每个候选必须有人审、来源、负例；
-3. 只接受“能被执行/能被 CQ 验证”的候选，不接受“看起来合理”；
-4. 记录候选生成器、prompt、模型、版本；否则无法复现。
+词表够注入；结构表够判定器；逻辑表只推隐含分类。
 
-## A.3 公理质量：先查“能触发”的错
+本例选结构表（`推测`）：三条契约无隐含分类。**薄层优先**：命名单位（K0→K1）+54.6pp（占 74.4pp 的 73.4%），再加 +19.8pp（26.6%，`O-F14`）。
 
-按风险排序：
+依据：T:05/representation · E-12/O-F14 · 推测
 
-| 公理 | 先查什么 | 负例 |
-|---|---|---|
-| subclass | 子类是否过宽/过窄 | 一个应属于、一个不应属于 |
-| disjoint | 是否把真实重叠类判互斥 | 一个合法重叠实例 |
-| domain/range | 是否把合法数据判错 | 一个跨域但合法的实例 |
-| cardinality | 是否把合法多值判错 | 一个多值实例 |
+## A.3 最小本体（11 类 / 5 属性）
 
-**度量**：不要只报“通过率”；报“已知违反检出 / 干净样本误报 / 人审接受率”。
+只建契约用得到的；等级挂 `Tag`，不挂 `Column`。
 
-## A.4 对齐与精化：候选 + 人审
+TBox：[ontology.ttl](../example/ontology.ttl)（11 类/5 属性；计数 `?c rdfs:subClassOf* :Tag` 8 + 3 = 11）；ABox：[catalog.ttl](../example/catalog.ttl)。
 
-- **对齐**：先 identifier/标签/结构，再语义；候选要能回指两侧本体（不引旧源）。
-- **精化**：embedding 取候选，LLM 给修复建议；high-confidence 仍需人审；具体接受率不引旧源。
-- **版本**：每次对齐/精化递增 `ontology_version`，保留 `supersedes`。
+**标签层独立**：Glyph 275 叶标签，不产策略、不执行（`E-22`/F1）。
 
-## A.5 评估：三种尺子分开
+依据：T:01/access-control F1 · E-22/O-N28 · E-12/O-F14 · 模板
 
-| 尺子 | 问什么 | 不能当什么 |
-|---|---|---|
-| CQ 验证 | CQ 能不能被执行/回答 | 语义正确性的形式证明 |
-| reasoner/一致性 | 本体是否一致、可满足 | 业务正确性 |
-| 人审 | 领域专家是否接受 | 可扩展的自动指标 |
+## A.4 约束与负例（产物：shape + 负例表）
 
-**最低验收**：CQ 覆盖、负例通过、一致性、人审接受率、下游消费者加载；五项缺一项就不是“可消费”。
+每条约束=shape/检查 + 已知违反 + 干净样本。
 
-**本轮边界**：没有 in-scope 的 CQ/公理 benchmark；这三把尺是工程分工，不是已验证的阈值。
+Shapes：[shapes.ttl](../example/shapes.ttl)（2 条：TagHasLevel、HasTagClass）。
 
-## A.6 数据契约：`build_report`
+| 约束 | 检查 | 已知违反 | 干净样本 |
+|---|---|---|---|
+| Tag 有整数等级 | `TagHasLevel` | `tag_unknown` 缺等级 | `tag_email_1` |
+| hasTag 非字面量 | `sh:nodeKind sh:IRI` | `col_legacy` 指字面量 | `col_email`→Email |
+| 未打标可发现（CQ3，不是 shape） | `FILTER NOT EXISTS` | `col_new` 无 tag | `col_email` |
 
-```text
-{
-  domain, ontology_version, source_version,
-  consumers[], cqs[],
-  classes, properties, axioms,
-  negative_examples[],
-  evaluation: {cq_coverage, violation_catch, clean_false_alarm,
-               consistency, human_acceptance},
-  provenance: {source, curator, date, supersedes},
-  blockers[]
-}
+SFE-O 未交付可执行 shape，只借做法。分开报：违反检出/干净样本误报/人审接受率；`E-02` catch/FA = 18.9/16.8、8.2/3.5、5.0/1.8；PPV 复算见 `O-F08`。
+
+依据：T:05/representation · S:SFE-O §4.1 · E-02/O-F08 · gap
+
+## A.5 可消费性闸门（产物：`build_report`）
+
+`load(artifact) → {parsed, violations, missing_fields}` + 一次真实任务。
+
+load = rdflib 解析 [ontology.ttl](../example/ontology.ttl)/[shapes.ttl](../example/shapes.ttl)/[catalog.ttl](../example/catalog.ttl) + pyshacl；`parsed`=语法/前缀，`violations`=shape，`missing_fields`=必填；真实任务=CQ1 返回 2。
+
+```json
+{"_note":"模板+示例","load":{"parsed":true,"violations":2,"missing_fields":[]},"classes":11,"properties":5,"policy_version":"0.3.0","tag_version":"0.1.0","provenance":{"source":"synthetic"}}
 ```
 
-## A.7 停 / 反模式
+**交接**：`load/violations`→B；`query_id`→C.4/`policy_version`→A.5。
 
-- 没有 CQ/消费者/负例 → 停。
-- LLM 候选未人审 → 停。
-- 没有版本/来源 → 停。
-- 下游消费者不加载 → 只算“文档”，不算“可消费本体”。
-- 把 CQ 通过当语义正确 → 过度承诺。
+**停**：`violations` ≠ 已声明坏样本数（2）或落在已知清单外；无契约/`load`；无版本/来源；下游不加载。
 
-## A.8 不能证明
+依据：T:05/generation · T:05/representation（stop 1–7）· 模板 · gap
 
-- 生成本体跨域可消费；
-- 公理 F1 能迁移到你的域；
-- CQ 覆盖 = 业务正确；
-- 人审接受率 = 下游效果。
+## A.6 证据边界
+
+build 无 in-scope 证据；数字只引 E/O 或标「示例」。
+
+依据：T:05/representation · T:05/generation · S:SFE-O/Catch/N&D/Glyph

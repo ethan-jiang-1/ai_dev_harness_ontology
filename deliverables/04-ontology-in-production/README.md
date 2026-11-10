@@ -1,43 +1,48 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-09
-target: 本体/数据工程师；应用/agent 工程师；治理/安全
-basis: E-02/E-03/E-04/E-12/E-20/E-21/E-22；05/03/01 topics；未入库 signal（不是 E）
+updated: 2026-11-10
+target: 要落地一个小型本体查询应用的团队
+basis: E-02/E-04/E-06/E-12/E-19/E-20/E-21/E-22；模板；gap
 ---
 
 # 04 · 从本体到应用：建、用、治
 
-> **读者**：本体/数据工程师、应用/agent 工程师、治理/安全/合规 ｜ **回答**：本体怎么从 CQ 变成可消费的 KG，再被 agent 查得动、治得住 ｜ **不回答**：值不值得做（去 01）、具体接缝怎么做（去 02）、为什么是这些位置（去 03）。
+> **单读者**：一个落地团队（本体/数据、应用/agent、治理/安全 三种角色，同一套产物）。
+> **回答**：一张消费者契约能不能走到可加载的 Turtle、能跑的查询、策略模板与审计记录。
+> **治理是最后一关**：C 章不过，A/B 的产物不算可用。
+> **不回答**：值不值得做（01）、接缝怎么落（02）、为什么是这些位置（03）。
 
-> **怎么用**：本页只做索引；先读本份 [GUIDE.md](./GUIDE.md)。
+## 三条链
 
-## 0. 一页结论
+| 链 | 走法 | 产物 | 依据 |
+|---|---|---|---|
+| 建 | 契约 → 表示档位 → shape + 负例 → 可消费闸门 | 消费者契约 | T:05/representation；模板；gap |
+| 用 | 路线 → query → 空结果分因 → 选择性纠错 | 3 条 SPARQL | E-21 单设置；T:03/querying；S:Qlever digest |
+| 治 | 标签 → 策略 → 泄漏 → 审计 | policy 表 | E-22：三层不能互推；E-20；T:01/commit-gate；S:trustgraph digest |
 
-**04 是 01–03 的“落地生命周期”：建 → 用 → 治。**
+依据：建=T:05/representation 实施决策 1–2 + 模板；用=E-21 + T:03/querying §5 + S:Qlever digest；治=E-22（三层不能互推）+ E-20（代码级）+ S:trustgraph digest；共同 gap=输出校验、失败传播。
 
-1. **先定 CQ 和消费者**：没有 CQ、没有负例、没有下游消费者，不要开始“建本体”。
-2. **LLM 只做候选**：生成、公理、对齐、精化都只到“候选 + 人审”；已测来源是单域/单 benchmark，不是跨域效应量。**build 章本轮不升级**（没有 in-scope evaluation 来源）。
-3. **“能查”是独立工程面**：Text-to-SPARQL 有三条路线（选择性纠错 / ontology-in-context / ontology-free navigation），没有头对头；OBDA 不等于 NL→query。
-4. **治理不是最后补的**：权限、来源、时效、审计、输出校验要在接口里；只在输入侧拦，等于不治输出。
-5. **材料分两类**：已入库来源通过 E-21/E-22 引用；未入库的留在 `evidence/` 的 signal 表。04 不新增 E。
+## 五件产物
+
+① 消费者契约 ② Turtle（11 类/5 属性）③ 3 条 SPARQL ④ policy 表 ⑤ audit record——同一 [fixture](./example/README.md)（5 表/13 列；200/5,000 只作量级参照），数据/查询可复现。
+
+依据：模板（合成例子）· E-22 + O-N28（规模只作量级参照）
+
+## 证据不对称
+
+建=模板（无 in-scope 建本体评估；E-02/E-12 只补局部两处）；用=E-21（三路线各单设置、无头对头）；治=E-22/E-20（强：原文+代码，但单企业、单实现）。
+
+依据：E-20/E-21/E-22 的限定列；gap：跨域、部署效果
+
+## kill criterion
+
+若 04 只是 02 的 playbook + 03 的机制页拼接，并进 02。判据：拿掉 04，读者仍能从 02/03 拼出这条端到端链、跑通同一例子 → kill。
+
+依据：gap（D2 立项判据）
 
 ## 目录
 
-| 节 | 文件 | 内容 |
-|---|---|---|
-| 导读 | [GUIDE.md](./GUIDE.md) | 先读哪一页、按角色/时间怎么走 |
-| 2 地图 | [sections/map.md](./sections/map.md) | 生命周期、三段的问题、产出与 owner |
-| 3 主体 | [body/README.md](./body/README.md) | 建 / 用 / 治 三分册 |
-| 4 边界 | [sections/boundaries.md](./sections/boundaries.md) | 外部信号、不能证明什么、反模式 |
-| 5 验收 | [sections/acceptance.md](./sections/acceptance.md) | 每段的期待、数据、stop |
-| 6 关系 | [sections/relations.md](./sections/relations.md) | 与 01/02/03/05 的关系、维护 |
-| 证据 | [evidence/README.md](./evidence/README.md) | E-21/E-22 + 未入库 signal |
+[build](./body/build.md) · [consume](./body/consume.md) · [govern](./body/govern.md) · [boundaries](./sections/boundaries.md) · [evidence](./evidence/README.md)
 
-## 关注什么 / 需要什么材料
-
-| 项 | 内容 |
-|---|---|
-| 关心 | 本体怎么建到“可消费”；自然语言怎么查 KG；权限/来源/审计怎么进接口 |
-| 需要材料 | E-21/E-22、03/querying、01/access-control、02 的 R0/R5/R8/R9；未入库 signal 只作旁证 |
-| 不做什么 | 不写“本体导论”；不把厂商 ROI 当 E；不把单点 benchmark 当跨域效应量 |
+定位：[example](./example/README.md) · [GUIDE](./GUIDE.md) · [分节索引](./sections/README.md) · [关系](./sections/relations.md) · [验收](./sections/acceptance.md)

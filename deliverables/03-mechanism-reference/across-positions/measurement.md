@@ -1,7 +1,7 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-09
+updated: 2026-11-10
 section: measurement
 evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-12, E-14, E-15, E-16, E-17, E-18, E-20, C-03]
 ---
@@ -35,6 +35,17 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-12, E-14, E-15, E-16, E-17, E-1
 | determinism | 没做 | 收敛/漂移；重复运行一致率 | 假收敛 vs 假漂移 | 同输入重复运行；无锚点 | 设计（无 E） |
 
 > 每行的过程指标、stop 线、成本口径在 [02 §9](../../02-engineering-playbook/sections/acceptance.md#51-验收与-stop按机制选尺) 与 [topics metrics](../../../topics/06-measure/metrics/mechanism.md#按位置分派八行设计)；本页不复制，避免两处漂移。
+
+## 2.5 机制类型与尺子分派
+
+> 这是 C-03 的 2×2：**逐格已核，方向翻转是跨来源综合**（没有同一机制、同一数据、两把尺子的对照）。完整记录见 [O-M04](../../../topics/objects.md)。
+
+| 机制类型 | 任务账（accuracy / reward） | 风险/成本账（harm–approval / token） |
+|---|---|---|
+| **约束**（action / checker） | E-04：18 格仅 8 格改善；retail 与强模型回退；T1-only 0.087 ≈ full 0.080 | E-15：CASEL 7.02% HSR / 8.7% approvals；比 Risk-Menu 少约 31% 审批（HSR 5.82% 更高） |
+| **知识供给**（context） | E-01：被测工件 acc. neutral；E-12：K2 在单工厂 +19.8pp（薄层） | E-08/E-14：平均 −38%，但 −91%/+1.9% 两端；O-F15：同预算 token 效率 12.7×（派生） |
+
+**读法**：同一行的两格方向可以相反——约束类在任务账上混合/负，在风险账上前沿更优；知识供给在准确率上 neutral，在 token 上正收益。**这是 C-03 的具体化，不是新实验**：逐格标 `已核`，翻转标 `推测（综合）`（[06-L16](../../../topics/06-measure/claims.md)）。要升 E，需要「同一机制、同一数据、两把尺子」的对照。
 
 ## 3. 四条读表规则
 

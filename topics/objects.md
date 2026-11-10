@@ -14,13 +14,13 @@ scope: evidence-objects
 >
 > **schema**：`claim / value / address / domain / provenance / hardness / falsifier / feeds`；`status` 默认 `active`，变更见文末。硬度：**H2 可核对**（`§/表` 地址 + 域）；**H3 可复算/可执行**（公式例、`file:symbol`、行 ID）。H1（带数无地址）不进本表。
 
-## 计数（2026-11-09）
+## 计数（2026-11-10）
 
 | 项 | 值 |
 |---|---|
-| 对象总数 | **91** |
-| 类型 | C 15 / F 13 / T 13 / M 3 / N 29 / R 12 / P 6 |
-| 硬度 | **H3 33** / H2 58 / H1 0 |
+| 对象总数 | **94** |
+| 类型 | C 15 / F 15 / T 13 / M 4 / N 29 / R 12 / P 6 |
+| 硬度 | **H3 36** / H2 58 / H1 0 |
 | 停线出处 | E/公式 5；混合 5；工程建议/gap 3（共 13） |
 | E 覆盖 | 22 条 E 中 13 条有对象；10 条承重 E 全部 ≥3 |
 
@@ -46,7 +46,7 @@ scope: evidence-objects
 | O-C14 | 不解析本体 | ast/ 是 Rego AST，compile/ 是 Rego 编译；没有 OWL/SHACL/RDF 的解析或推理 | ast/、compile/（pin 3dc83ae） | OPA @3dc83ae32；只读代码 | E-22；OPA digest §2/§10 | H3 | 找到 RDF/OWL 解析模块，或策略直接消费本体文件 | 03 commit；01 access-control |
 | O-C15 | 只返回 decision，执行在调用方 | server/server.go 暴露 /v1/data/...，返回 allow/deny/结果；阻断不由 OPA 执行 | server/server.go（pin 3dc83ae） | OPA @3dc83ae32 | E-22；OPA digest §3/§5 | H3 | OPA 进程内直接执行副作用或阻断写操作 | 03 commit；01 access-control |
 
-## F · 公式（13）
+## F · 公式（15）
 
 | ID | claim | value | address | domain | provenance | 硬度 | falsifier | feeds |
 |---|---|---|---|---|---|---|---|---|
@@ -63,6 +63,8 @@ scope: evidence-objects
 | O-F11 | alias/registry 的相对提升 | `lift = (Full − baseline)/baseline`；(30.4−22.2)/22.2=+36.9%；(30.4−8.2)/8.2=2.71 → 3.71× | src/papers/2610.40482-firme/digest.md#41-memory-usability | investor+Opus 单设置；CMR 口径；其他设置 2.3–3.7× | E-05；FIRME Table 3 + derived | H3 | 另一设置显示相对提升 <10% | 01 data/e6；04 identity |
 | O-F12 | 审批相对降幅 | `reduction = (12.6−8.7)/12.6 = 31.0%`；HSR 7.02 vs 5.82（CASEL 更高） | src/papers/2610.36570-casel/digest.md#43-为什么-casel-不是最低-hsr | 模拟；τ=∞ 主表；审批疲劳未建模 | E-15；CASEL §4.3 + derived | H3 | 审批疲劳建模后相对优势消失 | 01 data/e5；06 feasibility |
 | O-F13 | 消融差可直接复算 | `Δ = score(full) − score(ablation)`；57.6−48.7=8.9；57.6−49.6=8.0；57.6−49.7=7.9 | src/papers/2611.03743-evomemstate/digest.md#4-结果数字与条件 | MemSyco；Qwen3-8B；单模型族 | E-17；EvoMem §4 + derived | H3 | 重跑方差大于 1pp，使差值不可区分 | 01 data/e6；04 memory |
+| O-F14 | 薄层与深层的边际贡献可加 | `Δ_total = Δ_K1 + Δ_K2`；54.6 + 19.8 = 74.4pp；薄层占 54.6/74.4 = 73.4% | src/papers/2610.11768-narrow-and-deep/digest.md#41-投影文本 | 单工厂/9 任务；同一 rubric 端点差；加法未做交互检验 | E-12；N&D §4.1 + derived | H3 | 端点差不是同一 rubric，或交互项使可加性不成立 | 01 map；02 knowledge |
+| O-F15 | 同预算的 token 效率（派生） | `eff = accuracy/(tokens/1000)`；84.9/9.7=8.75 vs 66.7/96.7=0.69 → 12.7×（论文未报此指标） | src/papers/2610.36335-oa-rag/digest.md#42-主结果 | Test 3、Qwen、8k 预算；派生指标不是论文数 | E-03；OA-RAG §4.2 + derived | H3 | 换预算/任务复算后比值 ≤1，或论文自己报的 efficiency 不同 | 02 judgment；01 map |
 
 ## T · 停线（13）
 
@@ -82,13 +84,14 @@ scope: evidence-objects
 | O-T12 | OBDA | 需要 DL 推理 或 事务写入 → 停 | deliverables/02-engineering-playbook/sections/acceptance.md#51-验收与-stop按机制选尺 | ontop；OWL 2 QL | E-20 / O-C08 / O-C09 | H3 | OWL 2 QL 之外的重写被实现且可验收 | 02 recipes/offline-and-obda |
 | O-T13 | 受监管供给 | citation 精度 <0.95 或 strict-pass 违规 >0 → 停 | deliverables/02-engineering-playbook/sections/acceptance.md#51-验收与-stop按机制选尺 | Grid 类；真实运营商未测 | 工程建议 + Grid signal | H2 | 客户侧显示 0.95 与 0 不可达 | 02 recipes/regulated |
 
-## M · 矩阵（3）
+## M · 矩阵（4）
 
 | ID | claim | value | address | domain | provenance | 硬度 | falsifier | feeds |
 |---|---|---|---|---|---|---|---|---|
 | O-M01 | 覆盖率矩阵 | 七类失效 × 八位置；位置是专门化的，不能排成强度线，也不能合成百分比；行 ID `row-<失效类>` | deliverables/03-mechanism-reference/across-positions/coverage.md#3-矩阵 | H/D 分类设计；不是 E | 06-L15 + coverage | H3 | 同一失效在 >1 位置出现同等效应，专门化不成立 | 03 coverage；01 map |
 | O-M02 | 执行形态矩阵 | 6 行（trustgraph/semantica/ontop/open-ontologies/OPA/Qlever）× 语义/失败模式；行 ID `row-<project>` | topics/execution-forms.md#代码级核对2026-11-09 | pin commits；只读代码 | E-20 | H3 | 两个项目在同一行为上语义相同，分类 collapse | 03 execution-forms；03 positions |
 | O-M03 | 度量分派 | 八行：位置 → 主指标/过程指标/反事实/停；行 ID `row-<position>` | topics/06-measure/metrics/mechanism.md#按位置分派八行设计 | 设计，非测量 | 06-L13 + C-03 | H3 | 同一机制换尺子结论一致，错配不成立 | 02 §5.1；06 metrics |
+| O-M04 | 机制类型 × 尺子 2×2 | 2 行（约束/知识供给）× 2 列（任务账/风险成本账）；逐格已核，方向翻转是跨来源综合；行 ID `row-<机制>` | deliverables/03-mechanism-reference/across-positions/measurement.md#25-机制类型与尺子分派 | 无同数据集两把尺子对照；C-03 的具体化 | 06-L16；C-03；E-01/E-04/E-08/E-12/E-14/E-15 | H3 | 同数据集两把尺子结论一致，或某格证据被推翻 | 03 measurement；02 §5.1 |
 
 ## N · 数值（29）
 
@@ -156,16 +159,16 @@ scope: evidence-objects
 
 | E | 对象数 | H3 | H2 | 对象 |
 |---|---|---|---|---|
-| E-01 | 5 | 1 | 4 | O-F09 O-N22 O-N23 O-N24 O-R01 |
+| E-01 | 6 | 2 | 4 | O-F09 O-M04 O-N22 O-N23 O-N24 O-R01 |
 | E-02 | 7 | 1 | 6 | O-F08 O-T06 O-N07 O-N08 O-N09 O-R05 O-P02 |
-| E-03 | 4 | 0 | 4 | O-T05 O-N13 O-N14 O-N15 |
-| E-04 | 8 | 1 | 7 | O-F10 O-T07 O-N01 O-N02 O-N03 O-R02 O-R12 O-P03 |
+| E-03 | 5 | 1 | 4 | O-F15 O-T05 O-N13 O-N14 O-N15 |
+| E-04 | 9 | 2 | 7 | O-F10 O-T07 O-M04 O-N01 O-N02 O-N03 O-R02 O-R12 O-P03 |
 | E-05 | 7 | 1 | 6 | O-F11 O-T08 O-N16 O-N17 O-N18 O-R10 O-P04 |
-| E-08 | 3 | 2 | 1 | O-F07 O-N20 O-R08 |
+| E-08 | 4 | 3 | 1 | O-F07 O-M04 O-N20 O-R08 |
 | E-09 | 1 | 0 | 1 | O-R11 |
-| E-12 | 7 | 0 | 7 | O-T02 O-T03 O-N04 O-N05 O-N06 O-R03 O-R04 |
-| E-14 | 10 | 6 | 4 | O-F01 O-F02 O-F06 O-F07 O-T04 O-N19 O-N20 O-N21 O-R08 O-P01 |
-| E-15 | 7 | 1 | 6 | O-F03 O-F04 O-F12 O-N25 O-N26 O-N27 O-R09 |
+| E-12 | 9 | 2 | 7 | O-F14 O-T02 O-T03 O-M04 O-N04 O-N05 O-N06 O-R03 O-R04 |
+| E-14 | 11 | 7 | 4 | O-F01 O-F02 O-F06 O-F07 O-T04 O-M04 O-N19 O-N20 O-N21 O-R08 O-P01 |
+| E-15 | 8 | 2 | 6 | O-F03 O-F04 O-F12 O-M04 O-N25 O-N26 O-N27 O-R09 |
 | E-17 | 5 | 1 | 4 | O-F13 O-N10 O-N11 O-N12 O-P04 |
 | E-20 | 19 | 17 | 2 | O-C01 O-C02 O-C03 O-C04 O-C05 O-C06 O-C07 O-C08 O-C09 O-C10 O-C11 O-C12 O-C13 O-T09 O-T11 O-T12 O-M02 O-R06 O-P05 |
 | E-22 | 5 | 2 | 3 | O-C14 O-C15 O-N28 O-N29 O-R07 |
@@ -174,9 +177,9 @@ scope: evidence-objects
 
 | 交付物 | 对象数 | H3 | 对象 |
 |---|---|---|---|
-| 01 现状 | 53 | 16 | O-C03 O-C14 O-C15 O-F01 O-F02 O-F06 O-F07 O-F08 O-F09 O-F11 O-F12 O-F13 O-T04 O-T06 O-T07 O-T08 O-T09 O-M01 O-N01 O-N03 O-N04 O-N06 O-N07 O-N09 O-N10 O-N11 O-N12 O-N13 O-N15 O-N16 O-N19 O-N20 O-N22 O-N23 O-N24 O-N25 O-N26 O-N28 O-N29 O-R01 O-R02 O-R03 O-R05 O-R07 O-R08 O-R09 O-R10 O-R12 O-P01 O-P02 O-P03 O-P04 O-P05 |
-| 02 工程 | 56 | 15 | O-C08 O-C12 O-C13 O-F01 O-F02 O-F03 O-F04 O-F05 O-F06 O-F07 O-F08 O-F10 O-T01 O-T02 O-T03 O-T04 O-T05 O-T06 O-T07 O-T08 O-T09 O-T10 O-T11 O-T12 O-T13 O-M03 O-N01 O-N02 O-N03 O-N04 O-N05 O-N07 O-N08 O-N09 O-N13 O-N14 O-N15 O-N17 O-N18 O-N19 O-N20 O-N21 O-N25 O-N27 O-R02 O-R03 O-R04 O-R05 O-R06 O-R08 O-R11 O-P01 O-P02 O-P03 O-P05 O-P06 |
-| 03 机制 | 29 | 19 | O-C01 O-C02 O-C03 O-C04 O-C05 O-C06 O-C07 O-C08 O-C09 O-C10 O-C11 O-C12 O-C13 O-C14 O-C15 O-F09 O-F10 O-M01 O-M02 O-N02 O-N05 O-N06 O-N22 O-N23 O-N24 O-N26 O-R01 O-R04 O-R06 |
+| 01 现状 | 55 | 18 | O-C03 O-C14 O-C15 O-F01 O-F02 O-F06 O-F07 O-F08 O-F09 O-F11 O-F12 O-F13 O-F14 O-F15 O-T04 O-T06 O-T07 O-T08 O-T09 O-M01 O-N01 O-N03 O-N04 O-N06 O-N07 O-N09 O-N10 O-N11 O-N12 O-N13 O-N15 O-N16 O-N19 O-N20 O-N22 O-N23 O-N24 O-N25 O-N26 O-N28 O-N29 O-R01 O-R02 O-R03 O-R05 O-R07 O-R08 O-R09 O-R10 O-R12 O-P01 O-P02 O-P03 O-P04 O-P05 |
+| 02 工程 | 59 | 18 | O-C08 O-C12 O-C13 O-F01 O-F02 O-F03 O-F04 O-F05 O-F06 O-F07 O-F08 O-F10 O-F14 O-F15 O-T01 O-T02 O-T03 O-T04 O-T05 O-T06 O-T07 O-T08 O-T09 O-T10 O-T11 O-T12 O-T13 O-M03 O-M04 O-N01 O-N02 O-N03 O-N04 O-N05 O-N07 O-N08 O-N09 O-N13 O-N14 O-N15 O-N17 O-N18 O-N19 O-N20 O-N21 O-N25 O-N27 O-R02 O-R03 O-R04 O-R05 O-R06 O-R08 O-R11 O-P01 O-P02 O-P03 O-P05 O-P06 |
+| 03 机制 | 30 | 20 | O-C01 O-C02 O-C03 O-C04 O-C05 O-C06 O-C07 O-C08 O-C09 O-C10 O-C11 O-C12 O-C13 O-C14 O-C15 O-F09 O-F10 O-M01 O-M02 O-M04 O-N02 O-N05 O-N06 O-N22 O-N23 O-N24 O-N26 O-R01 O-R04 O-R06 |
 | 04 落地 | 12 | 2 | O-F11 O-F13 O-N10 O-N11 O-N12 O-N16 O-N28 O-N29 O-R07 O-R10 O-P04 O-P06 |
 
 ## 索引 · 按类型
@@ -184,9 +187,9 @@ scope: evidence-objects
 | 类型 | 数量 | H3 | 用途 |
 |---|---|---|---|
 | C | 15 | 15 | 代码锚（`file:symbol` + 行为 + 不保证什么） |
-| F | 13 | 9 | 公式（inputs / 例 / 假设） |
+| F | 15 | 11 | 公式（inputs / 例 / 假设） |
 | T | 13 | 4 | 停线（阈值 + 出处 + 量不出时） |
-| M | 3 | 3 | 矩阵（行 ID + 每行出处） |
+| M | 4 | 4 | 矩阵（行 ID + 每行出处） |
 | N | 29 | 2 | 数值（数 + 域 + 表/节地址） |
 | R | 12 | 0 | 反例（常见主张 + 已测反例 + 条件） |
 | P | 6 | 0 | 协议（样本 / 臂 / 指标 / 判定 / 停） |
@@ -194,8 +197,9 @@ scope: evidence-objects
 ## 变更记录
 
 - 2026-11-09 首轮：67 个对象入库（C15/F7/T13/M3/N29）；H3 27、H2 40。
-- 2026-11-09 补完轮（R5）：加 F6（可复算）+ R12（反例）+ P6（协议）；累计 91 个对象（C15/F13/T13/M3/N29/R12/P6）；H3 33、H2 58。
+- 2026-11-09 补完轮（R5）：加 F6（可复算）+ R12 + P6；累计 91 个对象（C15/F13/T13/M3/N29/R12/P6）；H3 33、H2 58。
+- 2026-11-10 R6：加 F14/F15（E-12/E-03 的可复算量）+ M04（机制×尺子 2×2）；累计 94 个对象；H3 36、H2 58；E 级 H3 10/10。
 - 2026-11-09：`O-F01` 复算暴露 digest §4.3 的例子「Q=1,000、c=10 → 3.12%」按公式是 3.08%（差 0.04pp）；`c`/`Q` 可能是 rounded。已写进对象与 [hard-objects-plan](../deliverables/_plans/2026-11-09-hard-objects-plan.md)。
 - 2026-11-09：F03–F06 保持 H2（缺单价/γ 实测），不硬升；F08–F13 是可复算对象（E-01/E-02/E-04/E-05/E-15/E-17），全部标 `derived`。
-- 2026-11-09：R5 后承重 E 的 H3 覆盖 8/10（E-01/E-02/E-04/E-05/E-14/E-15/E-17/E-20）；E-03/E-12 仍只有 H2，因为论文没给可复算量。
+- 2026-11-10：R6 后承重 E 的 H3 覆盖 10/10（F14 补 E-12、F15 补 E-03；均为 derived 算术/派生，不是新证据）。
 

@@ -1,0 +1,11 @@
+@prefix : <https://ex.org/c#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:TagHasLevel a sh:NodeShape ;
+  sh:targetClass :Tag ;
+  sh:property [ sh:path :sensitivityLevel ; sh:minCount 1 ; sh:datatype xsd:integer ] .
+
+:HasTagClass a sh:NodeShape ;
+  sh:targetSubjectsOf :hasTag ;
+  sh:property [ sh:path :hasTag ; sh:nodeKind sh:IRI ] .

@@ -17,12 +17,12 @@ updated: 2026-11-09
 | 开源 | 6 个项目（trustgraph / semantica / ontop / open-ontologies + OPA / Qlever），已 pin commit、已消化 |
 | 主题 | 6 派 + 22 个子主题 + 00-harness 七部件 + 6 时刻 + 1 条形态轴 |
 | 结论 | 22 条 E：19 已核原文 + 1 已核代码 + 2 推测；3 条 Q；4 条 C |
-| 局部判断 | 73 条 L（01:18 / 02:9 / 03:15 / 04:7 / 05:9 / 06:15） |
+| 局部判断 | 74 条 L（01:18 / 02:9 / 03:15 / 04:7 / 05:9 / 06:16） |
 | 证据配比（28 篇 + 6 开源） | 9 execution-test（8 回路上 + 1 训练侧）/ 14 mechanism-only / 8 harness-evidence / 3 boundary-ruler |
 | 执行形态（34 源） | engine 4 / compiled 7 / context 3 / label 2 / none 18 |
 | 交付物 | 4 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-ontology-in-production；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（README + GUIDE + 3 body + sections + evidence，E-21/E-22 已升、未入库 signal 另列）；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-10 08:38，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（467 文件；E=22，Q=3，C=4，L=73；28 论文 / 6 开源） |
+| 最后自检 | 2026-11-10 10:22，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（470 文件；E=22，Q=3，C=4，L=74；28 论文 / 6 开源） |
 
 ## 当前边界（不是阻塞）
 
@@ -30,6 +30,21 @@ updated: 2026-11-09
 2. **独立复现仍是空缺**：不影响 desk research；若要升「已证」，需要独立复现，但不在本仓库做；不设实验目录，也不再用模型做实验被试。
 3. **独立人类抽检**：只在对外交付时需要；内部研究不阻塞。
 4. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 已入库仍只有 1 个实现（外部扫描另见 sparql-guard 候选，未入库），需第二实现 + harness 调用点才能决定是否升第七时刻。
+
+## 2026-11-10 04 重写（D1–D6）
+
+- **定位**：单读者（落地团队）；三链；一个 fixture（5 表/13 列）；5 件产物（契约/TBox/shapes/ABox/3 SPARQL/policy/2 audit）。
+- **预算**：正文 11,995 / 12k；导航 1,457（8.5%）；md 17,045。
+- **执行验证**：TBox+ABox 108 triples；CQ1 2/2、CQ2 7/4、CQ3 4、T1 3；pyshacl 2 violations；JSON 2 条可解析。
+- **冷读**：4 轮（v1 12 blockers → v2/v3/v4 各 3 个 P0）；P0-1/2/3 定向复核 PASS；P1-4/5/6 已修；P2 剩余（Address 未用、CQ1 子类路径装饰、policy engine/Rego=gap）。
+- **kill criterion**：不 kill；04 是「可执行的集成指南」，不是效果证明（建=模板、用=E-21 单设置、治=E-22/E-20 强但单企业/单实现）。
+- **计划**：[04-deep-plan](../deliverables/_plans/2026-11-10-04-deep-plan.md) §7.5–7.6。
+
+## 2026-11-10 两个剩余缺口收口
+
+- **E-03/E-12 的 H3**：[O-F14](../topics/objects.md)（E-12 边际分解 54.6+19.8=74.4pp，薄层 73.4%）、O-F15（E-03 token 效率 12.7×，派生）；对象 **94**（H3 36 / H2 58），**E 级 H3 10/10**。两者均 `derived`，不改变单源事实。
+- **C-03 的 2×2**：[06-L16](../topics/06-measure/claims.md) + [O-M04](../topics/objects.md) + [03 measurement §2.5](../deliverables/03-mechanism-reference/across-positions/measurement.md#25-机制类型与尺子分派)；逐格已核，方向翻转仍是跨来源综合（无同数据集两把尺子对照）。
+- **阶段盘点**：[stage-review](../deliverables/_plans/2026-11-10-stage-review.md)：四层水位、三个闭合、三个仍开。
 
 ## 2026-11-10 交付物接线（M/R/X）
 
