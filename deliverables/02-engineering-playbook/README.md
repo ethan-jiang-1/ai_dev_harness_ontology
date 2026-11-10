@@ -1,7 +1,7 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 target: 工程负责人 / 架构师
 basis: E-01–E-20, C-03; recipes R0–R12
 ---
@@ -31,7 +31,8 @@ basis: E-01–E-20, C-03; recipes R0–R12
 2. **只选一条主 recipe**：按错误类型选 R1–R12；先 shadow，不要同时上三个。
 3. **每条 recipe 十字段**：目标/前提/接口/步骤/证据/成本/验收/失效/锚点；填不满的字段就是上游任务。
 4. **证据只到 E-xx**：recipe 是工程配方，不是新结论；效应量仍看 E-xx 的限定。
-5. **如果只做一件事**：R0 + 账本 + K1；不要先建整座塔。
+5. **做完长什么样**：一份填好的 R4 产物包（[附录 D](./appendices/artifact-pack.md)）——契约、概念卡、账本行、停线、未测清单。
+6. **如果只做一件事**：R0 + 账本 + K1；不要先建整座塔。
 
 
 ## 目录
@@ -44,9 +45,11 @@ basis: E-01–E-20, C-03; recipes R0–R12
 | 4 边界 | [sections/boundaries.md](./sections/boundaries.md) | 反模式、不能证明什么 |
 | 5 验收 | [sections/acceptance.md](./sections/acceptance.md) | stop、缺口、期待 |
 | 6 关系 | [sections/relations.md](./sections/relations.md) | 与 01/03 的关系、附录、维护 |
+| 术语 | [sections/glossary.md](./sections/glossary.md) | R0–R12、K0–K2、p_h/FA、O 码、证据等级 |
+| 阈值 | [sections/canonical.md](./sections/canonical.md) | 一个数只写一次；false-veto / R1 / 162 三处对账 |
 | 配方 | [recipes/README.md](./recipes/README.md) | 13 条完整 recipe |
 | 运行 | [operations/README.md](./operations/README.md) | 账本、评测、成本、上线、领域 |
-| 附录 | [appendices/README.md](./appendices/README.md) | 接口、追溯、案例 |
+| 附录 | [appendices/README.md](./appendices/README.md) | 接口、追溯、案例、[填好的产物包](./appendices/artifact-pack.md) |
 
 ## 关注什么 / 需要什么材料
 

@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 basis: E-04/E-13/E-15/E-16/E-20；action-gate & commit-gate mechanism
 ---
@@ -146,7 +146,7 @@ J(m) = γ_m · p̂ĉ + λk(m) + μq(m)
 
 | 指标 | 通过线（工程建议） | 停 |
 |---|---|---|
-| false-veto | ≤5% | >5% → 降 advisory/停 |
+| false-veto | 不设单点；报 miss–false-block 前沿 | 前沿不可接受 → 降 advisory/停 |
 | 同轨迹配对 | Δ>0 且 CI 不跨零 | Δ≤0 且 T1-only≈full → 结构贡献不成立，停 |
 | 保留率 | 20%–95% | <20% 或 >95% → 阈值失效，重校准 |
 | task success | 不降 >2pp | 下降 → 停 |
@@ -198,7 +198,7 @@ J(m) = γ_m · p̂ĉ + λk(m) + μq(m)
 | 读侧信息屏障/可见性 | 写授权/落盘变更 |
 | 有策略图 + `user_context` | 需要对象方向也受控 |
 | 能接受 best-effort/fail-open | 需要审计级「为什么允许」 |
-| 有第二个独立实现可对照（当前只有未入库候选） | 只有 trustgraph 一个已入库实现 |
+| 有第二个执行点可对照（rewrite/scan 候选；无独立泄漏率） | 只有 trustgraph 一个已入库实现 |
 
 ### 前提
 
@@ -231,10 +231,12 @@ output: filtered triples/nodes + block reason (if logged)
 ### 证据
 
 - trustgraph `policy/policy_filter.py` 代码级：策略图 + `user_context` 契约；SHACL-AF target/rule；被 block 的 **subject 侧**三元组删除（E-20；commit-gate F5/F6/F7）。
-- **fail-open**：target/rule 异常 → 当作不命中/无判定；缺 `sh:select`/`sh:construct` → 跳过；无策略 → 原样返回。只有「有策略 + 缺 user_context」是 fail-closed（F6）。
+- **fail-open**：target/rule 异常 → 当作不命中/无判定；缺 `sh:select`/`sh:construct` → 跳过；无策略 → 原样返回。只有「有策略 + 缺 user_context」是 fail-closed（F6）。**SHACL-AF 对不支持的 custom target 只写「behavior undefined」+ SHOULD warn，不要求拒绝**；fail-open 是实现选择，不是标准要求（[SHACL-AF 卡](../../../src/web/w3c-shacl-af/w3c-shacl-af.card.md)）。
 - **只删 subject 侧**：`_triple_blocked` 只查 `triple.s`；object 方向可能泄漏（F7）。
 - **单实现（已入库）**：四个开源项目里只有 trustgraph 做读路径；read-path 仍是轴外位置（E-20；seams）。
-- **第二实现线索（未入库）**：2026-11-09 外部扫描发现 `Matdata-eu/sparql-guard`（Apache-2.0，HEAD `6b68d769`）：TS 代理，用**查询重写**而非返回后过滤；fail-closed、subject+object 两侧、SHACL Core 子集；有一组 vitest 用例（外部复核报告 76/76 通过，未在仓库内复跑）。它**未按仓库标准入库**（单作者/1★/无 harness 调用点/无泄漏率与时延测量），所以只能当线索：read-path 至少有两种执行点（post-filter vs query rewrite），但 seam 语义未定。
+- **重写 vs 结果过滤有形式化对照**：Kirrane 2020 用 secure/sound/maximum 比较两者，指出 FILTER 式重写在否定/子查询/聚合下不正确；[卡](../../../src/web/kirrane-2020-qbac/kirrane-2020-qbac.card.md)。
+- **第二执行点（候选，未入库）**：`Matdata-eu/sparql-guard`（Apache-2.0，HEAD `6b68d769`）：TS 代理，用**查询重写**而非返回后过滤；fail-closed、subject+object 两侧、SHACL Core 子集；**2026-11-11 仓库外复跑 76/76 通过（EXP-001）**。它仍未按仓库标准入库（单作者/1★/无 harness 调用点/无独立泄漏率），只能当执行点线索。
+- **第三执行点（候选，未入库）**：`pwin/triplestore`（holosdb，`666238f`）：扫描期按 **predicate/graph** 过滤，默认 deny、fail-closed；`holos-engine/src/view.rs` 有调用点；20 条 security 单测（未复跑）。**EXP-002**：sparql-guard 10 用例实跑 7 pass、1 alias leak、0 false-block；alias 是策略建模边界。**EXP-003**：前置解析能修 node-level（post-filter/rewrite），不修 predicate-level（scan）。规范只强制「已断言 sameAs 则展开」（OWL 2 RL），不强制「先于过滤」；授权按 alias 逐个判，合并单独授权。`Scope` 没有 Subject/Object，**不能表达 node-level**，所以不是 trustgraph 的替代。
 - 31 条策略单测存在；未做异常注入/对象方向测试。
 
 ### 成本
@@ -254,7 +256,7 @@ output: filtered triples/nodes + block reason (if logged)
 | 异常路径 | fail-closed 或显式告警 | fail-open 未修 → 不能当安全控制 |
 | 第二实现 | 有独立实现 + harness 调用点/泄漏测量 | 只有候选/未入库 → 不升第七时刻；只当可见性 |
 
-**以下任一需求 → 这个实现不够**：对象方向也受控、写授权、审计级「为什么允许」。先补第二个独立实现，再谈升时刻。
+**以下任一需求 → 这个实现不够**：对象方向也受控、写授权、审计级「为什么允许」。先补**独立评测**（共同 10 用例 + 标签），不是再找一个引擎。
 
 ### 失效模式
 

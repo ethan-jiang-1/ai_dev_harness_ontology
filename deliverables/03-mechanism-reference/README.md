@@ -1,7 +1,7 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 target: 架构师 / 研究者
 basis: E-01–E-20, C-03/C-04; topics/README 四轴
 ---
@@ -39,6 +39,11 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 | 4 边界 | [sections/boundaries.md](./sections/boundaries.md) | 15 条边界 + 12 条反例；全文在 [boundaries.md](./evidence/boundaries.md) |
 | 5 验收 | [sections/acceptance.md](./sections/acceptance.md) | M1–M5、缺口 |
 | 6 关系 | [sections/relations.md](./sections/relations.md) | 与 01/02 的关系、维护、目录 |
+| 术语 | [sections/glossary.md](./sections/glossary.md) | E/C/H/D/G、O/B/R、seams、覆盖率符号 |
+| 读者检查 | [sections/reader-checks.md](./sections/reader-checks.md) | 5 组：定位/证据/边界/形态/判不了 |
+| Claim 走查 | [sections/claim-walkthrough.md](./sections/claim-walkthrough.md) | 读路径能不能防泄漏 |
+| Placement | [sections/placement.md](./sections/placement.md) | 五步把 claim 放到正确位置 |
+| 模板 | [sections/templates.md](./sections/templates.md) | claim 走查空表 |
 | 证据 | [evidence-ledger.md](./evidence/ledger.md) | E-xx 支持/不支持哪个位置 |
 
 ## 关注什么 / 需要什么材料

@@ -69,3 +69,13 @@
 - **等级**：已核（代码）。
 - **含义**：敏感信息可能以「别人 → 指向 → 敏感节点」的方向返回。授权过滤的方向性与主体/客体语义绑定，不能假设「节点被 block = 完全不可见」。
 - **来源**：[trustgraph digest](../../../src/open-source/trustgraph-ai-trustgraph/digest.md) §3/§6。
+
+
+## F8 · 读路径有三个执行点，不是一个机制
+
+- **判断**：read-path 至少有三种执行点：post-filter（trustgraph，node/subject，fail-open）、rewrite（sparql-guard，node+graph，fail-closed）、scan（holosdb，predicate+graph，默认 deny）。三者的粒度、方向和错误路径不同，不能互替。
+- **等级**：已核（代码）；sparql-guard **76/76 tests 复跑通过**（EXP-001，2026-11-11）；holosdb 20 条 security 单测未复跑（本机 rustc 目标架构不匹配）。
+- **条件**：sparql-guard 1★/3 周/单组织；holosdb 1★/单作者；两者都无 harness 调用点、无泄漏率。
+- **含义**：E-23 的「单实现」限定只指 SHACL-AF post-filter；不要把它读成「read-path 只有一个实现」。共同缺口是评测协议，不是再找引擎。
+- **来源**：[read-path §3/§7](./read-path.md)；EXP-001。
+- **EXP-002（2026-11-11）**：sparql-guard 10 用例实跑 **7 pass + 1 fail-closed + 1 defined anonymous + 1 alias leak + 1 partial，0 false-block**；trustgraph / holosdb 未跑产品，用代码忠实复刻（`exp002-replicas.mjs`）：trustgraph 5 leak + 1 conditional + 1 partial；holosdb 1 alias leak + 4 undecidable。alias leak 是策略建模边界，不是 rewrite bug。

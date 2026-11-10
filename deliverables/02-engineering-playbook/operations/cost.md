@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 basis: 06/feasibility；E-04/E-08/E-12/E-13/E-14/E-15
 ---
@@ -77,7 +77,7 @@ TCO_12m =
 NPV_build = Σ(收益 − 成本)/(1+r)^t − TCO
 NPV_buy   = 同口径（RFQ + 集成 + 迁移/退出）
 NPV_do_nothing = 0
-取 argmax；硬约束：task success 下降 ≤2pp、false-veto ≤5%
+取 argmax；硬约束：task success 下降 ≤2pp；false-veto 报前沿，不设单点（见 [canonical](../sections/canonical.md)）
 ```
 
 ## 4. 单价表（当前全空）

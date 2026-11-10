@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -18,7 +18,7 @@ parent: ../README.md
 | 编译 | token/问、p95 | `p_h`/miss、`c`、`Q` | 词法检索 | `p_h < p_min` | E-14 / O-F01（O-T04） | 先量 p_h；量不出就不编译 |
 | evidence | 准确率、引用率 | 检索率、grounding 校准 | 纯文本 RAG | 检索率 <50% | 工程建议 + E-03（O-T05） | 先量检索率；<50% 先修检索 |
 | checker | 增量 catch、FA、净修复 | per-1k 成本 | 空结果重试 | catch <5pp、FA >15% | 工程建议 + E-02（O-T06） | 先建空结果基线；超不过就停 |
-| action | harm、审批、false-veto、task success | 保留率、φ、miss–false-block 前沿 | 不上护栏 | 在 miss 预算下 false-block 前沿不可接受（不要单点 5%） | E-04 + 2607.22868（O-T07） | 标 gap；只 shadow，不承诺 |
+| action | harm、审批、false-veto、task success | 保留率、φ、miss–false-block 前沿 | 不上护栏 | 在 miss 预算下 false-block 前沿不可接受（**不设单点 5%**，见 [canonical](./canonical.md)） | E-04 + 2607.22868（O-T07） | 标 gap；只 shadow，不承诺 |
 | memory | CMR、merge precision、Acc@complete | 抽取层误差 | 不做 registry | precision <90% | 工程建议 + E-05（O-T08） | 先量 merge precision；<90% 停 |
 | read-path | 泄漏率、误拦 | 延迟 | 不过滤 | fail-open 未修/object 方向未测 | E-20（O-T09） | 标「单实现」；不升第七时刻 |
 | commit | false-defer、unresolved、审计可追 | 人审工时 | 直接 merge | >20%、>10%、不可追 | 工程建议 / gap（O-T10） | 标 gap；只做设计 |
@@ -54,7 +54,7 @@ parent: ../README.md
 | Recipe | 期待（可证伪） | 支持它需要的数据 | 现在的来源 | 缺口 |
 |---|---|---|---|---|
 | R0 | 四项检查能预测「能不能执行」 | 30–60 分钟检查 + 后续失败记录 | 工程配方 | 无对照 |
-| R1 K1 | 目标域 primary-trap avoidance ≥0.90 | K0/K1 回放；3 任务；trap 标注 | E-12 | 跨域 |
+| R1 K1 | 绝对 `primary-trap avoidance ≥0.90` **或** 相对 `K1−K0 ≥+10pp`（预注册一个，不要混用） | K0/K1 回放；3 任务；trap 标注 | E-12 | 跨域 |
 | R2 投影 | K2 相对 K1 ≥ +5pp，且 ≤60k 字符、维护 ≤2 人周/月 | K1/K2 回放；字符；维护工时；顺序消融 | E-12 | 跨域；多设备 |
 | R3 编译 | `p_h ≥ p_min`，p95 不超预算 | `p_h`/miss/`c`/`Q`/p95/span 覆盖 | E-14 | 自己的流量 |
 | R4 证据契约 | 检索率 ≥50%，引用率 ≥85%，grounding 可校准 | 200 题；检索率/引用率/等级标注 | E-03 | 等级校准；句级 span |
@@ -69,5 +69,19 @@ parent: ../README.md
 
 **怎么用**：每条期待对应一个 stop line；先量「支持它需要的数据」那一列，量不出来就停在这一步，不要用「平均收益」替代。
 
+
+### 5.4 读者检查（5 组）
+
+> 逐组勾。**没做就写「未做」，不要写「通过」**。这 5 组不是新结论，是把 §5.1–5.3 变成你能自己核对的动作。
+
+| # | 检查 | 怎么查 | 通过 | 未通过 |
+|---|---|---|---|---|
+| 1 | R0 四项有结论 | 填 [artifact-pack §1](../appendices/artifact-pack.md) | 四项都有 pass/flag/unknown；unknown 没被当 pass | 回 R0；不要选 recipe |
+| 2 | 只选了一条 recipe | 用 [map §2](./map.md) 的分诊表 | 一个错误只落一个「先看」；落了两个就写下优先级 | 回 §2；不要并行 |
+| 3 | 接口/数据契约填得出 | 目标 recipe 的「最小数据契约」 | 字段齐；填不出的格标 `untested` 并写上游任务 | 不要写「行业通常」 |
+| 4 | 停线与出处对得上 | [canonical §2](./canonical.md) | 主指标/停线/出处/量不出时四列都有值 | 回 canonical；不要自造阈值 |
+| 5 | 能说出不能证明什么 | [boundaries](./boundaries.md) + 目标 recipe §「不能证明」 | 至少 3 条「不能证明」+ 1 条反模式 | 回 boundaries；不要承诺效果 |
+
+**五组全过 = 可以交一份 shadow 方案；不等于可以上线。** 上线还要过 [operations/rollout](../operations/rollout.md) 与真实数据。
 
 <a id="12-与另外两份交付物的关系"></a>

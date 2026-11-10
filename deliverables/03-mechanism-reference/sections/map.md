@@ -52,6 +52,8 @@ parent: ../README.md
 | （谱外）read-path | 轴外 | 01 约束 | retrieval / tools | `engine` |
 | （谱外）supply | 轴外 | 03 知识 | context | `engine` |
 
+> **判不了位置时**，走 [placement](./placement.md) 的五步；不要硬塞进相邻位置。
+
 > **六个位置不是六个时刻。** `determinism` 是第六个时刻，但不在强度谱上；`context` 不是时刻，是供给；`read-path`/`supply` 是轴外位置。别把四张表混成一张。谱外位置（determinism / read-path / supply / reasoning / training）见 [positions/outside.md](../positions/outside.md)。
 
 

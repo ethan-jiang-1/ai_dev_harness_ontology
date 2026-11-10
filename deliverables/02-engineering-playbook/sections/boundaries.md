@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -28,5 +28,3 @@ parent: ../README.md
 16. **把 R12 的 99.9% 当部署。** 它相对最强 agent baseline 只高 0.5pp；benchmark 不是运营商规模。
 17. **把 blocked 当正确拒绝。** 被 block 可能是 review 失败/不可用；要同操作、不同权限成对测，并同时报合法放行。
 
-
-<a id="9-验收与-stop按机制选尺"></a>

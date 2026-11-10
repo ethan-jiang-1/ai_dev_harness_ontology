@@ -1,7 +1,7 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 target: 决策者 / 工程负责人
 basis: E-01–E-20, C-01–C-04
 ---
@@ -28,8 +28,10 @@ basis: E-01–E-20, C-01–C-04
 |---|---|---|
 | **A 可先落地** | K1 命名/单位；离线/CI SHACL；OBDA 查询重写 | 有实现或可复算公式，失败可回退；但仍需本地复测 |
 | **B 可试点** | 投影、编译、证据契约、checker、动作闸、记忆、读路径过滤 | 有一手效应量，限定强；先量 1–3 个数再决定 |
-| **C 只能设计** | 落盘授权、跨运行确定性、多智能体共享本体 | 机制在，效果没被独立测；不能承诺 |
+| **C 只能设计** | 推理期条件验证、落盘授权、跨运行确定性 | 有机制/设计，但只有模拟或无实现；不能承诺 |
 | **D 反向** | 见 [§4.3](./sections/boundaries.md#43-反向在已测条件下不要做)：强 RAG 下为准确率买工件、curated 当权威、reward 证明护栏…… | 在已测条件下会得出错误结论或负收益 |
+
+> **多智能体共享本体**：只有方向，没有机制/设计/一手证据，标 **`undetermined`**。**本体自动生成/精化**是 source（[05 生产](../../topics/05-produce/README.md)），不在本表；不要硬塞进 A/B/C。判定规则见 [map §2.1](./sections/map.md#21-判定口径)。
 
 **最像「肯定没问题」的只有一件：先把名字、单位、槽位对齐（K1）。** 其余都是「有条件能试」或「还差得远」。
 
@@ -74,6 +76,10 @@ basis: E-01–E-20, C-01–C-04
 | 4 边界 | [sections/boundaries.md](./sections/boundaries.md) | 工作前提、反例、证据边界 |
 | 5 验收 | [sections/acceptance.md](./sections/acceptance.md) | 距离、期待与数据需求 |
 | 6 关系 | [sections/relations.md](./sections/relations.md) | 与 02/03 的关系、维护 |
+| 术语 | [sections/glossary.md](./sections/glossary.md) | E1–E9 vs E-01–E-20、A/B/C/D、K0–K2 |
+| 阈值 | [sections/canonical.md](./sections/canonical.md) | 14 行计数、E1–E9 门槛、一个数只写一次 |
+| 决策记录 | [sections/decision-record.md](./sections/decision-record.md) | K1→A、读路径→B、离线 SHACL→A、落盘→C、OBDA 对照 |
+| 模板 | [sections/templates.md](./sections/templates.md) | 决策记录/能力行/期待行空表 |
 | 证据 | [data/README.md](./data/README.md) | e3/e4/e5/e6/e7-e8 数据表、P0/P1 扫描 |
 
 ## 关注什么 / 需要什么材料

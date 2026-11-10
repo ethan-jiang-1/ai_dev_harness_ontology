@@ -1,7 +1,7 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 position: action
 evidence: [E-04, E-13, E-15, E-16]
 ---
@@ -35,7 +35,7 @@ POLAR 的两层：Layer A 静态动作本体（每个 mutating tool 的 T1–T5 
 
 - **可逆性闸在窄条件下改善任务表现。** τ²-bench 上 6 个模型中 4 个在 airline 域提升 0.11–0.18；**但 18 个模型-域组合只有 8 个整体改善**，retail 与更强模型常回退。`已核`（E-04；状态 contested）
 - **收益随基线能力升高而缩小。** airline/retail/telecom 斜率约 −0.76/−0.67/−0.31（R² 0.92/0.98/0.65）；但这是**六点描述性拟合**，给不出零交叉阈值。`已核`（E-13）
-- **审批/分配有前沿，不是单一最优。** CASEL 模拟（20 seeds、120k actions）HSR 14.75%→7.02%、审批 8.7%；最低 HSR 是 Consequence-Menu 4.38%（审批 13.8%），Risk-Menu 5.82%（审批 12.6%）；CASEL 用约 30% 更少审批达到相近 harm。`已核`（E-15；模拟、无本体变量、主表 τ=∞）
+- **审批/分配有前沿，不是单一最优。** CASEL 模拟（20 seeds、120k actions）HSR 14.75%→7.02%、审批 8.7%；最低 HSR 是 Consequence-Menu 4.38%（审批 13.8%），Risk-Menu 5.82%（审批 12.6%）；CASEL 比 Risk-Menu 少约 31% 审批（12.6%→8.7%），但 HSR 高 1.2pp（7.02% vs 5.82%）；不是「相近 harm」。`已核`（E-15；模拟、无本体变量、主表 τ=∞）
 - **约束形式决定天花板还是护栏。** 限制知识源（curated KG）可能封顶；三值条件 + 假设 revision 可同时提高成功率与减少无效干预（Tacit-FLE 78.6/83.3/90.0% vs IfR 64.3/66.7/65.0%；SI 1.6–2.4 vs 6.4–17.8）。`已核`（E-16；模拟、固定 schema、无真实工厂）
 
 ## 4. 拦不住什么 / 失效模式
@@ -45,7 +45,7 @@ POLAR 的两层：Layer A 静态动作本体（每个 mutating tool 的 T1–T5 
 | 结构贡献未隔离 | T1-only 接近 blanket veto，增益却不比 full 小 | `已核`（E-04） |
 | false-veto 未测 | blocked log 没有 harm/授权标签；retail 的 return/exchange 不能判定是否误拦 | `已核`（E-04 的缺口） |
 | 强模型/retail 回退 | 硬护栏在高基线可能只剩代价 | `已核`（E-04/E-13） |
-| 阈值错置 | airline 在 τ=0.80 只保留 36.6%，retail 100% | `已核`（E-04） |
+| 阈值错置 | airline 在 τ=0.80 下只保留 36.6% 的候选动作，retail 100% | `已核`（E-04） |
 | 判据依赖运行时状态 | 静态本体不够；Layer B 投影不准就失效 | `已核`（E-04 的机制） |
 | 不验证逆执行 | 「有逆序列」不等于「恢复会成功」 | `已核`（E-04 的边界） |
 | 只判不记 | 剪枝事件不记录，false-veto 无法算 | `已核`（E-04 的缺口） |

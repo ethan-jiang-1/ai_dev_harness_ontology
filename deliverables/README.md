@@ -1,5 +1,5 @@
 ---
-updated: 2026-11-10
+updated: 2026-11-11
 ---
 
 # deliverables：交付
@@ -50,6 +50,8 @@ updated: 2026-11-10
 | [04-ontology-in-production](./04-ontology-in-production/README.md) | 本体怎么建到可消费、怎么查、怎么治 | 建 / 用 / 治三分册 + 验收 | draft | E-xx（含 E-21/E-22）+ 03/querying/01/access-control；未入库 signal |
 
 > `_plans/` 是[工作底稿](./_plans/README.md)，不是交付物；不进对外阅读路径，也不构成 E。
+>
+> **2026-11-11 整改**：01/02/03 按 [差距评估报告](./_plans/2026-11-10-gap-assessment-report.md) 与 [整改计划](./_plans/2026-11-11-remediation-plan.md) 补了读者层（01 决策记录/术语/canonical、02 产物包/术语/canonical/读者检查、03 claim 走查/读者检查/术语）。三份仍 `draft`；M1/M2 未关，02 的 citation 正确性仍是 gap。
 
 ## 导读：先读哪份、按什么顺序
 
@@ -109,7 +111,7 @@ updated: 2026-11-10
 | 主体 | `capabilities/` + `README.md` | `recipes/` + `README.md`；总览在 `sections/approach.md` | `positions/` + `README.md` | `body/`（build/consume/govern）+ `README.md` |
 | 支撑 | — | `operations/` + `README.md` | `across-positions/` + `README.md` | — |
 | 证据 | `data/` + `README.md` | `appendices/traceability.md` | `evidence/` + `README.md` | `evidence/` + `README.md` |
-| 附录 | — | `appendices/` + `README.md` | `appendix-constraint-spectrum.md` | — |
+| 附录 | — | `appendices/` + `README.md`（含 artifact-pack） | `appendix-constraint-spectrum.md` | — |
 
 **规则**：README 只做索引；正文按「分节 / 主体 / 支撑 / 证据 / 附录」放，不把长文塞回 README。每个目录都有 `README.md`，用同一张索引表。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG；每份 `GUIDE.md` 嵌本份图，README 不再嵌图。
 

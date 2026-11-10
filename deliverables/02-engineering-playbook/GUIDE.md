@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: README.md
 ---
 
@@ -16,6 +16,18 @@ parent: README.md
 2. 读 [地图 §2](./sections/map.md)：五步法、定错、选位置/形态。
 3. 记住一句话：**先过 R0，再按错误类型选一条 recipe；不要同时上三条。**
 
+## 30 分钟：跟一份填好的产物包
+
+> 目标不是选 recipe，是**看懂「做完长什么样」**。只读，不跑。
+
+1. [附录 D §0 交接表](./appendices/artifact-pack.md#0-一页交接)：先看 7 件产物。
+2. [R0 体检](./appendices/artifact-pack.md#1-r0-体检表已核-来自-case-2)：四项有 pass/flag/unknown。
+3. [接口契约](./appendices/artifact-pack.md#2-接口契约r4)：三原语 + 观察类型 + 预算。
+4. [账本行](./appendices/artifact-pack.md#5-账本行) + [停线记录](./appendices/artifact-pack.md#6-停线记录)：哪些是 `untested`。
+5. [未测清单](./appendices/artifact-pack.md#7-未测清单交稿必填)：填不出这张表，说明你还不知道边界。
+
+**做完你能回答**：一条 recipe 做完手上有什么；哪些格必须自己补。
+
 ## 推荐顺序
 
 | 步 | 读什么 | 读完你能 |
@@ -27,6 +39,7 @@ parent: README.md
 | 4 | [sections/boundaries.md](./sections/boundaries.md) | 知道哪些是反模式、不能证明什么 |
 | 5 | [sections/acceptance.md](./sections/acceptance.md) | 知道怎么验收、什么时候停 |
 | 6 | [sections/relations.md](./sections/relations.md) | 需要时跳 01/03 |
+| 7 | [sections/canonical.md](./sections/canonical.md) + [glossary](./sections/glossary.md) | 查阈值/内码，不再翻三页 |
 
 ## 按目的
 

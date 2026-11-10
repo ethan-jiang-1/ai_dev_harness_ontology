@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 note: illustrative reconstruction; not a deployment
 ---
@@ -15,7 +15,7 @@ note: illustrative reconstruction; not a deployment
 
 某工厂冷却水系统，已有：
 
-- 约 42 个 tag、33 个 binding、34 条 assumption、16 个 derivation、24 条 knowledge node（N&D 规模）。
+- 约 42 个 tag、33 个 binding、34 条 assumption、16 个 derivation、24 条 knowledge node、13 个 plant element（合计 162 节点，N&D 规模）。
 - 3 个高频任务：2 个读数解释（泵出口压力、换热器温差）+ 1 个事故诊断（流量低报警）。
 - 一个 9B 级现场模型 + 一个 30B+ 对照；上下文预算约 64k token。
 - 历史误判：单位混用（bar/MPa）、tag 别名不一致、把「设计值」当「当前值」。

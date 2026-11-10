@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -15,4 +15,4 @@ parent: ../README.md
 | [constraint.md](./constraint.md) | 动作前可逆性闸 | 只在不可逆/高代价/弱模型时试 | B |
 | [state.md](./state.md) | 跨轮身份/记忆 | 先 registry，再状态 | B |
 | [read-path-and-obda.md](./read-path-and-obda.md) | 读路径 / 查询重写 | 有代码，但别扩大解释 | B/A |
-| [open-gaps.md](./open-gaps.md) | 还不能承诺的三件事 | commit/确定性/多智能体 | C/空白 |
+| [open-gaps.md](./open-gaps.md) | 还不能承诺的三件事 | commit/确定性/多智能体 | C；多智能体=`undetermined` |

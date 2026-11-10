@@ -230,6 +230,10 @@ open-source/{org}-{repo}/
 | OASIS XACML 3.0 | [card](./web/oasis-xacml-3.0/oasis-xacml-3.0.card.md) | 精读 / 原文正文 | 01/policy F2；合并算法/obligation |
 | W3C SHACL | [card](./web/w3c-shacl/w3c-shacl.card.md) | 摘要级 / 原文摘要 | 05/consumability、02/output-validation、04 A.4/A.5 |
 | ODCS v3.1.0 | [card](./web/odcs-v3.1/odcs-v3.1.card.md) | 精读 / 原文正文 | 05/consumability §3、04 A.1/A.5 |
+| ALCE（EMNLP 2023） | [card](./web/alce/alce.card.md) | 摘要级 / 原文摘要 | 02 R4 citation 协议；**外部参照，未入 papers/** |
+| W3C OWL 2 Profiles | [card](./web/w3c-owl2-profiles/w3c-owl2-profiles.card.md) | 摘要级 / 原文摘要 | read-path §9 alias 规则；02 R8、03 claim 走查 |
+| W3C SHACL-AF | [card](./web/w3c-shacl-af/w3c-shacl-af.card.md) | 摘要级 / 原文正文 | read-path fail-open 的标准边界；02 R8、03 claim 走查 |
+| Kirrane 2020（Query Based AC） | [card](./web/kirrane-2020-qbac/kirrane-2020-qbac.card.md) | 摘要级 / 原文摘要 | read-path 重写 vs 结果过滤；02 R8、03 claim 走查；**外部参照，未入 papers/** |
 | 24 篇历史论文（20 基础 + 4 扫描） | 各目录 `card.md` / `digest.md` | L3 12 篇 / L2 8 篇 / L1 4 篇 | 六派 README、claims、conclusions（E-01…E-27） |
 | 4 篇补给（GGC / Glyph / NLKGQ / KGVoyager） | 各目录 `card.md` / `digest.md` | 精读；L2/L1 见各 card | `topics/03-knowledge/querying`、`topics/01-constraint/access-control`、conclusions（P1/P2 新 E） |
 | 开源项目 | 状态与进度见 [open-source/README](./open-source/README.md)；未建卡的不算入库 | 8 个本轮已消化（4 本体 + OPA/Qlever 工程线 + Great Expectations 输出校验 + OpenLineage lineage）；3 个 <1,000★ 仍不建卡 | `topics/01-constraint`（commit-gate F5–F7、access-control）、`topics/02-judgment`（checker F7–F8、output-validation）、`topics/05-produce`（generation F7、lifecycle 判断 4）、`topics/03-knowledge`（querying） |

@@ -34,7 +34,7 @@ evidence: [E-05, E-17]
 
 - **身份对齐：alias 复用在 registry + 语义兜底之上带来增量。** final-period CMR +7.8–12.1pp（4 settings），human-audit reattachment recall +22.5–29.0pp，semantic matching token −40.3%。`已核`（E-05；专有数据、3 period、无年度周期；token 仅 investor/Opus/final period，不含 registry 构建）
 - **状态结构：增益在「会不会用」，不在「检索更多」。** Complete Retrieval 85.6%（与最好 baseline 相当），Acc@complete 70.8/68.5（+11.5/+31.2）；去掉 Relational −8.9/−6.4，去掉 Reasoning −8.0/−15.0，去掉 RL −7.9/−16.4。`已核`（E-17；文本 only、需训练信号；两个 Acc 分属不同基准，不可相减）
-- **推理状态可跨系统迁移。** 跨 6 系统 +0.2–4.9。`已核`（E-17）
+- **推理状态可跨系统迁移。** 跨 6 系统 +0.2–4.9pp。`已核`（E-17）
 
 ## 4. 拦不住什么 / 失效模式
 

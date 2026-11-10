@@ -119,6 +119,22 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 - **格式开销。** 每条结论都带证据会增加输出 token；论文没有单列这项开销。
 - **把等级当形式证明。** 最常见的误用。
 
+### citation 正确性（R4 不覆盖）
+
+> R4 只测「有没有引用」；不测「引用是否支持结论」。这一节是边界 + 最小协议，**不是新 E**。
+>
+> 外部依据：[ALCE 卡](../../../src/web/alce/alce.card.md)（EMNLP 2023）；AIS 的「According to P, s」判定式与 AttributionBench 的「自动判官约 80% macro-F1 上限」作对照（转述，待核）。
+
+- **两个概念**：citation presence（答案带 observations/span）≠ citation correctness（引用支持结论）。R4 的「引用率 ≥85%」是前者。
+- **判 P，不判真**：把句子还原成去语境的独立命题（补代词/时间/指代）；问「According to P, s 是否成立」，而不是「s 对不对」。
+- **20 条小样**：按句抽 20 个「陈述—引用」对，每句固定取 1 条引用；风险分层——多跳、数字/日期、比较级、否定/限定各 ≥3 条。
+- **三值 + 不可判**：`S`（仅凭该引用可推出）/ `P`（需与其它引用合并，或只部分支持）/ `N`（不支持，或只话题相关/断章取义）/ `U`（句子不可解读，单列，不计入分子分母）。
+- **两个数**：citation recall = `S` 占比（严格版只算 S；宽松版算 S+P，两版都报）；citation precision = 每条引用 `S=1 / P=0.5 / N=0`。ALCE 式反事实「去掉该引用后是否仍成立」单独标**冗余引用**，不混进 N。
+- **人评先行**：两人独立标注，报 κ；κ < 0.6 或 precision < 0.9 → 只做提示，不自动放行。
+- **LLM judge 只做预标注**：先在这 20 条上测与人一致率；AttributionBench 的经验上限约 80% macro-F1，达不到就不得替代人评。
+- **停**：没有标签 → 标 `gap`；不要把 presence 的 85% 当 correctness 的通过线。
+- **EXP-004（2026-11-11）**：抽 20 条交付物 claim + 所引 E 行，两个 agent 标 S/P/N，κ=1.0；strict S=5/20（25%），宽松 57.5%，N=2/20。结论：**E 行单独只支持 1/4 的 claim**；多数是 E 行摘要掉了具体数字/条件，细节在 digest。E-xx 是地址，不是自足 warrant。见 [exp-004](../../_plans/2026-11-11-exp-004-citation-audit.md)。
+
 ### 可抄锚点
 
 - [evidence 机制](../../../topics/02-judgment/evidence/mechanism.md) 的「OA-RAG 实际做法」「接口与预算」「stop」。

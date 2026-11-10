@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: README.md
 ---
 
@@ -26,6 +26,9 @@ parent: README.md
 | 3 | [sections/boundaries.md](./sections/boundaries.md) | 说出哪些不能当工作前提、哪些是反向 |
 | 4 | [sections/acceptance.md](./sections/acceptance.md) | 知道立项前还要量什么 |
 | 5 | [sections/relations.md](./sections/relations.md) | 需要时跳 02/03 |
+| 6 | [sections/decision-record.md](./sections/decision-record.md) | 看一条能力怎么从证据走到 A/B |
+| 7 | [sections/glossary.md](./sections/glossary.md) + [canonical](./sections/canonical.md) | 查内码/阈值，不再翻三页 |
+| 8 | [sections/templates.md](./sections/templates.md) | 要自己填时，用空表 |
 
 ## 按目的
 
