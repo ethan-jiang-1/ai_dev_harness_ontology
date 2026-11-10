@@ -35,6 +35,8 @@ parent: ../README.md
 |---|---|---|---|---|---|
 |  |  |  |  |  |  |
 
+**`principal` 是判定身份，不是 consumer 名字**：consumer 是调用方，principal 是 policy 判定用的用户/角色/服务，`user_context` 是请求带的 role/clearance。fixture 的 CQ1 同时出现 `steward` 与 `analyst` 两个 principal，但契约只写了 steward——这层没写死。落地时先选 A/B/C，见 [transfer §6.1](../sections/transfer.md#p-principal)。标签/等级从哪来、没有怎么停：见 [label-source](../sections/label-source.md)。
+
 > `refuses` 写 `—` 表示「明确不拒」，不算空；契约本身带 `contract_version`（第 7 项，A.5 回填），不在 6 列里。
 
 **契约六项与 `build_report` 只部分对应**：`violations` ≠ `refuses`，`missing_fields` ≠ 契约缺字段；覆盖表见 [参考表 §0](../sections/reference.md)。
@@ -59,6 +61,8 @@ parent: ../README.md
 
 只建契约用得到的；等级挂 `Tag`，不挂 `Column`。
 
+**一列一个 tag 是 fixture 的约定，不是模型约束**：Glyph 是列级多标签（`已核`，Glyph digest；单企业，E-22），fixture 的 shape 没有 `maxCount 1`，policy 的 `level` 是标量。多标签列怎么取 level，见 [transfer §6.2](../sections/transfer.md#p-multitag)；不选就先别写 shape。标签源是否可信、覆盖多少、漏标多少，见 [label-source](../sections/label-source.md)。
+
 TBox：[ontology.ttl](../example/ontology.ttl)（11 类/5 属性；`SELECT (COUNT(DISTINCT ?c) WHERE { ?c a owl:Class })` = 11）；ABox：[catalog.ttl](../example/catalog.ttl)。
 
 11 类 = Tag 层级 8（Tag/PII/Email/WorkEmail/Phone/Name/Financial/SSN）+ Dataset/Table/Column 3。`WorkEmail` 是 `Email` 子类，`tag_email_1` 挂在它上面，CQ1 的 `rdfs:subClassOf*` 因此不是装饰；`Address` 已删，避免“未用类”。
@@ -69,7 +73,7 @@ TBox：[ontology.ttl](../example/ontology.ttl)（11 类/5 属性；`SELECT (COUN
 
 ## A.4 约束与负例（产物：shape + 负例表）
 
-每条约束 = shape/检查 + 已知违反 + 干净样本。
+每条约束 = shape/检查 + 已知违反 + 干净样本。从 CQ 反推 shape 的三步见 [transfer §4](../sections/transfer.md)。
 
 Shapes：[shapes.ttl](../example/shapes.ttl)（2 条：TagHasLevel、HasTagClass）。
 
@@ -92,19 +96,19 @@ Shapes：[shapes.ttl](../example/shapes.ttl)（2 条：TagHasLevel、HasTagClass
 
 其余 6 个（S1/S2/S3/S5/S9/S10）分别缺 principal/moment/refuse/version、无 dataset 边、版本不一致；现状均为 silent 或 answer undercoverage。
 
-SFE-O 未交付可执行 shape，只借做法。分开报：违反检出/干净样本误报/人审接受率；Ontology Catch 的真实答案 catch/FA = 18.9%/16.8%、8.2%/3.5%、5.0%/1.8%（不是 precision）；PPV 复算见 [evidence](../evidence/README.md) 的 O-F08。
+SFE-O 未交付可执行 shape，只借做法。分开报：违反检出/干净样本误报/人审接受率；Ontology Catch 的真实答案 catch/FA（UniProt，4,410 条 / 3,383 可检查）是 curated 18.9%/16.8%、data-derived 8.2%/3.5%、masked LLM 5.0%/1.8%——这三组不是 precision；PPV 是另一口径（假设错答案基率下的 precision），复算见 [evidence](../evidence/ledger.md) 的 O-F08。
 
 ## A.5 可消费性闸门（产物：`build_report`）
 
 三关记录，不是一个 `parsed` 布尔：
 
 ```json
-{"_note":"fixture 期望，非实测","load":{"parsed":true,"missing_fields":[]},"validate":{"violations":2,"targeted":2,"declared_shape_samples":2,"caught":2,"contract_bad_samples":10,"contract_caught":2,"clean_fp":"未测"},"answer":{"CQ1":"2/2（steward）","CQ2":"7 列/4 表（steward）","CQ3":"4 数据集（governance）"},"classes":11,"properties":5,"policy_version":"0.4.0","ontology_version":"0.1.0","tag_version":"0.1.0","contract_version":"0.1.0","snapshot":"example/ 2026-11-10（日期标签，不是 hash）","parser":"rdflib+pyshacl（版本未记）","provenance":{"source":"synthetic"}}
+{"_note":"fixture 期望，非实测","load":{"parsed":true,"missing_fields":[]},"validate":{"violations":2,"targeted":2,"declared_shape_samples":2,"caught":2,"contract_bad_samples":10,"contract_caught":2,"clean_fp":"未测"},"answer":{"CQ1":"2 列/2 表（steward）","CQ2":"7 列/4 表（steward）","CQ3":"4 数据集（governance）"},"classes":11,"properties":5,"policy_version":"0.4.0","ontology_version":"0.1.0","tag_version":"0.1.0","contract_version":"0.1.0","snapshot":"example/ 2026-11-10（日期标签，不是 hash）","parser":"rdflib+pyshacl（版本未记）","provenance":{"source":"synthetic"}}
 ```
 
 - **load**：rdflib 解析 [ontology.ttl](../example/ontology.ttl)/[shapes.ttl](../example/shapes.ttl)/[catalog.ttl](../example/catalog.ttl)；`parsed`=语法/前缀，`missing_fields`=产物必填。
 - **validate**：pyshacl 跑 shapes；`targeted`=有目标且实际被检查的 shape 数；`violations`=shape 违反；`caught`=已声明 shape 坏样本被抓住数；`clean_fp` 未测。**两个分母不要混**：`2/2` 是 shape 声明样本；10 个契约坏样本只抓 2 个（`contract_caught/contract_bad_samples`）。分子就是 S7/S8，别把它当第二个独立测试。
-- **answer**：CQ1 返回 2、CQ2 7 列/4 表、CQ3 4 数据集；查询文本在 [B.2](./consume.md)；0 行必须分因。这些是 **raw**，不是 policy 后的结果；governed 见 C.4。
+- **answer**：CQ1 2 列 / 2 表、CQ2 7 列 / 4 表、CQ3 4 数据集；查询文本在 [B.2](./consume.md)；0 行必须分因。这些是 **raw**，不是 policy 后的结果；governed 见 C.4。
 
 **版本来源**：
 
@@ -119,13 +123,15 @@ SFE-O 未交付可执行 shape，只借做法。分开报：违反检出/干净�
 
 三关是记录，不是产物属性；`targeted=0` 不是 pass。
 
+> 空表见 [templates T7](../sections/templates.md#t7-build_report)；从 CQ 到三关的推导见 [transfer §7](../sections/transfer.md)。
+
 **交接**：`build_report` 的 `targeted/violations`→B 的先决条件；`query_id`→C.4；`policy_version`→A.5。
 
 **停**：`violations` ≠ 已声明坏样本数（2）或落在已知清单外；`targeted=0`（shape 无目标）当 pass；`answer` 0 行不分因；无契约/版本/来源；下游不加载。
 
 ## A.6 证据与边界
 
-> 证据见 [evidence](../evidence/README.md)。
+> 证据见 [evidence](../evidence/ledger.md)。
 
 - **能加载 ≠ 可用**：`parsed=true` 只到语法；S4（endpoint 假阳性）、S6（无 target 静默）都可能在「加载成功」后发生。
 - **`violations=2` ≠ 干净**：只证明两个已声明坏样本被抓住，不证明干净数据无误报。

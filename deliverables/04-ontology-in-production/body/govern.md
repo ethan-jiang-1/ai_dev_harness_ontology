@@ -21,7 +21,7 @@ parent: ../README.md
 | 策略 | **有语义、有测试、缺领域映射**：GB/T 43697 只分三级，04 的 1–4 是工程映射；XACML/ODRL/Rego/ReBAC 语义不同；11 条测试 10 条有唯一期望（T9 优先级未定） | 执行；规则正确；标准原文 |
 | 执行 | **单实现**：trustgraph 读路径 post-filter；fail-open、只删 subject；无合格第二实现 | 写授权；通用行为；生产效果 |
 
-三层不能互推——有标签 ≠ 有策略 ≠ 执行正确；读路径的单实例 10 条用例里 4 类漏洞。
+三层不能互推——有标签 ≠ 有策略 ≠ 执行正确；读路径的单实例 10 条用例里 4 类漏洞。标签来源/准入（覆盖、漏标、owner）见 [label-source](../sections/label-source.md)。
 
 ## C.2 策略表（可判定，不是标准）
 
@@ -62,7 +62,7 @@ parent: ../README.md
 | T8 | analyst | read | dataset | 3 | skip | table_subject_not_judged | R5 |
 | T9 | steward | read | table | null | **undetermined** | priority_gap | R4/R5 |
 | T10 | analyst | delete | column | 1 | deny | default_deny | R7 |
-| T11 | governance | read | dataset | null | allow | policy_allow | R8 |
+| T11 | governance | read | dataset | null | allow | policy_allow | R5/R8 |
 
 `clearance` 只在输入/审计里，**8 条规则均未消费**；T2 的 clearance=3 仍 deny，T5 的 clearance=1 仍 allow。
 
@@ -71,6 +71,8 @@ parent: ../README.md
 1. **先 `kind` 后 `level`**：表/数据集不按列判（T7/T8）；但 T9 暴露「R4 与 R5 谁先」没写，**未定**。
 2. **`skip` ≠ `allow`**：`skip` 是 XACML/ODRL 都没有的第 4 种效果；必须带 `reason`，审计单列。
 3. **不要用 `clearance` 做策略条件**：它在 input 里但规则未消费；消费它需要另写规则，不是现有语义。
+
+> **principal 与多标签的落地选择**：见 [transfer §6](../sections/transfer.md)。04 的 8 条规则假设 `resource_level` 是标量、principal 是单一身份；这两件事不先拍板，11 条测试全绿也只证明测试内部自洽。
 
 **标准与工程的分界**：GB/T 43697 只分核心/重要/一般三级；GB/T 35273 只定义个人信息/敏感个人信息；04 的 1–4 数值 + 2/3 阈值是**工程映射**，不是标准条款。条款与 XACML/ODRL 语义见 evidence 附录。
 
@@ -114,16 +116,16 @@ SELECT ?col WHERE { :t_hr :hasColumn ?col }
 
 > 完整 3 条在 [audit_records.json](../example/audit_records.json)（dec-0001 deny、dec-0002 skip/leak、dec-0003 allow）；正文只留 dec-0002。
 
-**粒度**：审计记录是 **per-subject**（`judged_subject` 一个），query 级 summary 用下表，不塞进一条记录。dec-0001 的 outcome 是“col_ssn withheld”，不是“CQ2 0/7”；0/7 是 query log 的事。
+**粒度**：审计记录是 **per-subject**（`judged_subject` 一个），query 级 summary 用下表，不塞进一条记录。dec-0001 的 outcome 是“col_ssn withheld”，不是“CQ2 的 0 列（7 列全拒）”——后者是 query log 的事。
 
 | query | principal | raw | decision | audit | governed / outcome |
 |---|---|---|---|---|---|
-| CQ1 | steward | 2/2 | allow | dec-0003 | 2/2 |
-| CQ1 | analyst | 2/2 | deny（逐列） | 样例未列 | 0 |
-| CQ2 | steward | 7/4 | allow（逐列） | 样例未列 | 7/4 |
-| CQ2 | analyst | 7/4 | deny（逐列） | dec-0001（col_ssn） | 0/7 |
-| CQ3 | governance | 4 | allow（R8） | 样例未列 | 4 |
-| LEAK-T1 | analyst | 3 | skip | dec-0002 | returned t_hr/col_ssn（leak） |
+| CQ1 | steward | 2 列 / 2 表 | allow | dec-0003 | 2 列 / 2 表 |
+| CQ1 | analyst | 2 列 / 2 表 | deny（逐列） | 样例未列 | 0 列 |
+| CQ2 | steward | 7 列 / 4 表 | allow（逐列） | 样例未列 | 7 列 / 4 表 |
+| CQ2 | analyst | 7 列 / 4 表 | deny（逐列） | dec-0001（col_ssn） | 0 列（7 列全拒） |
+| CQ3 | governance | 4 dataset | allow（R8） | 样例未列 | 4 dataset |
+| LEAK-T1 | analyst | 3 列 | skip | dec-0002 | returned t_hr/col_ssn（leak） |
 
 最小单元 = 请求 + `user_context` + 版本 + evidence + outcome + `execution_effect` + leak_check。`decision ∈ {allow,deny,skip,undetermined}`；`reason ∈ {policy_allow,policy_deny,table_subject_not_judged,default_deny,priority_gap}`；`execution_effect ∈ {returned,withheld,error}`；`leak_check ∈ {passed,object_direction_failed,aggregation_failed,alias_failed,version_mismatch,not_run}`。后三类是给 12 条用例留的位置；fixture 只填了 object 方向。
 
@@ -149,7 +151,7 @@ SELECT ?col WHERE { :t_hr :hasColumn ?col }
 
 ## C.6 证据与边界
 
-> 证据见 [evidence](../evidence/README.md)。
+> 证据见 [evidence](../evidence/ledger.md)。
 
 本章不证明端到端访问控制/泄漏率/replay；限定的证据见 evidence。
 

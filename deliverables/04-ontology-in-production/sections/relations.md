@@ -22,12 +22,14 @@ parent: ../README.md
 | A 建 | 02 R0/R1、03 位置 | 消费者契约、表示档位、shape/负例 |
 | B 用 | 02 R11、03 context/querying | OBDA、三路线、空结果分因 |
 | C 治 | 02 R8/R10、03 commit/checker | 读路径、策略、审计、输出校验 |
+| 决策/成本 | 02 operations/cost、evaluation、rollout；01 go/no-go | 五维成本、TCO、shadow→advisory→enforce、四类结论 |
 
 ## 04 不重复什么
 
 - 不重复 01 的 A/B/C/D 排序；只给「这条链能不能跑」。
 - 不重复 02 的 13 条 recipe；只给「同一 fixture 上怎么串」。
 - 不重复 03 的六位置论证；只在每章末尾给「证据与边界」。
+- 不重复 02 的成本公式；只把 04 这条链的成本项与门槛列出来（[decision](./decision.md)）。
 - 不新增 E；04 引的 E 是仓库内部结论编号，读者不需要打开 topics。
 
 ## 什么时候不该读 04
@@ -35,4 +37,6 @@ parent: ../README.md
 - 还在选方向：先读 01。
 - 已经决定接哪个缝，只要操作步骤：读 02 对应 recipe。
 - 要评审「为什么是这些位置」：读 03。
+- 还在比较表/视图/本体：先看 [01](../../01-capability-status/README.md)；04 只说明这条链假设的差异（TBox/shape/CQ/policy 共用标识），不下结论。
+- 要做报价：04 只有量级（`推测`），见 [decision §2](./decision.md)；没有单价不出点估计。
 - 要做效果承诺/采购：04 不提供；见 [boundaries](./boundaries.md)。

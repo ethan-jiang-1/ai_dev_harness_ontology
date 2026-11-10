@@ -32,6 +32,19 @@ updated: 2026-11-10
 3. **独立人类抽检**：只在对外交付时需要；内部研究不阻塞。
 4. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 已入库仍只有 1 个实现（外部扫描另见 sparql-guard 候选，未入库），需第二实现 + harness 调用点才能决定是否升第七时刻。
 
+## 2026-11-10 04 可执行性与决策支持补强（文档，不实现）
+
+> 只做文档；fixture 只读复跑（rdflib/pyshacl/jsonschema），不做实验、不加 engine。现行计数看顶部表。
+
+- **新增**：[transfer](../deliverables/04-ontology-in-production/sections/transfer.md)（4 推导 + principal/多标签 2 决策 + 最小路径 + 自测）；[templates](../deliverables/04-ontology-in-production/sections/templates.md)（T1–T8 空表）；[decision](../deliverables/04-ontology-in-production/sections/decision.md)（成本五维/TCO、4 阶段、规模边界、conditional、memo、RACI）。
+- **验收**：acceptance 增「期待与数据需求」X1–X5（验收规格，非 E）；README/GUIDE/sections/map/relations/body 索引接通。
+- **缺口补齐**：新增 [label-source](../deliverables/04-ontology-in-production/sections/label-source.md)（标签源三种路径 + 准入 8 问 + 50 列验证 + 停）；[worked-example](../deliverables/04-ontology-in-production/sections/worked-example.md)（3 表/6 列、多标签 B、5 规则/5 测试/2 audit）；decision §2.5（打标/执行层/审计公式 + 敏感性）；templates T9（成本工作纸）。
+- **结构**：README 归位——04/README 只留读者卡/问题索引/产物地图/起点/门槛与边界入口/支持页；8 步读路径移入 GUIDE，5 组门槛移入 acceptance，3 条不能证明移入 boundaries，why-not-SQL 移入 relations；example/README 拆出 run.md / data.md；evidence/README 拆出 ledger.md / sources.md。
+- **一致性**：CQ1 与 shape 片段加 `ontology.ttl` 同图前置；example 7→8 规则；T9 R4/R5；T11 命中 R5/R8；E-24 与 evidence 11 测试/8 规则/R4/R5；A.5 `CQ1` 改「2 列/2 表」；C.4/journey/B.6 去 `0/7` 混用；A.4 三组 catch/FA 补标签与样本量；glossary 加 PPV。
+- **复跑**：3/3 parse；11 类/5 属性；pyshacl 2 violations；CQ1 2（TBox 同图）/CQ2 7 列 4 表/CQ3 4 dataset；audit schema 0 错；policy 11/11（含 T11 命中 R5/R8）。
+- **未做**：不做实验；不加新 E；成本只有量级（`推测`），没有单价与 ROI；多标签/principal 是决策表，不是结论；worked-example 是示意，不是第二 fixture。
+- **check**：`check_repo` 0 坏链 / 0 未定义 ID（508 文件；E=27，L=79）。
+
 ## 2026-11-10 04 内容整改（阅读/消化，不做实现）
 
 > 历史快照：只记录这次改了什么；**没有跑示例、没有做实验**。现行计数看顶部表。

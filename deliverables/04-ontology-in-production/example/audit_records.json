@@ -18,7 +18,7 @@
     "execution_effect": "withheld",
     "obligation": "log",
     "evidence": [":tag_ssn_1"],
-    "outcome": "col_ssn withheld; query-level 0/7 in C.4 query log",
+    "outcome": "col_ssn withheld; query-level 0 of 7 columns in C.4 query log",
     "leak_check": "passed"
   },
   {

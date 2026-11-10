@@ -28,6 +28,7 @@ parent: ../README.md
 | governed | policy + 执行层之后的结果 | C.4 |
 | skip | 策略的“未判定”效果，不是 allow，也不是 deny | C.2/C.3 |
 | leak oracle | 独立的安全期望：敏感 object 不出现；不等于“0 行” | C.3 |
+| PPV | positive predictive value / precision；04 只在 A.4 / O-F08 用，指「假设错答案基率下的 precision」，不是论文直接报告值 | A.4 / O-F08 |
 | audit | 一次 decision 的记录；04 用 per-subject 样例 + query log 表 | C.4 |
 | replay | 同版本/快照重跑并对照 decision/reason/outcome | C.4 |
 | snapshot | 数据/策略的快照；04 的 `example/ 2026-11-10` 是日期标签，不是 hash | A.5/C.4 |

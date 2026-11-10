@@ -4,98 +4,23 @@ updated: 2026-11-10
 parent: ../README.md
 ---
 
-# 04 证据（附录）
+# 04 证据（附录）：索引
 
-> **这是附录，不进入主线。** 正文里的出处编号在这里；读者第一遍可以跳过。细节/原始研究底稿可以点 `topics/`，但主路径不需要。
+> **这是附录，不进入主线。** 正文里的出处编号在这里；读者第一遍可以跳过。本页只做索引，内容在 [ledger](./ledger.md) 与 [sources](./sources.md)。
 > 已入库走 E；未入库只标 signal，不作依据；旧源已删。
 
-## 1. 已入库 E
+## 怎么用
 
-| E | 用在哪 | 等级 |
+| 你要查 | 去 | 里面是什么 |
 |---|---|---|
-| E-02 | 建：负例/验收 | 已核 |
-| E-04 | 边界：输入 gate≠输出校验 | 已核 |
-| E-06 | 边界：失败在 workflow | 已核 |
-| E-12 | 建：薄层优先 | 已核 |
-| E-19 | 全篇：位置×成本 | 推测（综合） |
-| E-20 | 用/治：执行形态 | 已核（代码） |
-| E-21 | 用：三路线 | 已核（原文） |
-| E-22 | 治：三层访问 | 已核（原文+代码） |
-| E-23 | 治：读路径 10 用例 / 第二实现 | 已核（代码） |
-| E-24 | 治：策略层语义 / 10 测试 / 优先级空洞 | 已核（标准摘要+文件） |
-| E-25 | 建：三关 / 10 坏样本 / 2 抓 2 | 已核（标准卡+文件） |
-| E-26 | 用：四路线按资产选 | 推测（综合） |
-| E-27 | 治：输出六类 + 跨段传播 | 推测（综合） |
+| E 台账、按章证据、O 地址 | [ledger](./ledger.md) | 13 条 E；6 个 topics 支撑页；按章证据表；O-F08 / O-F14 |
+| 标准材料卡、外部 signal | [sources](./sources.md) | 6 张标准卡（条款待核）；8 个未入库 signal |
 
-依据：[conclusions](../../../topics/conclusions.md)；不新增 E。
+## 读法
 
-## 1b. topics 支撑页（不是 E，只作证据组织）
+1. **要核一条判断**：先看 [ledger](./ledger.md) 的 E 表，再按「按章证据」找到对应的节与锚点。
+2. **要核标准**：看 [sources](./sources.md) 的标准卡；摘要级/精读/待核分开写，不把摘要当条款。
+3. **要拆「标准 vs 工程」**：E 是结论、O 是地址、标准卡是「标准说了什么」、工程产物是「我们做了什么」；四者不能互推。
+4. **04 不新增 E**：本附录只整理已有 E；新增判断回 `topics/`。
 
-| 页 | 用在哪 | 组织什么 |
-|---|---|---|
-| [consumability](../../../topics/05-produce/representation/consumability.md) | 建：三关 + 10 坏样本 | SHACL/ODCS/LinkML + SFE-O/CASTON/OntoDoc |
-| [querying/compare](../../../topics/03-knowledge/querying/compare.md) | 用：4×8 矩阵 + 17 类失败 | GGC/NLKGQ/KGVoyager/Ontop + E-21 |
-| [policy](../../../topics/01-constraint/policy/README.md) | 治：策略 schema + 10 测试 | GB/T/XACML/ODRL/Atlas/Ranger/OpenFGA（待入库） |
-| [read-path](../../../topics/01-constraint/commit-gate/read-path.md) | 治：10 条用例 + 第二实现 | trustgraph + sparql-guard/Jena（候选/退役） |
-| [output-validation](../../../topics/02-judgment/checker/output-validation.md) | 治：六类 + 三态 | pyshacl/open-ontologies/PROV/GE |
-| [propagation](../../../topics/06-measure/metrics/propagation.md) | 治：10 类 × 3 段 | E-06/E-05 + 三段 artifacts |
-
-> 这些页不是 E；04 的主句仍落 `E-xx`。页只回答「证据怎么排成表」，不新增判断。三关协议、11 条策略测试、12 条泄漏用例、10×3 故障矩阵是**工程产物**，标「工程产物 / 待核」，不升 E；引用时写 `工程产物`，不写成「已验证」。
-
-## 1c. 标准材料卡（不是 E，条款待核）
-
-| 标准 | 用在哪 | 读法 |
-|---|---|---|
-| [GB/T 43697-2024](../../../src/web/gbt-43697/gbt-43697.card.md) | C.1/C.2：三级 vs 1–4 | 摘要级；三级名称转述 |
-| [GB/T 35273-2020](../../../src/web/gbt-35273/gbt-35273.card.md) | C.2：PII 类别 | 摘要级；正文未取 |
-| [W3C ODRL 2.2](../../../src/web/w3c-odrl-2.2/w3c-odrl-2.2.card.md) | C.2：冲突/义务 | 精读；§2.10 待核 |
-| [OASIS XACML 3.0](../../../src/web/oasis-xacml-3.0/oasis-xacml-3.0.card.md) | C.2：合并算法/obligation | 精读；FulfillOn 待核 |
-| [W3C SHACL](../../../src/web/w3c-shacl/w3c-shacl.card.md) | A.4/A.5、C.5 | 摘要级；条款待核 |
-| [ODCS v3.1.0](../../../src/web/odcs-v3.1/odcs-v3.1.card.md) | A.1/A.5 | 精读；Required 待核 |
-
-> 材料卡只证明「标准说了什么」，不证明「你的实现/映射正确」；不升 E。
-
-## 1d. 按章证据（从正文移入）
-
-| 章 | 节 | 证据 | 等级 |
-|---|---|---|---|
-| A | A.1 契约 | [consumability §3](../../../topics/05-produce/representation/consumability.md)；工程产物 | 未测（无 CQ） |
-| A | A.2 档位 | E-12 / O-F14 | 推测 |
-| A | A.3 本体 | E-22 / O-N28；T:01/access-control F1 | 工程产物 |
-| A | A.4 shapes | SFE-O §4.1；E-02 / O-F08；PPV 见 §1e | 未测 |
-| A | A.5 三关 | E-25；[consumability §1/§6](../../../topics/05-produce/representation/consumability.md)；版本来源表 | 工程产物 |
-| A | 全章 | T:05/representation、T:05/generation、S:SFE-O/Catch/N&D/Glyph | 边界 |
-| B | B.0/B.1 路线 | E-21 / E-26；[compare](../../../topics/03-knowledge/querying/compare.md) §1–§3 | 已核（单设置）/ 推测（综合） |
-| B | B.2 查询 | 工程产物（3 条 SPARQL）；E-21；T:querying §5；[Qlever digest](../../../src/open-source/ad-freiburg-qlever/digest.md) | 工程产物 |
-| B | B.3 纠错 | E-21；[querying/F1](../../../topics/03-knowledge/querying/findings.md) | 未测：2×2、空结果 |
-| B | B.4 OBDA | E-20；[Ontop digest](../../../src/open-source/ontop-ontop/digest.md) | 已核（代码） |
-| B | B.6 验收 | 工程产物（验收表）；E-21 | 示例 |
-| C | C.1 三层 | T:access-control F1–F3；[policy](../../../topics/01-constraint/policy/README.md)；[read-path](../../../topics/01-constraint/commit-gate/read-path.md)；S:Glyph/trustgraph；E-22 | 已核（综合） |
-| C | C.2 策略 | E-24；T:policy F1–F3；[OPA digest](../../../src/open-source/open-policy-agent-opa/digest.md)；8 规则/11 测试 | 已核（标准摘要）/ 推测（映射） |
-| C | C.3 泄漏 | E-23；[read-path](../../../topics/01-constraint/commit-gate/read-path.md)；S:trustgraph | 已核（代码） |
-| C | C.4 审计 | T:06/trace；[policy mechanism](../../../topics/01-constraint/policy/mechanism.md)；3 条样例 + query log | 未测 |
-| C | C.5 输出/传播 | [output-validation](../../../topics/02-judgment/checker/output-validation.md)、[identity F3](../../../topics/04-state/identity/findings.md)、[coverage G](../../../topics/06-measure/metrics/coverage.md)；工程产物 | 未测 |
-
-> 这是附录表；正文只在章末说「见这里」，不重复内码。读正文时不需要看这张表。
-
-## 1e. 对象地址（O-xx，不是 E）
-
-| O | 是什么 | 值/公式 | 出处 |
-|---|---|---|---|
-| O-F08 | PPV 复算（A.4 的“PPV 见 evidence”） | `PPV = π·Se / (π·Se + (1−π)·FA)`；π=0.25；curated Se=60.1%、FA=15.0% → 57.2%（原文 57.1） | [objects](../../../topics/objects.md) |
-| O-F14 | E-12 边际分解（A.2 的 54.6pp） | 54.6 + 19.8 = 74.4pp；薄层占 73.4% | [objects](../../../topics/objects.md) |
-
-> O 是地址，不是结论；正文主句仍落 E。`PPV` 是复算值，不是论文直接给的 precision。
-
-## 2. 外部信号（未入库，只作旁证）
-
-| 来源（signal） | 用在哪 |
-|---|---|
-| Industrial KG 2609.31663 | 建：schema 抽取 |
-| SAGA 2607.14494 | 建：grounding |
-| Legal KG 2607.24551 | 用：法规本体 |
-| Build2SPARQL 2610.00224 | 用：building KGQA |
-| Researcher Agents 2608.07700 | 用：predicate |
-| Graph-Agentic 2609.06391 | 治：失败传播 |
-| AWS 语义层指南 | 用：语义层/MCP |
-| HN: Netflix ontology | 治：observability |
+> 三关协议、11 条策略测试、12 条泄漏用例、10×3 故障矩阵是**工程产物**，标「工程产物 / 待核」，不升 E；引用时写 `工程产物`，不写成「已验证」。

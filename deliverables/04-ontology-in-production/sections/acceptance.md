@@ -16,7 +16,7 @@ parent: ../README.md
 | A2 | 3 个 TTL 可解析 | 看 `ontology.ttl`/`shapes.ttl`/`catalog.ttl` 是否存在且可解析（作者记录） | 3/3 parsed；`?c a owl:Class` = 11 | 查语法/前缀 |
 | A3 | shapes 有 target | 每个 shape 有 `sh:targetClass`/`targetNode`；`targeted>0` | 2/2 有目标；`TagHasLevel` 范围 1–4 | 补 target；否则 `conforms=true` 是空转 |
 | A4 | 已知 shape 坏样本被抓住 | 对照 shapes 与负例表（作者记录） | 2/2 shape 声明样本（字面量 tag、缺 level）；10 个契约坏样本只抓 2 个，见 [A.5](../body/build.md) | 查 shape 是否覆盖 |
-| A5 | 三条 CQ 期望对 | 对照 [B.2](../body/consume.md) 的 CQ1/CQ2/CQ3（raw，作者已核） | CQ1 2（steward）/ CQ2 7 列 4 表（steward）/ CQ3 4（governance），都是 raw | 0 行先分因，不要改 prompt |
+| A5 | 三条 CQ 期望对 | 对照 [B.2](../body/consume.md) 的 CQ1/CQ2/CQ3（raw，作者已核） | CQ1 2 列 2 表（steward）/ CQ2 7 列 4 表（steward）/ CQ3 4 数据集（governance），都是 raw | 0 行先分因，不要改 prompt |
 
 ## B 用
 
@@ -40,15 +40,35 @@ parent: ../README.md
 
 ## 最小上线门槛（5 组）
 
-五组全满足才叫 **可上线候选**；缺一条就是「演示」或「conditional」。
+五组全满足才叫 **可上线候选**；缺一条就不是可上线——按缺口性质分 `conditional` / 演示 / `no-go`（见 [decision §6](./decision.md)）。
 
-1. A1–A4 过：契约、TTL 解析、target、坏样本。
-2. A5 + B1–B3 过：3 条 CQ、路线、记录、空结果分因。
-3. C1–C3 过：三层、策略测试、object 探针。
-4. C4–C5 过：audit schema + 3 条记录 + 1 条 replay 对照；12 条泄漏用例有期望。
-5. 没有未修漏洞：object 泄漏、T9 优先级、`targeted=0`、写授权。
+| # | 组 | 通过长什么样 |
+|---|---|---|
+| 1 | A1–A4 | 契约 6 项无空；3 个 TTL 可解析；2 个 shape 有 target；2/2 坏样本被抓住 |
+| 2 | A5 + B1–B3 | CQ1 2 列 2 表 / CQ2 7 列 4 表 / CQ3 4 数据集（raw，标 principal）；路线有记录；0 行分因 |
+| 3 | C1–C3 | 三层来源清；11 条策略测试 10 条唯一、T9 undetermined；LEAK-T1 敏感 object 不出现 |
+| 4 | C4–C5 | 3 条 audit 必填齐；同 fixture 对照；12 条 leak 有期望 |
+| 5 | 无未修漏洞 | object 泄漏、T9、`targeted=0`、写授权 |
 
-**当前 fixture 的默认结论是 `conditional`，不是 `可上线`**：C3 用的 trustgraph 已知 fail-open、只删 subject，object 探针会返回行；修法（第二实现/两侧约束/粗粒度 deny）不在 04 内。要过 C3，换或修执行层；否则只能交「conditional + 未修清单」。
+> 这些是 fixture 的期望值，不是运行记录；跑出不同数先查 `rdflib`/`pyshacl` 版本与 ABox 类型，不要先改数据。
+
+**当前 fixture 的默认结论是 `conditional`，不是 `可上线`**：C3 用的 trustgraph 已知 fail-open、只删 subject，object 探针会返回行；修法（第二实现/两侧约束/粗粒度 deny）不在 04 内。要过 C3，换或修执行层；否则只能交「conditional + 未修清单」。`conditional` 怎么处置、什么时候停，见 [decision](./decision.md)。
+
+## 期待与数据需求（验收规格）
+
+> 这一节不是结论，是这份交付物要成立需要什么证据。把「读完能做到什么」写成可证伪的句子；缺的数据回 `topics/` 或 `frontier` 找，不在交付物里补。验收规格（非 E）。
+
+| # | 期待（可证伪） | 支持它需要的数据 | 现在有什么 | 缺口 |
+|---|---|---|---|---|
+| X1 | 读者能用自己域的 5–10 张表写出 5–10 类 TBox，且 3 条 CQ 能跑出非空或可解释的 0 行 | 一份脱敏 schema + 3 个消费者问题 + 预期答案 | fixture 5 表/13 列；单域 | 第二域；读者实测 |
+| X2 | 读者能明确 principal 模型（服务身份/用户角色），并让 3 条 CQ 的 allow/deny 与契约一致 | 一次调用链梳理 + `user_context` 样本 + 认证方式 | fixture 同时出现 `steward` / `analyst`，契约只写 `steward`；未闭合 | 真实调用链 |
+| X3 | 读者能对多标签列给出规则，并让 CQ2/policy 结果可复算 | ≥2 tag/列的样本 + 合并规则 | Glyph 多标签 `已核`（Glyph digest；E-22）；fixture 单标签 | 多标签 fixture |
+| X4 | 读者能估出建/用/治的工作量（量级 + 未估项），并说明缺哪几个数 | 建模/打标/集成/审计人日 + 单价 | 建模 2–4 人周（`推测`）；shapes 3–5 人日；其余未估 | 打标/集成/审计量级；单价 |
+| X5 | 读者能填完 9 件产物并通过 5 组门槛，或明确写 `conditional` | 一份填完的 `build_report` + `policy_tests` + audit + 验收记录 | fixture 示例；作者未在第二域填过 | 第二域填表 |
+
+**怎么用**：X1/X2 是承重；填不出就停在 A.1，不要建 TBox。X3–X5 是边界；量不出来就写 `未测`，不要用通用经验补。期待不是承诺——它写的是「支持这条判断需要什么数据」，不是「我们已经有了」。
+
+> 对应动作：推导见 [transfer](./transfer.md)，填表见 [templates](./templates.md)，成本和 `conditional` 处置见 [decision](./decision.md)。
 
 ## 加强项（不阻塞最小链）
 
@@ -69,3 +89,5 @@ parent: ../README.md
   "notes": "T9 未定；LEAK-T1 返回行；严格 replay 未跑（snapshot 是日期标签）"
 }
 ```
+
+> `result` 取 `go` / `conditional` / `no-go` / `not enough data`；上面是 `conditional` 示例。

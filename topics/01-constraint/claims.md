@@ -27,6 +27,6 @@ updated: 2026-11-09
 | 01-L16 | 访问控制至少三层：标签/分类（Glyph 生产）、策略（无领域来源；OPA 为 adjunct 候选）、执行（trustgraph 单实现）；三层不能互推 | 推测（综合） | access-control F1–F3 | Glyph 单企业/标签层；trustgraph 单实现/只读代码；OPA 不解析本体/不消费标签 |
 | 01-L17 | Glyph 的标签层可工程化，但 NDCG/MAP 是检索指标、生产接受率是作者报告且对 FN 盲；不能当打标准确率或访问控制正确性 | 已核（一手正文；生产部署为作者报告）/ 推测（跨企业） | Glyph digest | 275-leaf 内部本体；无 OOD/漏标率；单企业 |
 | 01-L18 | trustgraph 的读路径 SHACL-AF 过滤是单实现、fail-open、只删 subject；读路径过滤 ≠ 写授权 | 已核（代码） | E-20 / commit-gate F5–F7 | 错误路径细节在 commit-gate；本派不复述 |
-| 01-L19 | 策略层有可判定的冲突/默认/义务语义（XACML/ODRL/Rego/ReBAC 各不相同），但领域标准只给等级/处置、不给 principal/action 映射；映射是工程选择 | 已核（标准摘要）/ 推测（映射） | policy F1–F3；E-22；**已升 E-24** | GB/T 43697/35273、XACML/ODRL 已入材料卡；Atlas/Ranger/OpenFGA 待入库；10 条测试未跑 |
+| 01-L19 | 策略层有可判定的冲突/默认/义务语义（XACML/ODRL/Rego/ReBAC 各不相同），但领域标准只给等级/处置、不给 principal/action 映射；映射是工程选择 | 已核（标准摘要）/ 推测（映射） | policy F1–F3；E-22；**已升 E-24** | GB/T 43697/35273、XACML/ODRL 已入材料卡；Atlas/Ranger/OpenFGA 待入库；11 条测试未跑 |
 
 > **跨页缺口（2026-11-09 已修）**：Commit Boundary 仍是概念架构，未升 E；`conclusions` 的 E-05 属 FIRME，不属于本派，`src/papers/2610.37407-commit-boundary/digest.md` 的 `claims: [E-05]` 已改为空并回写 §8。E-16 已按 OntoAct digest 的 78.6/83.3/90.0%（IfR 64.3/66.7/65.0%）、SI `1.6–2.4` 校正。

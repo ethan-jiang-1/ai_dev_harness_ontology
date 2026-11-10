@@ -49,6 +49,8 @@ SELECT ?col ?table WHERE {
 
 期望 2 列 / 2 表（UI/steward，raw）。
 
+> CQ1 的 `rdfs:subClassOf*` 需要 TBox（`ontology.ttl`）与 ABox（`catalog.ttl`）**同图**；只加载 ABox 会得到 1 行——`tag_email_1` 的 `WorkEmail` 子类边不在图里。
+
 **CQ2** 哪些表至少有一列等级 ≥3
 
 ```sparql
@@ -133,8 +135,8 @@ SELECT ?dataset (COUNT(?col) AS ?n) WHERE {
 
 | 检查 | principal | raw | governed | 不通过时 |
 |---|---|---|---|---|
-| CQ1 | UI/steward | 2 行 / 2 表 | 2 行 / 2 表（analyst: 0） | 0 行先分因，不要改 prompt |
-| CQ2 | agent/steward | 7 列 / 4 表 | 7 列 / 4 表（analyst: 0/7） | 查 `FILTER`/类型/重复 |
+| CQ1 | UI/steward | 2 列 / 2 表 | 2 列 / 2 表（analyst: 0 列） | 0 行先分因，不要改 prompt |
+| CQ2 | agent/steward | 7 列 / 4 表 | 7 列 / 4 表（analyst: 0 列，7 列全拒） | 查 `FILTER`/类型/重复 |
 | CQ3 | governance | 4 个 dataset | 4 个 dataset（analyst: 不适用） | 查 `?col a :Column` 与 dataset 边 |
 | 0 行 | — | 每条有原因 | — | 不要重试同一条 |
 | 纠错 2×2 | — | 未测 | — | 不要报净收益 |
@@ -142,7 +144,7 @@ SELECT ?dataset (COUNT(?col) AS ?n) WHERE {
 
 ## B.7 证据与边界
 
-> 证据见 [evidence](../evidence/README.md)。
+> 证据见 [evidence](../evidence/ledger.md)。
 
 - 三条路线各单设置、无头对头 → 不能排序，不能当自域基线。
 - OBDA 重写落到 SQL，不证明查询正确或本体独立贡献。

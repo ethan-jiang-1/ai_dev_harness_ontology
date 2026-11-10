@@ -100,7 +100,7 @@
       "clearance": 3,
       "expected_decision": "undetermined",
       "expected_reason": "priority_gap",
-      "tests": "R4 vs R6 谁先未写；不要求唯一期望，要求实现显式报 undetermined"
+      "tests": "R4 vs R5 谁先未写；不要求唯一期望，要求实现显式报 undetermined"
     },
     {
       "id": "T10",

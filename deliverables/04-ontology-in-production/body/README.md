@@ -37,3 +37,9 @@ A.1 契约 → A.2 档位 → A.3 本体 → A.4 shapes → A.5 三关
 ```
 
 跳过任何一步，都要在「验收清单」里对应地标「未做」，不要假装通过。
+
+## 如果你有自己的表
+
+先读 [transfer](../sections/transfer.md) §2–§5：把「你的表 → TBox、消费者问题 → CQ、CQ → shape、标签 → policy」推一遍；再用 [templates](../sections/templates.md) 填。不要从 A.3 的 11 类照抄——fixture 的类只对 fixture 的 3 条 CQ 负责。
+
+要拍板/写 memo：读 [decision](../sections/decision.md)。
