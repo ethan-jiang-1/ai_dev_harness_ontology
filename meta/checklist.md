@@ -26,7 +26,7 @@
 - 每个「推测 / 存疑」有未核理由或反例。
 - 卡片/消化修正了旧判断 → `updates:` 列全，主题页已回改。
 - 派内新判断在 `claims.md`；没有跨派/交付物的理由时，不应改 `conclusions.md`。
-- `deliverables/` 只引 `E-xx`，不引 `L-xx`。
+- `deliverables/` 引 `E-xx` 作结论；`O-xx` 只作地址（[ADR 0009](../adr/0009-object-layer.md)），不引 `L-xx`；O 不得替代 E 作主句。
 
 ## 4. 计数
 

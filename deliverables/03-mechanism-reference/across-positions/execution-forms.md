@@ -1,16 +1,16 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-09
+updated: 2026-11-10
 section: execution-forms
-evidence: [E-20]
+evidence: [E-20, E-22]
 ---
 
 # 形态：机器拿本体做了什么
 
 > 同一份本体放在同一个位置，机器拿它做的事也可能不同。**「有引擎」不等于「会拦」，更不等于「有授权」。**
 >
-> 本页的上游是 [topics/execution-forms.md](../../../topics/execution-forms.md)；代码核对是 E-20，不是效应量。
+> 本页的上游是 [topics/execution-forms.md](../../../topics/execution-forms.md)；代码核对是 E-20/E-22，不是效应量。每行的 `O` 是代码锚地址（[objects.md](../../../topics/objects.md)）。
 
 ## 1. 五档
 
@@ -40,16 +40,19 @@ evidence: [E-20]
 2. **执行 ≠ 授权。** CI 规则门、读路径过滤都不是单次写授权；`enforce` 不等于 `authorize`。
 3. **授权 ≠ 正确。** commit gate 只保证按 contract 执行，不保证 policy 本身对。
 
-## 3. 四个项目的代码级核对
+## 3. 五个项目的代码级核对
 
-| 项目（commit） | 位置 | 形态 | 机器实际做什么 | 不做什么 |
-|---|---|---|---|---|
-| trustgraph `184f622` | `read-path` | `engine` | 从 `urn:graph:policy` 加载 SHACL-AF NodeShape；跑 `sh:SPARQLTarget` + `sh:SPARQLRule`；被 block 的 subject 侧三元组从查询结果删除 | 不是动作前 gate；不做 OWL 推理；异常 fail-open；只删 subject 侧 |
-| semantica `39cf721` | `checker` | `compiled` | `OntologyEngine.to_shacl` 派生 SHACL；`validate_graph` 调 pyshacl，`inference="none"`；CLI `validate shacl` | 不在 agent loop 内自动调用；不做 OWL 推理；无 catch/FA 测量 |
-| ontop `964dbb7` | `supply` | `engine` | TBox 饱和 + 查询重写（rewrite → unfold → SQL）；`QuestStatement` 执行 | 不是 gate；不校验输出；不是 LLM agent |
-| open-ontologies `375fbc4` | `none`（工具面；CI 规则门） | `engine` | 默认 SHACL→SPARQL 交 Oxigraph；`--verified` 走 `oo-shacl`（0/2/3，3=undetermined）；`closure_diff` 报蕴含损失 | 不授权单次写/落盘；`enforce` 是 CI 规则门；外层把 `conforms:null` 映射为 exit 2 |
+| 项目（commit） | 位置 | 形态 | 机器实际做什么 | 不做什么 | O |
+|---|---|---|---|---|---|
+| trustgraph `184f622` | `read-path` | `engine` | 从 `urn:graph:policy` 加载 SHACL-AF NodeShape；跑 `sh:SPARQLTarget` + `sh:SPARQLRule`；被 block 的 subject 侧三元组从查询结果删除 | 不是动作前 gate；不做 OWL 推理；异常 fail-open；只删 subject 侧 | `O-C01`–`O-C04` |
+| semantica `39cf721` | `checker` | `compiled` | `OntologyEngine.to_shacl` 派生 SHACL；`validate_graph` 调 pyshacl，`inference="none"`；CLI `validate shacl` | 不在 agent loop 内自动调用；不做 OWL 推理；无 catch/FA 测量 | `O-C05`–`O-C07` |
+| ontop `964dbb7` | `supply` | `engine` | TBox 饱和 + 查询重写（rewrite → unfold → SQL）；`QuestStatement` 执行 | 不是 gate；不校验输出；不是 LLM agent | `O-C08`–`O-C09` |
+| open-ontologies `375fbc4` | `none`（工具面；CI 规则门） | `engine` | 默认 SHACL→SPARQL 交 Oxigraph；`--verified` 走 `oo-shacl`（0/2/3，3=undetermined）；`closure_diff` 报蕴含损失 | 不授权单次写/落盘；`enforce` 是 CI 规则门；外层把 `conforms:null` 映射为 exit 2 | `O-C10`–`O-C13` |
+| OPA `3dc83ae` | `none`（策略层候选） | `engine`（通用策略，不解析本体） | `ast/` Rego AST、`compile/` Rego 编译、`topdown/` 求值；`server/server.go` 返回 decision | 不解析 OWL/SHACL/RDF；不执行阻断；不是本体引擎 | `O-C14`–`O-C15` |
 
-> E-20 的限定：4 个项目、pin commit、只读代码、未跑测试；不是效应量，不能外推为所有实现。
+> E-20 的限定：4 个项目、pin commit、只读代码、未跑测试；不是效应量，不能外推为所有实现。OPA 来自 E-22，只作策略层候选。
+>
+> Qlever 是执行层候选，本轮无 `file:symbol` 代码锚（未做代码核对），暂不列；见 [qlever 卡](../../../src/open-source/ad-freiburg-qlever/card.md)。
 
 ## 4. 位置 × 形态
 

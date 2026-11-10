@@ -10,21 +10,23 @@ parent: ../README.md
 
 ### 5.1 验收与 stop：按机制选尺
 
-| 机制 | 主指标 | 过程指标 | 反事实 | 停线（工程建议，非 E） |
-|---|---|---|---|---|
-| R0 | 四项检查 pass/flag/unknown | 修复清单 | 无检查直接上 | 任一 unknown 当 pass |
-| K1 | primary-trap avoidance | token | K0 | 剩余 trap 与深知识无关 → 停 |
-| 投影 | primary-trap/element | 字符数/维护人日 | K1 | <5pp、>60k、>2 人周/月 |
-| 编译 | token/问、p95 | `p_h`/miss、`c`、`Q` | 词法检索 | `p_h < p_min` |
-| evidence | 准确率、引用率 | 检索率、grounding 校准 | 纯文本 RAG | 检索率 <50% |
-| checker | 增量 catch、FA、净修复 | per-1k 成本 | 空结果重试 | catch <5pp、FA >15% |
-| action | harm、审批、false-veto、task success | 保留率、φ、miss–false-block 前沿 | 不上护栏 | 在 miss 预算下 false-block 前沿不可接受（不要用单点 5%） |
-| memory | CMR、merge precision、Acc@complete | 抽取层误差 | 不做 registry | precision <90% |
-| read-path | 泄漏率、误拦 | 延迟 | 不过滤 | fail-open 未修/object 方向未测 |
-| commit | false-defer、unresolved、审计可追 | 人审工时 | 直接 merge | >20%、>10%、不可追 |
-| 离线 SHACL | 负例检出、干净误报 | checked/passed/undetermined | 无 CI | 三态折叠/覆盖不明 |
-| OBDA | 查询结果一致、时延 | 映射/本体版本 | 手写 SQL | 需要 DL/事务写入 |
-| 受监管 | citation precision、strict-pass 违规 | 人签核分钟 | 人工流程/只做检索 | 违规 >0、精度 <0.95 |
+| 机制 | 主指标 | 过程指标 | 反事实 | 停线 | 出处（O/E） | 量不出时 |
+|---|---|---|---|---|---|---|
+| R0 | 四项检查 pass/flag/unknown | 修复清单 | 无检查直接上 | 任一 unknown 当 pass | 工程建议（O-T01） | 改人工清单；不宣称 pass |
+| K1 | primary-trap avoidance | token | K0 | 剩余 trap 与深知识无关 → 停 | 工程建议 + E-12（O-T02） | 先做 K0 回放；量不出就停在 K1 |
+| 投影 | primary-trap/element | 字符数/维护人日 | K1 | <5pp、>60k、>2 人周/月 | 工程建议 + E-12（O-T03） | 先量 K1 基线；<5pp 就停 |
+| 编译 | token/问、p95 | `p_h`/miss、`c`、`Q` | 词法检索 | `p_h < p_min` | E-14 / O-F01（O-T04） | 先量 p_h；量不出就不编译 |
+| evidence | 准确率、引用率 | 检索率、grounding 校准 | 纯文本 RAG | 检索率 <50% | 工程建议 + E-03（O-T05） | 先量检索率；<50% 先修检索 |
+| checker | 增量 catch、FA、净修复 | per-1k 成本 | 空结果重试 | catch <5pp、FA >15% | 工程建议 + E-02（O-T06） | 先建空结果基线；超不过就停 |
+| action | harm、审批、false-veto、task success | 保留率、φ、miss–false-block 前沿 | 不上护栏 | 在 miss 预算下 false-block 前沿不可接受（不要单点 5%） | E-04 + 2607.22868（O-T07） | 标 gap；只 shadow，不承诺 |
+| memory | CMR、merge precision、Acc@complete | 抽取层误差 | 不做 registry | precision <90% | 工程建议 + E-05（O-T08） | 先量 merge precision；<90% 停 |
+| read-path | 泄漏率、误拦 | 延迟 | 不过滤 | fail-open 未修/object 方向未测 | E-20（O-T09） | 标「单实现」；不升第七时刻 |
+| commit | false-defer、unresolved、审计可追 | 人审工时 | 直接 merge | >20%、>10%、不可追 | 工程建议 / gap（O-T10） | 标 gap；只做设计 |
+| 离线 SHACL | 负例检出、干净误报 | checked/passed/undetermined | 无 CI | 三态折叠/覆盖不明 | E-20（O-T11） | 三态报不出就停 |
+| OBDA | 查询结果一致、时延 | 映射/本体版本 | 手写 SQL | 需要 DL/事务写入 | E-20（O-T12） | 需 DL/事务写入就停 |
+| 受监管 | citation precision、strict-pass 违规 | 人签核分钟 | 人工流程/只做检索 | 违规 >0、精度 <0.95 | 工程建议 + Grid（O-T13） | 0.95 不可达就停 |
+
+> `出处` 只许三类：`E-xx`（结论）、`O-xx`（地址：公式/代码/表）、`工程建议`。O 不是结论，是「这条 E/建议的数在哪」（[ADR 0009](../../../adr/0009-object-layer.md)）。标 `gap` 的行不进验收，只作方向。
 
 
 ### 5.2 还缺什么

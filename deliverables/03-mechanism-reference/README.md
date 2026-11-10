@@ -36,7 +36,7 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 | 导读 | [GUIDE.md](./GUIDE.md) | 先读哪一页、按什么顺序 |
 | 2 地图 | [sections/map.md](./sections/map.md) | 主张类型、四轴、六位置、强度矩阵 |
 | 3 主体 | [positions/README.md](./positions/README.md) | 六张位置卡 + 三张横切页索引 |
-| 4 边界 | [sections/boundaries.md](./sections/boundaries.md) | 15 条边界摘要；全文在 [boundaries.md](./evidence/boundaries.md) |
+| 4 边界 | [sections/boundaries.md](./sections/boundaries.md) | 15 条边界 + 12 条反例；全文在 [boundaries.md](./evidence/boundaries.md) |
 | 5 验收 | [sections/acceptance.md](./sections/acceptance.md) | M1–M5、缺口 |
 | 6 关系 | [sections/relations.md](./sections/relations.md) | 与 01/02 的关系、维护、目录 |
 | 证据 | [evidence-ledger.md](./evidence/ledger.md) | E-xx 支持/不支持哪个位置 |

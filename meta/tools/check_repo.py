@@ -290,11 +290,75 @@ def main() -> int:
     if counts["已核"] != 20 or counts["推测"] != 2:
         warnings.append(f"conclusion levels changed: {dict(counts)} (meta/state may need update)")
 
+    # 9. object registry (topics/objects.md): warn-only
+    objects_path = os.path.join(ROOT, "topics/objects.md")
+    object_ids = set()
+    object_counts = Counter()
+    if os.path.exists(objects_path):
+        heading_cache = {}
+
+        def heading_slugs(path):
+            if path not in heading_cache:
+                try:
+                    text = open(path, encoding="utf-8").read()
+                except OSError:
+                    heading_cache[path] = set()
+                else:
+                    slugs = set()
+                    for line in text.splitlines():
+                        if line.startswith("#"):
+                            h = re.sub(r"^#+\s+", "", line).strip().lower()
+                            h = re.sub(r"[^\w\u4e00-\u9fff \-]", "", h)
+                            slugs.add(h.replace(" ", "-"))
+                    heading_cache[path] = slugs
+            return heading_cache[path]
+
+        for line in open(objects_path, encoding="utf-8"):
+            m = re.match(r"\|\s*(O-[CFTMNRP]\d\d)\s*\|", line)
+            if not m:
+                continue
+            oid = m.group(1)
+            cells = [c.strip() for c in line.strip().strip("|").split("|")]
+            if len(cells) < 9:
+                warnings.append(f"object row too short: {oid}")
+                continue
+            if oid in object_ids:
+                warnings.append(f"duplicate object id: {oid}")
+            object_ids.add(oid)
+            _, claim, value, address, domain, prov, hardness, falsifier, feeds = cells[:9]
+            for name, val in (("claim", claim), ("value", value), ("address", address),
+                              ("domain", domain), ("provenance", prov), ("falsifier", falsifier),
+                              ("feeds", feeds)):
+                if not val:
+                    warnings.append(f"object {oid}: empty {name}")
+            if hardness not in {"H1", "H2", "H3"}:
+                warnings.append(f"object {oid}: bad hardness {hardness!r}")
+            object_counts[hardness] += 1
+            am = re.search(r"([^\s（]+?\.md)#([^\s（）]+)", address)
+            if am:
+                path, anchor = am.group(1), am.group(2)
+                target = os.path.normpath(os.path.join(ROOT, path))
+                if not os.path.exists(target):
+                    warnings.append(f"object {oid}: missing address file {path}")
+                elif anchor not in heading_slugs(target):
+                    warnings.append(f"object {oid}: missing anchor #{anchor} in {path}")
+
+        # references anywhere in markdown
+        for path, text in texts.items():
+            name = rel(path)
+            if name == os.path.join("topics", "objects.md"):
+                continue
+            for oid in set(re.findall(r"\b(O-[CFTMNRP]\d\d)\b", text)):
+                if oid not in object_ids:
+                    warnings.append(f"undefined {oid}: {name}")
+
     # 8. summary
     print(f"files: {len(files)}  papers: {len(paper_dirs)}  open-source: {len(oss_projects)}")
     print(f"defined: E={len(defined_e)} Q={len(defined_q)} C={len(defined_c)} L={len(defined_l)}")
     print(f"conclusion levels: {dict(counts)}")
     print(f"evidence_role: {dict(role_counts)}")
+    if object_ids:
+        print(f"objects: {len(object_ids)} (H3 {object_counts.get('H3', 0)} / H2 {object_counts.get('H2', 0)} / H1 {object_counts.get('H1', 0)})")
     print(f"execution_form: {dict(form_counts)}")
     if warnings:
         print(f"\nWARNINGS ({len(warnings)})")

@@ -43,7 +43,7 @@ parent: ../README.md
 | [across-positions/coverage.md](../across-positions/coverage.md) | 强度–覆盖率到底是什么 | 查 §4/争论 |
 | [across-positions/execution-forms.md](../across-positions/execution-forms.md) | 形态与执行链 | 查「有引擎」 |
 | [evidence-ledger.md](../evidence/ledger.md) | 每条 E 支持/不支持哪个位置 | 核证据 |
-| [boundaries.md](../evidence/boundaries.md) | 15 条边界 + 可证伪条件 | 审稿/自查 |
+| [boundaries.md](../evidence/boundaries.md) | 15 条边界 + 12 条反例 + 证伪条件 | 审稿/自查 |
 | [gaps.md](../evidence/gaps.md) | M1–M5、负结果、下一步 | 规划研究 |
 | [appendix-constraint-spectrum.md](../appendix-constraint-spectrum.md) | 长版论证（历史） | 要完整论证时 |
 

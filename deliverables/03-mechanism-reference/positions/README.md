@@ -23,4 +23,4 @@ parent: ../README.md
 - [measurement](../across-positions/measurement.md)：每个位置该量什么、不能量什么。
 - [coverage](../across-positions/coverage.md)：七类失效 × 八位置的矩阵；组织假设，不是测量。
 - [execution-forms](../across-positions/execution-forms.md)：执行链与四种 `engine` 语义。
-- [boundaries](../evidence/boundaries.md)：15 条边界；[evidence-ledger](../evidence/ledger.md)：E-xx 台账；[gaps](../evidence/gaps.md)：下一步。
+- [boundaries](../evidence/boundaries.md)：15 条边界 + 12 条反例；[evidence-ledger](../evidence/ledger.md)：E-xx 台账；[gaps](../evidence/gaps.md)：下一步。

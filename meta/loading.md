@@ -83,7 +83,7 @@ D3 边界 → conclusions E 表 → digest §5/§9 → 附录 §3.7/§3.8
 
 ## 三条规则
 
-1. **`E-xx` 才是对外结论。** `E-xx` 在 `topics/conclusions.md`，可被 `deliverables/` 引用；`L-xx` 只在本派 `claims.md` 里工作，进交付物前必须先升 `E-xx`。
+1. **`E-xx` 才是对外结论。** `E-xx` 在 `topics/conclusions.md`，可被 `deliverables/` 引用；`O-xx` 可作地址引用（[ADR 0009](../adr/0009-object-layer.md)），但主句仍须 `E-xx`；`L-xx` 只在本派 `claims.md` 里工作，进交付物前必须先升 `E-xx`。
 2. **派内工作只读该派目录。** 需要跨派时，先读 `conclusions` 的对应 `E-xx`，再回派里看细节；不要从派根开始把所有派扫一遍。
 3. **`status` 不是“完成度”。** `seed` = 结构在、内容已开始、未交叉核对；`draft` = 论证完整、可能变；`superseded` = 已归档的历史文档。先看内容，不要因为 `seed` 跳过。
 

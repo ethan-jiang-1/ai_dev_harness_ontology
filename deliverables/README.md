@@ -113,6 +113,10 @@ updated: 2026-11-09
 
 04 的 topics/src 支撑计划见 [04-ontology-in-production.md](./_plans/04-ontology-in-production.md)：4+1 intake（≥2026-07，US/China/Germany/Singapore）、2 个 topics 页面、2 条新 E、P0–P4 + P2.5/P2.6。
 
+四份的密度与上游订货见 [reverse-gap-plan](./_plans/2026-11-09-reverse-gap-plan.md)：单源/推测/停线无出处的诊断、三条硬杠、旗舰三件（门槛表 / 反例集 / 执行矩阵）与按派/按来源类型的订单。它的目标不是让交付物更完整，是让每句话要么带出处、要么被标成缺口。
+
+订单的对象怎么造、放哪、怎么验，见 [hard-objects-plan](./_plans/2026-11-09-hard-objects-plan.md)：H0–H3 硬度分级、六字段 schema、`topics/objects.md` 注册表、五条产线与 10 天 60–80 个对象的目标。已入库 91 个对象（H3 33 / H2 58，10 条承重 E 各 ≥3，E 级 H3 8/10）；ADR 0009 已接受方案 A，O 已接进 02 §5.1、03 反例集与执行矩阵（见 [wiring-plan](./_plans/2026-11-10-wiring-plan.md)）。
+
 ## handbook 的去留（2026-11-09）
 
 **没有独立的 handbook。** 原《本体在 harness 里如何被执行》7 章、4–6 万字的书稿计划已废弃：

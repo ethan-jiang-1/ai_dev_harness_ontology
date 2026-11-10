@@ -11,7 +11,7 @@ parent: ../README.md
 | 文件 | 回答 | 什么时候读 |
 |---|---|---|
 | [ledger.md](./ledger.md) | 每条 E 支持/不支持哪个位置 | 核证据 |
-| [boundaries.md](./boundaries.md) | 15 条边界 + 可证伪条件 | 审稿/自查 |
+| [boundaries.md](./boundaries.md) | 15 条边界 + 12 条反例 + 证伪条件 | 审稿/自查 |
 | [gaps.md](./gaps.md) | M1–M5、负结果、下一步 | 规划研究 |
 
 **读法**：先 `ledger` 找证据，再 `boundaries` 看不能证明什么，最后 `gaps` 看下一步。

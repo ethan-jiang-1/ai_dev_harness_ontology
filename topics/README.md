@@ -20,7 +20,7 @@ updated: 2026-11-09
 | 时刻轴 | 本体在哪个时刻介入 | [`seams.md`](./seams.md) |
 | 形态轴 | 机器拿本体做了什么（引擎/编译/上下文/标签） | [`execution-forms.md`](./execution-forms.md) |
 
-另有两条横切索引：[conclusions](./conclusions.md)（证据）与 [domains](./domains.md)（领域）。形态轴不是索引，是第四根轴。
+另有三个横切索引：[conclusions](./conclusions.md)（证据）、[objects](./objects.md)（地址/数）、[domains](./domains.md)（领域）。形态轴不是索引，是第四根轴。
 
 派轴内部还可以再分**子主题**（`topics/<派>/<子主题>/README.md`）；那不是第四条轴，是派轴的第二层。派 README 只做地图，详细机制在子主题。
 
@@ -115,7 +115,7 @@ updated: 2026-11-09
 
 例：一篇「用 SHACL 校验工具调用参数并在执行前阻断」的论文 → 01/action-gate；只校验产出 → 02/checker；只把 SHACL 当表示/编译产物、不阻断 → 05/representation；只过滤检索结果 → 01/commit-gate 的读路径 + `seam: read-path`。
 
-## 七种读法
+## 八种读法
 
 - **找工程思路** → 01 → 02 → 03：哪里最硬、代价是什么。
 - **找证据强度** → 06 → [conclusions](./conclusions.md)：哪些已核、哪些只是推测。
@@ -124,8 +124,9 @@ updated: 2026-11-09
 - **找形态** → [execution-forms.md](./execution-forms.md)：引擎求值/编译/上下文/标签，以及 26 个来源的初判。
 - **找前沿** → 各派 `frontier.md`：前沿问题、信号源、检索式、候选队列。
 - **找局部判断** → 各派 [claims.md](./01-constraint/claims.md)：`L-xx`，尚未升到 E-xx。
+- **找地址/数** → [objects.md](./objects.md)：`O-xx` 硬对象（C/F/T/M/N/R/P），按 E / 交付物 / 类型索引；它是地址层，不是结论层。
 
-> **反向读法（不计入七种）**：从交付物的期待倒查证据 → [meta/loading §从交付物倒查](../meta/loading.md#从交付物倒查反向加载)。01 从 E1–E9 倒查，02 从 recipe 倒查，03 从边界倒查；不要从 `src/` 正着扫。
+> **反向读法（不计入八种）**：从交付物的期待倒查证据 → [meta/loading §从交付物倒查](../meta/loading.md#从交付物倒查反向加载)。01 从 E1–E9 倒查，02 从 recipe 倒查，03 从边界倒查；不要从 `src/` 正着扫。
 
 | 从哪来 | 先去 | 再去 | 缺的数 |
 |---|---|---|---|

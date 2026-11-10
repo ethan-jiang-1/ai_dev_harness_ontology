@@ -22,7 +22,7 @@ updated: 2026-11-09
 | 执行形态（34 源） | engine 4 / compiled 7 / context 3 / label 2 / none 18 |
 | 交付物 | 4 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-ontology-in-production；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（README + GUIDE + 3 body + sections + evidence，E-21/E-22 已升、未入库 signal 另列）；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-09 22:45，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（462 文件；E=22，Q=3，C=4，L=73；28 论文 / 6 开源） |
+| 最后自检 | 2026-11-10 08:38，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（467 文件；E=22，Q=3，C=4，L=73；28 论文 / 6 开源） |
 
 ## 当前边界（不是阻塞）
 
@@ -30,6 +30,31 @@ updated: 2026-11-09
 2. **独立复现仍是空缺**：不影响 desk research；若要升「已证」，需要独立复现，但不在本仓库做；不设实验目录，也不再用模型做实验被试。
 3. **独立人类抽检**：只在对外交付时需要；内部研究不阻塞。
 4. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 已入库仍只有 1 个实现（外部扫描另见 sparql-guard 候选，未入库），需第二实现 + harness 调用点才能决定是否升第七时刻。
+
+## 2026-11-10 交付物接线（M/R/X）
+
+- **ADR**：[0009](../adr/0009-object-layer.md) 状态改为**接受（方案 A）**；[checklist](./checklist.md) §3、[loading](./loading.md) 规则 1、[objects](../topics/objects.md) 头部三处同步：O 可作地址，主句仍落 E。
+- **M**：[02 §5.1](../deliverables/02-engineering-playbook/sections/acceptance.md#51-验收与-stop按机制选尺) 13 行 × 7 列；13/13 有出处，11 行挂 E/公式，2 行 `工程建议/gap`（R0、commit）。
+- **R**：[03 boundaries §0](../deliverables/03-mechanism-reference/evidence/boundaries.md#0-反例集r-table) 12 条反例，带数/条件/`O-Rxx`；B1–B15 原表保留。
+- **X**：[03 execution-forms §3](../deliverables/03-mechanism-reference/across-positions/execution-forms.md) 5 行加 `O` 列，补 OPA；Qlever 标「无代码锚」。
+- **冷读**：3 条路径（编译/checker/read-path）均 2–3 跳到 digest 锚；0 断链，0 交付物 L 引用；1 个误读风险（O 是地址不是结论）已在 M-table 脚注写明。
+- **计划**：[wiring-plan](../deliverables/_plans/2026-11-10-wiring-plan.md) 全部验收勾选；check_repo 通过（467 文件；objects 91 / H3 33 / H2 58）。
+
+## 2026-11-09 硬对象层（O-xx，R1–R5）
+
+- **新增** [topics/objects.md](../topics/objects.md)：地址层，不是结论层；**91 个对象**（C15 代码 / F13 公式 / T13 停线 / M3 矩阵 / N29 数值 / R12 反例 / P6 协议），H3 33 / H2 58；10 条承重 E 各 ≥3；**E 级 H3 8/10**；锚点 25 处（`path#anchor`）全部打开。
+- **执行对比**：R1 C+F 22 个（H3 18，E 覆盖 2/10）→ R2 +T 35（22，2/10）→ R3 +M 38（**25，2/10**）→ R4 +N 67（27，**10/10**）→ R5 +F6/R12/P6 91（33，10/10；**E 级 H3 2/10 → 8/10**）。**R3 已到 25 个 H3 但覆盖只有 2/10**：H3 是手段，E 覆盖是目的。详见 [plan §12](../deliverables/_plans/2026-11-09-hard-objects-plan.md#12-执行对比四轮以及达到目的是什么意思)。
+- **偏差/收口**：F 9/13 到 H3（F03–F06 缺 γ/单价/样本量实测，保持 H2）；承重 E 的 H3 覆盖 8/10（E-01/E-02/E-04/E-05/E-14/E-15/E-17/E-20），超过计划 ≥7/10；E-03/E-12 无可复算量；R12/P6 已补完。
+- **待决**：[ADR 0009](../adr/0009-object-layer.md)（O 能否进交付物）状态为**提议**；在定案前按方案 B，交付物不引 O。
+- **首轮抓到的偏差**：`O-F01` 复算 digest §4.3「Q=1,000、c=10 → 3.12%」得 3.08%（差 0.04pp），`c`/`Q` 疑为 rounded。
+- **自检**：`check_repo.py` 已加 O 检查（warn-only）：对象字段/重复 ID/硬度/锚点/未定义引用；输出 `objects: 91 (H3 33 / H2 58 / H1 0)`，0 warning。
+
+## 2026-11-09 交付物逆向补齐 + 硬对象产线
+
+- **新增**：[reverse-gap-plan](../deliverables/_plans/2026-11-09-reverse-gap-plan.md)：从四份交付物反扫 topics/src，诊断四种薄法（17/22 单源、31/73 推测、13 行停线 0 出处、5 个门无第二实现/标签），给三条硬杠、旗舰三件（门槛表 / 反例集 / 执行矩阵）、上游订货单（TB/CA/FC/QP/S2/LB）与 WP0–WP8。
+- **新增**：[hard-objects-plan](../deliverables/_plans/2026-11-09-hard-objects-plan.md)：把判断做成可引用/可复算/可核对的对象（O-xx）；H0–H3 分级、六字段 schema、`topics/objects.md` 注册表、五条产线（C/F/N/T/M+R/P/L）、10 天 60–80 个对象；O 能否进交付物待 ADR 0009。
+- **定位**：工作底稿，不产生 E/L；与 [01 计划](../deliverables/_plans/01-capability-status.md)（E1–E9 证据）、[04 计划](../deliverables/_plans/04-ontology-in-production.md)（intake/scope）分工，不重复。
+- **口径**：desk research + 只读代码；不向用户要资产/人/价/签核（ADR 0007）；停线出处标不出就标 gap，不编。
 
 ## 2026-11-09 D1 第一轮证据回抽
 
