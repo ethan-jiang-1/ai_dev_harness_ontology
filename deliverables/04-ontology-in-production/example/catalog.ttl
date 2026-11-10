@@ -24,7 +24,7 @@
 :col_rep a :Column ; :columnOfTable :t_sales . :t_sales :hasColumn :col_rep .
 :col_legacy a :Column ; :columnOfTable :t_legacy . :t_legacy :hasColumn :col_legacy .
 
-:tag_email_1 a :Email ; :sensitivityLevel 3 . :col_email :hasTag :tag_email_1 .
+:tag_email_1 a :WorkEmail ; :sensitivityLevel 3 . :col_email :hasTag :tag_email_1 .
 :tag_phone_1 a :Phone ; :sensitivityLevel 3 . :col_phone :hasTag :tag_phone_1 .
 :tag_name_1 a :Name ; :sensitivityLevel 2 . :col_name :hasTag :tag_name_1 .
 :tag_amount a :Financial ; :sensitivityLevel 3 . :col_amount :hasTag :tag_amount .

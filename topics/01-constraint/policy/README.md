@@ -26,7 +26,7 @@ evidence: [E-22]
 - **策略层是独立层，不能从标签推出。** `E-22`：标签有、策略无、执行单实现；「有敏感标签」推不出「有策略」或「执行正确」。`已核`（综合）。[F1](./findings.md)
 - **策略语言能表达冲突/默认/义务，但语义不同。** XACML 有 deny-overrides 等合并算法；ODRL 有 `perm/prohibit/invalid` 冲突策略与 duty；Rego 默认 deny、规则序；OpenFGA 是 ReBAC，没有「冲突」概念。不能把四种语义混成一张表。`已核`（标准卡；条款待核）。[F2](./findings.md)
 - **领域标准给等级/处置，不给 principal/action 映射。** GB/T 43697 给分类分级框架与级别，GB/T 35273 给 PII 类别与处理规则；「level 4 → 哪些角色 deny」仍是工程选择。`已核`（GB/T 摘要）/ `推测`（映射）。[F3](./findings.md)
-- **10 条测试里 9 条有唯一期望，T9 暴露优先级空洞。** 04 policy.json 的 `skip` 是 XACML/ODRL 都没有的第 4 种效果；`clearance` 在 input 里但 7 条规则均未消费；steward+table 时 R4 与 R6 谁先没写。`已核`（逐行读 policy.json）。[mechanism](./mechanism.md)
+- **11 条测试里 10 条有唯一期望，T9 暴露优先级空洞。** 04 policy.json 的 `skip` 是 XACML/ODRL 都没有的第 4 种效果；`clearance` 在 input 里但 8 条规则均未消费；steward+table 时 R4 与 R5 谁先没写。`已核`（逐行读 policy.json）。[mechanism](./mechanism.md)
 - **标准给三级，政策给 1–4，是工程映射。** GB/T 43697 只分核心/重要/一般；GB/T 35273 只定义个人信息/敏感个人信息；04 用 1–4 数值 + 2/3 阈值，没有标准条款支撑。`已核`（标准范围/摘要；条款待核）。[mechanism](./mechanism.md)
 
 ## 文件地图
@@ -34,7 +34,7 @@ evidence: [E-22]
 | 想知道 | 去 |
 |---|---|
 | 三条判断的证据/条件/边界 | [findings](./findings.md) |
-| 7 列 schema、冲突消解、7–10 条测试 | [mechanism](./mechanism.md) |
+| 7 列 schema、冲突消解、7–11 条测试 | [mechanism](./mechanism.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
 | 标签/执行层 | [access-control](../access-control/README.md) · [read-path](../commit-gate/read-path.md) |
 | 原始标准/实现 | 见 [01 sources](../sources.md) 的 policy 行；入库后补 digest |

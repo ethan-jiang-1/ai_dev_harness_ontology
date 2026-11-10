@@ -40,7 +40,7 @@ parent: ../README.md
 | [output-validation](../../../topics/02-judgment/checker/output-validation.md) | 治：六类 + 三态 | pyshacl/open-ontologies/PROV/GE |
 | [propagation](../../../topics/06-measure/metrics/propagation.md) | 治：10 类 × 3 段 | E-06/E-05 + 三段 artifacts |
 
-> 这些页不是 E；04 的主句仍落 `E-xx`。页只回答「证据怎么排成表」，不新增判断。三关协议、10 条策略测试、12 条泄漏用例、10×3 故障矩阵是**工程产物**，标「工程产物 / 待核」，不升 E；引用时写 `工程产物`，不写成「已验证」。
+> 这些页不是 E；04 的主句仍落 `E-xx`。页只回答「证据怎么排成表」，不新增判断。三关协议、11 条策略测试、12 条泄漏用例、10×3 故障矩阵是**工程产物**，标「工程产物 / 待核」，不升 E；引用时写 `工程产物`，不写成「已验证」。
 
 ## 1c. 标准材料卡（不是 E，条款待核）
 
@@ -62,8 +62,8 @@ parent: ../README.md
 | A | A.1 契约 | [consumability §3](../../../topics/05-produce/representation/consumability.md)；工程产物 | 未测（无 CQ） |
 | A | A.2 档位 | E-12 / O-F14 | 推测 |
 | A | A.3 本体 | E-22 / O-N28；T:01/access-control F1 | 工程产物 |
-| A | A.4 shapes | SFE-O §4.1；E-02 / O-F08 | 未测 |
-| A | A.5 三关 | E-25；[consumability §1/§6](../../../topics/05-produce/representation/consumability.md) | 工程产物 |
+| A | A.4 shapes | SFE-O §4.1；E-02 / O-F08；PPV 见 §1e | 未测 |
+| A | A.5 三关 | E-25；[consumability §1/§6](../../../topics/05-produce/representation/consumability.md)；版本来源表 | 工程产物 |
 | A | 全章 | T:05/representation、T:05/generation、S:SFE-O/Catch/N&D/Glyph | 边界 |
 | B | B.0/B.1 路线 | E-21 / E-26；[compare](../../../topics/03-knowledge/querying/compare.md) §1–§3 | 已核（单设置）/ 推测（综合） |
 | B | B.2 查询 | 工程产物（3 条 SPARQL）；E-21；T:querying §5；[Qlever digest](../../../src/open-source/ad-freiburg-qlever/digest.md) | 工程产物 |
@@ -71,12 +71,21 @@ parent: ../README.md
 | B | B.4 OBDA | E-20；[Ontop digest](../../../src/open-source/ontop-ontop/digest.md) | 已核（代码） |
 | B | B.6 验收 | 工程产物（验收表）；E-21 | 示例 |
 | C | C.1 三层 | T:access-control F1–F3；[policy](../../../topics/01-constraint/policy/README.md)；[read-path](../../../topics/01-constraint/commit-gate/read-path.md)；S:Glyph/trustgraph；E-22 | 已核（综合） |
-| C | C.2 策略 | E-24；T:policy F1–F3；[OPA digest](../../../src/open-source/open-policy-agent-opa/digest.md)；工程产物 | 已核（标准摘要）/ 推测（映射） |
+| C | C.2 策略 | E-24；T:policy F1–F3；[OPA digest](../../../src/open-source/open-policy-agent-opa/digest.md)；8 规则/11 测试 | 已核（标准摘要）/ 推测（映射） |
 | C | C.3 泄漏 | E-23；[read-path](../../../topics/01-constraint/commit-gate/read-path.md)；S:trustgraph | 已核（代码） |
-| C | C.4 审计 | T:06/trace；[policy mechanism](../../../topics/01-constraint/policy/mechanism.md)；工程产物 | 未测 |
+| C | C.4 审计 | T:06/trace；[policy mechanism](../../../topics/01-constraint/policy/mechanism.md)；3 条样例 + query log | 未测 |
 | C | C.5 输出/传播 | [output-validation](../../../topics/02-judgment/checker/output-validation.md)、[identity F3](../../../topics/04-state/identity/findings.md)、[coverage G](../../../topics/06-measure/metrics/coverage.md)；工程产物 | 未测 |
 
 > 这是附录表；正文只在章末说「见这里」，不重复内码。读正文时不需要看这张表。
+
+## 1e. 对象地址（O-xx，不是 E）
+
+| O | 是什么 | 值/公式 | 出处 |
+|---|---|---|---|
+| O-F08 | PPV 复算（A.4 的“PPV 见 evidence”） | `PPV = π·Se / (π·Se + (1−π)·FA)`；π=0.25；curated Se=60.1%、FA=15.0% → 57.2%（原文 57.1） | [objects](../../../topics/objects.md) |
+| O-F14 | E-12 边际分解（A.2 的 54.6pp） | 54.6 + 19.8 = 74.4pp；薄层占 73.4% | [objects](../../../topics/objects.md) |
+
+> O 是地址，不是结论；正文主句仍落 E。`PPV` 是复算值，不是论文直接给的 precision。
 
 ## 2. 外部信号（未入库，只作旁证）
 

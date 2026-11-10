@@ -25,7 +25,7 @@ evidence: [E-20, E-23]
 | # | 用例 | 期望 | trustgraph（`184f622`） | sparql-guard |
 |---|---|---|---|---|
 | 1 | subject 命中 | 删除该节点作为 subject 的三元组 | **拦**（`PF._triple_blocked` 查 `triple.s`，此处恰好覆盖） | ? |
-| 2 | object 命中 | 删除指向该节点的三元组 | **漏**（object 不删，返回 1 行） | ?（文档称默认隐藏 object） |
+| 2 | object 命中 | 删除指向该节点的三元组 | **漏**（object 不删；`?col` 全表探针 3 行，单 object 探针 1 行） | ?（文档称默认隐藏 object） |
 | 3 | 两侧都命中 | 两侧都删 | **半**（subject 删、object 留） | ? |
 | 4 | 都不命中 | 原样返回 | **拦/放行**（无命中不删，`svc._filtered_query` 原批回送） | ? |
 | 5 | target 抛异常 | fail-closed | **漏**（当不命中，策略不适用） | ?（加载期编译失败则拒绝启动） |
@@ -90,7 +90,7 @@ evidence: [E-20, E-23]
 
 ```json
 {
-  "policy_version": "0.3.0",
+  "policy_version": "0.4.0",
   "rule_id": "R_read_column_level",
   "principal": {"kind": "role", "id": "analyst", "aliases": []},
   "action": "read",

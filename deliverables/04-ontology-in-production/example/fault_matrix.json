@@ -44,7 +44,7 @@
       "build": "—",
       "query": "0 行或错集",
       "govern": "object 方向泄漏",
-      "signal": "MINUS 双向、T1 探针",
+      "signal": "MINUS 双向、LEAK-T1 探针",
       "propagates": true
     },
     {

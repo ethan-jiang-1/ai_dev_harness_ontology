@@ -1,7 +1,7 @@
 {
-  "policy_version": "0.3.0",
+  "policy_version": "0.4.0",
   "fixture": "example/ 2026-11-10",
-  "note": "10 条输入→期望；T9 是故意留的优先级空洞，不是失败样本。clearance 只记录，不参与判定。",
+  "note": "11 条输入→期望；T9 是故意留的优先级空洞，不是失败样本；T11 验证 governance 的 dataset 级规则。clearance 只记录，不参与判定。",
   "cases": [
     {
       "id": "T1",
@@ -34,7 +34,7 @@
       "clearance": 2,
       "expected_decision": "deny",
       "expected_reason": "policy_deny",
-      "tests": "未标注列拒；与 R7 同效，reason 不可区分"
+      "tests": "未标注列拒；R3 命中，reason=policy_deny；R7 只是 fallback"
     },
     {
       "id": "T4",
@@ -112,6 +112,17 @@
       "expected_decision": "deny",
       "expected_reason": "default_deny",
       "tests": "未覆盖 action -> 默认拒绝"
+    },
+    {
+      "id": "T11",
+      "principal": "governance",
+      "action": "read",
+      "resource_kind": "dataset",
+      "resource_level": null,
+      "clearance": 4,
+      "expected_decision": "allow",
+      "expected_reason": "policy_allow",
+      "tests": "dataset 级治理查询；R8 优先于 R5 skip；CQ3 用"
     }
   ]
 }

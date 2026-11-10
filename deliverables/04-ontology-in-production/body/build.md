@@ -17,15 +17,17 @@ parent: ../README.md
 
 6 项写不出就停。**怎么找**：UI/agent 的 owner（谁读）、数据 owner（谁能给列）、治理（谁能拒）各拉 1 人；每人给「在什么时刻、要答什么 / 拒什么」。填不出的格就是需求缺口，不要编。
 
+**单人/学习模式**：先用本 fixture 的 3 行读通一条链，再把 consumer 换成你的；不要为了填满而编人。真实立项时，6 项仍要由对应 owner 确认。
+
 本 fixture（[example](../example/README.md)）：
 
 | consumer | principal | moment | answers | refuses | load |
 |---|---|---|---|---|---|
 | UI | steward | 页面加载 | 答 Email 列 | — | SPARQL endpoint |
 | agent | steward | 查询时 | 答 4 表/7 列 | — | SPARQL endpoint |
-| governance | analyst | 夜间 | 答未打标数据集（4） | 拒 level ≥3 列 | SPARQL endpoint |
+| governance | governance | 夜间 | 答未打标数据集（4） | 拒列身份/明细 | SPARQL endpoint |
 
-tag 是 `:Email` 等类的实例，CQ1 用 `?t a/rdfs:subClassOf*`；拒绝单位 = 列（triple subject）。
+`tag_email_1` 是 `:WorkEmail`（`:Email` 子类），CQ1 用 `?t a/rdfs:subClassOf*` 真正走到子类；拒绝单位 = 列（triple subject）；governance 只拿 dataset 计数，不拿列身份。
 
 **你的表**：
 
@@ -35,7 +37,7 @@ tag 是 `:Email` 等类的实例，CQ1 用 `?t a/rdfs:subClassOf*`；拒绝单�
 
 > `refuses` 写 `—` 表示「明确不拒」，不算空；契约本身带 `contract_version`（第 7 项，A.5 回填），不在 6 列里。
 
-**契约六项与 `build_report` 只部分对应**：`violations` ≠ `refuses`，`missing_fields` ≠ 契约缺字段；覆盖表见 [参考表 §2](../sections/reference.md)。
+**契约六项与 `build_report` 只部分对应**：`violations` ≠ `refuses`，`missing_fields` ≠ 契约缺字段；覆盖表见 [参考表 §0](../sections/reference.md)。
 
 ### CQ 只是模板词：须在契约行可执行
 
@@ -49,7 +51,7 @@ tag 是 `:Email` 等类的实例，CQ1 用 `?t a/rdfs:subClassOf*`；拒绝单�
 | 要跑 shape / 查询 / 授权判定 | 结构表 | 有可判定的关系与约束 |
 | 要从公理推出隐含分类 | 逻辑表 | 需要 reasoner；解释成本高 |
 
-本例选结构表（`推测`）：三条契约无隐含分类。**薄层优先**：命名单位（K0→K1）+54.6pp（占 74.4pp 的 73.4%），再加 +19.8pp（26.6%，`O-F14`）。
+本例选结构表（`推测`）：三条契约无隐含分类。**薄层优先**：K0=地址级、K1=命名+单位、K2=投影文本；K0→K1 是 **54.6 个百分点**（占两层总增益 74.4pp 的 73.4%），K1→K2 再加 19.8pp（26.6%，`O-F14`）。这是文本投影的命名/单位效应（单工厂、9 任务），不是三档对照。
 
 三档 × 四位置矩阵见 [参考表 §1](../sections/reference.md)：结构表是唯一三关都 `supported` 的档；词表 validate/explain 弱；逻辑表 explain 无可移植路径。能力矩阵，不是效应量；薄层优先的 +54.6pp 不是三档对照。
 
@@ -57,7 +59,11 @@ tag 是 `:Email` 等类的实例，CQ1 用 `?t a/rdfs:subClassOf*`；拒绝单�
 
 只建契约用得到的；等级挂 `Tag`，不挂 `Column`。
 
-TBox：[ontology.ttl](../example/ontology.ttl)（11 类/5 属性；计数 `?c rdfs:subClassOf* :Tag` 8 + 3 = 11）；ABox：[catalog.ttl](../example/catalog.ttl)。
+TBox：[ontology.ttl](../example/ontology.ttl)（11 类/5 属性；`SELECT (COUNT(DISTINCT ?c) WHERE { ?c a owl:Class })` = 11）；ABox：[catalog.ttl](../example/catalog.ttl)。
+
+11 类 = Tag 层级 8（Tag/PII/Email/WorkEmail/Phone/Name/Financial/SSN）+ Dataset/Table/Column 3。`WorkEmail` 是 `Email` 子类，`tag_email_1` 挂在它上面，CQ1 的 `rdfs:subClassOf*` 因此不是装饰；`Address` 已删，避免“未用类”。
+
+`owl:inverseOf` 只是文档：执行层不 entail，ABox 两侧显式写 `columnOfTable`/`hasColumn`。
 
 **标签层独立**：Glyph 275 叶标签，不产策略、不执行。
 
@@ -69,9 +75,11 @@ Shapes：[shapes.ttl](../example/shapes.ttl)（2 条：TagHasLevel、HasTagClass
 
 | 约束 | 检查 | 已知违反 | 干净样本 |
 |---|---|---|---|
-| Tag 有整数等级 | `TagHasLevel` | `tag_unknown` 缺等级 | `tag_email_1` |
-| hasTag 非字面量 | `sh:nodeKind sh:IRI` | `col_legacy` 指字面量 | `col_email`→Email |
+| Tag 有 1–4 的整数等级 | `TagHasLevel` | `tag_unknown` 缺等级 | `tag_email_1` |
+| hasTag 非字面量 | `sh:nodeKind sh:IRI` | `col_legacy` 指字面量 | `col_email`→WorkEmail |
 | 未打标可发现（CQ3，不是 shape） | `FILTER NOT EXISTS` | `col_order_id` 等 4 列无 tag | `col_email` |
+
+范围 1–4 已写进 shape；fixture 没有 level 0 坏样本，所以仍是 2 violations。0/负数不在合法域（见 [boundaries](../sections/boundaries.md)）。
 
 **10 个坏样本里，现有闸门只稳定抓住 2 个**（完整表见 [参考表 §2](../sections/reference.md)）：
 
@@ -84,19 +92,30 @@ Shapes：[shapes.ttl](../example/shapes.ttl)（2 条：TagHasLevel、HasTagClass
 
 其余 6 个（S1/S2/S3/S5/S9/S10）分别缺 principal/moment/refuse/version、无 dataset 边、版本不一致；现状均为 silent 或 answer undercoverage。
 
-SFE-O 未交付可执行 shape，只借做法。分开报：违反检出/干净样本误报/人审接受率；Ontology Catch 的 catch/FA = 18.9/16.8、8.2/3.5、5.0/1.8；PPV 复算见 evidence。
+SFE-O 未交付可执行 shape，只借做法。分开报：违反检出/干净样本误报/人审接受率；Ontology Catch 的真实答案 catch/FA = 18.9%/16.8%、8.2%/3.5%、5.0%/1.8%（不是 precision）；PPV 复算见 [evidence](../evidence/README.md) 的 O-F08。
 
 ## A.5 可消费性闸门（产物：`build_report`）
 
 三关记录，不是一个 `parsed` 布尔：
 
 ```json
-{"_note":"fixture 期望，非实测","load":{"parsed":true,"missing_fields":[]},"validate":{"violations":2,"targeted":2,"declared_shape_samples":2,"caught":2,"contract_bad_samples":10,"contract_caught":2,"clean_fp":"未测"},"answer":{"CQ1":"2/2","CQ2":"7 列/4 表","CQ3":"4 数据集"},"classes":11,"properties":5,"policy_version":"0.3.0","tag_version":"0.1.0","contract_version":"0.1.0","provenance":{"source":"synthetic"}}
+{"_note":"fixture 期望，非实测","load":{"parsed":true,"missing_fields":[]},"validate":{"violations":2,"targeted":2,"declared_shape_samples":2,"caught":2,"contract_bad_samples":10,"contract_caught":2,"clean_fp":"未测"},"answer":{"CQ1":"2/2（steward）","CQ2":"7 列/4 表（steward）","CQ3":"4 数据集（governance）"},"classes":11,"properties":5,"policy_version":"0.4.0","ontology_version":"0.1.0","tag_version":"0.1.0","contract_version":"0.1.0","snapshot":"example/ 2026-11-10（日期标签，不是 hash）","parser":"rdflib+pyshacl（版本未记）","provenance":{"source":"synthetic"}}
 ```
 
 - **load**：rdflib 解析 [ontology.ttl](../example/ontology.ttl)/[shapes.ttl](../example/shapes.ttl)/[catalog.ttl](../example/catalog.ttl)；`parsed`=语法/前缀，`missing_fields`=产物必填。
 - **validate**：pyshacl 跑 shapes；`targeted`=有目标且实际被检查的 shape 数；`violations`=shape 违反；`caught`=已声明 shape 坏样本被抓住数；`clean_fp` 未测。**两个分母不要混**：`2/2` 是 shape 声明样本；10 个契约坏样本只抓 2 个（`contract_caught/contract_bad_samples`）。分子就是 S7/S8，别把它当第二个独立测试。
-- **answer**：CQ1 返回 2、CQ2 7 列/4 表、CQ3 4 数据集；查询文本在 [B.2](./consume.md)，没写 B.2 就先跑 CQ1 再回填；0 行必须分因。
+- **answer**：CQ1 返回 2、CQ2 7 列/4 表、CQ3 4 数据集；查询文本在 [B.2](./consume.md)；0 行必须分因。这些是 **raw**，不是 policy 后的结果；governed 见 C.4。
+
+**版本来源**：
+
+| 字段 | 来源 | 说明 |
+|---|---|---|
+| `policy_version` | [policy.json](../example/policy.json) | 0.4.0 |
+| `ontology_version` | [ontology.ttl](../example/ontology.ttl) 的 `owl:versionInfo` | 0.1.0 |
+| `tag_version` | `ontology.ttl` 的 `:tagVersion` | fixture 约定；不是独立 tag 文件 |
+| `contract_version` | A.1 契约表 | fixture 约定 0.1.0；没有独立文件 |
+| `snapshot` | `example/ 2026-11-10` | 日期标签，不是内容 hash；真 replay 需 hash |
+| `parser` | 环境 | 本次未记版本；跨版本重跑可能不同 |
 
 三关是记录，不是产物属性；`targeted=0` 不是 pass。
 
@@ -111,4 +130,5 @@ SFE-O 未交付可执行 shape，只借做法。分开报：违反检出/干净�
 - **能加载 ≠ 可用**：`parsed=true` 只到语法；S4（endpoint 假阳性）、S6（无 target 静默）都可能在「加载成功」后发生。
 - **`violations=2` ≠ 干净**：只证明两个已声明坏样本被抓住，不证明干净数据无误报。
 - **三关过 ≠ 生产**：没有真数据误报率、延迟、权限、规模、版本回滚；fixture 是合成 5 表/13 列。
+- **版本不可精确 replay**：`snapshot` 是日期标签，`tag_version`/`contract_version` 是 fixture 约定；没有内容 hash 和 parser 版本。要 replay，先把这三件事补齐。
 

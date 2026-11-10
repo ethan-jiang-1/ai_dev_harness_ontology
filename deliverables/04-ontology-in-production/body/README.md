@@ -14,7 +14,7 @@ parent: ../README.md
 |---|---|---|---|---|
 | [A · 建](./build.md) | 消费者要什么、建到什么程度算可消费 | 3 个 consumer、6 项契约 | 契约、`ontology.ttl`、`shapes.ttl`、`build_report` | B 用契约里的 CQ；C 用 `policy_version`/`tag_version`（版本变化时回填 A.5） |
 | [B · 用](./consume.md) | 按资产选哪条路线、3 条 CQ 怎么跑 | A 的 TBox/ABox；你的资产（RDF/关系库/endpoint） | 3 条 SPARQL、空结果分因表、纠错/OBDA 协议 | C 用 `query_id`（CQ1–CQ3）、结果集、snapshot；LEAK-T1 是 C.3 的单独探针，不在 B 的 3 条 CQ 里 |
-| [C · 治](./govern.md) | 谁有权看、泄漏怎么发现、审计留什么 | B 的结果；标签/等级；principal/clearance | policy 表、10 条策略测试、12 条泄漏用例、audit schema | 版本变化时回填 A.5 的 `policy_version`/`tag_version` |
+| [C · 治](./govern.md) | 谁有权看、decision 怎么判、泄漏怎么发现、审计留什么 | B 的结果；标签/等级；principal/clearance | policy 表、11 条策略测试、12 条泄漏用例、audit schema + 3 条样例 | 版本变化时回填 A.5 的 `policy_version`/`tag_version` |
 
 ## 三章共同的写法
 

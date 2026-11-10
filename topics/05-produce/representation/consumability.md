@@ -67,7 +67,7 @@ evidence: [E-12]
 |---|---|---|---|---|---|
 | S1 | 缺 principal | `missing_fields`（应）；silent（现状） | A.1 删 `principal` 格；跑 build gate | 期望 `["principal"]`；现状无字段 | `推测` |
 | S2 | 缺 moment | 同上 | 删 `moment`；同一 artifact 供 UI/agent/governance | 期望拒绝；现状无时刻 | `推测` |
-| S3 | 缺 refuse | 同上；全放行 | governance 行删「拒 level ≥3」；跑 level=4 用例 | 期望 deny；现状 refuses 无 | `推测` |
+| S3 | 缺 refuse | 同上；全放行 | governance 行删「拒列身份/明细」；跑 level=4 用例 | 期望 deny；现状 refuses 无 | `推测` |
 | S4 | 缺 load | `load.parsed=false`（应）；假阳性 | 把 load 改成不存在的 endpoint；只跑本地解析 | 期望 fail；现状 `parsed=true` | `推测` |
 | S5 | 缺 version | `missing_fields`（应）；silent | 删契约 version + `owl:versionInfo` | 期望 missing；现状 tag/policy version 仍在 | `推测` |
 | S6 | shape 缺 target | `missing_fields`（应）；silent | 删 `sh:targetClass :Tag`；跑 pyshacl | 期望 gate fail；现状 `conforms=true`, 0 results | `待核` |
@@ -77,6 +77,8 @@ evidence: [E-12]
 | S10 | 版本不一致 | `version skew`（silent） | 改 `owl:versionInfo`，保留 tag/policy version；跑 CQ1 | 期望 mismatch；现状无 `ontology_version` | `推测` |
 
 **结论**：10 个里只有 S7/S8 被现有 `violations` 稳定抓住；S6/S9 需新增 target/边检查；S1–S5/S10 需契约/版本 schema。`推测`（读 A.5 + 文件，未跑 S1–S6/S9/S10）。
+
+**范围补充**：`sensitivityLevel` 的合法域是 1–4；04 的 shape 已加 `minInclusive 1`/`maxInclusive 4`，但 fixture 没有 0/负数坏样本，所以仍是 2 violations。S11 未入 fixture；真实数据要加，否则 0/负数会绕过策略（fail-open）。
 
 ## 5. 来源与边界
 

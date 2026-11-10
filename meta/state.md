@@ -12,6 +12,7 @@ updated: 2026-11-10
 
 | 项 | 值 |
 |---|---|
+| 宪章 | [CHARTER](../CHARTER.md)：研究档案，不做实施；交付物是文档 |
 | 阶段 | 内部研究档案；不做对外客户交付，因此不设客户资产/签核前置 |
 | 论文 | 28 个目录（20 基础 + 4 扫描 + 4 补给），全部有 PDF + 三份 MD + card + digest |
 | 开源 | 8 个项目（trustgraph / semantica / ontop / open-ontologies + OPA / Qlever + Great Expectations + OpenLineage），已 pin commit、已消化 |
@@ -22,7 +23,7 @@ updated: 2026-11-10
 | 执行形态（36 源） | engine 4 / compiled 7 / context 3 / label 2 / none 20 |
 | 交付物 | 4 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-ontology-in-production；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（README + GUIDE + 3 body + sections + evidence，E-21/E-22 已升、未入库 signal 另列）；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-10，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（495 文件；E=27，Q=3，C=4，L=79；28 论文 / 8 开源） |
+| 最后自检 | 2026-11-10，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（499 文件；E=27，Q=3，C=4，L=79；28 论文 / 8 开源） |
 
 ## 当前边界（不是阻塞）
 
@@ -31,7 +32,16 @@ updated: 2026-11-10
 3. **独立人类抽检**：只在对外交付时需要；内部研究不阻塞。
 4. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 已入库仍只有 1 个实现（外部扫描另见 sparql-guard 候选，未入库），需第二实现 + harness 调用点才能决定是否升第七时刻。
 
-## 2026-11-10 04 内容供给执行（W0–W3 主体）
+## 2026-11-10 04 内容整改（阅读/消化，不做实现）
+
+> 历史快照：只记录这次改了什么；**没有跑示例、没有做实验**。现行计数看顶部表。
+
+- **04**：B.6/A.5 的 CQ 期望拆 raw/governed + principal；CQ3 归 `governance`（R8）；`skip` 明确为未判定；C.2 8 条规则/11 条测试 + 判定顺序；C.4 per-subject + query log + 3 条样例；A.5 版本来源表；11 类改 WorkEmail（删 Address）；shape 范围 1–4；新增 journey/glossary；17 条边界。
+- **topics**：policy 11 测试/R8/判定顺序；read-path object 计数 1 vs 3；consumability 范围补充。
+- **未做**：不跑 rdflib/pyshacl/SPARQL；不做实验；不加 engine/harness/reference filter/EXP；不改 9 件产物数量；snapshot 仍是日期标签，严格 replay 未做。
+- **check**：`check_repo` 0 坏链 / 0 未定义 ID（499 文件；E=27，L=79）。
+
+## 2026-11-10 04 内容供给执行（W0–W3 主体，历史快照）
 
 - **W0**：12 张矩阵骨架入 [04-matrix-skeletons](../deliverables/_plans/2026-11-10-04-matrix-skeletons.md)；12 条承重句冻结。
 - **W1**：T2 [querying/compare](../topics/03-knowledge/querying/compare.md)（4×8 矩阵、17 类失败、决策树）；T5 [output-validation](../topics/02-judgment/checker/output-validation.md)（六类 + 三态）；[consume v2](../deliverables/04-ontology-in-production/body/consume.md)（决策表、2×2、失败目录）。
@@ -49,7 +59,7 @@ updated: 2026-11-10
 - **停止线**：<7 条承重句有表/产物 → 04 并进 02 的 R13，目录删除。
 - **口径**：标准/基准不套论文新鲜度；adjunct OSS 标 `ontology_role: adjunct`，不单独撑 E；计划不产生 E/L。
 
-## 2026-11-10 04 重写（D1–D6）
+## 2026-11-10 04 重写（D1–D6，历史快照）
 
 - **定位**：单读者（落地团队）；三链；一个 fixture（5 表/13 列）；5 件产物（契约/TBox/shapes/ABox/3 SPARQL/policy/2 audit）。
 - **预算**：正文 11,995 / 12k；导航 1,457（8.5%）；md 17,045。

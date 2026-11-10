@@ -21,7 +21,7 @@ parent: ../README.md
 | 已有 KG + 完整 OWL，进得了 context | ontology-in-context（B.1） | 本体超窗口；slice 后分数掉 | token 超预算 / snapshot 不能固定 |
 | 已有 KG，无 ontology，只有 endpoint | agentic navigation（B.1） | 图不是 `rdf:type` 体系；class index 建不出 | 探索成本超预算 |
 | 已有生成器 + 可标注错例 | gate / selective correction（B.3） | Gate 分布外，trigger 漂移 | 没有 100 条目标分布标注 |
-| 什么都没有 | 先建 KG/本体 | 空图上选查询路线 | 回到 05 |
+| 什么都没有 | 先建 KG/本体 | 空图上选查询路线 | 回到 05 派（造与修） |
 
 按资产条件选，不按总分排。**四条路线在资产/规模/指标/成本上不可比**：三条路线各单设置、无头对头；OBDA 是另一种形态。完整矩阵、失败目录与「不可比清单」在 [参考表 §3–§4](../sections/reference.md)；本章只取 04 用得到的部分。
 
@@ -47,7 +47,7 @@ SELECT ?col ?table WHERE {
 }
 ```
 
-期望 2 列 / 2 表。
+期望 2 列 / 2 表（UI/steward，raw）。
 
 **CQ2** 哪些表至少有一列等级 ≥3
 
@@ -59,7 +59,7 @@ SELECT DISTINCT ?table ?col WHERE {
 }
 ```
 
-期望 4 表 / 7 列。
+期望 4 表 / 7 列（agent/steward，raw）。
 
 **CQ3** 哪些数据集有「没有带 level 的 tag」的列
 
@@ -71,9 +71,11 @@ SELECT ?dataset (COUNT(?col) AS ?n) WHERE {
 } GROUP BY ?dataset
 ```
 
-期望 4 数据集 ×1（fixture）。
+期望 4 数据集 ×1（governance，raw；R8 dataset allow）。
 
 > CQ3 依赖 ABox 显式写 `?col a :Column`；不写类型会 0 行，这是查询前置，不是 coverage 问题。它数的是「没有 `hasTag` + `sensitivityLevel`」的列，不是「没有任何 tag」。
+
+> 上面三个期望都是 **raw**，不是 policy 后的结果。policy 后：CQ1/CQ2 在 analyst 下会变 0；CQ3 只给 governance（R8 dataset allow），analyst 不适用。见 [C.4](./govern.md)。
 
 **0 行不是错，先分因**：
 
@@ -91,7 +93,7 @@ SELECT ?dataset (COUNT(?col) AS ?n) WHERE {
 
 ## B.3 纠错：只对高风险 query 做
 
-只把高风险 query 送 Gate→Corrector（GGC）；不做全量纠错。依据不是「纠错更好」，而是 GGC 里全量纠错 92.34%、选择性 98.33%；墙钟约为全量纠错的 55%（降幅 45%），比单跑多约 10%。**但 GGC 没有 2×2 配对**：分不清「选得准」还是「改得准」，也没有空结果机制。
+只把高风险 query 送 Gate→Corrector（GGC）；不做全量纠错。依据不是「纠错更好」，而是 GGC 里 Generator 单跑 90.23%、全量纠错 92.34%、选择性 98.33%；墙钟约为全量纠错的 55%（降幅 45%），比单跑多约 10%。**但 GGC 没有 2×2 配对**：分不清「选得准」还是「改得准」，也没有空结果机制。
 
 **上线前先补 2×2**：
 
@@ -129,14 +131,14 @@ SELECT ?dataset (COUNT(?col) AS ?n) WHERE {
 
 ## B.6 验收
 
-| 检查 | 本 fixture | 不通过时 |
-|---|---|---|
-| CQ1 | 2 行 / 2 表 | 0 行先分因，不要改 prompt |
-| CQ2 | 7 列 / 4 表 | 查 `FILTER`/类型/重复 |
-| CQ3 | 4 个 dataset | 查 `?col a :Column` 与 dataset 边 |
-| 0 行 | 每条有原因 | 不要重试同一条 |
-| 纠错 2×2 | 未测 | 不要报净收益 |
-| 延迟 | 未测 | 按预算 |
+| 检查 | principal | raw | governed | 不通过时 |
+|---|---|---|---|---|
+| CQ1 | UI/steward | 2 行 / 2 表 | 2 行 / 2 表（analyst: 0） | 0 行先分因，不要改 prompt |
+| CQ2 | agent/steward | 7 列 / 4 表 | 7 列 / 4 表（analyst: 0/7） | 查 `FILTER`/类型/重复 |
+| CQ3 | governance | 4 个 dataset | 4 个 dataset（analyst: 不适用） | 查 `?col a :Column` 与 dataset 边 |
+| 0 行 | — | 每条有原因 | — | 不要重试同一条 |
+| 纠错 2×2 | — | 未测 | — | 不要报净收益 |
+| 延迟 | — | 未测 | — | 按预算 |
 
 ## B.7 证据与边界
 
@@ -145,4 +147,4 @@ SELECT ?dataset (COUNT(?col) AS ?n) WHERE {
 - 三条路线各单设置、无头对头 → 不能排序，不能当自域基线。
 - OBDA 重写落到 SQL，不证明查询正确或本体独立贡献。
 - 示例数字只证明本例跑通；未测：空结果分布、纠错 2×2 配对、跨路线成本口径。
-- **停**：拿 85% 当生产正确率，或空结果不分因就调 prompt → 停。
+- **停**：拿任一 benchmark 分数当生产正确率，或空结果不分因就调 prompt → 停。

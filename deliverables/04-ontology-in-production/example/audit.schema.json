@@ -19,6 +19,7 @@
       "tag_version",
       "decision",
       "reason",
+      "execution_effect",
       "obligation",
       "user_context",
       "evidence",
@@ -31,7 +32,7 @@
       "executor": {"type": "string", "minLength": 1},
       "snapshot": {"type": "string", "minLength": 1},
       "who": {"type": "string", "minLength": 1},
-      "action": {"enum": ["read", "write", "export", "any"]},
+      "action": {"enum": ["read", "write", "delete", "export", "any"]},
       "judged_subject": {"type": "string", "minLength": 1},
       "subject_kind": {"enum": ["column", "table", "dataset", "triple", "graph"]},
       "judged_triple": {
@@ -40,7 +41,7 @@
         "minItems": 3,
         "maxItems": 3
       },
-      "resource_level": {"type": ["integer", "null"], "minimum": 0, "maximum": 4},
+      "resource_level": {"type": ["integer", "null"], "minimum": 1, "maximum": 4},
       "user_context": {
         "type": "object",
         "properties": {
@@ -52,6 +53,7 @@
       "policy_version": {"type": "string", "minLength": 1},
       "tag_version": {"type": "string", "minLength": 1},
       "decision": {"enum": ["allow", "deny", "skip", "undetermined"]},
+      "execution_effect": {"enum": ["returned", "withheld", "error"]},
       "reason": {
         "enum": [
           "policy_allow",
@@ -69,7 +71,7 @@
       "leaked_object": {"type": "string"},
       "leaked_object_level": {"type": "integer"},
       "outcome": {"type": "string", "minLength": 1},
-      "leak_check": {"enum": ["passed", "object_direction_failed", "not_run"]}
+      "leak_check": {"enum": ["passed", "object_direction_failed", "aggregation_failed", "alias_failed", "version_mismatch", "not_run"]}
     }
   }
 }

@@ -11,6 +11,7 @@ updated: 2026-11-09
 
 | 文件 | 作用 | 什么时候读 |
 |---|---|---|
+| [../CHARTER.md](../CHARTER.md) | **全仓宪章**：研究档案，不做实施 | 进入仓库先读 |
 | [conventions.md](./conventions.md) | 证据等级、字段、命名、台账纪律 | 动笔前必读 |
 | [checklist.md](./checklist.md) | 交稿前检查 | 每次改完 |
 | [source-types.md](./source-types.md) | 素材类型与证据天花板 | 引入新类型/博客/开源时 |

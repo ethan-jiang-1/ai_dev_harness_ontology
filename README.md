@@ -4,12 +4,15 @@
 
 这个仓库不是一次性成文的文档，而是一条**持续运转的消化流水线**：材料进来 → 精读成卡 → 沉淀成主题 → 抽成交付物。本页只做 **router**；判断在 topics，材料在 src，方法在 meta。
 
+> **先读宪章**：[CHARTER](./CHARTER.md)。这是研究档案，不是软件项目；我们消化、组织、研究资料，交付物是文档，不是可运行系统。
+
 ---
 
 ## 0. 路由
 
 | 想知道 | 去 |
 |---|---|
+| **宪章（最高约束）** | **[CHARTER](./CHARTER.md)** |
 | 研究问题与假设 | [THESIS](./THESIS.md) |
 | 六派地图、子主题、四轴 | [topics/README](./topics/README.md) |
 | 跨主题结论（E-xx） | [topics/conclusions](./topics/conclusions.md) |

@@ -2,8 +2,11 @@
 
 这个仓库不要求一次读完。**先读路由，再按任务加载。**
 
+> **第 0 步：读宪章。** [CHARTER](../CHARTER.md) 决定你该不该动手建东西；本仓库只做消化、组织、研究，不做实施。
+
 ## 15 分钟路径（只够“读懂”，不够“改仓”）
 
+0. [CHARTER](../CHARTER.md)：我们做什么/不做什么；交付物是文档。
 1. [README](../README.md) §1-3：问题、三个工位、六派。
 2. [THESIS](../THESIS.md) 的「研究问题」与 P1a/P1b/P1c、P2、P3a/P3b。
 3. [AGENTS](../AGENTS.md) 的「先定位落点」表。
@@ -16,6 +19,7 @@
 
 ## 30–45 分钟接手路径（要改仓库时）
 
+0. [CHARTER](../CHARTER.md)：先确认这次是读/消化/写判断，不是建/跑/部署。
 1. [meta/state](./state.md)：当前计数、边界、最后自检；先看这一页。
 2. [src/README](../src/README.md) §5：论文/开源入库的完整流程与模板。
 3. [meta/conventions](./conventions.md)：字段、证据等级、命名、台账纪律。

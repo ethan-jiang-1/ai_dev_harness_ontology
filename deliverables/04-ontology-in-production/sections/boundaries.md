@@ -18,7 +18,7 @@ parent: ../README.md
 | 用的排序 | 三条路线各单设置、无头对头；98.33/89.9/64.6 不可比 | 同 KG/同题/同指标的头对头 |
 | 治的通用性 | Glyph 单企业；trustgraph 单实现；对象方向无已测修法 | 第二实现 + 领域策略来源 |
 
-## 十二条边界
+## 十七条边界
 
 | 边界 | 影响段 | 什么会改变它 |
 |---|---|---|
@@ -30,10 +30,15 @@ parent: ../README.md
 | OBDA 是本体+映射→SQL，不是 NL→SPARQL | 用 | 同查询集对比 |
 | 三层不可互推：标签有、策略语义有但领域映射无、执行单实现 | 治 | 领域策略来源、第二实现 |
 | 读路径过滤≠写授权；fail-open、只删 subject；sparql-guard 不够第二实现，Jena 已退役 | 治 | object 受控且 fail-closed、合格第二实现 |
-| 策略 10 条里 T9 无唯一期望；`clearance` 未消费；`skip` 是第 4 种效果 | 治 | 补优先级声明、消费 clearance |
+| 策略 11 条里 T9 无唯一期望；`clearance` 未消费；`skip` 是第 4 种效果 | 治 | 补优先级声明、消费 clearance |
 | 可消费性 10 个坏样本只稳定抓住 2 个；`violations=2` ≠ 干净 | 建 | 契约 schema、target 必填、跨 validator |
 | 失败跨段传播（推测）：单点准确率看不见 | 治 | 端到端注入实验 |
 | 成本/组织无实测，厂商 token 说法只是 signal | 全 | 你的单价数据 |
+| CQ3 是 dataset 级治理查询，用 R8；analyst 不适用；没有 subject 的聚合不在列策略内 | 治 | 查询级 guard / 数据集策略 |
+| `skip` 是未判定，不是安全声明；执行层可返回或 withhold；leak 断言敏感 object 不出现 | 治 | 执行层双向过滤 |
+| 策略语义只到 T9 未定；R7 是 fallback；`clearance` 未消费 | 治 | 补优先级声明、消费 clearance |
+| level 合法域是 1–4；0/负数不在域内；fixture 没有 0 坏样本 | 建 | 真数据分布、负样本 |
+| 版本 replay 不严格：snapshot 是日期标签，tag/contract 是 fixture 约定，parser 未记 | 治 | 内容 hash + parser 版本 |
 
 
 ## 反模式

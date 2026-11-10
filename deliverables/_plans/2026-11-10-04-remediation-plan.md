@@ -8,9 +8,10 @@ scope: content-remediation
 
 # 04 内容整改计划：只做阅读、消化、校对、补内容
 
-> **不做实现。** 不写 engine / harness / reference filter / EXP；不把 04 变成起始包。
+> **受 [CHARTER](../../CHARTER.md) 约束。** 不做实现，不做实验，不跑示例，不验证运行结果；只读、消化、组织、写。
 > 04 是文档交付物；示例是阅读与对照用的 fixture，不是要交付的系统。
-> 现有 3 个可选片段保留，标「作者已跑过；读者可选」；不新增可执行代码。
+> 现有 3 个可选片段保留，标「作者已跑过；读者可选」；不新增可执行代码，不执行任何查询/脚本。
+> 示例 TTL/JSON 的修改属于“改文档里的示例”，不是做项目；改完不跑、不验收运行结果。
 > 本计划是工作底稿，不是交付正文；不新增 E，不把计划里的判断写成仓库结论。
 
 ## 0. 定位
@@ -18,7 +19,8 @@ scope: content-remediation
 - **读者**：要落地小型本体查询应用的团队、评审/负责人、想快速读懂的新人。不是从零建系统的开发者。
 - **04 是什么**：一份可读、可对照、可验收的落地材料；示例用来把数字/字段/失败模式讲清楚，不用来承诺「照抄就能跑」。
 - **整改是什么**：读 `topics/` / `src/` 里的素材，把 04 的判断、数字、条件写对；补读者需要的解释内容；修内部矛盾。
-- **整改不是什么**：不是写代码、不是补 evaluator、不是让 12 条 leak cases 变成可执行套件、不是加 `build_report.json` / `versions.json` / `query_log.json`。
+- **整改不是什么**：不是写代码、不是补 evaluator、不是做实验、不是跑示例、不是让 12 条 leak cases 变成可执行套件、不是加 `build_report.json` / `versions.json` / `query_log.json`。
+- **示例修改的边界**：可以改 TTL/JSON 里的示例数据，让它和正文一致；改完只做静态阅读对照，不执行、不验证运行结果。
 
 ## 1. 原则
 
@@ -28,6 +30,7 @@ scope: content-remediation
 4. **主路径自包含。** 读者不打开 `topics/` 也能读懂 04；细节链接标「可选/出处」。
 5. **先落 `topics/`，再落 04。** 如果整改改变了「策略可判定」「skip 会不会泄漏」「CQ3 能不能返回」这类判断，先改派内 `claims.md` / 机制页，再改 04；不改跨派 E。
 6. **只改内容，不改形态。** 9 件产物不变；示例 JSON 只做与正文一致的最小修改；不扩成可执行套件。
+7. **只读不跑。** 所有核对靠读文件、手算、对照表；不运行 `rdflib`/`pyshacl`/SPARQL/脚本，不做实验。`check_repo.py` 是唯一允许运行的只读自检。
 
 ## 2. 内容问题分诊
 
@@ -129,6 +132,7 @@ README（这是什么/不是什么 + 读法 + 5 组门槛摘要）
 ### C1 · 读源 + 证据对齐（2–3 天）
 
 - 读：`topics/01-constraint/policy/mechanism.md`、`README.md`、`topics/01-constraint/commit-gate/read-path.md`、`topics/05-produce/representation/consumability.md`、`topics/objects.md`、`topics/03-knowledge/querying/compare.md`、`src/open-source/trustgraph-ai-trustgraph/digest.md`、`src/papers/2607.28082-ggc/digest.md`、`src/papers/2610.37809-what-does-an-ontology-catch/digest.md`。
+- **只读、手算、对照；不运行示例/脚本，不做实验。**
 - 建「承重句 → E/T/S/O → 条件」矩阵；04 每条主句一行。
 - 找 6 个 P0 的源条件：raw/governed、CQ3 principal、skip、执行单位、审计粒度、policy 顺序。源里没有的，标 `gap`，不编。
 - 只补 `topics/`/`src/` 缺的条件；不重写 digest，不新增 E。
@@ -138,7 +142,7 @@ README（这是什么/不是什么 + 读法 + 5 组门槛摘要）
 - `body/build.md`：A.1 契约定义；A.2 K0/K1/pp；A.3 11 类/WorkEmail/minimality；A.4 shape 范围；A.5 三关 + 版本来源 + 覆盖表；A.6 边界。
 - `body/consume.md`：CQ1/2/3 每条加 principal + raw；0 行分因；2×2；OBDA；删 85%。
 - `body/govern.md`：C.1 三层；C.2 策略表 + 判定顺序 + 11 条测试；C.3 skip/leak/执行单位；C.4 per-subject + query log 表 + 3 条 audit 样例；C.5 成本表；C.6 边界。
-- `example/`：最小一致性修改（WorkEmail、R8、T11、dec-0003、leak note、PREFIX、删重复 prefix、shape 范围）；不扩 harness。
+- `example/`：最小一致性修改（WorkEmail、R8、T11、dec-0003、leak note、PREFIX、删重复 prefix、shape 范围）；不扩 harness。**只改文档里的示例，不执行、不验证运行结果。**
 
 ### C3 · 新人内容（2–3 天）
 
@@ -160,7 +164,7 @@ README（这是什么/不是什么 + 读法 + 5 组门槛摘要）
 
 - 以「完全不懂」的姿势读一遍：只允许用 04 的文字；记录卡点。
 - 10 问验收（见 §6）；P0 卡点修完再读一轮。
-- 只改文字/表格/链接；不写代码。
+- 只改文字/表格/链接；不写代码，不跑示例，不做实验。
 
 ## 5. 已定内容口径（不再问）
 
@@ -174,7 +178,7 @@ README（这是什么/不是什么 + 读法 + 5 组门槛摘要）
 | D6 | **9 件产物不变**；不加 `build_report.json`/`versions.json`/`query_log.json` | 04 是读本；文件不是内容；版本来源用表格写 |
 | D7 | **删 `Address`、加 `WorkEmail`、`tag_email_1` 改 `a :WorkEmail`**；所有类补 `a owl:Class`；仍 11 类，CQ1 仍 2 | 同时解决“未用类”和“子类路径装饰”，不改变 CQ 计数 |
 | D8 | **level 强制 1–4**（shape 加 min/max）；不新增坏样本；A.4/boundaries 写「0/负数不在合法域」 | 堵 fail-open；不把 2 violations 的计数打乱 |
-| D9 | **effort 表用区间 + `推测`**：2–4 人周建模 + 3–5 人日 shapes + 5–10 人日实现；GUIDE 不再承诺“2 小时估工期” | 诚实；不把别人的单厂数据当报价 |
+| D9 | **effort 表用区间 + `推测`**：2–4 人周建模 + 3–5 人日 shapes；实现/集成未估；GUIDE 不再承诺“2 小时估工期” | 诚实；不把别人的单厂数据当报价 |
 | D10 | **不做实现**：不写 engine/harness/reference filter/EXP；现有 3 个可选片段保留并标「可选」 | 用户明确：只要读本/素材，不要实施 |
 
 ## 6. 验收 / DoD
@@ -207,6 +211,7 @@ README（这是什么/不是什么 + 读法 + 5 组门槛摘要）
 ## 7. 不做什么
 
 - 不写代码、不建 engine/harness/reference filter、不建 `EXP-xxx`、不新增可执行文件。
+- 不做实验、不跑示例、不验证运行结果；不做任何“让它跑起来”的实现。
 - 不新增 `build_report.json`/`versions.json`/`query_log.json`；query log 用表。
 - 不新增 E；不改 `topics/conclusions.md`；局部判断变化先落派内 `claims.md`。
 - 不修 trustgraph、不声称生产可用、不声称泄漏率/延迟。
@@ -265,9 +270,19 @@ README（这是什么/不是什么 + 读法 + 5 组门槛摘要）
 
 先读这四份，不写正文：
 
-1. `topics/01-constraint/policy/mechanism.md`：10 条测试、冲突消解、审计最小单元。
+1. `topics/01-constraint/policy/mechanism.md`：11 条测试、冲突消解、审计最小单元。
 2. `topics/01-constraint/commit-gate/read-path.md`：object 方向、fail-open、1 行 vs 3 行。
 3. `topics/05-produce/representation/consumability.md`：三关、10 坏样本、契约↔build_report。
 4. `src/open-source/trustgraph-ai-trustgraph/digest.md`：`_triple_blocked`、缓存、版本。
 
 产出「6 个 P0 的源条件表」：raw/governed、CQ3 principal、skip、执行单位、审计粒度、policy 顺序。源里没有的标 `gap`。这张表是 C2 的输入，不直接进 04。
+
+## 11. 执行结果（2026-11-10）
+
+**已执行（内容层 C0–C4；C5 冷读）**
+
+- **04**：CQ 期望拆 raw/governed + principal；CQ3 归 `governance` + R8；`skip` 明确为未判定；C.2 8 规则/11 测试 + 判定顺序；C.4 per-subject + query log + 3 条样例；A.5 版本来源表；11 类改 WorkEmail（删 Address）；shape 范围 1–4；新增 journey/glossary；17 条边界；README/GUIDE/acceptance 统一 5 组门槛。
+- **topics**：policy 11 测试/R8/判定顺序/审计字段；read-path object 计数 1 vs 3；consumability 范围补充；S3 refuse 文案。
+- **未做**：不跑 rdflib/pyshacl/SPARQL；不做实验；不加 engine/harness/reference filter/EXP；9 件产物不变；snapshot 仍是日期标签，严格 replay 未做。
+- **验证**：`check_repo` 0 坏链 / 0 未定义 ID（499 文件；E=27，L=79）；6 个 example JSON 语法通过；未跑 pyshacl。
+- **剩余 gap（已写进 04 边界，不在本轮实施）**：严格 replay（hash + parser 版本）、LEAK-T1 安全过滤器、无 subject 聚合的 query guard、L8/L9 的额外 fixture。

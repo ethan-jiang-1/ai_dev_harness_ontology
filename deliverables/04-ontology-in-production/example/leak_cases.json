@@ -1,7 +1,8 @@
 {
   "fixture": "example/ 2026-11-10",
   "principal": {"role": "analyst", "clearance": 2},
-  "note": "12 条泄漏用例；expected 是安全读路径的期望，trustgraph 是 pin 184f622 的已知行为（未重跑），unknown 表示未验证。",
+  "note": "12 条是测试设计，不是可执行套件。expected_rows 只对 filter/allow 用例有意义；deny/withhold 用例看 expected_absent。L4/L8/L9/L10/L11 需要额外 fixture 或开关，标在 reference §5。trustgraph 是 pin 184f622 的已知行为（未重跑），unknown 表示未验证。",
+  "prefixes": {"": "https://ex.org/c#", "rdfs": "http://www.w3.org/2000/01/rdf-schema#"},
   "cases": [
     {
       "id": "L1",

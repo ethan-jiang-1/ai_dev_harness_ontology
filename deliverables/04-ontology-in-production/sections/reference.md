@@ -8,6 +8,34 @@ parent: ../README.md
 
 > 这些表已从研究底稿消化到 04，读正文时不需要跳出去。证据等级用「已核 / 推测 / 工程产物 / 未测」标，不在这里展开来源。
 
+## 0. 契约 ↔ `build_report` 覆盖表 / canonical 计数
+
+> 这页补上 A.1 说的「覆盖表」；A.1 六项与 A.5 `build_report` 只部分对应。来源：`topics/05-produce/representation/consumability.md` §3。
+
+| `build_report`（A.5） | consumer | principal | moment | answers | refuses | load |
+|---|---|---|---|---|---|---|
+| `load.parsed` | — | — | — | — | — | ✓（仅本地解析） |
+| `load.violations` | — | — | — | — | —（shape 违反 ≠ 拒绝） | ✓（shape） |
+| `load.missing_fields` | — | — | — | — | — | ✓（产物必填，非契约） |
+| `classes`/`properties` | — | — | — | — | — | ✓ |
+| `policy_version`/`tag_version` | — | 弱（产物版本，非主体） | — | — | 弱（非拒绝谓词） | — |
+| `provenance.source` | — | —（`synthetic` 不是 principal） | — | — | — | — |
+
+三个碰撞：`load` 在 A.1 是“怎么加载”、在 A.5 是“加载结果”；`violations` ≠ `refuses`；`missing_fields` ≠ 契约缺字段。`missing_fields=[]` 不能证明六格完整。
+
+**canonical 计数**（其他页引用这里，不复制）：
+
+| 项 | 值 |
+|---|---|
+| 产物 | 9 件；`build_report` 是 A.5 内联样例，不单独成文件 |
+| 类 / 属性 / shapes | 11 / 5 / 2 |
+| 表 / 列 / dataset | 5 / 13 / 5 |
+| 坏样本 | 10；shape 声明样本 2；现抓 S7/S8 |
+| policy | 8 条规则；11 条测试；T9 undetermined；T10 default deny；T11 governance dataset allow |
+| leak | 12 例；部分需要额外 fixture（见 §5） |
+| audit | 3 条样例；query 级 summary 在 C.4 表 |
+| 版本 | policy 0.4.0；ontology/tag/contract 0.1.0；snapshot 是日期标签 |
+
 ## 1. 三档表示 × 四类消费
 
 | 档 \ 消费 | load | validate | query | explain | 成本 |
@@ -73,7 +101,7 @@ parent: ../README.md
 | # | 用例 | 安全期望 | trustgraph（`184f622`） |
 |---|---|---|---|
 | 1 | subject 命中 | 删 | 删 |
-| 2 | object 命中 | 删 | **不删**（只查 `triple.s`） |
+| 2 | object 命中 | 删 | **不删**（只查 `triple.s`；`?col` 全表探针返回 3 行，单 object 探针 1 行） |
 | 3 | 两侧命中 | 两侧删 | 半（subject 删、object 留） |
 | 4 | 都不命中 | 原样 | 原样 |
 | 5 | target 异常 | fail-closed | **fail-open** |
@@ -84,6 +112,8 @@ parent: ../README.md
 | 10 | 版本不匹配 | 拒/回退 | 60s 缓存，不含版本 |
 
 **判定**：单实现、fail-open、只删 subject；没有合格第二实现。读过滤 ≠ 写授权。
+
+**12 条 leak cases 与这 10 条的关系**：L1↔1、L2↔2、L3↔3、L10↔6、L4↔7、L5↔8、L11↔9、L9↔10；L6/L7/L8/L12 是额外泄漏面；用例 4/5 没有 L 对应。两套不是一套，编号不要混。
 
 ## 6. 输出校验六类
 

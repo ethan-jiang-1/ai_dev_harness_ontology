@@ -2,15 +2,19 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 
-<https://ex.org/c#> owl:versionInfo "0.1.0" .
+<https://ex.org/c#> a owl:Ontology ;
+  owl:versionInfo "0.1.0" ;
+  :tagVersion "0.1.0" .
 
-:Dataset a owl:Class . :Table a owl:Class . :Column a owl:Class .
-:Tag a owl:Class . :PII rdfs:subClassOf :Tag .
-:Email rdfs:subClassOf :PII . :Phone rdfs:subClassOf :PII .
-:Name rdfs:subClassOf :PII . :Address rdfs:subClassOf :PII .
-:Financial rdfs:subClassOf :PII . :SSN rdfs:subClassOf :PII .
+:Dataset a owl:Class . :Table a owl:Class . :Column a owl:Class . :Tag a owl:Class .
+:PII a owl:Class ; rdfs:subClassOf :Tag .
+:Email a owl:Class ; rdfs:subClassOf :PII .
+:WorkEmail a owl:Class ; rdfs:subClassOf :Email .
+:Phone a owl:Class ; rdfs:subClassOf :PII .
+:Name a owl:Class ; rdfs:subClassOf :PII .
+:Financial a owl:Class ; rdfs:subClassOf :PII .
+:SSN a owl:Class ; rdfs:subClassOf :PII .
 
 :tableInDataset a owl:ObjectProperty ; rdfs:domain :Table ; rdfs:range :Dataset .
 :columnOfTable a owl:ObjectProperty ; rdfs:domain :Column ; rdfs:range :Table .

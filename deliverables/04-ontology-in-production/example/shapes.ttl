@@ -4,7 +4,8 @@
 
 :TagHasLevel a sh:NodeShape ;
   sh:targetClass :Tag ;
-  sh:property [ sh:path :sensitivityLevel ; sh:minCount 1 ; sh:datatype xsd:integer ] .
+  sh:property [ sh:path :sensitivityLevel ; sh:minCount 1 ; sh:datatype xsd:integer ;
+                sh:minInclusive 1 ; sh:maxInclusive 4 ] .
 
 :HasTagClass a sh:NodeShape ;
   sh:targetSubjectsOf :hasTag ;

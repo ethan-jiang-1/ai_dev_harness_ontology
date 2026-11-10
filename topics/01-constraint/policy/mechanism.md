@@ -20,12 +20,12 @@ source/column
 
 | 列 | 取值 | 来源 | 不能推出什么 |
 |---|---|---|---|
-| `principal` | 用户/角色/服务 | 04 契约（UI/agent→steward，governance→analyst） | 身份认证 |
-| `action` | read / write / export | 04 契约 | 动作可逆性 |
+| `principal` | 用户/角色/服务 | 04 契约（UI/agent→steward，governance→governance） | 身份认证 |
+| `action` | read / write / delete / export | 04 契约 | 动作可逆性 |
 | `resource_kind` | column / table / dataset | 04 fixture | 资源级联 |
-| `condition` | `resource_level` / `user_context.clearance` / 时间/用途 | 工程选择；标准只给等级 | `clearance` 在 input 里，但 7 条规则均未消费 |
+| `condition` | `resource_level` / `user_context.clearance` / 时间/用途 | 工程选择；标准只给等级 | `clearance` 在 input 里，但 8 条规则均未消费 |
 | `effect` | allow / deny / skip | 工程选择 | `skip` 是第 4 值，XACML/ODRL 都没有；skip ≠ allow |
-| `obligation` | log / mask / approve | XACML obligation / ODRL duty | 04 policy.json **无此字段**；执行器不一定履行 |
+| `obligation` | log / mask / approve | XACML obligation / ODRL duty | 04 policy.json 8 条规则都带 `obligation: log`；执行器不一定履行 |
 | `version` | policy_version | 工程选择 | 版本一定可回放 |
 
 ## 冲突消解对照
@@ -40,22 +40,23 @@ source/column
 
 > 这张表是 `待核`：入库后按条款/文档核对，不把摘要当条款。ODRL 的默认冲突策略（§2.10）本轮未取到正文；XACML obligation 能否挂 Deny（`FulfillOn`）也待核。
 
-## 10 条测试（对齐 04 policy.json）
+## 11 条测试（对齐 04 policy_tests.json）
 
-| # | principal | action | resource_level | clearance | 期望 | 依据 |
-|---|---|---|---:|---:|---|---|
-| 1 | analyst | read | 2 | 2 | allow | level ≤2 |
-| 2 | analyst | read | 3 | 2 | deny | level ≥3 |
-| 3 | analyst | read | null | 2 | deny | 缺 level = deny |
-| 4 | steward | read | 4 | 2 | allow | steward 例外 |
-| 5 | service | write | 2 | — | deny | 写路径不授权 |
-| 6 | any | read | table/dataset | — | skip | 表/数据集不按列判 |
-| 7 | any | any | 无命中 | — | deny | 默认 deny |
-| 8 | analyst | read | dataset 3 | 2 | skip | kind 先于 level |
-| 9 | steward | read | table null | 3 | **未定** | R4 vs R6 优先级未写全 |
-| 10 | analyst | delete | 1 | 2 | deny | 未覆盖 action → 默认 deny |
+| # | principal | action | kind | level | 期望 | 规则 |
+|---|---|---|---|---|---|---|
+| T1 | analyst | read | column | 2 | allow | R1 |
+| T2 | analyst | read | column | 3 | deny | R2 |
+| T3 | analyst | read | column | null | deny | R3 |
+| T4 | analyst | read | column | 4 | deny | R2 |
+| T5 | steward | read | column | 4 | allow | R4 |
+| T6 | service | write | column | 1 | deny | R6 |
+| T7 | analyst | read | table | null | skip | R5 |
+| T8 | analyst | read | dataset | 3 | skip | R5 |
+| T9 | steward | read | table | null | **undetermined** | R4/R5（同优先级） |
+| T10 | analyst | delete | column | 1 | deny | R7（default） |
+| T11 | governance | read | dataset | null | allow | R8 |
 
-**规则**：先 `kind` 后 `level`（6 先于 1–3）；列内 deny-overrides；`skip` 必须带 `reason`，不能当 allow。
+**规则**：R7 是 default，不参与竞争；specific rules 按 priority 数字最小者；同优先级但 effect 不同 = `undetermined`；`skip` 必须带 `reason`；`clearance` 未消费。
 
 ## 标签 → level → 处置（骨架）
 
@@ -67,7 +68,7 @@ source/column
 | 个人信息（Email/Phone） | 2–3 | 按用途/同意；最小化 | GB/T 35273 类别（待核） |
 | 敏感个人信息（SSN/金融） | 3–4 | deny by default；去标识 | GB/T 35273 类别（待核） |
 
-> `level` 与处置的对应是**工程选择**，不是标准原文：GB/T 43697 只分**核心/重要/一般**三级，GB/T 35273 只定义个人信息/敏感个人信息，**都不给 1–4 数值，也不给「analyst 能不能读」**。`clearance` 在 10 条用例里取 1–5，没有一条改变 decision。
+> `level` 与处置的对应是**工程选择**，不是标准原文：GB/T 43697 只分**核心/重要/一般**三级，GB/T 35273 只定义个人信息/敏感个人信息，**都不给 1–4 数值，也不给「analyst 能不能读」**。`clearance` 在 11 条用例里取 1–5，没有一条改变 decision。
 
 ## 审计最小单元
 
@@ -80,10 +81,12 @@ source/column
   "judged_subject": ":col_ssn",
   "resource_level": 4,
   "user_context": {"role": "analyst", "clearance": 2},
-  "policy_version": "0.3.0",
-  "effect": "deny",
+  "policy_version": "0.4.0",
+  "tag_version": "0.1.0",
+  "decision": "deny",
+  "execution_effect": "withheld",
   "reason": "policy_deny",
-  "obligation": "log_decision",
+  "obligation": "log",
   "outcome": "row withheld"
 }
 ```
@@ -94,5 +97,5 @@ source/column
 
 - 没有 principal/action 来源 → 不写策略表，只写「标签 ≠ 策略」。
 - 没有冲突消解选择 → 不写 deny-overrides；写「未定」。
-- 7 条测试跑不出期望 decision → 不写「策略可判定」。
+- 11 条测试跑不出期望 decision → 不写「策略可判定」。
 - 没有版本/审计字段 → 不写「可审计」。
