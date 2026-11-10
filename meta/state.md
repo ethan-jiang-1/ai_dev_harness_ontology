@@ -22,7 +22,7 @@ updated: 2026-11-10
 | 执行形态（36 源） | engine 4 / compiled 7 / context 3 / label 2 / none 20 |
 | 交付物 | 4 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-ontology-in-production；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（README + GUIDE + 3 body + sections + evidence，E-21/E-22 已升、未入库 signal 另列）；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-10，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（493 文件；E=27，Q=3，C=4，L=79；28 论文 / 8 开源） |
+| 最后自检 | 2026-11-10，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（495 文件；E=27，Q=3，C=4，L=79；28 论文 / 8 开源） |
 
 ## 当前边界（不是阻塞）
 
@@ -38,8 +38,8 @@ updated: 2026-11-10
 - **W2**：T3 [policy](../topics/01-constraint/policy/README.md)（3 F / 3 G、7 列 schema、10 测试）；T4 [read-path](../topics/01-constraint/commit-gate/read-path.md)（10 用例、第二实现否决）；[govern v2](../deliverables/04-ontology-in-production/body/govern.md)（10 测试、12 泄漏用例、audit schema）。
 - **W3**：T1 [consumability](../topics/05-produce/representation/consumability.md)（三关、3×4、10 坏样本）；T6 [propagation](../topics/06-measure/metrics/propagation.md)（10×3 故障矩阵、成本量级）；[build v2](../deliverables/04-ontology-in-production/body/build.md)（三关、10 坏样本）。
 - **产物**：04 九件（5 主 + policy_tests / audit.schema / leak_cases / fault_matrix）。
-- **收口**：M1–M4/M8/M9 标准已入材料卡；Great Expectations / OpenLineage 已入 OSS digest；M5–M7/M10 按 D7 降为候选；E23–E27 全部已升（读路径/策略层/可消费性/路线/输出）；04 body 14.9k（执行后修订 ≤15k）；模板 2 / gap 4。
-- **check**：493 文件；E=27，L=79；0 断链。
+- **收口**：M1–M4/M8/M9 标准已入材料卡；Great Expectations / OpenLineage 已入 OSS digest；M5–M7/M10 按 D7 降为候选；E23–E27 全部已升（读路径/策略层/可消费性/路线/输出）；04 body 14.12k（执行后修订 ≤15k）；模板 2 / gap 3；已核 17。
+- **check**：495 文件；E=27，L=79；0 断链。
 
 ## 2026-11-10 04 内容供给计划（新）
 

@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-10
 ---
 
 # 结构决策（ADR）
@@ -18,5 +18,6 @@ updated: 2026-11-09
 | [0007](./0007-no-external-asset-gate.md) | 不设外部资产前置 | 删除 D0/试点线；agent 不得自行创造人类前置 |
 | [0008](./0008-thin-subtopics-merge-audit.md) | 薄子主题合并审计 | 15 个薄页本轮不合并；给出门槛与下轮复核点 |
 | [0009](./0009-object-layer.md) | 证据对象层（O-xx） | 交付物可引 O 作地址、主句仍落 E；**已接受（方案 A）** |
+| [0010](./0010-three-layer-information-flow.md) | 三层信息流 | `src` 给 Agent 干货、`topics` 给 Agent+人判断、`deliverables` 给人成品；主路径自包含 |
 
 **新增 ADR 的判据**：改变目录/层级/字段契约，或引入新的源类型/验证方式。只改内容判断，不写 ADR。

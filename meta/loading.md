@@ -28,6 +28,8 @@
 
 ## 按任务加载
 
+> 三层读者不同：`src/` 给 Agent 干货，`topics/` 给 Agent+人判断，`deliverables/` 给人成品。读交付物不需要先读 `src/`/`topics/`；要改交付物才回上游。细则见 [ADR 0010](../adr/0010-three-layer-information-flow.md)。
+
 | 你要做什么 | 只加载 | 先不要加载 |
 |---|---|---|
 | 了解仓库 | README §1-3、THESIS 的 RQ | 全部 topics |

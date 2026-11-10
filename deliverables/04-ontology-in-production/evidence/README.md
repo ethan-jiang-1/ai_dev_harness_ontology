@@ -4,8 +4,9 @@ updated: 2026-11-10
 parent: ../README.md
 ---
 
-# 04 证据
+# 04 证据（附录）
 
+> **这是附录，不进入主线。** 正文里的出处编号在这里；读者第一遍可以跳过。细节/原始研究底稿可以点 `topics/`，但主路径不需要。
 > 已入库走 E；未入库只标 signal，不作依据；旧源已删。
 
 ## 1. 已入库 E
@@ -53,6 +54,29 @@ parent: ../README.md
 | [ODCS v3.1.0](../../../src/web/odcs-v3.1/odcs-v3.1.card.md) | A.1/A.5 | 精读；Required 待核 |
 
 > 材料卡只证明「标准说了什么」，不证明「你的实现/映射正确」；不升 E。
+
+## 1d. 按章证据（从正文移入）
+
+| 章 | 节 | 证据 | 等级 |
+|---|---|---|---|
+| A | A.1 契约 | [consumability §3](../../../topics/05-produce/representation/consumability.md)；工程产物 | 未测（无 CQ） |
+| A | A.2 档位 | E-12 / O-F14 | 推测 |
+| A | A.3 本体 | E-22 / O-N28；T:01/access-control F1 | 工程产物 |
+| A | A.4 shapes | SFE-O §4.1；E-02 / O-F08 | 未测 |
+| A | A.5 三关 | E-25；[consumability §1/§6](../../../topics/05-produce/representation/consumability.md) | 工程产物 |
+| A | 全章 | T:05/representation、T:05/generation、S:SFE-O/Catch/N&D/Glyph | 边界 |
+| B | B.0/B.1 路线 | E-21 / E-26；[compare](../../../topics/03-knowledge/querying/compare.md) §1–§3 | 已核（单设置）/ 推测（综合） |
+| B | B.2 查询 | 工程产物（3 条 SPARQL）；E-21；T:querying §5；[Qlever digest](../../../src/open-source/ad-freiburg-qlever/digest.md) | 工程产物 |
+| B | B.3 纠错 | E-21；[querying/F1](../../../topics/03-knowledge/querying/findings.md) | 未测：2×2、空结果 |
+| B | B.4 OBDA | E-20；[Ontop digest](../../../src/open-source/ontop-ontop/digest.md) | 已核（代码） |
+| B | B.6 验收 | 工程产物（验收表）；E-21 | 示例 |
+| C | C.1 三层 | T:access-control F1–F3；[policy](../../../topics/01-constraint/policy/README.md)；[read-path](../../../topics/01-constraint/commit-gate/read-path.md)；S:Glyph/trustgraph；E-22 | 已核（综合） |
+| C | C.2 策略 | E-24；T:policy F1–F3；[OPA digest](../../../src/open-source/open-policy-agent-opa/digest.md)；工程产物 | 已核（标准摘要）/ 推测（映射） |
+| C | C.3 泄漏 | E-23；[read-path](../../../topics/01-constraint/commit-gate/read-path.md)；S:trustgraph | 已核（代码） |
+| C | C.4 审计 | T:06/trace；[policy mechanism](../../../topics/01-constraint/policy/mechanism.md)；工程产物 | 未测 |
+| C | C.5 输出/传播 | [output-validation](../../../topics/02-judgment/checker/output-validation.md)、[identity F3](../../../topics/04-state/identity/findings.md)、[coverage G](../../../topics/06-measure/metrics/coverage.md)；工程产物 | 未测 |
+
+> 这是附录表；正文只在章末说「见这里」，不重复内码。读正文时不需要看这张表。
 
 ## 2. 外部信号（未入库，只作旁证）
 

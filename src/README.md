@@ -1,5 +1,5 @@
 ---
-updated: 2026-11-09
+updated: 2026-11-10
 ---
 
 # src：来源层（三类材料，各自一目录）
@@ -13,6 +13,14 @@ updated: 2026-11-09
 | 真实代码项目 | `open-source/` | 一个项目一目录 `{org}-{repo}/` | 不 vendor，pin commit + 链接 |
 
 三类都解决三件事：**原文/代码在不在、它说了什么或怎么走、我们消化出了什么**。
+
+## 0. 读者与写法：src 是给 Agent 的干货层
+
+- **读者**：Agent（检索、引用、复用事实）；人不作为第一读者。
+- **写什么**：思想、工程实践、事实、数字与条件、`file:symbol`、失败模式；`digest.md` 自包含，不要求读原文。
+- **不写什么**：面向人的导读、路线图、总结陈词；这些在 `deliverables/`。
+- **完成信号**：Agent 不读原文，就能从 digest 取用一条事实/锚点/条件。
+- **边界**：不追求“好读”，追求“可取用”；面向人的重述是 `deliverables/` 的事。
 
 > 非 arXiv 的会议论文/数据集（Zenodo、DLR 等）也落 `web/`，`source_type: paper`；材料卡即消化正文，不另建 digest（见 [web/README](./web/README.md)）。
 

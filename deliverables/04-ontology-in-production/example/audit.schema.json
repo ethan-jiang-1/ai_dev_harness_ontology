@@ -19,6 +19,9 @@
       "tag_version",
       "decision",
       "reason",
+      "obligation",
+      "user_context",
+      "evidence",
       "outcome",
       "leak_check"
     ],
@@ -48,7 +51,7 @@
       },
       "policy_version": {"type": "string", "minLength": 1},
       "tag_version": {"type": "string", "minLength": 1},
-      "decision": {"enum": ["allow", "deny", "skip"]},
+      "decision": {"enum": ["allow", "deny", "skip", "undetermined"]},
       "reason": {
         "enum": [
           "policy_allow",

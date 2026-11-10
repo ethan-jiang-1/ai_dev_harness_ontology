@@ -47,6 +47,8 @@
 
 **改一个派只动该派目录**：`README.md` / `claims.md` / `sources.md` / `frontier.md` / 子主题。只有跨派结论或进 `deliverables/` 时，才改 [conclusions](./topics/conclusions.md) 的 `E-xx`。
 
+**三层信息流（ADR 0010）**：`src/` 写给 Agent 的干货（事实/锚点/条件）；`topics/` 写给 Agent + 人的判断（findings/compare/边界）；`deliverables/` 写给人的成品（通俗、按任务、可照着做）。**成品主路径必须自包含**，不要求读者打开 `topics`；细节可以链 `topics`，但要标“可选/出处”。细则见 [ADR 0010](./adr/0010-three-layer-information-flow.md)。
+
 **素材类型不进 topics**：论文的 `card.md` / `digest.md` 在 `src/papers/{arxiv_id}-{slug}/`，网页卡在 `src/web/`，开源项目的 `card.md` / `digest.md` / `code-map.md` 在 `src/open-source/{org}-{repo}/`；用 `source_type` 区分论文/预印本/博客/工程/标准/演讲/综述/开源项目。**topics 引用内容时链 `digest.md`；`card.md` 只用于 provenance/阅读状态。** 证据天花板见 [source-types](./meta/source-types.md)。
 
 ## 三条硬规矩

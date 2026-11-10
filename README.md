@@ -58,13 +58,25 @@
 
 | 工位 | 职责 | 完成信号 |
 |---|---|---|
-| [`src/`](./src/) | 一篇一目录：PDF + `paper.md` / `references.md` / `appendix.md` + `card.md` + `digest.md` + `figures/`（有图才建） | 原文落盘 + 三份 MD 齐 + digest 有 `quality` |
+| [`src/`](./src/) | 一篇一目录：PDF + `paper.md` / `references.md` / `appendix.md` + `card.md` + `digest.md` + `figures/`（有图才建） | Agent 不读原文能取用事实/锚点 |
 | [`topics/`](./topics/) | 按六派沉淀；派 README 是地图，子主题 README 是 dashboard | 结论带等级，冲突显式保留，gap/next 可见 |
-| [`deliverables/`](./deliverables/) | 手册、Deck、图等对外物 | 每条可反查回 topics |
+| [`deliverables/`](./deliverables/) | 手册、Deck、图等对外物 | 读者不打开 topics 能完成任务；细节可链 |
 
 支撑目录：`adr/`（结构决策）、`meta/`（约定与模板）。
 
 **三条规矩**：单向不可反向（deliverables 只从 topics 抽）；上游可以领先下游；每级自带台账。
+
+### 2.1 三层信息流：各写给谁
+
+> 三层不是“三套深浅”，是**三种读者**。细则见 [ADR 0010](./adr/0010-three-layer-information-flow.md)。
+
+| 层 | 读者 | 写什么 | 不写什么 | 完成信号 |
+|---|---|---|---|---|
+| [`src/`](./src/) | **Agent** | 干货：思想、工程实践、事实、数字与条件、代码锚、失败模式；digest 自包含 | 面向人的导读、路线图、总结陈词 | Agent 不读原文就能取用一条事实/锚点 |
+| [`topics/`](./topics/) | **Agent + 人** | 组织话题：findings、compare、mechanism、frontier；把 src 压成判断、对照、边界 | 最终交付文案、通俗导读 | 同一话题的判断/边界/缺口可查 |
+| [`deliverables/`](./deliverables/) | **人** | 通俗、按任务组织；把 topics 消化成读者能照着做/判断的文档；细节可链 topics | 让读者自己拼 topics；内部术语堆叠 | 读者不打开 topics 也能完成任务；要细节时知道去哪 |
+
+**一条链**：`src` 是原料，`topics` 是加工，`deliverables` 是成品。成品不要求读者回原料；可以给“细节/出处”链接，但**主路径必须自包含**。
 
 ## 3. 六派
 

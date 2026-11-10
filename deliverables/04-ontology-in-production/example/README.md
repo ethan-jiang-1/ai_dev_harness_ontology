@@ -4,9 +4,72 @@ updated: 2026-11-10
 parent: ../README.md
 ---
 
-# 例子数据（fixture）
+# 例子数据（fixture）：5 分钟跑通
 
-> 5 表 / 13 列，页内可复现。TBox：[ontology.ttl](./ontology.ttl) ｜ shapes：[shapes.ttl](./shapes.ttl) ｜ ABox：[catalog.ttl](./catalog.ttl) ｜ 策略测试：[policy_tests.json](./policy_tests.json) ｜ 审计 schema：[audit.schema.json](./audit.schema.json) ｜ 泄漏用例：[leak_cases.json](./leak_cases.json) ｜ 故障矩阵：[fault_matrix.json](./fault_matrix.json)。**断言式三元组存储，无 entailment**；`:hasColumn` 与 `:columnOfTable` 两侧显式写入；`owl:inverseOf` 只是文档。**决策单位 = triple subject（列）**。200 表/5,000 列只作 Glyph 量级参照，不是本 fixture。
+> 5 表 / 13 列。**断言式三元组存储，无 entailment**；`:hasColumn` 与 `:columnOfTable` 两侧显式写入；`owl:inverseOf` 只是文档。**决策单位 = triple subject（列）**。200 表/5,000 列只作 Glyph 量级参照，不是本 fixture。
+
+## 文件清单
+
+| 文件 | 是什么 | 对应产物 |
+|---|---|---|
+| [ontology.ttl](./ontology.ttl) | TBox：11 类 / 5 属性 | ② Turtle |
+| [catalog.ttl](./catalog.ttl) | ABox：5 表 / 13 列 / 标签 | ② Turtle |
+| [shapes.ttl](./shapes.ttl) | 2 条 SHACL shape | ③ shapes |
+| [policy.json](./policy.json) | 7 条策略规则 | ⑤ policy 表 |
+| [policy_tests.json](./policy_tests.json) | 10 条输入 → 期望 decision | ⑥ 策略测试 |
+| [leak_cases.json](./leak_cases.json) | 12 条泄漏用例 | ⑦ 泄漏用例 |
+| [audit.schema.json](./audit.schema.json) | audit record JSON Schema | ⑧ audit schema |
+| [audit_records.json](./audit_records.json) | 2 条 audit 记录（deny + skip/leak） | ⑧ audit record |
+| [fault_matrix.json](./fault_matrix.json) | 10 类故障 × 3 段 | ⑨ 故障矩阵 |
+
+## 5 分钟跑通（可选）
+
+> 需要 `rdflib` + `pyshacl`（`pip install rdflib pyshacl`）。以下命令在本目录跑；下面的数字是 fixture 期望，不是运行记录。
+
+```bash
+# 1. 解析三个 TTL（期望 3/3 parsed）
+python3 - <<'PY'
+import rdflib
+for f in ["ontology.ttl", "shapes.ttl", "catalog.ttl"]:
+    g = rdflib.Graph(); g.parse(f); print(f, len(g), "triples")
+PY
+
+# 2. 跑 shapes（期望 2 violations：tag_unknown / col_legacy）
+python3 - <<'PY'
+from pyshacl import validate
+conforms, _, text = validate("catalog.ttl", shacl_graph="shapes.ttl",
+                             inference="none", advanced=False)
+print("conforms:", conforms); print(text[-800:])
+PY
+
+# 3. 跑 CQ1（期望 2 列 / 2 表）
+python3 - <<'PY'
+import rdflib
+g = rdflib.Graph(); g.parse("catalog.ttl")
+q = """PREFIX : <https://ex.org/c#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?col ?table WHERE {
+  ?col :hasTag ?t ; :columnOfTable ?table .
+  ?t a/rdfs:subClassOf* :Email .
+}"""
+for row in g.query(q): print(row)
+PY
+```
+
+**期望**（与 [A.5](../body/build.md)/[B.2](../body/consume.md) 一致）：
+
+- 解析：3/3；TBox 11 类/5 属性；shapes 2。
+- `pyshacl`：`conforms=false`，2 violations（`tag_unknown` 缺 `sensitivityLevel`；`col_legacy` 的 `hasTag` 是字面量）。
+- CQ1：2 行（`col_email`、`col_customer_email`）/ 2 表。
+- CQ2：4 表 / 7 列；CQ3：4 个 dataset 各 1。
+
+**跑不通时**：先看 [症状地图](../sections/map.md)；`0 violation` 可能是 shape 没有 target，不是数据干净。
+
+## 策略与泄漏（没有引擎，怎么用）
+
+- [policy_tests.json](./policy_tests.json)：10 条输入 → 期望 decision。用任意 JSON/脚本按 `policy.json` 的 7 条规则判；T9 故意留成 `undetermined`，不要强行给 allow/deny。
+- [leak_cases.json](./leak_cases.json)：12 条查询与期望行数；`trustgraph` 列是 pin `184f622` 的已知行为，不是实测。`object_direction_failed` 是预期缺口，不是用例写错。
+- [audit.schema.json](./audit.schema.json)：用 `jsonschema` 校验 [audit_records.json](./audit_records.json) 的两条记录（对应 [govern C.4](../body/govern.md)）；`policy_version/tag_version/snapshot` 必须能回放。
 
 ## 数据
 
@@ -25,14 +88,6 @@ parent: ../README.md
 | t_sales | col_revenue | Financial | 3 |
 | t_sales | col_rep | Name | 2 |
 | t_legacy | col_legacy | `"email"`（字面量，坏样本） | — |
-
-## 期望结果
-
-- **CQ1**：2 列（`col_email`、`col_customer_email`）/ 2 表。
-- **CQ2**：4 表 / 7 列（users: email/phone；orders: amount/customer_email；hr: ssn/salary；sales: revenue）。
-- **CQ3**：ds_orders 1、ds_hr 1、ds_sales 1、ds_legacy 1（按「无 level-bearing tag」）。
-- **shape violations**：2（`tag_unknown` 缺 `sensitivityLevel`；`col_legacy` 的 `hasTag` 是字面量）；`violations` 只数 shape 违反。
-- **版本**：`policy_version: 0.3.0`、`tag_version: 0.1.0`；`query_id: CQ1|CQ2|CQ3`。
 
 ## 说明
 
