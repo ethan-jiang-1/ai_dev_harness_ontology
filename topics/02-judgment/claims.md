@@ -18,3 +18,4 @@ updated: 2026-11-07
 | 02-L7 | 同一个本体既做 context 又做 checker 会降低 catch（同源确认偏差） | 推测 | Ontology Catch（探索性） | 需要独立 checker |
 | 02-L8 | grounding level 是模型自评的弱信号，不是形式保证；entailed 94.9%/supported 82.1% 是切片，未校准 | 已核 | E-03 / OA-RAG | 作者自述无形式保证 |
 | 02-L9 | 检索是主瓶颈：gold evidence 完全检索率 MCQ 61.7% vs OQ 23.6% | 已核 | E-03 / OA-RAG | 先修检索，再修推理 |
+| 02-L10 | 输出校验要六类（schema/基数/来源/新鲜度/跨字段/合理性）+ 三态；把 undetermined 当 pass 会污染分母；只有前两类成本低 | 推测（综合） | checker F7/F8；[output-validation](./checker/output-validation.md) | cross-field/合理性误报未测；Great Expectations 映射待核 |

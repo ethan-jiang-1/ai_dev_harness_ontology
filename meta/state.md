@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-10
 ---
 
 # 仓库状态戳
@@ -8,21 +8,21 @@ updated: 2026-11-09
 > 这是全仓**权威的当前计数**。README 只保留结构性摘要，checklist 不再抄数；数字冲突时以本页为准。
 > 每次结构性提交前更新；自检命令见文末。
 
-## 当前状态（2026-11-09）
+## 当前状态（2026-11-10）
 
 | 项 | 值 |
 |---|---|
 | 阶段 | 内部研究档案；不做对外客户交付，因此不设客户资产/签核前置 |
-| 论文 | 24 个目录（20 基础 + 4 扫描），全部有 PDF + 三份 MD + card + digest |
-| 开源 | 6 个项目（trustgraph / semantica / ontop / open-ontologies + OPA / Qlever），已 pin commit、已消化 |
-| 主题 | 6 派 + 22 个子主题 + 00-harness 七部件 + 6 时刻 + 1 条形态轴 |
-| 结论 | 22 条 E：19 已核原文 + 1 已核代码 + 2 推测；3 条 Q；4 条 C |
-| 局部判断 | 74 条 L（01:18 / 02:9 / 03:15 / 04:7 / 05:9 / 06:16） |
-| 证据配比（28 篇 + 6 开源） | 9 execution-test（8 回路上 + 1 训练侧）/ 14 mechanism-only / 8 harness-evidence / 3 boundary-ruler |
-| 执行形态（34 源） | engine 4 / compiled 7 / context 3 / label 2 / none 18 |
+| 论文 | 28 个目录（20 基础 + 4 扫描 + 4 补给），全部有 PDF + 三份 MD + card + digest |
+| 开源 | 8 个项目（trustgraph / semantica / ontop / open-ontologies + OPA / Qlever + Great Expectations + OpenLineage），已 pin commit、已消化 |
+| 主题 | 6 派 + 23 个子主题 + 00-harness 七部件 + 6 时刻 + 1 条形态轴 |
+| 结论 | 27 条 E：21 已核原文 + 2 已核代码 + 4 推测；3 条 Q；4 条 C |
+| 局部判断 | 79 条 L（01:19 / 02:10 / 03:16 / 04:7 / 05:10 / 06:17） |
+| 证据配比（28 篇 + 8 开源） | 9 execution-test（8 回路上 + 1 训练侧）/ 16 mechanism-only / 8 harness-evidence / 3 boundary-ruler |
+| 执行形态（36 源） | engine 4 / compiled 7 / context 3 / label 2 / none 20 |
 | 交付物 | 4 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-ontology-in-production；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（README + GUIDE + 3 body + sections + evidence，E-21/E-22 已升、未入库 signal 另列）；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-10 10:22，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（470 文件；E=22，Q=3，C=4，L=74；28 论文 / 6 开源） |
+| 最后自检 | 2026-11-10，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（493 文件；E=27，Q=3，C=4，L=79；28 论文 / 8 开源） |
 
 ## 当前边界（不是阻塞）
 
@@ -30,6 +30,24 @@ updated: 2026-11-09
 2. **独立复现仍是空缺**：不影响 desk research；若要升「已证」，需要独立复现，但不在本仓库做；不设实验目录，也不再用模型做实验被试。
 3. **独立人类抽检**：只在对外交付时需要；内部研究不阻塞。
 4. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 已入库仍只有 1 个实现（外部扫描另见 sparql-guard 候选，未入库），需第二实现 + harness 调用点才能决定是否升第七时刻。
+
+## 2026-11-10 04 内容供给执行（W0–W3 主体）
+
+- **W0**：12 张矩阵骨架入 [04-matrix-skeletons](../deliverables/_plans/2026-11-10-04-matrix-skeletons.md)；12 条承重句冻结。
+- **W1**：T2 [querying/compare](../topics/03-knowledge/querying/compare.md)（4×8 矩阵、17 类失败、决策树）；T5 [output-validation](../topics/02-judgment/checker/output-validation.md)（六类 + 三态）；[consume v2](../deliverables/04-ontology-in-production/body/consume.md)（决策表、2×2、失败目录）。
+- **W2**：T3 [policy](../topics/01-constraint/policy/README.md)（3 F / 3 G、7 列 schema、10 测试）；T4 [read-path](../topics/01-constraint/commit-gate/read-path.md)（10 用例、第二实现否决）；[govern v2](../deliverables/04-ontology-in-production/body/govern.md)（10 测试、12 泄漏用例、audit schema）。
+- **W3**：T1 [consumability](../topics/05-produce/representation/consumability.md)（三关、3×4、10 坏样本）；T6 [propagation](../topics/06-measure/metrics/propagation.md)（10×3 故障矩阵、成本量级）；[build v2](../deliverables/04-ontology-in-production/body/build.md)（三关、10 坏样本）。
+- **产物**：04 九件（5 主 + policy_tests / audit.schema / leak_cases / fault_matrix）。
+- **收口**：M1–M4/M8/M9 标准已入材料卡；Great Expectations / OpenLineage 已入 OSS digest；M5–M7/M10 按 D7 降为候选；E23–E27 全部已升（读路径/策略层/可消费性/路线/输出）；04 body 14.9k（执行后修订 ≤15k）；模板 2 / gap 4。
+- **check**：493 文件；E=27，L=79；0 断链。
+
+## 2026-11-10 04 内容供给计划（新）
+
+- **新增**：[04-content-supply](../deliverables/_plans/2026-11-10-04-content-supply.md)。
+- **方向**：不再从 04 倒查；12 条承重句 → 6 张矩阵/目录（新页型 `compare.md`）→ 12 个 M 来源 + 1 个论文槽位；8 条靠整理/标准、4 条靠新证据。
+- **三波**：W1 查询/输出 → W2 策略/执行 → W3 建/跨段；每波 gate，不过就删句。
+- **停止线**：<7 条承重句有表/产物 → 04 并进 02 的 R13，目录删除。
+- **口径**：标准/基准不套论文新鲜度；adjunct OSS 标 `ontology_role: adjunct`，不单独撑 E；计划不产生 E/L。
 
 ## 2026-11-10 04 重写（D1–D6）
 

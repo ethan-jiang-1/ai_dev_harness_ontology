@@ -216,11 +216,17 @@ open-source/{org}-{repo}/
 |---|---|---|---|
 | 老刘说NLP · 本体4方向20工作（2026-11-04） | [otology.card.md](./web/weixin-laoliu/otology.card.md) | 已消化 / 综述转述 | `topics/conclusions.md`、`topics/README.md`、`topics/05-produce/lifecycle/README.md`、`topics/domains.md` |
 | HN · Netflix ontology-driven observability（2026-10-19） | [card](./web/hn-netflix-ontology-observability/hn-netflix-ontology-observability.card.md) | 已消化 / thread 原文 | 04 C.5/B.2 signal；不升 E |
-| 24 篇历史论文（20 基础 + 4 扫描） | 各目录 `card.md` / `digest.md` | L3 12 篇 / L2 8 篇 / L1 4 篇 | 六派 README、claims、conclusions（E-01…E-22） |
+| GB/T 43697-2024 数据分类分级规则 | [card](./web/gbt-43697/gbt-43697.card.md) | 摘要级 / 原文摘要 | 01/policy、04 C.2；三级 vs 1–4 是工程映射 |
+| GB/T 35273-2020 个人信息安全规范 | [card](./web/gbt-35273/gbt-35273.card.md) | 摘要级 / 原文摘要 | 01/policy；PII 类别，不是 level 表 |
+| W3C ODRL 2.2 | [card](./web/w3c-odrl-2.2/w3c-odrl-2.2.card.md) | 精读 / 原文正文 | 01/policy F2；冲突/义务/版本 |
+| OASIS XACML 3.0 | [card](./web/oasis-xacml-3.0/oasis-xacml-3.0.card.md) | 精读 / 原文正文 | 01/policy F2；合并算法/obligation |
+| W3C SHACL | [card](./web/w3c-shacl/w3c-shacl.card.md) | 摘要级 / 原文摘要 | 05/consumability、02/output-validation、04 A.4/A.5 |
+| ODCS v3.1.0 | [card](./web/odcs-v3.1/odcs-v3.1.card.md) | 精读 / 原文正文 | 05/consumability §3、04 A.1/A.5 |
+| 24 篇历史论文（20 基础 + 4 扫描） | 各目录 `card.md` / `digest.md` | L3 12 篇 / L2 8 篇 / L1 4 篇 | 六派 README、claims、conclusions（E-01…E-27） |
 | 4 篇补给（GGC / Glyph / NLKGQ / KGVoyager） | 各目录 `card.md` / `digest.md` | 精读；L2/L1 见各 card | `topics/03-knowledge/querying`、`topics/01-constraint/access-control`、conclusions（P1/P2 新 E） |
-| 开源项目 | 状态与进度见 [open-source/README](./open-source/README.md)；未建卡的不算入库 | 6 个本轮已消化（4 本体 + OPA/Qlever 工程线）；3 个 <1,000★ 仍不建卡 | `topics/01-constraint`（commit-gate F5–F7、access-control）、`topics/02-judgment`（checker F7–F8）、`topics/05-produce`（generation F7、lifecycle 判断 4）、`topics/03-knowledge`（querying） |
+| 开源项目 | 状态与进度见 [open-source/README](./open-source/README.md)；未建卡的不算入库 | 8 个本轮已消化（4 本体 + OPA/Qlever 工程线 + Great Expectations 输出校验 + OpenLineage lineage）；3 个 <1,000★ 仍不建卡 | `topics/01-constraint`（commit-gate F5–F7、access-control）、`topics/02-judgment`（checker F7–F8、output-validation）、`topics/05-produce`（generation F7、lifecycle 判断 4）、`topics/03-knowledge`（querying） |
 
-> 论文按篇记；开源按项目记在 `open-source/README` 的状态表里，本页只留总账——**一处明细，一处总账，不重复**。
+> 论文按篇记；开源按项目记在 `open-source/README` 的状态表里，标准按卡记；本页只留总账——**一处明细，一处总账，不重复**。标准全文有版权时不存原文，只存自包含卡 + `source:` URL；`reading/provenance` 如实，条款号未核就标 `待核`。
 
 ## 7. 已知缺口
 

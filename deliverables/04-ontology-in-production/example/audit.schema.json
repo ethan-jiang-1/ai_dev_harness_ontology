@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ex.org/c#audit-record.schema.json",
+  "title": "Ontology query access audit record",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "decision_id",
+      "query_id",
+      "executor",
+      "snapshot",
+      "who",
+      "action",
+      "judged_subject",
+      "subject_kind",
+      "policy_version",
+      "tag_version",
+      "decision",
+      "reason",
+      "outcome",
+      "leak_check"
+    ],
+    "properties": {
+      "decision_id": {"type": "string", "minLength": 1},
+      "query_id": {"type": "string", "minLength": 1},
+      "executor": {"type": "string", "minLength": 1},
+      "snapshot": {"type": "string", "minLength": 1},
+      "who": {"type": "string", "minLength": 1},
+      "action": {"enum": ["read", "write", "export", "any"]},
+      "judged_subject": {"type": "string", "minLength": 1},
+      "subject_kind": {"enum": ["column", "table", "dataset", "triple", "graph"]},
+      "judged_triple": {
+        "type": "array",
+        "items": {"type": "string"},
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "resource_level": {"type": ["integer", "null"], "minimum": 0, "maximum": 4},
+      "user_context": {
+        "type": "object",
+        "properties": {
+          "role": {"type": "string"},
+          "clearance": {"type": "integer"}
+        },
+        "required": ["role"]
+      },
+      "policy_version": {"type": "string", "minLength": 1},
+      "tag_version": {"type": "string", "minLength": 1},
+      "decision": {"enum": ["allow", "deny", "skip"]},
+      "reason": {
+        "enum": [
+          "policy_allow",
+          "policy_deny",
+          "table_subject_not_judged",
+          "default_deny",
+          "priority_gap"
+        ]
+      },
+      "obligation": {"enum": ["log", "mask", "approve", "none"]},
+      "evidence": {
+        "type": "array",
+        "items": {"type": "string"}
+      },
+      "leaked_object": {"type": "string"},
+      "leaked_object_level": {"type": "integer"},
+      "outcome": {"type": "string", "minLength": 1},
+      "leak_check": {"enum": ["passed", "object_direction_failed", "not_run"]}
+    }
+  }
+}

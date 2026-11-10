@@ -13,11 +13,11 @@ evidence: [E-02]
 
 | 项 | 值 |
 |---|---|
-| 已发现 | 8 条（[findings](./findings.md)） |
+| 已发现 | 8 条（[findings](./findings.md)）+ 1 页输出校验（[output-validation](./output-validation.md)） |
 | 未发现 / 开放 | 5 条（[frontier](./frontier.md)） |
 | 下一步 | 3 个候选（[frontier](./frontier.md)） |
-| 最后扫描 | 2026-11-09 |
-| 覆盖 | 输出后的语义/结构检查；不含格式检查与行为测试（见 [00-harness/verification](../../00-harness/verification.md)） |
+| 最后扫描 | 2026-11-10 |
+| 覆盖 | 输出后的语义/结构检查 + 结果对象校验；不含格式检查与行为测试（见 [00-harness/verification](../../00-harness/verification.md)） |
 
 ## 当前判断
 
@@ -37,6 +37,7 @@ evidence: [E-02]
 | 三种来源/curated FA 归因/空结果/同源（探索性）/失效 | [mechanism](./mechanism.md) |
 | 接口/成本口径/公式、建库参数、curated 审计、LLM judge 分支、部署抽样/客户指标、catch ≥30% 门 | [mechanism](./mechanism.md) |
 | 每条判断的证据/数字/条件 | [findings](./findings.md) |
+| 结果对象校验（六类 + 三态 + fixture 检查） | [output-validation](./output-validation.md) |
 | 还缺什么、下一步看什么 | [frontier](./frontier.md) |
 | 原始论文 | `src/papers/2610.37809-what-does-an-ontology-catch/` · [digest](../../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) |
 

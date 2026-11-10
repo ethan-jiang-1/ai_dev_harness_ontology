@@ -18,5 +18,6 @@ updated: 2026-11-08
 | 05-L7 | 说明质量 ≠ 可消费性：OntoDoc 没有测下游任务；文档变好不代表判定器/用户能用 | 推测 | OntoDoc；generation/F3 | 作者也未声称；四篇都没有可消费性评测 |
 | 05-L8 | 「专家覆盖窄/维护贵、LLM 语义漂移、数据挖掘把常见当应然」在生成路线的 digest 中没有测量，不能当来源排序依据 | 已核（缺口） | generation/F4；generation/frontier G5 | E-02 只测到三源漏检/误报不同；维护成本、漂移未测 |
 | 05-L9 | medium 接受率 0–25%，但不是全 mixed：default 0/2、pretrained 1/4、GPT-4o mini 1/5；medium 一律人审 | 已核 | CASTON Table 1 | default 的 2 条全 mixed；另两组各有 1 条被接受；每组 2–5 条 |
+| 05-L10 | 可消费性 = load/validate/answer 三关记录；现有 build_report 只覆盖 load/validate 的一部分；10 个坏样本只有 2 个被稳定抓住 | 推测（读文件/标准） | representation/consumability；04 A.5 | 未跑 S1–S6/S9/S10；ODCS/LinkML 待入库 |
 
 > **跨页说明（本次不动 conclusions）**：generation 原 frontmatter `evidence: [E-05]` 是错挂——E-05 属 FIRME/04-state，已改为空。05 引用的 E-02/E-05 均按 conclusions 现有条目，没有新增或修改 `E-xx`。

@@ -1,8 +1,8 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-10
 rq: [RQ1, RQ5]
-evidence: []
+evidence: [E-21]
 ---
 
 # 查询：自然语言 → 可执行 SPARQL 的三条路线
@@ -13,11 +13,11 @@ evidence: []
 
 | 项 | 值 |
 |---|---|
-| 已发现 | 3 条（[findings](./findings.md)） |
+| 已发现 | 3 条（[findings](./findings.md)）+ 1 页对照（[compare](./compare.md)） |
 | 未发现 / 开放 | 4 条（[frontier](./frontier.md)） |
 | 下一步 | 2 个（[frontier](./frontier.md)） |
-| 最后扫描 | 2026-11-09 |
-| 覆盖 | selective correction、ontology-in-context、ontology-free agentic navigation；不含 KG 构建、本体生成、OBDA 查询重写 |
+| 最后扫描 | 2026-11-10 |
+| 覆盖 | selective correction、ontology-in-context、ontology-free agentic navigation、OBDA 对照；不含 KG 构建、本体生成 |
 | 来源 | GGC（新加坡 NTU/A*STAR）+ NLKGQ（德国 Max Planck）+ KGVoyager（美国 UT Arlington） |
 
 ## 当前判断
@@ -25,6 +25,7 @@ evidence: []
 - **GGC：生成后选择性纠错。** MCQA（电影域、iMKG、31,570 题、Llama-3.2-3B 单骨干）上，`Query Acc.`（**答案集匹配率**）从 90.23%（Generator 单跑）到 98.33%（选择性纠错）；**全量纠错只有 92.34%**；45% 是相对全量纠错的墙钟，比单跑多约 10%；Gate FPR 0.31%、trigger 9.31%。`已核`（数字）/`推测`（跨域）。[F1](./findings.md)
 - **NLKGQ：ontology 进上下文。** 完整 OWL ontology + system prompt + domain rider，单次调用零样本生成；DBLP-QuAD 3.1（1,000 题、作者修订的确定性参考）**89.9% Match / 81.3% Exact**；2.0 确定性协议 **57.6% / 20.1%**；wrapper + rewriter 在 3.1 上 +15.0 Match / +25.3 Exact。`已核`（单系统）/`推测`（跨域）。[F2](./findings.md)
 - **KGVoyager：不依赖 ontology 的 agentic navigation。** 4 个领域 benchmark（394 题）× 4 骨干 × 3 次运行，平均 F1 **64.6% vs GRASP 60.9%（+3.7pp，不是 4×）**；成本 $2.43 vs $3.94（−38.3%）、墙钟 85.6s vs 112.4s（−23.8%）；只要 endpoint + lightweight class index。`已核`（数字）/`推测`（跨域）。[F3](./findings.md)
+- **按资产条件选，不按总分排。** 四条路线（含 OBDA）在资产/规模/指标/成本上不可比；只能按「先有什么」分支。`推测`（综合）。[compare](./compare.md)
 
 ## 文件地图
 
@@ -32,6 +33,7 @@ evidence: []
 |---|---|
 | 三条路线怎么跑、各停在哪 | [mechanism](./mechanism.md) |
 | F1–F3 的数字、条件、边界、来源 | [findings](./findings.md) |
+| 按资产选路线、失败目录、不可比清单 | [compare](./compare.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
 | 原始材料 | [GGC digest](../../../src/papers/2607.28082-ggc/digest.md) · [NLKGQ digest](../../../src/papers/2609.14652-nlkgq/digest.md) · [KGVoyager digest](../../../src/papers/2609.01780-kgvoyager/digest.md) |
 
@@ -44,6 +46,6 @@ evidence: []
 
 ## 关联
 
-- 派：[03 知识](../README.md) · 本派 claims：[03-L12–L15](../claims.md)
-- 结论：[E-21](../../conclusions.md)（P1 新 E）
+- 派：[03 知识](../README.md) · 本派 claims：[03-L12–L16](../claims.md)
+- 结论：[E-21](../../conclusions.md)（P1 新 E）；对照页：[compare](./compare.md)
 - 卡片（provenance）：[GGC](../../../src/papers/2607.28082-ggc/card.md) · [NLKGQ](../../../src/papers/2609.14652-nlkgq/card.md) · [KGVoyager](../../../src/papers/2609.01780-kgvoyager/card.md)

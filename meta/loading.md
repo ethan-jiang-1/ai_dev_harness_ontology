@@ -9,7 +9,7 @@
 3. [AGENTS](../AGENTS.md) 的「先定位落点」表。
 4. [topics/README](../topics/README.md)：四轴 + 4+1+1；[execution-forms](../topics/execution-forms.md)：第四根形态轴。
 5. [meta/state](./state.md)：当前计数、边界与最后自检；先看这一页，避免把旧数字当真。
-6. [conclusions](../topics/conclusions.md)：E-01…E-22 的等级与出处；至少读 E-01、E-04、E-20、E-21、E-22。
+6. [conclusions](../topics/conclusions.md)：E-01…E-27 的等级与出处；至少读 E-01、E-04、E-20、E-21、E-22、E-23、E-24、E-25、E-26、E-27。
 7. 任选一派 README，读它的「本目录怎么长」。
 
 到这里你能复述“它在研究什么”。**要安全地改仓库，还不够**——走下面的接手路径。

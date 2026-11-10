@@ -45,9 +45,9 @@ src/open-source/
 
 > **新鲜度**：现有 6 个项目的 `last_push` 为 2026-11-04/09，全部满足“2026-06 之后仍活跃”。新项目 `last_push` < 2026-07-01 不建卡；`check_repo` 会查。
 
-### 本轮消化（6：4 本体 + 2 工程线）
+### 本轮消化（8：4 本体 + 2 工程线 + 1 输出校验 + 1 lineage）
 
-本轮临时门槛：**本体项目 stars ≥ 1,000**（2026-11-09 起，可撤销）；工程线按采用/任务相关性例外。消化顺序与 C/A 闸见 [开源消化计划](../../meta/open-source-digestion-plan.md)。6 个均已建卡并写 `digest.md`（见下表与状态行）。
+本轮临时门槛：**本体项目 stars ≥ 1,000**（2026-11-09 起，可撤销）；工程线按采用/任务相关性例外。消化顺序与 C/A 闸见 [开源消化计划](../../meta/open-source-digestion-plan.md)。8 个均已建卡并写 `digest.md`（见下表与状态行）。
 
 | 项目 | stars | 本体在代码里做什么 | 接缝 | 为什么选它 / 要小心什么 |
 |---|---:|---|---|---|
@@ -57,8 +57,10 @@ src/open-source/
 | [ontop/ontop](https://github.com/ontop/ontop) | 1,016 | OWL 2 QL 本体 + R2RML 映射 → SPARQL 重写成 SQL | `supply`（查询编译） | 2013 年至今的 OBDA 参考实现；「本体真被执行」的成熟形态，也可当 LLM 查询工具 |
 | [open-policy-agent/opa](https://github.com/open-policy-agent/opa) | 12,452 | 无本体；Rego 策略引擎；把标签/属性当 JSON data | `none`（策略层 adjunct；不执行 KG 过滤） | 补 04 C.1 策略层；CNCF graduated；不消费 Glyph 标签、不解析 OWL/SHACL；与 trustgraph 无现成集成 |
 | [ad-freiburg/qlever](https://github.com/ad-freiburg/qlever) | 940 | 无本体；RDF/SPARQL 引擎；完整 SPARQL 1.1 | `none`（B.3 执行层 adjunct） | 补 04 B.3 执行层；Text2SPARQL/QRAKEN 使用；940★ 低于临时门槛，按采用/工程价值例外；不做 OWL 推理 |
+| [fivetran/great_expectations](https://github.com/fivetran/great_expectations) | 11,922 | 无本体；Expectation Suite + Validator 做表/列断言（`table.row_count` 等） | `checker`（输出后；不阻断） | 补 04 T5 输出校验；不是 OWL/SHACL；`success` 布尔、无三态；只读一个 core expectation，其余待核 |
+| [OpenLineage/OpenLineage](https://github.com/OpenLineage/OpenLineage) | 2,755 | 无本体；`RunEvent` + JSON facets 记录 lineage | `none`（旁路审计/观测） | 补 04 C.4 审计字段；`TestRunFacet.status` 是 pass/fail/skip，不等于三态；不是 gate |
 
-**状态（2026-11-09）**：6 个本轮项目已消化（trustgraph、semantica、ontop、open-ontologies + OPA/Qlever 工程线）；矩阵 `absorbed`×3 + `partial`×1（ontop 只进 frontier）。低于 1,000★ 的 pySHACL 371 / ROBOT 329 / sparql-llm 130 仍不建卡；Qlever 940 作为工程线例外（按采用/任务相关性，不按 star）。
+**状态（2026-11-10）**：8 个本轮项目已消化（trustgraph、semantica、ontop、open-ontologies + OPA/Qlever 工程线 + Great Expectations 输出校验 + OpenLineage lineage）；矩阵 `absorbed`×3 + `partial`×3（ontop 只进 frontier；GE 只读一个 core expectation；OpenLineage 只读 TestRunFacet）。低于 1,000★ 的 pySHACL 371 / ROBOT 329 / sparql-llm 130 仍不建卡；Qlever 940 作为工程线例外（按采用/任务相关性，不按 star）。
 
 ### 对照 / 依赖（不建目录，在 digest 里引用）
 

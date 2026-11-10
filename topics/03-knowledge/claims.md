@@ -24,3 +24,4 @@ updated: 2026-11-08
 | 03-L13 | GGC 的 90.23→98.33 是答案集匹配率，不是 execution accuracy；90.23 是 Generator 单跑、92.34 是全量纠错；45% 是相对全量纠错的墙钟 | 已核（数字）/ 推测（跨域） | GGC digest | 单 KG/单 3B 骨干/单 seed；无 2×2 净收益；空结果未测 |
 | 03-L14 | NLKGQ 在 DBLP-QuAD 3.1 上 89.9% Match / 81.3% Exact；2.0 确定性协议 57.6/20.1；wrapper +15.0/+25.3；单 snapshot/单系统，Match 允许 superset | 已核（单系统）/ 推测（跨域） | NLKGQ digest | 完整 OWL 进上下文；无 entity linking/闭源模型；3.1 是作者修订 |
 | 03-L15 | KGVoyager 在 4 个小型 benchmark 上平均 F1 64.6 vs 60.9（+3.7pp，不是 4×）；成本 −38.3%、墙钟 −23.8%；只支持 rdf:type 图，class index ~68% endpoint | 已核（数字）/ 推测（跨域） | KGVoyager digest | 4 benchmark 88–108 题、同源；GRASP best-case；preprint/无独立复现 |
+| 03-L16 | 四条查询路线（GGC/NLKGQ/KGVoyager/OBDA）按资产条件选，不按总分排；失败分生成前/后、探索、重写、度量五段 | 推测（综合） | [querying/compare](./querying/compare.md)；E-21 | 无头对头；OBDA 的问题量/指标/成本未报；P1/P2 空格见订单 |

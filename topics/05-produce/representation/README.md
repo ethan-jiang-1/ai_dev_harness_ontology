@@ -1,6 +1,6 @@
 ---
 status: seed
-updated: 2026-11-08
+updated: 2026-11-10
 rq: [RQ2, RQ5]
 main_level: 推测
 ---
@@ -11,16 +11,17 @@ main_level: 推测
 
 | 项 | 值 |
 |---|---|
-| 已发现 | 4 条（[findings](./findings.md)） |
+| 已发现 | 4 条（[findings](./findings.md)）+ 1 页可消费性（[consumability](./consumability.md)） |
 | 未发现 / 开放 | 5 条（见下） |
 | 下一步 | 候选与检索式见派级 [frontier](../frontier.md) |
-| 最后扫描 | 2026-11-08 |
+| 最后扫描 | 2026-11-10 |
 | 覆盖 | 表示形式/形式化档次；单一来源（SFE-O），薄页 |
 
 ## 当前判断
 
 - **已核（限 SFE-O，单域、无 agent 评测）**：OWL 2 表达力够，但数值不在 OWL 里求解，约束尚未成为可执行 SHACL shapes，热物性/扩散系数靠外部服务。局限在执行，不在表示。`已核`
 - **本页假设（`推测`）**：表示档位应按消费位置选；三档之间可能有工程成本差。没有直接文献，SFE-O 没有比较三档；这是本页最薄的一处。
+- **可消费性 = 三关记录（`推测`）**：load / validate / answer 各有可测判据；现有 `build_report` 只覆盖前两关的一部分，10 个坏样本里只有 2 个被稳定抓住。三档能力矩阵见 [consumability](./consumability.md)。
 
 ## 问题
 
@@ -73,6 +74,7 @@ main_level: 推测
 | 每条判断的证据/数字/条件 | [findings](./findings.md) |
 | schema/SHACL/外部服务/成本/stop/sprint 怎么落 | [mechanism](./mechanism.md) |
 | 建模规范如何压缩自由度 | [modeling](./modeling.md) |
+| 可消费性三关、三档×四位置矩阵、10 个坏样本 | [consumability](./consumability.md) |
 | SFE-O 原文消化 | [digest](../../../src/papers/2610.37123-sfe-o/digest.md) · [card](../../../src/papers/2610.37123-sfe-o/card.md) |
 | 派级前沿/候选 | [05 frontier](../frontier.md) |
 | 相邻子主题 | [generation](../generation/README.md) · [refinement](../refinement/README.md) · [lifecycle](../lifecycle/README.md) |

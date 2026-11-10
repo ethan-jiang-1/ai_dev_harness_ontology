@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-10
 ---
 
 # 06 测量派 · 证据源
@@ -13,3 +13,4 @@ updated: 2026-11-07
 | [CAI digest](../../src/papers/2610.41172-context-as-infrastructure/digest.md) | preprint | 精读 | 06-L4 | [card](../../src/papers/2610.41172-context-as-infrastructure/card.md)（provenance）；过程指标 |
 | [Ontology Catch digest](../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) | preprint | 精读 | 06-L4 | [card](../../src/papers/2610.37809-what-does-an-ontology-catch/card.md)（provenance）；FP/FN 曲线 |
 | [Agents Are Systems digest](../../src/papers/2610.01618-agents-are-systems/digest.md) | preprint | 精读 | 06-L5 / 06-L11 / 06-L12 | [card](../../src/papers/2610.01618-agents-are-systems/card.md)（provenance）；54% 方差；验证工具 |
+| [OpenLineage digest](../../src/open-source/openlineage-openlineage/digest.md) | open-source | 已读规范（一个 facet；未跑） | metrics/propagation；06-L17 | [card](../../src/open-source/openlineage-openlineage/card.md)（provenance）；`TestRunFacet.status` pass/fail/skip；`skip` ≠ undetermined；旁路审计 |

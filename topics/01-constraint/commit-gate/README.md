@@ -13,7 +13,7 @@ evidence: []
 
 | 项 | 值 |
 |---|---|
-| 已发现 | 7 条判断（[findings](./findings.md)） |
+| 已发现 | 7 条判断（[findings](./findings.md)）+ 1 页读路径（[read-path](./read-path.md)） |
 | 工程口径 | 4 条（[mechanism](./mechanism.md) 的工程发现 1–4） |
 | 未发现 / 开放 | 4 条（[frontier](./frontier.md)） |
 | 下一步 | 3 个候选（[frontier](./frontier.md)） |
@@ -36,6 +36,7 @@ evidence: []
 | 三条件/状态机/promotion/失效 | [mechanism](./mechanism.md) |
 | 接口/字段/成本/stop/客户指标/替代方案 | [mechanism](./mechanism.md) 的「工程发现 1–4」 |
 | 七条判断的证据/边界 | [findings](./findings.md) |
+| 10 条读路径用例、第二实现评估 | [read-path](./read-path.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
 | 原始论文 | [Commit Boundary digest](../../../src/papers/2610.37407-commit-boundary/digest.md) |
 
