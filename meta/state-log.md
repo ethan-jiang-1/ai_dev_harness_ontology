@@ -11,7 +11,7 @@ updated: 2026-11-11
 ## 2026-11-11 导航与质量管道修复
 
 - **质量路径**：README §0 增「质量口径 / 最新评分」；deliverables README §质量评估 增 [§8 收口复评](../deliverables/_plans/2026-11-11-quality-review.md#8-收口复评2026-11-11) 直链；`_plans/README` 增状态列。
-- **计数**：state 拆为当前页 + 本日志；材料卡 8→12（4 web + 8 标准）；execution-forms 表补 10 源到 36；checker 新增 state 文件数比对。
+- **计数**：state 拆为当前页 + 本日志；材料卡 8→12（4 web + 8 标准）；execution-forms 表补 10 源到 36；checker 新增 state 文件数、论文/开源/材料卡/形态分布比对。
 - **指针**：01–06 派 README 的 `claims/sources/frontier` 改为链接；START/rubric/review 入库。
 - **自检**：check_repo 新增锚点校验；修 5 个坏锚；「0 坏链」现在覆盖文件链 + 锚点。
 - **归档**：checklist §7 与 src/README §5.1(7) 改指 conventions 长度目标 + digest 模板，不再把 archive/digest-audit 当现行标准。

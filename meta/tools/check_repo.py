@@ -327,12 +327,42 @@ def main() -> int:
 
     # 7b. state.md is the single authoritative count; keep it equal to the tree
     state_path = os.path.join(ROOT, "meta/state.md")
+    state_text = texts.get(state_path, "")
     if os.path.exists(state_path):
-        state_match = re.search(r"\|\s*最后自检\s*\|[^\n]*?(\d+)\s*文件", texts.get(state_path, ""))
+        state_match = re.search(r"\|\s*最后自检\s*\|[^\n]*?(\d+)\s*文件", state_text)
         if not state_match:
             warnings.append("meta/state.md has no '最后自检 ... <N> 文件' row")
         elif int(state_match.group(1)) != len(files):
             errors.append(f"meta/state file count {state_match.group(1)} != actual {len(files)}")
+
+        web_cards = sum(
+            1 for _, _, fs in os.walk(os.path.join(ROOT, "src/web"))
+            for f in fs if f.endswith(".card.md")
+        )
+        for label, pattern, actual in (
+            ("papers", r"\|\s*论文\s*\|\s*(\d+)\s*个目录", len(paper_dirs)),
+            ("open-source", r"\|\s*开源\s*\|\s*(\d+)\s*个项目", len(oss_projects)),
+            ("material cards", r"\|\s*材料卡\s*\|\s*(\d+)\s*张", web_cards),
+        ):
+            m = re.search(pattern, state_text)
+            if not m:
+                warnings.append(f"meta/state.md has no {label} count row")
+            elif int(m.group(1)) != actual:
+                errors.append(f"meta/state {label} count {m.group(1)} != actual {actual}")
+
+        forms = re.search(
+            r"\|\s*执行形态[^|]*\|\s*engine (\d+) / compiled (\d+) / context (\d+) / label (\d+) / none (\d+)",
+            state_text,
+        )
+        if not forms:
+            warnings.append("meta/state.md has no execution_form distribution row")
+        else:
+            got = dict(zip(("engine", "compiled", "context", "label", "none"), map(int, forms.groups())))
+            for key, value in got.items():
+                if form_counts.get(key, 0) != value:
+                    errors.append(f"meta/state execution_form {key}={value} != actual {form_counts.get(key, 0)}")
+            if sum(got.values()) != sum(form_counts.values()):
+                errors.append(f"meta/state execution_form total {sum(got.values())} != actual {sum(form_counts.values())}")
 
     # 9. object registry (topics/objects.md): warn-only
     objects_path = os.path.join(ROOT, "topics/objects.md")

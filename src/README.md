@@ -202,9 +202,9 @@ open-source/{org}-{repo}/
 ### 5.1 论文
 
 1. **落原文**：PDF 放 `src/papers/{arxiv_id}-{slug}/`；在 [manifest](./papers/manifest.md) 登记（行格式照表头：`# | 批次 | arXiv | 短标题 | 页 | 方向 | 文件 | 卡片 | 消化`），下载结果记 [_download.log](./papers/_download.log)。
-2. **转 MD**：`paper.md` + `references.md` + `appendix.md`；检查页码标记。
-3. **写 card**：元数据 + 一句话 + 问题/设定 + 图表索引 + 作者局限；`reading`/`provenance` 如实，并填 `evidence_role` / `execution_form` / `subtopic`（多归位用 `also_supports`）。
-4. **写 digest**：按 §3 骨架；先写「三句话」，再补术语/方法/数字/边界/工程。
+2. **转 MD**：`paper.md` + `references.md` + `appendix.md`；用 `pymupdf4llm` 逐页转，正文保留 `<!-- page N -->`；公式/表格回 PDF 核。
+3. **写 card**：用 [paper-card](./_templates/paper-card.md)；元数据 + 一句话 + 问题/设定 + 图表索引 + 作者局限；`reading`/`provenance` 如实，并填 `evidence_role` / `execution_form` / `subtopic`（多归位用 `also_supports`）。
+4. **写 digest**：用 [paper-digest](./_templates/paper-digest.md)，按 §3 骨架；先写「三句话」，再补术语/方法/数字/边界/工程。
 5. **抽图**：2–3 张承载机制/结果的图；带页码、出处、「看什么」。
 6. **落 topics**：更新派 `sources.md`（内容链 digest）→ `claims.md` / 子主题 dashboard；跨派才动 conclusions。
 7. **自检**：过 [checklist](../meta/checklist.md) 与 [digest 模板](./_templates/paper-digest.md) 的自包含要求；长度目标见 [conventions](../meta/conventions.md#阅读深度l1l2l3)。
