@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-12
 rq: [RQ3]
 ---
 
@@ -32,7 +32,9 @@ rq: [RQ3]
 - `memory conflict resolution LLM`
 - `agent determinism repeated runs`
 
-## 候选队列
+## 候选队列（2026-11-12 按 [清除审计](../../meta/audits/2026-11-11-source-purge.md) 对账）
+
+> 「G1 不过」= 首公开早于 2026-06-01，除非有窗口内新版本，不建卡；方向仍开放。
 
 | 候选 | 为什么重要 | 状态 | 下一步 |
 |---|---|---|---|
@@ -41,10 +43,10 @@ rq: [RQ3]
 | 记忆一致性基准 | RQ3 的度量载体 | 待扫描 | 用检索式 5 |
 | 冲突处理线 | 阻塞 vs 标注 | 待扫描 | 用检索式 4 |
 | entity resolution + registry 线 | FIRME 的近邻 | 待扫描 | 雪球一层 |
-| APEX-MEM（2604.14362，ACL 2026） | 本体属性图 + append-only + 检索时冲突消解；LOCOMO 88.88%、LongMemEval 86.2% | 摘要已读 | 落盘 + 建卡；对照 FIRME/EvoMemState |
-| TRiM-KG（NaNA 2026） | 时序记忆 KG | 待扫描 | 读摘要 |
-| Time is Not a Label（2604.11544） | 连续相位旋转的时序 KG/agent memory | 待扫描 | 读摘要 |
-| AriadneMem（2603.03290） | 终身记忆 | 待扫描 | 读摘要 |
+| APEX-MEM（2604.14362，ACL 2026） | 本体属性图 + append-only + 检索时冲突消解 | G1 不过（2026-04 首公开） | 除非窗口内新版本；方向（本体属性图记忆）待过门新源 |
+| TRiM-KG（NaNA 2026） | 时序记忆 KG | 待核 G1 | 读摘要，核发表日期 |
+| Time is Not a Label（2604.11544） | 连续相位旋转的时序 KG/agent memory | G1 不过（2026-04 首公开） | 不建卡 |
+| AriadneMem（2603.03290） | 终身记忆 | G1 不过（2026-03 首公开） | 不建卡 |
 
 ## 入档判据
 

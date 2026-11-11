@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-07
+updated: 2026-11-12
 rq: [RQ4, RQ5]
 ---
 
@@ -32,18 +32,20 @@ rq: [RQ4, RQ5]
 - `curated ontology precision recall`
 - `LLM judge calibration false positive cost`
 
-## 候选队列
+## 候选队列（2026-11-12 按 [清除审计](../../meta/audits/2026-11-11-source-purge.md) 对账）
+
+> 「已移出」= 原源未过准入，不再撑任何判断；方向仍开放，按五门找新源。「G1 不过」= 首公开早于 2026-06-01。
 
 | 候选 | 为什么重要 | 状态 | 下一步 |
 |---|---|---|---|
-| What Does an Ontology Catch（2610.37809） | 把 checker 当研究对象；三源权衡 | 已入档 | 回正文补每源 FP/FN 与域 |
-| OA-RAG（2610.36335） | 接地等级显式化；六个医学任务 | 已入档 | 确认等级判定由谁执行 |
-| MIOE（2610.38326） | “答对≠内部有本体”，影响判定器的必要性论证 | 已入档（主归 06） | 与 06 共享 |
+| What Does an Ontology Catch（2610.37809） | 把 checker 当研究对象；三源权衡 | 已移出（[tombstone](../../meta/audits/2026-11-11-source-purge.md#src-2610-37809)：单机构） | E-02 已撤回；三源偏向方向待过门新源 |
+| OA-RAG（2610.36335） | 接地等级显式化；六个医学任务 | 已移出（[tombstone](../../meta/audits/2026-11-11-source-purge.md#src-2610-36335)：单机构） | 接地等级方向待新源 |
+| MIOE（2610.38326） | “答对≠内部有本体”，影响判定器的必要性论证 | 已移出（[tombstone](../../meta/audits/2026-11-11-source-purge.md#src-2610-38326)：单机构） | 与 06 共享方向 |
 | checker calibration 线 | 误报代价与校准 | 待扫描 | 用检索式 1/5 |
 | 串联判定 / cascade 线 | 早期误报放大 | 待扫描 | 用检索式 3 |
-| LOGicalThought（2510.01530） | 逻辑本体接地；四基准 +11.84%，negation +10.2、implication +13.2、defeasible +5.5 | 摘要已读 | 落盘 + 建卡；看“本体”具体形态 |
-| CORE-LLM-Bench（Zenodo 2026） | 受控神经符号基准；9,048 QA 实例、81,432 观测 | 摘要已读 | 先入候选；评估能否用于自有标注集 |
-| Can We Trust LLM Judges（2609.12002） | judge 能力相关偏差 + 多 judge 校准 | 待扫描 | 读摘要；对应 checker 校准 |
+| LOGicalThought（2510.01530） | 逻辑本体接地；四基准 +11.84% | G1 不过（2025-10 首公开） | 不建卡；方向并入 checker 校准线 |
+| CORE-LLM-Bench（Zenodo 2026） | 受控神经符号基准；9,048 QA 实例 | 待核 G1/G3 | 先核发表日期与独立信号 |
+| Can We Trust LLM Judges（2609.12002） | judge 能力相关偏差 + 多 judge 校准 | 待扫描 | 读摘要；先过五门 |
 | Automating OntoClean Verification | 本体验证自动化 | 待扫描 | 与 05 共享 |
 
 ## 入档判据
@@ -61,8 +63,8 @@ rq: [RQ4, RQ5]
 
 ## 本轮计划
 
-> 2026-11-07 首轮外部扫描已完成；下一步从候选队列里选 top 1-2 落盘 + 建卡。
+> 2026-11-12 对账后：Ontology Catch/OA-RAG/MIOE 已移出，E-02/E-03 撤回；方向保留，证据按五门重找。
 
-1. 读 What Does an Ontology Catch 正文，补三源 FP/FN 与域，重写 E-02 的限定。
+1. 三源偏向（curated/LLM/数据挖掘）与 checker 校准：按五门找过门新源，含工程侧数据质量复盘。
 2. 用检索式 1/5 找 checker 校准/误报代价的工作。
 3. 为误报/漏检曲线设计一个最小标注集方案（谁能标、标多少、怎么算曲线）；本仓库不设实验目录。

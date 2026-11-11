@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-08
+updated: 2026-11-12
 rq: [RQ2, RQ3]
 ---
 
@@ -33,21 +33,23 @@ rq: [RQ2, RQ3]
 - `ontology learning from embeddings`
 - `ontology source provenance trust`
 
-## 候选队列
+## 候选队列（2026-11-12 按 [清除审计](../../meta/audits/2026-11-11-source-purge.md) 对账）
+
+> 「已移出」= 原源未过准入，不再撑任何判断；方向仍开放，按五门找新源。「G1 不过」= 首公开早于 2026-06-01。
 
 | 候选 | 为什么重要 | 状态 | 下一步 |
 |---|---|---|---|
 | CASTON（2610.21466） | 精化路线；high 6/6 被 2 位专家接受，但单一本体、单一公理类型、medium 0–25% | 已入档 | 补 recall@30/@10；找后续/可复现实现 |
-| SFE-O（2610.37123） | 参数溯源建进本体；表达≠执行；三处数据矛盾 | 已入档 | 拆「执行缺口」清单；第三处矛盾已在 [representation/F1](./representation/findings.md) 记 `possible`（digest 回补待 owner） |
-| OntoDoc（2611.01276） | 为任意 IRI 生成说明；151 术语；completeness 3.43→3.84 | 已入档 | 按 generation/G1 测可消费性，不把完整性当任务收益 |
-| Peeling（2610.41785） | 从 MRL 嵌入抽 DAG；未测下游 | 已入档 | 找下游效用 follow-up |
-| Evontree（2510.26683） | 规则引导自演化；15 根概念种子、gap 1,396；增益仅报告值（`存疑`） | 已入档 | 复算 Table 3；评估人工种子成本 |
+| SFE-O（2610.37123） | 参数溯源建进本体；表达≠执行 | 已移出（[tombstone](../../meta/audits/2026-11-11-source-purge.md#src-2610-37123)：质量 C） | 「表达≠执行」方向待过门新源 |
+| OntoDoc（2611.01276） | 为任意 IRI 生成说明；151 术语 | 已移出（[tombstone](../../meta/audits/2026-11-11-source-purge.md#src-2611-01276)：单机构） | 可消费性评测方向不变 |
+| Peeling（2610.41785） | 从 MRL 嵌入抽 DAG；未测下游 | 已移出（[tombstone](../../meta/audits/2026-11-11-source-purge.md#src-2610-41785)：单作者） | 嵌入→本体方向待新源 |
+| Evontree（2510.26683） | 规则引导自演化 | 已移出（[tombstone](../../meta/audits/2026-11-11-source-purge.md#src-2510-26683)：G1 过期） | 自演化方向待窗口内新源 |
 | FIRME（2610.40482） | 跨期 registry + 观察级来源；`CMR=MMR×precision` | 已入档 | 把工程发现 1–3 落进 lifecycle 台账 |
-| OntoAct（2610.21983） | 写入准入/覆盖率 stop；只借准入 | 已入档 | 与 lifecycle 的 `admit()` 闸门对齐，不搬推理期机制 |
+| OntoAct（2610.21983） | 写入准入/覆盖率 stop；只借准入 | 已移出（[tombstone](../../meta/audits/2026-11-11-source-purge.md#src-2610-21983)：单机构） | 准入闸门设计回 lifecycle 自身机制 |
 | 本体测试线 | 必须成立/不成立的事实对 | 待扫描 | 用检索式 2/3 |
-| KROMA（2507.14032，ISWC 2025） | RAG + LLM 本体匹配；bisimilarity + 轻量精化；优于经典与 LLM 基线、开销相当 | 摘要已读 | 落盘 + 建卡；看「精化」细节 |
-| LightOL（IEEE 2026） | 轻量本体学习 | 待扫描 | 读摘要 |
-| Systematic Assessment of LLM-Based Ontology Learning（IEEE） | 本体学习评估框架 | 待扫描 | 读摘要；对应 05 的评估缺口 |
+| KROMA（2507.14032，ISWC 2025） | RAG + LLM 本体匹配 | G1 不过（2025-07 首公开） | 不建卡；匹配方向待窗口内新源 |
+| LightOL（IEEE 2026） | 轻量本体学习 | 待核 G1 | 读摘要，核发表日期 |
+| Systematic Assessment of LLM-Based Ontology Learning（IEEE） | 本体学习评估框架 | 待核 G1 | 读摘要；对应 05 的评估缺口 |
 | Automating OntoClean Verification | 本体验证 | 待扫描 | 与 02 共享 |
 
 ## 入档判据

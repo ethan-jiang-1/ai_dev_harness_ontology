@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-12
 rq: [RQ1, RQ5]
 ---
 
@@ -33,16 +33,18 @@ rq: [RQ1, RQ5]
 - `claim evidence tree retrieval`
 - `context budget ontology agent`
 
-## 候选队列
+## 候选队列（2026-11-12 按 [清除审计](../../meta/audits/2026-11-11-source-purge.md) 对账）
+
+> 「已移出」= 原源未过准入，不再撑任何判断；方向仍开放，按五门找新源。
 
 | 候选 | 为什么重要 | 状态 | 下一步 |
 |---|---|---|---|
-| Narrow & Deep（2610.11768） | 投影 > 查询 > 检索；n=1 工厂、9 任务 | 已入档 | 抽任务设计，做投影粒度对照 |
+| Narrow & Deep（2610.11768） | 投影 > 查询 > 检索；n=1 工厂、9 任务 | 已入档（probation） | 抽任务设计，做投影粒度对照 |
 | CAI（2610.41172） | 强 harness 下工件无增益；唯一正收益是导航树 | 已入档 | 补 FRAMES 效应量/置信区间 |
-| Grid Agents（2611.03534） | 法规/标准作为硬约束的知识供给 | 已入档 | 看它怎么处理“答案不在文本里” |
+| Grid Agents（2611.03534） | 法规/标准作为硬约束的知识供给 | 已移出（[tombstone](../../meta/audits/2026-11-11-source-purge.md#src-2611-03534)：公司自证） | 法规硬约束方向待有独立采用的新源 |
 | 投影粒度线 | 整段 vs 记录 vs 主张-证据 | 待扫描 | 用检索式 1/4 |
 | 投影+RAG 混用线 | 叠加/干扰 | 待扫描 | 用检索式 3/5 |
-| Grep is All You Need（Zenodo 2026） | grep + LLM 编译概念/FAQ 两层；76 agents、500 文本、100% 检索准确率、sub-10ms | 摘要已读 | 落盘 + 建卡；直接对照 E-01/RQ5 |
+| Grep is All You Need（Zenodo 2026） | grep + LLM 编译概念/FAQ 两层；76 agents、500 文本 | 待核 G1/G3 | 先核发表日期与独立信号，再决定建卡 |
 | Knowledge-compile（Zenodo） | 知识编译 | 待扫描 | 读摘要 |
 | Ontop（开源 OBDA） | 本体 + R2RML 在查询时编译成 SQL；供给型执行器，不是接缝 | 已核（代码+最小运行） | 包成 LLM 工具；做「有/无本体公理」消融 |
 | Structured Contextual Distillation（SCD v3.1） | 确定性、可验证的持久 agent 状态 | 待扫描 | 与 04 共享 |
