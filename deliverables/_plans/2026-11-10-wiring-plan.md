@@ -18,8 +18,8 @@ scope: wiring
 |---|---|---|---|
 | 0 | ADR 0009 定案：方案 A（O 只作地址，主句仍落 E） | [ADR 0009](../../adr/0009-object-layer.md)、[checklist](../../meta/checklist.md) §3、[loading](../../meta/loading.md) | 三处规则一致；O 必须挂 E |
 | 1 | 02 §5.1 的 13 行停线加 `出处` + `量不出时` 两列 | [02 §5.1](../02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺) | 13/13 有出处；≥4 行挂 E/公式；≥2 行标 gap/工程建议 |
-| 2 | 03 boundaries 加 12 条反例表（带数 + 条件 + O-R） | [03 boundaries](../03-mechanism-reference/evidence/boundaries.md) | 12 条带数；每条有「条件下不成立」 |
-| 3 | 03 execution-forms 的代码核对表加 `O` 列；补 OPA 行；Qlever 标「无代码锚」 | [03 execution-forms](../03-mechanism-reference/across-positions/execution-forms.md) | 5 行有 O-C；「不保证什么」可点开 |
+| 2 | 03 boundaries 加 12 条反例表（带数 + 条件 + O-R） | [03 boundaries](../03-mechanism-reference/05-evidence/02-boundaries.md) | 12 条带数；每条有「条件下不成立」 |
+| 3 | 03 execution-forms 的代码核对表加 `O` 列；补 OPA 行；Qlever 标「无代码锚」 | [03 execution-forms](../03-mechanism-reference/04-across-positions/02-execution-forms.md) | 5 行有 O-C；「不保证什么」可点开 |
 | 4 | 冷读：10 分钟内从 01/02 找到「先做/量什么/何时停」 | 01/02/03 | 卡点 ≤2；否则回修接线 |
 
 ## 1. 约束
@@ -48,8 +48,8 @@ scope: wiring
 
 - **0 ADR**：0009 状态改为**接受（方案 A）**；[checklist](../../meta/checklist.md) §3、[loading](../../meta/loading.md) 规则 1、[objects.md](../../topics/objects.md) 头部三处同步。
 - **1 M**：[02 §5.1](../02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺) 13 行 × 7 列；13/13 有出处；11 行挂 E/公式（5 纯 + 6 混合）；2 行 `工程建议 / gap`（R0、commit）。
-- **2 R**：[boundaries.md §0](../03-mechanism-reference/evidence/boundaries.md#0-反例集r-table) 12 条；每条带数、条件、`O-Rxx`；B1–B15 原表保留，B/R 分工写在页首。
-- **3 X**：[execution-forms §3](../03-mechanism-reference/across-positions/execution-forms.md#3-五个项目的代码级核对) 5 行 × 6 列（加 `O` 列）；补 OPA；Qlever 标「无代码锚」。
+- **2 R**：[boundaries.md §0](../03-mechanism-reference/05-evidence/02-boundaries.md#0-反例集r-table) 12 条；每条带数、条件、`O-Rxx`；B1–B15 原表保留，B/R 分工写在页首。
+- **3 X**：[execution-forms §3](../03-mechanism-reference/04-across-positions/02-execution-forms.md#3-五个项目的代码级核对) 5 行 × 6 列（加 `O` 列）；补 OPA；Qlever 标「无代码锚」。
 - **4 冷读**（自审，非外部读者）：
   - 路径 A：02「编译」→ `O-T04` → `O-F01` → CAI digest `#43-成本模型`，3 跳，数可复算（3.08 vs 3.12 已在对象里标）。
   - 路径 B：02「checker」→ `O-T06` → `O-P02` → 02 §5.3，2 跳，样本 200 与 5pp/15% 可查。

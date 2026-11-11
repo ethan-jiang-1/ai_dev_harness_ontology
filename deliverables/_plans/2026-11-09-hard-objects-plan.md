@@ -218,7 +218,7 @@ status: active
 
 | 对象 | 落点 | 怎么用 |
 |---|---|---|
-| C（代码锚） | [03 execution-forms](../03-mechanism-reference/across-positions/execution-forms.md)、[03 commit 卡](../03-mechanism-reference/positions/commit.md) | 每个「不保证什么」直接引 `O-xx` |
+| C（代码锚） | [03 execution-forms](../03-mechanism-reference/04-across-positions/02-execution-forms.md)、[03 commit 卡](../03-mechanism-reference/03-positions/06-commit.md) | 每个「不保证什么」直接引 `O-xx` |
 | F（公式） | [02 §5.1](../02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺)、[feasibility F2/F5](../../topics/06-measure/feasibility/findings.md) | 停线的 `出处` 列填 `O-xx`（公式） |
 | N（数值） | 01 `data/`、02 recipes、03 positions | 正文数字后加 `（O-xx）` |
 | T（停线） | 02 §5.1、01 §5.1、02 §5.3 | 三处同一机制必须同号同数 |
@@ -342,7 +342,7 @@ status: active
 | 4 | **X 接线**：03 `across-positions/execution-forms.md` 每行加 `O-Cxx` 与「不保证什么」 | 工程可抄的部分要能点开代码锚 | 1 |
 | 5 | **冷读**：10 分钟从 01/02 走到「先做什么、量什么、何时停」 | 验证对象是否真的降低了阅读成本 | 2–4 |
 | 6 | **E-03/E-12 的 H3** | 2026-11-10 已补：F14（E-12 边际分解）、F15（E-03 token 效率），均 `derived`；不是新证据 | 已完成 |
-| 7 | **C-03 的 2×2** | 2026-11-10 已建：M04 + 06-L16 + [03 measurement §2.5](../03-mechanism-reference/across-positions/measurement.md#25-机制类型与尺子分派)；逐格已核，翻转仍是综合 | 已完成 |
+| 7 | **C-03 的 2×2** | 2026-11-10 已建：M04 + 06-L16 + [03 measurement §2.5](../03-mechanism-reference/04-across-positions/03-measurement.md#25-机制类型与尺子分派)；逐格已核，翻转仍是综合 | 已完成 |
 | 8 | **阶段盘点** | 看「走到哪」：见 [stage-review](./2026-11-10-stage-review.md) | — |
 
 ## 附录 A · 已加进自检的 O 规则（warn-only）

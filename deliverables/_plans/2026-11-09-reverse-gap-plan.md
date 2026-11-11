@@ -119,7 +119,7 @@ scope: deliverable-gap
 
 ### 6.2 R · 反例集（Refusals）
 
-**是什么**：把 [03 boundaries](../03-mechanism-reference/evidence/boundaries.md) 的 15 条 + 01 §4.3 的 D 反向，收成一张「我们测过、所以不建议」的表。
+**是什么**：把 [03 boundaries](../03-mechanism-reference/05-evidence/02-boundaries.md) 的 15 条 + 01 §4.3 的 D 反向，收成一张「我们测过、所以不建议」的表。
 
 **列**：常见主张 / 已测反例（带数） / 在什么条件下不成立 / 仍缺什么 / 出处。
 
@@ -133,7 +133,7 @@ scope: deliverable-gap
 
 ### 6.3 X · 执行形态矩阵（Execution）
 
-**是什么**：升级 [03 execution-forms](../03-mechanism-reference/across-positions/execution-forms.md)，做成「采用某个项目，你会继承什么失败模式」的决策表。
+**是什么**：升级 [03 execution-forms](../03-mechanism-reference/04-across-positions/02-execution-forms.md)，做成「采用某个项目，你会继承什么失败模式」的决策表。
 
 **列**：项目 / `execution_form` / 语义（OWL 重写 / SHACL-AF 策略 / SHACL 校验 / SHACL→SPARQL）/ 失败模式 / **不保证什么** / 代码锚。
 
@@ -229,13 +229,13 @@ scope: deliverable-gap
 ### WP4 — 反例集（P1）
 
 - 从 15 条边界 + D 反向抽 10–12 条；每条带数、带条件、带出处。
-- 落点：03 新页（或 [boundaries](../03-mechanism-reference/evidence/boundaries.md) 重排）；01 §4.3 只留指针。
+- 落点：03 新页（或 [boundaries](../03-mechanism-reference/05-evidence/02-boundaries.md) 重排）；01 §4.3 只留指针。
 - 验收：10 条带数；每条「在什么条件下不成立」写得出；不新增 E。
 
 ### WP5 — 执行形态矩阵（P1）
 
 - 6 行 × 6 列；补 OPA/Qlever 的失败模式；每个「不保证什么」给代码锚。
-- 落点：[03 execution-forms](../03-mechanism-reference/across-positions/execution-forms.md)。
+- 落点：[03 execution-forms](../03-mechanism-reference/04-across-positions/02-execution-forms.md)。
 - 验收：≥10 个 `file:symbol`；read-path 单实现标注；与 E-20 口径一致。
 
 ### WP6 — 稀薄页处理（P1）
@@ -250,7 +250,7 @@ scope: deliverable-gap
 
 ### WP7 — 包装（P2，前置 = WP1/WP4/WP5 完成）
 
-- 一页图：约束强度谱（原「待画」项）；数据来自 [coverage](../03-mechanism-reference/across-positions/coverage.md)，标 H/D 不标 E。
+- 一页图：约束强度谱（原「待画」项）；数据来自 [coverage](../03-mechanism-reference/04-across-positions/01-coverage.md)，标 H/D 不标 E。
 - Deck：30 分钟工程版；只许用 M/R/X 三件的图与数。
 - 案例页：现有 [case](../02-engineering-playbook/05-appendices/03-case.md) 标 illustrative；补一条「真实已发生」的（来自 Web 卡，不升 E）。
 

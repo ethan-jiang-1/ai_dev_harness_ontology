@@ -29,7 +29,7 @@ scope: 01–04 撤回后的内容补偿（P0–P2）
 |---|---|---|
 | 01 | [canonical §5](../01-capability-status/02-sections/91-canonical.md#5-撤回与历史w-表) | W-01…W-07 |
 | 02 | [canonical §1.1](../02-engineering-playbook/02-sections/91-canonical.md#w-table) | W-01…W-07 |
-| 03 | [evidence/ledger §2.5](../03-mechanism-reference/evidence/ledger.md#w-table) | W-01…W-05 |
+| 03 | [evidence/ledger §2.5](../03-mechanism-reference/05-evidence/01-ledger.md#w-table) | W-01…W-05 |
 | 04 | [evidence/ledger §3.5](../04-ontology-in-production/evidence/ledger.md#w-table) | W-01/W-05/W-07（本地表，指向 02 完整版） |
 
 每行四列：**原依据 / 状态 / 不能再用 / 重启前先量**。最后一行说明「没有这一列，撤回就只剩免责」。

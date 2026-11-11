@@ -43,11 +43,11 @@ scope: 核心计划第 7 步（01→02→03→04 定义段接规范主干）
 | [02 R10/R11](../02-engineering-playbook/03-recipes/10-offline-and-obda.md) | 顶部加词源 | SHACL/SHACL-AF、OWL 2 Profiles 有 N；效应回 E-20 |
 | [02 接口附录](../02-engineering-playbook/05-appendices/01-interfaces.md) | 加数据契约词源 | 数据契约 `N: ODCS v3.1.0`；字段名是 `local` 工程配方 |
 | [03 README](../../deliverables/03-mechanism-reference/README.md) | 顶部加词源 | 六位置/接缝/强度/覆盖率/形态 `local` |
-| [03 术语 §0](../../deliverables/03-mechanism-reference/sections/glossary.md#term-sources) | 新增 13 行来源表 | 含 OMG Commons、XACML、SHACL-AF |
-| [03 checker](../../deliverables/03-mechanism-reference/positions/checker.md) | 顶部加词源 | SHACL/SHACL-AF 有 N；checker/catch/FA/接地 `local`；E-02 仍 withdrawn |
-| [03 action](../../deliverables/03-mechanism-reference/positions/action.md) | 顶部加词源 | ODRL/XACML 只到表达/架构；可逆性、min φ、τ `local`；E-04/13/16 仍 withdrawn |
-| [03 commit](../../deliverables/03-mechanism-reference/positions/commit.md) | 顶部加词源 | XACML/ODRL 只到判定架构；commit gate/三段式 `local`（概念架构） |
-| [03 memory / evidence](../../deliverables/03-mechanism-reference/positions/memory.md) | 顶部加词源 | 记忆/接地 `local`；标准不定义机制 |
+| [03 术语 §0](../03-mechanism-reference/02-sections/90-glossary.md#term-sources) | 新增 13 行来源表 | 含 OMG Commons、XACML、SHACL-AF |
+| [03 checker](../03-mechanism-reference/03-positions/04-checker.md) | 顶部加词源 | SHACL/SHACL-AF 有 N；checker/catch/FA/接地 `local`；E-02 仍 withdrawn |
+| [03 action](../03-mechanism-reference/03-positions/05-action.md) | 顶部加词源 | ODRL/XACML 只到表达/架构；可逆性、min φ、τ `local`；E-04/13/16 仍 withdrawn |
+| [03 commit](../03-mechanism-reference/03-positions/06-commit.md) | 顶部加词源 | XACML/ODRL 只到判定架构；commit gate/三段式 `local`（概念架构） |
+| [03 memory / evidence](../03-mechanism-reference/03-positions/02-memory.md) | 顶部加词源 | 记忆/接地 `local`；标准不定义机制 |
 | [04 README](../../deliverables/04-ontology-in-production/README.md) | 内码后加词源 | 本体/SHACL/ODRL/XACML/GB-T/ODCS 有 N；TBox/ABox、principal、level、skip、leak oracle `local` |
 | [04 术语 §0](../../deliverables/04-ontology-in-production/sections/glossary.md#term-sources) | 新增 12 行来源表 | 数据分级/个人信息/数据契约/OWL 有 N |
 | [04 build A.3](../../deliverables/04-ontology-in-production/body/build.md) | TBox/ABox 段加词源 | TBox/ABox `local`；类/属性语义 `N: OWL 2 Profiles` |

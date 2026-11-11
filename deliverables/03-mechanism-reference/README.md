@@ -1,7 +1,7 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 target: 架构师 / 研究者
 basis: E-01–E-20, C-03/C-04; topics/README 四轴
 ---
@@ -10,71 +10,47 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 
 > **读者**：架构师 / 研究者 ｜ **回答**：为什么是这些位置/形态、证据边界在哪 ｜ **不回答**：具体怎么做（去 02）、今天能做成什么（去 01）。
 >
-> **第一次来**：先读 [START](../START.md)（10 分钟），再回本份。
+> **状态**：`draft` ｜ **证据状态**：E-02/E-03/E-04/E-06/E-10/E-11/E-13/E-16/E-26 撤回；受影响的位置卡保留机制、不保留效应量（W 表见 [05-evidence/01-ledger](05-evidence/01-ledger.md#w-table)）。
 >
-> **2026-11-11 证据重置**：E-02/E-03/E-04/E-06/E-10/E-11/E-13/E-16/E-26 已撤回。03 的 checker/evidence/action/outside 位置卡保留机制描述，但**不再把它们当 admitted 结论**；每张卡顶部有单卡提示。
->
-> **词源（只定词，不撑效果）**：本体/顶层本体 = `N: ISO/IEC 21838-1/-2`；约束/校验/三态 = `N: W3C SHACL`，规则/target = `N: W3C SHACL-AF`；推理/profile = `N: W3C OWL 2 Profiles`；策略表达/判定架构 = `N: W3C ODRL 2.2` / `N: OASIS XACML 3.0`。六位置、接缝、强度、覆盖率、执行形态 = `local`。逐词见 [术语 §0](./sections/glossary.md#term-sources)；标准边界见 [规范主干](../../topics/trunk.md)。
+> **本页只做索引**。正文从 [00-overview](02-sections/00-overview.md) 开始；位置卡从 [03-positions](03-positions/README.md) 开始。
 
-## 先走一条 claim
+## 30 秒结论
 
-同事说：「读路径过滤能防止敏感数据泄漏。」03 不直接答「能/不能」，而是把它拆成三句：**机器在哪个时刻做了什么？只删哪一侧？异常时放行还是拒绝？**
+1. **强度不是好坏，是更窄**：强端能改变的失效类别更少；查矩阵，不查直线。详见 [overview §0.3](02-sections/00-overview.md#1-三条判断)。
+2. **今天能确认的是「看见」与「离线判」**：可见性过滤、离线/CI 校验、跨轮记忆、OBDA；阻断等新源。详见 [overview §0.2](02-sections/00-overview.md#02-今天能确认什么机制行为不是效应验证)。
+3. **承重墙是 M1/M2**：没有同本体跨位置对照，也没有覆盖率测量；这份参考给分类与边界，不给效应量。详见 [overview §0.3](02-sections/00-overview.md#1-三条判断)。
 
-现状：trustgraph 在正常路径、有 policy、只读检索、只删 subject 的条件下，能把被 block 的 subject 侧三元组删掉；但异常 fail-open、object 方向未测、只有 1 个实现、不拦写/落盘。所以这句话只能成立到「best-effort 可见性过滤」，**不能成立到「访问控制/授权」**（E-20/E-22；完整走查见 [claim 走查](./sections/claim-walkthrough.md)）。
+## 目录
 
-同一套读法也适用于「编译成 SHACL 比塞进 prompt 更可靠」：判词是 M1（同一本体换位置/形态）**未开**，不能成立到「编译更好」；最接近的模板是 Grammar Prompting（同一文法放 prompt vs 约束解码；见 [gaps §3.1](./evidence/gaps.md#31-m1同本体跨位置)）。
+> 若你的 Markdown 预览器不解析相对链接，按「路径」列在文件树里打开同名文件。
 
-**今天能确认什么（机制行为；不是效应验证）**：
-
-| 能验证 | 证据 | 你能做 | 不能承诺 |
-|---|---|---|---|
-| 读侧可见性过滤 | E-20 代码级 + E-22 | 单侧 subject 过滤；fail-open 必须标出 | 授权；object 方向；第二实现 |
-| 离线/CI 图校验 | E-20（SHACL/三态） | CI 门；三态上报；影响报告 | in-loop 自动拒收；语义正确 |
-| 跨轮身份/记忆 | E-05/E-17 | registry + 状态结构；CMR/precision 同看 | 跨运行复现；false merge 传播 |
-| 查询编译（OBDA） | E-20 | OWL 2 QL 查询重写 | DL 推理；写授权 |
-
-> **矩阵里 `●` 少，不等于框架失效**：动作闸/checker 的效应量撤回后，03 能给的确定性集中在「看见」和「离线判定」；阻断要等新源（W 表见 [evidence/ledger §2.5](./evidence/ledger.md#w-table)）。
->
-> **`已核（代码）` = 读代码确认执行语义，不是已验证有用**；本表四行里三行由 E-20 单源支撑。复跑入口见 [read-path §3/§8](../../topics/01-constraint/commit-gate/read-path.md)（EXP-001/EXP-002）。
-
-> **只读 5 页（约 30 分钟）**：本页 §0 → [地图 §2.3 六位置表](./sections/map.md#23-六个位置一页表) → [Claim 走查](./sections/claim-walkthrough.md) → [边界前五条](./sections/boundaries.md) → [证据台账](./evidence/ledger.md)。
->
-> **内码**：E-xx = 跨派结论（证据，主路径最常用）；W-xx = 撤回条目编号（不是协议编号，「按 W-xx 自测」= 按该条目的「重启前先量」）；B1–B15 = 证据边界；N01–N12 = 反例；M1–M5 = 承重假设；O-xx = 对象地址。详见 [术语](./sections/glossary.md)。
->
-> **证据等级**：`已核` 只表示原文/代码读对了，不表示命题被验证；`H` 是组织假设，`D` 是工作定义/设计提案（概念架构），`G` 是缺口。不要把 03 的分类当成效应量。
-
-## 0. 一页结论
-
-- **强度不是好坏。** 强度问「违反时能不能改变走向」；覆盖率问「能碰到多少类失效」。强端管得硬，但管得少。
-- **强端不是更好，是更窄（组织假设，非 E；证据见附录 §3.2）。** 它不是一条可排序的强度线：六位置是专门化的，查 [coverage 矩阵](./across-positions/coverage.md)，不查直线。
-- **尺子跟机制走。** 不改变走向的供给/契约位置，准确率/token 仍可用；能改变走向的判定/动作/落盘位置，用单一 accuracy/reward 会错配（C-03）。
-- **六个位置问的问题不同。** context 看到什么、memory 记得什么、evidence 带什么依据、checker 对不对、action 能不能做、commit 够不够授权；不是「六个都该做」。**多数团队先做 context（点位语义/投影），再做 offline/CI 校验；action/commit 等新源。**
-- **承重墙是 M1/M2。** 没有同本体跨位置对照，也没有覆盖率测量；这份参考能给出分类与边界，不能给出效应量。下一步见 [gaps §3 M1/M2 最小协议](./evidence/gaps.md#3-m1m2-最小协议未开)。
-
-
-
-## 导航
-
-| 节 | 文件 | 内容 |
+| 你要 | 读 | 路径 |
 |---|---|---|
-| 导读 | [GUIDE.md](./GUIDE.md) | 先读哪一页、按什么顺序 |
-| 2 地图 | [sections/map.md](./sections/map.md) | 主张类型、四轴、六位置、强度矩阵 |
-| 3 主体 | [positions/README.md](./positions/README.md) | 六张位置卡 + 四张横切页索引 |
-| 4 边界 | [sections/boundaries.md](./sections/boundaries.md) | 15 条边界 + 12 条反例；全文在 [boundaries.md](./evidence/boundaries.md) |
-| 5 验收 | [sections/acceptance.md](./sections/acceptance.md) | M1–M5、缺口 |
-| 6 关系 | [sections/relations.md](./sections/relations.md) | 与 01/02 的关系、维护、目录 |
-| 术语 | [sections/glossary.md](./sections/glossary.md) | E/C/H/D/G、O/B/R、seams、覆盖率符号 |
-| 读者检查 | [sections/reader-checks.md](./sections/reader-checks.md) | 5 组：定位/证据/边界/形态/判不了 |
-| Claim 走查 | [sections/claim-walkthrough.md](./sections/claim-walkthrough.md) | 读路径能不能防泄漏 |
-| Placement | [sections/placement.md](./sections/placement.md) | 五步把 claim 放到正确位置 |
-| 模板 | [sections/templates.md](./sections/templates.md) | claim 走查空表 |
-| 证据台账 | [evidence/ledger.md](./evidence/ledger.md) | E-xx 支持/不支持哪个位置 |
-| 缺口 | [evidence/gaps.md](./evidence/gaps.md) | M1–M5、负结果、下一步 |
+| 机制摘要、claim 读法、能确认什么 | [00-overview](02-sections/00-overview.md) | `deliverables/03-mechanism-reference/02-sections/00-overview.md` |
+| 怎么读、按什么顺序 | [00-GUIDE](02-sections/00-GUIDE.md) | `deliverables/03-mechanism-reference/02-sections/00-GUIDE.md` |
+| 主张类型、四轴、六位置、矩阵 | [02-map](02-sections/02-map.md) | `deliverables/03-mechanism-reference/02-sections/02-map.md` |
+| 六张位置卡 + 索引 | [03-positions](03-positions/README.md) | `deliverables/03-mechanism-reference/03-positions/README.md` |
+| 覆盖率矩阵、形态、测量 | [04-across-positions](04-across-positions/) | `deliverables/03-mechanism-reference/04-across-positions/` |
+| 边界、反例、可证伪 | [04-boundaries](02-sections/04-boundaries.md) | `deliverables/03-mechanism-reference/02-sections/04-boundaries.md` |
+| 验收、M1–M5、缺口 | [05-acceptance](02-sections/05-acceptance.md) | `deliverables/03-mechanism-reference/02-sections/05-acceptance.md` |
+| 证据台账、边界、缺口 | [05-evidence](05-evidence/) | `deliverables/03-mechanism-reference/05-evidence/` |
+| 术语与内码 | [90-glossary](02-sections/90-glossary.md) | `deliverables/03-mechanism-reference/02-sections/90-glossary.md` |
+| Placement / 读者检查 / 模板 | [91-placement](02-sections/91-placement.md) · [92-reader-checks](02-sections/92-reader-checks.md) · [93-templates](02-sections/93-templates.md) | `deliverables/03-mechanism-reference/02-sections/` |
+| 关系与维护 | [94-relations](02-sections/94-relations.md) | `deliverables/03-mechanism-reference/02-sections/94-relations.md` |
+| claim 走查 | [95-claim-walkthrough](02-sections/95-claim-walkthrough.md) | `deliverables/03-mechanism-reference/02-sections/95-claim-walkthrough.md` |
+| 长版论证（历史） | [09-appendix](09-appendix-constraint-spectrum.md) | `deliverables/03-mechanism-reference/09-appendix-constraint-spectrum.md` |
 
-## 关注什么 / 需要什么材料
+## 阅读顺序
 
-| 项 | 内容 |
+| 时间 | 读什么 |
 |---|---|
-| 关心 | 为什么是这些位置、形态怎么分、每条判断的证据边界在哪 |
-| 需要材料 | E-xx、`topics/` 的 mechanism/seams/execution-forms、`boundaries.md` |
-| 不做什么 | 不写操作手册（去 02）、不做能力判断（去 01）；只做依据与边界 |
+| 10 分钟 | 本页 → [overview §0.1–§0.4](02-sections/00-overview.md) |
+| 30 分钟 | [00-GUIDE](02-sections/00-GUIDE.md) 的五页路径：overview → map §2.3 → claim 走查 → boundaries 前五条 → 证据台账 |
+| 评审/深读 | 位置卡（按 01→07）→ 04-across-positions → 05-evidence → 09-appendix |
+
+## 维护
+
+- **计数、W 表、证据状态以 [05-evidence/01-ledger](05-evidence/01-ledger.md) 为准**；本页不重复。
+- 改判断：先改 `topics/`，再回改位置卡与台账；03 不新增 E/L。
+- 术语来源：`N:` / `local` 读法见 [90-glossary §0](02-sections/90-glossary.md#term-sources)。
+- 本页只做索引；不新增判断，不复制正文。

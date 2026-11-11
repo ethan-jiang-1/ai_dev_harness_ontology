@@ -83,7 +83,7 @@ evidence: [E-16, E-17, E-20]  # E-16 withdrawn
 ## 3.1 自测（W-04 / 推理期）
 
 - **W-04**：≥100 条带前提的决策；先测三值覆盖率（⊤/⊥/?）；? 比例 >30% 先补状态，不谈效应。
-- read-path / supply 的自测见 [claim 走查](../sections/claim-walkthrough.md) 与 [R8/R11](../../02-engineering-playbook/03-recipes/README.md)。
+- read-path / supply 的自测见 [claim 走查](../02-sections/95-claim-walkthrough.md) 与 [R8/R11](../../02-engineering-playbook/03-recipes/README.md)。
 
 ## 4. 什么会改变谱外名单
 

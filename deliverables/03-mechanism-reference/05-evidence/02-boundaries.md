@@ -36,7 +36,7 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-09, E-12, E-13, E-14, E-15, E-1
 | N11 | SLB 可靠提示词消除 | cautionary prompts 只减约 1/4；placeholders 减 SLB token 97% 而准确率 +2.6；85% traces/24% tokens | prompt 使 SLB 降至 <5% 且不损准确率 | O-R11 | E-09 |
 | N12 | reward 可证明护栏安全 | E-04 撤回（W-03）；Q-03 待新源重写 | 新源 + harm 标签 | O-R12 | E-04 withdrawn |
 
-> 符号：HSR=harm success rate；CMR=跨期匹配率；SLB=solver-like behavior；δ=miss 上限；FA=false alarm。完整表见 [术语 §4.1](../sections/glossary.md#41-指标与符号)。
+> 符号：HSR=harm success rate；CMR=跨期匹配率；SLB=solver-like behavior；δ=miss 上限；FA=false alarm。完整表见 [术语 §4.1](../02-sections/90-glossary.md#41-指标与符号)。
 
 ## 1. 边界表（B1–B15）
 

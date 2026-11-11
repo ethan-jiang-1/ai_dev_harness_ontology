@@ -8,14 +8,14 @@ parent: ../README.md
 
 > 把一条 claim 填成可判的走查。填不出就写「不知道」或 `undetermined`；不要用「行业通常」补。
 >
-> 例子见 [claim-walkthrough](./claim-walkthrough.md)（读路径）。
+> 例子见 [claim-walkthrough](95-claim-walkthrough.md)（读路径）。
 
 ## T1 claim 模板
 
 | 项 | 填什么 | 判据 |
 |---|---|---|
 | claim | 一句话，能判真假 | 有主语、有 Predicate |
-| 位置 | 六时刻 / 轴外 | 走 [placement](./placement.md) 五步 |
+| 位置 | 六时刻 / 轴外 | 走 [placement](91-placement.md) 五步 |
 | 粒度 | node / predicate / graph / triple | 实现实际能表达的最细粒度 |
 | 形态 | engine / compiled / context / label / none | 机器拿本体做了什么 |
 | 证据 | E-xx / O-xx / 代码锚 | 至少一条；没有就写 `gap` |
@@ -59,7 +59,7 @@ claim: <一句话>
 
 ## 怎么用
 
-1. **先填「位置/粒度/形态」**：填不出，回 [placement](./placement.md)；不要先写结论。
+1. **先填「位置/粒度/形态」**：填不出，回 [placement](91-placement.md)；不要先写结论。
 2. **再填「证据/边界」**：每条证据能指到台账；每条边界能指到 B/R。
 3. **最后填「判据/缺什么」**：判据量不出，就写 `gap`，不要写「有效」。
 4. 改判断：先改 `topics/`，再改模板实例；**不要在模板里改 E**。

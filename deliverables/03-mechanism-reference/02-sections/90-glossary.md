@@ -13,7 +13,7 @@ parent: ../README.md
 <a id="term-sources"></a>
 ## 0. 名词从哪来（N / local）
 
-> `N:` = 规范性锚，只定词与合格性、**不撑效果**；`local` = 本仓库工作词，首现解释。完整清单见 [规范主干](../../../topics/trunk.md)，逐词判定见 [术语基线](../../../meta/term-baseline.md)；撤回依据见 [evidence/ledger §2.5](../evidence/ledger.md#w-table)。
+> `N:` = 规范性锚，只定词与合格性、**不撑效果**；`local` = 本仓库工作词，首现解释。完整清单见 [规范主干](../../../topics/trunk.md)，逐词判定见 [术语基线](../../../meta/term-baseline.md)；撤回依据见 [evidence/ledger §2.5](../05-evidence/01-ledger.md#w-table)。
 
 | 词 | 来源 | 一句话 |
 |---|---|---|
@@ -60,7 +60,7 @@ parent: ../README.md
 | `○` | 碰不到 | 该位置对该类失效没有作用 |
 | `?D` | 只有设计 | 没有实现，不能判 |
 
-> **`●` 的计数不是「越强越多」。** 矩阵是分类，不是测量；强弱不能按格子总数排（[coverage §3](./../across-positions/coverage.md)）。
+> **`●` 的计数不是「越强越多」。** 矩阵是分类，不是测量；强弱不能按格子总数排（[coverage §3](../04-across-positions/01-coverage.md)）。
 
 ## 4. 边界与等级
 
@@ -75,7 +75,7 @@ parent: ../README.md
 | **存疑/contested** | 主结论可站，某个读法被削弱 |
 | **三态** | SHACL 的 0/2/3：通过/违反/未检查完（3 = undetermined） |
 
-> 等级词汇以 [台账 §2](./../evidence/ledger.md) 的四档为准；`已核（概念架构）` 只在 commit 卡出现，不是第五档等级的证据。
+> 等级词汇以 [台账 §2](../05-evidence/01-ledger.md) 的四档为准；`已核（概念架构）` 只在 commit 卡出现，不是第五档等级的证据。
 
 ## 4.1 指标与符号
 
@@ -97,12 +97,12 @@ parent: ../README.md
 |---|---|---|
 | `O-xx` | 对象地址（公式/代码/表/反例） | [objects](../../../topics/objects.md) |
 | `C-xx` | 冲突/方法论条目 | [conclusions](../../../topics/conclusions.md) |
-| `M1–M5` | 03 的 5 条研究期待（承重假设） | [gaps](../evidence/gaps.md) |
-| `B/R` | 边界 / 反例 | [boundaries](../evidence/boundaries.md) |
-| `T1–T5` | 动作本体里的类型化逆关系 | [action](../positions/action.md) |
+| `M1–M5` | 03 的 5 条研究期待（承重假设） | [gaps](../05-evidence/03-gaps.md) |
+| `B/R` | 边界 / 反例 | [boundaries](../05-evidence/02-boundaries.md) |
+| `T1–T5` | 动作本体里的类型化逆关系 | [action](../03-positions/05-action.md) |
 | `K0–K4` | N&D 实验条件代号（原始点位/点位语义/知识投影文本/流程摘要/运行记录检索；**非标准**） | [01 K 页](../../01-capability-status/02-sections/92-k-ladder.md) |
 | `Q-01` / `RQ5` | 存疑条目 / 研究问题 | [conclusions](../../../topics/conclusions.md) |
-| `P0/P1b/P1c/P2` | 按机制分派的度量优先级 | [measurement](../across-positions/measurement.md) |
+| `P0/P1b/P1c/P2` | 按机制分派的度量优先级 | [measurement](../04-across-positions/03-measurement.md) |
 
 ## 6. 常见误读
 

@@ -34,7 +34,7 @@ parent: ../README.md
 
 | 词 | 一句话 | 在哪 |
 |---|---|---|
-| **接缝（seam）** | 本体在回路的哪个时刻介入：供给 / 输出时 / 输出后 / 动作前 / 跨轮 / 落盘前 / 检索返回前 | [03 §2.2.1](../../03-mechanism-reference/sections/map.md#221-位置--时刻--派--部件--形态) |
+| **接缝（seam）** | 本体在回路的哪个时刻介入：供给 / 输出时 / 输出后 / 动作前 / 跨轮 / 落盘前 / 检索返回前 | [03 §2.2.1](../../03-mechanism-reference/02-sections/02-map.md#221-位置--时刻--派--部件--形态) |
 | **形态（execution form）** | 机器拿本体做了什么：`context`（进上下文）/ `compiled`（编译成约束/查询）/ `engine`（引擎执行）/ `label`（打标）/ `none`（不执行） | [map §2.4](02-map.md#24-选形态五种别把-context-当低配-engine) |
 
 > **不要把 `context` 当 `engine` 的低配。** 供给是「给什么」，engine 是「执行什么」；前者不拦动作。

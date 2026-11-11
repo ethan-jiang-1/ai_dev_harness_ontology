@@ -46,4 +46,4 @@ parent: ../README.md
 - E-20 是代码级核对（4 个项目、pin commit、只读代码、未做对照实验），不是效应量。
 - 本仓库没有独立复现；「已核」只表示原文/代码读对了，不表示命题被验证。
 
-更细的边界见 [03 机制参考](../../03-mechanism-reference/README.md) 与 [附录 §3.7](../../03-mechanism-reference/appendix-constraint-spectrum.md#37-本章不能证明什么)。
+更细的边界见 [03 机制参考](../../03-mechanism-reference/README.md) 与 [附录 §3.7](../../03-mechanism-reference/09-appendix-constraint-spectrum.md#37-本章不能证明什么)。

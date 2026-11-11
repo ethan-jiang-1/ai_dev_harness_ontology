@@ -8,7 +8,7 @@ parent: ../README.md
 
 > 这一步回答「它属于哪个位置」；不是「它有没有用」。五步，判不了就写 `undetermined`。
 >
-> **词源**：「位置 / 时刻 / 粒度 / gate / filter / 形态」是 `local` 工作词（无标准锚）；「约束 / 校验」有 `N: W3C SHACL`，「策略表达 / 判定架构」有 `N: W3C ODRL 2.2` / `N: OASIS XACML 3.0`，但都不定义「gate」。逐词见 [术语 §0](./glossary.md#term-sources)。
+> **词源**：「位置 / 时刻 / 粒度 / gate / filter / 形态」是 `local` 工作词（无标准锚）；「约束 / 校验」有 `N: W3C SHACL`，「策略表达 / 判定架构」有 `N: W3C ODRL 2.2` / `N: OASIS XACML 3.0`，但都不定义「gate」。逐词见 [术语 §0](90-glossary.md#term-sources)。
 
 ## 0. 五步
 
@@ -55,7 +55,7 @@ claim: <一句话>
 判不了: <缺哪个测试>
 ```
 
-**填好的例子（不是新判断，事实见 [claim 走查](./claim-walkthrough.md)）**：
+**填好的例子（不是新判断，事实见 [claim 走查](95-claim-walkthrough.md)）**：
 
 ```text
 claim: 读路径过滤能防止敏感数据泄漏吗？
@@ -70,5 +70,5 @@ claim: 读路径过滤能防止敏感数据泄漏吗？
 ## 3. 边界
 
 - **位置 ≠ 效应量**：放对位置不证明有用；效应量回 E-xx。
-- **位置 ≠ 成熟度**：同一位置可以有实现/模拟/设计；看 [map §2.1](./map.md)。
+- **位置 ≠ 成熟度**：同一位置可以有实现/模拟/设计；看 [map §2.1](02-map.md)。
 - **`undetermined` 是合法出口**：判不了比硬塞好；写清缺什么测试。

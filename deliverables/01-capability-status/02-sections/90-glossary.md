@@ -109,6 +109,6 @@ parent: ../README.md
 | **D1** | 01 的工作底稿编号（不是判定 D，也不是深度层） | [01 §数据表](../09-data/) |
 | **L1/L2/L0** | 01 的深度分层：机制箱 / 一句 why / 只有范围注 | [canonical §4](91-canonical.md#4-深度分层l1l2l0) |
 | **换词检查** | 早期统计「换成任意结构化上下文后仍成立」的比例；计数停用（W-08） | [boundaries §4.4](04-boundaries.md)、[canonical §5](91-canonical.md#5-撤回与历史w-表) |
-| **τ / φ / γ_m** | 阈值 / 可逆性分数 / 残余失败比例（动作闸） | [03 action](../../03-mechanism-reference/positions/action.md) |
+| **τ / φ / γ_m** | 阈值 / 可逆性分数 / 残余失败比例（动作闸） | [03 action](../../03-mechanism-reference/03-positions/05-action.md) |
 
 > `D1` 这个代号只出现在 `data/` 的工作底稿里，指「第一轮证据回抽」；与判定 **D 反向**、深度层 **L1** 都无关。

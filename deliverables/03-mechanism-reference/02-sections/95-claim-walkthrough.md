@@ -8,7 +8,7 @@ parent: ../README.md
 
 > **这是什么**：把一条常见主张拆成可判句，走一遍「位置 → 证据 → 成立到哪 → 什么条件下不成立」。
 >
-> **不是什么**：不是新 E，不是新测量。每个判断都落回 [E-20](../../../topics/conclusions.md)、[E-22](../../../topics/conclusions.md)、[N07](../evidence/boundaries.md) 与 [outside §3.2](../positions/outside.md#32-read-path检索返回前)。
+> **不是什么**：不是新 E，不是新测量。每个判断都落回 [E-20](../../../topics/conclusions.md)、[E-22](../../../topics/conclusions.md)、[N07](../05-evidence/02-boundaries.md) 与 [outside §3.2](../03-positions/07-outside.md#32-read-path检索返回前)。
 >
 > **工作定义（`D`，不是 E）**：本文的「泄漏」= 不该被该 principal 看到的 subject 侧或 object 侧三元组，出现在查询/检索返回的结果里。03 没有独立的「敏感数据」分类；这是为这条走查设的工作定义。
 
@@ -41,7 +41,7 @@ parent: ../README.md
 | **commit** | commit 管授权与落盘；read-path 不是授权 |
 | **checker** | checker 验输出；read-path 在输出前改输入 |
 
-> 它不在六位置，是因为只有 1 个实现、fail-open、单侧过滤，不满足「≥2 个独立实现」的扩轴规则（[outside §3.2](../positions/outside.md#32-read-path检索返回前)）。
+> 它不在六位置，是因为只有 1 个实现、fail-open、单侧过滤，不满足「≥2 个独立实现」的扩轴规则（[outside §3.2](../03-positions/07-outside.md#32-read-path检索返回前)）。
 
 > **read-path 不是一种机制。** 至少三个执行点：post-filter（trustgraph，node/subject，fail-open；**唯一已入库实现**）、rewrite（sparql-guard，node+graph，fail-closed，仓库外复跑 76/76；**候选未入库**）、scan（holosdb，predicate+graph，默认 deny；**候选未入库**）。**本文描述以 post-filter 为准**；三个执行点不能互替，「admitted 第二实现」仍为**无**。见 [read-path §3/§7](../../../topics/01-constraint/commit-gate/read-path.md)。
 
@@ -73,14 +73,14 @@ parent: ../README.md
 
 | 缺口 | 补它需要什么 | 在哪 |
 |---|---|---|
-| 第二实现 | 另一个 pin commit 的 read-path 实现 + 调用点 | [gaps §2](../evidence/gaps.md) |
-| object 方向 | object 用例 + 期望（敏感 object 不出现） | [gaps §2](../evidence/gaps.md) |
-| fail-closed | 异常路径的阻断测试 | [gaps §2](../evidence/gaps.md) |
-| 泄漏率/误拦率 | 实测（当前 0 个） | [measurement §2](../across-positions/measurement.md) |
+| 第二实现 | 另一个 pin commit 的 read-path 实现 + 调用点 | [gaps §2](../05-evidence/03-gaps.md) |
+| object 方向 | object 用例 + 期望（敏感 object 不出现） | [gaps §2](../05-evidence/03-gaps.md) |
+| fail-closed | 异常路径的阻断测试 | [gaps §2](../05-evidence/03-gaps.md) |
+| 泄漏率/误拦率 | 实测（当前 0 个） | [measurement §2](../04-across-positions/03-measurement.md) |
 | 「敏感数据」分类 | 领域标签/策略来源（E-22：策略层无领域本体来源） | [E-22](../../../topics/conclusions.md) |
 | 共同 10 用例协议 | sparql-guard 已跑 10 用例（7 pass、1 alias leak、0 false-block）；trustgraph/holosdb 是复刻；还没有率 | [read-path §8](../../../topics/01-constraint/commit-gate/read-path.md) |
 | alias/实体解析 | 未类型化 alias 会漏（EXP-002）；前置能修 node-level、不修 predicate-level（EXP-003）；规范只强制「已断言 sameAs 则展开」，不强制「先于过滤」（read-path §9–§10） | [read-path §8–§10](../../../topics/01-constraint/commit-gate/read-path.md) |
-| coverage 的失效类 | 七类（A–G）里没有「泄漏」类；不要用覆盖率矩阵替这条 claim 的证据 | [coverage §2](../across-positions/coverage.md) |
+| coverage 的失效类 | 七类（A–G）里没有「泄漏」类；不要用覆盖率矩阵替这条 claim 的证据 | [coverage §2](../04-across-positions/01-coverage.md) |
 
 ## 6. 怎么用（读者动作）
 

@@ -8,7 +8,7 @@ parent: ../README.md
 
 > 这一节回答：主张类型、四轴、六位置、强度矩阵。 ｜ 目标：把一条判断放到正确的位置上。
 >
-> **词源**：「六位置 / 接缝 / 强度 / 覆盖率 / 执行形态」是 `local` 工作词（无标准锚）；「约束/校验」有 `N: W3C SHACL`，「策略表达/判定架构」有 `N: W3C ODRL 2.2` / `N: OASIS XACML 3.0`——但这些标准只定词，不定强度。逐词见 [术语 §0](./glossary.md#term-sources)。
+> **词源**：「六位置 / 接缝 / 强度 / 覆盖率 / 执行形态」是 `local` 工作词（无标准锚）；「约束/校验」有 `N: W3C SHACL`，「策略表达/判定架构」有 `N: W3C ODRL 2.2` / `N: OASIS XACML 3.0`——但这些标准只定词，不定强度。逐词见 [术语 §0](90-glossary.md#term-sources)。
 
 <img src="../../_figures/03-six-positions.svg" alt="六位置地图" width="100%">
 
@@ -54,9 +54,9 @@ parent: ../README.md
 | （谱外）read-path | 轴外 | 01 约束 | retrieval / tools | `engine` |
 | （谱外）supply | 轴外 | 03 知识 | context | `engine` |
 
-> **判不了位置时**，走 [placement](./placement.md) 的五步；不要硬塞进相邻位置。
+> **判不了位置时**，走 [placement](91-placement.md) 的五步；不要硬塞进相邻位置。
 
-> **六个位置不是六个时刻。** `determinism` 是第六个时刻，但不在强度谱上；`context` 不是时刻，是供给；`read-path`/`supply` 是轴外位置。别把四张表混成一张。谱外位置（determinism / read-path / supply / reasoning / training）在 [positions/outside.md](../positions/outside.md)。
+> **六个位置不是六个时刻。** `determinism` 是第六个时刻，但不在强度谱上；`context` 不是时刻，是供给；`read-path`/`supply` 是轴外位置。别把四张表混成一张。谱外位置（determinism / read-path / supply / reasoning / training）在 [positions/outside.md](../03-positions/07-outside.md)。
 
 
 <a id="3-六个位置一页表"></a>
@@ -64,12 +64,12 @@ parent: ../README.md
 
 | 位置 | 问什么 | 本体角色 | 能阻断 | 主证据 | 主要代价 | 不能证明 | 卡 |
 |---|---|---|---|---|---|---|---|
-| context | 模型看到什么 | 投影/编译 | 否 | E-01/E-12/E-14 | token/编译 | 规则被执行 | [→](../positions/context.md) |
-| memory | 下一轮记得什么 | 状态/对齐 | 否 | E-05/E-17 | 维护/训练信号 | 跨运行确定性 | [→](../positions/memory.md) |
-| evidence | 产出带什么依据 | 证据契约 | 否 | E-03 撤回 → **gap** | token/集成 | 形式保证 | [→](../positions/evidence.md) |
-| checker | 产出对不对 | 外部判据 | 是 | E-02 撤回；E-20 代码级 | 每条判定/维护 | 语义正确 | [→](../positions/checker.md) |
-| action | 动作能不能做 | 可逆性/条件 | 是 | E-04/E-13/E-16 撤回；E-15 参照 | 审批/误拦 | 结构有效/安全 | [→](../positions/action.md) |
-| commit | 证据够不够授权 | 授权判据 | 是（设计） | E-20 + gap | 无实现 | 已落地 | [→](../positions/commit.md) |
+| context | 模型看到什么 | 投影/编译 | 否 | E-01/E-12/E-14 | token/编译 | 规则被执行 | [→](../03-positions/01-context.md) |
+| memory | 下一轮记得什么 | 状态/对齐 | 否 | E-05/E-17 | 维护/训练信号 | 跨运行确定性 | [→](../03-positions/02-memory.md) |
+| evidence | 产出带什么依据 | 证据契约 | 否 | E-03 撤回 → **gap** | token/集成 | 形式保证 | [→](../03-positions/03-evidence.md) |
+| checker | 产出对不对 | 外部判据 | 是 | E-02 撤回；E-20 代码级 | 每条判定/维护 | 语义正确 | [→](../03-positions/04-checker.md) |
+| action | 动作能不能做 | 可逆性/条件 | 是 | E-04/E-13/E-16 撤回；E-15 参照 | 审批/误拦 | 结构有效/安全 | [→](../03-positions/05-action.md) |
+| commit | 证据够不够授权 | 授权判据 | 是（设计） | E-20 + gap | 无实现 | 已落地 | [→](../03-positions/06-commit.md) |
 
 > 这不是「六个都该做」；是「六个位置问的问题不同」。选择规则见 [02 §2](../../02-engineering-playbook/02-sections/02-map.md#23-选位置六个时刻--四个轴外位置)。
 
@@ -97,7 +97,7 @@ parent: ../README.md
 | 越强，能**影响**的失效类别越少 | **不成立** | checker 有 4 个 `●/◐`，action 只有 2 个 |
 | 强度可以排成一条线 | **不成立** | 位置是专门化的；commit/determinism 的 `?D` 不能当强弱 |
 
-**操作结论**：要问「这个位置能不能碰到这类失效」，查 [coverage 矩阵](../across-positions/coverage.md)，不查直线。直线只说明「强端少而硬、弱端多而软」。
+**操作结论**：要问「这个位置能不能碰到这类失效」，查 [coverage 矩阵](../04-across-positions/01-coverage.md)，不查直线。直线只说明「强端少而硬、弱端多而软」。
 
 > 如果你只想要一个可操作的结论：**强端不是更好，是更窄；用错尺子会得出「无增益」。**（H；矩阵是 D，不是测量）
 

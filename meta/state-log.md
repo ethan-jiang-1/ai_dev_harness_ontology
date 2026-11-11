@@ -59,9 +59,9 @@ updated: 2026-11-11
 - **依据**：[差距评估报告](../deliverables/_plans/2026-11-10-gap-assessment-report.md)（27 格：1 L2 / 2 L1+ / 0 fixture）+ [整改计划](../deliverables/_plans/2026-11-11-remediation-plan.md)。
 - **02**：新增 [artifact-pack](../deliverables/02-engineering-playbook/05-appendices/04-artifact-pack.md)、[glossary](../deliverables/02-engineering-playbook/02-sections/90-glossary.md)、[canonical](../deliverables/02-engineering-playbook/02-sections/91-canonical.md)、5 组读者检查；对账 false-veto / R1 / 162（补 13 plant elements）。冷读 partial：卡点是 citation 正确性等真 gap；顺手修了 9.7k total vs 5,000 generated 的口径。
 - **01**：A/B/C/D 改为有序规则（含 undetermined）；新增 [decision-record](../deliverables/01-capability-status/02-sections/09-decision-record.md)（K1→A、读路径→B、离线 SHACL→A）、[glossary](../deliverables/01-capability-status/02-sections/90-glossary.md)、[canonical](../deliverables/01-capability-status/02-sections/91-canonical.md)；9 条期待补「没过怎么办」；C 桶统一 3；#12 标非本体。冷读第二轮 `yes`。
-- **03**：新增 [claim-walkthrough](../deliverables/03-mechanism-reference/sections/claim-walkthrough.md)、[reader-checks](../deliverables/03-mechanism-reference/sections/reader-checks.md)、[glossary](../deliverables/03-mechanism-reference/sections/glossary.md)；修 coverage「只有 G 没有 ●」→ C/E/F/G、覆盖率定义、E-22 台账、30%→31%、M1–M5 去重。冷读 partial：强读法需实测，属真 gap。
+- **03**：新增 [claim-walkthrough](../deliverables/03-mechanism-reference/02-sections/95-claim-walkthrough.md)、[reader-checks](../deliverables/03-mechanism-reference/02-sections/92-reader-checks.md)、[glossary](../deliverables/03-mechanism-reference/02-sections/90-glossary.md)；修 coverage「只有 G 没有 ●」→ C/E/F/G、覆盖率定义、E-22 台账、30%→31%、M1–M5 去重。冷读 partial：强读法需实测，属真 gap。
 - **第二轮收口（2026-11-11）**：01 模板 + 第四记录（落盘→C）+ 逐数等级；02 分诊优先级 + 第二个 worked example（R1）+ citation 协议；03 placement + claim 模板 + D2 清理 + alias 规范；EXP-003 alias 前置。外部来源：新增 [ALCE](audits/2026-11-11-source-purge.md#src-web-alce)、[OWL 2 Profiles](../src/web/w3c-owl2-profiles/w3c-owl2-profiles.card.md)、[SHACL-AF](../src/web/w3c-shacl-af/w3c-shacl-af.card.md) 三张卡（摘要级/待核，不升 E）。复评见 [gap report §10.7](../deliverables/_plans/2026-11-10-gap-assessment-report.md#107-第二轮收口2026-11-11外部来源--文档层)。
-- **证据层（2026-11-11）**：EXP-004 引文审计（20 对，κ=1.0；E 行 strict S=5/20；E+锚 11–13/20）；EXP-005 alias 前置在真实 sparql-guard 上 leak 1→0、false-block 0；EXP-006 holosdb 20/20 单测复跑通过；M1 因无干净被试标 `未测`（见 [03 gaps](../deliverables/03-mechanism-reference/evidence/gaps.md)）。
+- **证据层（2026-11-11）**：EXP-004 引文审计（20 对，κ=1.0；E 行 strict S=5/20；E+锚 11–13/20）；EXP-005 alias 前置在真实 sparql-guard 上 leak 1→0、false-block 0；EXP-006 holosdb 20/20 单测复跑通过；M1 因无干净被试标 `未测`（见 [03 gaps](../deliverables/03-mechanism-reference/05-evidence/03-gaps.md)）。
 - **未做**：不改 04；不新增 E/L；M1/M2 仍 gap；citation 仍无标签；不做外部读者。
 - **自检**：529 文件；`check_repo` 通过（2026-11-11）。
 
@@ -117,15 +117,15 @@ updated: 2026-11-11
 ## 2026-11-10 两个剩余缺口收口
 
 - **E-03/E-12 的 H3**：[O-F14](../topics/objects.md)（E-12 边际分解 54.6+19.8=74.4pp，薄层 73.4%）、O-F15（E-03 token 效率 12.7×，派生）；对象 **94**（H3 36 / H2 58），**E 级 H3 10/10**。两者均 `derived`，不改变单源事实。
-- **C-03 的 2×2**：[06-L16](../topics/06-measure/claims.md) + [O-M04](../topics/objects.md) + [03 measurement §2.5](../deliverables/03-mechanism-reference/across-positions/measurement.md#25-机制类型与尺子分派)；逐格已核，方向翻转仍是跨来源综合（无同数据集两把尺子对照）。
+- **C-03 的 2×2**：[06-L16](../topics/06-measure/claims.md) + [O-M04](../topics/objects.md) + [03 measurement §2.5](../deliverables/03-mechanism-reference/04-across-positions/03-measurement.md#25-机制类型与尺子分派)；逐格已核，方向翻转仍是跨来源综合（无同数据集两把尺子对照）。
 - **阶段盘点**：[stage-review](../deliverables/_plans/2026-11-10-stage-review.md)：四层水位、三个闭合、三个仍开。
 
 ## 2026-11-10 交付物接线（M/R/X）
 
 - **ADR**：[0009](../adr/0009-object-layer.md) 状态改为**接受（方案 A）**；[checklist](./checklist.md) §3、[loading](./loading.md) 规则 1、[objects](../topics/objects.md) 头部三处同步：O 可作地址，主句仍落 E。
 - **M**：[02 §5.1](../deliverables/02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺) 13 行 × 7 列；13/13 有出处，11 行挂 E/公式，2 行 `工程建议/gap`（R0、commit）。
-- **R**：[03 boundaries §0](../deliverables/03-mechanism-reference/evidence/boundaries.md#0-反例集r-table) 12 条反例，带数/条件/`O-Rxx`；B1–B15 原表保留。
-- **X**：[03 execution-forms §3](../deliverables/03-mechanism-reference/across-positions/execution-forms.md) 5 行加 `O` 列，补 OPA；Qlever 标「无代码锚」。
+- **R**：[03 boundaries §0](../deliverables/03-mechanism-reference/05-evidence/02-boundaries.md#0-反例集r-table) 12 条反例，带数/条件/`O-Rxx`；B1–B15 原表保留。
+- **X**：[03 execution-forms §3](../deliverables/03-mechanism-reference/04-across-positions/02-execution-forms.md) 5 行加 `O` 列，补 OPA；Qlever 标「无代码锚」。
 - **冷读**：3 条路径（编译/checker/read-path）均 2–3 跳到 digest 锚；0 断链，0 交付物 L 引用；1 个误读风险（O 是地址不是结论）已在 M-table 脚注写明。
 - **计划**：[wiring-plan](../deliverables/_plans/2026-11-10-wiring-plan.md) 全部验收勾选；check_repo 通过（467 文件；objects 91 / H3 33 / H2 58）。
 
@@ -166,7 +166,7 @@ updated: 2026-11-11
 ## 2026-11-09 交付物重构
 
 - **三个子目录 = 三种交付物**：新增 [01 现状](../deliverables/01-capability-status/README.md)（能力矩阵：A 可先落地 / B 可试点 / C 只能设计 / D 反向；可当工作前提/不能当工作前提；距离表）、[02 工程实施](../deliverables/02-engineering-playbook/README.md)（五步法、R1–R9、4 个开源参考、论文/开源指示分级、参考架构、最小落地路线、验收表）、[03 机制参考](../deliverables/03-mechanism-reference/README.md)（三层分工、三条轴、六位置一页表、15 条边界）。
-- **没有独立 handbook**：原 7 章、4–6 万字书稿计划废弃；唯一保留的是原第三章，现为 [03 的长版附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md)。原 outline / planning-notes / handbook README 已删除，git 历史保留。理由：书稿无独立角色、后四章缺证据、主线过强。
+- **没有独立 handbook**：原 7 章、4–6 万字书稿计划废弃；唯一保留的是原第三章，现为 [03 的长版附录](../deliverables/03-mechanism-reference/09-appendix-constraint-spectrum.md)。原 outline / planning-notes / handbook README 已删除，git 历史保留。理由：书稿无独立角色、后四章缺证据、主线过强。
 - **E-16 数字口径修正**：conclusions、ch03、01-constraint/sources、01-constraint/claims 的注记原来写成 `Tacit-FLE 64.3/66.7/65.0% vs IfR 64.3–65.0%`，与 OntoAct digest（Table 1）不符；改为 `78.6/83.3/90.0% vs IfR 64.3/66.7/65.0%`。这是转写错误，不是新判断；01-L11 原本就是对的。
 - **交付物 README**：清单改为三个子目录（01 判断 / 02 操作 / 03 依据）+ 03 的附录；新增「handbook 的去留」与待做（图/Deck/案例页）。
 - **01 证据计划**：新增 [plan.md](../deliverables/_plans/01-capability-status.md)：E1–E9 的覆盖审计、现有 digest 回抽（H1–H6）、新 `src/` 来源（P0/P1/P2）、WBS、排期、DoD 与停止规则。定位是工作计划，不是结论。
@@ -178,7 +178,7 @@ updated: 2026-11-11
 
 ## 2026-11-09 手册第三章初稿
 
-- 原第三章现为 [03 的长版附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md)：9 节、约 0.97 万中文字符；12 条 E + C-03；强度/覆盖率反向标组织假设；六个位置逐节；E-20 放 3.3。
+- 原第三章现为 [03 的长版附录](../deliverables/03-mechanism-reference/09-appendix-constraint-spectrum.md)：9 节、约 0.97 万中文字符；12 条 E + C-03；强度/覆盖率反向标组织假设；六个位置逐节；E-20 放 3.3。
 - 原 planning-notes / outline 已删除（git 历史保留）；第三章证据行、图法与「准确率说法集中在弱端」的收窄记录不再有文件指针。
 - 更新 [deliverables/README.md](../deliverables/README.md) 清单。
 - 写作检验：topics 够用；六位置逐节未出现必须回写的判断缺口；已知缺口仍是 commit 写路径无实现、false-veto 未测、E-20 非效应量。

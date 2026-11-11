@@ -144,7 +144,7 @@ updated: 2026-11-11
 |---|---|---|---|
 | 01 期待 | [conclusions](./conclusions.md) E 行 | digest §4/§5 | 对应派 `frontier.md` |
 | 02 recipe | 子主题 `mechanism.md` | digest §6 | 对应派 `frontier.md` |
-| 03 边界 | [conclusions](./conclusions.md) E 行 | digest §5/§9 | [附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md) §3.7 |
+| 03 边界 | [conclusions](./conclusions.md) E 行 | digest §5/§9 | [附录](../deliverables/03-mechanism-reference/09-appendix-constraint-spectrum.md) §3.7 |
 
 ## 论文进库的前置：低噪声三件套
 

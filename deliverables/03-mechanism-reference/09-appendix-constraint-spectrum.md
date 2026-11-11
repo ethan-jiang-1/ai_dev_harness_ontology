@@ -10,11 +10,11 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-12, E-13, E-14, E-15, E-16, E-17, E-2
 
 # 附录 · 约束强度谱
 
-> **2026-11-11 证据重置**：E-02/E-03/E-04/E-13/E-16 撤回（W 表见 [evidence/ledger §2.5](./evidence/ledger.md#w-table)）；本附录的长版论证只作历史，位置细节以位置卡为准。
+> **2026-11-11 证据重置**：E-02/E-03/E-04/E-13/E-16 撤回（W 表见 [evidence/ledger §2.5](05-evidence/01-ledger.md#w-table)）；本附录的长版论证只作历史，位置细节以位置卡为准。
 
 > **2026-11-09**：本文件是 [03 机制参考](./README.md) 的长版附录（原书稿第三章）；书稿计划已废弃，没有独立 handbook。章节号、图表编号保留原样，只作历史对照。
 >
-> **2026-11-09 起，位置细节以 [positions/](./positions/context.md) 的六张卡为准**；本附录保留长版论证、边界与证据表，不再作为唯一入口。两者冲突时，以位置卡/横切页为准，并回改本附录。
+> **2026-11-09 起，位置细节以 [positions/](03-positions/01-context.md) 的六张卡为准**；本附录保留长版论证、边界与证据表，不再作为唯一入口。两者冲突时，以位置卡/横切页为准，并回改本附录。
 >
 > 本章只从 [topics/](../../topics/README.md) 抽取判断：不新增结论，不引局部判断编号，不设实验。核心图「强度–覆盖率反向」是**组织假设（非 E）**；E-01 在图上是边界证据；E-04 已撤回，不再作边界证据。
 >
@@ -141,7 +141,7 @@ E-04 撤回（W-03）。保留的方法论提醒是「reward 不是 harm 的直�
 
 也要说清**六个位置不是 seams 的六个时刻**：`determinism`（跨运行一致性）不在这条强度谱上；`orchestration`（分工）是唯一没有对应流派的部件，本章不单列。它们重要，但不属于「约束强度」这条线。见 [seams.md](../../topics/seams.md)。
 
-> **2026-11-09 补充**：本图的「位置」在 [coverage 矩阵](./across-positions/coverage.md) 里被拆成七类失效 × 八位置；矩阵显示位置是专门化的，不能排成一条强度线。图保留为摘要（H），矩阵是操作定义（D）。两者都不是测量。
+> **2026-11-09 补充**：本图的「位置」在 [coverage 矩阵](04-across-positions/01-coverage.md) 里被拆成七类失效 × 八位置；矩阵显示位置是专门化的，不能排成一条强度线。图保留为摘要（H），矩阵是操作定义（D）。两者都不是测量。
 
 ### 3.2.4 什么会推翻它
 
@@ -197,7 +197,7 @@ E-04 撤回（W-03）。保留的方法论提醒是「reward 不是 harm 的直�
 - 六个位置按**强度**排，不按时间排。时间顺序见 [seams.md](../../topics/seams.md)：动作前 → 输出时 → 输出后 → 落盘前 → 跨轮 → 跨运行。`context` 没有对应时刻（它是供给），所以不在这条时间线上。
 - 每节一张位置卡 + 解释 + 「什么会改变这条判断」。位置卡里的「能否阻断」是机制属性，不代表已经实现。
 - 六节不是六篇综述：能拦/拦不住/代价/证据等级四件事写清，就够了；写不动的地方留显式 gap。
-- **查位置细节先看卡**：[context](./positions/context.md) · [memory](./positions/memory.md) · [evidence](./positions/evidence.md) · [checker](./positions/checker.md) · [action](./positions/action.md) · [commit](./positions/commit.md)。本附录的六节保留为长版论证，字段与判据以卡为准。
+- **查位置细节先看卡**：[context](03-positions/01-context.md) · [memory](03-positions/02-memory.md) · [evidence](03-positions/03-evidence.md) · [checker](03-positions/04-checker.md) · [action](03-positions/05-action.md) · [commit](03-positions/06-commit.md)。本附录的六节保留为长版论证，字段与判据以卡为准。
 
 一张表先看全貌（详表见各节）：
 

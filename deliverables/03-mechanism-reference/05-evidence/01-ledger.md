@@ -64,11 +64,11 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-06, E-07, E-08, E-09, E-10, E-11, E-1
 <a id="w-table"></a>
 | 编号 | 原依据 | 状态 | 不能再用 | 重启前先量 | 在哪 |
 |---|---|---|---|---|---|
-| **W-01** | E-02 Ontology Catch | withdrawn | catch/FA、空结果重试、precision、净修复 | 200 题（三类各 ≥50，余下补足）；catch/FA/净修复分开；per-flagged（token 或人时） | [checker](../positions/checker.md) |
-| **W-02** | E-03 OA-RAG | withdrawn | 检索率、引用率、等级校准、调用/token | 400–800 条答案（每级 100–200 条独立标注）；检索率 ≥50%、引用率 ≥85% | [evidence](../positions/evidence.md) |
-| **W-03** | E-04/E-13 POLAR | withdrawn | 18 格、T1-only、false-veto、能力梯度 | shadow 200–500 决策；100 条 blocked 标注；同轨迹配对；报前沿不设单点 | [action](../positions/action.md) |
-| **W-04** | E-16 OntoAct | withdrawn | 三值条件效应、无效干预率 | ≥100 条带前提的决策；先测三值覆盖率（⊤/⊥/?） | [outside](../positions/outside.md) |
-| **W-06** | Commit Boundary | 移出 | promotion 七条、三段式「已核」 | 1 个 mutation class；20–50 条 false-defer；审计字段齐 | [commit](../positions/commit.md) |
+| **W-01** | E-02 Ontology Catch | withdrawn | catch/FA、空结果重试、precision、净修复 | 200 题（三类各 ≥50，余下补足）；catch/FA/净修复分开；per-flagged（token 或人时） | [checker](../03-positions/04-checker.md) |
+| **W-02** | E-03 OA-RAG | withdrawn | 检索率、引用率、等级校准、调用/token | 400–800 条答案（每级 100–200 条独立标注）；检索率 ≥50%、引用率 ≥85% | [evidence](../03-positions/03-evidence.md) |
+| **W-03** | E-04/E-13 POLAR | withdrawn | 18 格、T1-only、false-veto、能力梯度 | shadow 200–500 决策；100 条 blocked 标注；同轨迹配对；报前沿不设单点 | [action](../03-positions/05-action.md) |
+| **W-04** | E-16 OntoAct | withdrawn | 三值条件效应、无效干预率 | ≥100 条带前提的决策；先测三值覆盖率（⊤/⊥/?） | [outside](../03-positions/07-outside.md) |
+| **W-06** | Commit Boundary | 移出 | promotion 七条、三段式「已核」 | 1 个 mutation class；20–50 条 false-defer；审计字段齐 | [commit](../03-positions/06-commit.md) |
 
 > 表中每条都对应一张位置卡；卡里的「自测」一行与这里一致。
 >
@@ -89,4 +89,4 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-06, E-07, E-08, E-09, E-10, E-11, E-1
 - 每条 E 的 `status`（active/contested）以 conclusions 为准；不复制生命周期状态。
 - 不列 L-xx；L 只在 topics 内部使用。
 
-> 回 [03 目录](../README.md) ｜ 回 [证据边界](./boundaries.md)
+> 回 [03 目录](../README.md) ｜ 回 [证据边界](02-boundaries.md)

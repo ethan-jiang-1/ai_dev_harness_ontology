@@ -54,7 +54,7 @@ updated: 2026-11-11
 | [01-capability-status](./01-capability-status/README.md) | 哪些能落地、哪些能试点、哪些只能设计；距离多远 | 判断 + 能力矩阵 | draft | E-01–E-20、C-01–C-04 |
 | [02-engineering-playbook](./02-engineering-playbook/README.md) | 选位置/形态、R0–R12、开源与论文指示分级、账本/成本/上线、验收与 stop | 步骤 + 接口 + 验收 | draft | E-xx + 各派 mechanism |
 | [03-mechanism-reference](./03-mechanism-reference/README.md) | 为什么是六个位置、三根分类轴怎么分、15 条边界 | 入口 + 六张位置卡 + 谱外页 + 三张横切页 + 证据台账 | draft | E-xx + [topics/README](../topics/README.md) |
-| └ [附录：约束强度谱](./03-mechanism-reference/appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字）；位置细节以卡为准 | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
+| └ [附录：约束强度谱](03-mechanism-reference/09-appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字）；位置细节以卡为准 | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
 | [04-ontology-in-production](./04-ontology-in-production/README.md) | 本体怎么建到可消费、怎么查、怎么治 | 建 / 用 / 治三分册 + 验收 | draft | E-xx（含 E-21/E-22）+ 03/querying/01/access-control；未入库 signal |
 
 > `_plans/` 是[工作底稿](./_plans/README.md)，不是交付物；不进对外阅读路径，也不构成 E。
@@ -71,10 +71,10 @@ updated: 2026-11-11
 |---|---|---|---|
 | 只有一个模糊想法 | [01 §0](./01-capability-status/02-sections/00-overview.md#0-一页结论) + 本页图 | [01 地图](01-capability-status/02-sections/02-map.md) | 02 `recipes/`、03 `positions/` |
 | 有一个具体任务 | [01 地图](01-capability-status/02-sections/02-map.md)（A/B） | [02 地图](02-engineering-playbook/02-sections/02-map.md) → [02 主体](02-engineering-playbook/02-sections/03-approach.md)（R0 + 一条 recipe） | 03 附录、`src/` |
-| 要评审/说服别人 | [03 地图](./03-mechanism-reference/sections/map.md) + [证据边界](./03-mechanism-reference/sections/boundaries.md) | [01 验收](01-capability-status/02-sections/05-acceptance.md) + [02 边界](02-engineering-playbook/02-sections/04-boundaries.md) | `src/` 原文 |
+| 要评审/说服别人 | [03 地图](03-mechanism-reference/02-sections/02-map.md) + [证据边界](03-mechanism-reference/02-sections/04-boundaries.md) | [01 验收](01-capability-status/02-sections/05-acceptance.md) + [02 边界](02-engineering-playbook/02-sections/04-boundaries.md) | `src/` 原文 |
 | 要落地一个接缝 | [02 地图](02-engineering-playbook/02-sections/02-map.md) → [R0 + recipe](02-engineering-playbook/02-sections/03-approach.md) | [02 运行](02-engineering-playbook/04-operations/01-ledger.md) + [02 验收](02-engineering-playbook/02-sections/05-acceptance.md) | 01 全篇 |
 | 要建/查/治一个本体应用 | [04 地图](./04-ontology-in-production/sections/map.md) | [04 建/用/治](./04-ontology-in-production/body/build.md) | 01/03 全篇 |
-| 要查某条判断的边界 | [03 地图](./03-mechanism-reference/sections/map.md) + 对应 position | [03 证据](./03-mechanism-reference/evidence/ledger.md) | 02 全篇 |
+| 要查某条判断的边界 | [03 地图](03-mechanism-reference/02-sections/02-map.md) + 对应 position | [03 证据](03-mechanism-reference/05-evidence/01-ledger.md) | 02 全篇 |
 
 ### 按时间
 
@@ -88,10 +88,10 @@ updated: 2026-11-11
 
 - **01**（[GUIDE](01-capability-status/02-sections/00-GUIDE.md)）：0 → [地图](01-capability-status/02-sections/02-map.md) → [能力条目](01-capability-status/03-capabilities/README.md)（A→B→C→D）→ [边界](01-capability-status/02-sections/04-boundaries.md) → [验收](01-capability-status/02-sections/05-acceptance.md) → [关系](#关系与维护)。
 - **02**（[GUIDE](02-engineering-playbook/02-sections/00-GUIDE.md)）：0 → [地图](02-engineering-playbook/02-sections/02-map.md) → [R0 + 一条 recipe](02-engineering-playbook/02-sections/03-approach.md) → [边界](02-engineering-playbook/02-sections/04-boundaries.md) → [验收](02-engineering-playbook/02-sections/05-acceptance.md) → [关系](#关系与维护)。
-- **03**（[GUIDE](./03-mechanism-reference/GUIDE.md)）：0 → [地图](./03-mechanism-reference/sections/map.md) → [位置卡](./03-mechanism-reference/positions/README.md)（context→…→commit→outside）→ [横切页](./03-mechanism-reference/across-positions/measurement.md) → [边界](./03-mechanism-reference/sections/boundaries.md) → [验收](./03-mechanism-reference/sections/acceptance.md) → [关系](./03-mechanism-reference/sections/relations.md)。
+- **03**（[GUIDE](03-mechanism-reference/02-sections/00-GUIDE.md)）：0 → [地图](03-mechanism-reference/02-sections/02-map.md) → [位置卡](03-mechanism-reference/03-positions/README.md)（context→…→commit→outside）→ [横切页](03-mechanism-reference/04-across-positions/03-measurement.md) → [边界](03-mechanism-reference/02-sections/04-boundaries.md) → [验收](03-mechanism-reference/02-sections/05-acceptance.md) → [关系](03-mechanism-reference/02-sections/94-relations.md)。
 - **04**（[GUIDE](./04-ontology-in-production/GUIDE.md)）：0 → [地图](./04-ontology-in-production/sections/map.md) → [建](./04-ontology-in-production/body/build.md) → [用](./04-ontology-in-production/body/consume.md) → [治](./04-ontology-in-production/body/govern.md) → [边界](./04-ontology-in-production/sections/boundaries.md) → [验收](./04-ontology-in-production/sections/acceptance.md) → [关系](./04-ontology-in-production/sections/relations.md)。
 
-**反向加载**：从 [01 §5.2](01-capability-status/02-sections/05-acceptance.md#52-期待与数据需求验收规格)/[plan](./_plans/01-capability-status.md)、[02 §3.1](02-engineering-playbook/02-sections/03-approach.md#31-十二条工程做法r0r12)、[03 §2.3](./03-mechanism-reference/sections/map.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
+**反向加载**：从 [01 §5.2](01-capability-status/02-sections/05-acceptance.md#52-期待与数据需求验收规格)/[plan](./_plans/01-capability-status.md)、[02 §3.1](02-engineering-playbook/02-sections/03-approach.md#31-十二条工程做法r0r12)、[03 §2.3](03-mechanism-reference/02-sections/02-map.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
 
 ## 统一阅读结构
 
@@ -164,7 +164,7 @@ updated: 2026-11-11
 - 第四章缺一手失败复盘、第六章缺按机制分派的度量方案、第七章是案例不是对照；按仓库规则，写不动的地方是研究没做完，不应在交付物里绕过去。
 - 主线「价值不在知道更多，而在让不该发生的事不发生」接近 P1a，但 E-01 的 ontology 是 `not measured`、E-04 的结构贡献未隔离；附录已把它收窄为「强端不是更好，是更窄」。
 
-唯一保留的是**论证资产**：原第三章成为 [03 的长版附录](./03-mechanism-reference/appendix-constraint-spectrum.md)。原大纲与规划已删除，git 历史保留；不再有第四个 `handbook/` 目录。
+唯一保留的是**论证资产**：原第三章成为 [03 的长版附录](03-mechanism-reference/09-appendix-constraint-spectrum.md)。原大纲与规划已删除，git 历史保留；不再有第四个 `handbook/` 目录。
 
 ## 质量评估（维护者用）
 
@@ -187,7 +187,7 @@ updated: 2026-11-11
 
 | 交付物 | 形态 | 状态 | 依据 |
 |---|---|---|---|
-| 一页图：约束强度谱 | 图 | 待画 | [03 §2.4](./03-mechanism-reference/sections/map.md#24-强度覆盖率直线是摘要矩阵是操作定义) + [coverage 矩阵](./03-mechanism-reference/across-positions/coverage.md)（H/D，不是 E 结论） |
+| 一页图：约束强度谱 | 图 | 待画 | [03 §2.4](03-mechanism-reference/02-sections/02-map.md#24-强度覆盖率直线是摘要矩阵是操作定义) + [coverage 矩阵](03-mechanism-reference/04-across-positions/01-coverage.md)（H/D，不是 E 结论） |
 | Deck：给工程团队的 30 分钟 | 幻灯片 | 待做 | 02 §0 一页结论、§3.1 R 索引、§3.4 参考架构 |
 | 案例页：一个端到端示例 | Markdown | 示意已写；真实场景待补 | [02 附录 C](02-engineering-playbook/05-appendices/03-case.md)；标 illustrative，不是部署 |
 

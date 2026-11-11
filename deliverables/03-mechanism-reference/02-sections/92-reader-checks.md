@@ -6,7 +6,7 @@ parent: ../README.md
 
 # 读者检查：5 组，读完能自己核对
 
-> 这一页回答「我怎么算读懂了」。它不是 M1–M5 的研究期待（那是 [gaps](../evidence/gaps.md)），是**读者能勾的检查**。
+> 这一页回答「我怎么算读懂了」。它不是 M1–M5 的研究期待（那是 [gaps](../05-evidence/03-gaps.md)），是**读者能勾的检查**。
 >
 > **没做就写「未做」，不要写「通过」。** 5 组全过，说明你能把一条 claim 放对位置、说出边界；不等于你能证明它。
 
@@ -14,7 +14,7 @@ parent: ../README.md
 
 | 项 | 内容 |
 |---|---|
-| 怎么查 | 拿一条 claim，查 [map §2.2.1](./map.md#221-位置--时刻--派--部件--形态) 与 [positions](../positions/README.md) |
+| 怎么查 | 拿一条 claim，查 [map §2.2.1](02-map.md#221-位置--时刻--派--部件--形态) 与 [positions](../03-positions/README.md) |
 | 通过 | 能说出：哪个位置、哪个时刻/轴外、什么派；并说出「为什么不是相邻位置」 |
 | 未通过 | 只能说出关键词（如「读路径」），说不出它为什么不是 context/action |
 
@@ -22,7 +22,7 @@ parent: ../README.md
 
 | 项 | 内容 |
 |---|---|
-| 怎么查 | 从 claim 追到 [台账](../evidence/ledger.md) 的 E 行，再看 E 的「不能证明」 |
+| 怎么查 | 从 claim 追到 [台账](../05-evidence/01-ledger.md) 的 E 行，再看 E 的「不能证明」 |
 | 通过 | 能指到 E-xx + 台账行 + 至少一条边界/反例；能说出等级（已核/代码/推测） |
 | 未通过 | 只有一句「E-20 说可以」，说不出它支持哪一半、不支持哪一半 |
 
@@ -30,7 +30,7 @@ parent: ../README.md
 
 | 项 | 内容 |
 |---|---|
-| 怎么查 | 查 [boundaries](../evidence/boundaries.md) 的 B1–B15 与 N01–N12 |
+| 怎么查 | 查 [boundaries](../05-evidence/02-boundaries.md) 的 B1–B15 与 N01–N12 |
 | 通过 | 能说出「什么条件下不成立」+「什么会推翻它」；不是「永远不行」 |
 | 未通过 | 把边界读成「无效」，或把反例读成「所有情况都不行」 |
 
@@ -38,7 +38,7 @@ parent: ../README.md
 
 | 项 | 内容 |
 |---|---|
-| 怎么查 | 查 [execution-forms](../across-positions/execution-forms.md) 的项目行 |
+| 怎么查 | 查 [execution-forms](../04-across-positions/02-execution-forms.md) 的项目行 |
 | 通过 | 能说出「这个项目是 engine/compiled/context」+「它不做什么」+「执行≠健全≠授权」 |
 | 未通过 | 把「有引擎」当成「会拦」或「有授权」 |
 

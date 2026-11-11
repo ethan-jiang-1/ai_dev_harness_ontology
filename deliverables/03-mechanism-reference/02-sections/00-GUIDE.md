@@ -12,18 +12,18 @@ parent: README.md
 
 ## 最短路径（10 分钟）
 
-1. 读 [README §0 一页结论](./README.md#0-一页结论)：先知道「强度不是好坏，强端更窄」。
-2. 读 [地图 §2.3 六位置表](./sections/map.md#23-六个位置一页表)：知道六个位置问什么。
+1. 读 [README §0 一页结论](../02-sections/00-overview.md#0-一页结论)：先知道「强度不是好坏，强端更窄」。
+2. 读 [地图 §2.3 六位置表](02-map.md#23-六个位置一页表)：知道六个位置问什么。
 3. 记住一句话：**位置是专门化的，不能排成一条可排序的强度线；查矩阵，不查直线。**
 
 ## 连续读法（5 页，约 30 分钟）
 
 按顺序读，不要先翻位置卡：
 
-1. [README §0 一页结论](./README.md#0-一页结论)：强度不是好坏，承重墙是 M1/M2。
-2. [地图 §2.3 六位置表](./sections/map.md#23-六个位置一页表)：六个位置各问什么。
-3. [Claim 走查](./sections/claim-walkthrough.md)：把「读路径能防泄漏吗」拆成三句可判句。
-4. [边界前五条](./sections/boundaries.md)：最容易被越过的五条线。
+1. [README §0 一页结论](../02-sections/00-overview.md#0-一页结论)：强度不是好坏，承重墙是 M1/M2。
+2. [地图 §2.3 六位置表](02-map.md#23-六个位置一页表)：六个位置各问什么。
+3. [Claim 走查](95-claim-walkthrough.md)：把「读路径能防泄漏吗」拆成三句可判句。
+4. [边界前五条](04-boundaries.md)：最容易被越过的五条线。
 
 这四页回答：**本体在哪个位置、这条 claim 成立到哪、什么会推翻它。** 位置卡与附录是查阅，不是必读。
 
@@ -31,13 +31,13 @@ parent: README.md
 
 | 步 | 读什么 | 目标 |
 |---|---|---|
-| 0 | [README §0](./README.md#0-一页结论) | 知道这份参考的立场与承重墙 |
-| 1 | [sections/map.md](./sections/map.md) | 看懂主张类型、四轴、六位置 |
-| 2 | [positions/README.md](./positions/README.md) | 按 context→memory→evidence→checker→action→commit→outside 读位置卡 |
-| 3 | [measurement](./across-positions/measurement.md) · [coverage](./across-positions/coverage.md) · [execution-forms](./across-positions/execution-forms.md) | 知道每个位置该量什么、覆盖什么、形态怎么分 |
-| 4 | [sections/boundaries.md](./sections/boundaries.md) | 说出 15 条边界 + 12 条反例里最常被越过的部分 |
-| 5 | [sections/acceptance.md](./sections/acceptance.md) | 知道 M1–M5 与下一步缺口 |
-| 6 | [sections/relations.md](./sections/relations.md) | 需要时跳 01/02 |
+| 0 | [README §0](../02-sections/00-overview.md#0-一页结论) | 知道这份参考的立场与承重墙 |
+| 1 | [sections/map.md](02-map.md) | 看懂主张类型、四轴、六位置 |
+| 2 | [positions/README.md](../03-positions/README.md) | 按 context→memory→evidence→checker→action→commit→outside 读位置卡 |
+| 3 | [measurement](../04-across-positions/03-measurement.md) · [coverage](../04-across-positions/01-coverage.md) · [execution-forms](../04-across-positions/02-execution-forms.md) | 知道每个位置该量什么、覆盖什么、形态怎么分 |
+| 4 | [sections/boundaries.md](04-boundaries.md) | 说出 15 条边界 + 12 条反例里最常被越过的部分 |
+| 5 | [sections/acceptance.md](05-acceptance.md) | 知道 M1–M5 与下一步缺口 |
+| 6 | [sections/relations.md](94-relations.md) | 需要时跳 01/02 |
 
 ## 按目的
 
