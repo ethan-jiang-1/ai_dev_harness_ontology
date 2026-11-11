@@ -4,7 +4,7 @@
 
 | 文件 | 对应交付物 | 说明 | 状态 |
 |---|---|---|---|
-| [2026-11-11-quality-review.md](./2026-11-11-quality-review.md) | 01–04 | **质量评估（[rubric v1](../../meta/deliverable-quality.md)）**：基线 02/04 78、01 71、03 64；**收口后 04 84 / 02 82 / 01 79 / 03 78**；3 处红旗（04 Glyph 规模、03 相近 harm、03 57.2）与 4 处一致性错误已修；START 入口、X/N 命名空间、连续读法已落地；残留 C2 分片/B3 内码 | 现行（基线+收口） |
+| [2026-11-11-quality-review.md](./2026-11-11-quality-review.md) | 01–04 | **质量评估（[rubric v1](../../meta/deliverable-quality.md)）**：基线 02/04 78、01 71、03 64；**收口后 04 84 / 02 82 / 01 79 / 03 78**；3 处红旗（04 Glyph 规模、03 相近 harm、03 57.2）与 4 处一致性错误已修；START 入口、X/N 命名空间、连续读法已落地；C2 已合并 8 个薄页（110→102）；B3 首屏加映射；残余见 §9 | 现行（基线+收口） |
 | [2026-11-10-04-content-supply.md](./2026-11-10-04-content-supply.md) | [04 建用治](../04-ontology-in-production/README.md) | **内容供给**：12 条承重句 → 6 张矩阵/目录 → 12 个 M 来源 + 1 个论文槽位；W0–W3，8 条靠整理/标准、4 条靠新证据；停止线=并进 02 R13。**2026-11-10 已执行 W0–W3 主体**：6 页落 topics、04 九件产物；6 个标准卡已入（GB/T 43697/35273、ODRL、XACML、SHACL、ODCS）；M5–M7/M10 按 D7 降为候选；Great Expectations / OpenLineage 已入；E23–E27 全部已升、body 14.9k（修订 ≤15k） | 已执行 |
 | [2026-11-10-04-matrix-skeletons.md](./2026-11-10-04-matrix-skeletons.md) | [04 建用治](../04-ontology-in-production/README.md) | **W0 矩阵骨架**：12 条承重句 × 12 张表；B1/B2/C2 已满，其余部分；空格=订单 | 已执行（W0） |
 | [2026-11-10-04-deep-plan.md](./2026-11-10-04-deep-plan.md) | [04 建用治](../04-ontology-in-production/README.md) | **04 深挖**：按 04→topics→src→外部 走依据链；三链（可消费性/查询/治理）、18 行依据表、W0–W5；§6 是 workflow/subagent 执行编排；**D1–D6 已定并执行完**：正文 11,995/12k、导航 8.5%、5 件产物（TBox/shapes/ABox/3 SPARQL/policy/audit）；4 轮冷读，P0 定向复核 PASS；kill criterion 不 kill；剩余 P2 与输出校验/端到端失败传播 | 已执行 |

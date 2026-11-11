@@ -16,7 +16,8 @@ updated: 2026-11-11
 - **自检**：check_repo 新增锚点校验；修 5 个坏锚；「0 坏链」现在覆盖文件链 + 锚点。
 - **归档**：checklist §7 与 src/README §5.1(7) 改指 conventions 长度目标 + digest 模板，不再把 archive/digest-audit 当现行标准。
 - **小节**：src/README §0 重号修正；topics/README 八→九；loading ADR 0001–0010；`.tmp-venv/` 入 `.gitignore`。
-- **自检**：`check_repo` 通过（539 个 md；E=27，Q=3，C=4，L=79；28 论文 / 8 开源 / 12 材料卡）。
+- **自检**：`check_repo` 通过（531 个 md；E=27，Q=3，C=4，L=79；28 论文 / 8 开源 / 12 材料卡）。
+- **内容合并（2026-11-11）**：01 六个能力页 → [capabilities/README](../deliverables/01-capability-status/capabilities/README.md)（-6）；04 example 3→1（-2）；01–04 110→102，<600 字页 47→38；B3 首屏加内码映射。详见 [review §9](../deliverables/_plans/2026-11-11-quality-review.md#9-c2b3-合并2026-11-11)。
 
 ## 2026-11-11 EXP-001 read-path 三执行点复查
 

@@ -46,7 +46,7 @@ parent: README.md
 | 你要做什么 | 先读 | 再读 |
 |---|---|---|
 | 判断「要不要做本体」 | README §0 + 地图 | 能力 A/B + 边界 |
-| 选第一个可落地的能力 | 地图的 A 行 | `capabilities/knowledge.md` |
+| 选第一个可落地的能力 | 地图的 A 行 | [capabilities/README.md#knowledge](./capabilities/README.md#knowledge) |
 | 判断某能力能不能试点 | 地图的 B 行 | 对应 capability 文件 + 验收 |
 | 评审「这个承诺靠不靠谱」 | 边界 | 验收 + 03 的 evidence |
 | 只想知道「还差多远」 | 验收 | 地图的 X1–X9 verdict |

@@ -16,6 +16,8 @@ basis: E-02/E-04/E-06/E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-26/E-27；工程
 >
 > **第一次来**：先读 [START](../START.md)（10 分钟），再回本份。
 >
+> **内码**：A.x/B.x/C.x = 建/用/治三册；其余内码（E-xx/O-xx/T:/S:）见 [术语](./sections/glossary.md)。
+>
 > **读者姿态**：本份面向人；主路径不要求打开 `topics/`。矩阵、失败目录、用例已消化到 [参考表](./sections/reference.md)；出处附录在 [evidence](./evidence/README.md)，可选。
 >
 > **宪章**：[CHARTER](../../CHARTER.md)。本份是读本/验收材料；示例是阅读对照用的 fixture，不是要交付的系统。命令片段是可选说明，不是实施任务。
@@ -98,7 +100,7 @@ basis: E-02/E-04/E-06/E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-26/E-27；工程
 | 治：三层 → 策略/判定顺序 → skip/leak → 审计 | [C · 治](./body/govern.md) |
 | 看一条查询从头到尾 | [journey](./sections/journey.md) |
 | 查术语/内码/版本 | [glossary](./sections/glossary.md) |
-| 对照同一 fixture（可选跑） | [example/run.md](./example/run.md) |
+| 对照同一 fixture（可选跑） | [example/README.md](./example/README.md#5-分钟跑通可选) |
 | 查矩阵/坏样本/失败目录 | [参考表](./sections/reference.md) |
 | 从自己的表推到 TBox/CQ | [transfer](./sections/transfer.md) · [worked-example](./sections/worked-example.md) |
 | 标签/等级从哪来 | [label-source](./sections/label-source.md) |

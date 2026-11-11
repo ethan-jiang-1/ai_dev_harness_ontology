@@ -72,7 +72,7 @@ parent: ../README.md
 
 | 码 | 含义 | 在哪 |
 |---|---|---|
-| **T1–T5** | 动作本体里的类型化逆关系（T1 最强） | [constraint](../capabilities/constraint.md) |
+| **T1–T5** | 动作本体里的类型化逆关系（T1 最强） | [constraint](../capabilities/README.md#constraint) |
 | **Q-01** | 「本体越完备效果越好」的存疑条目 | [conclusions](../../../topics/conclusions.md) |
 | **C-03** | 尺子跟机制走的冲突条目 | [conclusions](../../../topics/conclusions.md) |
 | **D1** | 01 的工作底稿编号（不是判定 D） | [`data/`](../data/README.md) |

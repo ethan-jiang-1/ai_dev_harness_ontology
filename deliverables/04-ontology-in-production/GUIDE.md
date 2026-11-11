@@ -36,7 +36,7 @@ parent: README.md
 | 7 | 3 条 audit + query log | per-subject vs query 级；skip/returned vs skip/withheld | [C.4](./body/govern.md) |
 | 8 | journey | 能说出 CQ1 steward vs analyst 的差别 | [journey](./sections/journey.md) |
 
-这 8 步只读；不要求安装 `rdflib`/`pyshacl`，不要求跑 SPARQL。要看“一条查询从头到尾”，读 [journey](./sections/journey.md)；要自己试跑，见 [example/run.md](./example/run.md)。
+这 8 步只读；不要求安装 `rdflib`/`pyshacl`，不要求跑 SPARQL。要看“一条查询从头到尾”，读 [journey](./sections/journey.md)；要自己试跑，见 [example/README.md](./example/README.md#5-分钟跑通可选)。
 
 **做完你能回答**：一条受控查询从契约到 audit 要哪些字段与门槛；哪些数字是 raw，哪些是 governed。
 

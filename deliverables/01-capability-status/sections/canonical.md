@@ -23,7 +23,7 @@ parent: ../README.md
 | 反向条目 | 6 | [boundaries §4.3](./boundaries.md#43-反向在已测条件下不要做) |
 | 不能当前提 | 5 | [boundaries §4.2](./boundaries.md#42-还不能当工作前提) |
 | 证据边界 | 5 | [boundaries §4.4](./boundaries.md#44-证据边界) |
-| 能力页 | 6 | [capabilities](../capabilities/README.md) |
+| 能力组 | 6（合并为 1 页） | [capabilities](../capabilities/README.md) |
 | 数据表 | 8 | [data](../data/README.md) |
 | 决策记录 | 6 + 1 对照 | [decision-record](./decision-record.md) |
 

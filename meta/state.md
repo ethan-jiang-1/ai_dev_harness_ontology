@@ -25,7 +25,7 @@ updated: 2026-11-11
 | 执行形态（36 源：28 论文 + 8 开源） | engine 4 / compiled 7 / context 3 / label 2 / none 20 |
 | 交付物 | 4 个子目录 + 共用入口 [START](../deliverables/START.md)：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-ontology-in-production；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（README + GUIDE + 3 body + sections + evidence，E-21/E-22 已升、未入库 signal 另列）；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-11，`python3 meta/tools/check_repo.py`：0 坏链 / 0 坏锚 / 0 未定义 ID / 枚举通过（539 个 md；E=27，Q=3，C=4，L=79；28 论文 / 8 开源 / 12 材料卡） |
+| 最后自检 | 2026-11-11，`python3 meta/tools/check_repo.py`：0 坏链 / 0 坏锚 / 0 未定义 ID / 枚举通过（531 个 md；E=27，Q=3，C=4，L=79；28 论文 / 8 开源 / 12 材料卡） |
 
 ## 当前边界（不是阻塞）
 
