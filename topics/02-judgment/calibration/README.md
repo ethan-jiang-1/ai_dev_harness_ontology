@@ -1,13 +1,15 @@
 ---
 status: draft
-updated: 2026-11-08
+updated: 2026-11-12
 rq: [RQ4]
-evidence: [E-02, E-03]
+evidence: [E-02, E-03]  # 均 withdrawn
 ---
 
 # 校准：判定器的曲线与代价
 
 > 判定器给出分数/等级之后。这里问「部署错误率是多少、阈值放哪、catch/FA/代价怎么换」，不重复 [checker](../checker/README.md) 的来源选择与接口。
+>
+> **2026-11-12 对账**：本页两来源 Ontology Catch（E-02）/ OA-RAG（E-03）均已撤回。下列数字作**历史示例，不作活证据**，等级降 `推测`；catch/FA/precision 分口径、per-flagged 成本等**度量规则本身保留**作重启参考（对应 01 gap / W-01/W-02）。
 
 ## 状态
 
@@ -27,11 +29,11 @@ evidence: [E-02, E-03]
 
 ## 当前判断
 
-- **先分 catch/FA，再谈 precision。** 真实答案（UniProt，3,383 可检查）上 curated catch 18.9%、FA 16.8%；data-derived 8.2%/3.5%；masked LLM 5.0%/1.8%；空结果重试 2.5%/0.1%。`已核`
-- **precision 必须带错误率假设。** 57.1/72.3/93.7 是**人工故障 + 25% 错答案**下的口径，不能与真实答案 catch/FA 拼表；真实答案 precision 论文未直接给。curated 在真实答案上的 precision 只比同率随机 flag 高 +1.6 点（CI −2.3~+6.3，跨零）；data-derived 29.9%（+14.4 点），但 catch 只有 8.2%。`已核`
-- **空结果重试是必须先超过的基线。** 人工 fault 上 catch 79.2%、FA 0%；真实答案 2.5%/0.1%。只有「查询仍有结果但答错」的增量才值得付费；增量 catch <5pp 停（digest 工程门，非论文测量）。`已核`（基线）/ `推测`（5pp 门）
-- **接地等级是粗粒度切片，不是校准曲线。** OA-RAG Qwen Test 3：entailed 94.9%、supported 82.1% 正确率；等级是模型自评、未校准；entailed+supported 占比 >90% 时抽样校准、不自动放行（digest 配方）。`已核`（数字）/ `推测`（stop）
-- **成本按 per-flagged 算，FA 放大成本。** curated 65,976 tokens/46.0 s、data-derived 28,076/17 s（每被 flag 的答案，不是每答案）；`per-1k = flag_rate × per-flagged × 1000`。`已核`
+- **先分 catch/FA，再谈 precision。** 真实答案（UniProt，3,383 可检查）上 curated catch 18.9%、FA 16.8%；data-derived 8.2%/3.5%；masked LLM 5.0%/1.8%；空结果重试 2.5%/0.1%。`推测`
+- **precision 必须带错误率假设。** 57.1/72.3/93.7 是**人工故障 + 25% 错答案**下的口径，不能与真实答案 catch/FA 拼表；真实答案 precision 论文未直接给。curated 在真实答案上的 precision 只比同率随机 flag 高 +1.6 点（CI −2.3~+6.3，跨零）；data-derived 29.9%（+14.4 点），但 catch 只有 8.2%。`推测`
+- **空结果重试是必须先超过的基线。** 人工 fault 上 catch 79.2%、FA 0%；真实答案 2.5%/0.1%。只有「查询仍有结果但答错」的增量才值得付费；增量 catch <5pp 停（digest 工程门，非论文测量）。`推测`（基线）/ `推测`（5pp 门）
+- **接地等级是粗粒度切片，不是校准曲线。** OA-RAG Qwen Test 3：entailed 94.9%、supported 82.1% 正确率；等级是模型自评、未校准；entailed+supported 占比 >90% 时抽样校准、不自动放行（digest 配方）。`推测`（数字）/ `推测`（stop）
+- **成本按 per-flagged 算，FA 放大成本。** curated 65,976 tokens/46.0 s、data-derived 28,076/17 s（每被 flag 的答案，不是每答案）；`per-1k = flag_rate × per-flagged × 1000`。`推测`
 
 ## 文件地图
 
