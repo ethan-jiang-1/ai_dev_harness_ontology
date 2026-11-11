@@ -24,6 +24,8 @@ basis: E-20；execution-forms 代码核对；semantica / open-ontologies / ontop
 
 ## R10 · 离线/CI SHACL：把「没检查完」做成第三态
 
+> **为什么是 A**：三态（0/2/3）可报，边界（负例/干净误报/targetClass）能写成验收；派生 shapes 的质量未测，所以不承诺覆盖。
+
 ### 目标
 
 在数据入库、发布、CI 合入前，用本体派生的 SHACL 检查数据；把「通过/违反/没检查完」显式化，避免把「没查」算成「查过且通过」。
@@ -127,6 +129,8 @@ closure_diff → {entailments_lost, lost_by_warrant,
 ---
 
 ## R11 · OBDA 查询重写：本体在查询编译时被执行
+
+> **为什么是 A**：OWL 2 QL 是范围，不是闸；查询重写把本体编译成 SQL，边界可判；需要 DL/事务写入就停。
 
 ### 目标
 

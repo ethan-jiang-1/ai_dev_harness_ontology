@@ -213,6 +213,8 @@ propose_setpoint(tag, value, reason, actor, idempotency_key)
 
 ## R3 · 证据编译：只买 claim + 逐字 span
 
+> **为什么（机制）**：claim+span 把整段阅读换成叶子；证据充分时只读叶子，不充分时要回退检索；所以平均是混合，不是无条件省。
+
 ### 目标
 
 在**重复检索多、语料大、token 是硬成本**的场景，把「读整段」换成「读 claim + 逐字 span」；不承诺准确率提升。

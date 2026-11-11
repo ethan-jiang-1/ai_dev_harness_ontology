@@ -276,6 +276,8 @@ output: filtered triples/nodes + block reason (if logged)
 
 ## R9 · 落盘前授权：现在只能设计，不要声称已落地
 
+> **为什么是 C 不是 B**：三条契约是设计；四个开源项目没有单次写授权（E-20），也没有 false-defer 标签；只能设计，不能 shadow。
+
 ### 目标
 
 把「可推理的证据」与「有权推动持久化的证据」分开；在 mutation 落盘前，按证据齐/冲突清/版本有效三条放行。

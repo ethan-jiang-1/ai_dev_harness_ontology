@@ -21,8 +21,8 @@ parent: ../README.md
 ### 6.2 维护规则
 
 - **canonical 在 `positions/` 与 `across-positions/`**；附录是长版论证，不改结论。两者冲突时，以位置卡/横切页为准，并回改附录指针。
-- 本页只从 [conclusions](../../../topics/conclusions.md) 与 [topics/README](../../../topics/README.md) 抽取；**不新增判断**。
-- E-xx 变化时，先改 `topics/`，再回改本页、位置卡、台账与边界；不要在本页调和冲突。
+- 这里只从 [conclusions](../../../topics/conclusions.md) 与 [topics/README](../../../topics/README.md) 抽取；**不新增判断**。
+- E-xx 变化时，先改 `topics/`，再回改这里、位置卡、台账与边界；不要在这里调和冲突。
 - H/D 必须始终带标记；不要因为引用次数多就把它写成 E。
 - 原 7 章书稿计划不再维护；没有独立 handbook。
 
@@ -31,7 +31,7 @@ parent: ../README.md
 
 | 文件 | 回答 | 什么时候读 |
 |---|---|---|
-| 本页 | 三根分类轴、六位置总表、M1–M5 | 第一次进 03 |
+| 这里 | 三根分类轴、六位置总表、M1–M5 | 第一次进 03 |
 | [positions/context.md](../positions/context.md) | 供给位置为什么不能阻断 | 查知识供给 |
 | [positions/memory.md](../positions/memory.md) | 为什么记忆是状态 | 查跨轮/身份 |
 | [positions/evidence.md](../positions/evidence.md) | 输出契约为什么不是闸门 | 查接地等级 |
@@ -47,4 +47,4 @@ parent: ../README.md
 | [gaps.md](../evidence/gaps.md) | M1–M5、负结果、下一步 | 规划研究 |
 | [appendix-constraint-spectrum.md](../appendix-constraint-spectrum.md) | 长版论证（历史） | 要完整论证时 |
 
-> 本页只做入口；稳定判断在位置卡/横切页，证据在台账，缺口在 gaps。位置卡统一 8 字段：机制 / 触发输入输出 / 能改变什么 / 拦不住什么 / 使能条件 / 证据与边界 / 可证伪条件 / 上游指针。
+> 这里只做入口；稳定判断在位置卡/横切页，证据在台账，缺口在 gaps。位置卡统一 8 字段：机制 / 触发输入输出 / 能改变什么 / 拦不住什么 / 使能条件 / 证据与边界 / 可证伪条件 / 上游指针。
