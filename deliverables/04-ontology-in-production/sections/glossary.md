@@ -10,6 +10,28 @@ parent: ../README.md
 >
 > **术语基线**：ADR 0011 / 2026-11；K0–K4 标 `local`（论文条件，非 normative 源）。
 
+<a id="term-sources"></a>
+## 0. 名词从哪来（N / local）
+
+> **读法**：`N:` = 规范性锚（标准/权威本体），只定「这个词是什么意思、什么叫合格」，**不撑效果**；`local` = 本仓库/本工程的工作词，没有标准锚，按本页解释读，不得写成行业共识。标准清单与「不能定义什么」见 [规范主干](../../../topics/trunk.md)；逐词判定见 [术语基线](../../../meta/term-baseline.md)。
+
+| 词 | 来源 | 一句话（只到读懂 04） |
+|---|---|---|
+| 本体 / 顶层本体 | `N: ISO/IEC 21838-1/-2`（本仓库「本体」义更宽，判 `broader`） | 概念/关系/约束的显式规范；标准只给 TLO 的合格性 |
+| 类 / 属性 / 实例 | `N: W3C OWL 2 Profiles`（类与属性的语义边界） | 概念 / 关系 / 具体对象；profile 只定语义子集 |
+| TBox / ABox | `local`（DL 文献常用词，未入卡 normative 源） | schema / 实例层；本仓库只作描述 |
+| SHACL / shape / `targeted` | `N: W3C SHACL` | 图约束、可检查条件、被检查的 shape 数；不是推理器 |
+| 策略 / principal / effect | `N: W3C ODRL 2.2`（策略表达）/ `N: OASIS XACML 3.0`（判定架构） | 许可-禁止-义务的写法与 PDP/PEP；**`principal` 与 `level 1–4` 是本工程的 `local` 映射** |
+| `skip` | `local` | 本工程加的「未判定」第 4 种效果；XACML/ODRL 都没有 |
+| 数据分级（核心/重要/一般） | `N: GB/T 43697-2024` | 三级框架；04 的 `level 1–4` 与 2/3 阈值是工程映射（`local`） |
+| 个人信息 / 敏感个人信息 | `N: GB/T 35273-2020` | 个人信息处理要求；不是机密性分级 |
+| 数据契约 | `N: ODCS v3.1.0` | contract 的结构/SLA/质量字段；不保证运行时执行 |
+| OBDA / R2RML / OWL 2 QL | `N: W3C OWL 2 Profiles`（profile 语义）；OBDA/R2RML 是 `local` 工程词 | 本体+映射→查询时重写；只支持轻量 profile |
+| audit / replay / snapshot | `local` | 本工程的记录、重跑与快照词；snapshot 是日期标签，不是 hash |
+| leak oracle / governed / raw / fail-open | `local` | 本工程的验收与执行词；没有标准定义 |
+
+> **只定词，不撑效果**：`N:` 行只回答「什么意思、什么叫合格」；「跑出来的结果对不对、泄漏多少」只能引 E-xx 与 fixture 的期望值。
+
 ## 1. 概念（按出现顺序）
 
 | 词 | 一句话 | 在 04 哪里 |

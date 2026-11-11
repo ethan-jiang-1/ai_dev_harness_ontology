@@ -15,7 +15,7 @@ parent: ../README.md
 | Recipe | 一句话 | 接缝/形态 | 成熟度 | 主证据 |
 |---|---|---|---|---|
 | [R0 可执行性体检](readiness.md) | 先证明本体能被执行，再选接缝 | 准入 | 配方 | E-12/E-20；E-02/E-03 已撤回 |
-| [R1 点位语义](knowledge.md#r1--点位语义k1先把-tag-名和单位对齐) | 先对齐 tag 名/单位/质量码（可加别名/槽位） | 供给 / context | A | E-12 |
+| [R1 点位语义](knowledge.md#r1--点位语义先把-tag-名和单位对齐) | 先对齐 tag 名/单位/质量码（可加别名/槽位） | 供给 / context | A | E-12 |
 | [R2 知识投影文本](knowledge.md#r2--知识投影文本把领域知识写成文本固定分节是工程建议) | 投影成文本；固定分节是工程建议；先 K1 | 供给 / context | B | E-12 |
 | [R3 编译](knowledge.md#r3--证据编译只买-claim--逐字-span) | 只买 claim+span，先算 `p_min` | 供给 / compiled | B | E-08/E-14 |
 | [R4 证据契约](judgment.md#r4--输出证据契约让答案带依据和接地等级) | 答案带观察与 grounding | 输出时 / compiled | **gap** | E-03 withdrawn |

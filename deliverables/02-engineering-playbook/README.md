@@ -24,15 +24,17 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 **三条判断（读完能复述）：**
 
-1. **点位语义是最大单层增益。** K0→K1 +54.6pp；知识投影文本只再加 +19.8pp（E-12；单工厂、9 任务、答案基本写在文本里）。先做点位语义（K1），不要先建塔。
+1. **点位语义是最大单层增益。** 原始点位→点位语义 +54.6pp；知识投影文本只再加 +19.8pp（E-12；单工厂、9 任务、答案基本写在文本里）。先做点位语义，不要先建塔。
 2. **R0 是准入，不是效果证明。** 四项检查（名字/单位、声明、覆盖、执行落点）不过，后面都是沙上；过了也只证明「值得进下一轮」。
 3. **约束/判定配方今天不能承诺。** R4/R5/R6 的原锚 E-03/E-02/E-04/E-13 已撤回；18 格 8 改善、catch/FA、T1-only 等旧数字都不能再用。R9（落盘授权）仍只有设计、没有实现（E-20）。
 
-> **只读 5 页（约 40 分钟）**：本页 §0 → [地图 §2.2 分诊](./sections/map.md#22-先定错五个问题) → [R0 体检](./recipes/readiness.md) → 按错误选一条：[R1](./recipes/knowledge.md#r1--点位语义k1先把-tag-名和单位对齐) / [R2](./recipes/knowledge.md#r2--知识投影文本把领域知识写成文本固定分节是工程建议) / [R8](./recipes/constraint.md#r8--读路径过滤只做可见性不要当授权) / [R9](./recipes/constraint.md#r9--落盘前授权现在只能设计不要声称已落地) → [附录 D 产物包](./appendices/artifact-pack.md)。
+> **只读 5 页（约 40 分钟）**：本页 §0 → [地图 §2.2 分诊](./sections/map.md#22-先定错五个问题) → [R0 体检](./recipes/readiness.md) → 按错误选一条：[R1](./recipes/knowledge.md#r1--点位语义先把-tag-名和单位对齐) / [R2](./recipes/knowledge.md#r2--知识投影文本把领域知识写成文本固定分节是工程建议) / [R8](./recipes/constraint.md#r8--读路径过滤只做可见性不要当授权) / [R9](./recipes/constraint.md#r9--落盘前授权现在只能设计不要声称已落地) → [附录 D 产物包](./appendices/artifact-pack.md)。
 >
-> **内码**：R0–R12 = 准入体检 + 十二条配方；K0–K2 = N&D 实验条件（非标准；见 [01 K 页](../01-capability-status/sections/k-ladder.md)）；p_h / p_min = 编译命中率 / 盈亏平衡；O-xx = 对象地址；φ = 可逆性分数（R6），`err_rate` = accepted query 答错率；F/G = 派内 finding/gap。详见 [术语](./sections/glossary.md)。
+> **内码**：R0–R12 = 准入体检 + 十二条配方；K0–K2 = 论文条件代号（非术语/非标准；见 [01 K 页](../01-capability-status/sections/k-ladder.md)）；p_h / p_min = 编译命中率 / 盈亏平衡；O-xx = 对象地址；φ = 可逆性分数（R6），`err_rate` = accepted query 答错率；F/G = 派内 finding/gap。详见 [术语](./sections/glossary.md)。
 >
 > **证据等级**：接口/公式/代码锚点标 `已核` 或 `已核（代码）`；工程配方、阈值、人日估算标 `推测`。R0–R12 是工程配方，不是新 E；效应量仍看 E-xx 的限定。
+>
+> **词源（只定词，不撑效果）**：本体/顶层本体 = `N: ISO/IEC 21838-1/-2`；约束/校验/三态 = `N: W3C SHACL`，规则与 target = `N: W3C SHACL-AF`；查询重写/profile = `N: W3C OWL 2 Profiles`；策略表达/判定架构 = `N: W3C ODRL 2.2` / `N: OASIS XACML 3.0`；数据契约 = `N: ODCS v3.1.0`。接缝、执行形态、动作闸、读路径、落盘授权、接地 = `local`。逐词见 [术语 §0](./sections/glossary.md#term-sources)。
 
 ## 0. 一页结论
 

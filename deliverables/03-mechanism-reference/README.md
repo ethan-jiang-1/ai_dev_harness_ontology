@@ -13,6 +13,8 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 > **第一次来**：先读 [START](../START.md)（10 分钟），再回本份。
 >
 > **2026-11-11 证据重置**：E-02/E-03/E-04/E-06/E-10/E-11/E-13/E-16/E-26 已撤回。03 的 checker/evidence/action/outside 位置卡保留机制描述，但**不再把它们当 admitted 结论**；每张卡顶部有单卡提示。
+>
+> **词源（只定词，不撑效果）**：本体/顶层本体 = `N: ISO/IEC 21838-1/-2`；约束/校验/三态 = `N: W3C SHACL`，规则/target = `N: W3C SHACL-AF`；推理/profile = `N: W3C OWL 2 Profiles`；策略表达/判定架构 = `N: W3C ODRL 2.2` / `N: OASIS XACML 3.0`。六位置、接缝、强度、覆盖率、执行形态 = `local`。逐词见 [术语 §0](./sections/glossary.md#term-sources)；标准边界见 [规范主干](../../topics/trunk.md)。
 
 ## 先走一条 claim
 

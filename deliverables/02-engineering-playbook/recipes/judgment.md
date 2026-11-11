@@ -8,6 +8,8 @@ basis: E-02/E-03/E-20；evidence & checker mechanism
 # R4–R5 · 判定：输出时带依据，输出后查结构
 
 > 两条 recipe 都在「产出」侧，但强度不同：R4 只约束格式与声明，**不改变走向**；R5 能 flag/阻断，**改变走向**。不要把它们混成一个「更懂业务的校验层」。
+>
+> **词源**：「约束/校验/三态」取 RDF 图约束语义（`N: W3C SHACL`），规则与 target 见 `N: W3C SHACL-AF`；「接地（grounding）/ 接地等级」和「checker 的 catch/FA」是 `local` 工作词，没有标准锚——E-03/E-02 已撤回，本节只保留机制描述，不给效应量。
 
 ## 0. 先选哪一条
 

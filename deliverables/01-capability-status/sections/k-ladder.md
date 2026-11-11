@@ -28,9 +28,11 @@ parent: ../README.md
 >
 > **本仓库的准入状态**：N&D 卡是 `admitted (probation)`（单站点，2027-05-11 前补第二独立信号）。所以 E-12 可用，但只到 `已核`，不能写成 `已证`；probation 到期补不到信号就移出。
 >
-> **按 [ADR 0011](../../../adr/0011-source-standing-and-term-baseline.md) 的源位阶**：K0–K4 是 `local` 术语（论文条件，不是 normative 源）；anchor 是论文 Table 1/§2.8；scope 只到 N&D 的五个条件，不能外推成行业层级或成熟度。
+> **按 [ADR 0011](../../../adr/0011-source-standing-and-term-baseline.md) 的源位阶**：K0–K4 判 `local`（`local`：论文条件，不是 normative 源）；anchor 是论文 Table 1/§2.8；scope 只到 N&D 的五个条件，不能外推成行业层级或成熟度。
 
 ## 2. 五个条件：原文、人话、测到什么
+
+> **本表读法**：每一行是**论文条件**（`local`，I 层），不是术语定义；「人话名字」是本仓库的描述性工作词，不是标准术语。效应量只对 N&D 的单工厂、9 任务成立。
 
 | 论文代号 | 人话名字（01 正文用） | agent 多拿到什么 | 知识在哪 | 已测效应（原文） | 01 怎么用 |
 |---|---|---|---|---|---|

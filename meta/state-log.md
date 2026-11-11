@@ -8,6 +8,14 @@ updated: 2026-11-11
 > 本页是 [meta/state](./state.md) 的历史日志：逐次改动与**当时的**计数。
 > **这里的数字是快照，不是现行计数**；现行状态只看 [state](./state.md)。
 
+## 2026-11-11 规范主干接线 + 术语 v1 + 冷读收口
+
+- **第 7 步**：四份术语页各加「§0 名词从哪来（N / local）」；01/02/03/04 + START 的定义句标 `（N: 标准名）`/`（local）`；`topics/trunk.md §5.1` 给标准→页面索引。
+- **第 8 步**：`meta/term-baseline.md` 增 29 词 + 06 试点 1 词（「任务账/风险账」）；GLOSSARY 39 条全有 `_origin_/_anchor_/_scope_`；06-measure 试点 0 冲突，见 [术语审计](./audits/2026-11-11-term-baseline.md)。
+- **第 9 步**：代理冷读 68→86；修 START「只记一句」与 01 的口径冲突、map 等级列混装 `gap`/`设计`、`gap` 只给「曾有 E 被撤回」、#14 例外、START 两个裸词；见 [cold-read](../deliverables/_plans/2026-11-11-cold-read.md)。
+- **第 10 步**：质量 §12.2 01=85 / 02=82 / 03=83 / 04=87（非真人冷读）；`check_repo` 通过（442 md）。
+- **仍剩**：真人冷读、C2 冗余、02/03 长尾旧数字、ISO 21838 条款号。
+
 ## 2026-11-11 导航与质量管道修复
 
 - **质量路径**：README §0 增「质量口径 / 最新评分」；deliverables README §质量评估 增 [§8 收口复评](../deliverables/_plans/2026-11-11-quality-review.md#8-收口复评2026-11-11) 直链；`_plans/README` 增状态列。

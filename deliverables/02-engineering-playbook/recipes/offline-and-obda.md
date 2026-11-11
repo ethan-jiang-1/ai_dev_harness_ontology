@@ -10,6 +10,8 @@ basis: E-20；execution-forms 代码核对；semantica / open-ontologies / ontop
 > 这两条不在 agent 控制回路里，但它们是 01 里少数被评为 **A（可先落地）** 的能力。它们不改变模型走向，改变的是**数据/查询的可靠性**与**验证的时机**。
 >
 > 别把它们叫「闸门」：R10 是离线/CI 检查，R11 是查询编译；两者都不能替代 R5/R6/R9。
+>
+> **词源**：R10 的「校验 / shape / 三态」取 RDF 图约束语义（`N: W3C SHACL`），扩展规则见 `N: W3C SHACL-AF`；R11 的「查询重写 / profile」取 `N: W3C OWL 2 Profiles`。**标准只定语义边界；「能通过/能省多少」是效应问题，回 E-20。**
 
 ## 0. 先选哪一条
 

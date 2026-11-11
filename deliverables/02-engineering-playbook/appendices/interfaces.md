@@ -9,6 +9,8 @@ basis: R0–R12 的 mechanism/数据契约；E-20
 
 > 一页查「这个接缝要什么字段」。字段名多数是各 mechanism 的工程配方（`推测`）；数字/条件回 E-xx。
 >
+> **词源**：「数据契约」的字段骨架可对到 `N: ODCS v3.1.0`（结构/SLA/质量字段）；但**本附录的字段名是工程配方**（`local` + `推测`），不是标准条款，也不保证运行时执行。标准只定「什么叫合格的 contract」，不定「你的接缝该传什么」。
+>
 > **三条通用规则**：
 > 1. 三态显式：`pass` / `flag` / `unknown`；`unknown` 不是 pass。
 > 2. 版本绑定：每个产物带 `id/version/hash/generated_at`；决策绑定 `snapshot_id`。

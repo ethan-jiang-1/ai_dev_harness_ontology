@@ -80,9 +80,28 @@ updated: 2026-11-11
 
 ## 5. 接到哪里
 
-- 术语表：[meta/term-baseline.md](../meta/term-baseline.md) v0（10 词）与本页对齐；K 行见 [K 页](../deliverables/01-capability-status/sections/k-ladder.md)。
+- 术语表：[meta/term-baseline.md](../meta/term-baseline.md) v0（10 词）+ v1（29 词 + 06 试点 1 词）与本页对齐；K 行见 [K 页](../deliverables/01-capability-status/sections/k-ladder.md)。
 - 各派来源：`topics/<派>/sources.md` 顶部加「N/I/S 三层读法」，N 指本页，I/S 在各自表里。
 - 交付物：01/02/03/04 的定义段与边界，只引 N；效应引 I；S 不出现。
 - 维护：新增标准卡必须 `admission: admitted` + `standing: normative`；厂商页、社区成熟度模型、单机构白皮书不进主干。
+
+### 5.1 实际接线（2026-11-11，第 7 步）
+
+四个交付物各有一个「§0 名词从哪来（N / local）」术语页；正文定义句用 `（N: 标准名）` / `（local）` 标注。逐页：
+
+| 标准 | 实际接到哪（页面级） |
+|---|---|
+| ISO/IEC 21838-1/-2 | [START](../deliverables/START.md) 三词表；[01 术语](../deliverables/01-capability-status/sections/glossary.md#term-sources)；[01 README](../deliverables/01-capability-status/README.md)；[03 术语](../deliverables/03-mechanism-reference/sections/glossary.md#term-sources)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources)；[04 build A.3](../deliverables/04-ontology-in-production/body/build.md) |
+| OMG Commons 1.3 | [03 术语](../deliverables/03-mechanism-reference/sections/glossary.md#term-sources)；[02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources) |
+| W3C SHACL | [01 术语](../deliverables/01-capability-status/sections/glossary.md#term-sources)、[01 map §2.2](../deliverables/01-capability-status/sections/map.md#22-一张表)、[01 capabilities §3.8](../deliverables/01-capability-status/capabilities/README.md#read-path)；[02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources)、[R10/R11](../deliverables/02-engineering-playbook/recipes/offline-and-obda.md)、[R4/R5](../deliverables/02-engineering-playbook/recipes/judgment.md)；[03 checker](../deliverables/03-mechanism-reference/positions/checker.md)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources)、[04 build A.3](../deliverables/04-ontology-in-production/body/build.md) |
+| W3C SHACL-AF | [01 capabilities §3.8](../deliverables/01-capability-status/capabilities/README.md#read-path)；[02 R10/R11](../deliverables/02-engineering-playbook/recipes/offline-and-obda.md)、[R8](../deliverables/02-engineering-playbook/recipes/constraint.md#r8--读路径过滤只做可见性不要当授权)；[03 checker](../deliverables/03-mechanism-reference/positions/checker.md)；[04 govern C.1](../deliverables/04-ontology-in-production/body/govern.md) |
+| W3C OWL 2 Profiles | [01 map §2.2](../deliverables/01-capability-status/sections/map.md#22-一张表)、[01 capabilities §3.8](../deliverables/01-capability-status/capabilities/README.md#read-path)；[02 R10/R11](../deliverables/02-engineering-playbook/recipes/offline-and-obda.md)；[03 术语](../deliverables/03-mechanism-reference/sections/glossary.md#term-sources)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources)、[04 build A.3](../deliverables/04-ontology-in-production/body/build.md) |
+| W3C ODRL 2.2 | [01 README 词源](../deliverables/01-capability-status/README.md)、[decision-record](../deliverables/01-capability-status/sections/decision-record.md)；[02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources)、[R6/R8/R9](../deliverables/02-engineering-playbook/recipes/constraint.md)；[03 action](../deliverables/03-mechanism-reference/positions/action.md)、[03 commit](../deliverables/03-mechanism-reference/positions/commit.md)；[04 govern C.1/C.2](../deliverables/04-ontology-in-production/body/govern.md) |
+| OASIS XACML 3.0 | 同 ODRL 的页面（成对出现，表达 vs 判定架构） |
+| GB/T 43697-2024 | [01 术语](../deliverables/01-capability-status/sections/glossary.md#term-sources)；[02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources)、[04 govern C.1](../deliverables/04-ontology-in-production/body/govern.md) |
+| GB/T 35273-2020 | 同 GB/T 43697 的页面 |
+| ODCS v3.1.0 | [02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources)、[02 接口附录](../deliverables/02-engineering-playbook/appendices/interfaces.md)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources) |
+
+> **接线口径**：`N:` 只出现在「定义/合格性」句；效应句仍引 E-xx。`local` 词（动作闸、commit gate、接地、记忆、读路径、六位置、执行形态等）一律首现解释，不借标准抬高。完整记录与验收命令见 [接线报告](../deliverables/_plans/2026-11-11-trunk-wiring.md)。
 
 > 本页是索引，不是新 E；不改变任何已有判断，只把「词从哪来」摆清楚。

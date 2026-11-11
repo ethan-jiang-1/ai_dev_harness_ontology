@@ -23,6 +23,8 @@ parent: ../README.md
 
 三层不能互推——有标签 ≠ 有策略 ≠ 执行正确；读路径的单实例 10 条用例里 4 类漏洞。标签来源/准入（覆盖、漏标、owner）见 [label-source](../sections/label-source.md)。
 
+> **词源**：标签层的「数据分级」有 `N: GB/T 43697-2024`（核心/重要/一般三级），「个人信息」有 `N: GB/T 35273-2020`；04 的 `level 1–4` 与 2/3 阈值是**工程映射**（`local`），不是标准条款。策略层：`N: W3C ODRL 2.2` 定许可/禁止/义务的写法，`N: OASIS XACML 3.0` 定 PDP/PEP 与合并算法，但**都不定「谁读哪列」、不给默认结论**。执行层：`N: W3C SHACL-AF` 定规则与 target，不定「会不会拦」。`principal`、`skip`、`leak oracle` 是 `local`。
+
 ## C.2 策略表（可判定，不是标准）
 
 **8 条规则**（[policy.json](../example/policy.json)）；每条都带 `obligation: log`，它是审计字段，不参与判定。
@@ -69,7 +71,7 @@ parent: ../README.md
 **三条硬规则**：
 
 1. **先 `kind` 后 `level`**：表/数据集不按列判（T7/T8）；但 T9 暴露「R4 与 R5 谁先」没写，**未定**。
-2. **`skip` ≠ `allow`**：`skip` 是 XACML/ODRL 都没有的第 4 种效果；必须带 `reason`，审计单列。
+2. **`skip` ≠ `allow`**：`skip` 是 `N: OASIS XACML 3.0` / `N: W3C ODRL 2.2` 都没有的第 4 种效果（本工程 `local` 扩展）；必须带 `reason`，审计单列。
 3. **不要用 `clearance` 做策略条件**：它在 input 里但规则未消费；消费它需要另写规则，不是现有语义。
 
 > **principal 与多标签的落地选择**：见 [transfer §6](../sections/transfer.md)。04 的 8 条规则假设 `resource_level` 是标量、principal 是单一身份；这两件事不先拍板，11 条测试全绿也只证明测试内部自洽。

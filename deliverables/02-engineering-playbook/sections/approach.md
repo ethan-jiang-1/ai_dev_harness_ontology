@@ -19,7 +19,7 @@ parent: ../README.md
 | R | 一句话 | 接缝/形态 | 主证据 | 成熟度 | 完整配方 |
 |---|---|---|---|---|---|
 | **R0** | 先证明本体能被执行（名字/单位、声明、覆盖、落点） | 准入 | E-12/E-20；E-02/E-03 已撤回 | 配方 | [readiness](../recipes/readiness.md) |
-| **R1** | 先把 tag 名/单位/质量码对齐（可加别名/槽位）；K1 够就停 | 供给 / context | E-12 | A | [knowledge](../recipes/knowledge.md#r1--点位语义k1先把-tag-名和单位对齐) |
+| **R1** | 先把 tag 名/单位/质量码对齐（可加别名/槽位）；点位语义够就停 | 供给 / context | E-12 | A | [knowledge](../recipes/knowledge.md#r1--点位语义先把-tag-名和单位对齐) |
 | **R2** | 知识投影文本（固定分节是工程建议）；先 K1 再投影 | 供给 / context | E-12 | B | [knowledge](../recipes/knowledge.md#r2--知识投影文本把领域知识写成文本固定分节是工程建议) |
 | **R3** | 只买 claim+span；先算 `p_min` | 供给 / compiled | E-08/E-14 | B | [knowledge](../recipes/knowledge.md#r3--证据编译只买-claim--逐字-span) |
 | **R4** | 输出带观察与 grounding；等级要校准 | 输出时 / compiled | E-03 withdrawn | **gap** | [judgment](../recipes/judgment.md#r4--输出证据契约让答案带依据和接地等级) |

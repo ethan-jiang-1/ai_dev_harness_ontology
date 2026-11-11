@@ -21,6 +21,8 @@ basis: E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-27；E-02/E-04/E-06/E-26 已撤
 >
 > **内码**：A.x/B.x/C.x = 建/用/治三册；E-xx = 跨派结论；T: = topics 页；S: = src digest；O-xx = 对象地址；T9 = steward 读表这条优先级测试；X1–X5 = 04 的验收期待。完整解释见 [术语](./sections/glossary.md)。
 >
+> **词源（只定词，不撑效果）**：本体/顶层本体 = `N: ISO/IEC 21838-1/-2`；约束/校验/shape/三态 = `N: W3C SHACL`；策略表达/判定架构 = `N: W3C ODRL 2.2` / `N: OASIS XACML 3.0`；数据分级/个人信息 = `N: GB/T 43697-2024` / `N: GB/T 35273-2020`；数据契约 = `N: ODCS v3.1.0`。TBox/ABox、principal、level 1–4、`skip`、leak oracle = `local`（工程映射，不是标准条款）。逐词见 [术语 §0](./sections/glossary.md#term-sources)。
+>
 > **读者姿态**：本份面向人；主路径不要求打开 `topics/`。矩阵、失败目录、用例已消化到 [参考表](./sections/reference.md)；出处附录在 [evidence/ledger.md](./evidence/ledger.md)，可选。
 >
 > **宪章**：[CHARTER](../../CHARTER.md)。本份是读本/验收材料；示例是阅读对照用的 fixture，不是要交付的系统。命令片段是可选说明，不是实施任务。

@@ -66,6 +66,8 @@ parent: ../README.md
 
 TBox：[ontology.ttl](../example/ontology.ttl)（11 类/5 属性；`SELECT (COUNT(DISTINCT ?c) WHERE { ?c a owl:Class })` = 11）；ABox：[catalog.ttl](../example/catalog.ttl)。
 
+> **词源**：TBox / ABox 是 `local` 描述词（DL 文献常用，未入卡 normative 源）；类与属性的语义边界可对到 `N: W3C OWL 2 Profiles`（profile 只定语义子集，不证明推理效果）；shape 与三态见 `N: W3C SHACL`。**「建多少类算够」是工程判断，不是标准条款。**
+
 11 类 = Tag 层级 8（Tag/PII/Email/WorkEmail/Phone/Name/Financial/SSN）+ Dataset/Table/Column 3。`WorkEmail` 是 `Email` 子类，`tag_email_1` 挂在它上面，CQ1 的 `rdfs:subClassOf*` 因此不是装饰；`Address` 已删，避免“未用类”。
 
 `owl:inverseOf` 只是文档：执行层不 entail，ABox 两侧显式写 `columnOfTable`/`hasColumn`。

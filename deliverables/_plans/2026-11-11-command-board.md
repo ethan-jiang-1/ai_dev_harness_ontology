@@ -180,3 +180,11 @@ scope: 交付物证据重置 + ADR 0011 术语基线
 - 更新 [一页状态](./2026-11-11-status.md) 的分数与未决项。
 - 自检：`check_repo` 通过（436 md）。
 - **仍剩**：真人冷读、术语 v1、checkpoint。
+
+### 2026-11-11 · 第 7–10 步（规范主干接线 / 术语 v1 / 冷读 / checkpoint）
+
+- **第 7 步（01→02→03→04 接线）**：四份术语页各新增「§0 名词从哪来（N / local）」；正文定义句标 `（N: 标准名）`/`（local）`。逐页：01 README/map/capabilities/decision-record/K 页；02 README/R4–R5/R6–R9/R10–R11/接口附录；03 README/checker/action/commit/memory/evidence；04 README/build A.3/govern C.1–C.2；共用入口 START。记录与验收命令见 [接线报告](./2026-11-11-trunk-wiring.md)。
+- **第 8 步（术语 v1）**：[term-baseline](../../meta/term-baseline.md) 增 29 词（+06 试点补「任务账/风险账」1 词）；GLOSSARY 39 条全部有 `_origin_/_anchor_/_scope_`（v0 的 5 个漏条也补上）；计数 aligned 2 / narrower 2 / broader 1 / divergent 1 / local 33。06-measure 试点结论：0 术语冲突，1 条裸词已补判，见 [术语审计](../../meta/audits/2026-11-11-term-baseline.md)。
+- **第 9 步（冷读）**：代理冷读第一轮 68/100，抓 2 处口径冲突（START「只记一句」说「让某些事不发生」，与 01「动作前的拦不能承诺」相反；map §2.2「等级」列混装 `gap`/`设计`，读成「gap=C」）；已修。第二轮复核 86/100，再补 3 处：`gap` 收窄为「曾有 E 被撤回」、#14 的例外写明、START 两个裸词就地解释。见 [cold-read](./2026-11-11-cold-read.md)。**真人冷读仍未做。**
+- **第 10 步（checkpoint）**：`check_repo` 通过（442 md；0 坏链 / 0 坏锚 / 未定义 ID）；质量桌面复评 §12.2：01=85 / 02=82 / 03=83 / 04=87（非真人冷读）；提交最终 checkpoint（用户授权「一口气做完」）。
+- **仍剩**：真人冷读、C2 冗余/体量、02/03 长尾旧数字逐句删、ISO 21838 条款号。
