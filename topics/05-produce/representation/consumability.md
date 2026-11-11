@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-10
+updated: 2026-11-12
 rq: [RQ2, RQ5]
 evidence: [E-12]
 ---
@@ -36,7 +36,7 @@ evidence: [E-12]
 | **结构表** | supported（Turtle/YAML；LinkML `gen-shacl`） | supported（SHACL core；fixture 2/2） | supported（3 CQ 期望集） | partial（报告有 focus/path/sourceShape；无业务理由） | 中（估算；2–4 人周建模 + 3–5 人日 shapes，`推测`） |
 | **逻辑表** | supported（OWL 2 可解析；profile 另计） | partial（一致性/包含可推；闭世界数据约束不在 OWL） | partial（断言可查；推断需物化/重写；OWL 2 QL only） | not（无标准 justification 记录；个别 reasoner 有解释，未测） | 高（估算；结构表 + reasoner/profile/解释） |
 
-**读法**：这张表是能力矩阵，不是效应量。E-12 的 +54.6pp 是**文本投影**的命名/单位效应（n=1 工厂、9 任务），不是三档对照；不能拿来证明「词表够用」。SFE-O 只证明「逻辑档表达 ≠ 执行」，不能证明结构表覆盖多数场景。
+**读法**：这张表是能力矩阵，不是效应量。E-12 的 +54.6pp 是**文本投影**的命名/单位效应（n=1 工厂、9 任务），不是三档对照；不能拿来证明「词表够用」。SFE-O（已撤回）只证明「逻辑档表达 ≠ 执行」（历史参考），不能证明结构表覆盖多数场景。
 
 依据：E-12；[SFE-O digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123) §4.1；[SHACL 材料卡](../../../src/web/w3c-shacl/w3c-shacl.card.md)、[LinkML docs](https://linkml.io/linkml/)（待入库）。
 
@@ -88,9 +88,9 @@ evidence: [E-12]
 | [W3C SHACL](../../../src/web/w3c-shacl/w3c-shacl.card.md) | targets、conformance、result 字段、shacl-shacl | `已核`（材料卡；条款待核） |
 | W3C SHACL test suite | `core/property/minCount-001`、`core/node/nodeKind-001` 等 | `待核`（页面；未入库） |
 | LinkML | `gen-shacl`（Beta）、`linkml-validate` | `待核`（文档；未入库） |
-| CASTON | high 6/6、medium 0–25%；无下游 | `已核`（digest 转述） |
-| OntoDoc | completeness 3.43→3.84；无下游 | `已核`（digest 转述） |
-| SFE-O | OWL 2 表达力够；约束未落 SHACL；无 agent 评测 | `已核`（digest 转述） |
+| CASTON | high 6/6、medium 0–25%；无下游 | `已核`（digest 转述；admitted） |
+| OntoDoc（已撤回） | completeness 3.43→3.84；无下游 | 推测（源撤回，历史示例） |
+| SFE-O（已撤回） | OWL 2 表达力够；约束未落 SHACL；无 agent 评测 | 推测（源撤回，历史示例） |
 
 **不能证明**：
 
