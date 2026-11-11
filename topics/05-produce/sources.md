@@ -5,6 +5,9 @@ updated: 2026-11-09
 
 # 05 生产派 · 证据源
 
+> **三层读法**：N（规范性）见 [规范主干](../trunk.md)；本表是 I（资料性）/ S（线索）。定义性表述只引 N；效应只引 I；S 只进 `frontier.md`。
+
+
 | 来源（digest） | 类型 | 阅读 | 支撑 | 备注 |
 |---|---|---|---|---|
 | [CASTON digest](../../src/papers/2610.21466-caston-refinement/digest.md) | preprint | 精读 | 05-L2 / 05-L5 / 05-L9 | [card](../../src/papers/2610.21466-caston-refinement/card.md)（provenance）；精化；high 6/6、pretrained 4/7、GPT-4o mini 5/16；medium 0/2、1/4、1/5 |

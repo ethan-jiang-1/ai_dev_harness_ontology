@@ -5,6 +5,9 @@ updated: 2026-11-09
 
 # 03 知识派 · 证据源
 
+> **三层读法**：N（规范性）见 [规范主干](../trunk.md)；本表是 I（资料性）/ S（线索）。定义性表述只引 N；效应只引 I；S 只进 `frontier.md`。
+
+
 | 来源（digest） | 类型 | 阅读 | 支撑 | 备注 |
 |---|---|---|---|---|
 | [Narrow & Deep digest](../../src/papers/2610.11768-narrow-and-deep/digest.md) | preprint | 精读 | 03-L1 / 03-L7 / 03-L8 | [card](../../src/papers/2610.11768-narrow-and-deep/card.md)（provenance）；投影 pooled 分最高但非普适排序；9B 带投影 > 750B 不带（区间约 0.3 宽）；日志检索 4/80、H3 未支持 |

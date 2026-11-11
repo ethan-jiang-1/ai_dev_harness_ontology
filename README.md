@@ -18,6 +18,7 @@
 | 研究问题与假设 | [THESIS](./THESIS.md) |
 | 术语（动笔前对齐） | [GLOSSARY](./GLOSSARY.md) |
 | 六派地图、子主题、四轴 | [topics/README](./topics/README.md) |
+| 规范主干（N/I/S） | [topics/trunk](./topics/trunk.md) |
 | 跨主题结论（E-xx） | [topics/conclusions](./topics/conclusions.md) |
 | 时刻 / 接缝 | [topics/seams](./topics/seams.md) |
 | 执行形态（第四轴） | [topics/execution-forms](./topics/execution-forms.md) |

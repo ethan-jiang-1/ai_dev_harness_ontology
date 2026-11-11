@@ -5,6 +5,9 @@ updated: 2026-11-08
 
 # 04 状态派 · 证据源
 
+> **三层读法**：N（规范性）见 [规范主干](../trunk.md)；本表是 I（资料性）/ S（线索）。定义性表述只引 N；效应只引 I；S 只进 `frontier.md`。
+
+
 | 来源（digest） | 类型 | 阅读 | 支撑 | 备注 |
 |---|---|---|---|---|
 | [FIRME digest](../../src/papers/2610.40482-firme/digest.md) | preprint | 精读 | 04-L2, 04-L3, 04-L5, 04-L6, 04-L7 | [card](../../src/papers/2610.40482-firme/card.md)（provenance）；alias memory；false merge；三层评估 |

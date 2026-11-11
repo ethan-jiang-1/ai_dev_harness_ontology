@@ -5,6 +5,9 @@ updated: 2026-11-09
 
 # 01 约束派 · 证据源
 
+> **三层读法**：N（规范性）见 [规范主干](../trunk.md)；本表是 I（资料性）/ S（线索）。定义性表述只引 N；效应只引 I；S 只进 `frontier.md`。
+
+
 | 来源（digest） | 类型 | 阅读 | 支撑 | 备注 |
 |---|---|---|---|---|
 | [POLAR digest](../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) | preprint | 精读 | 01-L1, 01-L2, 01-L6, 01-L7 | [card](../../meta/audits/2026-11-11-source-purge.md#src-2610-08082)（provenance）；T1-only ≈ blanket veto；false-veto 未测；retail 回退不能归因误拦 |

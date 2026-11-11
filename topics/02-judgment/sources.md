@@ -5,6 +5,9 @@ updated: 2026-11-10
 
 # 02 判定派 · 证据源
 
+> **三层读法**：N（规范性）见 [规范主干](../trunk.md)；本表是 I（资料性）/ S（线索）。定义性表述只引 N；效应只引 I；S 只进 `frontier.md`。
+
+
 | 来源（digest） | 类型 | 阅读 | 支撑 | 备注 |
 |---|---|---|---|---|
 | [What Does an Ontology Catch digest](../../meta/audits/2026-11-11-source-purge.md#src-2610-37809) | preprint | 精读 | 02-L1 / 02-L5 / 02-L6 / 02-L7 | [card](../../meta/audits/2026-11-11-source-purge.md#src-2610-37809)（provenance）；三源 FP/FN；空结果基线 |

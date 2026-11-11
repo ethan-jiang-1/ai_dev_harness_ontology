@@ -5,6 +5,9 @@ updated: 2026-11-10
 
 # 06 测量派 · 证据源
 
+> **三层读法**：N（规范性）见 [规范主干](../trunk.md)；本表是 I（资料性）/ S（线索）。定义性表述只引 N；效应只引 I；S 只进 `frontier.md`。
+
+
 | 来源（digest） | 类型 | 阅读 | 支撑 | 备注 |
 |---|---|---|---|---|
 | [MIOE digest](../../meta/audits/2026-11-11-source-purge.md#src-2610-38326) | preprint | 精读 | 06-L1 / 06-L10 | [card](../../meta/audits/2026-11-11-source-purge.md#src-2610-38326)（provenance）；MDAS；部分分离 |

@@ -97,7 +97,7 @@ Shapes：[shapes.ttl](../example/shapes.ttl)（2 条：TagHasLevel、HasTagClass
 
 其余 6 个（S1/S2/S3/S5/S9/S10）分别缺 principal/moment/refuse/version、无 dataset 边、版本不一致；现状均为 silent 或 answer undercoverage。
 
-SFE-O（本体工程论文）未交付可执行 shape，只借做法。分开报：违反检出/干净样本误报/人审接受率；Ontology Catch 的真实答案 catch/FA（UniProt，4,410 条 / 3,383 可检查）是 curated 18.9%/16.8%、data-derived 8.2%/3.5%、masked LLM 5.0%/1.8%——这三组不是 precision；PPV 是另一口径（假设错答案基率下的 precision），复算见 [evidence](../evidence/ledger.md) 的 O-F08（对象地址）。
+SFE-O 与 Ontology Catch 已移出（2026-11-11 源清除）；旧 catch/FA（curated 18.9%/16.8 等）只作历史，不再作为验收依据。要重算 checker，先找新的 admitted 来源；PPV 口径见 [evidence](../evidence/ledger.md) 的 O-F08（历史地址）。
 
 ## A.5 可消费性闸门（产物：`build_report`）
 
