@@ -38,7 +38,7 @@ parent: ../README.md
 | 这条链能不能试点、`conditional` 怎么处置 | **回答** | §5 |
 | 这条链要花什么、规模先断在哪 | **回答到「成本驱动项 + 量级」**；不出报价 | §2、§4 |
 
-**三个选项**（借 [02 operations/cost](../../02-engineering-playbook/operations/cost.md#6-build--buy--do-nothing)）：
+**三个选项**（借 [02 operations/cost](../../02-engineering-playbook/04-operations/03-cost.md#6-build--buy--do-nothing)）：
 
 - **build pilot**：有稳定域、复用高、能维护；04 只给这一项的产物与门槛。
 - **buy**：有成熟产品、能 RFQ、集成可控；04 的验收表可当 RFQ 的检查项。
@@ -75,7 +75,7 @@ parent: ../README.md
 | 人审 | 审批分钟 × 单价；04 没有队列数据 | 02 cost 维度 | 运营 |  |
 | token / 查询 | **未测**；fixture 是本地 rdflib | 04 C.4，`未测` | 平台 |  |
 
-> 这些是量级，不是报价；每一项都要用第一个 sprint 的实录工时校准。没有单价就只出公式与敏感性（[02 cost](../../02-engineering-playbook/operations/cost.md#4-单价表当前全空)）。
+> 这些是量级，不是报价；每一项都要用第一个 sprint 的实录工时校准。没有单价就只出公式与敏感性（[02 cost](../../02-engineering-playbook/04-operations/03-cost.md#4-单价表当前全空)）。
 >
 
 ### 2.3 TCO 与「缺项」规则
@@ -273,10 +273,10 @@ TCO_12m =
 
 > 成本与工期是工程建议（`推测`）；04 没有做实验，也没有单价。
 
-- **成本口径**：[02 cost](../../02-engineering-playbook/operations/cost.md)（五维、TCO、单价表空、缺项规则）；§2.5 公式；[TPL-9](./templates.md#tpl-9-成本工作纸) 工作纸。
-- **上线节奏**：[02 rollout](../../02-engineering-playbook/operations/rollout.md)（shadow → advisory → enforce；回滚；RACI）。
-- **go/no-go**：[02 evaluation](../../02-engineering-playbook/operations/evaluation.md)（go / no-go / not enough data）。
-- **量级估算**：工程假设（`推测`；原 SFE-O 估算已移出，只作历史）；[representation mechanism](../../../topics/05-produce/representation/mechanism.md)（1–2 人周集成，`推测`）；policy 2–4 人日借 [02 cost](../../02-engineering-playbook/operations/cost.md) R9（commit gate 的 policy 部分，04 读路径按同类量级类比）。
+- **成本口径**：[02 cost](../../02-engineering-playbook/04-operations/03-cost.md)（五维、TCO、单价表空、缺项规则）；§2.5 公式；[TPL-9](./templates.md#tpl-9-成本工作纸) 工作纸。
+- **上线节奏**：[02 rollout](../../02-engineering-playbook/04-operations/04-rollout.md)（shadow → advisory → enforce；回滚；RACI）。
+- **go/no-go**：[02 evaluation](../../02-engineering-playbook/04-operations/02-evaluation.md)（go / no-go / not enough data）。
+- **量级估算**：工程假设（`推测`；原 SFE-O 估算已移出，只作历史）；[representation mechanism](../../../topics/05-produce/representation/mechanism.md)（1–2 人周集成，`推测`）；policy 2–4 人日借 [02 cost](../../02-engineering-playbook/04-operations/03-cost.md) R9（commit gate 的 policy 部分，04 读路径按同类量级类比）。
 - **条件项**：E-22（标签单企业）、E-23（读路径单实现/fail-open）、E-20（写授权无实现）。
 - **不证明**：ROI、真数据误报率、延迟、规模、第二实现、严格 replay。
 - **停**：没有单价/owner/第二实现，只出 `conditional` 清单，不出 `go`。

@@ -108,5 +108,5 @@ evidence: [E-01, E-04, E-12, E-18, E-20]
 ## 7. 上游
 
 - [01 现状 · 期待与数据需求](../../01-capability-status/02-sections/05-acceptance.md#52-期待与数据需求验收规格)
-- [02 · 期待与数据需求](../../02-engineering-playbook/sections/acceptance.md#53-期待与数据需求验收规格)
+- [02 · 期待与数据需求](../../02-engineering-playbook/02-sections/05-acceptance.md#53-期待与数据需求验收规格)
 - 各派 `frontier.md`；只做 03 的汇总，不复制候选。

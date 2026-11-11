@@ -64,13 +64,13 @@ parent: README.md
 | C | C.3 泄漏 | E-23；[read-path](../../../topics/01-constraint/commit-gate/read-path.md)；S:trustgraph | 已核（代码） |
 | C | C.4 审计 | T:06/trace；[policy mechanism](../../../topics/01-constraint/policy/mechanism.md)；3 条样例 + query log | 未测 |
 | C | C.5 输出/传播 | [output-validation](../../../topics/02-judgment/checker/output-validation.md)、[identity F3](../../../topics/04-state/identity/findings.md)、[coverage G](../../../topics/06-measure/metrics/coverage.md)；工程产物 | 未测 |
-| 附录 | transfer / templates / decision | A/B/C + [02 cost](../../02-engineering-playbook/operations/cost.md) / [evaluation](../../02-engineering-playbook/operations/evaluation.md) / [rollout](../../02-engineering-playbook/operations/rollout.md)；工程方法 | 工程产物 / `推测`（成本） |
+| 附录 | transfer / templates / decision | A/B/C + [02 cost](../../02-engineering-playbook/04-operations/03-cost.md) / [evaluation](../../02-engineering-playbook/04-operations/02-evaluation.md) / [rollout](../../02-engineering-playbook/04-operations/04-rollout.md)；工程方法 | 工程产物 / `推测`（成本） |
 
 > transfer / templates / decision 是**工程方法与成本口径**，不新增 E；成本只有量级（`推测`），没有单价与 ROI。
 
 ## 3.5 撤回与历史（W 表）
 
-> 04 直接依赖的撤回源不多；编号与 01/02 的 W 表一致，完整版见 [02 canonical §1.1](../../02-engineering-playbook/sections/canonical.md#w-table)。
+> 04 直接依赖的撤回源不多；编号与 01/02 的 W 表一致，完整版见 [02 canonical §1.1](../../02-engineering-playbook/02-sections/91-canonical.md#w-table)。
 
 <a id="w-table"></a>
 | 编号 | 原依据 | 状态 | 不能再用 | 重启前先量 | 在 04 哪里 |

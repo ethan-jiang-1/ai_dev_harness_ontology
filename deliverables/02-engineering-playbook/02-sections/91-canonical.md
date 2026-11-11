@@ -78,12 +78,12 @@ parent: ../README.md
 | 项 | 值 | 说明 |
 |---|---|---|
 | recipe | 13 | R0–R12 |
-| 停线表 | 13 行 × 7 列 | [acceptance §5.1](./acceptance.md#51-验收与-stop按机制选尺) |
-| 反模式 | 17 | [boundaries](./boundaries.md) |
-| per-R「不能证明」 | 13 | [traceability §2](../appendices/traceability.md) |
-| 缺口 | 9 | [acceptance §5.2](./acceptance.md#52-还缺什么) |
-| 读者检查 | 5 组 | [acceptance §5.4](./acceptance.md#54-读者检查5-组) |
-| 产物包 | 7 件 | [artifact-pack](../appendices/artifact-pack.md) |
+| 停线表 | 13 行 × 7 列 | [acceptance §5.1](05-acceptance.md#51-验收与-stop按机制选尺) |
+| 反模式 | 17 | [boundaries](04-boundaries.md) |
+| per-R「不能证明」 | 13 | [traceability §2](../05-appendices/02-traceability.md) |
+| 缺口 | 9 | [acceptance §5.2](05-acceptance.md#52-还缺什么) |
+| 读者检查 | 5 组 | [acceptance §5.4](05-acceptance.md#54-读者检查5-组) |
+| 产物包 | 7 件 | [artifact-pack](../05-appendices/04-artifact-pack.md) |
 
 ## 4. 高频数（只列口径，不重复解释）
 

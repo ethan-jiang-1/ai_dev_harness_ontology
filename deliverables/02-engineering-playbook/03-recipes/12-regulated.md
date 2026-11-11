@@ -7,7 +7,7 @@ basis: compilation 机制三（Grid 已移出；旧数字停用）
 
 # R12 · 受监管知识供给：证据 + solver + 人签核
 
-> **W-05**：原锚 Grid 已移出；R12 转 gap。机制保留，效应量按 [W-05](../sections/canonical.md#w-table) 重测。
+> **W-05**：原锚 Grid 已移出；R12 转 gap。机制保留，效应量按 [W-05](../02-sections/91-canonical.md#w-table) 重测。
 
 > 这不是「让模型更准」的 recipe，而是**受监管工作**的架构：答案必须引用证据，数字必须由成熟 solver 算，人做最终决策。三者写进架构，不写进 prompt。
 >
@@ -133,4 +133,4 @@ decision_point:
 
 **出处**：[Grid digest](../../../meta/audits/2026-11-11-source-purge.md#src-2611-03534) · [compilation 机制](../../../topics/03-knowledge/compilation/mechanism.md)
 
-> 回 [recipes 索引](./README.md) ｜ 回 [02 目录](../README.md)
+> 回 [recipes 索引](README.md) ｜ 回 [02 目录](../README.md)

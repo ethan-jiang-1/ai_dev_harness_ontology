@@ -22,7 +22,7 @@ parent: ../README.md
 | 知识条件 | 5 | K0–K4；01 主路径 K0–K2；**论文代号，非标准**；见 [K 页](92-k-ladder.md) |
 | 10 个活跃行的证据等级 | 已核 4 / 代码 4 / 模拟 1 / 设计 1 | 不含 4 个 withdrawn→gap 行 |
 | 跨派结论 basis | 20 | E-01–E-20；仓库共 27 条、9 条 withdrawn；01 主路径只引仍 admitted 的 E |
-| W 编号 | 7 行（W-07 不在本份用） | W-07（SFE-O）见 [02 canonical §1.1](../../02-engineering-playbook/sections/canonical.md#w-table) |
+| W 编号 | 7 行（W-07 不在本份用） | W-07（SFE-O）见 [02 canonical §1.1](../../02-engineering-playbook/02-sections/91-canonical.md#w-table) |
 | 反向条目 | 2 | [boundaries §4.3](04-boundaries.md#43-反向在已测条件下不要做)；另 3 条原锚撤回，列“待新源”不作 D |
 | 不能当前提 | 6 | [boundaries §4.2](04-boundaries.md#42-还不能当工作前提) |
 | 证据边界 | 5 | [boundaries §4.4](04-boundaries.md#44-证据边界) |
@@ -61,7 +61,7 @@ parent: ../README.md
 
 > **X7 的「object 0 泄漏」是验收值，不是 A/B 定档线。** 定档看 [map §2.1](02-map.md#21-判定口径)：边界能不能写成一条你能执行的验收。
 
-> `≥ +10pp` 与 `≥0.90` 是两种门：01 的 X1 用相对增益；02 的 R1 另有绝对门槛。**不要跨份混用**（见 [02 canonical §1](../../02-engineering-playbook/sections/canonical.md#1-三处已对账的口径)）。
+> `≥ +10pp` 与 `≥0.90` 是两种门：01 的 X1 用相对增益；02 的 R1 另有绝对门槛。**不要跨份混用**（见 [02 canonical §1](../../02-engineering-playbook/02-sections/91-canonical.md#1-三处已对账的口径)）。
 
 ## 3. 高频数（只列口径，不重复解释）
 

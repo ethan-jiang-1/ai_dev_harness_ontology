@@ -170,4 +170,4 @@ decision_point {decision_id, findings, citations, signer, timestamp}
 
 **出处**：[execution-forms](../../../topics/execution-forms.md) · 各 R 的 mechanism 页 · E-20
 
-> 回 [02 目录](../README.md) ｜ 回 [追溯](./traceability.md)
+> 回 [02 目录](../README.md) ｜ 回 [追溯](02-traceability.md)

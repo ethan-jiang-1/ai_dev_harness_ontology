@@ -10,7 +10,7 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-12, E-14, E-15, E-16, E-17, E-1
 
 > 03 的方法论主轴是 C-03：**用准确率/reward 量控制类机制，会得出错误结论。** 把它落成一张按位置分派的表。
 >
-> **这是设计（D），不是已验证的方法。** 上游在 [topics/06-measure/metrics/mechanism.md](../../../topics/06-measure/metrics/mechanism.md#按位置分派八行设计)；施工细节与 stop 线在 [02 §9](../../02-engineering-playbook/sections/acceptance.md#51-验收与-stop按机制选尺)。
+> **这是设计（D），不是已验证的方法。** 上游在 [topics/06-measure/metrics/mechanism.md](../../../topics/06-measure/metrics/mechanism.md#按位置分派八行设计)；施工细节与 stop 线在 [02 §9](../../02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺)。
 
 ## 1. 两本账
 
@@ -34,7 +34,7 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-12, E-14, E-15, E-16, E-17, E-1
 | read-path | 做错 | 泄漏率（subject/object）；误拦率 | 泄漏 vs 误拦 | 不过滤 | E-20 |
 | determinism | 没做 | 收敛/漂移；重复运行一致率 | 假收敛 vs 假漂移 | 同输入重复运行；无锚点 | 设计（无 E） |
 
-> 每行的过程指标、stop 线、成本口径在 [02 §9](../../02-engineering-playbook/sections/acceptance.md#51-验收与-stop按机制选尺) 与 [topics metrics](../../../topics/06-measure/metrics/mechanism.md#按位置分派八行设计)；本页不复制，避免两处漂移。
+> 每行的过程指标、stop 线、成本口径在 [02 §9](../../02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺) 与 [topics metrics](../../../topics/06-measure/metrics/mechanism.md#按位置分派八行设计)；本页不复制，避免两处漂移。
 
 ## 2.5 机制类型与尺子分派
 

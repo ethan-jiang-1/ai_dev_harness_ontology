@@ -92,5 +92,5 @@ POLAR 的两层：Layer A 静态动作本体（每个 mutating tool 的 T1–T5 
 
 - 机制：[action-gate/mechanism](../../../topics/01-constraint/action-gate/mechanism.md) · [reasoning-gate/mechanism](../../../topics/01-constraint/reasoning-gate/mechanism.md)
 - 判断：[01-constraint/README](../../../topics/01-constraint/README.md) · [conclusions](../../../topics/conclusions.md) E-04/E-13/E-15/E-16
-- 施工：[02 R6（recipes）](../../02-engineering-playbook/recipes/README.md) · [01 能力 6/11/12](../../01-capability-status/02-sections/02-map.md#22-一张表)
+- 施工：[02 R6（recipes）](../../02-engineering-playbook/03-recipes/README.md) · [01 能力 6/11/12](../../01-capability-status/02-sections/02-map.md#22-一张表)
 - 长版论证：[附录 §3.4.5](../appendix-constraint-spectrum.md#345-action动作前的闸)

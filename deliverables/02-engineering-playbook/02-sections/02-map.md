@@ -134,4 +134,4 @@ undetermined: R4 vs R12
 
 **一个反直觉的结论**：`engine` 内部至少四种语义（E-20）；「有引擎」不是强度刻度。选型时先问「机器到底做了什么」，再问「它能不能改变走向」。
 
-> 回 [02 目录](../README.md) ｜ 下一节 [approach](./approach.md)
+> 回 [02 目录](../README.md) ｜ 下一节 [approach](03-approach.md)

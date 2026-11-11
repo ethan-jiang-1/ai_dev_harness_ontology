@@ -31,4 +31,4 @@ parent: ../README.md
 16. **把 R12 的旧 benchmark 数字当部署。** Grid 移出（W-05）；R12 现为 gap。
 17. **把 blocked 当正确拒绝。** 被 block 可能是 review 失败/不可用；要同操作、不同权限成对测，并同时报合法放行。
 
-> 回到 [02 目录](../README.md) ｜ 下一节 [验收](./acceptance.md)。
+> 回到 [02 目录](../README.md) ｜ 下一节 [验收](05-acceptance.md)。

@@ -92,6 +92,6 @@ evidence: [E-20]
 
 - 机制：[commit-gate/mechanism](../../../topics/01-constraint/commit-gate/mechanism.md)
 - 判断：[01-constraint/README](../../../topics/01-constraint/README.md) · [conclusions](../../../topics/conclusions.md) E-20
-- 施工：[02 R9（recipes）](../../02-engineering-playbook/recipes/README.md) · [01 能力 13](../../01-capability-status/02-sections/02-map.md#22-一张表)
+- 施工：[02 R9（recipes）](../../02-engineering-playbook/03-recipes/README.md) · [01 能力 13](../../01-capability-status/02-sections/02-map.md#22-一张表)
 - 执行链：[execution-forms §执行链](../../../topics/execution-forms.md#执行链求值决策执行授权审计)
 - 长版论证：[附录 §3.4.6](../appendix-constraint-spectrum.md#346-commit落盘前的授权)

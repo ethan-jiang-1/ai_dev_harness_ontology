@@ -104,7 +104,7 @@ scope: deliverable-gap
 
 ### 6.1 M · 门槛表（Instrument）
 
-**是什么**：升级 [02 §5.1](../02-engineering-playbook/sections/acceptance.md#51-验收与-stop按机制选尺) 的 13 行停线，变成 13 行 × 7 列的仪器。
+**是什么**：升级 [02 §5.1](../02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺) 的 13 行停线，变成 13 行 × 7 列的仪器。
 
 **列**：机制 / 主指标 / 过程指标 / 反事实 / 停线 / **停线出处** / 量不出时怎么办。
 
@@ -201,9 +201,9 @@ scope: deliverable-gap
 
 | 步 | 做什么 | 落点 | 验收 |
 |---|---|---|---|
-| 1.1 | 13 行停线加 `出处` 列；逐行标 `E-xx` / `公式 §` / `工程建议` | [02 §5.1](../02-engineering-playbook/sections/acceptance.md#51-验收与-stop按机制选尺) | 13/13 有值；≥3 行标 gap |
+| 1.1 | 13 行停线加 `出处` 列；逐行标 `E-xx` / `公式 §` / `工程建议` | [02 §5.1](../02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺) | 13/13 有值；≥3 行标 gap |
 | 1.2 | 给每行补「样本量」与「量不出时怎么办」 | 同上；缺口链到 frontier | 每行有可执行的下一步 |
-| 1.3 | 01 §5.1 与 02 §5.3 的期待表对齐（同一机制同一停线，不许两套数） | [01 §5](../01-capability-status/02-sections/05-acceptance.md)、[02 §5.3](../02-engineering-playbook/sections/acceptance.md) | 抽 3 个机制对比，数字一致 |
+| 1.3 | 01 §5.1 与 02 §5.3 的期待表对齐（同一机制同一停线，不许两套数） | [01 §5](../01-capability-status/02-sections/05-acceptance.md)、[02 §5.3](../02-engineering-playbook/02-sections/05-acceptance.md) | 抽 3 个机制对比，数字一致 |
 
 **不要**：没有出处就编一个；把工程建议写成 E。
 
@@ -252,7 +252,7 @@ scope: deliverable-gap
 
 - 一页图：约束强度谱（原「待画」项）；数据来自 [coverage](../03-mechanism-reference/across-positions/coverage.md)，标 H/D 不标 E。
 - Deck：30 分钟工程版；只许用 M/R/X 三件的图与数。
-- 案例页：现有 [case](../02-engineering-playbook/appendices/case.md) 标 illustrative；补一条「真实已发生」的（来自 Web 卡，不升 E）。
+- 案例页：现有 [case](../02-engineering-playbook/05-appendices/03-case.md) 标 illustrative；补一条「真实已发生」的（来自 Web 卡，不升 E）。
 
 **不要**：在内容不硬时做 Deck；用幻灯片把「推测」讲成「已核」。
 

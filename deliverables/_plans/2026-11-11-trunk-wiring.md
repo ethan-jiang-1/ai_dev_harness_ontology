@@ -37,11 +37,11 @@ scope: 核心计划第 7 步（01→02→03→04 定义段接规范主干）
 | [01 K 页](../01-capability-status/02-sections/92-k-ladder.md) | K 的 `local` 判定改成标记形式；§2 表加「本表读法」 | K0–K4 `local`（论文条件，非术语） |
 | [01 decision-record](../01-capability-status/02-sections/09-decision-record.md) | 顶部加词源句 | 同 README；判定仍走证据 |
 | [02 README](../../deliverables/02-engineering-playbook/README.md) | 证据等级段后加词源 | 本体/TLO、SHACL、ODRL/XACML、ODCS 有 N；接缝/形态/动作闸/读路径/落盘/接地 `local` |
-| [02 术语 §0](../../deliverables/02-engineering-playbook/sections/glossary.md#term-sources) | 新增 14 行来源表 | 含 OMG Commons、ODCS、GB/T 两标 |
-| [02 R4/R5](../../deliverables/02-engineering-playbook/recipes/judgment.md) | 顶部加词源 | SHACL/SHACL-AF 有 N；接地、catch/FA `local` |
-| [02 R6/R8/R9](../../deliverables/02-engineering-playbook/recipes/constraint.md) | 顶部加词源 | ODRL/XACML 只到表达/架构；可逆性、动作闸、读路径、落盘 `local` |
-| [02 R10/R11](../../deliverables/02-engineering-playbook/recipes/offline-and-obda.md) | 顶部加词源 | SHACL/SHACL-AF、OWL 2 Profiles 有 N；效应回 E-20 |
-| [02 接口附录](../../deliverables/02-engineering-playbook/appendices/interfaces.md) | 加数据契约词源 | 数据契约 `N: ODCS v3.1.0`；字段名是 `local` 工程配方 |
+| [02 术语 §0](../02-engineering-playbook/02-sections/90-glossary.md#term-sources) | 新增 14 行来源表 | 含 OMG Commons、ODCS、GB/T 两标 |
+| [02 R4/R5](../02-engineering-playbook/03-recipes/04-judgment.md) | 顶部加词源 | SHACL/SHACL-AF 有 N；接地、catch/FA `local` |
+| [02 R6/R8/R9](../02-engineering-playbook/03-recipes/06-constraint.md) | 顶部加词源 | ODRL/XACML 只到表达/架构；可逆性、动作闸、读路径、落盘 `local` |
+| [02 R10/R11](../02-engineering-playbook/03-recipes/10-offline-and-obda.md) | 顶部加词源 | SHACL/SHACL-AF、OWL 2 Profiles 有 N；效应回 E-20 |
+| [02 接口附录](../02-engineering-playbook/05-appendices/01-interfaces.md) | 加数据契约词源 | 数据契约 `N: ODCS v3.1.0`；字段名是 `local` 工程配方 |
 | [03 README](../../deliverables/03-mechanism-reference/README.md) | 顶部加词源 | 六位置/接缝/强度/覆盖率/形态 `local` |
 | [03 术语 §0](../../deliverables/03-mechanism-reference/sections/glossary.md#term-sources) | 新增 13 行来源表 | 含 OMG Commons、XACML、SHACL-AF |
 | [03 checker](../../deliverables/03-mechanism-reference/positions/checker.md) | 顶部加词源 | SHACL/SHACL-AF 有 N；checker/catch/FA/接地 `local`；E-02 仍 withdrawn |

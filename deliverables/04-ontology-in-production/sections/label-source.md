@@ -74,7 +74,7 @@ parent: ../README.md
 5. **1 周 shadow**：标签源 vs 人工抽检，记 coverage/agreement/耗时；不接 policy。
 6. **版本/owner**：taxonomy version、`as_of`、谁回写；写进 label contract。
 
-> 这套是工程方法（`推测`），不是测量标准；50 列/1 周是最小起点，不是统计保证。样本设计见 [02 evaluation](../../02-engineering-playbook/operations/evaluation.md)。
+> 这套是工程方法（`推测`），不是测量标准；50 列/1 周是最小起点，不是统计保证。样本设计见 [02 evaluation](../../02-engineering-playbook/04-operations/02-evaluation.md)。
 
 ## 5. 停
 

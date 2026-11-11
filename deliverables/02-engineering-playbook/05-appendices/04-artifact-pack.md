@@ -9,11 +9,11 @@ note: filled sample for reading, not a run record
 
 > **2026-11-11 证据重置**：R4 的原锚 E-03 已撤回；本包只作“字段怎么填”的历史模板，不再表示 R4 可执行/可验收。表中 `已核` 只表示该值在旧 R4 示例里出现过，**不是当前 admitted 证据**。
 >
-> **这是什么**：把 [R4](../recipes/judgment.md#r4--输出证据契约让答案带依据和接地等级) 的十个字段，用 [case](./case.md) 的冷却水场景填一遍，让你看到「字段长什么样」。
+> **这是什么**：把 [R4](../03-recipes/04-judgment.md#r4--输出证据契约让答案带依据和接地等级) 的十个字段，用 [case](03-case.md) 的冷却水场景填一遍，让你看到「字段长什么样」。
 >
 > **不是什么**：不是运行记录，不是客户案例，不是效果证明。每个值都标了 `已核` / `推测` / `untested`；标 `untested` 的格子就是你要在自己的域里补的。
 >
-> **怎么用**：先读 §0 的交接表，再照 §2–§7 填你自己的一行；填不出的格，写「不知道」并链到 [acceptance §5.2](../sections/acceptance.md#53-期待与数据需求验收规格)。
+> **怎么用**：先读 §0 的交接表，再照 §2–§7 填你自己的一行；填不出的格，写「不知道」并链到 [acceptance §5.2](../02-sections/05-acceptance.md#53-期待与数据需求验收规格)。
 
 ## 0. 一页交接
 
@@ -124,7 +124,7 @@ snapshot=2026-11-11, notes="R4 样例；latency 未测"
 | grounding 校准 | 未做 | 未校准 → 不自动路由 | R4 校准协议 | 只做排序/人工分流 |
 | 预算 | 旧调用/token 数（**历史**，E-03 撤回） | >5,000 **generated** tokens / >10 actions | R4 历史 | 口径不同；新源前不设门槛 |
 
-**结论**：本场景的 R4 只能到 `shadow + 人工分流`；`citation correctness` 没有 recipe，见 [R5 的 judge 分支](../recipes/judgment.md#r5--输出后-checker先超过空结果重试)（旧观察提示净修复可能为负；按 W-01 重测）。
+**结论**：本场景的 R4 只能到 `shadow + 人工分流`；`citation correctness` 没有 recipe，见 [R5 的 judge 分支](../03-recipes/04-judgment.md#r5--输出后-checker先超过空结果重试)（旧观察提示净修复可能为负；按 W-01 重测）。
 
 ## 7. 未测清单（交稿必填）
 
@@ -194,7 +194,7 @@ delta=+?pp, tokens=?, gate=untested, notes="fixture 3 行；未跑"
 
 | 指标 | 本场景 | 停线 | 出处 |
 |---|---|---|---|
-| K1−K0 primary-trap avoidance | 未测 | ≥+10pp（或绝对 ≥0.90）→ 过；<+5pp → 停；5–10pp 灰区，预注册时定 | [canonical §2](../sections/canonical.md) |
+| K1−K0 primary-trap avoidance | 未测 | ≥+10pp（或绝对 ≥0.90）→ 过；<+5pp → 停；5–10pp 灰区，预注册时定 | [canonical §2](../02-sections/91-canonical.md) |
 | 别名覆盖率 | 未测 | < 80% → 先补别名 | 工程建议 |
 | 单位冲突 | 0（fixture） | > 0 → 先修数据 | 工程建议 |
 

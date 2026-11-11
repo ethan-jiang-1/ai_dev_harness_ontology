@@ -157,10 +157,10 @@ basis: 工程建议（推测）；E-12/E-20 仍 admitted；E-02/E-03/SFE-O 已�
 
 ## 9. 交接
 
-- 名字/单位问题 → [R1](knowledge.md#r1--点位语义先把-tag-名和单位对齐)
-- 声明/覆盖问题 → [R5](judgment.md#r5--输出后-checker先超过空结果重试) 或 [R10 ](offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态)
-- 查询/映射问题 → [R11 ](offline-and-obda.md#r11--obda-查询重写本体在查询编译时被执行)
-- 消费者是投影 → [R2](knowledge.md#r2--知识投影文本把领域知识写成文本固定分节是工程建议)
-- 消费者是动作闸 → [R6](constraint.md#r6--动作前可逆性闸只在不可逆高代价弱模型时试)
+- 名字/单位问题 → [R1](01-knowledge.md#r1--点位语义先把-tag-名和单位对齐)
+- 声明/覆盖问题 → [R5](04-judgment.md#r5--输出后-checker先超过空结果重试) 或 [R10 ](10-offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态)
+- 查询/映射问题 → [R11 ](10-offline-and-obda.md#r11--obda-查询重写本体在查询编译时被执行)
+- 消费者是投影 → [R2](01-knowledge.md#r2--知识投影文本把领域知识写成文本固定分节是工程建议)
+- 消费者是动作闸 → [R6](06-constraint.md#r6--动作前可逆性闸只在不可逆高代价弱模型时试)
 
 **出处**：SFE-O/E-02/E-03 已移出；本页只保留工程建议（`推测`）。E-12/E-20 仍 admitted；撤回清单见 [审计](../../../meta/audits/2026-11-11-source-purge.md)。

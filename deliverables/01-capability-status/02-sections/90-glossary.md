@@ -97,7 +97,7 @@ parent: ../README.md
 | **label** | 给数据打标，不直接执行 |
 | **none** | 没有落在机器执行上 |
 
-> 定义与五种形态的选法见 [02 §2.4](../../02-engineering-playbook/sections/map.md#24-选形态五种别把-context-当低配-engine)。**不要把 `context` 当 `engine` 的低配。**
+> 定义与五种形态的选法见 [02 §2.4](../../02-engineering-playbook/02-sections/02-map.md#24-选形态五种别把-context-当低配-engine)。**不要把 `context` 当 `engine` 的低配。**
 
 ## 6. 其他内码
 

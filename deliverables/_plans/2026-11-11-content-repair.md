@@ -28,7 +28,7 @@ scope: 01–04 撤回后的内容补偿（P0–P2）
 | 份 | 位置 | 行数 |
 |---|---|---|
 | 01 | [canonical §5](../01-capability-status/02-sections/91-canonical.md#5-撤回与历史w-表) | W-01…W-07 |
-| 02 | [canonical §1.1](../02-engineering-playbook/sections/canonical.md#w-table) | W-01…W-07 |
+| 02 | [canonical §1.1](../02-engineering-playbook/02-sections/91-canonical.md#w-table) | W-01…W-07 |
 | 03 | [evidence/ledger §2.5](../03-mechanism-reference/evidence/ledger.md#w-table) | W-01…W-05 |
 | 04 | [evidence/ledger §3.5](../04-ontology-in-production/evidence/ledger.md#w-table) | W-01/W-05/W-07（本地表，指向 02 完整版） |
 

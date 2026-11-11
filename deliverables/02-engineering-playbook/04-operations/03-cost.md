@@ -7,7 +7,7 @@ basis: 06/feasibility；E-08/E-12/E-14/E-15（E-04/E-13 已撤回）
 
 # 成本与立项：先算分母，再谈收益
 
-> **证据重置**：E-03/E-04/E-13 等来源已撤回/移出（W 表见 [canonical §1.1](../sections/canonical.md#w-table)）；这些机制的**成本项仍可算**（人日/调用/审批分钟），只是效应量不再引用。
+> **证据重置**：E-03/E-04/E-13 等来源已撤回/移出（W 表见 [canonical §1.1](../02-sections/91-canonical.md#w-table)）；这些机制的**成本项仍可算**（人日/调用/审批分钟），只是效应量不再引用。
 
 
 > 本页不给单价。单价是业务输入，不是研究结论；填不出来时只给公式与敏感性，不给 build/buy 结论。
@@ -80,7 +80,7 @@ TCO_12m =
 NPV_build = Σ(收益 − 成本)/(1+r)^t − TCO
 NPV_buy   = 同口径（RFQ + 集成 + 迁移/退出）
 NPV_do_nothing = 0
-取 argmax；硬约束：task success 下降 ≤2pp；false-veto 报前沿，不设单点（见 [canonical](../sections/canonical.md)）
+取 argmax；硬约束：task success 下降 ≤2pp；false-veto 报前沿，不设单点（见 [canonical](../02-sections/91-canonical.md)）
 ```
 
 ## 4. 单价表（当前全空）

@@ -6,7 +6,7 @@ parent: ../README.md
 
 # 5. 验收与缺口
 
-> **证据重置**：R4/R5/R6/R12 的原锚已撤回/移出（W 表见 [canonical §1.1](./canonical.md#w-table)）；这 4 行改按 W 协议重测，不再设旧门槛。当前可验收的是 R1/R2/R3/R7/R8/R10/R11；R9 只有设计。
+> **证据重置**：R4/R5/R6/R12 的原锚已撤回/移出（W 表见 [canonical §1.1](91-canonical.md#w-table)）；这 4 行改按 W 协议重测，不再设旧门槛。当前可验收的是 R1/R2/R3/R7/R8/R10/R11；R9 只有设计。
 
 
 > 本章回答：怎么验收、什么时候停、还缺什么。 ｜ 读完你应该能：写出一页 go/no-go memo。
@@ -79,12 +79,12 @@ parent: ../README.md
 
 | # | 检查 | 怎么查 | 通过 | 未通过 |
 |---|---|---|---|---|
-| 1 | R0 四项有结论 | 填 [artifact-pack §1](../appendices/artifact-pack.md) | 四项都有 pass/flag/unknown；unknown 没被当 pass | 回 R0；不要选 recipe |
-| 2 | 只选了一条 recipe | 用 [map §2](./map.md) 的分诊表 | 一个错误只落一个「先看」；落了两个就写下优先级 | 回 §2；不要并行 |
+| 1 | R0 四项有结论 | 填 [artifact-pack §1](../05-appendices/04-artifact-pack.md) | 四项都有 pass/flag/unknown；unknown 没被当 pass | 回 R0；不要选 recipe |
+| 2 | 只选了一条 recipe | 用 [map §2](02-map.md) 的分诊表 | 一个错误只落一个「先看」；落了两个就写下优先级 | 回 §2；不要并行 |
 | 3 | 接口/数据契约填得出 | 目标 recipe 的「最小数据契约」 | 字段齐；填不出的格标 `untested` 并写上游任务 | 不要写「行业通常」 |
-| 4 | 停线与出处对得上 | [canonical §2](./canonical.md) | 主指标/停线/出处/量不出时四列都有值 | 回 canonical；不要自造阈值 |
-| 5 | 能说出不能证明什么 | [boundaries](./boundaries.md) + 目标 recipe §「不能证明」 | 至少 3 条「不能证明」+ 1 条反模式 | 回 boundaries；不要承诺效果 |
+| 4 | 停线与出处对得上 | [canonical §2](91-canonical.md) | 主指标/停线/出处/量不出时四列都有值 | 回 canonical；不要自造阈值 |
+| 5 | 能说出不能证明什么 | [boundaries](04-boundaries.md) + 目标 recipe §「不能证明」 | 至少 3 条「不能证明」+ 1 条反模式 | 回 boundaries；不要承诺效果 |
 
-**五组全过 = 可以交一份 shadow 方案；不等于可以上线。** 上线还要过 [operations/rollout](../operations/rollout.md) 与真实数据。
+**五组全过 = 可以交一份 shadow 方案；不等于可以上线。** 上线还要过 [operations/rollout](../04-operations/04-rollout.md) 与真实数据。
 
 <a id="12-与另外两份交付物的关系"></a>

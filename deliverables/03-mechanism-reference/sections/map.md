@@ -71,7 +71,7 @@ parent: ../README.md
 | action | 动作能不能做 | 可逆性/条件 | 是 | E-04/E-13/E-16 撤回；E-15 参照 | 审批/误拦 | 结构有效/安全 | [→](../positions/action.md) |
 | commit | 证据够不够授权 | 授权判据 | 是（设计） | E-20 + gap | 无实现 | 已落地 | [→](../positions/commit.md) |
 
-> 这不是「六个都该做」；是「六个位置问的问题不同」。选择规则见 [02 §2](../../02-engineering-playbook/sections/map.md#23-选位置六个时刻--四个轴外位置)。
+> 这不是「六个都该做」；是「六个位置问的问题不同」。选择规则见 [02 §2](../../02-engineering-playbook/02-sections/02-map.md#23-选位置六个时刻--四个轴外位置)。
 
 
 <a id="4-强度覆盖率直线是摘要矩阵是操作定义"></a>

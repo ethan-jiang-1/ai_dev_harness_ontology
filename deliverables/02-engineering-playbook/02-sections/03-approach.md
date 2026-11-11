@@ -14,25 +14,25 @@ parent: ../README.md
 <a id="4-十二条工程做法r0r12"></a>
 ### 3.1 十二条工程做法（R0–R12）
 
-> 本节只做索引；完整配方（十字段：目标与适用 / 前提 / 接缝与形态 / 数据契约 / 步骤 / 证据 / 成本 / 验收与 stop / 失效模式 / 可抄锚点）在 [`recipes/`](../recipes/README.md)。每条 recipe 都与 E-xx 和 mechanism.md 对齐；见 [appendices/traceability](../appendices/traceability.md)。
+> 本节只做索引；完整配方（十字段：目标与适用 / 前提 / 接缝与形态 / 数据契约 / 步骤 / 证据 / 成本 / 验收与 stop / 失效模式 / 可抄锚点）在 [`recipes/`](../03-recipes/README.md)。每条 recipe 都与 E-xx 和 mechanism.md 对齐；见 [appendices/traceability](../05-appendices/02-traceability.md)。
 >
 > **2026-11-11 证据重置**：R4/R5/R6/R12 转 gap；当前 A=3 / B=4 / C=1 / gap=4（不含 R0 配方）。
 
 | R | 一句话 | 接缝/形态 | 主证据 | 成熟度 | 完整配方 |
 |---|---|---|---|---|---|
-| **R0** | 先证明本体能被执行（名字/单位、声明、覆盖、落点） | 准入 | E-12/E-20；E-02/E-03 已撤回 | 配方 | [readiness](../recipes/readiness.md) |
-| **R1** | 先把 tag 名/单位/质量码对齐（可加别名/槽位）；点位语义够就停 | 供给 / context | E-12 | A | [knowledge](../recipes/knowledge.md#r1--点位语义先把-tag-名和单位对齐) |
-| **R2** | 知识投影文本（固定分节是工程建议）；先 K1 再投影 | 供给 / context | E-12 | B | [knowledge](../recipes/knowledge.md#r2--知识投影文本把领域知识写成文本固定分节是工程建议) |
-| **R3** | 只买 claim+span；先算 `p_min` | 供给 / compiled | E-08/E-14 | B | [knowledge](../recipes/knowledge.md#r3--证据编译只买-claim--逐字-span) |
-| **R4** | 输出带观察与 grounding；等级要校准 | 输出时 / compiled | E-03 withdrawn | **gap** | [judgment](../recipes/judgment.md#r4--输出证据契约让答案带依据和接地等级) |
-| **R5** | 先超过空结果重试；catch/FA 分开 | 输出后 / compiled | E-02 withdrawn | **gap** | [judgment](../recipes/judgment.md#r5--输出后-checker先超过空结果重试) |
-| **R6** | 只在不可逆/高代价/弱模型时试；先 shadow | 动作前 / compiled | E-04/E-13 withdrawn；E-15 参照 | **gap** | [constraint](../recipes/constraint.md#r6--动作前可逆性闸只在不可逆高代价弱模型时试) |
-| **R7** | 先 registry，再状态；CMR 与 precision 同看 | 跨轮 / compiled | E-05/E-17 | B | [state](../recipes/state.md) |
-| **R8** | 只做可见性，不当授权；已入库单实现/ fail-open 未修 | read-path / engine | E-20 | B（条件性） | [constraint](../recipes/constraint.md#r8--读路径过滤只做可见性不要当授权) |
-| **R9** | 只能设计，不能声称落地 | 落盘前 / 无实现 | E-20 | C | [constraint](../recipes/constraint.md#r9--落盘前授权现在只能设计不要声称已落地) |
-| **R10** | 离线/CI SHACL；三态不可折叠 | 离线/CI / compiled | E-20 | A | [offline-and-obda](../recipes/offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态) |
-| **R11** | 查询时编译；不是闸/判定器 | supply / engine | E-20 | A | [offline-and-obda](../recipes/offline-and-obda.md#r11--obda-查询重写本体在查询编译时被执行) |
-| **R12** | 证据 + solver + 人签核；不是准确率项目 | 供给+输出+人 | Grid 已移出 | **gap** | [regulated](../recipes/regulated.md) |
+| **R0** | 先证明本体能被执行（名字/单位、声明、覆盖、落点） | 准入 | E-12/E-20；E-02/E-03 已撤回 | 配方 | [readiness](../03-recipes/00-readiness.md) |
+| **R1** | 先把 tag 名/单位/质量码对齐（可加别名/槽位）；点位语义够就停 | 供给 / context | E-12 | A | [knowledge](../03-recipes/01-knowledge.md#r1--点位语义先把-tag-名和单位对齐) |
+| **R2** | 知识投影文本（固定分节是工程建议）；先 K1 再投影 | 供给 / context | E-12 | B | [knowledge](../03-recipes/01-knowledge.md#r2--知识投影文本把领域知识写成文本固定分节是工程建议) |
+| **R3** | 只买 claim+span；先算 `p_min` | 供给 / compiled | E-08/E-14 | B | [knowledge](../03-recipes/01-knowledge.md#r3--证据编译只买-claim--逐字-span) |
+| **R4** | 输出带观察与 grounding；等级要校准 | 输出时 / compiled | E-03 withdrawn | **gap** | [judgment](../03-recipes/04-judgment.md#r4--输出证据契约让答案带依据和接地等级) |
+| **R5** | 先超过空结果重试；catch/FA 分开 | 输出后 / compiled | E-02 withdrawn | **gap** | [judgment](../03-recipes/04-judgment.md#r5--输出后-checker先超过空结果重试) |
+| **R6** | 只在不可逆/高代价/弱模型时试；先 shadow | 动作前 / compiled | E-04/E-13 withdrawn；E-15 参照 | **gap** | [constraint](../03-recipes/06-constraint.md#r6--动作前可逆性闸只在不可逆高代价弱模型时试) |
+| **R7** | 先 registry，再状态；CMR 与 precision 同看 | 跨轮 / compiled | E-05/E-17 | B | [state](../03-recipes/07-state.md) |
+| **R8** | 只做可见性，不当授权；已入库单实现/ fail-open 未修 | read-path / engine | E-20 | B（条件性） | [constraint](../03-recipes/06-constraint.md#r8--读路径过滤只做可见性不要当授权) |
+| **R9** | 只能设计，不能声称落地 | 落盘前 / 无实现 | E-20 | C | [constraint](../03-recipes/06-constraint.md#r9--落盘前授权现在只能设计不要声称已落地) |
+| **R10** | 离线/CI SHACL；三态不可折叠 | 离线/CI / compiled | E-20 | A | [offline-and-obda](../03-recipes/10-offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态) |
+| **R11** | 查询时编译；不是闸/判定器 | supply / engine | E-20 | A | [offline-and-obda](../03-recipes/10-offline-and-obda.md#r11--obda-查询重写本体在查询编译时被执行) |
+| **R12** | 证据 + solver + 人签核；不是准确率项目 | 供给+输出+人 | Grid 已移出 | **gap** | [regulated](../03-recipes/12-regulated.md) |
 
 #### 3.1.1 为什么 R0 在 R1 前
 
@@ -111,7 +111,7 @@ output
 **读法**：
 
 - 不是每个位置都要上；按 §1 的错误性质选 1–2 个。
-- 每个箭头都要有数据契约；没有契约的「接缝」只是概念。逐箭头字段见 [appendices/interfaces](../appendices/interfaces.md)。
+- 每个箭头都要有数据契约；没有契约的「接缝」只是概念。逐箭头字段见 [appendices/interfaces](../05-appendices/01-interfaces.md)。
 - `commit gate` 标注为「设计、无实现」：它没有实现（E-20）。
 - 离线/CI（R10）与 OBDA（R11）不在主回路；不要画进「实时链路」。
 
@@ -128,8 +128,8 @@ output
 
 **配套**：
 
-- 账本字段 → [operations/ledger](../operations/ledger.md)
-- 噪声/样本/预注册 → [operations/evaluation](../operations/evaluation.md)
-- 成本/TCO → [operations/cost](../operations/cost.md)
-- 上线/回滚/审批 → [operations/rollout](../operations/rollout.md)
-- 域约束 → [operations/domains](../operations/domains.md)
+- 账本字段 → [operations/ledger](../04-operations/01-ledger.md)
+- 噪声/样本/预注册 → [operations/evaluation](../04-operations/02-evaluation.md)
+- 成本/TCO → [operations/cost](../04-operations/03-cost.md)
+- 上线/回滚/审批 → [operations/rollout](../04-operations/04-rollout.md)
+- 域约束 → [operations/domains](../04-operations/05-domains.md)

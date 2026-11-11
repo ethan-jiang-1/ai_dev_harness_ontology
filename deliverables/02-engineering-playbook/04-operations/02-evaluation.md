@@ -7,7 +7,7 @@ basis: E-08/E-14/E-18；06/metrics；06/trace（E-02/E-04 已撤回）
 
 # 评测设计：先量噪声，再量效应
 
-> **证据重置**：E-02/E-03/E-04/E-13 撤回（W 表见 [canonical §1.1](../sections/canonical.md#w-table)）；本页方法不变，旧数值不再引用。
+> **证据重置**：E-02/E-03/E-04/E-13 撤回（W 表见 [canonical §1.1](../02-sections/91-canonical.md#w-table)）；本页方法不变，旧数值不再引用。
 
 
 > 大多数「机制有效/无效」的争论，不是效应不存在，而是**没有先量噪声、没有预注册、没有分母**。E-18：54% 的 score variance 来自同一配置的重复运行（真实尝试、过 hurdle；排除 hurdle 后 46.1%）。
@@ -121,4 +121,4 @@ decision: go|no-go|not enough data
 
 **出处**：[06/metrics](../../../topics/06-measure/metrics/mechanism.md) · [06/feasibility](../../../topics/06-measure/feasibility/mechanism.md) · [E-18](../../../topics/conclusions.md)
 
-> 回 [02 目录](../README.md) ｜ 回 [账本](./ledger.md)
+> 回 [02 目录](../README.md) ｜ 回 [账本](01-ledger.md)

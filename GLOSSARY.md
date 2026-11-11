@@ -185,17 +185,17 @@ _origin_: `local`｜ _anchor_: —｜ _scope_: 不是 E、不是最佳实践。
 _Avoid_: 结论、最佳实践
 
 **Primary-trap avoidance**:
-在预先标出的「最常掉进去的坑」上不犯错的 trial 比例；与 element score 分开报，避免总分掩盖 trap 没动。见 [R1/R2](./deliverables/02-engineering-playbook/recipes/knowledge.md)。
+在预先标出的「最常掉进去的坑」上不犯错的 trial 比例；与 element score 分开报，避免总分掩盖 trap 没动。见 [R1/R2](deliverables/02-engineering-playbook/03-recipes/01-knowledge.md)。
 _origin_: `academic`（N&D 论文）｜ _anchor_: arXiv:2610.11768 Table 1/§2.8｜ _scope_: 单工厂 9 任务；中文写「避坑率」；与 element score 分开。
 _Avoid_: 准确率、总分
 
 **False veto / false denial**:
-被 gate 拦下、但本可合法执行且低 harm 的动作比例；没有授权/伤害标签就不能算。与 retention、block count 区分。见 [R6](./deliverables/02-engineering-playbook/recipes/constraint.md)。
+被 gate 拦下、但本可合法执行且低 harm 的动作比例；没有授权/伤害标签就不能算。与 retention、block count 区分。见 [R6](deliverables/02-engineering-playbook/03-recipes/06-constraint.md)。
 _origin_: `academic`（原 POLAR，源已撤回）｜ _anchor_: —（E-04 withdrawn）｜ _scope_: 无 harm/授权标签写 `unknown`，不算比例。
 _Avoid_: 误报率（那是 checker 口径）、拦截率
 
 **`p_h` / `p_min`**:
-`p_h` 是证据充分、可替换的查询比例；`p_min = 2% + c/(0.929Q)` 是编译的盈亏平衡。`p_h` 不是答对率（φ 另算）。见 [R3](./deliverables/02-engineering-playbook/recipes/knowledge.md)。
+`p_h` 是证据充分、可替换的查询比例；`p_min = 2% + c/(0.929Q)` 是编译的盈亏平衡。`p_h` 不是答对率（φ 另算）。见 [R3](deliverables/02-engineering-playbook/03-recipes/01-knowledge.md)。
 _origin_: `local`（本仓库公式，E-08/E-14）｜ _anchor_: —｜ _scope_: 自己的 `c/Q` 没量不能套；不是答对率。
 _Avoid_: 命中率、准确率
 

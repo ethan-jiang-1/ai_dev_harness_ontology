@@ -219,7 +219,7 @@ status: active
 | 对象 | 落点 | 怎么用 |
 |---|---|---|
 | C（代码锚） | [03 execution-forms](../03-mechanism-reference/across-positions/execution-forms.md)、[03 commit 卡](../03-mechanism-reference/positions/commit.md) | 每个「不保证什么」直接引 `O-xx` |
-| F（公式） | [02 §5.1](../02-engineering-playbook/sections/acceptance.md#51-验收与-stop按机制选尺)、[feasibility F2/F5](../../topics/06-measure/feasibility/findings.md) | 停线的 `出处` 列填 `O-xx`（公式） |
+| F（公式） | [02 §5.1](../02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺)、[feasibility F2/F5](../../topics/06-measure/feasibility/findings.md) | 停线的 `出处` 列填 `O-xx`（公式） |
 | N（数值） | 01 `data/`、02 recipes、03 positions | 正文数字后加 `（O-xx）` |
 | T（停线） | 02 §5.1、01 §5.1、02 §5.3 | 三处同一机制必须同号同数 |
 | M（矩阵） | coverage / execution-forms / seams | 行级引用 `M-01#row-07` |

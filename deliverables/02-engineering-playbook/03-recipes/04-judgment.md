@@ -25,7 +25,7 @@ basis: E-20；evidence & checker mechanism（E-02/E-03 已撤回）
 
 ## R4 · 输出证据契约：让答案带依据和接地等级
 
-> **W-02**：原锚 E-03 撤回；R4 转 gap。机制保留，效应量按 [W-02](../sections/canonical.md#w-table) 重测；不再逐句解释撤回。
+> **W-02**：原锚 E-03 撤回；R4 转 gap。机制保留，效应量按 [W-02](../02-sections/91-canonical.md#w-table) 重测；不再逐句解释撤回。
 
 ### 目标
 
@@ -147,7 +147,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 ## R5 · 输出后 checker：先超过空结果重试
 
-> **W-01**：原锚 E-02 撤回；R5 转 gap。机制保留，catch/FA 按 [W-01](../sections/canonical.md#w-table) 重测。
+> **W-01**：原锚 E-02 撤回；R5 转 gap。机制保留，catch/FA 按 [W-01](../02-sections/91-canonical.md#w-table) 重测。
 
 ### 目标
 
@@ -241,6 +241,6 @@ per-1k cost = flag_rate × per-flagged cost × 1000
 
 - [checker 机制](../../../topics/02-judgment/checker/mechanism.md) 的「三种来源」「判定回路」「成本」「stop」。
 - Ontology Catch 已移出：口径可读，数值按 W-01 重测；不要抄「curated 权威」。
-- [open-ontologies 的三态 ](offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态)；第三态是接口设计，不是效果证据。
+- [open-ontologies 的三态 ](10-offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态)；第三态是接口设计，不是效果证据。
 
 **出处**：[evidence 机制](../../../topics/02-judgment/evidence/mechanism.md) · [checker 机制](../../../topics/02-judgment/checker/mechanism.md) · [E-02/E-03](../../../topics/conclusions.md)

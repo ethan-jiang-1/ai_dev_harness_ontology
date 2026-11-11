@@ -57,7 +57,7 @@ updated: 2026-11-11
 ## 2026-11-11 01/02/03 整改（02→01→03）
 
 - **依据**：[差距评估报告](../deliverables/_plans/2026-11-10-gap-assessment-report.md)（27 格：1 L2 / 2 L1+ / 0 fixture）+ [整改计划](../deliverables/_plans/2026-11-11-remediation-plan.md)。
-- **02**：新增 [artifact-pack](../deliverables/02-engineering-playbook/appendices/artifact-pack.md)、[glossary](../deliverables/02-engineering-playbook/sections/glossary.md)、[canonical](../deliverables/02-engineering-playbook/sections/canonical.md)、5 组读者检查；对账 false-veto / R1 / 162（补 13 plant elements）。冷读 partial：卡点是 citation 正确性等真 gap；顺手修了 9.7k total vs 5,000 generated 的口径。
+- **02**：新增 [artifact-pack](../deliverables/02-engineering-playbook/05-appendices/04-artifact-pack.md)、[glossary](../deliverables/02-engineering-playbook/02-sections/90-glossary.md)、[canonical](../deliverables/02-engineering-playbook/02-sections/91-canonical.md)、5 组读者检查；对账 false-veto / R1 / 162（补 13 plant elements）。冷读 partial：卡点是 citation 正确性等真 gap；顺手修了 9.7k total vs 5,000 generated 的口径。
 - **01**：A/B/C/D 改为有序规则（含 undetermined）；新增 [decision-record](../deliverables/01-capability-status/02-sections/09-decision-record.md)（K1→A、读路径→B、离线 SHACL→A）、[glossary](../deliverables/01-capability-status/02-sections/90-glossary.md)、[canonical](../deliverables/01-capability-status/02-sections/91-canonical.md)；9 条期待补「没过怎么办」；C 桶统一 3；#12 标非本体。冷读第二轮 `yes`。
 - **03**：新增 [claim-walkthrough](../deliverables/03-mechanism-reference/sections/claim-walkthrough.md)、[reader-checks](../deliverables/03-mechanism-reference/sections/reader-checks.md)、[glossary](../deliverables/03-mechanism-reference/sections/glossary.md)；修 coverage「只有 G 没有 ●」→ C/E/F/G、覆盖率定义、E-22 台账、30%→31%、M1–M5 去重。冷读 partial：强读法需实测，属真 gap。
 - **第二轮收口（2026-11-11）**：01 模板 + 第四记录（落盘→C）+ 逐数等级；02 分诊优先级 + 第二个 worked example（R1）+ citation 协议；03 placement + claim 模板 + D2 清理 + alias 规范；EXP-003 alias 前置。外部来源：新增 [ALCE](audits/2026-11-11-source-purge.md#src-web-alce)、[OWL 2 Profiles](../src/web/w3c-owl2-profiles/w3c-owl2-profiles.card.md)、[SHACL-AF](../src/web/w3c-shacl-af/w3c-shacl-af.card.md) 三张卡（摘要级/待核，不升 E）。复评见 [gap report §10.7](../deliverables/_plans/2026-11-10-gap-assessment-report.md#107-第二轮收口2026-11-11外部来源--文档层)。
@@ -123,7 +123,7 @@ updated: 2026-11-11
 ## 2026-11-10 交付物接线（M/R/X）
 
 - **ADR**：[0009](../adr/0009-object-layer.md) 状态改为**接受（方案 A）**；[checklist](./checklist.md) §3、[loading](./loading.md) 规则 1、[objects](../topics/objects.md) 头部三处同步：O 可作地址，主句仍落 E。
-- **M**：[02 §5.1](../deliverables/02-engineering-playbook/sections/acceptance.md#51-验收与-stop按机制选尺) 13 行 × 7 列；13/13 有出处，11 行挂 E/公式，2 行 `工程建议/gap`（R0、commit）。
+- **M**：[02 §5.1](../deliverables/02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺) 13 行 × 7 列；13/13 有出处，11 行挂 E/公式，2 行 `工程建议/gap`（R0、commit）。
 - **R**：[03 boundaries §0](../deliverables/03-mechanism-reference/evidence/boundaries.md#0-反例集r-table) 12 条反例，带数/条件/`O-Rxx`；B1–B15 原表保留。
 - **X**：[03 execution-forms §3](../deliverables/03-mechanism-reference/across-positions/execution-forms.md) 5 行加 `O` 列，补 OPA；Qlever 标「无代码锚」。
 - **冷读**：3 条路径（编译/checker/read-path）均 2–3 跳到 digest 锚；0 断链，0 交付物 L 引用；1 个误读风险（O 是地址不是结论）已在 M-table 脚注写明。

@@ -17,7 +17,7 @@ parent: ../README.md
 <a id="term-sources"></a>
 ## 0. 名词从哪来（N / local）
 
-> `N:` = 规范性锚，只定词与合格性、**不撑效果**；`local` = 本仓库工作词，首现解释。完整清单见 [规范主干](../../../topics/trunk.md)，逐词判定见 [术语基线](../../../meta/term-baseline.md)；撤回依据与重测协议见 [canonical §1.1](./canonical.md#w-table)。
+> `N:` = 规范性锚，只定词与合格性、**不撑效果**；`local` = 本仓库工作词，首现解释。完整清单见 [规范主干](../../../topics/trunk.md)，逐词判定见 [术语基线](../../../meta/term-baseline.md)；撤回依据与重测协议见 [canonical §1.1](91-canonical.md#w-table)。
 
 | 词 | 来源 | 一句话 |
 |---|---|---|
@@ -35,7 +35,7 @@ parent: ../README.md
 | 词 | 一句话 | 在哪 |
 |---|---|---|
 | **接缝（seam）** | 本体在回路的哪个时刻介入：供给 / 输出时 / 输出后 / 动作前 / 跨轮 / 落盘前 / 检索返回前 | [03 §2.2.1](../../03-mechanism-reference/sections/map.md#221-位置--时刻--派--部件--形态) |
-| **形态（execution form）** | 机器拿本体做了什么：`context`（进上下文）/ `compiled`（编译成约束/查询）/ `engine`（引擎执行）/ `label`（打标）/ `none`（不执行） | [map §2.4](./map.md#24-选形态五种别把-context-当低配-engine) |
+| **形态（execution form）** | 机器拿本体做了什么：`context`（进上下文）/ `compiled`（编译成约束/查询）/ `engine`（引擎执行）/ `label`（打标）/ `none`（不执行） | [map §2.4](02-map.md#24-选形态五种别把-context-当低配-engine) |
 
 > **不要把 `context` 当 `engine` 的低配。** 供给是「给什么」，engine 是「执行什么」；前者不拦动作。
 
@@ -86,7 +86,7 @@ parent: ../README.md
 | **curated / data-derived** | checker 的两种来源：人工整理 vs 从数据派生 | 两者 catch/FA 不可直接比 |
 | **shadow** | 只记录、不拦截的试运行 | 不是「已经上线」 |
 
-> 阈值统一在 [canonical](./canonical.md)；本页只解释词，不重复数。
+> 阈值统一在 [canonical](91-canonical.md)；本页只解释词，不重复数。
 
 ## 5. 对象地址（O）
 
@@ -94,7 +94,7 @@ parent: ../README.md
 
 | 码 | 指向 |
 |---|---|
-| `O-T01`–`O-T13` | 13 行停线表对应的数/公式（[acceptance](./acceptance.md#51-验收与-stop按机制选尺)） |
+| `O-T01`–`O-T13` | 13 行停线表对应的数/公式（[acceptance](05-acceptance.md#51-验收与-stop按机制选尺)） |
 | `O-F01` | 编译盈亏平衡公式（`p_min`） |
 | `O-C01`–`O-C15` | 代码锚（trustgraph / semantica / ontop / open-ontologies / OPA） |
 

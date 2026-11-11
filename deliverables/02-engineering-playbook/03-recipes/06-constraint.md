@@ -28,7 +28,7 @@ basis: E-15/E-20；action-gate & commit-gate mechanism（E-04/E-13/E-16 已撤�
 
 ## R6 · 动作前可逆性闸：只在不可逆、高代价、弱模型时试
 
-> **W-03**：原锚 E-04/E-13 撤回；R6 转 gap。机制保留，false-veto/harm 按 [W-03](../sections/canonical.md#w-table) 重测；CASEL（E-15）只是非本体参照，不能补这一行。
+> **W-03**：原锚 E-04/E-13 撤回；R6 转 gap。机制保留，false-veto/harm 按 [W-03](../02-sections/91-canonical.md#w-table) 重测；CASEL（E-15）只是非本体参照，不能补这一行。
 
 ### 目标
 
@@ -397,4 +397,4 @@ verdict: {status: PASS|BREACH|UNKNOWN_EVIDENCE,
 
 **出处**：[action-gate 机制](../../../topics/01-constraint/action-gate/mechanism.md) · [commit-gate 机制](../../../topics/01-constraint/commit-gate/mechanism.md) · [E-04/E-15/E-20](../../../topics/conclusions.md)
 
-> 回 [recipes 索引](./README.md) ｜ 回 [02 目录](../README.md)
+> 回 [recipes 索引](README.md) ｜ 回 [02 目录](../README.md)

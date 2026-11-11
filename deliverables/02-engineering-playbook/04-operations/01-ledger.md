@@ -7,7 +7,7 @@ basis: 06/feasibility、06/metrics、06/trace；E-08/E-14/E-18（E-02/E-04 已�
 
 # 账本：先记原始记录，再谈指标
 
-> **证据重置**：E-02/E-03/E-04/E-13 已撤回（W 表见 [canonical §1.1](../sections/canonical.md#w-table)）；账本字段不变，旧数值不再引用。
+> **证据重置**：E-02/E-03/E-04/E-13 已撤回（W 表见 [canonical §1.1](../02-sections/91-canonical.md#w-table)）；账本字段不变，旧数值不再引用。
 
 
 > 没有账本，`p_h`、false-veto、审批成本、catch/FA 都算不出来；所有 go/no-go 都退化成「感觉」。
@@ -146,9 +146,9 @@ harm=unknown, false_veto=unknown
 
 ## 9. 交接
 
-- 评测设计 → [evaluation](evaluation.md)
-- 成本 → [cost](cost.md)
-- 上线/回滚 → [rollout](rollout.md)
+- 评测设计 → [evaluation](02-evaluation.md)
+- 成本 → [cost](03-cost.md)
+- 上线/回滚 → [rollout](04-rollout.md)
 - 指标分派/噪声 → [06/metrics 机制](../../../topics/06-measure/metrics/mechanism.md)
 - 决策账本字段 → [06/feasibility 机制](../../../topics/06-measure/feasibility/mechanism.md)
 

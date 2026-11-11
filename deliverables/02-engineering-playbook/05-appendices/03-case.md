@@ -151,4 +151,4 @@ Risks: 单系统、答案在文本、维护工时、语义错未覆盖
 
 **出处**：[projection 机制](../../../topics/03-knowledge/projection/mechanism.md) · [checker 机制](../../../topics/02-judgment/checker/mechanism.md) · E-12；R5 的撤回与协议见 W-01
 
-> 回 [02 目录](../README.md) ｜ 回 [接口](./interfaces.md)
+> 回 [02 目录](../README.md) ｜ 回 [接口](01-interfaces.md)

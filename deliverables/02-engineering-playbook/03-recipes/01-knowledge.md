@@ -20,7 +20,7 @@ basis: E-08/E-12/E-14；projection & compilation mechanism
 | 模型答错是因为叫错名字、用错单位、槽位对不上 | R1 | R2/R3 |
 | 领域知识是封闭的、像操作手册，模型「不知道」而不是「查不到」 | R1 → R2 | R3 |
 | 语料大、重复检索多、token 是硬成本，准确率不是主诉求 | R3（先量 `p_h`） | R2 |
-| 答案在法规/标准里，需要引用与人签核 | R1 → R3 的受监管支线 → [R12](regulated.md) | 只做 R2 |
+| 答案在法规/标准里，需要引用与人签核 | R1 → R3 的受监管支线 → [R12](12-regulated.md) | 只做 R2 |
 | 你只有一个 taxonomy/ERD | R1 + R5 data-derived | R2/R9 |
 
 ---
@@ -307,7 +307,7 @@ eval_table:  {query_id, arm, hit/miss, token_in/out, latency, rounds,
 
 - [compilation 机制](../../../topics/03-knowledge/compilation/mechanism.md) 的「机制一/二」「数据/接口」「stop」「第一个 sprint」。
 - CAI 的 parse→chunk→enrich→validate→assemble→register；只抄流程，不抄规模。
-- 受监管语料不要共用这条预算；走 [R12](regulated.md)。
+- 受监管语料不要共用这条预算；走 [R12](12-regulated.md)。
 
 ---
 

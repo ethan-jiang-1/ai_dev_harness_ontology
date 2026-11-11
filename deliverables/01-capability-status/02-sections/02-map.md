@@ -108,7 +108,7 @@ parent: ../README.md
 
 **为什么 #12 是非本体**：CASEL（审批/分配模拟）是 harness 的分配策略，没有本体变量；它不是 A/B/C 的成熟度问题，是「本体不在环里」。
 >
-> `context` / `compiled` / `engine` 是执行形态（机器拿本体做了什么；`local` 工作词），定义见 [02 §3](../../02-engineering-playbook/sections/map.md#24-选形态五种别把-context-当低配-engine)；不要把 `context` 当 `engine` 的低配。
+> `context` / `compiled` / `engine` 是执行形态（机器拿本体做了什么；`local` 工作词），定义见 [02 §3](../../02-engineering-playbook/02-sections/02-map.md#24-选形态五种别把-context-当低配-engine)；不要把 `context` 当 `engine` 的低配。
 
 ### 2.3 怎么读这张表
 

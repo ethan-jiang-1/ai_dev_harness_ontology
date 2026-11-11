@@ -115,7 +115,7 @@ match_log: {surface, layer_hit, score, anchor, alias_written, period}
 
 ## 写侧边界
 
-- merge/split 授权归 [R9](constraint.md#r9--落盘前授权现在只能设计不要声称已落地)。
+- merge/split 授权归 [R9](06-constraint.md#r9--落盘前授权现在只能设计不要声称已落地)。
 - `UNVERIFIED` 可进 Planner，但不构成授权证据。
 - 同源检索不算独立确认；「没检测到冲突」不是 positive support。
 - 两阶段：Phase 1 授权 proposed；Phase 2 验证 realized；同 snapshot。

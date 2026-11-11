@@ -7,7 +7,7 @@ basis: topics/domains；E-05/E-12/E-17 仍 admitted；E-03/E-04 已撤回
 
 # 领域适配：同一机制，换域先换约束
 
-> **证据重置**：E-02/E-03/E-04/E-13 等原锚已撤回（W 表见 [canonical §1.1](../sections/canonical.md#w-table)）；本页保留机制与换域约束，数值按 W 协议重测。
+> **证据重置**：E-02/E-03/E-04/E-13 等原锚已撤回（W 表见 [canonical §1.1](../02-sections/91-canonical.md#w-table)）；本页保留机制与换域约束，数值按 W 协议重测。
 
 
 > 领域不是案例集，是**对机制的额外约束**。同一份 recipe 换域，阈值、覆盖率、标签、审批都变；不能把单域数字当跨域常数。
@@ -105,4 +105,4 @@ basis: topics/domains；E-05/E-12/E-17 仍 admitted；E-03/E-04 已撤回
 
 **出处**：[domains](../../../topics/domains.md) · E-05/E-12/E-17；E-03/E-04 已撤回
 
-> 回 [02 目录](../README.md) ｜ 回 [账本](./ledger.md)
+> 回 [02 目录](../README.md) ｜ 回 [账本](01-ledger.md)
