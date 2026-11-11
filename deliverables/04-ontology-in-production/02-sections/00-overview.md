@@ -9,10 +9,10 @@ parent: ../README.md
 
 > 本页是 04 的正文第 0 章。索引与阅读顺序见 [README](../README.md)；三章正文从 [03-body/01-build](../03-body/01-build.md) 开始。
 
-<a id="0-你带着什么问题来"></a>
+<a id="sec-0-1"></a>
 ## 0.1 案例：一个 3 人小团队的第 1 周
 
-一个 3 人小团队（数据/本体、应用/agent、治理/安全）落地小型本体查询应用。第 1 周不建 TBox；先写 6 行消费者契约（consumer / principal / moment / answers / refuses / load）。6 项写不出就停——这是 04 的第一个 gate（A.1）。
+一个 3 人小团队（数据/本体、应用/agent、治理/安全）落地小型本体查询应用。第 1 周不建 TBox；先写 6 行消费者契约（consumer / principal / moment / answers / refuses / load；模板见 [93-templates](./93-templates.md)）。6 项写不出就停——这是 04 的第一个 gate（A.1）。
 
 第 1 周结束应有三件东西：
 
@@ -60,14 +60,14 @@ parent: ../README.md
 
 > 如果只想在自己的表上动手：读 [92-transfer §2–§7](./92-transfer.md)，再用 [93-templates](./93-templates.md)。
 
-<a id="4-验收5-组门槛"></a>
+<a id="sec-0-4"></a>
 ## 0.4 验收（5 组门槛）
 
 > 5 组、通过长什么样、可勾项与当前 `conditional` 结论都在 [05-acceptance](./05-acceptance.md)。入口：A1–A4 / A5+B1–B3 / C1–C3 / C4–C5 / 无未修漏洞。
 
 `conditional`（有条件通过，不是失败）的处置与停见 [06-decision](./06-decision.md)；GUIDE 的 10 分钟/2 小时/1 天是阅读路径，不是门槛数。
 
-<a id="5-不能证明什么3-条"></a>
+<a id="sec-0-5"></a>
 ## 0.5 不能证明什么（3 条）
 
 > 不证明效果、不证明跨域/规模、不证明生产；细节、17 条边界与反例见 [04-boundaries](./04-boundaries.md)。

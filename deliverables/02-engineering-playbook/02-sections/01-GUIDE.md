@@ -45,13 +45,13 @@ parent: README.md
 | 步 | 读什么 | 读完你能 |
 |---|---|---|
 | 0 | [README §0](../02-sections/00-overview.md#0-一页结论) | 知道这份交付物回答/不回答什么 |
-| 1 | [sections/map.md](02-map.md) | 选一个接缝/形态，而不是先选工具 |
-| 2 | [sections/approach.md](03-approach.md) | 先读 R0，再按错误类型选一条 recipe |
+| 1 | [02-map.md](02-map.md) | 选一个接缝/形态，而不是先选工具 |
+| 2 | [03-approach.md](03-approach.md) | 先读 R0，再按错误类型选一条 recipe |
 | 3 | [对应 recipe](../03-recipes/README.md) | 写出接口、步骤、验收、stop |
-| 4 | [sections/boundaries.md](04-boundaries.md) | 知道哪些是反模式、不能证明什么 |
-| 5 | [sections/acceptance.md](05-acceptance.md) | 知道怎么验收、什么时候停 |
+| 4 | [04-boundaries.md](04-boundaries.md) | 知道哪些是反模式、不能证明什么 |
+| 5 | [05-acceptance.md](05-acceptance.md) | 知道怎么验收、什么时候停 |
 | 6 | [关系与维护](../../README.md#关系与维护) | 需要时跳 01/03 |
-| 7 | [sections/canonical.md](91-canonical.md) + [glossary](90-glossary.md) | 查阈值/内码，不再翻三页 |
+| 7 | [91-canonical.md](91-canonical.md) + [glossary](90-glossary.md) | 查阈值/内码，不再翻三页 |
 
 ## 按目的
 

@@ -54,7 +54,7 @@ updated: 2026-11-11
 | [01-capability-status](./01-capability-status/README.md) | 哪些能落地、哪些能试点、哪些只能设计；距离多远 | 判断 + 能力矩阵 | draft | E-01–E-20、C-01–C-04 |
 | [02-engineering-playbook](./02-engineering-playbook/README.md) | 选位置/形态、R0–R12、开源与论文指示分级、账本/成本/上线、验收与 stop | 步骤 + 接口 + 验收 | draft | E-xx + 各派 mechanism |
 | [03-mechanism-reference](./03-mechanism-reference/README.md) | 为什么是六个位置、三根分类轴怎么分、15 条边界 | 入口 + 六张位置卡 + 谱外页 + 三张横切页 + 证据台账 | draft | E-xx + [topics/README](../topics/README.md) |
-| └ [附录：约束强度谱](03-mechanism-reference/09-appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字）；位置细节以卡为准 | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
+| └ [附录：约束强度谱](03-mechanism-reference/05-appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字）；位置细节以卡为准 | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
 | [04-ontology-in-production](./04-ontology-in-production/README.md) | 本体怎么建到可消费、怎么查、怎么治 | 建 / 用 / 治三分册 + 验收 | draft | E-xx（含 E-21/E-22）+ 03/querying/01/access-control；未入库 signal |
 
 > `_plans/` 是[工作底稿](./_plans/README.md)，不是交付物；不进对外阅读路径，也不构成 E。
@@ -86,10 +86,10 @@ updated: 2026-11-11
 
 ### 每份的阅读顺序
 
-- **01**（[GUIDE](01-capability-status/02-sections/00-GUIDE.md)）：0 → [地图](01-capability-status/02-sections/02-map.md) → [能力条目](01-capability-status/03-capabilities/README.md)（A→B→C→D）→ [边界](01-capability-status/02-sections/04-boundaries.md) → [验收](01-capability-status/02-sections/05-acceptance.md) → [关系](#关系与维护)。
-- **02**（[GUIDE](02-engineering-playbook/02-sections/00-GUIDE.md)）：0 → [地图](02-engineering-playbook/02-sections/02-map.md) → [R0 + 一条 recipe](02-engineering-playbook/02-sections/03-approach.md) → [边界](02-engineering-playbook/02-sections/04-boundaries.md) → [验收](02-engineering-playbook/02-sections/05-acceptance.md) → [关系](#关系与维护)。
-- **03**（[GUIDE](03-mechanism-reference/02-sections/00-GUIDE.md)）：0 → [地图](03-mechanism-reference/02-sections/02-map.md) → [位置卡](03-mechanism-reference/03-positions/README.md)（context→…→commit→outside）→ [横切页](03-mechanism-reference/04-across-positions/03-measurement.md) → [边界](03-mechanism-reference/02-sections/04-boundaries.md) → [验收](03-mechanism-reference/02-sections/05-acceptance.md) → [关系](03-mechanism-reference/02-sections/94-relations.md)。
-- **04**（[GUIDE](04-ontology-in-production/02-sections/00-GUIDE.md)）：0 → [地图](04-ontology-in-production/02-sections/02-map.md) → [建](04-ontology-in-production/03-body/01-build.md) → [用](04-ontology-in-production/03-body/02-consume.md) → [治](04-ontology-in-production/03-body/03-govern.md) → [边界](04-ontology-in-production/02-sections/04-boundaries.md) → [验收](04-ontology-in-production/02-sections/05-acceptance.md) → [关系](04-ontology-in-production/02-sections/97-relations.md)。
+- **01**（[GUIDE](01-capability-status/02-sections/01-GUIDE.md)）：0 → [地图](01-capability-status/02-sections/02-map.md) → [能力条目](01-capability-status/03-capabilities/README.md)（A→B→C→D）→ [边界](01-capability-status/02-sections/04-boundaries.md) → [验收](01-capability-status/02-sections/05-acceptance.md) → [关系](#关系与维护)。
+- **02**（[GUIDE](02-engineering-playbook/02-sections/01-GUIDE.md)）：0 → [地图](02-engineering-playbook/02-sections/02-map.md) → [R0 + 一条 recipe](02-engineering-playbook/02-sections/03-approach.md) → [边界](02-engineering-playbook/02-sections/04-boundaries.md) → [验收](02-engineering-playbook/02-sections/05-acceptance.md) → [关系](#关系与维护)。
+- **03**（[GUIDE](03-mechanism-reference/02-sections/01-GUIDE.md)）：0 → [地图](03-mechanism-reference/02-sections/02-map.md) → [位置卡](03-mechanism-reference/03-positions/README.md)（context→…→commit→outside）→ [横切页](03-mechanism-reference/04-across-positions/03-measurement.md) → [边界](03-mechanism-reference/02-sections/04-boundaries.md) → [验收](03-mechanism-reference/02-sections/05-acceptance.md) → [关系](03-mechanism-reference/02-sections/94-relations.md)。
+- **04**（[GUIDE](04-ontology-in-production/02-sections/01-GUIDE.md)）：0 → [地图](04-ontology-in-production/02-sections/02-map.md) → [建](04-ontology-in-production/03-body/01-build.md) → [用](04-ontology-in-production/03-body/02-consume.md) → [治](04-ontology-in-production/03-body/03-govern.md) → [边界](04-ontology-in-production/02-sections/04-boundaries.md) → [验收](04-ontology-in-production/02-sections/05-acceptance.md) → [关系](04-ontology-in-production/02-sections/97-relations.md)。
 
 **反向加载**：从 [01 §5.2](01-capability-status/02-sections/05-acceptance.md#52-期待与数据需求验收规格)/[plan](./_plans/01-capability-status.md)、[02 §3.1](02-engineering-playbook/02-sections/03-approach.md#31-十二条工程做法r0r12)、[03 §2.3](03-mechanism-reference/02-sections/02-map.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
 
@@ -100,7 +100,7 @@ updated: 2026-11-11
 | 节 | 回答什么 | 01 现状 | 02 工程 | 03 机制 | 04 落地 |
 |---|---|---|---|---|---|
 | **0 一页结论** | 这份东西一句话是什么、给谁、最重要三句 | `02-sections/00-overview.md` | 同左 | 同左 | 同左 |
-| **1 导读** | 先读哪份、按任务/时间怎么走 | `02-sections/00-GUIDE.md` | 同左 | 同左 | 同左 |
+| **1 导读** | 先读哪份、按任务/时间怎么走 | `02-sections/01-GUIDE.md` | 同左 | 同左 | 同左 |
 | **2 地图** | 本份的核心框架（矩阵 / 五步法 / 四轴六位置 / 生命周期） | `02-sections/02-map.md` | 同左 | 同左 | 同左 |
 | **3 主体** | 逐项：能力 / recipe / 位置卡 / 建用治 | `03-capabilities/` | `03-recipes/` + `02-sections/03-approach.md` | `03-positions/` | `03-body/` |
 | **4 边界** | 证据等级、不能证明、反例/反模式 | `02-sections/04-boundaries.md` | 同左 | 同左 | 同左 |
@@ -114,7 +114,7 @@ updated: 2026-11-11
 | 角色 | 01 现状 | 02 工程 | 03 机制 | 04 落地 |
 |---|---|---|---|---|
 | 索引 | `README.md`（只放 0/目录/关注） | 同左 | 同左 | 同左 |
-| 导读 | `02-sections/00-GUIDE.md` | 同左 | 同左 | 同左 |
+| 导读 | `02-sections/01-GUIDE.md` | 同左 | 同左 | 同左 |
 | 分节 | `02-sections/`（00-overview / 02-map / 04-boundaries / 05-acceptance） | 同左（多 03-approach） | 同左 | 同左（多 06-decision） |
 | 主体 | `03-capabilities/` | `03-recipes/`；总览在 `02-sections/03-approach.md` | `03-positions/` | `03-body/`（01-build / 02-consume / 03-govern） |
 | 支撑 | — | `04-operations/` | `04-across-positions/` | — |
@@ -140,7 +140,7 @@ updated: 2026-11-11
 - 03：canonical 在 `03-positions/` 与 `04-across-positions/`；`09-appendix...` 是长版论证；`H`/`D` 必须始终带标记。
 - 04：不重复 01 的排序、02 的 recipe、03 的机制论证；04 不新增 E。
 
-**规则**：README 只做索引；正文按「02-sections / 03-主体 / 04-支撑 / 05-附录 / 09-工作底稿 / 90+ 查阅」放，不把长文塞回 README。目录与文件编号规则见 [IA 整改计划](./_plans/2026-11-12-deliverable-ia-plan.md)。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG；每份 `02-sections/00-GUIDE.md` 嵌本份图，README 不再嵌图。
+**规则**：README 只做索引；正文按「02-sections / 03-主体 / 04-支撑 / 05-附录 / 09-工作底稿 / 90+ 查阅」放，不把长文塞回 README。目录与文件编号规则见 [IA 整改计划](./_plans/2026-11-12-deliverable-ia-plan.md)。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG；每份 `02-sections/01-GUIDE.md` 嵌本份图，README 不再嵌图。
 
 ## 期待 → 数据（验收规格）
 
@@ -164,7 +164,7 @@ updated: 2026-11-11
 - 第四章缺一手失败复盘、第六章缺按机制分派的度量方案、第七章是案例不是对照；按仓库规则，写不动的地方是研究没做完，不应在交付物里绕过去。
 - 主线「价值不在知道更多，而在让不该发生的事不发生」接近 P1a，但 E-01 的 ontology 是 `not measured`、E-04 的结构贡献未隔离；附录已把它收窄为「强端不是更好，是更窄」。
 
-唯一保留的是**论证资产**：原第三章成为 [03 的长版附录](03-mechanism-reference/09-appendix-constraint-spectrum.md)。原大纲与规划已删除，git 历史保留；不再有第四个 `handbook/` 目录。
+唯一保留的是**论证资产**：原第三章成为 [03 的长版附录](03-mechanism-reference/05-appendix-constraint-spectrum.md)。原大纲与规划已删除，git 历史保留；不再有第四个 `handbook/` 目录。
 
 ## 质量评估（维护者用）
 

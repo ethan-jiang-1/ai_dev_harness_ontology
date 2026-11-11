@@ -26,19 +26,19 @@ parent: ../README.md
 | 文件 | 回答 | 什么时候读 |
 |---|---|---|
 | 03 | 三根分类轴、六位置总表、M1–M5 | 第一次进 03 |
-| [positions/context.md](../03-positions/01-context.md) | 供给位置为什么不能阻断 | 查知识供给 |
-| [positions/memory.md](../03-positions/02-memory.md) | 为什么记忆是状态 | 查跨轮/身份 |
-| [positions/evidence.md](../03-positions/03-evidence.md) | 输出契约为什么不是闸门 | 查接地等级 |
-| [positions/checker.md](../03-positions/04-checker.md) | 判定器质量曲线与三态 | 查输出后判定 |
-| [positions/action.md](../03-positions/05-action.md) | 三种动作前子机制 | 查可逆性/条件/分配 |
-| [positions/commit.md](../03-positions/06-commit.md) | 为什么「能推理」不等于「能授权」 | 查落盘前 |
-| [positions/outside.md](../03-positions/07-outside.md) | determinism/read-path/supply/reasoning/training 为什么在谱外 | 查第六时刻/轴外 |
+| [01-context.md](../03-positions/01-context.md) | 供给位置为什么不能阻断 | 查知识供给 |
+| [02-memory.md](../03-positions/02-memory.md) | 为什么记忆是状态 | 查跨轮/身份 |
+| [03-evidence.md](../03-positions/03-evidence.md) | 输出契约为什么不是闸门 | 查接地等级 |
+| [04-checker.md](../03-positions/04-checker.md) | 判定器质量曲线与三态 | 查输出后判定 |
+| [05-action.md](../03-positions/05-action.md) | 三种动作前子机制 | 查可逆性/条件/分配 |
+| [06-commit.md](../03-positions/06-commit.md) | 为什么「能推理」不等于「能授权」 | 查落盘前 |
+| [07-outside.md](../03-positions/07-outside.md) | determinism/read-path/supply/reasoning/training 为什么在谱外 | 查第六时刻/轴外 |
 | [across-positions/measurement.md](../04-across-positions/03-measurement.md) | 这个位置该量什么 | 设计验收 |
 | [across-positions/coverage.md](../04-across-positions/01-coverage.md) | 强度–覆盖率到底是什么 | 查 §4/争论 |
 | [across-positions/execution-forms.md](../04-across-positions/02-execution-forms.md) | 形态与执行链 | 查「有引擎」 |
 | [evidence-ledger.md](../05-evidence/01-ledger.md) | 每条 E 支持/不支持哪个位置 | 核证据 |
 | [boundaries.md](../05-evidence/02-boundaries.md) | 15 条边界 + 12 条反例 + 证伪条件 | 审稿/自查 |
 | [gaps.md](../05-evidence/03-gaps.md) | M1–M5、负结果、下一步 | 规划研究 |
-| [appendix-constraint-spectrum.md](../09-appendix-constraint-spectrum.md) | 长版论证（历史） | 要完整论证时 |
+| [appendix-constraint-spectrum.md](../05-appendix-constraint-spectrum.md) | 长版论证（历史） | 要完整论证时 |
 
 > 只做入口；稳定判断在位置卡/横切页，证据在台账，缺口在 gaps。位置卡统一 8 字段：机制 / 触发输入输出 / 能改变什么 / 拦不住什么 / 使能条件 / 证据与边界 / 可证伪条件 / 上游指针。

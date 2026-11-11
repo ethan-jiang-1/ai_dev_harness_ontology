@@ -12,7 +12,7 @@ parent: README.md
 
 适合：只想判断这套东西值不值得投入；只读，不建。
 
-1. [README §0](00-overview.md#0-你带着什么问题来)：先判断要不要读。
+1. [README §0](00-overview.md#sec-0-1)：先判断要不要读。
 2. [A.1 契约](../03-body/01-build.md)：看 3 行契约长什么样，governance 用哪个 principal。
 3. [A.5 三关](../03-body/01-build.md)：看 `build_report` 该有什么，版本从哪来。
 4. [B.2 CQ1](../03-body/02-consume.md)：看一条 raw 查询和它的 principal。
@@ -72,7 +72,7 @@ parent: README.md
 | 数据/本体 | [A.1](../03-body/01-build.md)–[A.5](../03-body/01-build.md) | [transfer §2–§4](92-transfer.md)、[label-source](96-label-source.md)、[worked-example](94-worked-example.md)、[T0/T2–T4](93-templates.md)、[acceptance](05-acceptance.md) |
 | 应用/agent | [B.0](../03-body/02-consume.md)–[B.4](../03-body/02-consume.md) | [transfer §3–§5](92-transfer.md)、[T1/T5](93-templates.md)、[参考表 §3](91-reference.md)、[journey](95-journey.md) |
 | 治理/安全 | [C.1](../03-body/03-govern.md)–[C.4](../03-body/03-govern.md) | [transfer §5–§6](92-transfer.md)、[label-source](96-label-source.md)、[T5–T6](93-templates.md)、[参考表 §5–§7](91-reference.md)、[boundaries](04-boundaries.md) |
-| 评审/负责人 | [README §4](00-overview.md#4-验收5-组门槛) + [acceptance](05-acceptance.md) | [decision](06-decision.md) + [boundaries](04-boundaries.md) + 工作量口径 |
+| 评审/负责人 | [README §4](00-overview.md#sec-0-4) + [acceptance](05-acceptance.md) | [decision](06-decision.md) + [boundaries](04-boundaries.md) + 工作量口径 |
 
 > **门槛 5 组见 acceptance**：A1–A4 / A5+B1–B3 / C1–C3 / C4–C5 / 无未修漏洞。别把 GUIDE 的阅读路径当门槛数。
 
@@ -87,4 +87,4 @@ parent: README.md
 - 要查机制/边界：回 [03](../../03-mechanism-reference/README.md)。
 - 要从自己的表动手：读 [transfer](92-transfer.md) + [templates](93-templates.md)；标签来源看 [label-source](96-label-source.md)；换域看 [worked-example](94-worked-example.md)。
 - 要拍板/写 memo：读 [decision](06-decision.md)。
-- 要查证据：看 [evidence/ledger.md](../04-evidence/01-ledger.md)（附录）。
+- 要查证据：看 [01-ledger.md](../04-evidence/01-ledger.md)（附录）。

@@ -82,4 +82,4 @@ evidence: [E-01, E-08, E-12, E-14]
 - 机制：[projection/mechanism](../../../topics/03-knowledge/projection/mechanism.md) · [compilation/mechanism](../../../topics/03-knowledge/compilation/mechanism.md)
 - 判断：[03-knowledge/README](../../../topics/03-knowledge/README.md) · [conclusions](../../../topics/conclusions.md) E-01/E-08/E-12/E-14
 - 施工：[02 R1–R3](../../02-engineering-playbook/02-sections/03-approach.md#31-十二条工程做法r0r12) · [01 能力 1–3](../../01-capability-status/02-sections/02-map.md#22-一张表)
-- 长版论证：[附录 §3.4.1](../09-appendix-constraint-spectrum.md#341-context最广也最容易被忽略)
+- 长版论证：[附录 §3.4.1](../05-appendix-constraint-spectrum.md#341-context最广也最容易被忽略)

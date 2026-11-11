@@ -17,19 +17,19 @@ basis: E-01–E-20, C-03; recipes R0–R12
 ## 30 秒结论
 
 1. **先定错、再选配方**：错可逆吗、会扩散吗、判定事实拿得到吗；先过 R0 准入，再选一条。详见 [overview §0.2](02-sections/00-overview.md#02-主线)。
-2. **点位语义是最大单层增益**：+54.6pp；投影只再 +19.8pp（E-12；单工厂/9 任务）。先做点位语义，不要先建塔。详见 [overview §0.3](02-sections/00-overview.md#1-三条判断)。
+2. **点位语义是最大单层增益**：+54.6pp；投影只再 +19.8pp（E-12；单工厂/9 任务）。先做点位语义，不要先建塔。详见 [overview §0.3](02-sections/00-overview.md#sec-0-3)。
 3. **约束/判定配方今天不能承诺**：R4/R5/R6/R12 转 gap；R9 只有设计。详见 [overview §0.4](02-sections/00-overview.md#04-一页结论)。
 
-> 如果只做一件事：R0 准入 + 账本 + 名字/单位（K1）；见 [overview §0.5](02-sections/00-overview.md#6-如果只做一件事)。
+> 如果只做一件事：R0 准入 + 账本 + 名字/单位（K1）；见 [overview §0.5](02-sections/00-overview.md#sec-0-5)。
 
 ## 目录
 
-> 若你的 Markdown 预览器不解析相对链接，按「路径」列在文件树里打开同名文件。
+> 编号规则：目录号（`02-sections`）= 书里的第几块；文件号（`02-map`）= 第几章/第几页；同号不同层正常。若预览器不解析相对链接，按「路径」列在文件树里打开（目录行给出目录）。
 
 | 用途 | 读 | 路径 |
 |---|---|---|
 | 工程摘要、案例、主线、三条判断 | [00-overview](02-sections/00-overview.md) | `deliverables/02-engineering-playbook/02-sections/00-overview.md` |
-| 怎么读、按什么顺序 | [00-GUIDE](02-sections/00-GUIDE.md) | `deliverables/02-engineering-playbook/02-sections/00-GUIDE.md` |
+| 怎么读、按什么顺序 | [01-GUIDE](02-sections/01-GUIDE.md) | `deliverables/02-engineering-playbook/02-sections/01-GUIDE.md` |
 | 五步法、定错、选位置/形态 | [02-map](02-sections/02-map.md) | `deliverables/02-engineering-playbook/02-sections/02-map.md` |
 | R0–R12 索引、开源、架构、路线 | [03-approach](02-sections/03-approach.md) | `deliverables/02-engineering-playbook/02-sections/03-approach.md` |
 | 13 条 recipe | [03-recipes](03-recipes/README.md) | `deliverables/02-engineering-playbook/03-recipes/README.md` |
@@ -44,8 +44,8 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 | 时间 | 读什么 |
 |---|---|
-| 10 分钟 | 本页 → [overview §0.2–§0.5](02-sections/00-overview.md) |
-| 40 分钟 | [00-GUIDE](02-sections/00-GUIDE.md) 的路径：overview → map §2.2 分诊 → R0 体检 → 一条 recipe → 产物包 |
+| 10 分钟 | 本页 → [overview §0.2–§0.5](02-sections/00-overview.md) → [R0 四项检查](03-recipes/00-readiness.md) |
+| 40 分钟 | [01-GUIDE](02-sections/01-GUIDE.md) 的路径：overview → map §2.1 五步法 + §2.2 分诊 → R0 体检 → 一条 recipe → 产物包 |
 | 评审/深读 | 04-boundaries → 05-acceptance → 91-canonical → 90-glossary |
 
 ## 维护

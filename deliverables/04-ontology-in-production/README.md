@@ -21,12 +21,12 @@ basis: E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-27；E-02/E-04/E-06/E-26 已撤
 
 ## 目录
 
-> 若你的 Markdown 预览器不解析相对链接，按「路径」列在文件树里打开同名文件。
+> 编号规则：目录号（`02-sections`）= 书里的第几块；文件号（`02-map`）= 第几章/第几页；同号不同层正常。若预览器不解析相对链接，按「路径」列在文件树里打开（目录行给出目录）。
 
 | 用途 | 读 | 路径 |
 |---|---|---|
 | 落地摘要、前 7 天、九件产物、验收 | [00-overview](02-sections/00-overview.md) | `deliverables/04-ontology-in-production/02-sections/00-overview.md` |
-| 怎么读、按什么顺序 | [00-GUIDE](02-sections/00-GUIDE.md) | `deliverables/04-ontology-in-production/02-sections/00-GUIDE.md` |
+| 怎么读、按什么顺序 | [01-GUIDE](02-sections/01-GUIDE.md) | `deliverables/04-ontology-in-production/02-sections/01-GUIDE.md` |
 | 症状地图 | [02-map](02-sections/02-map.md) | `deliverables/04-ontology-in-production/02-sections/02-map.md` |
 | 建 / 用 / 治三章 | [03-body](03-body/) | `deliverables/04-ontology-in-production/03-body/` |
 | 边界、反例 | [04-boundaries](02-sections/04-boundaries.md) | `deliverables/04-ontology-in-production/02-sections/04-boundaries.md` |
@@ -47,8 +47,8 @@ basis: E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-27；E-02/E-04/E-06/E-26 已撤
 
 | 时间 | 读什么 |
 |---|---|
-| 10 分钟 | 本页 → [overview §0.1–§0.4](02-sections/00-overview.md) |
-| 30 分钟 | [00-GUIDE](02-sections/00-GUIDE.md) 的 8 步：overview → A.1/A.3/A.5 → B.2 → C.3/C.4 |
+| 10 分钟 | 本页 → [overview §0.1–§0.4](02-sections/00-overview.md) → [6 行契约模板](02-sections/93-templates.md) |
+| 30 分钟 | [01-GUIDE](02-sections/01-GUIDE.md) 的 8 步：契约 → TBox → shape → 三关 → CQ → policy → audit → journey |
 | 动手 | 03-body/01-build → 02-consume → 03-govern；配合 92-transfer 与 93-templates |
 | 评审 | 04-boundaries → 05-acceptance → 91-reference → 06-decision |
 

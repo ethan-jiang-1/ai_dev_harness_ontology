@@ -16,20 +16,20 @@ basis: E-01–E-20, C-01–C-04
 
 ## 30 秒结论
 
-1. 最确定的角色是「可求值的约束/查询对象」，不是「更懂业务的提示词」；有引擎 ≠ 会拦 ≠ 有授权（E-20）。详见 [overview §0.2](02-sections/00-overview.md#1-三句话)。
+1. 最确定的角色是「可求值的约束/查询对象」，不是「更懂业务的提示词」；有引擎 ≠ 会拦 ≠ 有授权（E-20）。详见 [overview §0.2](02-sections/00-overview.md#sec-0-2)。
 2. 最大知识增益来自薄语义层：点位语义 +54.6pp，投影只再加 +19.8pp（E-12；单工厂/9 任务）。详见 [overview §0.1](02-sections/00-overview.md#01-案例一个工厂的-9-个任务)。
-3. 约束/判定线今天不能承诺：动作闸/checker 原锚撤回，只剩非本体参照（E-15）；写路径授权无实现（E-20）。详见 [overview §0.2](02-sections/00-overview.md#1-三句话)。
+3. 约束/判定线今天不能承诺：动作闸/checker 原锚撤回，只剩非本体参照（E-15）；写路径授权无实现（E-20）。详见 [overview §0.2](02-sections/00-overview.md#sec-0-2)。
 
-> 如果只做一件事：先对齐点位语义（tag 名/单位/质量码），再建账本；见 [overview §0.4](02-sections/00-overview.md#6-如果只做一件事)。
+> 如果只做一件事：先对齐点位语义（tag 名/单位/质量码），再建账本；见 [overview §0.4](02-sections/00-overview.md#sec-0-4)。
 
 ## 目录
 
-> 若你的 Markdown 预览器不解析相对链接，按「路径」列在文件树里打开同名文件。
+> 编号规则：目录号（`02-sections`）= 书里的第几块；文件号（`02-map`）= 第几章/第几页；同号不同层正常。若预览器不解析相对链接，按「路径」列在文件树里打开（目录行给出目录）。
 
 | 用途 | 读 | 路径 |
 |---|---|---|
 | 现状摘要、案例、三条判断、A/B/C/D 表 | [00-overview](02-sections/00-overview.md) | `deliverables/01-capability-status/02-sections/00-overview.md` |
-| 怎么读、按什么顺序 | [00-GUIDE](02-sections/00-GUIDE.md) | `deliverables/01-capability-status/02-sections/00-GUIDE.md` |
+| 怎么读、按什么顺序 | [01-GUIDE](02-sections/01-GUIDE.md) | `deliverables/01-capability-status/02-sections/01-GUIDE.md` |
 | 能力矩阵、判定口径、X1–X9 verdict | [02-map](02-sections/02-map.md) | `deliverables/01-capability-status/02-sections/02-map.md` |
 | 六组能力条目 | [03-capabilities](03-capabilities/README.md) | `deliverables/01-capability-status/03-capabilities/README.md` |
 | 边界、反例、证据边界 | [04-boundaries](02-sections/04-boundaries.md) | `deliverables/01-capability-status/02-sections/04-boundaries.md` |
@@ -46,7 +46,7 @@ basis: E-01–E-20, C-01–C-04
 | 时间 | 读什么 |
 |---|---|
 | 10 分钟 | 本页 → [overview §0.2–§0.4](02-sections/00-overview.md) |
-| 30 分钟 | [00-GUIDE](02-sections/00-GUIDE.md) 的五页路径：overview → map §2.1 → decision-record → boundaries §4.3 → acceptance §5.2 |
+| 30 分钟 | [01-GUIDE](02-sections/01-GUIDE.md) 的五页路径：overview → map §2.1 → decision-record → boundaries §4.3 → acceptance §5.2 |
 | 评审/深读 | 04-boundaries → 05-acceptance → 91-canonical → 90-glossary |
 
 ## 维护

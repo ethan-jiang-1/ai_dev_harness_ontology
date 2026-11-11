@@ -34,14 +34,14 @@ parent: README.md
 | 步 | 读什么 | 读完你能 |
 |---|---|---|
 | 0 | [README §0](../02-sections/00-overview.md#0-一页结论) | 知道这份东西给谁、最重要三句 |
-| 1 | [sections/map.md](02-map.md) | 看懂 A/B/C/D 与每项判定从哪来 |
+| 1 | [02-map.md](02-map.md) | 看懂 A/B/C/D 与每项判定从哪来 |
 | 2 | [capabilities/README.md](../03-capabilities/README.md) | 按 A→B→C→D 找到你关心的能力 |
-| 3 | [sections/boundaries.md](04-boundaries.md) | 说出哪些不能当工作前提、哪些是反向 |
-| 4 | [sections/acceptance.md](05-acceptance.md) | 知道立项前还要量什么 |
+| 3 | [04-boundaries.md](04-boundaries.md) | 说出哪些不能当工作前提、哪些是反向 |
+| 4 | [05-acceptance.md](05-acceptance.md) | 知道立项前还要量什么 |
 | 5 | [关系与维护](../../README.md#关系与维护) | 需要时跳 02/03 |
-| 6 | [sections/decision-record.md](09-decision-record.md) | 看一条能力怎么从证据走到 A/B |
-| 7 | [sections/glossary.md](90-glossary.md) + [K 页](92-k-ladder.md) + [canonical](91-canonical.md) | 查内码/阈值/K 来源，不再翻三页 |
-| 8 | [sections/templates.md](93-templates.md) | 要自己填时，用空表 |
+| 6 | [09-decision-record.md](09-decision-record.md) | 看一条能力怎么从证据走到 A/B |
+| 7 | [90-glossary.md](90-glossary.md) + [K 页](92-k-ladder.md) + [canonical](91-canonical.md) | 查内码/阈值/K 来源，不再翻三页 |
+| 8 | [93-templates.md](93-templates.md) | 要自己填时，用空表 |
 
 ## 按目的
 

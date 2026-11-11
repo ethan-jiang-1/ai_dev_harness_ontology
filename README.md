@@ -113,7 +113,7 @@
 
 - `src/` — **10 个论文目录**（6 `admitted` + 4 `admitted (probation)`；18 篇按 [准入审计](./meta/audits/2026-11-11-source-purge.md) 移出）；每目录 PDF + 三份 MD + `card.md` + `digest.md`；8 个开源项目（已 pin commit、已消化）；9 张材料卡（1 张 HN + 8 张在役标准卡）+ [manifest](./src/papers/manifest.md)。
 - `topics/` — 六派成文；27 条 E（**14 已核原文 + 2 已核代码 + 2 推测 + 9 已撤回**）、3 条 Q、4 条冲突；10 篇论文 + 8 个开源里，**3 个 execution-test / 11 个 mechanism-only / 4 个 harness-evidence / 0 个 boundary-ruler**；8 个开源项目提供代码级机制证据。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
-- `deliverables/` — 4 个子目录（3 层 + 1 条生命周期）：[01 现状](./deliverables/01-capability-status/README.md) / [02 工程实施](./deliverables/02-engineering-playbook/README.md) / [03 机制参考](./deliverables/03-mechanism-reference/README.md) / [04 建用治](./deliverables/04-ontology-in-production/README.md)；03 内含[约束强度谱长版附录](deliverables/03-mechanism-reference/09-appendix-constraint-spectrum.md)。原 7 章书稿计划已废弃，没有独立 handbook。
+- `deliverables/` — 4 个子目录（3 层 + 1 条生命周期）：[01 现状](./deliverables/01-capability-status/README.md) / [02 工程实施](./deliverables/02-engineering-playbook/README.md) / [03 机制参考](./deliverables/03-mechanism-reference/README.md) / [04 建用治](./deliverables/04-ontology-in-production/README.md)；03 内含[约束强度谱长版附录](deliverables/03-mechanism-reference/05-appendix-constraint-spectrum.md)。原 7 章书稿计划已废弃，没有独立 handbook。
 
 **2026-11-11 证据重置**：18 篇论文 + 3 个旧网页材料移出，9 条 E 撤回；主题页/交付物里仍有段落按被删源写成，重写完成前不得作为结论。这是当前第一优先级。
 

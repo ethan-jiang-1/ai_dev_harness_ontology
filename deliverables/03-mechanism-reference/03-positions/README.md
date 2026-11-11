@@ -10,13 +10,13 @@ parent: ../README.md
 
 | 卡 | 回答 | 入口 |
 |---|---|---|
-| context | 模型看到什么；供给/投影/编译 | [positions/context.md](01-context.md) |
-| memory | 下一轮记得什么；registry/状态 | [positions/memory.md](02-memory.md) |
-| evidence | 产出带什么依据；grounding | [positions/evidence.md](03-evidence.md) |
-| checker | 产出对不对；三态/漏检/误报 | [positions/checker.md](04-checker.md) |
-| action | 动作能不能做；可逆性/审批 | [positions/action.md](05-action.md) |
-| commit | 证据够不够授权；设计/无实现 | [positions/commit.md](06-commit.md) |
-| outside | 轴外位置：read-path / supply / reasoning / training | [positions/outside.md](07-outside.md) |
+| context | 模型看到什么；供给/投影/编译 | [01-context.md](01-context.md) |
+| memory | 下一轮记得什么；registry/状态 | [02-memory.md](02-memory.md) |
+| evidence | 产出带什么依据；grounding | [03-evidence.md](03-evidence.md) |
+| checker | 产出对不对；三态/漏检/误报 | [04-checker.md](04-checker.md) |
+| action | 动作能不能做；可逆性/审批 | [05-action.md](05-action.md) |
+| commit | 证据够不够授权；设计/无实现 | [06-commit.md](06-commit.md) |
+| outside | 轴外位置：read-path / supply / reasoning / training | [07-outside.md](07-outside.md) |
 
 **横切页**：
 

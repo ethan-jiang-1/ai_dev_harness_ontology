@@ -16,18 +16,18 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 
 ## 30 秒结论
 
-1. **强度不是好坏，是更窄**：强端能改变的失效类别更少；查矩阵，不查直线。详见 [overview §0.3](02-sections/00-overview.md#1-三条判断)。
+1. **强度不是好坏，是更窄**：强端能改变的失效类别更少；查矩阵，不查直线。详见 [overview §0.3](02-sections/00-overview.md#sec-0-3)。
 2. **今天能确认的是「看见」与「离线判」**：可见性过滤、离线/CI 校验、跨轮记忆、OBDA；阻断等新源。详见 [overview §0.2](02-sections/00-overview.md#02-今天能确认什么机制行为不是效应验证)。
-3. **承重墙是 M1/M2**：没有同本体跨位置对照，也没有覆盖率测量；这份参考给分类与边界，不给效应量。详见 [overview §0.3](02-sections/00-overview.md#1-三条判断)。
+3. **承重墙是 M1/M2**：没有同本体跨位置对照，也没有覆盖率测量；这份参考给分类与边界，不给效应量。详见 [overview §0.3](02-sections/00-overview.md#sec-0-3)。
 
 ## 目录
 
-> 若你的 Markdown 预览器不解析相对链接，按「路径」列在文件树里打开同名文件。
+> 编号规则：目录号（`02-sections`）= 书里的第几块；文件号（`02-map`）= 第几章/第几页；同号不同层正常。若预览器不解析相对链接，按「路径」列在文件树里打开（目录行给出目录）。
 
 | 用途 | 读 | 路径 |
 |---|---|---|
 | 机制摘要、claim 读法、能确认什么 | [00-overview](02-sections/00-overview.md) | `deliverables/03-mechanism-reference/02-sections/00-overview.md` |
-| 怎么读、按什么顺序 | [00-GUIDE](02-sections/00-GUIDE.md) | `deliverables/03-mechanism-reference/02-sections/00-GUIDE.md` |
+| 怎么读、按什么顺序 | [01-GUIDE](02-sections/01-GUIDE.md) | `deliverables/03-mechanism-reference/02-sections/01-GUIDE.md` |
 | 主张类型、四轴、六位置、矩阵 | [02-map](02-sections/02-map.md) | `deliverables/03-mechanism-reference/02-sections/02-map.md` |
 | 六张位置卡 + 索引 | [03-positions](03-positions/README.md) | `deliverables/03-mechanism-reference/03-positions/README.md` |
 | 覆盖率矩阵、形态、测量 | [04-across-positions](04-across-positions/) | `deliverables/03-mechanism-reference/04-across-positions/` |
@@ -35,17 +35,19 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 | 验收、M1–M5、缺口 | [05-acceptance](02-sections/05-acceptance.md) | `deliverables/03-mechanism-reference/02-sections/05-acceptance.md` |
 | 证据台账、边界、缺口 | [05-evidence](05-evidence/) | `deliverables/03-mechanism-reference/05-evidence/` |
 | 术语与内码 | [90-glossary](02-sections/90-glossary.md) | `deliverables/03-mechanism-reference/02-sections/90-glossary.md` |
-| Placement / 读者检查 / 模板 | [91-placement](02-sections/91-placement.md) · [92-reader-checks](02-sections/92-reader-checks.md) · [93-templates](02-sections/93-templates.md) | `deliverables/03-mechanism-reference/02-sections/` |
+| Placement 五步 | [91-placement](02-sections/91-placement.md) | `deliverables/03-mechanism-reference/02-sections/91-placement.md` |
+| 读者检查 | [92-reader-checks](02-sections/92-reader-checks.md) | `deliverables/03-mechanism-reference/02-sections/92-reader-checks.md` |
+| 空表模板 | [93-templates](02-sections/93-templates.md) | `deliverables/03-mechanism-reference/02-sections/93-templates.md` |
 | 关系与维护 | [94-relations](02-sections/94-relations.md) | `deliverables/03-mechanism-reference/02-sections/94-relations.md` |
 | claim 走查 | [95-claim-walkthrough](02-sections/95-claim-walkthrough.md) | `deliverables/03-mechanism-reference/02-sections/95-claim-walkthrough.md` |
-| 长版论证（历史） | [09-appendix](09-appendix-constraint-spectrum.md) | `deliverables/03-mechanism-reference/09-appendix-constraint-spectrum.md` |
+| 长版论证（历史） | [09-appendix](05-appendix-constraint-spectrum.md) | `deliverables/03-mechanism-reference/05-appendix-constraint-spectrum.md` |
 
 ## 阅读顺序
 
 | 时间 | 读什么 |
 |---|---|
-| 10 分钟 | 本页 → [overview §0.1–§0.4](02-sections/00-overview.md) |
-| 30 分钟 | [00-GUIDE](02-sections/00-GUIDE.md) 的五页路径：overview → map §2.3 → claim 走查 → boundaries 前五条 → 证据台账 |
+| 10 分钟 | 本页 → [overview §0.1–§0.4](02-sections/00-overview.md) → [placement 五步](02-sections/91-placement.md) |
+| 30 分钟 | [01-GUIDE](02-sections/01-GUIDE.md) 的五页路径：overview → map §2.3 → claim 走查 → boundaries 前五条 → 证据台账 |
 | 评审/深读 | 位置卡（按 01→07）→ 04-across-positions → 05-evidence → 09-appendix |
 
 ## 维护

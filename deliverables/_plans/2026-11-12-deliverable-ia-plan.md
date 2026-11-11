@@ -32,7 +32,7 @@ scope: deliverables 01–04 的 README 索引化、目录/文件编号、阅读�
 
 ### 2.3 命名（B 方案：章号对齐 + 两位数字）
 
-- `02-sections/`：正文（第 2–5 章）；`00-GUIDE`、`00-overview` 在首位。
+- `02-sections/`：正文（第 2–5 章）；`01-GUIDE`、`00-overview` 在首位。
 - `03-…/`：主体（capabilities / recipes / positions / body）。
 - `04-…/`：支撑（operations / across-positions / evidence）。
 - `05-…/`：附录（appendices / example）。
@@ -66,7 +66,7 @@ scope: deliverables 01–04 的 README 索引化、目录/文件编号、阅读�
 
 | 旧 | 新 |
 |---|---|
-| `GUIDE.md` | `02-sections/00-GUIDE.md` |
+| `GUIDE.md` | `02-sections/01-GUIDE.md` |
 | `sections/map.md` | `02-sections/02-map.md` |
 | `sections/boundaries.md` | `02-sections/04-boundaries.md` |
 | `sections/acceptance.md` | `02-sections/05-acceptance.md` |
@@ -83,7 +83,7 @@ scope: deliverables 01–04 的 README 索引化、目录/文件编号、阅读�
 
 | 旧 | 新 |
 |---|---|
-| `GUIDE.md` | `02-sections/00-GUIDE.md` |
+| `GUIDE.md` | `02-sections/01-GUIDE.md` |
 | `sections/map.md` | `02-sections/02-map.md` |
 | `sections/approach.md` | `02-sections/03-approach.md` |
 | `sections/boundaries.md` | `02-sections/04-boundaries.md` |
@@ -105,7 +105,7 @@ scope: deliverables 01–04 的 README 索引化、目录/文件编号、阅读�
 
 | 旧 | 新 |
 |---|---|
-| `GUIDE.md` | `02-sections/00-GUIDE.md` |
+| `GUIDE.md` | `02-sections/01-GUIDE.md` |
 | `sections/map.md` | `02-sections/02-map.md` |
 | `sections/boundaries.md` | `02-sections/04-boundaries.md` |
 | `sections/acceptance.md` | `02-sections/05-acceptance.md` |
@@ -119,13 +119,13 @@ scope: deliverables 01–04 的 README 索引化、目录/文件编号、阅读�
 | `positions/context.md` … `outside.md` | `03-positions/01-context.md` … `07-outside.md` |
 | `across-positions/*` | `04-across-positions/01-coverage` … `03-measurement` |
 | `evidence/*` | `05-evidence/01-ledger` … `03-gaps` |
-| `appendix-constraint-spectrum.md` | `09-appendix-constraint-spectrum.md` |
+| `appendix-constraint-spectrum.md` | `05-appendix-constraint-spectrum.md` |
 
 ### 3.4 04
 
 | 旧 | 新 |
 |---|---|
-| `GUIDE.md` | `02-sections/00-GUIDE.md` |
+| `GUIDE.md` | `02-sections/01-GUIDE.md` |
 | `sections/map.md` | `02-sections/02-map.md` |
 | `sections/boundaries.md` | `02-sections/04-boundaries.md` |
 | `sections/acceptance.md` | `02-sections/05-acceptance.md` |
@@ -228,6 +228,6 @@ scope: deliverables 01–04 的 README 索引化、目录/文件编号、阅读�
 | P1 02 | 完成 | `ad14c08` | 02-sections/03-recipes/04-operations/05-appendices；README 56 行；`check_repo` 通过（448 md） |
 | P2 03 | 完成 | `5927a9b` | 02-sections/03-positions/04-across-positions/05-evidence/09-appendix；README 56 行；`check_repo` 通过（449 md） |
 | P3 04 | 完成 | `136db9a` | 02-sections/03-body/04-evidence/05-example；README 61 行；`check_repo` 通过（450 md） |
-| P4 全局 | 完成（冷读待回） | `02ef8ac` | 入口表/结构表更新；README 表头改「用途」；`check_repo` 通过（450 md）；冷读代理仍在运行 |
+| P4 全局 | 完成 | `02ef8ac` + 本批 | 入口表/结构表更新；README 表头改「用途」；01-GUIDE 重编号；锚点改名；10 分钟路径补下一步；路径列说明修正；`check_repo` 通过（450 md） |
 
 > 每批都重写了旧路径链接（脚本从旧位置解析、按新位置重算），锚点未变；`check_repo` 0 坏链/坏锚。

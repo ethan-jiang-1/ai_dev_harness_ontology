@@ -56,7 +56,7 @@ parent: ../README.md
 
 > **判不了位置时**，走 [placement](91-placement.md) 的五步；不要硬塞进相邻位置。
 
-> **六个位置不是六个时刻。** `determinism` 是第六个时刻，但不在强度谱上；`context` 不是时刻，是供给；`read-path`/`supply` 是轴外位置。别把四张表混成一张。谱外位置（determinism / read-path / supply / reasoning / training）在 [positions/outside.md](../03-positions/07-outside.md)。
+> **六个位置不是六个时刻。** `determinism` 是第六个时刻，但不在强度谱上；`context` 不是时刻，是供给；`read-path`/`supply` 是轴外位置。别把四张表混成一张。谱外位置（determinism / read-path / supply / reasoning / training）在 [07-outside.md](../03-positions/07-outside.md)。
 
 
 <a id="3-六个位置一页表"></a>

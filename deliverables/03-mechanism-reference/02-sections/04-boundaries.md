@@ -20,4 +20,4 @@ parent: ../README.md
 
 > 反例集单独看：[N-table](../05-evidence/02-boundaries.md#0-反例集n-table)——12 条「常见主张 × 已测反例」，例如「平均 −38% 可上线」「有引擎就能拦」「审批越多越安全」。
 
-> 每条 E 的限定在 [evidence-ledger.md](../05-evidence/01-ledger.md)；更细的逐条解释见 [附录 §3.7](../09-appendix-constraint-spectrum.md#37-本章不能证明什么)。
+> 每条 E 的限定在 [evidence-ledger.md](../05-evidence/01-ledger.md)；更细的逐条解释见 [附录 §3.7](../05-appendix-constraint-spectrum.md#37-本章不能证明什么)。

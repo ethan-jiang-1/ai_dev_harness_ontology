@@ -260,7 +260,7 @@ scope: gap-assessment
 |---|---|---|
 | D1 | `example/`（9 件产物）+ [reference §0](../04-ontology-in-production/02-sections/91-reference.md) 的 canonical 计数 | 每页引同一组数（11/5/2/5/13/5/3/8/11/12），可交叉核对 |
 | D2 | [journey §0](../04-ontology-in-production/02-sections/95-journey.md) 的表（query / principal / raw / policy / governed / audit） | 同一个 CQ 在不同 principal 下的两个值都写出来，且标 raw/governed |
-| D3 | [GUIDE 30 分钟 8 步](../04-ontology-in-production/02-sections/00-GUIDE.md) + journey | 每步有「读什么、核对什么、去哪」，能从头走到尾 |
+| D3 | [GUIDE 30 分钟 8 步](../04-ontology-in-production/02-sections/01-GUIDE.md) + journey | 每步有「读什么、核对什么、去哪」，能从头走到尾 |
 | D4 | [acceptance](../04-ontology-in-production/02-sections/05-acceptance.md) A1–C5 + 5 组门槛 | 每项有「通过长什么样」「未通过怎么办」 |
 | D5 | [glossary](../04-ontology-in-production/02-sections/90-glossary.md) | 概念 + 内码两段，正文首次出现给人话 |
 | D6 | [govern C.2](../04-ontology-in-production/03-body/03-govern.md) 判定顺序 + T9 | specific → priority → 冲突=undetermined；冲突案例被保留 |

@@ -24,6 +24,7 @@ parent: README.md
 2. [地图 §2.3 六位置表](02-map.md#23-六个位置一页表)：六个位置各问什么。
 3. [Claim 走查](95-claim-walkthrough.md)：把「读路径能防泄漏吗」拆成三句可判句。
 4. [边界前五条](04-boundaries.md)：最容易被越过的五条线。
+5. [证据台账](../05-evidence/01-ledger.md)：每条 E 支持/不支持哪个位置，先看「不能证明」列。
 
 这四页回答：**本体在哪个位置、这条 claim 成立到哪、什么会推翻它。** 位置卡与附录是查阅，不是必读。
 
@@ -32,12 +33,12 @@ parent: README.md
 | 步 | 读什么 | 目标 |
 |---|---|---|
 | 0 | [README §0](../02-sections/00-overview.md#0-一页结论) | 知道这份参考的立场与承重墙 |
-| 1 | [sections/map.md](02-map.md) | 看懂主张类型、四轴、六位置 |
+| 1 | [02-map.md](02-map.md) | 看懂主张类型、四轴、六位置 |
 | 2 | [positions/README.md](../03-positions/README.md) | 按 context→memory→evidence→checker→action→commit→outside 读位置卡 |
 | 3 | [measurement](../04-across-positions/03-measurement.md) · [coverage](../04-across-positions/01-coverage.md) · [execution-forms](../04-across-positions/02-execution-forms.md) | 知道每个位置该量什么、覆盖什么、形态怎么分 |
-| 4 | [sections/boundaries.md](04-boundaries.md) | 说出 15 条边界 + 12 条反例里最常被越过的部分 |
-| 5 | [sections/acceptance.md](05-acceptance.md) | 知道 M1–M5 与下一步缺口 |
-| 6 | [sections/relations.md](94-relations.md) | 需要时跳 01/02 |
+| 4 | [04-boundaries.md](04-boundaries.md) | 说出 15 条边界 + 12 条反例里最常被越过的部分 |
+| 5 | [05-acceptance.md](05-acceptance.md) | 知道 M1–M5 与下一步缺口 |
+| 6 | [94-relations.md](94-relations.md) | 需要时跳 01/02 |
 
 ## 按目的
 
