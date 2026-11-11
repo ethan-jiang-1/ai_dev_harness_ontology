@@ -18,6 +18,17 @@ updated: 2026-11-12
 - **新术语**：修复回路（GLOSSARY）；checklist §3 增修复回路收口检查。
 - **自检**：check_repo 通过（452 md）。
 
+## 2026-11-12 内容层 purge 对账 + 缺口盘点
+
+- **frontier 对账**：六派候选队列把 18 篇移出论文从「已入档」改「已移出」+ tombstone；pre-window 候选（LOGicalThought/APEX-MEM/KROMA/AriadneMem/Time is Not a Label/OpenPort/Outcome-Oriented）标「G1 不过」；本轮计划改写到过门新源。
+- **硬对象**：T05/T06/T07/P02/P03 补标撤回（唯一锚 E-02/03/04 已撤回）；累计 20 撤回、现存 74（H3 33/H2 41）；M04 换锚 E-15。
+- **execution-forms**：形态表从 36 源（含移出 18）重建为 18 源，与 state 一致；换词检查标历史快照。
+- **frontmatter 卫生**：8 个交付物页 `evidence:` 加 withdrawn 注记；loading/appendix 旧数（28 篇/26 来源）修正。
+- **判断层核验**：claims.md 27 条撤回 L 与 state 吻合，无需改。
+- **缺口盘点**：[content-gap-survey](../deliverables/_plans/2026-11-12-content-gap-survey.md)——证据基座、按派缺口、横切缺口、P0–P4 行动清单；外部前沿对齐由两个只读调研代理补充。
+- **工具**：check_repo 对象地址检查识别显式 `<a id>` 锚点（与链接检查对齐）。
+- **自检**：check_repo 通过（453 md）。
+
 ## 2026-11-11 撤回补偿：W 表 + 自测协议
 
 - **W 表**：01 canonical §5、02 canonical §1.1、03 evidence/ledger §2.5 各一张；每行给「不能再用 + 重启前先量」，正文改短引用。
