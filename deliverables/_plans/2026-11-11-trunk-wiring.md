@@ -90,6 +90,7 @@ python3 meta/tools/check_repo.py
 | 借权威 | `grep -rn "行业标准\|成熟度标准\|行业共识" deliverables \| grep -v "不是\|不得\|不要\|禁止\|非标准\|撤回\|历史"` | 0 处真实（k-ladder 否定表、_plans 历史稿） |
 | 撤回 E 当结论 | scan-report §2 命令 | 0 处 |
 | 坏链/坏锚/未定义 ID | `check_repo` | 0 |
+| 定义段落的页都有来源注 | `grep -rl "定义为\|是指\|指的是\|所谓" deliverables/0* \| xargs grep -L "词源\|term-sources"` | 0 个无来源页 |
 | 文件数 | `check_repo` | 442 md（10 论文 / 8 开源 / 11 材料卡） |
 
 ### 4.2 代理冷读（第 9 步，非真人）
