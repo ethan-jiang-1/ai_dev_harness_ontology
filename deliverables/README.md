@@ -69,9 +69,9 @@ updated: 2026-11-11
 
 | 你手上是什么 | 先读 | 再读 | 不用读 |
 |---|---|---|---|
-| 只有一个模糊想法 | [01 §0](./01-capability-status/README.md#0-一页结论) + 本页图 | [01 地图](./01-capability-status/sections/map.md) | 02 `recipes/`、03 `positions/` |
-| 有一个具体任务 | [01 地图](./01-capability-status/sections/map.md)（A/B） | [02 地图](./02-engineering-playbook/sections/map.md) → [02 主体](./02-engineering-playbook/sections/approach.md)（R0 + 一条 recipe） | 03 附录、`src/` |
-| 要评审/说服别人 | [03 地图](./03-mechanism-reference/sections/map.md) + [证据边界](./03-mechanism-reference/sections/boundaries.md) | [01 验收](./01-capability-status/sections/acceptance.md) + [02 边界](./02-engineering-playbook/sections/boundaries.md) | `src/` 原文 |
+| 只有一个模糊想法 | [01 §0](./01-capability-status/02-sections/00-overview.md#0-一页结论) + 本页图 | [01 地图](01-capability-status/02-sections/02-map.md) | 02 `recipes/`、03 `positions/` |
+| 有一个具体任务 | [01 地图](01-capability-status/02-sections/02-map.md)（A/B） | [02 地图](./02-engineering-playbook/sections/map.md) → [02 主体](./02-engineering-playbook/sections/approach.md)（R0 + 一条 recipe） | 03 附录、`src/` |
+| 要评审/说服别人 | [03 地图](./03-mechanism-reference/sections/map.md) + [证据边界](./03-mechanism-reference/sections/boundaries.md) | [01 验收](01-capability-status/02-sections/05-acceptance.md) + [02 边界](./02-engineering-playbook/sections/boundaries.md) | `src/` 原文 |
 | 要落地一个接缝 | [02 地图](./02-engineering-playbook/sections/map.md) → [R0 + recipe](./02-engineering-playbook/sections/approach.md) | [02 运行](./02-engineering-playbook/operations/ledger.md) + [02 验收](./02-engineering-playbook/sections/acceptance.md) | 01 全篇 |
 | 要建/查/治一个本体应用 | [04 地图](./04-ontology-in-production/sections/map.md) | [04 建/用/治](./04-ontology-in-production/body/build.md) | 01/03 全篇 |
 | 要查某条判断的边界 | [03 地图](./03-mechanism-reference/sections/map.md) + 对应 position | [03 证据](./03-mechanism-reference/evidence/ledger.md) | 02 全篇 |
@@ -80,18 +80,18 @@ updated: 2026-11-11
 
 | 时间 | 读什么 | 得到什么 |
 |---|---|---|
-| 10 分钟 | 本页图 + [01 §0](./01-capability-status/README.md#0-一页结论) + [02 §0](./02-engineering-playbook/README.md#0-一页结论) | 知道四份分工与「先做什么」 |
+| 10 分钟 | 本页图 + [01 §0](./01-capability-status/02-sections/00-overview.md#0-一页结论) + [02 §0](./02-engineering-playbook/README.md#0-一页结论) | 知道四份分工与「先做什么」 |
 | 1 小时 | 01 地图 + 02 地图 + 02 主体（R0） | 能选一个接缝/一条 recipe |
 | 半天 | 四份 0–6 | 能写 go/no-go 与边界评审 |
 
 ### 每份的阅读顺序
 
-- **01**（[GUIDE](./01-capability-status/GUIDE.md)）：0 → [地图](./01-capability-status/sections/map.md) → [能力条目](./01-capability-status/capabilities/README.md)（A→B→C→D）→ [边界](./01-capability-status/sections/boundaries.md) → [验收](./01-capability-status/sections/acceptance.md) → [关系](#关系与维护)。
+- **01**（[GUIDE](01-capability-status/02-sections/00-GUIDE.md)）：0 → [地图](01-capability-status/02-sections/02-map.md) → [能力条目](01-capability-status/03-capabilities/README.md)（A→B→C→D）→ [边界](01-capability-status/02-sections/04-boundaries.md) → [验收](01-capability-status/02-sections/05-acceptance.md) → [关系](#关系与维护)。
 - **02**（[GUIDE](./02-engineering-playbook/GUIDE.md)）：0 → [地图](./02-engineering-playbook/sections/map.md) → [R0 + 一条 recipe](./02-engineering-playbook/sections/approach.md) → [边界](./02-engineering-playbook/sections/boundaries.md) → [验收](./02-engineering-playbook/sections/acceptance.md) → [关系](#关系与维护)。
 - **03**（[GUIDE](./03-mechanism-reference/GUIDE.md)）：0 → [地图](./03-mechanism-reference/sections/map.md) → [位置卡](./03-mechanism-reference/positions/README.md)（context→…→commit→outside）→ [横切页](./03-mechanism-reference/across-positions/measurement.md) → [边界](./03-mechanism-reference/sections/boundaries.md) → [验收](./03-mechanism-reference/sections/acceptance.md) → [关系](./03-mechanism-reference/sections/relations.md)。
 - **04**（[GUIDE](./04-ontology-in-production/GUIDE.md)）：0 → [地图](./04-ontology-in-production/sections/map.md) → [建](./04-ontology-in-production/body/build.md) → [用](./04-ontology-in-production/body/consume.md) → [治](./04-ontology-in-production/body/govern.md) → [边界](./04-ontology-in-production/sections/boundaries.md) → [验收](./04-ontology-in-production/sections/acceptance.md) → [关系](./04-ontology-in-production/sections/relations.md)。
 
-**反向加载**：从 [01 §5.2](./01-capability-status/sections/acceptance.md#52-期待与数据需求验收规格)/[plan](./_plans/01-capability-status.md)、[02 §3.1](./02-engineering-playbook/sections/approach.md#31-十二条工程做法r0r12)、[03 §2.3](./03-mechanism-reference/sections/map.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
+**反向加载**：从 [01 §5.2](01-capability-status/02-sections/05-acceptance.md#52-期待与数据需求验收规格)/[plan](./_plans/01-capability-status.md)、[02 §3.1](./02-engineering-playbook/sections/approach.md#31-十二条工程做法r0r12)、[03 §2.3](./03-mechanism-reference/sections/map.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
 
 ## 统一阅读结构
 

@@ -261,7 +261,7 @@ scope: deliverables/01–04
 
 ## 9. C2/B3 合并（2026-11-11）
 
-- **01**：六个能力页并入 [capabilities/README.md](../01-capability-status/capabilities/README.md)（01 27→21 个 md，-6）；保留 A/B/C/D 总表与 3.1–3.9 机制箱，锚点 `#knowledge` 等。原来 6 个 0 出链死胡同消失。
+- **01**：六个能力页并入 [capabilities/README.md](../01-capability-status/03-capabilities/README.md)（01 27→21 个 md，-6）；保留 A/B/C/D 总表与 3.1–3.9 机制箱，锚点 `#knowledge` 等。原来 6 个 0 出链死胡同消失。
 - **04**：原 `run.md` + `data.md` 并入 [example/README.md](../04-ontology-in-production/example/README.md)（04 25→23，-2）；fixture 说明、命令、数据/坏样本在一页。
 - **机械读数**：01–04 110→102 个 md；<600 中文字符页 47→38；全仓 539→531。
 - **B3**：01–04 README 首屏各加一行内码映射；正文内码未全改，B3 仍按 2–3 记。
@@ -439,7 +439,7 @@ scope: deliverables/01–04
 | 7 | C3：02/01 canonical 从「一个数只写一次」改为「阈值与口径只在这里定义」；04 加「三关 ≠ 五组门槛」；01/02 的 `D1` 与 `T1` 不再撞名 | 01/02/04 | `02/sections/canonical.md:9`；`04/sections/acceptance.md` |
 | 8 | A2/C1：04 加前 7 天日计划；03 placement 加填好的 read-path 例子；18 个 0 出链页补「回目录/下一节」 | 03/04 + 四份 | `04/README.md:39`；`03/sections/placement.md:60` |
 
-**并行接入**：工作区在 18:22–18:25 新增了 [K0–K4 来源页](../01-capability-status/sections/k-ladder.md)、[K 来源笔记](./2026-11-11-k-ladder-provenance.md) ；EKGF 官网只作外部对照（卡按 material gate 判 `excluded`，不建卡）。本轮把 K 页接进 01/START/02，并把 K1 的「别名/槽位」明确标成**工程扩展**（论文 K1 只到 tag 名/单位/质量码）；未改其结论。
+**并行接入**：工作区在 18:22–18:25 新增了 [K0–K4 来源页](../01-capability-status/02-sections/92-k-ladder.md)、[K 来源笔记](./2026-11-11-k-ladder-provenance.md) ；EKGF 官网只作外部对照（卡按 material gate 判 `excluded`，不建卡）。本轮把 K 页接进 01/START/02，并把 K1 的「别名/槽位」明确标成**工程扩展**（论文 K1 只到 tag 名/单位/质量码）；未改其结论。
 
 ### 11.2 新分数
 

@@ -78,5 +78,5 @@ evidence: [E-05, E-17]
 
 - 机制：[memory/mechanism](../../../topics/04-state/memory/mechanism.md) · [identity/mechanism](../../../topics/04-state/identity/mechanism.md)
 - 判断：[04-state/README](../../../topics/04-state/README.md) · [conclusions](../../../topics/conclusions.md) E-05/E-17
-- 施工：[02 R7（recipes）](../../02-engineering-playbook/recipes/README.md) · [01 能力 7](../../01-capability-status/sections/map.md#22-一张表)
+- 施工：[02 R7（recipes）](../../02-engineering-playbook/recipes/README.md) · [01 能力 7](../../01-capability-status/02-sections/02-map.md#22-一张表)
 - 长版论证：[附录 §3.4.2](../appendix-constraint-spectrum.md#342-memory状态不是事实集合)

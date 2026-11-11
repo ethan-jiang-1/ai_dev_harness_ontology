@@ -36,7 +36,7 @@ evidence: [E-01, E-08, E-12, E-14]
 
 ## 3. 能改变什么
 
-- **知识即答案时，改变答案。** K0（PLC 地址 + 原始整数）→ K1（tag 名 + 单位 + 质量码）避坑率 +54.6pp；K1 → K2（知识投影文本）+19.8pp（0.605→0.802，OR 5.45，p=6.0×10⁻⁷）。K 是 N&D 的实验条件代号，不是标准；定义见 [01 K 页](../../01-capability-status/sections/k-ladder.md)。`已核`（E-12；单工厂、9 任务、答案基本写在文本里）
+- **知识即答案时，改变答案。** K0（PLC 地址 + 原始整数）→ K1（tag 名 + 单位 + 质量码）避坑率 +54.6pp；K1 → K2（知识投影文本）+19.8pp（0.605→0.802，OR 5.45，p=6.0×10⁻⁷）。K 是 N&D 的实验条件代号，不是标准；定义见 [01 K 页](../../01-capability-status/02-sections/92-k-ladder.md)。`已核`（E-12；单工厂、9 任务、答案基本写在文本里）
 - **投影形态有排序，但不是普适规律。** 文本 0.777（pooled element score）> JSON 0.717 > 查询工具 0.638 > 文档检索 0.597；GLM-5.2 的 JSON 0.900 反超文本 0.891，Qwen 的工具 0.407 低于其文档检索 0.538。`已核`（分数）/ `存疑`（排序；事后描述性比较，非受控）
 - **编译能省 token，但是条件性的。** 证据充分时 −91%，不充分时 +1.9%，平均 −38%；无限视野 `p_h > 2%`，有限视野 `p_min = 2% + c/(0.929Q)`（c=每次编译成本，Q=每问 token 预算）。`已核`（E-08/E-14；FRAMES、单 compiler/answer model）
 - **强检索 harness 会吃掉被测量结构化工件的准确率增益。** 摘要树、PageIndex 大纲、wiki、entity graph 在 FRAMES 上无可检出增益，PageIndex 同规模退化；**原文的 ontology 是 `not measured`，不能读成「本体无增益」**。`已核`（E-01；单基准、无 CI）
@@ -81,5 +81,5 @@ evidence: [E-01, E-08, E-12, E-14]
 
 - 机制：[projection/mechanism](../../../topics/03-knowledge/projection/mechanism.md) · [compilation/mechanism](../../../topics/03-knowledge/compilation/mechanism.md)
 - 判断：[03-knowledge/README](../../../topics/03-knowledge/README.md) · [conclusions](../../../topics/conclusions.md) E-01/E-08/E-12/E-14
-- 施工：[02 R1–R3](../../02-engineering-playbook/sections/approach.md#31-十二条工程做法r0r12) · [01 能力 1–3](../../01-capability-status/sections/map.md#22-一张表)
+- 施工：[02 R1–R3](../../02-engineering-playbook/sections/approach.md#31-十二条工程做法r0r12) · [01 能力 1–3](../../01-capability-status/02-sections/02-map.md#22-一张表)
 - 长版论证：[附录 §3.4.1](../appendix-constraint-spectrum.md#341-context最广也最容易被忽略)

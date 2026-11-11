@@ -86,4 +86,4 @@
 - **等级**：分析（E-02 + D1 工程阈值；不是论文结论）。
 - **边界**：单图（UniProt）；语义错 0%（changes of meaning 结构检查抓不到）；部署故障分布未知；阈值是工程选择，不是论文的显著性判断。
 - **含义**：E4 的 verdict 应写成「data-derived 在 UniProt 真实答案上过线；curated 高 catch 但 FA 超线；masked LLM 增量不足」；不能写成「checker 有效」或「curated 更好」。
-- **来源**：E-02；[e4 数据表](../../../deliverables/01-capability-status/data/e4-checker.md)。
+- **来源**：E-02；[e4 数据表](../../../deliverables/01-capability-status/09-data/e4-checker.md)。

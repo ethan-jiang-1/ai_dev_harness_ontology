@@ -47,7 +47,7 @@ _origin_: `academic`（N&D 论文用语）｜ _anchor_: arXiv:2610.11768（章�
 _Avoid_: 全域本体
 
 **论文条件 K0–K4（不是术语）**:
-Narrow & Deep 论文（arXiv:2610.11768）给自己的五个累积实验条件编的号：K0 原始点位、K1 点位语义、K2 知识投影文本、K3 流程摘要、K4 运行记录检索。**它是论文条件，不是专业术语，也不是行业标准/成熟度**；主路径用「点位语义/知识投影文本」，K 只作出处/回查。见 [K0–K4 来源说明](./deliverables/01-capability-status/sections/k-ladder.md)。
+Narrow & Deep 论文（arXiv:2610.11768）给自己的五个累积实验条件编的号：K0 原始点位、K1 点位语义、K2 知识投影文本、K3 流程摘要、K4 运行记录检索。**它是论文条件，不是专业术语，也不是行业标准/成熟度**；主路径用「点位语义/知识投影文本」，K 只作出处/回查。见 [K0–K4 来源说明](deliverables/01-capability-status/02-sections/92-k-ladder.md)。
 _origin_: 论文条件（I 层资料），**不是术语** ｜ _anchor_: arXiv:2610.11768 Table 1 / §2.8 ｜ _scope_: 只描述 N&D 的五个累积条件，不能推成行业层级或成熟度，也不能当本仓库术语。
 _Avoid_: 知识层级、本体成熟度、K1 级本体
 

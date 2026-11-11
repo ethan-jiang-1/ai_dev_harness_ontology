@@ -8,7 +8,7 @@ scope: gap-assessment
 
 # 差距评估报告：01/02/03 离 04 有多远
 
-> 2026-11-11 合并后：01 的六个能力页已并入 [capabilities/README.md](../01-capability-status/capabilities/README.md)；下文路径是执行/评估时快照。
+> 2026-11-11 合并后：01 的六个能力页已并入 [capabilities/README.md](../01-capability-status/03-capabilities/README.md)；下文路径是执行/评估时快照。
 
 > **2026-11-11 后续**：本报告是整改前快照。02→01→03 已按 [整改计划](./2026-11-11-remediation-plan.md) 执行；结果、冷读与剩余 gap 见该计划 §9。**整改后的 L 级复评见 [§10](#10-复评2026-11-11gap-还有多大)。**
 >

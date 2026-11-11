@@ -203,7 +203,7 @@ scope: deliverable-gap
 |---|---|---|---|
 | 1.1 | 13 行停线加 `出处` 列；逐行标 `E-xx` / `公式 §` / `工程建议` | [02 §5.1](../02-engineering-playbook/sections/acceptance.md#51-验收与-stop按机制选尺) | 13/13 有值；≥3 行标 gap |
 | 1.2 | 给每行补「样本量」与「量不出时怎么办」 | 同上；缺口链到 frontier | 每行有可执行的下一步 |
-| 1.3 | 01 §5.1 与 02 §5.3 的期待表对齐（同一机制同一停线，不许两套数） | [01 §5](../01-capability-status/sections/acceptance.md)、[02 §5.3](../02-engineering-playbook/sections/acceptance.md) | 抽 3 个机制对比，数字一致 |
+| 1.3 | 01 §5.1 与 02 §5.3 的期待表对齐（同一机制同一停线，不许两套数） | [01 §5](../01-capability-status/02-sections/05-acceptance.md)、[02 §5.3](../02-engineering-playbook/sections/acceptance.md) | 抽 3 个机制对比，数字一致 |
 
 **不要**：没有出处就编一个；把工程建议写成 E。
 

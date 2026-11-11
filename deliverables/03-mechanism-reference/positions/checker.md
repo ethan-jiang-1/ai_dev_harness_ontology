@@ -89,5 +89,5 @@ evidence: [E-02, E-20]
 
 - 机制：[checker/mechanism](../../../topics/02-judgment/checker/mechanism.md)
 - 判断：[02-judgment/README](../../../topics/02-judgment/README.md) · [conclusions](../../../topics/conclusions.md) E-02/E-20
-- 施工：[02 R5（recipes）](../../02-engineering-playbook/recipes/README.md) · [01 能力 5](../../01-capability-status/sections/map.md#22-一张表)
+- 施工：[02 R5（recipes）](../../02-engineering-playbook/recipes/README.md) · [01 能力 5](../../01-capability-status/02-sections/02-map.md#22-一张表)
 - 长版论证：[附录 §3.4.4](../appendix-constraint-spectrum.md#344-checker输出后的判定器)

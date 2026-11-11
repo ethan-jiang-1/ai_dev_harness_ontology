@@ -100,7 +100,7 @@ parent: ../README.md
 | `M1–M5` | 03 的 5 条研究期待（承重假设） | [gaps](../evidence/gaps.md) |
 | `B/R` | 边界 / 反例 | [boundaries](../evidence/boundaries.md) |
 | `T1–T5` | 动作本体里的类型化逆关系 | [action](../positions/action.md) |
-| `K0–K4` | N&D 实验条件代号（原始点位/点位语义/知识投影文本/流程摘要/运行记录检索；**非标准**） | [01 K 页](../../01-capability-status/sections/k-ladder.md) |
+| `K0–K4` | N&D 实验条件代号（原始点位/点位语义/知识投影文本/流程摘要/运行记录检索；**非标准**） | [01 K 页](../../01-capability-status/02-sections/92-k-ladder.md) |
 | `Q-01` / `RQ5` | 存疑条目 / 研究问题 | [conclusions](../../../topics/conclusions.md) |
 | `P0/P1b/P1c/P2` | 按机制分派的度量优先级 | [measurement](../across-positions/measurement.md) |
 

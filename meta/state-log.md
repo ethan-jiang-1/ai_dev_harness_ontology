@@ -42,7 +42,7 @@ updated: 2026-11-11
 - **归档**：checklist §7 与 src/README §5.1(7) 改指 conventions 长度目标 + digest 模板，不再把 archive/digest-audit 当现行标准。
 - **小节**：src/README §0 重号修正；topics/README 八→九；loading ADR 0001–0010；`.tmp-venv/` 入 `.gitignore`。
 - **自检**：`check_repo` 通过（531 个 md；E=27，Q=3，C=4，L=79；28 论文 / 8 开源 / 12 材料卡）。
-- **内容合并（2026-11-11）**：01 六个能力页 → [capabilities/README](../deliverables/01-capability-status/capabilities/README.md)（-6）；04 example 3→1（-2）；01–04 110→102，<600 字页 47→38；B3 首屏加内码映射。详见 [review §9](../deliverables/_plans/2026-11-11-quality-review.md#9-c2b3-合并2026-11-11)。
+- **内容合并（2026-11-11）**：01 六个能力页 → [capabilities/README](../deliverables/01-capability-status/03-capabilities/README.md)（-6）；04 example 3→1（-2）；01–04 110→102，<600 字页 47→38；B3 首屏加内码映射。详见 [review §9](../deliverables/_plans/2026-11-11-quality-review.md#9-c2b3-合并2026-11-11)。
 
 ## 2026-11-11 EXP-001 read-path 三执行点复查
 
@@ -58,7 +58,7 @@ updated: 2026-11-11
 
 - **依据**：[差距评估报告](../deliverables/_plans/2026-11-10-gap-assessment-report.md)（27 格：1 L2 / 2 L1+ / 0 fixture）+ [整改计划](../deliverables/_plans/2026-11-11-remediation-plan.md)。
 - **02**：新增 [artifact-pack](../deliverables/02-engineering-playbook/appendices/artifact-pack.md)、[glossary](../deliverables/02-engineering-playbook/sections/glossary.md)、[canonical](../deliverables/02-engineering-playbook/sections/canonical.md)、5 组读者检查；对账 false-veto / R1 / 162（补 13 plant elements）。冷读 partial：卡点是 citation 正确性等真 gap；顺手修了 9.7k total vs 5,000 generated 的口径。
-- **01**：A/B/C/D 改为有序规则（含 undetermined）；新增 [decision-record](../deliverables/01-capability-status/sections/decision-record.md)（K1→A、读路径→B、离线 SHACL→A）、[glossary](../deliverables/01-capability-status/sections/glossary.md)、[canonical](../deliverables/01-capability-status/sections/canonical.md)；9 条期待补「没过怎么办」；C 桶统一 3；#12 标非本体。冷读第二轮 `yes`。
+- **01**：A/B/C/D 改为有序规则（含 undetermined）；新增 [decision-record](../deliverables/01-capability-status/02-sections/09-decision-record.md)（K1→A、读路径→B、离线 SHACL→A）、[glossary](../deliverables/01-capability-status/02-sections/90-glossary.md)、[canonical](../deliverables/01-capability-status/02-sections/91-canonical.md)；9 条期待补「没过怎么办」；C 桶统一 3；#12 标非本体。冷读第二轮 `yes`。
 - **03**：新增 [claim-walkthrough](../deliverables/03-mechanism-reference/sections/claim-walkthrough.md)、[reader-checks](../deliverables/03-mechanism-reference/sections/reader-checks.md)、[glossary](../deliverables/03-mechanism-reference/sections/glossary.md)；修 coverage「只有 G 没有 ●」→ C/E/F/G、覆盖率定义、E-22 台账、30%→31%、M1–M5 去重。冷读 partial：强读法需实测，属真 gap。
 - **第二轮收口（2026-11-11）**：01 模板 + 第四记录（落盘→C）+ 逐数等级；02 分诊优先级 + 第二个 worked example（R1）+ citation 协议；03 placement + claim 模板 + D2 清理 + alias 规范；EXP-003 alias 前置。外部来源：新增 [ALCE](audits/2026-11-11-source-purge.md#src-web-alce)、[OWL 2 Profiles](../src/web/w3c-owl2-profiles/w3c-owl2-profiles.card.md)、[SHACL-AF](../src/web/w3c-shacl-af/w3c-shacl-af.card.md) 三张卡（摘要级/待核，不升 E）。复评见 [gap report §10.7](../deliverables/_plans/2026-11-10-gap-assessment-report.md#107-第二轮收口2026-11-11外部来源--文档层)。
 - **证据层（2026-11-11）**：EXP-004 引文审计（20 对，κ=1.0；E 行 strict S=5/20；E+锚 11–13/20）；EXP-005 alias 前置在真实 sparql-guard 上 leak 1→0、false-block 0；EXP-006 holosdb 20/20 单测复跑通过；M1 因无干净被试标 `未测`（见 [03 gaps](../deliverables/03-mechanism-reference/evidence/gaps.md)）。
@@ -147,8 +147,8 @@ updated: 2026-11-11
 
 ## 2026-11-09 D1 第一轮证据回抽
 
-- **数据表**：[e3](../deliverables/01-capability-status/data/e3-compilation.md) / [e4](../deliverables/01-capability-status/data/e4-checker.md) / [e5](../deliverables/01-capability-status/data/e5-false-veto.md) / [e6](../deliverables/01-capability-status/data/e6-memory.md) / [e7-e8](../deliverables/01-capability-status/data/e7-e8-code.md) / [P0 扫描](../deliverables/01-capability-status/data/p0-source-scan.md)。
-- **D1 verdict**：5 条 `supported（限定）`、1 条 `conditional`、3 条 `unknown`；见 [01 §2.4](../deliverables/01-capability-status/sections/map.md#24-e1e9-verdict2026-11-09-第一轮) 与 [§9](../deliverables/01-capability-status/sections/acceptance.md#52-期待与数据需求验收规格)。
+- **数据表**：[e3](../deliverables/01-capability-status/09-data/e3-compilation.md) / [e4](../deliverables/01-capability-status/09-data/e4-checker.md) / [e5](../deliverables/01-capability-status/09-data/e5-false-veto.md) / [e6](../deliverables/01-capability-status/09-data/e6-memory.md) / [e7-e8](../deliverables/01-capability-status/09-data/e7-e8-code.md) / [P0 扫描](../deliverables/01-capability-status/09-data/p0-source-scan.md)。
+- **D1 verdict**：5 条 `supported（限定）`、1 条 `conditional`、3 条 `unknown`；见 [01 §2.4](../deliverables/01-capability-status/02-sections/02-map.md#24-e1e9-verdict2026-11-09-第一轮) 与 [§9](../deliverables/01-capability-status/02-sections/05-acceptance.md#52-期待与数据需求验收规格)。
 - **关键结论**：E5 false-veto 仍 `unknown`（1,745 blocked 无标签）；E8 无写授权实现；E4 的 data-derived 在 UniProt 真实答案上过 +5pp/FA≤15%，curated FA 16.8% 超线；E6 只有部分设置过 +10pp/90%。
 - **P0 候选**：2610.16838（授权 benchmark，go）、2607.22868（false-block/miss 前沿，go）；尚无 commit gate 实现。
 - **topics 回写**：[02/checker F9](../topics/02-judgment/checker/findings.md#f9--用-d1-的5pp--fa15阈值套-e-02) 已落账（data-derived 在 UniProt 真实答案上过 +5pp/FA≤15%；curated FA 超线）；其他数据表结论仍留在 deliverables 工作底稿，待第二轮决定是否升。
@@ -264,7 +264,7 @@ updated: 2026-11-11
 
 ## 2026-11-11 K0–K4 来源核查
 
-- 新增 [K0–K4 来源说明](../deliverables/01-capability-status/sections/k-ladder.md) 与 [核查笔记](../deliverables/_plans/2026-11-11-k-ladder-provenance.md)。
+- 新增 [K0–K4 来源说明](../deliverables/01-capability-status/02-sections/92-k-ladder.md) 与 [核查笔记](../deliverables/_plans/2026-11-11-k-ladder-provenance.md)。
 - 结论：K0–K4 是 N&D 论文（arXiv:2610.11768）的五个累积实验条件，**不是行业标准，也不是成熟度模型**；OpenAlex 2026-11-11 快照为 preprint、0 引用；另一篇 2026 preprint 用 K0–K6 表示知识操作，记号已撞车。
 - 定义修正：K0 = PLC 地址 + 原始整数（不再叫「地址级标签」）；K1 = tag 名/单位/质量码，别名/槽位是工程扩展；K2 = 塔投影文本（不含推导量），固定分节是工程建议。
 - 01/02/03/04 的定义锚点与首用处改用「原始点位 / 点位语义 / 知识投影文本」；K 只作回查标签。

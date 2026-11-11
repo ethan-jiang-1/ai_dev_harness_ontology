@@ -30,7 +30,7 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 > **只读 5 页（约 40 分钟）**：本页 §0 → [地图 §2.2 分诊](./sections/map.md#22-先定错五个问题) → [R0 体检](./recipes/readiness.md) → 按错误选一条：[R1](./recipes/knowledge.md#r1--点位语义先把-tag-名和单位对齐) / [R2](./recipes/knowledge.md#r2--知识投影文本把领域知识写成文本固定分节是工程建议) / [R8](./recipes/constraint.md#r8--读路径过滤只做可见性不要当授权) / [R9](./recipes/constraint.md#r9--落盘前授权现在只能设计不要声称已落地) → [附录 D 产物包](./appendices/artifact-pack.md)。
 >
-> **内码**：R0–R12 = 准入体检 + 十二条配方；K0–K2 = 论文条件代号（非术语/非标准；见 [01 K 页](../01-capability-status/sections/k-ladder.md)）；p_h / p_min = 编译命中率 / 盈亏平衡；O-xx = 对象地址；φ = 可逆性分数（R6），`err_rate` = accepted query 答错率；F/G = 派内 finding/gap。详见 [术语](./sections/glossary.md)。
+> **内码**：R0–R12 = 准入体检 + 十二条配方；K0–K2 = 论文条件代号（非术语/非标准；见 [01 K 页](../01-capability-status/02-sections/92-k-ladder.md)）；p_h / p_min = 编译命中率 / 盈亏平衡；O-xx = 对象地址；φ = 可逆性分数（R6），`err_rate` = accepted query 答错率；F/G = 派内 finding/gap。详见 [术语](./sections/glossary.md)。
 >
 > **证据等级**：接口/公式/代码锚点标 `已核` 或 `已核（代码）`；工程配方、阈值、人日估算标 `推测`。R0–R12 是工程配方，不是新 E；效应量仍看 E-xx 的限定。
 >

@@ -212,16 +212,16 @@ target: deliverables/01-capability-status 的 E1–E9
 
 | 项 | 状态 | 产出 |
 |---|---|---|
-| H1 POLAR | 完成 | [e5 数据表](../01-capability-status/data/e5-false-veto.md)：1,745 blocked 无标签；false-veto `unknown`；保留率/tier 已抽 |
-| H2 CAI | 完成 | [e3 数据表](../01-capability-status/data/e3-compilation.md)：`p_min` 公式、43% 是反推、φ 未测、门实现不一致 |
-| H3 Catch | 完成 | [e4 数据表](../01-capability-status/data/e4-checker.md)：data-derived 在 UniProt 真实答案上过 +5pp/FA≤15%；curated FA 16.8% 超线 |
-| H4 FIRME/EvoMem | 完成 | [e6 数据表](../01-capability-status/data/e6-memory.md)：alias +7.8–12.1pp；非全部设置过 +10pp/90%；跨域未知 |
-| H5/H6 代码 | 完成（只读，未重跑） | [e7/e8 代码](../01-capability-status/data/e7-e8-code.md)：trustgraph 只删 subject、fail-open；四项目无写授权 |
-| P0 源扫描 | 完成（摘要级） | [P0 扫描](../01-capability-status/data/p0-source-scan.md)：2610.16838（授权 benchmark，go）、2607.22868（false-block/miss 前沿，go）；无 commit gate 实现 |
+| H1 POLAR | 完成 | [e5 数据表](../01-capability-status/09-data/e5-false-veto.md)：1,745 blocked 无标签；false-veto `unknown`；保留率/tier 已抽 |
+| H2 CAI | 完成 | [e3 数据表](../01-capability-status/09-data/e3-compilation.md)：`p_min` 公式、43% 是反推、φ 未测、门实现不一致 |
+| H3 Catch | 完成 | [e4 数据表](../01-capability-status/09-data/e4-checker.md)：data-derived 在 UniProt 真实答案上过 +5pp/FA≤15%；curated FA 16.8% 超线 |
+| H4 FIRME/EvoMem | 完成 | [e6 数据表](../01-capability-status/09-data/e6-memory.md)：alias +7.8–12.1pp；非全部设置过 +10pp/90%；跨域未知 |
+| H5/H6 代码 | 完成（只读，未重跑） | [e7/e8 代码](../01-capability-status/09-data/e7-e8-code.md)：trustgraph 只删 subject、fail-open；四项目无写授权 |
+| P0 源扫描 | 完成（摘要级） | [P0 扫描](../01-capability-status/09-data/p0-source-scan.md)：2610.16838（授权 benchmark，go）、2607.22868（false-block/miss 前沿，go）；无 commit gate 实现 |
 | P0 入档 | 完成 2 篇 | [2610.16838 digest](../../meta/audits/2026-11-11-source-purge.md#src-2610-16838)（L2；harness-evidence / none）；[2607.22868 digest](../../meta/audits/2026-11-11-source-purge.md#src-2607-22868)（L2；harness-evidence / none）；均不升 E；manifest 24 篇 |
-| E5 校准理论 | 完成（已入档 L2） | [e5 校准理论](../01-capability-status/data/e5-calibration-theory.md)：NP false-block/miss 前沿；δ=.05 时每个 judge 都 block-all；δ=.10 false block .78；false-veto 应报前沿不是单点 |
-| P1/P2 源扫描 | 完成（摘要级） | [P1/P2 扫描](../01-capability-status/data/p1-p2-source-scan.md)：无第二个 read-path；E9 有 Suite v0 候选（harness 级）；E1/E2 无跨域复现 |
-| D1 verdict | 完成第一轮 | [01 §2.4](../01-capability-status/sections/map.md#24-e1e9-verdict2026-11-09-第一轮) 与 [§9](../01-capability-status/sections/acceptance.md#52-期待与数据需求验收规格)：5 条 `supported（限定）`、1 条 `conditional`、3 条 `unknown` |
+| E5 校准理论 | 完成（已入档 L2） | [e5 校准理论](../01-capability-status/09-data/e5-calibration-theory.md)：NP false-block/miss 前沿；δ=.05 时每个 judge 都 block-all；δ=.10 false block .78；false-veto 应报前沿不是单点 |
+| P1/P2 源扫描 | 完成（摘要级） | [P1/P2 扫描](../01-capability-status/09-data/p1-p2-source-scan.md)：无第二个 read-path；E9 有 Suite v0 候选（harness 级）；E1/E2 无跨域复现 |
+| D1 verdict | 完成第一轮 | [01 §2.4](../01-capability-status/02-sections/02-map.md#24-e1e9-verdict2026-11-09-第一轮) 与 [§9](../01-capability-status/02-sections/05-acceptance.md#52-期待与数据需求验收规格)：5 条 `supported（限定）`、1 条 `conditional`、3 条 `unknown` |
 
 **下一步（按 P0）**：
 

@@ -56,4 +56,4 @@ target: X5 false-veto
 
 **没有这些，X5 的 false-veto 保持 `unknown`；D1 的能力地图不分层改变。**
 
-> 回 [01 目录](../README.md) ｜ 回 [01 §数据表](../README.md#数据表工作底稿)
+> 回 [01 目录](../README.md) ｜ 回 [01 §数据表](../README.md)

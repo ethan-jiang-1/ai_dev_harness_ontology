@@ -82,4 +82,4 @@ X4 的验收线是「增量 catch ≥5pp、FA ≤15%」，反事实是空结果�
 - FA 预算：若业务能接受 >15%，curated 的高 catch 可能值得；若不能，data-derived 更稳。
 - LLM judge 的净修复/成本：若修坏降下来，可能改变来源选择。
 
-> 回 [01 目录](../README.md) ｜ 回 [01 §数据表](../README.md#数据表工作底稿)
+> 回 [01 目录](../README.md) ｜ 回 [01 §数据表](../README.md)

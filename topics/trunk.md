@@ -63,7 +63,7 @@ updated: 2026-11-11
 3. 效应量只能指 I；I 的限定必须一起写。
 4. S 只能进 `frontier.md`；不得出现在 `claims.md`、派 README、交付物。
 
-> 例子：K0–K4 是一篇论文的五个实验条件，**不是“知识层级”**；本仓库只在 [K 页](../deliverables/01-capability-status/sections/k-ladder.md) 作来源说明，不拿它当术语。专业术语如“顶层本体/约束/策略/数据分级”才去 ISO 21838、SHACL、ODRL、GB/T 找 N。
+> 例子：K0–K4 是一篇论文的五个实验条件，**不是“知识层级”**；本仓库只在 [K 页](../deliverables/01-capability-status/02-sections/92-k-ladder.md) 作来源说明，不拿它当术语。专业术语如“顶层本体/约束/策略/数据分级”才去 ISO 21838、SHACL、ODRL、GB/T 找 N。
 
 ## 4. 现在的主干缺口
 
@@ -82,7 +82,7 @@ updated: 2026-11-11
 
 ## 5. 接到哪里
 
-- 术语表：[meta/term-baseline.md](../meta/term-baseline.md) v0（10 词）+ v1（29 词 + 06 试点 1 词）与本页对齐；K 行见 [K 页](../deliverables/01-capability-status/sections/k-ladder.md)。
+- 术语表：[meta/term-baseline.md](../meta/term-baseline.md) v0（10 词）+ v1（29 词 + 06 试点 1 词）与本页对齐；K 行见 [K 页](../deliverables/01-capability-status/02-sections/92-k-ladder.md)。
 - 各派来源：`topics/<派>/sources.md` 顶部加「N/I/S 三层读法」，N 指本页，I/S 在各自表里。
 - 交付物：01/02/03/04 的定义段与边界，只引 N；效应引 I；S 不出现。
 - 维护：新增标准卡必须 `admission: admitted` + `standing: normative`；厂商页、社区成熟度模型、单机构白皮书不进主干。
@@ -93,14 +93,14 @@ updated: 2026-11-11
 
 | 标准 | 实际接到哪（页面级） |
 |---|---|
-| ISO/IEC 21838-1/-2 | [START](../deliverables/START.md) 三词表；[01 术语](../deliverables/01-capability-status/sections/glossary.md#term-sources)；[01 README](../deliverables/01-capability-status/README.md)；[03 术语](../deliverables/03-mechanism-reference/sections/glossary.md#term-sources)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources)；[04 build A.3](../deliverables/04-ontology-in-production/body/build.md) |
+| ISO/IEC 21838-1/-2 | [START](../deliverables/START.md) 三词表；[01 术语](../deliverables/01-capability-status/02-sections/90-glossary.md#term-sources)；[01 README](../deliverables/01-capability-status/README.md)；[03 术语](../deliverables/03-mechanism-reference/sections/glossary.md#term-sources)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources)；[04 build A.3](../deliverables/04-ontology-in-production/body/build.md) |
 | OMG Commons 1.3 | [03 术语](../deliverables/03-mechanism-reference/sections/glossary.md#term-sources)；[02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources) |
-| W3C SHACL | [01 术语](../deliverables/01-capability-status/sections/glossary.md#term-sources)、[01 map §2.2](../deliverables/01-capability-status/sections/map.md#22-一张表)、[01 capabilities §3.8](../deliverables/01-capability-status/capabilities/README.md#read-path)；[02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources)、[R10/R11](../deliverables/02-engineering-playbook/recipes/offline-and-obda.md)、[R4/R5](../deliverables/02-engineering-playbook/recipes/judgment.md)；[03 checker](../deliverables/03-mechanism-reference/positions/checker.md)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources)、[04 build A.3](../deliverables/04-ontology-in-production/body/build.md) |
-| W3C SHACL-AF | [01 capabilities §3.8](../deliverables/01-capability-status/capabilities/README.md#read-path)；[02 R10/R11](../deliverables/02-engineering-playbook/recipes/offline-and-obda.md)、[R8](../deliverables/02-engineering-playbook/recipes/constraint.md#r8--读路径过滤只做可见性不要当授权)；[03 checker](../deliverables/03-mechanism-reference/positions/checker.md)；[04 govern C.1](../deliverables/04-ontology-in-production/body/govern.md) |
-| W3C OWL 2 Profiles | [01 map §2.2](../deliverables/01-capability-status/sections/map.md#22-一张表)、[01 capabilities §3.8](../deliverables/01-capability-status/capabilities/README.md#read-path)；[02 R10/R11](../deliverables/02-engineering-playbook/recipes/offline-and-obda.md)；[03 术语](../deliverables/03-mechanism-reference/sections/glossary.md#term-sources)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources)、[04 build A.3](../deliverables/04-ontology-in-production/body/build.md) |
-| W3C ODRL 2.2 | [01 README 词源](../deliverables/01-capability-status/README.md)、[decision-record](../deliverables/01-capability-status/sections/decision-record.md)；[02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources)、[R6/R8/R9](../deliverables/02-engineering-playbook/recipes/constraint.md)；[03 action](../deliverables/03-mechanism-reference/positions/action.md)、[03 commit](../deliverables/03-mechanism-reference/positions/commit.md)；[04 govern C.1/C.2](../deliverables/04-ontology-in-production/body/govern.md) |
+| W3C SHACL | [01 术语](../deliverables/01-capability-status/02-sections/90-glossary.md#term-sources)、[01 map §2.2](../deliverables/01-capability-status/02-sections/02-map.md#22-一张表)、[01 capabilities §3.8](../deliverables/01-capability-status/03-capabilities/README.md#read-path)；[02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources)、[R10/R11](../deliverables/02-engineering-playbook/recipes/offline-and-obda.md)、[R4/R5](../deliverables/02-engineering-playbook/recipes/judgment.md)；[03 checker](../deliverables/03-mechanism-reference/positions/checker.md)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources)、[04 build A.3](../deliverables/04-ontology-in-production/body/build.md) |
+| W3C SHACL-AF | [01 capabilities §3.8](../deliverables/01-capability-status/03-capabilities/README.md#read-path)；[02 R10/R11](../deliverables/02-engineering-playbook/recipes/offline-and-obda.md)、[R8](../deliverables/02-engineering-playbook/recipes/constraint.md#r8--读路径过滤只做可见性不要当授权)；[03 checker](../deliverables/03-mechanism-reference/positions/checker.md)；[04 govern C.1](../deliverables/04-ontology-in-production/body/govern.md) |
+| W3C OWL 2 Profiles | [01 map §2.2](../deliverables/01-capability-status/02-sections/02-map.md#22-一张表)、[01 capabilities §3.8](../deliverables/01-capability-status/03-capabilities/README.md#read-path)；[02 R10/R11](../deliverables/02-engineering-playbook/recipes/offline-and-obda.md)；[03 术语](../deliverables/03-mechanism-reference/sections/glossary.md#term-sources)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources)、[04 build A.3](../deliverables/04-ontology-in-production/body/build.md) |
+| W3C ODRL 2.2 | [01 README 词源](../deliverables/01-capability-status/README.md)、[decision-record](../deliverables/01-capability-status/02-sections/09-decision-record.md)；[02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources)、[R6/R8/R9](../deliverables/02-engineering-playbook/recipes/constraint.md)；[03 action](../deliverables/03-mechanism-reference/positions/action.md)、[03 commit](../deliverables/03-mechanism-reference/positions/commit.md)；[04 govern C.1/C.2](../deliverables/04-ontology-in-production/body/govern.md) |
 | OASIS XACML 3.0 | 同 ODRL 的页面（成对出现，表达 vs 判定架构） |
-| GB/T 43697-2024 | [01 术语](../deliverables/01-capability-status/sections/glossary.md#term-sources)；[02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources)、[04 govern C.1](../deliverables/04-ontology-in-production/body/govern.md) |
+| GB/T 43697-2024 | [01 术语](../deliverables/01-capability-status/02-sections/90-glossary.md#term-sources)；[02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources)、[04 govern C.1](../deliverables/04-ontology-in-production/body/govern.md) |
 | GB/T 35273-2020 | 同 GB/T 43697 的页面 |
 | ODCS v3.1.0 | [02 术语](../deliverables/02-engineering-playbook/sections/glossary.md#term-sources)、[02 接口附录](../deliverables/02-engineering-playbook/appendices/interfaces.md)；[04 术语](../deliverables/04-ontology-in-production/sections/glossary.md#term-sources) |
 

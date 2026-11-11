@@ -15,7 +15,7 @@ scope: 交付物证据重置 + ADR 0011 术语基线
 |---|---|---|---|
 | **来源准入/清除**（[审计](../../meta/audits/2026-11-11-source-purge.md)） | 28→10 论文、15→11 材料卡、9 条 E 撤回、27 条 L 撤回、15 个对象撤回；tombstone 与横幅已落 | 交付物里仍按被删源写成的数字/判断未重写 | **最高风险**：01 的 A/B/C/D 有一半建立在已撤回的 E 上 |
 | **术语基线/ADR 0011**（[ADR](../../adr/0011-source-standing-and-term-baseline.md)、[计划](./2026-11-11-baseline-correction-plan.md)） | `standing` 字段、local 规则、ISO/IEC 21838 + OMG Commons 卡、K 事故入 ADR | `meta/term-baseline.md` v0（10 词）未落；W3C 卡 `standing` 未补；ODM 未核 | 不阻塞 01 的证据重置；但决定“以后怎么定义词” |
-| **01 K0–K4 修复**（[K 页](../01-capability-status/sections/k-ladder.md)、[核查笔记](./2026-11-11-k-ladder-provenance.md)） | K0–K4 降为论文实验条件；首屏/术语/02/03/04 首现已改；`local` 与术语基线行已加；`check_repo` 通过 | K 之外的“撤回源”段落未动 | **叫法修好了，证据没修好** |
+| **01 K0–K4 修复**（[K 页](../01-capability-status/02-sections/92-k-ladder.md)、[核查笔记](./2026-11-11-k-ladder-provenance.md)） | K0–K4 降为论文实验条件；首屏/术语/02/03/04 首现已改；`local` 与术语基线行已加；`check_repo` 通过 | K 之外的“撤回源”段落未动 | **叫法修好了，证据没修好** |
 
 ## 2. 最重要的判断
 
@@ -112,9 +112,9 @@ scope: 交付物证据重置 + ADR 0011 术语基线
 
 ### 2026-11-11 · P0 + P1 第一批
 
-- **已完成**：本板生效；01 的 [map §2.1/§2.2/§2.2b/§2.4](../01-capability-status/sections/map.md)、[README §0](../01-capability-status/README.md)、[canonical](../01-capability-status/sections/canonical.md)、[decision-record 6](../01-capability-status/sections/decision-record.md)、[acceptance X4/X5](../01-capability-status/sections/acceptance.md)、[boundaries §4.1–§4.4](../01-capability-status/sections/boundaries.md)、[capabilities 3.4/3.5/3.6 + 索引](../01-capability-status/capabilities/README.md)、[glossary §2](../01-capability-status/sections/glossary.md) 已按“源撤回 → gap”重写。
+- **已完成**：本板生效；01 的 [map §2.1/§2.2/§2.2b/§2.4](../01-capability-status/02-sections/02-map.md)、[README §0](../01-capability-status/README.md)、[canonical](../01-capability-status/02-sections/91-canonical.md)、[decision-record 6](../01-capability-status/02-sections/09-decision-record.md)、[acceptance X4/X5](../01-capability-status/02-sections/05-acceptance.md)、[boundaries §4.1–§4.4](../01-capability-status/02-sections/04-boundaries.md)、[capabilities 3.4/3.5/3.6 + 索引](../01-capability-status/03-capabilities/README.md)、[glossary §2](../01-capability-status/02-sections/90-glossary.md) 已按“源撤回 → gap”重写。
 - **当前 01 计数**：A=3 / B=4 / C=2 / 非本体=1 / gap=4；#4/#5/#6/#11 保留编号，移入 gap 表。
-- **数据表**：[e4-checker](../01-capability-status/data/e4-checker.md)、[e5-false-veto](../01-capability-status/data/e5-false-veto.md) 已加“只作历史”横幅。
+- **数据表**：[e4-checker](../01-capability-status/09-data/e4-checker.md)、[e5-false-veto](../01-capability-status/09-data/e5-false-veto.md) 已加“只作历史”横幅。
 - **自检**：`check_repo` 通过（434 md；10 论文 / 8 开源 / 11 材料卡）。
 - **下一批**：01 的残留扫描（`capabilities`、`data/`、`GUIDE`、`templates` 中不再把 E-02/03/04/13/16 当结论）→ 02/03/04 引用撤回源的段落 → 术语线 `term-baseline v0` 的 K 行。
 

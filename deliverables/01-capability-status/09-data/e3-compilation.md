@@ -59,4 +59,4 @@ target: X3 compilation economics
 - φ 的审计：若 φ 高，`p_h` 高也不能自动放行。
 - 门实现的统一：规则门 vs judge 门的成本/延迟差异会改变 `p_min`。
 
-> 回 [01 目录](../README.md) ｜ 回 [01 §数据表](../README.md#数据表工作底稿)
+> 回 [01 目录](../README.md) ｜ 回 [01 §数据表](../README.md)

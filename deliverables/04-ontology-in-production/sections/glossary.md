@@ -66,7 +66,7 @@ parent: ../README.md
 | `O-xx` | 对象地址（数值/公式/反例），不是结论 | 想复算时跟 |
 | `L-xx` | 派内局部判断，只在 `claims.md` 工作 | 一般不需要 |
 | `Q-xx` / `C-xx` | 开放问题 / 冲突 | 看 frontier/conclusions 时跟 |
-| `F1` / `K0–K4` | 派内 finding / N&D 实验条件代号（原始点位、点位语义、知识投影文本、流程摘要、运行记录检索；**非标准**） | A.2/C.1 里出现；定义见 [01 K 页](../../01-capability-status/sections/k-ladder.md) |
+| `F1` / `K0–K4` | 派内 finding / N&D 实验条件代号（原始点位、点位语义、知识投影文本、流程摘要、运行记录检索；**非标准**） | A.2/C.1 里出现；定义见 [01 K 页](../../01-capability-status/02-sections/92-k-ladder.md) |
 | `GGC` / `NLKGQ` / `KGVoyager` | 三条 Text2SPARQL 路线 | B.1 有一句话 |
 | `Glyph` / `trustgraph` / `SFE-O` | 标签来源 / 读路径实现 / 已移出的工程做法（只作历史） | C.1/C.3/A.4 有一句话 |
 

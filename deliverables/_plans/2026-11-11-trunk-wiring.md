@@ -31,11 +31,11 @@ scope: 核心计划第 7 步（01→02→03→04 定义段接规范主干）
 |---|---|---|
 | [START](../../deliverables/START.md) §2 | 三词表加「词源」列与读法说明 | 本体 `N: ISO/IEC 21838-1`（broader）；harness / 接缝 `local` |
 | [01 README](../../deliverables/01-capability-status/README.md) | 术语基线段改成「术语来源（读法）」；三条判断后加「词源速查」 | 本体/TLO、约束/校验、ODRL/XACML 有 N；领域本体、知识图谱、语义层、接地、动作闸、落盘授权、A/B/C/D、gap 为 `local` |
-| [01 术语 §0](../../deliverables/01-capability-status/sections/glossary.md#term-sources) | 新增 18 行来源表（v0/v1 的词在 01 的首现） | 10 张标准卡全部落到词；其余 `local` |
-| [01 map](../../deliverables/01-capability-status/sections/map.md) | 判定口径表后加来源注；§2.2 计数后加词源注；执行形态标 `local` | SHACL/OWL 2 Profiles 有 N；A/B/C/D、读路径、动作闸、落盘授权 `local` |
-| [01 capabilities](../../deliverables/01-capability-status/capabilities/README.md) | 顶部词源；§3.4/§3.6/§3.8/§3.9 加词源句 | SHACL/SHACL-AF/OWL 2 Profiles 有 N；接地、动作闸、读路径、commit gate `local` |
-| [01 K 页](../../deliverables/01-capability-status/sections/k-ladder.md) | K 的 `local` 判定改成标记形式；§2 表加「本表读法」 | K0–K4 `local`（论文条件，非术语） |
-| [01 decision-record](../../deliverables/01-capability-status/sections/decision-record.md) | 顶部加词源句 | 同 README；判定仍走证据 |
+| [01 术语 §0](../01-capability-status/02-sections/90-glossary.md#term-sources) | 新增 18 行来源表（v0/v1 的词在 01 的首现） | 10 张标准卡全部落到词；其余 `local` |
+| [01 map](../01-capability-status/02-sections/02-map.md) | 判定口径表后加来源注；§2.2 计数后加词源注；执行形态标 `local` | SHACL/OWL 2 Profiles 有 N；A/B/C/D、读路径、动作闸、落盘授权 `local` |
+| [01 capabilities](../01-capability-status/03-capabilities/README.md) | 顶部词源；§3.4/§3.6/§3.8/§3.9 加词源句 | SHACL/SHACL-AF/OWL 2 Profiles 有 N；接地、动作闸、读路径、commit gate `local` |
+| [01 K 页](../01-capability-status/02-sections/92-k-ladder.md) | K 的 `local` 判定改成标记形式；§2 表加「本表读法」 | K0–K4 `local`（论文条件，非术语） |
+| [01 decision-record](../01-capability-status/02-sections/09-decision-record.md) | 顶部加词源句 | 同 README；判定仍走证据 |
 | [02 README](../../deliverables/02-engineering-playbook/README.md) | 证据等级段后加词源 | 本体/TLO、SHACL、ODRL/XACML、ODCS 有 N；接缝/形态/动作闸/读路径/落盘/接地 `local` |
 | [02 术语 §0](../../deliverables/02-engineering-playbook/sections/glossary.md#term-sources) | 新增 14 行来源表 | 含 OMG Commons、ODCS、GB/T 两标 |
 | [02 R4/R5](../../deliverables/02-engineering-playbook/recipes/judgment.md) | 顶部加词源 | SHACL/SHACL-AF 有 N；接地、catch/FA `local` |

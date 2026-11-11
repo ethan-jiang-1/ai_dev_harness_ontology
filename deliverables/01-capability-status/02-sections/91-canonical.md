@@ -12,29 +12,29 @@ parent: ../README.md
 
 | 项 | 值 | 说明 |
 |---|---|---|
-| 能力行 | 14 | 10 行有 admitted 源 + 4 行 gap；[map §2.2](./map.md#22-一张表) / [§2.2b](./map.md#22b-gap待新源4-行) |
+| 能力行 | 14 | 10 行有 admitted 源 + 4 行 gap；[map §2.2](02-map.md#22-一张表) / [§2.2b](02-map.md#22b-gap待新源4-行) |
 | A 可先落地 | 3 | #1 点位语义（K1）、#9 OBDA、#10 离线/CI SHACL |
 | B 可试点 | 4 | #2 投影、#3 编译、#7 记忆、#8 读路径 |
 | C 只能设计 | 2 | #13 落盘、#14 确定性 |
 | 非本体（参照） | 1 | #12 审批/多模式分配 |
 | gap / 待新源 | 4 | #4 证据契约、#5 checker、#6 动作闸、#11 推理期；原锚 withdrawn |
-| 期待 | 9 | X1–X9（[acceptance §5.2](./acceptance.md#52-期待与数据需求验收规格)） |
-| 知识条件 | 5 | K0–K4；01 主路径 K0–K2；**论文代号，非标准**；见 [K 页](./k-ladder.md) |
+| 期待 | 9 | X1–X9（[acceptance §5.2](05-acceptance.md#52-期待与数据需求验收规格)） |
+| 知识条件 | 5 | K0–K4；01 主路径 K0–K2；**论文代号，非标准**；见 [K 页](92-k-ladder.md) |
 | 10 个活跃行的证据等级 | 已核 4 / 代码 4 / 模拟 1 / 设计 1 | 不含 4 个 withdrawn→gap 行 |
 | 跨派结论 basis | 20 | E-01–E-20；仓库共 27 条、9 条 withdrawn；01 主路径只引仍 admitted 的 E |
 | W 编号 | 7 行（W-07 不在本份用） | W-07（SFE-O）见 [02 canonical §1.1](../../02-engineering-playbook/sections/canonical.md#w-table) |
-| 反向条目 | 2 | [boundaries §4.3](./boundaries.md#43-反向在已测条件下不要做)；另 3 条原锚撤回，列“待新源”不作 D |
-| 不能当前提 | 6 | [boundaries §4.2](./boundaries.md#42-还不能当工作前提) |
-| 证据边界 | 5 | [boundaries §4.4](./boundaries.md#44-证据边界) |
-| 能力组 | 6（合并为 1 页） | [capabilities](../capabilities/README.md) |
-| 数据表 | 8 | [01 §数据表](../README.md#数据表工作底稿) |
-| 决策记录 | 6 + 1 对照 | [decision-record](./decision-record.md) |
+| 反向条目 | 2 | [boundaries §4.3](04-boundaries.md#43-反向在已测条件下不要做)；另 3 条原锚撤回，列“待新源”不作 D |
+| 不能当前提 | 6 | [boundaries §4.2](04-boundaries.md#42-还不能当工作前提) |
+| 证据边界 | 5 | [boundaries §4.4](04-boundaries.md#44-证据边界) |
+| 能力组 | 6（合并为 1 页） | [capabilities](../03-capabilities/README.md) |
+| 数据表 | 8 | [01 §数据表](../09-data/) |
+| 决策记录 | 6 + 1 对照 | [decision-record](09-decision-record.md) |
 
 > **A/B/C 的计数只数有 admitted 源的 10 行；#12 是非本体参照，不进分母；#4/#5/#6/#11 是 withdrawn→gap，不进 A/B/C。** 与 README §0 的 C 桶（2 项）一致。
 
 ## 2. 阈值（X1–X9）
 
-> **K 代号见 [K 页](./k-ladder.md)**：K0–K4 是论文实验条件，不是行业标准。本表只写门槛。
+> **K 代号见 [K 页](92-k-ladder.md)**：K0–K4 是论文实验条件，不是行业标准。本表只写门槛。
 
 | # | 期待 | 现役门槛 | 出处 | 没过怎么办 |
 |---|---|---|---|---|
@@ -52,14 +52,14 @@ parent: ../README.md
 
 | 项 | 值 | 出处 | 量不出时 |
 |---|---|---|---|
-| 负例检出 | 100% | E-20；[记录 3](./decision-record.md) | 不宣称三态通过 |
+| 负例检出 | 100% | E-20；[记录 3](09-decision-record.md) | 不宣称三态通过 |
 | 干净样本误报 | ≤5% | 同上 | 标 `untested` |
 | 三态 | 0/2/3；读 JSON，不看 exit code | E-20：open-ontologies 把 `conforms:null` 映射成 exit 2 | 只能报「未检查完」 |
 | 样本量 | **未定（gap）** | — | 先用你现有的负例集，记下条数 |
 
 > **#10 是「本体被执行」但不在 agent 回路内**；它进表是因为能给 CI 一个可复算的通过/违反/未检查完，不是因为它改变了 agent 行为。
 
-> **X7 的「object 0 泄漏」是验收值，不是 A/B 定档线。** 定档看 [map §2.1](./map.md#21-判定口径)：边界能不能写成一条你能执行的验收。
+> **X7 的「object 0 泄漏」是验收值，不是 A/B 定档线。** 定档看 [map §2.1](02-map.md#21-判定口径)：边界能不能写成一条你能执行的验收。
 
 > `≥ +10pp` 与 `≥0.90` 是两种门：01 的 X1 用相对增益；02 的 R1 另有绝对门槛。**不要跨份混用**（见 [02 canonical §1](../../02-engineering-playbook/sections/canonical.md#1-三处已对账的口径)）。
 
@@ -94,20 +94,20 @@ parent: ../README.md
 <a id="w-01"></a>
 | 编号 | 原依据 | 今天状态 | 不能再用 | 重启前先量（最小自测） | 详见 |
 |---|---|---|---|---|---|
-| **W-01** | E-02 Ontology Catch（checker） | withdrawn | catch/FA、空结果重试基线、precision、净修复 | **200 题**（类型/声明/语义各 ≥50，余下按故障分布补足）；catch/FA/净修复分开；per-flagged（token 或人时）。工程建议：catch ≥+5pp、FA ≤15%；净修复 ≤0 就停。 | [map §2.2b](./map.md#22b-gap待新源4-行) |
-| **W-02** | E-03 OA-RAG（grounding/证据契约） | withdrawn | 检索率、引用率、等级校准、调用/token | **400–800 条答案**（每级 100–200 条独立标注）；检索率 ≥50%、引用率 ≥85%（工程建议）。没有独立标注就只做提示、不上自动路由。 | [capabilities §3.4](../capabilities/README.md#judgment) |
-| **W-03** | E-04 POLAR（动作前可逆性闸） | withdrawn | 改善格数、T1-only、false-veto、τ 效应 | **shadow 200–500 决策**；100 条 blocked 人工标 harm/授权；同轨迹配对；报 miss–false-block 前沿（**不设单点**）。误拦率量不出、或合法意图主导场景，就不上硬 veto。 | [capabilities §3.6](../capabilities/README.md#constraint) |
-| **W-04** | E-13 能力梯度 | withdrawn | 收益随能力下降的六点拟合、斜率 | **先 1 档 × 1 域 × 5 runs 看方向**；要写「能力阈值」再扩到 3 档 × 2 域。CI 跨零 → 只写「未检出」。 | [boundaries §4.4](./boundaries.md#44-证据边界) |
-| **W-05** | E-16 OntoAct（推理期条件验证） | withdrawn | 三值条件的效应、无效干预率 | **≥100 条**带前提条件的决策；先测三值覆盖率（⊤/⊥/?）；? 比例 >30% 先补状态/观测，不谈效应。 | [map §2.2b](./map.md#22b-gap待新源4-行) |
-| **W-06** | Commit Boundary（commit gate 概念架构） | 源移出（设计保留） | promotion 七条、三段式契约的「已核」 | **1 个 mutation class**；20–50 条 false-defer 样本；审计字段（谁/何时/依据）齐。没有回滚/重入路径就只做只读影子。 | [capabilities §3.9](../capabilities/README.md#open-gaps) |
-| **W-08** | 换词检查（2026-11-09，26 源） | 统计源已重置 | 分子/分母、比例 | **抽 20 条当前 claim**，逐条问「换成任意结构化上下文是否仍成立」；报比例 + 判定人 + κ。 | [boundaries §4.4](./boundaries.md#44-证据边界) |
+| **W-01** | E-02 Ontology Catch（checker） | withdrawn | catch/FA、空结果重试基线、precision、净修复 | **200 题**（类型/声明/语义各 ≥50，余下按故障分布补足）；catch/FA/净修复分开；per-flagged（token 或人时）。工程建议：catch ≥+5pp、FA ≤15%；净修复 ≤0 就停。 | [map §2.2b](02-map.md#22b-gap待新源4-行) |
+| **W-02** | E-03 OA-RAG（grounding/证据契约） | withdrawn | 检索率、引用率、等级校准、调用/token | **400–800 条答案**（每级 100–200 条独立标注）；检索率 ≥50%、引用率 ≥85%（工程建议）。没有独立标注就只做提示、不上自动路由。 | [capabilities §3.4](../03-capabilities/README.md#judgment) |
+| **W-03** | E-04 POLAR（动作前可逆性闸） | withdrawn | 改善格数、T1-only、false-veto、τ 效应 | **shadow 200–500 决策**；100 条 blocked 人工标 harm/授权；同轨迹配对；报 miss–false-block 前沿（**不设单点**）。误拦率量不出、或合法意图主导场景，就不上硬 veto。 | [capabilities §3.6](../03-capabilities/README.md#constraint) |
+| **W-04** | E-13 能力梯度 | withdrawn | 收益随能力下降的六点拟合、斜率 | **先 1 档 × 1 域 × 5 runs 看方向**；要写「能力阈值」再扩到 3 档 × 2 域。CI 跨零 → 只写「未检出」。 | [boundaries §4.4](04-boundaries.md#44-证据边界) |
+| **W-05** | E-16 OntoAct（推理期条件验证） | withdrawn | 三值条件的效应、无效干预率 | **≥100 条**带前提条件的决策；先测三值覆盖率（⊤/⊥/?）；? 比例 >30% 先补状态/观测，不谈效应。 | [map §2.2b](02-map.md#22b-gap待新源4-行) |
+| **W-06** | Commit Boundary（commit gate 概念架构） | 源移出（设计保留） | promotion 七条、三段式契约的「已核」 | **1 个 mutation class**；20–50 条 false-defer 样本；审计字段（谁/何时/依据）齐。没有回滚/重入路径就只做只读影子。 | [capabilities §3.9](../03-capabilities/README.md#open-gaps) |
+| **W-08** | 换词检查（2026-11-09，26 源） | 统计源已重置 | 分子/分母、比例 | **抽 20 条当前 claim**，逐条问「换成任意结构化上下文是否仍成立」；报比例 + 判定人 + κ。 | [boundaries §4.4](04-boundaries.md#44-证据边界) |
 
 > W 表是**补偿方案**：每一条撤回都配一个「怎么用你自己的数据重新得到答案」。没有这一列，撤回就只剩免责。
 
 ## 6. 维护规则
 
-1. 改一个判定：先改 [map §2.1](./map.md#21-判定口径) 的规则或 `topics/` 的证据，再改本页计数；**不要在 case 里改标签**。
-2. 改一个阈值：先改本页，再改 [acceptance](./acceptance.md)；引用页只写「见 canonical」。
+1. 改一个判定：先改 [map §2.1](02-map.md#21-判定口径) 的规则或 `topics/` 的证据，再改本页计数；**不要在 case 里改标签**。
+2. 改一个阈值：先改本页，再改 [acceptance](05-acceptance.md)；引用页只写「见 canonical」。
 3. 新增一个数：必须带对象、条件、等级；缺一项不进本页。
 4. 发现两页不一致：以本页为准；本页也不确定，标 `undetermined` 并在 §2 登记。
 5. 本页不产生 E/L；所有数都来自已有页或 `topics/`。

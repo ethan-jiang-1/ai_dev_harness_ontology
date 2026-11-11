@@ -150,9 +150,9 @@ scope: evidence-objects
 |---|---|---|---|---|---|---|---|---|
 | O-P01 | p_h 标定（shadow） | 样本 1,600–2,000；臂 gate-on/off；指标 p_h CI/整臂准确率/p95/成本；判定 CI 下界 > p_min 且整臂非劣 δ；停 CI 下界 ≤ p_min | src/papers/2610.41172-context-as-infrastructure/digest.md#6-工程上怎么用 | FRAMES 类语料；预登记固定样本量 | E-14 / O-F01 / O-F06 | H2 | 预注册序贯设计或更大样本改变结论 | 02 evaluation；01 §5.2 |
 | O-P02 | checker 评估 | 样本 200 题 + 空结果基线；指标增量 catch/FA/净修复/per-1k；判定 catch ≥5pp、FA ≤15%、净修复 >0；停基线胜出 | deliverables/02-engineering-playbook/sections/acceptance.md#53-期待与数据需求验收规格 | 单域；故障分布未定 | E-02 / O-T06 | H2 | 第二域显示阈值不适用 | 02 §5.3；01 data/e4 |
-| O-P03 | false-veto 标注 | 样本 100 条 blocked + 授权标签（AuthorizationPairs 80/80 映射）；指标 false-block/miss 前沿；判定按 miss 预算选点；停无标签 | deliverables/01-capability-status/data/e5-false-veto.md#2-缺什么 | POLAR blocked log；单 gate | E-04 / 2607.22868 | H2 | 标签定义不可复现 | 01 data/e5；02 constraint |
+| O-P03 | false-veto 标注 | 样本 100 条 blocked + 授权标签（AuthorizationPairs 80/80 映射）；指标 false-block/miss 前沿；判定按 miss 预算选点；停无标签 | deliverables/01-capability-status/09-data/e5-false-veto.md#2-缺什么 | POLAR blocked log；单 gate | E-04 / 2607.22868 | H2 | 标签定义不可复现 | 01 data/e5；02 constraint |
 | O-P04 | 记忆三层评估 | 样本 200 units/setting；指标 CMR/human audit/round-trip；判定 +10pp、merge precision ≥90%；停 precision <90% | src/papers/2610.40482-firme/digest.md#41-memory-usability | 专有数据；文本 only | E-05 / E-17 | H2 | 三层不可互替被打破 | 01 data/e6；04 memory |
-| O-P05 | read-path 泄漏率 | 样本 第二实现 + object 方向用例；指标泄漏率/误拦/时延；判定泄漏 0 且 object 方向受控；停 fail-open 未修 | deliverables/01-capability-status/data/e7-e8-code.md#3-还缺什么 | 单实现现状；SHACL-AF | E-20 | H2 | 第二实现 fail-closed 且 object 受控 | 02 §5.3；01 data/e7-e8 |
+| O-P05 | read-path 泄漏率 | 样本 第二实现 + object 方向用例；指标泄漏率/误拦/时延；判定泄漏 0 且 object 方向受控；停 fail-open 未修 | deliverables/01-capability-status/09-data/e7-e8-code.md#3-还缺什么 | 单实现现状；SHACL-AF | E-20 | H2 | 第二实现 fail-closed 且 object 受控 | 02 §5.3；01 data/e7-e8 |
 | O-P06 | 受监管 citation/strict-pass | 样本 20–50 单；指标 citation 精度/strict-pass 违规/签核；判定 ≥0.95 且违规 0；停不可达 | deliverables/02-engineering-playbook/recipes/regulated.md#验收--停 | Grid 类；真实运营商未测 | 工程建议 + Grid signal | H2 | 客户侧显示 0.95/0 不可达 | 02 regulated；04 govern |
 
 ## 索引 · 按 E

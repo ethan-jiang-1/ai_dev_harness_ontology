@@ -54,7 +54,7 @@ parent: ../README.md
 
 > **没有 A+。** 本仓库没有独立复现，任何一项都升不到「已证」。A 是「工程上可以先做、失败也能回退」，不是「肯定没问题」。
 
-> **K0–K4 是论文条件代号，不是行业标准。** 本表第 1–2 行用「点位语义 / 知识投影文本」；K 只在括号里回查。谁定义的、K3/K4 是什么、为什么只到 K2，见 [K 页](./k-ladder.md)。
+> **K0–K4 是论文条件代号，不是行业标准。** 本表第 1–2 行用「点位语义 / 知识投影文本」；K 只在括号里回查。谁定义的、K3/K4 是什么、为什么只到 K2，见 [K 页](92-k-ladder.md)。
 
 <a id="22-一张表"></a>
 ### 2.2 一张表（只列有 admitted 源的 10 行）
@@ -120,19 +120,19 @@ parent: ../README.md
 <a id="24-x1x9-verdict2026-11-09-第一轮"></a>
 ### 2.4 X1–X9 verdict（2026-11-09 第一轮；2026-11-11 证据重置后修订）
 
-> **verdict 四档**：`supported` = 至少一条一手证据、在已测域成立；`supported（限定）` = 只在限定条件下成立；`conditional` = 公式/机制成立、关键输入未量；`unknown` = 没有一手证据（不是「无效」）。它只用于这 9 条期待，不是 E 的等级。这一轮只做 desk research 与代码阅读；数据表在 [`data/`](../data)。
+> **verdict 四档**：`supported` = 至少一条一手证据、在已测域成立；`supported（限定）` = 只在限定条件下成立；`conditional` = 公式/机制成立、关键输入未量；`unknown` = 没有一手证据（不是「无效」）。它只用于这 9 条期待，不是 E 的等级。这一轮只做 desk research 与代码阅读；数据表在 [`data/`](../09-data/)。
 
 | 期待 | verdict | 证据/数据表 | 边界 |
 |---|---|---|---|
 | X1 点位语义 | `supported（限定）` | E-12；单工厂 +54.6pp | 跨域未知 |
 | X2 知识投影文本 | `supported（限定）` | E-12；单工厂 +19.8pp | 跨域/多设备/顺序迁移未知 |
-| X3 编译 | `conditional` | E-08/E-14；[e3 数据表](../data/e3-compilation.md) | 公式成立；自己的 `p_h`/`c`/`Q` 未量 |
-| X4 checker | **`unknown` / 待新源** | E-02 已撤回（W-01）；[e4 数据表](../data/e4-checker.md) 只作历史 | 按 W-01 的 200 题协议重测；没有新源前不设门槛 |
-| X5 动作闸 | **`unknown` / 待新源** | E-04/E-13 已撤回（W-03）；E-15 仅非本体参照；[e5 数据表](../data/e5-false-veto.md) 只作历史 | 按 W-03 做 shadow + blocked 标注；false-veto 标签仍缺 |
-| X6 记忆 | `supported（限定）` | E-05/E-17；[e6 数据表](../data/e6-memory.md) | 非全部设置过 +10pp/90%；跨域未知 |
-| X7 读路径 | `supported（限定）`（存在）/ **`unknown`**（object 方向） | E-20；[e7/e8 代码](../data/e7-e8-code.md) | 单实现；fail-open；只删 subject |
-| X8 写路径 | **`unknown`/无实现** | E-20；[e7/e8 代码](../data/e7-e8-code.md) | 四个开源项目都无单次写授权 |
-| X9 确定性 | **`unknown`** | 设计提案；[P1/P2 扫描](../data/p1-p2-source-scan.md)（Suite v0 是 harness 级候选，未落盘） | 无本体锚点实现、无度量 |
+| X3 编译 | `conditional` | E-08/E-14；[e3 数据表](../09-data/e3-compilation.md) | 公式成立；自己的 `p_h`/`c`/`Q` 未量 |
+| X4 checker | **`unknown` / 待新源** | E-02 已撤回（W-01）；[e4 数据表](../09-data/e4-checker.md) 只作历史 | 按 W-01 的 200 题协议重测；没有新源前不设门槛 |
+| X5 动作闸 | **`unknown` / 待新源** | E-04/E-13 已撤回（W-03）；E-15 仅非本体参照；[e5 数据表](../09-data/e5-false-veto.md) 只作历史 | 按 W-03 做 shadow + blocked 标注；false-veto 标签仍缺 |
+| X6 记忆 | `supported（限定）` | E-05/E-17；[e6 数据表](../09-data/e6-memory.md) | 非全部设置过 +10pp/90%；跨域未知 |
+| X7 读路径 | `supported（限定）`（存在）/ **`unknown`**（object 方向） | E-20；[e7/e8 代码](../09-data/e7-e8-code.md) | 单实现；fail-open；只删 subject |
+| X8 写路径 | **`unknown`/无实现** | E-20；[e7/e8 代码](../09-data/e7-e8-code.md) | 四个开源项目都无单次写授权 |
+| X9 确定性 | **`unknown`** | 设计提案；[P1/P2 扫描](../09-data/p1-p2-source-scan.md)（Suite v0 是 harness 级候选，未落盘） | 无本体锚点实现、无度量 |
 
 **读法**：`supported（限定）` 只表示「在已测域里有证据」，不表示跨域有效；`unknown` 不是「无效」，是「还没有一手证据」。9 条里没有一条 `supported`（无限定）。
 >

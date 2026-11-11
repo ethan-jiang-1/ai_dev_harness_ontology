@@ -56,7 +56,7 @@ GB/T 42131-2022、FIBO、HL7 FHIR、GS1 EPCIS、IOF。
 |---|---|---|---|---|
 | 本体 | 「领域概念、关系与约束的显式规范」 | ISO/IEC 21838-1 §3（待核条款号） | `narrower` | 保留，注明只覆盖 TLO 视角 |
 | 成熟度 | 「组织能力分级」 | 无标准 | `local` | 标 local，禁止写成行业标准 |
-| 知识条件（K0–K4） | 论文的五个累积实验条件；K 不是知识层级 | arXiv:2610.11768 Table 1 / §2.8 | `local` | 保留 K 作回查；正文用人话名；不写成层级/成熟度；01 线已落地（[K 页](../01-capability-status/sections/k-ladder.md)） |
+| 知识条件（K0–K4） | 论文的五个累积实验条件；K 不是知识层级 | arXiv:2610.11768 Table 1 / §2.8 | `local` | 保留 K 作回查；正文用人话名；不写成层级/成熟度；01 线已落地（[K 页](../01-capability-status/02-sections/92-k-ladder.md)） |
 
 判定五类：`aligned`（换锚）/ `narrower`（标范围）/ `broader`（拆开）/ `divergent`（改名或限定）/ `local`（标自造）。
 
