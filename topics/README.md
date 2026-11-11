@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-10
+updated: 2026-11-11
 ---
 
 # topics：六派与四轴
@@ -135,7 +135,7 @@ updated: 2026-11-10
 - **找地址/数** → [objects.md](./objects.md)：`O-xx` 硬对象（C/F/T/M/N/R/P），按 E / 交付物 / 类型索引；它是地址层，不是结论层。
 - **找 E 的承重数/条件** → [evidence-anchors.md](./evidence-anchors.md)：每条承重 E 的数、条件、digest 节；EXP-004b 显示加锚后 citation strict 25%→55–65%。
 
-> **反向读法（不计入八种）**：从交付物的期待倒查证据 → [meta/loading §从交付物倒查](../meta/loading.md#从交付物倒查反向加载)。01 从 E1–E9 倒查，02 从 recipe 倒查，03 从边界倒查；不要从 `src/` 正着扫。
+> **反向读法（不计入九种）**：从交付物的期待倒查证据 → [meta/loading §从交付物倒查](../meta/loading.md#从交付物倒查反向加载)。01 从 E1–E9 倒查，02 从 recipe 倒查，03 从边界倒查；不要从 `src/` 正着扫。
 
 | 从哪来 | 先去 | 再去 | 缺的数 |
 |---|---|---|---|

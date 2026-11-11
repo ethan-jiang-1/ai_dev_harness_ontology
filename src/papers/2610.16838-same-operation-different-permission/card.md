@@ -68,6 +68,7 @@ updates: []
 
 ## 原文
 
-- PDF：同目录 `2610.16838-same-operation-different-permission.pdf`
+- PDF：[2610.16838-same-operation-different-permission.pdf](./2610.16838-same-operation-different-permission.pdf)
+- 正文 MD：[paper.md](./paper.md)
 - arXiv：https://arxiv.org/abs/2610.16838
 - 代码/数据：论文附录 A 有 reproduction guide；未在本地跑。

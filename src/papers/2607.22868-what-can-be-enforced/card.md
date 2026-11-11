@@ -62,6 +62,7 @@ updates: []
 
 ## 原文
 
-- PDF：同目录 `2607.22868-what-can-be-enforced.pdf`
+- PDF：[2607.22868-what-can-be-enforced.pdf](./2607.22868-what-can-be-enforced.pdf)
+- 正文 MD：[paper.md](./paper.md)
 - arXiv：https://arxiv.org/abs/2607.22868
 - 代码/数据：见上；未跑。

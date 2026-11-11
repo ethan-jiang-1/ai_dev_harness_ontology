@@ -17,6 +17,8 @@ updates:
 # HN：Netflix ontology-driven observability 的争论
 
 > 这是**论坛讨论卡**，不是 Netflix 原文的消化。原文 403（Cloudflare）未读；本卡只记录 HN thread 里实际出现的观点与分歧。
+>
+> HN thread 全文（本地存档）：[hn-netflix-ontology-observability.md](./hn-netflix-ontology-observability.md)。
 
 ## 它主张什么
 

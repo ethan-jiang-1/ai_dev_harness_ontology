@@ -76,7 +76,7 @@ parent: ../README.md
 | **Q-01** | 「本体越完备效果越好」的存疑条目 | [conclusions](../../../topics/conclusions.md) |
 | **C-03** | 尺子跟机制走的冲突条目 | [conclusions](../../../topics/conclusions.md) |
 | **D1** | 01 的工作底稿编号（不是判定 D） | [`data/`](../data/README.md) |
-| **26 / 15 / 3** | 换词检查：26 个来源里 15 个换词仍成立、3 个依赖 OWL/DL | [boundaries §4.4](./boundaries.md) |
+| **26 / 15 / 3** | 换词检查（2026-11-09，26 源）：15 个换词仍成立、3 个依赖 OWL/DL | [boundaries §4.4](./boundaries.md) |
 | **τ / φ / γ_m** | 阈值 / 干预强度 / 残余失败比例（动作闸） | [03 action](../../03-mechanism-reference/positions/action.md) |
 
 > `D1` 这个代号只出现在 `data/` 的页首，指「第一轮证据回抽」；与判定 **D 反向** 无关。

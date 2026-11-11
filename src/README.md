@@ -1,5 +1,5 @@
 ---
-updated: 2026-11-10
+updated: 2026-11-11
 ---
 
 # src：来源层（三类材料，各自一目录）
@@ -197,9 +197,11 @@ open-source/{org}-{repo}/
 
 ## 5. 新建的流程
 
+> 先过候选门槛：只有会改变判断/边界/交付物的来源才建卡；候选先记在对应派 `frontier.md`，不预建目录（见 [AGENTS](../AGENTS.md)「不要做」）。
+
 ### 5.1 论文
 
-1. **落原文**：PDF 放 `src/papers/{arxiv_id}-{slug}/`，在 manifest 登记。
+1. **落原文**：PDF 放 `src/papers/{arxiv_id}-{slug}/`；在 [manifest](./papers/manifest.md) 登记（行格式照表头：`# | 批次 | arXiv | 短标题 | 页 | 方向 | 文件 | 卡片 | 消化`），下载结果记 [_download.log](./papers/_download.log)。
 2. **转 MD**：`paper.md` + `references.md` + `appendix.md`；检查页码标记。
 3. **写 card**：元数据 + 一句话 + 问题/设定 + 图表索引 + 作者局限；`reading`/`provenance` 如实，并填 `evidence_role` / `execution_form` / `subtopic`（多归位用 `also_supports`）。
 4. **写 digest**：按 §3 骨架；先写「三句话」，再补术语/方法/数字/边界/工程。
@@ -217,6 +219,12 @@ open-source/{org}-{repo}/
 6. **写 digest**：按 [open-source-digest](./_templates/open-source-digest.md) 的 10 段；每个判断带 `已核/已证/推测/存疑`。
 7. **落 topics**：只在改变判断时动 `claims.md`；只是「论文机制没找到实现」→ 写进 `frontier.md` 的 G/N。
 8. **自检**：过 [checklist](../meta/checklist.md)。
+
+### 5.3 两类共同
+
+- 入库后更新 [meta/state](../meta/state.md) 的计数与 [execution-forms](../topics/execution-forms.md) 的形态分布。
+- 改判断：先本派 `claims.md`，跨派才 [conclusions](../topics/conclusions.md)；来源只进 `sources.md`。
+- 自检 `check_repo`；失败不提交。
 
 ## 6. 台账
 

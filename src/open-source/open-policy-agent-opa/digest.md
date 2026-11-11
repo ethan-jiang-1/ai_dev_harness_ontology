@@ -99,5 +99,6 @@ claims: []
 - Rego：`rego/rego.go`、`ast/`、`compile/`
 - 求值：`topdown/topdown.go`
 - 分发/审计：`plugins/bundle/`、`plugins/discovery/`、`plugins/logs/`
+- 代码地图：[code-map.md](./code-map.md)（文件/符号索引）
 - 文档：https://www.openpolicyagent.org/docs
 - pin：`3dc83ae32b43eb1a649ce0c5e6745fc7a4f3d146`

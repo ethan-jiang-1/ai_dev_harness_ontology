@@ -102,5 +102,6 @@ question → LLM 生成 SPARQL (GGC/NLKGQ/KGVoyager)
 - 索引：`src/index/Index.cpp`、`src/index/IndexBuilderMain.cpp`
 - 结果/更新：`src/engine/ExportQueryExecutionTrees.cpp`、`src/engine/ExecuteUpdate.cpp`
 - 嵌入：`src/libqlever/`
+- 代码地图：[code-map.md](./code-map.md)（文件/符号索引）
 - 文档：https://docs.qlever.dev
 - pin：`0998359ab0a569a12eae22050c694b6aa46bdda4`
