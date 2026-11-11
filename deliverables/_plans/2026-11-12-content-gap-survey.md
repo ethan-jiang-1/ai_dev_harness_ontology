@@ -58,7 +58,7 @@ scope: 内容层缺口盘点（purge 后）
 
 > 排序原则：先补「会让现有判断塌方」的，再补「中心问题最核心」的，最后补「锦上添花」的。每项标注「补什么证据 / 过哪道门 / 改变哪条判断」。
 
-- **P0 · 保证据基座不塌**：为 4 篇 probation 论文找第二独立信号（I3 采用 / I4 社区 / I5 资产）。这是倒计时任务，塌了会连带撤回大量 E。**已核查的线索（阴性结果）**：Agents Are Systems 释放了 benchmark 仓库 [lusxvr/rethinking-agent-evaluation](https://github.com/lusxvr/rethinking-agent-evaluation)（公开、MIT、Python，last push 2026-10-05），但 **0 fork / 0 依赖 / 1 star / 0 issue——无外部使用者，I5 不成立**，不能据此转正，probation 维持。其余三篇（GGC/N&D 纯预印本、CASEL 仅 CBASE 2026 小型会议）暂无 I1，需 I3/I4/I5。→ 改变：probation 转正或移出。本条是「释放代码 ≠ 有影响力」的实例，门该挡就挡。
+- **P0 · 保证据基座不塌**：为 4 篇 probation 论文找第二独立信号（I3 采用 / I4 社区 / I5 资产）。这是倒计时任务，塌了会连带撤回大量 E。**已核查的线索（阴性结果）**：Agents Are Systems 释放了 benchmark 仓库 [lusxvr/rethinking-agent-evaluation](https://github.com/lusxvr/rethinking-agent-evaluation)（公开、MIT、Python，last push 2026-10-05），但 **0 fork / 0 依赖 / 1 star / 0 issue——无外部使用者，I5 不成立**，不能据此转正，probation 维持。其余三篇也已查：**GGC/CASEL 无公开代码仓库、无采用（仅 arXiv 镜像/聚合站）；N&D 仅作者自建 [ontotower gallery](https://yhjoo-kier.github.io/ontotower/gallery.html) + 1 篇第三方博客评（低于 I4 的 ≥3 讨论阈值）——四篇目前都没有第二独立信号**，probation 全部维持，2027-05-11 是真实风险。→ 改变：probation 转正或移出。本条是「释放代码 ≠ 有影响力」的实例，门该挡就挡。
 - **P1 · 补执行型证据（中心问题核心）**：
   - 04 记忆 / 06 度量的「本体真执行」开源样本（engine/compiled，pin commit，独立采用）。→ 改变：E-20 的形态矩阵、04/06 的代码级证据。
   - read-path 第二独立实现 + harness 调用点。→ 改变：是否升第七时刻。

@@ -47,7 +47,7 @@ src/（给 Agent 的干货）──digest──▶ topics/（给 Agent+人的判
 
 1. **定位**：在被指页找到承重句与它背后的 `E-xx`。没有 E → 它是新判断，从第 3 步开始。
 2. **核证**：读 E 行链的 `digest.md` §4/§5。digest 足够 → 错在抽取或表述，跳第 5 步。
-3. **补证**：digest 不足或源不合格 → 按 [CHARTER §4](./CHARTER.md#4-素材准入material-gate) 找权威材料（研究论文与工程落地并重；标准只定词，不证效果）。过五门 → 建 card/digest；不过 → 记入该派 `frontier.md` 候选队列。
+3. **补证**：digest 不足或源不合格 → 先查 [来源黑名单](./meta/excluded-sources.md)（命中即弃），再按 [CHARTER §4](./CHARTER.md#4-素材准入material-gate) 找权威材料（研究论文与工程落地并重；标准只定词，不证效果）。过五门 → 建 card/digest；不过 → 记入该派 `frontier.md` 候选队列。
 4. **升判断**：先写该派 `claims.md`（L）；跨派或进交付物才升 `conclusions.md`（E）。修正旧判断的，回改所有引用页，并在 card/digest 的 `updates:` 登记。
 5. **回写**：按新的 E/digest 重写交付物段落；主路径保持自包含，细节链 topics 标「可选/出处」。
 6. **收口**：跑 `python3 meta/tools/check_repo.py`，过 [checklist](./meta/checklist.md)，更新 [state](./meta/state.md)。
@@ -62,7 +62,7 @@ src/（给 Agent 的干货）──digest──▶ topics/（给 Agent+人的判
 
 ## 素材准入（先过门，再建卡）
 
-新材料进 `src/` 前，先过 [CHARTER §4](./CHARTER.md#4-素材准入material-gate) 的五道门 G1–G5——**判据以宪章为唯一出处，本页不复述**。这是建卡的前置，不是建卡后的评分。结果写在卡上：
+新材料进 `src/` 前，先过 [CHARTER §4](./CHARTER.md#4-素材准入material-gate) 的五道门 G1–G5——**判据以宪章为唯一出处，本页不复述**。这是建卡的前置，不是建卡后的评分。**采/引任何源之前先查 [来源黑名单](./meta/excluded-sources.md)：命中的源一律不读、不引、不入库**（防调研时复见已剔除源、把判断带偏）。结果写在卡上：
 
 - 五门全过 → `admission: admitted`，建 card + digest；卡必填 `admission` / `gate_checked` / `impact_evidence` / `liveness` / `provenance_type`（字段定义见 [conventions](./meta/conventions.md#字段与词汇)）。
 - G1/G5 过、G2/G3 未证 → `signal`，只进 `frontier.md` 候选队列，不建目录、不进 topics/deliverables。

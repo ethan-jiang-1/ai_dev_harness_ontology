@@ -13,6 +13,7 @@
 
 ## 0.1 素材准入
 
+- 新引源已对 [来源黑名单](./excluded-sources.md) 查过；无命中源的读/引/入库。
 - 新卡有 `admission` / `gate_checked` / `impact_evidence` / `liveness` / `provenance_type`；`admitted` 至少两条独立信号，至少一条 I1–I3。
 - `signal` 没进 `src/`；`excluded` 没建卡；**历史语料没有“已引用/已消化/名校”豁免**。
 - 被删源的引用已改 tombstone；依赖它的 E/L 已撤回、降级或换锚。
