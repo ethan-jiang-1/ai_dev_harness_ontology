@@ -11,7 +11,7 @@ updated: 2026-11-09
 
 等级定义见 [conventions](../meta/conventions.md#证据等级)。
 
-> **反向阅读**：E 行 → 该行链的 digest §4（数字与条件）→ §5（不能说明什么）；缺的数去对应派 `frontier.md`。不要在 E 表里补新判断。
+> **反向阅读**：E 行 → [evidence-anchors](./evidence-anchors.md)（承重数/条件 + digest 节）→ digest §4（数字与条件）→ §5（不能说明什么）；缺的数去对应派 `frontier.md`。不要在 E 表里补新判断。
 
 ## 已证
 

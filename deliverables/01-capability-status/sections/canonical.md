@@ -25,7 +25,7 @@ parent: ../README.md
 | 证据边界 | 5 | [boundaries §4.4](./boundaries.md#44-证据边界) |
 | 能力页 | 6 | [capabilities](../capabilities/README.md) |
 | 数据表 | 8 | [data](../data/README.md) |
-| 决策记录 | 4 + 1 对照 | [decision-record](./decision-record.md) |
+| 决策记录 | 6 + 1 对照 | [decision-record](./decision-record.md) |
 
 > **A/B/C 的计数只数「本体被执行」的 13 行（含离线 #10）；#12 是非本体参照，不进分母。** 与 README §0 的 C 桶（3 项）一致。
 

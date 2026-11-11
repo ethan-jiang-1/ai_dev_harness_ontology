@@ -133,7 +133,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 - **人评先行**：两人独立标注，报 κ；κ < 0.6 或 precision < 0.9 → 只做提示，不自动放行。
 - **LLM judge 只做预标注**：先在这 20 条上测与人一致率；AttributionBench 的经验上限约 80% macro-F1，达不到就不得替代人评。
 - **停**：没有标签 → 标 `gap`；不要把 presence 的 85% 当 correctness 的通过线。
-- **EXP-004（2026-11-11）**：抽 20 条交付物 claim + 所引 E 行，两个 agent 标 S/P/N，κ=1.0；strict S=5/20（25%），宽松 57.5%，N=2/20。结论：**E 行单独只支持 1/4 的 claim**；多数是 E 行摘要掉了具体数字/条件，细节在 digest。E-xx 是地址，不是自足 warrant。见 [exp-004](../../_plans/2026-11-11-exp-004-citation-audit.md)。
+- **EXP-004（2026-11-11）**：抽 20 条交付物 claim + 所引 E 行，两个 agent 标 S/P/N，κ=1.0；strict S=5/20（25%），宽松 57.5%，N=2/20。结论：**E 行单独只支持 1/4 的 claim**；多数是 E 行摘要掉了具体数字/条件，细节在 digest。E-xx 是地址，不是自足 warrant。**EXP-004b**：同一 20 对改用「E 行 + [evidence-anchors](../../../topics/evidence-anchors.md) 锚」后，strict 25% → **55–65%**，N 2 → **0**；剩余 P 多是处方/解释，应标 `工程建议`，不要挂 E。见 [exp-004](../../_plans/2026-11-11-exp-004-citation-audit.md)。
 
 ### 可抄锚点
 

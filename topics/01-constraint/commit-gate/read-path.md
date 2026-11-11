@@ -62,7 +62,7 @@ evidence: [E-20, E-23]
 |---|---|---|---|---|---|---|---|
 | 查询结果后过滤（post-filter） | trustgraph `184f622` | node（subject 侧） | 只删 subject | fail-open | 31 条单测；无 object/异常注入 | 2,902★，30 贡献者 | **第一实现**；单实现限定仍成立 |
 | 查询重写（rewrite） | sparql-guard `6b68d76` | node + graph（SHACL 行级） | subject+object（含 triple term） | fail-closed；不能安全重写就拒 | **76/76 通过**（EXP-001，2026-11-11） | 1★，2026-10-10 建，单组织 | **机制合格、成熟度不够** → 候选 |
-| 扫描期过滤（scan） | holosdb `666238f` | predicate + graph | 方向无关（按谓词/图） | 默认 deny；编译错误传播 | 20 条 security 单测（未复跑） | 1★，2026-08 建，单作者 | **第三执行点**；不能表达 node-level → 不是替代 |
+| 扫描期过滤（scan） | holosdb `666238f` | predicate + graph | 方向无关（按谓词/图） | 默认 deny；编译错误传播 | **20/20 通过**（EXP-006） | 1★，2026-08 建，单作者 | **第三执行点**；不能表达 node-level → 不是替代 |
 
 **判定**：
 
@@ -141,7 +141,7 @@ evidence: [E-20, E-23]
 | 项 | 命令 / 路径 | 结果 |
 |---|---|---|
 | sparql-guard 测试 | clone `6b68d769ccbf76a2544be9d80006a279ae8f3fa7`；`npm ci`；`npx vitest run` | **76/76 passed**（6 files，1.36s） |
-| holosdb 测试 | clone `666238f24adc8d65538f262e8731a8a45ed8bd3c`；`cargo test -p holos-security` | **未跑成**：本机 rustc 目标 x86_64 / arm64 linker 不匹配（`libxcrun` 只有 arm64）；代码读到 20 条 `#[test]`，作者 commit 称 20 通过 |
+| holosdb 测试 | clone `666238f24adc8d65538f262e8731a8a45ed8bd3c`；aarch64 toolchain + arm64 clang wrapper；`cargo test -p holos-security --target aarch64-apple-darwin` | **20/20 通过**（EXP-006）。x86_64 主机经 Rosetta 调 arm64 linker 的坑已绕过：`arch -arm64 /usr/bin/clang` wrapper |
 | trustgraph | 不重跑；沿用 2026-11-09 在 pin `184f622` 的只读代码核对（31 条单测） | 只读；无 object / 异常注入 |
 
 ### 7.2 读到了什么
@@ -159,7 +159,7 @@ evidence: [E-20, E-23]
 
 ### 7.4 结论
 
-**第二实现「有机制、没证据」。** 下一步不是再找一个引擎，而是把 §1 的 10 条用例做成共同协议，在三个执行点上各跑一遍，报泄漏率/误拦率。**EXP-002 的第一列（sparql-guard）已跑，见 §8；trustgraph/holosdb 仍是复刻，不是产品测量。**
+**第二实现「有机制、没证据」。** 下一步不是再找一个引擎，而是把 §1 的 10 条用例做成共同协议，在三个执行点上各跑一遍，报泄漏率/误拦率。**EXP-002 的第一列（sparql-guard）已跑，见 §8；holosdb 的 20 条单测也已复跑通过（EXP-006），但 10 用例仍是复刻（无 node-level）；trustgraph 仍是复刻，不是产品测量。**
 
 ### 7.5 EXP-002 协议（下一步，不在本轮）
 

@@ -129,3 +129,8 @@ _Avoid_: 误报率（那是 checker 口径）、拦截率
 **`p_h` / `p_min`**:
 `p_h` 是证据充分、可替换的查询比例；`p_min = 2% + c/(0.929Q)` 是编译的盈亏平衡。`p_h` 不是答对率（φ 另算）。见 [R3](./deliverables/02-engineering-playbook/recipes/knowledge.md)。
 _Avoid_: 命中率、准确率
+
+
+**证据锚（Evidence anchor）**:
+`E-xx` 行之外的「承重数/条件 + digest 节」地址，集中放 [topics/evidence-anchors](./topics/evidence-anchors.md)。它不产生结论；用途是让交付物引 E 时能落到具体节，而不是只写 `E-xx`。EXP-004b：只引 E 行时 citation strict support 25%，加锚后 55–65%。
+_Avoid_: 新 E、digest 摘要

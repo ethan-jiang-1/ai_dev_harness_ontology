@@ -78,7 +78,7 @@ basis: E-01–E-20, C-01–C-04
 | 6 关系 | [sections/relations.md](./sections/relations.md) | 与 02/03 的关系、维护 |
 | 术语 | [sections/glossary.md](./sections/glossary.md) | E1–E9 vs E-01–E-20、A/B/C/D、K0–K2 |
 | 阈值 | [sections/canonical.md](./sections/canonical.md) | 14 行计数、E1–E9 门槛、一个数只写一次 |
-| 决策记录 | [sections/decision-record.md](./sections/decision-record.md) | K1→A、读路径→B、离线 SHACL→A、落盘→C、OBDA 对照 |
+| 决策记录 | [sections/decision-record.md](./sections/decision-record.md) | K1→A、读路径→B、离线 SHACL→A、落盘→C、投影→B、checker→B、OBDA 对照 |
 | 模板 | [sections/templates.md](./sections/templates.md) | 决策记录/能力行/期待行空表 |
 | 证据 | [data/README.md](./data/README.md) | e3/e4/e5/e6/e7-e8 数据表、P0/P1 扫描 |
 

@@ -74,7 +74,7 @@
 ## F8 · 读路径有三个执行点，不是一个机制
 
 - **判断**：read-path 至少有三种执行点：post-filter（trustgraph，node/subject，fail-open）、rewrite（sparql-guard，node+graph，fail-closed）、scan（holosdb，predicate+graph，默认 deny）。三者的粒度、方向和错误路径不同，不能互替。
-- **等级**：已核（代码）；sparql-guard **76/76 tests 复跑通过**（EXP-001，2026-11-11）；holosdb 20 条 security 单测未复跑（本机 rustc 目标架构不匹配）。
+- **等级**：已核（代码）；sparql-guard **76/76 tests 复跑通过**（EXP-001，2026-11-11）；holosdb **20/20 tests 复跑通过**（EXP-006，2026-11-11；用 aarch64 toolchain + arm64 clang wrapper）。
 - **条件**：sparql-guard 1★/3 周/单组织；holosdb 1★/单作者；两者都无 harness 调用点、无泄漏率。
 - **含义**：E-23 的「单实现」限定只指 SHACL-AF post-filter；不要把它读成「read-path 只有一个实现」。共同缺口是评测协议，不是再找引擎。
 - **来源**：[read-path §3/§7](./read-path.md)；EXP-001。

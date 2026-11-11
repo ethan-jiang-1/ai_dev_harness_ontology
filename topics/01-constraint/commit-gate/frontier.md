@@ -34,4 +34,4 @@
 | trustgraph 读路径策略引擎 | 授权判据的独立执行者；不是 commit gate | 已核（代码） | 验证 fail-open 与对象方向 |
 | 冲突降级语义 | 域差异 | 待扫描 | N2 |
 | [Matdata-eu/sparql-guard](https://github.com/Matdata-eu/sparql-guard) | 第二 read-path 执行点（rewrite）：fail-closed、subject+object、**76/76 tests 复跑通过（EXP-001）**；**10 用例实跑 7 pass、1 alias leak、0 false-block（EXP-002）**；仍单作者/1★/3 周/无独立采纳 | 候选（未入库） | 不建卡；等独立评测或采纳 |
-| [pwin/triplestore](https://github.com/pwin/triplestore) | 第三 read-path 执行点（scan）：predicate/graph 级、默认 deny、fail-closed；`holos-engine/src/view.rs` 有调用点；20 security tests（未复跑）；无 Subject/Object scope | 候选（未入库） | 只作执行点对照，不进 01/02 主证据 |
+| [pwin/triplestore](https://github.com/pwin/triplestore) | 第三 read-path 执行点（scan）：predicate/graph 级、默认 deny、fail-closed；`holos-engine/src/view.rs` 有调用点；**20/20 tests 复跑通过（EXP-006）**；无 Subject/Object scope | 候选（未入库） | 只作执行点对照，不进 01/02 主证据 |

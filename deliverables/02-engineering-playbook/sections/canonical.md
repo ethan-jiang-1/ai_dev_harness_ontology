@@ -61,7 +61,13 @@ parent: ../README.md
 | 99.9% | Grid benchmark E score，不是部署 | R12 |
 | 9.7k tokens | R4 的 Qwen Test 3 每问均值 | R4 |
 
-## 5. 维护规则
+## 5. 数字口径（读正文时）
+
+- 正文里的阈值/效应量以本页 §2 为准；没标条件的句子，按本页的条件读。
+- 交付物引 E 时，优先「`E-xx` + [evidence-anchors](../../../topics/evidence-anchors.md)」；EXP-004b：只引 E 行 strict 25%，加锚 55–65%。
+- 还没逐数标条件的句子：`case` 的 `[待测]`、`boundaries` 的 −38%、`cost` 的单点 5% 已改；剩余标 `待测` 的不算通过。
+
+## 6. 维护规则
 
 1. 改一个阈值：先改本页，再改引用页；引用页只写「见 canonical」。
 2. 新增一个数：必须带对象、条件、等级；缺一项不进本页。

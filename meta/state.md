@@ -23,7 +23,7 @@ updated: 2026-11-11
 | 执行形态（36 源） | engine 4 / compiled 7 / context 3 / label 2 / none 20 |
 | 交付物 | 4 个子目录：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-ontology-in-production；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（README + GUIDE + 3 body + sections + evidence，E-21/E-22 已升、未入库 signal 另列）；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-11，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（528 文件；E=27，Q=3，C=4，L=79；28 论文 / 8 开源） |
+| 最后自检 | 2026-11-11，`python3 meta/tools/check_repo.py`：0 坏链 / 0 未定义 ID / 枚举通过（529 文件；E=27，Q=3，C=4，L=79；28 论文 / 8 开源） |
 
 ## 当前边界（不是阻塞）
 
@@ -49,9 +49,9 @@ updated: 2026-11-11
 - **01**：A/B/C/D 改为有序规则（含 undetermined）；新增 [decision-record](../deliverables/01-capability-status/sections/decision-record.md)（K1→A、读路径→B、离线 SHACL→A）、[glossary](../deliverables/01-capability-status/sections/glossary.md)、[canonical](../deliverables/01-capability-status/sections/canonical.md)；9 条期待补「没过怎么办」；C 桶统一 3；#12 标非本体。冷读第二轮 `yes`。
 - **03**：新增 [claim-walkthrough](../deliverables/03-mechanism-reference/sections/claim-walkthrough.md)、[reader-checks](../deliverables/03-mechanism-reference/sections/reader-checks.md)、[glossary](../deliverables/03-mechanism-reference/sections/glossary.md)；修 coverage「只有 G 没有 ●」→ C/E/F/G、覆盖率定义、E-22 台账、30%→31%、M1–M5 去重。冷读 partial：强读法需实测，属真 gap。
 - **第二轮收口（2026-11-11）**：01 模板 + 第四记录（落盘→C）+ 逐数等级；02 分诊优先级 + 第二个 worked example（R1）+ citation 协议；03 placement + claim 模板 + D2 清理 + alias 规范；EXP-003 alias 前置。外部来源：新增 [ALCE](../src/web/alce/alce.card.md)、[OWL 2 Profiles](../src/web/w3c-owl2-profiles/w3c-owl2-profiles.card.md)、[SHACL-AF](../src/web/w3c-shacl-af/w3c-shacl-af.card.md) 三张卡（摘要级/待核，不升 E）。复评见 [gap report §10.7](../deliverables/_plans/2026-11-10-gap-assessment-report.md#107-第二轮收口2026-11-11外部来源--文档层)。
-- **证据层（2026-11-11）**：EXP-004 引文审计（20 对，κ=1.0；strict S=5/20）；EXP-005 alias 前置在真实 sparql-guard 上 leak 1→0、false-block 0；M1 因无干净被试标 `未测`（见 [03 gaps](../deliverables/03-mechanism-reference/evidence/gaps.md)）。
+- **证据层（2026-11-11）**：EXP-004 引文审计（20 对，κ=1.0；E 行 strict S=5/20；E+锚 11–13/20）；EXP-005 alias 前置在真实 sparql-guard 上 leak 1→0、false-block 0；EXP-006 holosdb 20/20 单测复跑通过；M1 因无干净被试标 `未测`（见 [03 gaps](../deliverables/03-mechanism-reference/evidence/gaps.md)）。
 - **未做**：不改 04；不新增 E/L；M1/M2 仍 gap；citation 仍无标签；不做外部读者。
-- **自检**：528 文件；`check_repo` 通过（2026-11-11）。
+- **自检**：529 文件；`check_repo` 通过（2026-11-11）。
 
 ## 2026-11-10 04 可执行性与决策支持补强（文档，不实现）
 

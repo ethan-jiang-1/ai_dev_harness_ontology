@@ -28,7 +28,7 @@ updated: 2026-11-10
 | 时刻轴 | 本体在哪个时刻介入 | [`seams.md`](./seams.md) |
 | 形态轴 | 机器拿本体做了什么（引擎/编译/上下文/标签） | [`execution-forms.md`](./execution-forms.md) |
 
-另有三个横切索引：[conclusions](./conclusions.md)（证据）、[objects](./objects.md)（地址/数）、[domains](./domains.md)（领域）。形态轴不是索引，是第四根轴。
+另有四个横切索引：[conclusions](./conclusions.md)（证据）、[objects](./objects.md)（地址/数）、[evidence-anchors](./evidence-anchors.md)（E 的承重数/条件 + digest 节）、[domains](./domains.md)（领域）。形态轴不是索引，是第四根轴。
 
 派轴内部还可以再分**子主题**（`topics/<派>/<子主题>/README.md`）；那不是第四条轴，是派轴的第二层。派 README 只做地图，详细机制在子主题。
 
@@ -133,6 +133,7 @@ updated: 2026-11-10
 - **找前沿** → 各派 `frontier.md`：前沿问题、信号源、检索式、候选队列。
 - **找局部判断** → 各派 [claims.md](./01-constraint/claims.md)：`L-xx`，尚未升到 E-xx。
 - **找地址/数** → [objects.md](./objects.md)：`O-xx` 硬对象（C/F/T/M/N/R/P），按 E / 交付物 / 类型索引；它是地址层，不是结论层。
+- **找 E 的承重数/条件** → [evidence-anchors.md](./evidence-anchors.md)：每条承重 E 的数、条件、digest 节；EXP-004b 显示加锚后 citation strict 25%→55–65%。
 
 > **反向读法（不计入八种）**：从交付物的期待倒查证据 → [meta/loading §从交付物倒查](../meta/loading.md#从交付物倒查反向加载)。01 从 E1–E9 倒查，02 从 recipe 倒查，03 从边界倒查；不要从 `src/` 正着扫。
 
