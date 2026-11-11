@@ -21,6 +21,3 @@ parent: ../README.md
 > 反例集单独看：[N-table](../evidence/boundaries.md#0-反例集n-table)——12 条「常见主张 × 已测反例」，例如「平均 −38% 可上线」「有引擎就能拦」「审批越多越安全」。
 
 > 每条 E 的限定在 [evidence-ledger.md](../evidence/ledger.md)；更细的逐条解释见 [附录 §3.7](../appendix-constraint-spectrum.md#37-本章不能证明什么)。
-
-
-<a id="8-期待与数据需求验收规格"></a>

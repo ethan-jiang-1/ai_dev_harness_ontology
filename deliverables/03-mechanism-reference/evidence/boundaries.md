@@ -23,7 +23,7 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-09, E-12, E-13, E-14, E-15, E-1
 
 | # | 常见主张 | 已测反例（带数） | 什么会推翻它 | O | 出处 |
 |---|---|---|---|---|---|
-| N01 | 结构化上下文/本体能提准确率 | 被测工件（claim 树/RAPTOR/PageIndex/实体图/wiki）在 FRAMES 上 acc. neutral；ontology 行 `not measured`；N=200、p=91% 时两臂分辨率约 ±5.6pp | 换 benchmark 出现可检出增益，或配对 A/B 超过 δ | O-R01 | E-01 |
+| N01 | 结构化上下文/本体能提准确率 | 被测工件（claim 树/RAPTOR/PageIndex/实体图/wiki）在 FRAMES 上 acc. neutral；ontology 行 `not measured`；N=200、p=91% 时两臂分辨率约 ±5.6pp（**O-F09 的推算，`推测`**，不是论文直接报告） | 换 benchmark 出现可检出增益，或配对 A/B 超过 δ | O-R01 | E-01 |
 | N02 | 护栏必然提升任务表现 | E-04/E-13 撤回（W-03/W-04） | 新源复现后再说 | O-R02 | E-04/E-13 withdrawn |
 | N03 | 深结构比薄语义层更值 | K0→K1 +54.6pp vs K1→K2 +19.8pp；薄层约贡献 73% | 跨域深结构增益超过薄层 | O-R03 | E-12 |
 | N04 | 投影排序普适（文本 > JSON > 查询） | GLM JSON 0.900 > 文本 0.891；Qwen 工具 0.407 < 检索 0.538；pooled 0.777 只是平均 | 更多模型上文本—JSON 排序不翻转 | O-R04 | E-12 |

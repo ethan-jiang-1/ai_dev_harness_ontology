@@ -20,8 +20,9 @@ parent: ../README.md
 | gap / 待新源 | 4 | #4 证据契约、#5 checker、#6 动作闸、#11 推理期；原锚 withdrawn |
 | 期待 | 9 | X1–X9（[acceptance §5.2](./acceptance.md#52-期待与数据需求验收规格)） |
 | 知识条件 | 5 | K0–K4；01 主路径 K0–K2；**论文代号，非标准**；见 [K 页](./k-ladder.md) |
-| 10 个活跃行的证据等级 | 已核 4 / 代码 3 / 模拟 1 / gap 1 / 设计 1 | 不含 4 个 withdrawn→gap 行 |
+| 10 个活跃行的证据等级 | 已核 4 / 代码 4 / 模拟 1 / 设计 1 | 不含 4 个 withdrawn→gap 行 |
 | 跨派结论 basis | 20 | E-01–E-20；仓库共 27 条、9 条 withdrawn；01 主路径只引仍 admitted 的 E |
+| W 编号 | 7 行（W-07 不在本份用） | W-07（SFE-O）见 [02 canonical §1.1](../../02-engineering-playbook/sections/canonical.md#w-table) |
 | 反向条目 | 2 | [boundaries §4.3](./boundaries.md#43-反向在已测条件下不要做)；另 3 条原锚撤回，列“待新源”不作 D |
 | 不能当前提 | 6 | [boundaries §4.2](./boundaries.md#42-还不能当工作前提) |
 | 证据边界 | 5 | [boundaries §4.4](./boundaries.md#44-证据边界) |
@@ -42,7 +43,7 @@ parent: ../README.md
 | X3 | 编译 | `p_h ≥ p_min = 2% + c/(0.929Q)`；p95 不超预算 | E-08/E-14 | 不编译；先量 `p_h` |
 | X4 | checker | **待新源；原门槛作废** | E-02 withdrawn | 先找新源；不设门槛 |
 | X5 | 动作闸 | **待新源；原门槛作废** | E-04/E-13 withdrawn；E-15 仅参照 | 先找新源；不上硬 veto |
-| X6 | 记忆 | CMR 或 Acc@complete ≥+10pp；merge precision ≥90% | E-05/E-17 | 不做 registry |
+| X6 | 记忆 | CMR 或 Acc@complete ≥+10pp；merge precision ≥90%（**90% 是预登记线，`推测`**） | E-05/E-17 | 不做 registry |
 | X7 | 读路径 | object 方向 0 泄漏 | E-20 | 标单实现；不当授权 |
 | X8 | 写路径 | false-defer ≤20%；审计可追 | 无实现（gap） | 只做设计 |
 | X9 | 确定性 | 可度量（投影覆盖率/归因规则） | 设计提案（gap） | 标 unknown；不承诺 |
@@ -93,10 +94,10 @@ parent: ../README.md
 <a id="w-01"></a>
 | 编号 | 原依据 | 今天状态 | 不能再用 | 重启前先量（最小自测） | 详见 |
 |---|---|---|---|---|---|
-| **W-01** | E-02 Ontology Catch（checker） | withdrawn | catch/FA、空结果重试基线、precision、净修复 | **200 题分层**（类型/声明/语义各 ≥50）；catch/FA/净修复分开；per-flagged（token 或人时）。工程建议：catch ≥+5pp、FA ≤15%；净修复 ≤0 就停。 | [map §2.2b](./map.md#22b-gap待新源4-行) |
-| **W-02** | E-03 OA-RAG（grounding/证据契约） | withdrawn | 检索率、引用率、等级校准、调用/token | **200 题**；gold evidence 检索率 ≥50%、引用率 ≥85%（工程建议）；每个等级 100–200 条独立标注，报 precision/recall。没有独立标注就只做提示、不上自动路由。 | [capabilities §3.4](../capabilities/README.md#judgment) |
+| **W-01** | E-02 Ontology Catch（checker） | withdrawn | catch/FA、空结果重试基线、precision、净修复 | **200 题**（类型/声明/语义各 ≥50，余下按故障分布补足）；catch/FA/净修复分开；per-flagged（token 或人时）。工程建议：catch ≥+5pp、FA ≤15%；净修复 ≤0 就停。 | [map §2.2b](./map.md#22b-gap待新源4-行) |
+| **W-02** | E-03 OA-RAG（grounding/证据契约） | withdrawn | 检索率、引用率、等级校准、调用/token | **400–800 条答案**（每级 100–200 条独立标注）；检索率 ≥50%、引用率 ≥85%（工程建议）。没有独立标注就只做提示、不上自动路由。 | [capabilities §3.4](../capabilities/README.md#judgment) |
 | **W-03** | E-04 POLAR（动作前可逆性闸） | withdrawn | 改善格数、T1-only、false-veto、τ 效应 | **shadow 200–500 决策**；100 条 blocked 人工标 harm/授权；同轨迹配对；报 miss–false-block 前沿（**不设单点**）。误拦率量不出、或合法意图主导场景，就不上硬 veto。 | [capabilities §3.6](../capabilities/README.md#constraint) |
-| **W-04** | E-13 能力梯度 | withdrawn | 收益随能力下降的六点拟合、斜率 | **先 1 档 × 1 域 × 5 runs 看方向**；要写「能力阈值」再扩到 3 档 × 2 域。CI 跨零 → 只写「未检出」。 | [canonical §2](#2-阈值x1x9) |
+| **W-04** | E-13 能力梯度 | withdrawn | 收益随能力下降的六点拟合、斜率 | **先 1 档 × 1 域 × 5 runs 看方向**；要写「能力阈值」再扩到 3 档 × 2 域。CI 跨零 → 只写「未检出」。 | [boundaries §4.4](./boundaries.md#44-证据边界) |
 | **W-05** | E-16 OntoAct（推理期条件验证） | withdrawn | 三值条件的效应、无效干预率 | **≥100 条**带前提条件的决策；先测三值覆盖率（⊤/⊥/?）；? 比例 >30% 先补状态/观测，不谈效应。 | [map §2.2b](./map.md#22b-gap待新源4-行) |
 | **W-06** | Commit Boundary（commit gate 概念架构） | 源移出（设计保留） | promotion 七条、三段式契约的「已核」 | **1 个 mutation class**；20–50 条 false-defer 样本；审计字段（谁/何时/依据）齐。没有回滚/重入路径就只做只读影子。 | [capabilities §3.9](../capabilities/README.md#open-gaps) |
 | **W-08** | 换词检查（2026-11-09，26 源） | 统计源已重置 | 分子/分母、比例 | **抽 20 条当前 claim**，逐条问「换成任意结构化上下文是否仍成立」；报比例 + 判定人 + κ。 | [boundaries §4.4](./boundaries.md#44-证据边界) |

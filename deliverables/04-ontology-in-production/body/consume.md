@@ -15,6 +15,8 @@ parent: ../README.md
 
 ## B.0 决定表
 
+> **本表是工程选择，不是效果排序**：路线形态可读；原锚 E-26 已撤回，三条路线的分数不引用（见 [evidence §3.5](../evidence/ledger.md#w-table)）。
+
 | 你先有 | 默认路线 | 反例 | 停 |
 |---|---|---|---|
 | 关系库 + 稳定 schema + 映射 | OBDA（B.4） | 重写跑通但结果集与原生 SQL 不一致 | `ontop validate` 失败或公理被拒 |

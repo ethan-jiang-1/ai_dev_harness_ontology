@@ -122,9 +122,9 @@ snapshot=2026-11-11, notes="R4 样例；latency 未测"
 | 引用率 | `untested` | <85% | 工程建议 | 只做提示，不自动放行 |
 | 净修复 | 不适用（R4 不做修复） | — | — | — |
 | grounding 校准 | 未做 | 未校准 → 不自动路由 | R4 校准协议 | 只做排序/人工分流 |
-| 预算 | 5.8 calls / 9.7k **总** tokens（**历史**，E-03 撤回） | >5,000 **generated** tokens / >10 actions | R4 历史 | 口径不同；新源前不设门槛 |
+| 预算 | 旧调用/token 数（**历史**，E-03 撤回） | >5,000 **generated** tokens / >10 actions | R4 历史 | 口径不同；新源前不设门槛 |
 
-**结论**：本场景的 R4 只能到 `shadow + 人工分流`；`citation correctness` 没有 recipe，见 [R5 的 judge 分支](../recipes/judgment.md#r5--输出后-checker先超过空结果重试)（40 修好/83 修坏，净修复为负）。
+**结论**：本场景的 R4 只能到 `shadow + 人工分流`；`citation correctness` 没有 recipe，见 [R5 的 judge 分支](../recipes/judgment.md#r5--输出后-checker先超过空结果重试)（旧观察提示净修复可能为负；按 W-01 重测）。
 
 ## 7. 未测清单（交稿必填）
 
@@ -135,7 +135,7 @@ snapshot=2026-11-11, notes="R4 样例；latency 未测"
 | 2 | grounding 四级校准 | 未校准的等级不能自动路由 | 100–200 条/等级独立标注 |
 | 3 | 真实 latency / p95 | 预算闸需要时延 | 一次回放 + 时延分布 |
 | 4 | 跨域/多设备 | 单工厂不外推 | 第二域回放 |
-| 5 | 本体归属性 | 15/26 来源换词仍成立 | 同任务换「任意结构化上下文」对照 |
+| 5 | 本体归属性 | 换词检查计数已停用（W-08） | 抽 20 条 claim 换「任意结构化上下文」对照 |
 
 > **这张表是产物包的一部分**：填不出未测清单，说明你还不知道自己的证据边界。
 
@@ -194,7 +194,7 @@ delta=+?pp, tokens=?, gate=untested, notes="fixture 3 行；未跑"
 
 | 指标 | 本场景 | 停线 | 出处 |
 |---|---|---|---|
-| K1−K0 primary-trap avoidance | 未测 | < +5pp → 停；≥ +10pp → 过 | [canonical §2](../sections/canonical.md) |
+| K1−K0 primary-trap avoidance | 未测 | ≥+10pp（或绝对 ≥0.90）→ 过；<+5pp → 停；5–10pp 灰区，预注册时定 | [canonical §2](../sections/canonical.md) |
 | 别名覆盖率 | 未测 | < 80% → 先补别名 | 工程建议 |
 | 单位冲突 | 0（fixture） | > 0 → 先修数据 | 工程建议 |
 

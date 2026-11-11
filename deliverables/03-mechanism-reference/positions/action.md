@@ -38,7 +38,7 @@ POLAR 的两层：Layer A 静态动作本体（每个 mutating tool 的 T1–T5 
 | 输出 | `{decision, phi, pi, bottleneck}` 或 `{mode, p̂, ĉ, ρ, g, d, J(m), reason}` |
 | 下一步 | approve 执行；veto 返回可读理由；escalate 进审批队列；shadow 只记录 |
 
-## 3. 能改变什么（原锚已撤回；以下只作历史）
+## 3. 能改变什么（E-04/E-13/E-16 撤回；E-15 为现役非本体参照）
 
 > E-04/E-13/E-16 均已撤回；本节数字不得作为效应量引用。E-15 是非本体参照。
 

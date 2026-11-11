@@ -43,7 +43,7 @@ parent: ../README.md
 
 > 它不在六位置，是因为只有 1 个实现、fail-open、单侧过滤，不满足「≥2 个独立实现」的扩轴规则（[outside §3.2](../positions/outside.md#32-read-path检索返回前)）。
 
-> **read-path 不是一种机制。** 至少三个执行点：post-filter（trustgraph，node/subject，fail-open）、rewrite（sparql-guard，node+graph，fail-closed，**76/76 tests 复跑通过**）、scan（holosdb，predicate+graph，默认 deny）。**本文描述以 post-filter 为准**；换成 rewrite/scan，粒度与边界会变。见 [read-path §3/§7](../../../topics/01-constraint/commit-gate/read-path.md)。
+> **read-path 不是一种机制。** 至少三个执行点：post-filter（trustgraph，node/subject，fail-open；**唯一已入库实现**）、rewrite（sparql-guard，node+graph，fail-closed，仓库外复跑 76/76；**候选未入库**）、scan（holosdb，predicate+graph，默认 deny；**候选未入库**）。**本文描述以 post-filter 为准**；三个执行点不能互替，「admitted 第二实现」仍为**无**。见 [read-path §3/§7](../../../topics/01-constraint/commit-gate/read-path.md)。
 
 ## 3. 成立到什么程度
 

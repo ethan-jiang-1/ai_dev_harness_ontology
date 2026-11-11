@@ -45,8 +45,8 @@ parent: ../README.md
 | 落盘授权 | R9 | C ↔ C |
 | OBDA | R11 | A ↔ A |
 | 离线 SHACL | R10 | A ↔ A |
-| 推理期 | 不写成 R；见 §4 | C ↔ C |
-| 审批/多模式 | R6 的可选节 | C ↔ C |
+| 推理期 | 不写成 R；见 §4 | **gap ↔ gap**（E-16 撤回） |
+| 审批/多模式 | R6 的可选节 | **非本体 ↔ 非本体** |
 | 确定/多智能体 | 不写成 R；见 §4 | C/空白 |
 
 ## 3. 与 03 的 crosswalk
@@ -59,7 +59,7 @@ parent: ../README.md
 
 | 事项 | 为什么 | 去哪 |
 |---|---|---|
-| 推理期条件闸（E-16） | 模拟、固定 schema、无真实工厂；与 action-gate 边界未稳 | [reasoning-gate](../../../topics/01-constraint/reasoning-gate/mechanism.md)；01 C |
+| 推理期条件闸（E-16） | 模拟、固定 schema、无真实工厂；与 action-gate 边界未稳；**已撤回（W-05）** | [reasoning-gate](../../../topics/01-constraint/reasoning-gate/mechanism.md)；01 gap |
 | 跨运行确定性 | 只有设计提案，无实现/度量 | [determinism](../../../topics/04-state/determinism/mechanism.md)；01 C |
 | 多智能体共享本体 | 无可判定设计/证据；00-harness 唯一空白 | [orchestration](../../../topics/00-harness/orchestration.md)；01 C/空白 |
 

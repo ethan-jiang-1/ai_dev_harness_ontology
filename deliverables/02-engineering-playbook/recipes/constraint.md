@@ -9,7 +9,7 @@ basis: E-15/E-20；action-gate & commit-gate mechanism（E-04/E-13/E-16 已撤�
 
 > 三条都在「改变走向」的强端，但强度与成熟度不同：
 >
-> - **R6 动作前**：有实测，但收益不普遍、false-veto 未测；只能 shadow 起步。
+> - **R6 动作前**：原锚撤回（W-03）；机制在，效应量待重测；false-veto 未测，只能 shadow 起步。
 > - **R8 读路径**：有代码级实现，但 fail-open、只删 subject、单实现；只能当可见性，不能当授权。
 > - **R9 落盘前**：只有概念契约，没有实现；只能设计，不能声称落地。
 >
@@ -37,7 +37,7 @@ basis: E-15/E-20；action-gate & commit-gate mechanism（E-04/E-13/E-16 已撤�
 > **不要把拦截率当保证。** 同一信息下，false-block 与 miss 是一条前沿；block-all 可以做到零 miss，但零可用性。没有可用性/合法放行指标，不能比较两个 gate。
 
 
-> **机制（L1）**：POLAR（τ²-bench 的可逆性闸论文）用 Layer A（T1–T5 逆关系 + 权重）+ Layer B（每轮状态投影），对候选动作反向搜索 undo 序列；整条分数是 `min φ(u)`（φ = 该步的可逆性分数 0–1），一步不可逆归零，τ=0.80 以下 veto。**条件**：弱模型、不可逆、高代价；**反例**：T1-only≈full，增益更像广泛拦截；retail/强模型回退；**决策**：只 shadow，报 miss–false-block 前沿，不设单点。
+> **机制（L1）**：POLAR（τ²-bench 的可逆性闸论文）用 Layer A（T1–T5 逆关系 + 权重）+ Layer B（每轮状态投影），对候选动作反向搜索 undo 序列；整条分数是 `min φ(u)`（φ = 该步的可逆性分数 0–1），一步不可逆归零，τ=0.80 以下 veto。**条件**：弱模型、不可逆、高代价；**反例（旧观察，E-04 撤回，W-03 重测）**：T1-only≈full、retail/强模型回退；**决策**：只 shadow，报 miss–false-block 前沿，不设单点。
 
 ### 适用 / 不适用
 
@@ -104,7 +104,7 @@ state_hash
 
 1. **列 mutating tools / 槽位**；先写 T1/T4/T5 本体 v0，不追求全。
 2. **接只读状态**；反向搜索深度 3–5、环路检测；多候选取 `max min φ`，同分取最短。
-3. **τ=0.80 按域保留率校准**，不跨域照搬（airline 36.6%、retail 100%、telecom 98.7%）。
+3. **τ 按域保留率校准**，不跨域照搬；旧论文的保留率随 E-04 撤回，不再引用。
 4. **shadow 200–500 决策**；标 100 条 blocked 的 false-veto；报 harm/审批/task success。
 5. **先做可逆性路由 + shadow**；不要一上来做六模式分配（CASEL 的 `γ_m` 是假设）。
 
@@ -159,11 +159,11 @@ J(m) = γ_m · p̂ĉ + λk(m) + μq(m)
 
 ### 失效模式
 
-- **T1-only ≈ blanket veto。** 结构贡献未隔离；T1-only 增益不比 full 小。
+- **T1-only ≈ blanket veto（旧观察，E-04 撤回）。** 结构贡献未隔离；按 W-03 重测。
 - **可逆性 ≠ 安全性 ≠ 授权。** 外部副作用可能完全合法；retail 的 return/exchange 可能在 block log 里，但没有授权标签。
 - **漏掉一条不可逆关系 → false approval。** 本体错误是 fail-open 的。
 - **判据依赖运行时状态。** 静态本体不够；需要 Layer B。
-- **阈值错置。** airline 在 0.80 只保留 36.6%，retail 100%。
+- **阈值错置。** 旧观察里不同域的保留率差异极大（数值停用）；τ 必须按域校准。
 - **只判不记。** 剪枝事件不记录，false-veto 无法算。
 - **把 block 总数当正确拒绝。** 被 block 可能是 review 失败/不可用，不是授权判断；要把「拦住的未授权动作」与「放过的合法动作」分开报。
 - **不验证逆执行。** 「有逆序列」不等于「恢复会成功」。

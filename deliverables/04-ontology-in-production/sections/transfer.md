@@ -213,7 +213,7 @@ shape 不是「给本体加约束」，是「哪种数据错会让这条 CQ 静�
 - **换域**：第二个 worked domain 见 [worked-example](./worked-example.md)；它只演示方法，不是效果。
 - **停**：契约填不出、CQ 写不出、`targeted=0`、object 泄漏未修、没有 principal/多标签决策——任一出现，停在原地。
 
-## 9. 读完自测（6 题）
+## 9. 读完自测（5 题）
 
 1. 你能说出 CQ1 在 steward 与 analyst 下为什么不同，以及这个不同是 policy 判的还是执行层过滤的吗？
 2. `targeted=0` 为什么不是 pass？`violations=2` 为什么不能证明干净？

@@ -56,7 +56,7 @@ basis: E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-27；E-02/E-04/E-06/E-26 已撤
 
 > 第 7 天的最小声响是「三关有记录」，不是「全部通过」；`targeted=0` 不是 pass。
 
-> **只读 5 页（约 30 分钟）**：本页 §0 → [GUIDE 30 分钟 8 步](./GUIDE.md#p-30min) → [A.1 / A.3 / A.5](./body/build.md) → [B.2](./body/consume.md) → [C.3 / C.4](./body/govern.md)。
+> **只读 5 组（约 30 分钟）**：本页 §0 → [GUIDE 30 分钟 8 步](./GUIDE.md#p-30min) → [A.1 / A.3 / A.5](./body/build.md) → [B.2](./body/consume.md) → [C.3 / C.4](./body/govern.md)。
 >
 > **证据等级**：本份是读本/验收材料；示例是 fixture，数字是期望值，不是实测；`conditional` 不是失败，是未决项。
 
@@ -96,7 +96,7 @@ basis: E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-27；E-02/E-04/E-06/E-26 已撤
 |---|---|---|---|---|---|
 | 1 | 消费者契约 | 数据/应用/治理三方 | 立项 | 6 项无空；每行有 1 个 CQ 或拒绝条件 | [build A.1](./body/build.md) |
 | 2 | TBox + ABox | 数据/本体 | 建 | `rdflib` 解析；11 类/5 属性 | [ontology.ttl](./example/ontology.ttl) · [catalog.ttl](./example/catalog.ttl) |
-| 3 | shapes + 负例 | 数据/本体 | 建 | `pyshacl` 报 2 violations | [shapes.ttl](./example/shapes.ttl) · [A.4](./body/build.md) |
+| 3 | shapes + 负例 | 数据/本体 | 建 | `pyshacl` 期望 2 violations（未跑） | [shapes.ttl](./example/shapes.ttl) · [A.4](./body/build.md) |
 | 4 | 3 条 SPARQL | 应用 | 用 | CQ1 2 列 2 表（steward，数据管家身份）/ CQ2 7 列 4 表（steward）/ CQ3 4 数据集（governance），raw | [B.2](./body/consume.md) |
 | 5 | policy 表 | 治理 | 治 | 8 条规则；T9（steward 读表的优先级测试）未定；T11 governance dataset allow | [policy.json](./example/policy.json) · [C.2](./body/govern.md) |
 | 6 | 策略测试 | 治理 | 治 | 11 条输入→期望；T9 undetermined | [policy_tests.json](./example/policy_tests.json) |
