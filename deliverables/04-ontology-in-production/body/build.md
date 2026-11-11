@@ -99,7 +99,7 @@ Shapes：[shapes.ttl](../example/shapes.ttl)（2 条：TagHasLevel、HasTagClass
 
 其余 6 个（S1/S2/S3/S5/S9/S10）分别缺 principal/moment/refuse/version、无 dataset 边、版本不一致；现状均为 silent 或 answer undercoverage。
 
-SFE-O 与 Ontology Catch 已移出；checker 的 catch/FA 不再引用（W 表见 [02 canonical §1.1](../../02-engineering-playbook/sections/canonical.md#w-table)），PPV 只保留复算方法（O-F08）。
+SFE-O 与 Ontology Catch 已移出；checker 的 catch/FA 不再引用（W 表见 [evidence §3.5](../evidence/ledger.md#w-table)），PPV 只保留复算方法（O-F08）。
 
 ## A.5 可消费性闸门（产物：`build_report`）
 

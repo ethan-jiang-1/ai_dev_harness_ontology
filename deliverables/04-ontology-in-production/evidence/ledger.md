@@ -68,6 +68,19 @@ parent: README.md
 
 > transfer / templates / decision 是**工程方法与成本口径**，不新增 E；成本只有量级（`推测`），没有单价与 ROI。
 
+## 3.5 撤回与历史（W 表）
+
+> 04 直接依赖的撤回源不多；编号与 01/02 的 W 表一致，完整版见 [02 canonical §1.1](../../02-engineering-playbook/sections/canonical.md#w-table)。
+
+<a id="w-table"></a>
+| 编号 | 原依据 | 状态 | 不能再用 | 重启前先量 | 在 04 哪里 |
+|---|---|---|---|---|---|
+| **W-01** | E-02 Ontology Catch | withdrawn | checker 的 catch/FA、空结果基线 | 200 题分层；catch/FA/净修复；per-flagged（token 或人时） | A.4 输出校验、checker 相关 |
+| **W-05** | Grid（2611.03534） | 移出 | R12 的 benchmark 分数、时延 | 20–50 held-out；citation precision ≥0.95（工程建议）、签核记录 | 不直接出现；只作背景 |
+| **W-07** | SFE-O | 移出 | 「表达≠执行」的已核评级、2–4 人周估算出处 | 成本按你第一个 sprint 实录；表达≠执行按 A.4 的 shape + 负例自己验 | A.3/A.4、decision §2 |
+
+> **04 的 fixture 数字不是效应量**：2/2、7/4、4 dataset 是期望值；与 W 表无关。
+
 ## 4. 对象地址（O-xx，不是 E）
 
 | O | 是什么 | 值/公式 | 出处 |
