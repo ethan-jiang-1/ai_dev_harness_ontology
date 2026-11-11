@@ -24,7 +24,7 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 
 > 若你的 Markdown 预览器不解析相对链接，按「路径」列在文件树里打开同名文件。
 
-| 你要 | 读 | 路径 |
+| 用途 | 读 | 路径 |
 |---|---|---|
 | 机制摘要、claim 读法、能确认什么 | [00-overview](02-sections/00-overview.md) | `deliverables/03-mechanism-reference/02-sections/00-overview.md` |
 | 怎么读、按什么顺序 | [00-GUIDE](02-sections/00-GUIDE.md) | `deliverables/03-mechanism-reference/02-sections/00-GUIDE.md` |

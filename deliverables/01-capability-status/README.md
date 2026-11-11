@@ -26,7 +26,7 @@ basis: E-01–E-20, C-01–C-04
 
 > 若你的 Markdown 预览器不解析相对链接，按「路径」列在文件树里打开同名文件。
 
-| 你要 | 读 | 路径 |
+| 用途 | 读 | 路径 |
 |---|---|---|
 | 现状摘要、案例、三条判断、A/B/C/D 表 | [00-overview](02-sections/00-overview.md) | `deliverables/01-capability-status/02-sections/00-overview.md` |
 | 怎么读、按什么顺序 | [00-GUIDE](02-sections/00-GUIDE.md) | `deliverables/01-capability-status/02-sections/00-GUIDE.md` |

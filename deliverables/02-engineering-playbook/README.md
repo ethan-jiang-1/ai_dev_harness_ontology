@@ -26,7 +26,7 @@ basis: E-01–E-20, C-03; recipes R0–R12
 
 > 若你的 Markdown 预览器不解析相对链接，按「路径」列在文件树里打开同名文件。
 
-| 你要 | 读 | 路径 |
+| 用途 | 读 | 路径 |
 |---|---|---|
 | 工程摘要、案例、主线、三条判断 | [00-overview](02-sections/00-overview.md) | `deliverables/02-engineering-playbook/02-sections/00-overview.md` |
 | 怎么读、按什么顺序 | [00-GUIDE](02-sections/00-GUIDE.md) | `deliverables/02-engineering-playbook/02-sections/00-GUIDE.md` |

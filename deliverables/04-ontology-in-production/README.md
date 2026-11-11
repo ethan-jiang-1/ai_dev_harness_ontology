@@ -23,7 +23,7 @@ basis: E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-27；E-02/E-04/E-06/E-26 已撤
 
 > 若你的 Markdown 预览器不解析相对链接，按「路径」列在文件树里打开同名文件。
 
-| 你要 | 读 | 路径 |
+| 用途 | 读 | 路径 |
 |---|---|---|
 | 落地摘要、前 7 天、九件产物、验收 | [00-overview](02-sections/00-overview.md) | `deliverables/04-ontology-in-production/02-sections/00-overview.md` |
 | 怎么读、按什么顺序 | [00-GUIDE](02-sections/00-GUIDE.md) | `deliverables/04-ontology-in-production/02-sections/00-GUIDE.md` |
