@@ -8,7 +8,7 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-12, E-14, E-15, E-16, E-17, E-1
 
 # 尺子跟机制走：八行分派
 
-> 03 的方法论主轴是 C-03：**用准确率/reward 量控制类机制，会得出错误结论。** 本页把它落成一张按位置分派的表。
+> 03 的方法论主轴是 C-03：**用准确率/reward 量控制类机制，会得出错误结论。** 把它落成一张按位置分派的表。
 >
 > **这是设计（D），不是已验证的方法。** 上游在 [topics/06-measure/metrics/mechanism.md](../../../topics/06-measure/metrics/mechanism.md#按位置分派八行设计)；施工细节与 stop 线在 [02 §9](../../02-engineering-playbook/sections/acceptance.md#51-验收与-stop按机制选尺)。
 

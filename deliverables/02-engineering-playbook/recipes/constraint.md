@@ -32,6 +32,7 @@ basis: E-04/E-13/E-15/E-16/E-20；action-gate & commit-gate mechanism
 
 > **不要把拦截率当保证。** 同一信息下，false-block 与 miss 是一条前沿；block-all 可以做到零 miss，但零可用性。没有可用性/合法放行指标，不能比较两个 gate。
 
+
 ### 适用 / 不适用
 
 | 适用 | 不适用 |
@@ -276,12 +277,12 @@ output: filtered triples/nodes + block reason (if logged)
 
 ## R9 · 落盘前授权：现在只能设计，不要声称已落地
 
-> **为什么是 C 不是 B**：三条契约是设计；四个开源项目没有单次写授权（E-20），也没有 false-defer 标签；只能设计，不能 shadow。
-
 ### 目标
 
 把「可推理的证据」与「有权推动持久化的证据」分开；在 mutation 落盘前，按证据齐/冲突清/版本有效三条放行。
 
+
+> **为什么是 C 不是 B**：三条契约是设计；四个开源项目没有单次写授权（E-20），也没有 false-defer 标签；只能设计，不能 shadow。
 ### 适用 / 不适用
 
 | 适用 | 不适用 |

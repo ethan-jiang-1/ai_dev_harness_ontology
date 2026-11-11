@@ -12,7 +12,7 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-06, E-07, E-08, E-09, E-10, E-11, E-1
 >
 > 等级只有「已核 / 已核（代码）/ 推测 / 存疑」；本仓库没有「已证」。C 是冲突/方法论条目，不是等级。
 
-## 1. 按位置索引
+## 1. 按位置
 
 | 位置 | 主证据 | 边界证据 | 不能用的证据 |
 |---|---|---|---|
@@ -63,7 +63,7 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-06, E-07, E-08, E-09, E-10, E-11, E-1
 
 ## 4. 维护规则
 
-- E-xx 变化时，先改 [conclusions](../../../topics/conclusions.md)，再回改本页与位置卡。
+- E-xx 变化时，先改 [conclusions](../../../topics/conclusions.md)，再回改位置卡。
 - 新增 E 必须先在 topics 升，不在 03 里造。
-- 每条 E 的 `status`（active/contested）以 conclusions 为准；本页不复制生命周期状态。
-- 本页不列 L-xx；L 只在 topics 内部使用。
+- 每条 E 的 `status`（active/contested）以 conclusions 为准；不复制生命周期状态。
+- 不列 L-xx；L 只在 topics 内部使用。

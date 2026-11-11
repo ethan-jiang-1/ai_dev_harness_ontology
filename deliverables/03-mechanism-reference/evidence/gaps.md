@@ -101,7 +101,7 @@ evidence: [E-01, E-04, E-12, E-18, E-20]
 
 ## 5. 什么会改变这份缺口表
 
-- 任一项研究命中 → 先改对应位置卡与 `boundaries.md`，再改本页状态。
+- 任一项研究命中 → 先改对应位置卡与 `boundaries.md`，再改状态。
 - E 的限定变化 → 先改 [conclusions](../../../topics/conclusions.md)，再回改 03。
 - 出现新的可证伪期待（M6+）→ 先写进 topics 的 frontier，不在 03 里发明。
 
@@ -109,4 +109,4 @@ evidence: [E-01, E-04, E-12, E-18, E-20]
 
 - [01 现状 · 期待与数据需求](../../01-capability-status/sections/acceptance.md#52-期待与数据需求验收规格)
 - [02 · 期待与数据需求](../../02-engineering-playbook/sections/acceptance.md#53-期待与数据需求验收规格)
-- 各派 `frontier.md`；本页只做 03 的汇总，不复制候选。
+- 各派 `frontier.md`；只做 03 的汇总，不复制候选。

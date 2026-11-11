@@ -31,7 +31,7 @@ scope: portfolio-content-lift
 |---|---|---|
 | 01 | 14 行里 **10 行** 有 why；同页同数 ≤1 次 | `grep` 计数；字数/硬句 |
 | 02 | canonical **一张** 阈值表（含 why/overturn）；D1 可核；**10/13** recipe 有 why | 表数；`5pp/15%/90%` 出现次数；recipe 计数 |
-| 03 | **7/7** 卡有 why；`本页` ≤20；零硬页 5→5（不硬塞） | `grep 本页`；零硬页清单 |
+| 03 | **7/7** 卡有 why；meta 句 ≤60（当前页，不含 appendix；不许换词规避）；零硬页 5→5（不硬塞） | `grep 本页`；零硬页清单 |
 | 共同 | 新 why 带 `解释`/`推测`/`已核`；不新增 E/L；导语保留 | `check_repo`；人工抽读 |
 
 > 分数只作回看：目标 01 **A-**、02 **B+**、03 **A-**。分数不是验收，DoD 才是。
@@ -55,7 +55,7 @@ scope: portfolio-content-lift
 
 ## 5. 验收
 
-- **机器**：`check_repo` 0 坏链；`grep` 同页同数 ≤1；`本页` ≤20；表数 =1。
+- **机器**：`check_repo` 0 坏链；`grep` 同页同数 ≤1；meta 句 ≤60（当前页，不含 appendix；不许换词规避）；表数 =1。
 - **人读**：每份抽 1 页（01 `capabilities/knowledge`、02 `recipes/judgment`、03 `positions/action`），看「为什么」能否在 3 句内回答，且不把解释写成证据。
 - **回看**：重跑 [content-audit §11](./2026-11-11-content-audit.md) 的硬句/锐句/soft；若硬密度没涨、soft 继续涨，**停止补 why**，转证据层。
 

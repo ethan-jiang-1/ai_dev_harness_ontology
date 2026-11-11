@@ -6,9 +6,9 @@ parent: ../README.md
 
 # 2. 地图：主张、轴、位置
 
-> 本章回答：主张类型、四轴、六位置、强度矩阵。 ｜ 读完你应该能：把一条判断放到正确的位置上。
+> 这一节回答：主张类型、四轴、六位置、强度矩阵。 ｜ 目标：把一条判断放到正确的位置上。
 
-<img src="../../_figures/03-six-positions.svg" alt="本章地图" width="100%">
+<img src="../../_figures/03-six-positions.svg" alt="六位置地图" width="100%">
 
 ### 2.1 主张类型：E / C / H / D / G
 
@@ -54,7 +54,7 @@ parent: ../README.md
 
 > **判不了位置时**，走 [placement](./placement.md) 的五步；不要硬塞进相邻位置。
 
-> **六个位置不是六个时刻。** `determinism` 是第六个时刻，但不在强度谱上；`context` 不是时刻，是供给；`read-path`/`supply` 是轴外位置。别把四张表混成一张。谱外位置（determinism / read-path / supply / reasoning / training）见 [positions/outside.md](../positions/outside.md)。
+> **六个位置不是六个时刻。** `determinism` 是第六个时刻，但不在强度谱上；`context` 不是时刻，是供给；`read-path`/`supply` 是轴外位置。别把四张表混成一张。谱外位置（determinism / read-path / supply / reasoning / training）在 [positions/outside.md](../positions/outside.md)。
 
 
 <a id="3-六个位置一页表"></a>

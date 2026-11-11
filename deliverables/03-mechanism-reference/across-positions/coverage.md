@@ -8,9 +8,9 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-12, E-17, E-20, C-03]
 
 # 覆盖率：从一条线到一张矩阵
 
-> 03 原来的「强度–覆盖率反向」是一条线。线的问题是：没有定义、没有测量、不可证伪。本页把它换成「失效类别 × 位置」的矩阵。
+> 03 原来的「强度–覆盖率反向」是一条线。线的问题是：没有定义、没有测量、不可证伪。把它换成「失效类别 × 位置」的矩阵。
 >
-> **这是分类设计（D），不是测量。** 上游在 [topics/06-measure/metrics/coverage.md](../../../topics/06-measure/metrics/coverage.md)；本页只抽取，不新增格子。
+> **这是分类设计（D），不是测量。** 上游在 [topics/06-measure/metrics/coverage.md](../../../topics/06-measure/metrics/coverage.md)；只抽取，不新增格子。
 
 ## 1. 覆盖率是什么
 

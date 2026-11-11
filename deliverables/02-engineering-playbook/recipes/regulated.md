@@ -7,8 +7,6 @@ basis: Grid digest；compilation 机制三
 
 # R12 · 受监管知识供给：证据 + solver + 人签核
 
-> **为什么是 B**：Grid 是 benchmark 的 99.9%，不是运营商规模；人签核是流程，不是准确率；citation precision ≥0.95 是工程门。
-
 > 这不是「让模型更准」的 recipe，而是**受监管工作**的架构：答案必须引用证据，数字必须由成熟 solver 算，人做最终决策。三者写进架构，不写进 prompt。
 >
 > 它只适用于有成熟 solver、法规可检索、人能签核的域。没有这三项，别用。
@@ -17,6 +15,8 @@ basis: Grid digest；compilation 机制三
 
 让 agent 准备「可审计的法规证据 + 可复算的研究结果」，由人签核；把责任留在人，把检索/计算/整理交给系统。
 
+
+> **为什么是 B**：Grid 是 benchmark 的 99.9%，不是运营商规模；人签核是流程，不是准确率；citation precision ≥0.95 是工程门。
 ## 适用 / 不适用
 
 | 适用 | 不适用 |
