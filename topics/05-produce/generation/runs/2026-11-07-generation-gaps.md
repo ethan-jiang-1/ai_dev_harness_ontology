@@ -9,6 +9,8 @@ claims_changed: []
 
 # Run: 生成路线的证据缺口
 
+> **历史快照（2026-11-07，pre-purge）**：本 run 的来源 OntoDoc / Peeling / Evontree / ReX-GG 已于 2026-11-11 撤回；文中「已核」数字仅作历史记录，不作现役判断。现役口径见 [generation/findings](../findings.md)（已对账）。
+
 ## 输出
 
 1. **生成路线已能产出「可读、部分正确」的结构**：OntoDoc 151 个术语、完整性 +12%、11 人评估；ReX-GG 用户研究感知准确率 0.778；Evontree 两条规则 + 15 个人工根概念。这些是 `已核`（摘要级）的**报告结果**，不是「可消费」的证明。

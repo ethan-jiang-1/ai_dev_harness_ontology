@@ -8,6 +8,16 @@ updated: 2026-11-12
 > 本页是 [meta/state](./state.md) 的历史日志：逐次改动与**当时的**计数。
 > **这里的数字是快照，不是现行计数**；现行状态只看 [state](./state.md)。
 
+## 2026-11-12 topics 撤回源叙述页对账
+
+- **范围**：purge 后 topics 叙述页仍把撤回源数字当 `已核` 活证据的漂移（交付物正文经扫描已干净，漂移在上游 topics）。
+- **方法**：逐页判断——经验性结论唯一支撑撤回源 → 降 `推测`/历史示例；方法论/设计框架保留为 `推测`；admitted 源（CASTON/FIRME/CAI/CASEL/N&D/SLB/Agents/E-20）内容保留；混合页加对账横幅区分 admitted/撤回。
+- **覆盖**：01-constraint（action-gate/reasoning-gate/reversibility）、02-judgment（evidence/checker/calibration）、05-produce（README/claims/generation/representation/lifecycle）、06-measure（metrics/mechanism/failure-attribution/feasibility/claims）。11 提交。
+- **等级修正**：06-L2（E-06 Diagnose）已核→withdrawn；05-L1/L8 注 E-02 撤回。
+- **其他**：01 capabilities 补 frontmatter；generation run 日志加 pre-purge 快照注记。
+- **验证**：交付物正文 grep 无撤回源当活证据；check_repo 通过（455 md）。
+- **剩余长尾**：个别混合页行级标记（已有横幅覆盖）；历史 run 日志为快照，不作现役判断。
+
 ## 2026-11-12 指令层结构整改（ADR 0012）
 
 - **诊断**：[指令层审计](./audits/2026-11-12-instruction-layer-audit.md)——8 张路由表、准入规则 7 处复制、修复回路缺失、3 处已证实漂移。

@@ -32,11 +32,12 @@ updated: 2026-11-12
 1. **无外部资产请求**：D0/试点线已于 2026-11-09 删除；不再需要具名域、日志、题库、人或单价。
 2. **独立复现仍是空缺**：不影响 desk research；若要升「已证」，需要独立复现，但不在本仓库做；不设实验目录，也不再用模型做实验被试。
 3. **独立人类抽检**：只在对外交付时需要；内部研究不阻塞。
-4. **素材准入重置（2026-11-11）**：18 篇论文 + 3 个旧网页材料已移出；9 条 E 撤回、E-21 改写、E-19 降为推测。主题页/交付物里仍有段落按被删源写成，链接已指向 tombstone，但**重写完成前不得作为判断引用**。这是当前第一优先级。
+4. **素材准入重置（2026-11-11）+ 叙述页对账（2026-11-12）**：18 篇论文 + 3 个旧网页材料已移出；9 条 E 撤回、E-21 改写、E-19 降为推测。**topics 叙述页对账已基本完成**：各派 dashboard / claims / findings 索引 + mechanism 页已把撤回源数字降为 `推测`/历史示例并加对账横幅；admitted 源（CASTON/FIRME/CAI/CASEL/N&D/SLB/Agents/E-20 等）内容保留。交付物正文经扫描**无撤回源当活证据**。剩余长尾：个别历史 run 日志（`runs/`）为 pre-purge 快照，不作现役判断。
 5. **开源执行线**：4 个项目已在 pin commit 上完成只读代码核对；矩阵进 [execution-forms](../topics/execution-forms.md#代码级核对2026-11-09)；`read-path` 已入库仍只有 1 个实现（外部扫描另见 sparql-guard 候选，未入库），需第二实现 + harness 调用点才能决定是否升第七时刻。
 
 ## 最近改动
 
+- **2026-11-12 topics 撤回源叙述页对账（11 提交）**：01-constraint（action-gate/reasoning-gate/reversibility）、02-judgment（evidence/checker/calibration）、05-produce（README/claims/generation/representation/lifecycle）、06-measure（metrics/mechanism/failure-attribution/feasibility/claims）把撤回源数字降 `推测`/历史示例并加对账横幅；admitted 源保留；06-L2、05-L1/L8 等级修正；01 capabilities 补 frontmatter。交付物正文扫描无漂移；最重要的 01-capability-status 经逐页冷读确认自包含、判定口径/计数/W 表一致。
 - **2026-11-12 指令层结构整改（ADR 0012）** → [ADR](../adr/0012-instruction-layer-single-home.md) / [审计](./audits/2026-11-12-instruction-layer-audit.md)；AGENTS 唯一路由 + 常设修复回路；规则单一出处；_plans 现行唯一；修 3 处漂移。细则见 [state-log](./state-log.md#2026-11-12-指令层结构整改adr-0012)。
 - **2026-11-12 内容层 purge 对账 + 缺口盘点**：六派 frontier 队列 / 硬对象注册表（20 撤回）/ execution-forms（18 源）/ frontmatter 卫生对齐；[内容缺口盘点](../deliverables/_plans/2026-11-12-content-gap-survey.md)（外部前沿对齐待补）。
 - **2026-11-12 来源黑名单（ADR 0013）**：[excluded-sources](./excluded-sources.md) 常设禁引清单（21 源）；白名单=admitted 卡不另设文件；采/引前查黑名单接进 AGENTS/协议/checklist；P0 四篇 probation 第二信号核实为阴性。
