@@ -1,11 +1,13 @@
 ---
 status: seed
-updated: 2026-11-09
+updated: 2026-11-12
 rq: [RQ3]
-evidence: [E-02, E-05]
+evidence: [E-02, E-05]  # E-02 withdrawn；E-05(FIRME) admitted
 ---
 
 # 生命周期：来源、精化、演化
+
+> **2026-11-12 对账**：三源偏向的效应量来源 E-02(Ontology Catch) 与 Evontree/OntoAct 已撤回，相关数字作历史示例、降 `推测`；**FIRME（E-05）与 open-ontologies 代码检查（E-20）仍 admitted，保持 `已核`**。四阶段框架是综合（`推测`）。
 
 ## 状态
 
@@ -32,7 +34,7 @@ evidence: [E-02, E-05]
 
 **这张表的「优势/系统性偏向」两列是综合判断（`推测`）**，不是 E-02 的测量项——E-02 测的是 catch/FA/precision，没有测维护成本、覆盖窄或语义漂移。
 
-关键结论（E-02，`已核`）：三种来源在**漏检与误报**上的权衡不同，没有单一向优者（具体数字见 [02/checker](../../02-judgment/checker/README.md)）。原文把「checker 本身」当作研究对象，而不是比较「有没有本体」。
+关键结论（E-02 已撤回，历史示例）：三种来源在**漏检与误报**上的权衡不同，没有单一向优者（具体数字见 [02/checker](../../02-judgment/checker/README.md)，已标撤回）。原文把「checker 本身」当作研究对象，而不是比较「有没有本体」。
 
 **另一条已核（E-05，FIRME）**：本体在记忆系统里只承担跨期对齐与印证条件，不承担自由推理；alias memory 让 final-period CMR +7.8–12.1 pp（4 settings），但 false merge 长期污染未测（详见 [mechanism](./mechanism.md)「证据锚点」与 [04/identity](../../04-state/identity/README.md)）。
 
