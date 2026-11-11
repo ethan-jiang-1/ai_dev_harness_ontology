@@ -8,7 +8,7 @@ evidence: [E-03]  # withdrawn
 
 # evidence：产出带什么依据
 
-> **2026-11-11 证据重置**：主锚 **E-03 已撤回**；本卡的 grounding 等级与效应量只作回查，不再作为 admitted 结论。
+> **W-02**：主锚 E-03 撤回；本卡保留机制与边界，效应量不引用。
 >
 > **词源**：「接地（grounding）/ 接地等级 / 输出契约」是 `local` 工作词，没有标准锚（[规范主干 §4](../../../topics/trunk.md) 已列为缺口）；「约束 / 校验」有 `N: W3C SHACL`，但它定的是图约束，不是「输出带依据」。
 
@@ -48,10 +48,10 @@ OA-RAG 的实际做法：`DESCRIBE` 取 concept card，`ASK` 问 reasoner 是否
 
 ## 3. 能改变什么
 
-- **旧观察里整体准确率更优。** 旧设计是「几个大本体 + 六个医学 QA 任务 + 2 个 backbone」，相对文本 RAG 有增益；具体数值随 E-03 撤回停用。`withdrawn`（原 E-03）
-- **同预算下曾显示可比。** 旧观察在固定上下文预算下对比了 i-MedRAGdoc；具体分数随 E-03 撤回停用。`withdrawn`（原 E-03）
+- **旧观察里整体准确率更优。** 旧设计是「几个大本体 + 六个医学 QA 任务 + 2 个 backbone」，相对文本 RAG 有增益；数值按 W-02 重测。`withdrawn`（W-02）
+- **同预算下曾显示可比。** 旧观察在固定上下文预算下对比了 i-MedRAGdoc；数值按 W-02 重测。`withdrawn`（W-02）
 - **把三种情况分开。** 没有可用观察（E=∅）、检索到但不足以定答案（`related`）、检索到但无关（`unrelated`）；这是字段设计的价值，论文未把「可审计」单独量化。`已核`（机制）/ `推测`（可审计收益）
-- **预算可记（设计）。** 旧协议给了 tool actions / generated tokens 上限，以及实测调用与 token 均值；具体数值随 E-03 撤回停用。`withdrawn`（原 E-03）
+- **预算可记（设计）。** 旧协议给了 tool actions / generated tokens 上限与实测均值；数值按 W-02 重测。`withdrawn`（W-02）
 
 ## 4. 拦不住什么 / 失效模式
 
@@ -81,6 +81,8 @@ OA-RAG 的实际做法：`DESCRIBE` 取 concept card，`ASK` 问 reasoner 是否
 > **历史**：旧 E-03 有两套预算口径（小/大上下文），不可直接对照；E-03 撤回后数值停用。`withdrawn`
 
 ## 7. 可证伪条件
+
+- **先按 W-02 自测**：200 题；gold evidence 检索率 ≥50%、引用率 ≥85%；每级 100–200 条独立标注，报 precision/recall。
 
 - 给 grounding 等级做独立标注后，等级与正确率的排序不成立 → 收窄「等级可排序」；
 - gold evidence 完整检索后，契约相对纯文本 RAG 的增益消失 → 说明增益主要来自检索，不是契约；

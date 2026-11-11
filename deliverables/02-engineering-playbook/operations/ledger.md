@@ -7,7 +7,7 @@ basis: 06/feasibility、06/metrics、06/trace；E-08/E-14/E-18（E-02/E-04 已�
 
 # 账本：先记原始记录，再谈指标
 
-> **2026-11-11 证据重置**：本页 basis 中的 E-02/E-03/E-04/E-13 已撤回；相关数字只作历史，不再作为“已测”依据。
+> **证据重置**：E-02/E-03/E-04/E-13 已撤回（W 表见 [canonical §1.1](../sections/canonical.md#w-table)）；账本字段不变，旧数值不再引用。
 
 
 > 没有账本，`p_h`、false-veto、审批成本、catch/FA 都算不出来；所有 go/no-go 都退化成「感觉」。
@@ -141,7 +141,7 @@ harm=unknown, false_veto=unknown
 3. **用均值代替分布。** 平均 −38% 会掩盖 −91%/+1.9%。
 4. **用 retention 代 false-veto。** 保留率不是「拦对了多少」。
 5. **缺 `repeat_idx`。** 无法区分效应与 run-to-run 噪声。
-6. **缺 `cost_unit`。** 把 per-flagged 成本当每答案成本（旧 per-flagged 值随 E-02 停用）。
+6. **缺 `cost_unit`。** 把 per-flagged 成本当每答案成本（W-01）。
 7. **自评账本。** 机制 owner 兼评测 owner，口径会漂。
 
 ## 9. 交接

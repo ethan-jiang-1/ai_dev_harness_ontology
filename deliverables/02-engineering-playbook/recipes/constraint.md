@@ -28,7 +28,7 @@ basis: E-15/E-20；action-gate & commit-gate mechanism（E-04/E-13/E-16 已撤�
 
 ## R6 · 动作前可逆性闸：只在不可逆、高代价、弱模型时试
 
-> **2026-11-11 证据重置**：原锚 **E-04/E-13 已撤回**；R6 转 **gap / 待新源**。以下机制描述与旧 τ²-bench/T1-only 数字只作回查；CASEL（E-15）只是非本体参照，不能补这一行。能力判定见 [01 map §2.2b](../../01-capability-status/sections/map.md#22b-gap待新源4-行)。
+> **W-03**：原锚 E-04/E-13 撤回；R6 转 gap。机制保留，false-veto/harm 按 [W-03](../sections/canonical.md#w-table) 重测；CASEL（E-15）只是非本体参照，不能补这一行。
 
 ### 目标
 
@@ -132,7 +132,7 @@ J(m) = γ_m · p̂ĉ + λk(m) + μq(m)
 
 ### 证据
 
-**原锚 E-04/E-13/E-16 已撤回；R6 现在没有 admitted 来源。** 旧数字（18 格/8 改善、T1-only、六点拟合等）只保留在历史底稿，不再作为 R6 的证据。CASEL（E-15）是非本体参照，不能补这一格。要重启 R6，先找能复算 false-block/harm 的新源。
+**W-03；R6 没有 admitted 效应量。** 重启按 W-03：shadow 200–500 决策、100 条 blocked 标 harm/授权、同轨迹配对、报 miss–false-block 前沿（不设单点）。CASEL（E-15）是非本体参照，不能补这一格。
 
 
 ### 成本

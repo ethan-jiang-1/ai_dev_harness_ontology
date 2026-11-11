@@ -106,7 +106,7 @@ snapshot=2026-11-11, notes="R4 样例；latency 未测"
 | 字段 | 本场景 | 等级 |
 |---|---|---|
 | `hit/miss` | `hit`（有观察） | `untested` |
-| `tokens` | **总** tokens 口径（generated 未单列）；旧均值随 E-03 撤回停用 | `历史` |
+| `tokens` | **总** tokens 口径（generated 未单列）；按 W-02 记你自己的均值 | 工程记录 |
 | `latency` | `untested` | `untested` |
 | `citations` | 3 | `untested` |
 | `span_coverage` | 0.92 | `untested` |

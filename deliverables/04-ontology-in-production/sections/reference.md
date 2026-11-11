@@ -70,8 +70,8 @@ parent: ../README.md
 | 路线 | 先有什么 | 指标（单设置） | 成本 | 主要失败 | 可比性 |
 |---|---|---|---|---|---|
 | GGC | 已有 KG + 生成器 | 答案集匹配 90.23→98.33 | 单跑 ~30h / 选择性 ~33h / 全量 ~60h | 空结果无机制；单 KG/单骨干；无 2×2 | 与其余不可比 |
-| NLKGQ | 完整 OWL + endpoint | 旧报告里的 Match/Exact 分数（源已移出，数值停用） | 未报 | snapshot/窗口；wrapper 手工 | 与 GGC 不可比 |
-| KGVoyager | 只有 endpoint | 旧报告里的 F1 与成本（源已移出，数值停用） | 旧报告有成本数（停用） | 非 `rdf:type` 图；探索成本；benchmark 小 | 与前两者不可比 |
+| NLKGQ | 完整 OWL + endpoint | 旧报告有 Match/Exact（源已移出，不引用） | 未报 | snapshot/窗口；wrapper 手工 | 与 GGC 不可比 |
+| KGVoyager | 只有 endpoint | 旧报告有 F1 与成本（源已移出，不引用） | 未报 | 非 `rdf:type` 图；探索成本；benchmark 小 | 与前两者不可比 |
 | OBDA | 关系库 + 映射 | 无 benchmark | 未报 | 重写正确≠查询正确；OWL 2 QL | 与三者不可比 |
 
 **读法**：三条路线的旧分数不能排成一条线（其中两条来源已移出）；按资产条件选，不按总分排。

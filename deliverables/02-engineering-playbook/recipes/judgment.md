@@ -25,7 +25,7 @@ basis: E-20；evidence & checker mechanism（E-02/E-03 已撤回）
 
 ## R4 · 输出证据契约：让答案带依据和接地等级
 
-> **2026-11-11 证据重置**：原锚 **E-03 已撤回**；R4 转 **gap / 待新源**。以下机制描述与旧数字只作回查，不再作为“可执行配方”的依据。能力判定见 [01 map §2.2b](../../01-capability-status/sections/map.md#22b-gap待新源4-行)。
+> **W-02**：原锚 E-03 撤回；R4 转 gap。机制保留，效应量按 [W-02](../sections/canonical.md#w-table) 重测；不再逐句解释撤回。
 
 ### 目标
 
@@ -65,7 +65,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 **concept card 字段**：`iri, label, definition, parents[], children[], relations[], comments[], source`；单卡截断 1–2k 字符。
 
-**预算**：旧协议（tool actions 上限、生成 token 上限、实测调用/token 数）随 E-03 撤回，只作历史；重启 R4 先找新源，不沿用旧预算当门槛。
+**预算**：按 W-02 先记每次答案的调用数与 token（这是你的基线）；工具调用上限按你的 harness 设，不沿用论文值。
 
 ### 做法
 
@@ -91,7 +91,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 ### 证据
 
-**原锚 E-03 已撤回；R4 现在没有 admitted 来源。** 旧的检索率/引用率/接地增益/调用与 token 数一律停用、不再给值，只保留在历史底稿。要重启 R4，先找能复算 grounding 等级/校准的新源；在那之前不设门槛、不做自动路由。
+**W-02；R4 没有 admitted 效应量。** 重启按 W-02 协议（200 题、检索率/引用率、每级 100–200 独立标注）；没有独立标注前不设门槛、不做自动路由。
 
 ### 成本
 
@@ -99,7 +99,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 |---|---|---|
 | concept card 生成 | 1–2 人日/本体 | 推测 |
 | reasoner/SPARQL 集成 | 1–2 人周 | 推测 |
-| 运行 | 旧调用数/token 口径随 E-03 撤回，不再给值 | **历史** |
+| 运行 | 按 W-02 记 per-answer 调用/token | 工程记录 |
 | 校准标注 | 100–200/等级；人日未测 | 推测 |
 
 ### 验收 / 停
@@ -115,7 +115,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 ### 失效模式
 
 - **等级自评。** 模型给自己打分；作者写明不提供形式正确性保证。
-- **等级未校准。** 旧切片数字随 E-03 撤回停用，不能当阈值依据；要校准先补独立标注。
+- **等级未校准。** 要当阈值依据，先按 W-02 每级做 100–200 条独立标注。
 - **等级通胀。** 全标 supported，字段存在但无区分度。
 - **引用形式化。** 引用了观察，但结论与观察无关。
 - **格式开销。** 每条结论都带证据会增加输出 token；论文没有单列这项开销。
@@ -147,13 +147,13 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 ## R5 · 输出后 checker：先超过空结果重试
 
-> **2026-11-11 证据重置**：原锚 **E-02 已撤回**；R5 转 **gap / 待新源**。以下机制描述与旧 catch/FA、空结果重试数字只作回查，不再作为“可执行配方”的依据。能力判定见 [01 map §2.2b](../../01-capability-status/sections/map.md#22b-gap待新源4-行)。
+> **W-01**：原锚 E-02 撤回；R5 转 gap。机制保留，catch/FA 按 [W-01](../sections/canonical.md#w-table) 重测。
 
 ### 目标
 
 用本体当外部判据，查出**结构/声明/模式**错误；把「通过/违反/没检查完」三态显式化。
 
-> **机制（L1）**：checker 把答案/查询送进 reasoner 或 SPARQL，检查类型/声明/domain-range；它只能判「结构上说不通」，判不了「意义变了」。**原锚 E-02 已撤回**：旧空结果重试基线、curated precision 等数字停用。**条件**：有声明/闭世界；**反例**：语义错为主时越查越误；**决策**：先找新源，再谈 checker。
+> **机制（L1）**：checker 把答案/查询送进 reasoner 或 SPARQL，检查类型/声明/domain-range；它只能判「结构上说不通」，判不了「意义变了」。**条件**：有声明/闭世界；**反例**：语义错为主时越查越误；**决策**：先在本域建空结果基线，再谈 checker。
 
 ### 适用 / 不适用
 
@@ -189,7 +189,7 @@ output: {verdict: pass|flag|unknown,
 
 ### 做法
 
-1. **先找新源**：原锚 E-02 已撤回；旧空结果重试基线、curated/data-derived 的 catch/FA 数字一律停用，不再给值。
+1. **先建本域基线**：空结果重试要自己重跑（W-01）；curated/data-derived 的 catch/FA 也在本域重测，不沿用旧值。
 2. **只有能抓「有结果但答错」的增量，才建 checker**；增量门槛要由新源/本域回放重定，不沿用旧 +5pp。
 3. **来源选择**：curated / data-derived / masked LLM 的偏向是机制假设（`推测`）；没有新源前不做默认推荐，也不盲目组合。
 4. **200 题回放**：报 catch / FA / precision / per-1k cost；人工抽 50 条；**这些是测量项，不是旧结论**。
@@ -199,12 +199,12 @@ output: {verdict: pass|flag|unknown,
 ### LLM judge 分支（不是免费升级）
 
 - 输入：问题 + 查询 + 结果 + 答案；每条答案一次模型调用。
-- **旧观察（E-02，已撤回）**：judge 能抓结构检查抓不到的语义错，但「修坏」可能多于「修好」；具体 catch/FA/净修复数字停用，不再给值。
+- **旧观察方向（W-01）**：judge 能抓结构检查抓不到的语义错，但「修坏」可能多于「修好」；用净修复协议自己测。
 - 规则：先测 **净修复（fixed − corrupted）**、每条答案模型调用成本、稳定性；不能只看 catch，也不能默认 judge 更好。
 
 ### 证据
 
-**原锚 E-02 已撤回；R5 现在没有 admitted 来源。** 旧的 catch/FA、空结果重试基线、净修复数字一律停用、不再给值，只保留在历史底稿。要重启 R5，先找能复算 catch/FA/净修复的新源；空结果重试基线也要重新找锚。
+**W-01；R5 没有 admitted 效应量。** 重启按 W-01：200 题分层、catch/FA/净修复分开、per-flagged 成本；空结果重试基线在本域重建。
 
 
 ### 成本
@@ -213,7 +213,7 @@ output: {verdict: pass|flag|unknown,
 per-1k cost = flag_rate × per-flagged cost × 1000
 ```
 
-先量 `flag_rate`；旧 per-flagged 成本随 E-02 停用，不再给值。LLM judge 按每条答案一次调用计，单位成本未测。
+先量 `flag_rate`；per-flagged 成本按 W-01 记账。LLM judge 按每条答案一次调用计，单位成本要自己测。
 
 ### 验收 / 停
 
@@ -240,7 +240,7 @@ per-1k cost = flag_rate × per-flagged cost × 1000
 ### 可抄锚点
 
 - [checker 机制](../../../topics/02-judgment/checker/mechanism.md) 的「三种来源」「判定回路」「成本」「stop」。
-- Ontology Catch 已移出：catch/FA 口径、空结果基线、per-flagged 成本**只作历史**；不要抄「curated 权威」。
+- Ontology Catch 已移出：口径可读，数值按 W-01 重测；不要抄「curated 权威」。
 - [open-ontologies 的三态 ](offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态)；第三态是接口设计，不是效果证据。
 
 **出处**：[evidence 机制](../../../topics/02-judgment/evidence/mechanism.md) · [checker 机制](../../../topics/02-judgment/checker/mechanism.md) · [E-02/E-03](../../../topics/conclusions.md)

@@ -87,12 +87,12 @@ parent: ../README.md
 
 > 这 4 行保留编号与旧锚，**只用于回查，不作为结论**。原 E 已 withdrawn；没有 admitted 源之前，不判 A/B/C/D，也不说「可试点」。
 
-| # | 能力 | 原锚 | 状态 | 缺什么 / 下一步 |
-|---|---|---|---|---|
-| 4 | 输出证据契约（grounding） | E-03（OA-RAG） | **withdrawn** | 需要新的 grounding/校准来源；不要复用「+10–15pp」「等级是模型自评」的旧数字 |
-| 5 | 输出后 checker | E-02（Ontology Catch） | **withdrawn** | 需要新的 checker 漏检/误报来源；空结果重试基线也随 E-02 撤回，不能当既有结论 |
-| 6 | 动作前可逆性闸 | E-04/E-13（POLAR） | **withdrawn** | 需要新的本体闸/误拦来源；CASEL（E-15）只是非本体参照，不能补这一行 |
-| 11 | 推理期条件验证 | E-16（OntoAct） | **withdrawn** | 需要新的推理期条件验证来源；没有 admitted 源，不能判 C |
+| # | 能力 | 原锚 | 状态 | 重启前先量（`W`） | 缺什么 / 下一步 |
+|---|---|---|---|---|---|
+| 4 | 输出证据契约（grounding） | E-03（OA-RAG） | **withdrawn** | **W-02**：200 题；检索率 ≥50%、引用率 ≥85%（工程建议）；每级 100–200 条独立标注；没有独立标注 → 只做提示 | 新源；等级校准；句级 span |
+| 5 | 输出后 checker | E-02（Ontology Catch） | **withdrawn** | **W-01**：200 题分层（类型/声明/语义各 ≥50）；catch/FA/净修复分开；per-flagged（token 或人时）；**停线：catch <+5pp、FA >15%、净修复 ≤0** | 新源；自己的故障分布；false-veto 标签 |
+| 6 | 动作前可逆性闸 | E-04/E-13（POLAR） | **withdrawn** | **W-03**：shadow 200–500；100 条 blocked 标 harm/授权；同轨迹配对；报前沿不设单点；**误拦标不出 → 不上硬 veto** | 新源；设计上仍缺执行点（E-20 否定证据） |
+| 11 | 推理期条件验证 | E-16（OntoAct） | **withdrawn** | **W-04**：≥100 条带前提的决策；先测三值覆盖率；**? >30% 先补状态** | 新源；? 比例 >30% 先补状态 |
 
 > **为什么不是 C**：C 的前提是「有机制或设计」；这 4 行的机制描述还在 `topics/` 里，但唯一一手锚已撤回。把它们放 gap，是为了不把「没有 admitted 证据」伪装成「只能设计」。
 >
@@ -127,8 +127,8 @@ parent: ../README.md
 | X1 点位语义 | `supported（限定）` | E-12；单工厂 +54.6pp | 跨域未知 |
 | X2 知识投影文本 | `supported（限定）` | E-12；单工厂 +19.8pp | 跨域/多设备/顺序迁移未知 |
 | X3 编译 | `conditional` | E-08/E-14；[e3 数据表](../data/e3-compilation.md) | 公式成立；自己的 `p_h`/`c`/`Q` 未量 |
-| X4 checker | **`unknown` / 待新源** | E-02 已撤回；[e4 数据表](../data/e4-checker.md) 只作历史 | 需要新的 checker 漏检/误报来源；空结果重试基线也待新源 |
-| X5 动作闸 | **`unknown` / 待新源** | E-04/E-13 已撤回；E-15（CASEL）仅非本体参照；[e5 数据表](../data/e5-false-veto.md) 只作历史 | 需要新的本体闸来源；false-veto 仍无标签 |
+| X4 checker | **`unknown` / 待新源** | E-02 已撤回（W-01）；[e4 数据表](../data/e4-checker.md) 只作历史 | 按 W-01 的 200 题协议重测；没有新源前不设门槛 |
+| X5 动作闸 | **`unknown` / 待新源** | E-04/E-13 已撤回（W-03）；E-15 仅非本体参照；[e5 数据表](../data/e5-false-veto.md) 只作历史 | 按 W-03 做 shadow + blocked 标注；false-veto 标签仍缺 |
 | X6 记忆 | `supported（限定）` | E-05/E-17；[e6 数据表](../data/e6-memory.md) | 非全部设置过 +10pp/90%；跨域未知 |
 | X7 读路径 | `supported（限定）`（存在）/ **`unknown`**（object 方向） | E-20；[e7/e8 代码](../data/e7-e8-code.md) | 单实现；fail-open；只删 subject |
 | X8 写路径 | **`unknown`/无实现** | E-20；[e7/e8 代码](../data/e7-e8-code.md) | 四个开源项目都无单次写授权 |

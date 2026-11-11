@@ -18,9 +18,9 @@ parent: ../README.md
 | R1 K1 | E-12 | [projection](../../../topics/03-knowledge/projection/mechanism.md) | 单工厂/9 任务/答案在文本 | A | 跨域增益 |
 | R2 投影 | E-12 | 同上 | 单 plant；排序非普适；顺序敏感 | B | 开放域/多设备；手工 SOP 对照 |
 | R3 编译 | E-08/E-14 | [compilation](../../../topics/03-knowledge/compilation/mechanism.md) | FRAMES；单 compiler；时延 3× 仅 7 题 | B | 准确率提升；企业语料 |
-| R4 证据 | E-03 withdrawn | [evidence](../../../topics/02-judgment/evidence/mechanism.md) | 旧数字停用 | **gap** | 形式保证；跨域 |
-| R5 checker | E-02 withdrawn；E-20 代码级 | [checker](../../../topics/02-judgment/checker/mechanism.md) | 旧数字停用 | **gap** | 语义正确；真实错误分布 |
-| R6 动作闸 | E-04/E-13 withdrawn；E-15 参照 | [action-gate](../../../topics/01-constraint/action-gate/mechanism.md) | 旧数字停用 | **gap** | 结构有效；安全保证 |
+| R4 证据 | E-03 withdrawn | [evidence](../../../topics/02-judgment/evidence/mechanism.md) | 按 W-02 重测 | **gap** | 形式保证；跨域 |
+| R5 checker | E-02 withdrawn；E-20 代码级 | [checker](../../../topics/02-judgment/checker/mechanism.md) | 按 W-01 重测 | **gap** | 语义正确；真实错误分布 |
+| R6 动作闸 | E-04/E-13 withdrawn；E-15 参照 | [action-gate](../../../topics/01-constraint/action-gate/mechanism.md) | 按 W-03 重测 | **gap** | 结构有效；安全保证 |
 | R7 记忆 | E-05/E-17 | [identity](../../../topics/04-state/identity/mechanism.md)、[memory](../../../topics/04-state/memory/mechanism.md) | 专有数据/文本 only/需训练信号 | B | 跨模态；false merge 传播 |
 | R8 读路径 | E-20 | [commit-gate F5–F7](../../../topics/01-constraint/commit-gate/findings.md)、[trustgraph](../../../src/open-source/trustgraph-ai-trustgraph/digest.md) | fail-open；subject-only；单实现（候选第二实现未入库） | B（条件性） | 写授权；object 方向；可上线 |
 | R9 落盘 | E-20 | [commit-gate](../../../topics/01-constraint/commit-gate/mechanism.md) | 概念；无实现；false-defer 未测 | C | 已落地；效果 |

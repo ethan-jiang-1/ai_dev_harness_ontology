@@ -7,7 +7,7 @@ note: illustrative reconstruction; not a deployment
 
 # 附录 C · 端到端示例（示意，不是部署）
 
-> **2026-11-11 证据重置**：本案例的 R5（checker）原锚 E-02 已撤回；Week 3 只作“怎么填/怎么停”的历史示例，不要照做。今天可照做的是 R1/R2（R5/R6 待新源）。
+> **证据重置**：本案例的 R5 原锚 E-02 撤回（W-01）；Week 3 只作「怎么填/怎么停」的示例。今天可照做的是 R1/R2；R5/R6 按 W 协议重测后再用。
 
 
 > **这是用公开证据拼出的设计走查，不是客户案例。** 场景取自 N&D 的工业设备设定，数字只引用论文已报告值；没有报告的地方写 `[待测]`，不编。
@@ -35,7 +35,7 @@ note: illustrative reconstruction; not a deployment
 | 覆盖 | 200 题抽样 unknown IRI `[待测]`；估计 >20% | 先补术语，不先做 R4 等级 |
 | 执行落点 | 只有 2 条约束有 SHACL；无负例 | R5 暂缓，先补 shape/负例 |
 
-**R0 结论**：`fix_first`。先 R1 + 补声明；R2 排后；R5 待新源。
+**R0 结论**：`fix_first`。先 R1 + 补声明；R2 排后；R5 先按 W-01 建基线。
 
 ## 3. Week 1：R1（点位语义，K1）
 
@@ -90,14 +90,14 @@ stop: < +5pp、>60k、维护 >2 人周/月
 
 **基线**：
 
-- 空结果重试：**原 E-02 已撤回，旧 catch/FA 数字停用、不再给值**；先找新源，再跑本域 200 题。
+- 空结果重试：按 W-01 在本域跑 200 题，建立自己的 catch/FA 基线。
 - data-derived check：先上低 FA；curated 先审计/补声明。
 
 **预注册**：
 
 ```text
 primary: 增量 catch（相对空结果重试）
-pass: 按新源/本域回放预注册（旧 +5pp/15% 是 E-02 口径，停用）
+pass: 按本域回放预注册（工程建议起点：+5pp catch、FA ≤15%）
 cost: per-flagged token/time ≤ 人工审核 1/3
 stop: 增量低于预注册线，或 FA 超预算
 ```
@@ -149,6 +149,6 @@ Risks: 单系统、答案在文本、维护工时、语义错未覆盖
 
 **一句话**：示例只展示「怎么走」，不展示「走了有效」。
 
-**出处**：[projection 机制](../../../topics/03-knowledge/projection/mechanism.md) · [checker 机制](../../../topics/02-judgment/checker/mechanism.md) · E-12（E-02 已撤回，只作历史）
+**出处**：[projection 机制](../../../topics/03-knowledge/projection/mechanism.md) · [checker 机制](../../../topics/02-judgment/checker/mechanism.md) · E-12；R5 的撤回与协议见 W-01
 
 > 回 [02 目录](../README.md) ｜ 回 [接口](./interfaces.md)

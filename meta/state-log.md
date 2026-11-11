@@ -8,6 +8,16 @@ updated: 2026-11-11
 > 本页是 [meta/state](./state.md) 的历史日志：逐次改动与**当时的**计数。
 > **这里的数字是快照，不是现行计数**；现行状态只看 [state](./state.md)。
 
+## 2026-11-11 撤回补偿：W 表 + 自测协议
+
+- **W 表**：01 canonical §5、02 canonical §1.1、03 evidence/ledger §2.5 各一张；每行给「不能再用 + 重启前先量」，正文改短引用。
+- **补协议**：01 map/acceptance/capabilities/decision-record；02 R4/R5/R6/R12 + acceptance/cost/readiness/case/traceability；03 五张位置卡 §7；04 build/reference。
+- **换叙事**：03 README 新增「今天能验证什么」（可见性/离线校验/记忆/OBDA），并写明矩阵 `●` 少 ≠ 框架失效。
+- **瘦身**：四份术语来源表 57→33 行；01 五页路径恢复；重复 banner 合并。
+- **指标**：02 免责措辞 175→100（−43%）、03 224→196；效应量不恢复（有意）。
+- **质量**：§12.3 桌面复评 01=87 / 02=84 / 03=85 / 04=86。
+- **自检**：check_repo 通过（444 md）。
+
 ## 2026-11-11 内容精读 + 长尾旧数字清理
 
 - **精读**：[content-read](../deliverables/_plans/2026-11-11-content-read.md) 逐页读 01–04（约 41 万字符），判词 01 B+ / 02 B / 03 B+ / 04 B+。

@@ -8,7 +8,7 @@ evidence: [E-02, E-20]
 
 # checker：产出对不对
 
-> **2026-11-11 证据重置**：主锚 **E-02 已撤回**；本卡的旧 catch/FA/空结果重试数字只作回查，不再作为 admitted 结论。E-20 的 SHACL 代码级发现仍有效，但它只支撑「结构检查/三态」，不支撑 checker 的效应量。
+> **W-01**：主锚 E-02 撤回；本卡保留机制与边界，效应量不引用。E-20 的代码级发现仍有效，但只支撑「结构检查/三态」，不支撑 checker 的效应量。
 >
 > **词源**：「约束 / 校验 / 三态」取 RDF 图约束语义（`N: W3C SHACL`），规则与 target 见 `N: W3C SHACL-AF`；「checker / catch / FA / 接地」是 `local` 工作词，没有标准锚。**标准只说明「什么叫违反」，不说明「catch 有多高」。**
 
@@ -43,7 +43,7 @@ evidence: [E-02, E-20]
 ## 3. 能改变什么
 
 - **三来源各有偏向，无单一向优。** 旧观察里 curated/data-derived/masked LLM 的 catch/FA 与 precision 各不相同，没有单一向优；具体数值随 E-02 撤回停用。`withdrawn`（原 E-02；单 checker 实验）
-- **curated 的精确度仅略优于随机。** 旧观察给的是「略高于随机、区间跨零」；常见 FA 源是未声明术语与闭世界假设。具体数值随 E-02 撤回停用。`withdrawn`（原 E-02）
+- **curated 的精确度无法与随机区分。** 旧观察的区间跨零，所以「略优于随机」不能当结论；常见 FA 源是未声明术语与闭世界假设。要判断，按 W-01 在本域测。`withdrawn`（W-01）
 - **空结果重试可能是一个强基线。** 旧观察里它在人工故障上 catch 高、FA 低；具体数值随 E-02 撤回停用，重启前必须重测。`withdrawn`（原 E-02）
 - **LLM judge 可能检错更多，但「修坏」也可能多于「修好」。** 旧观察给了 catch/FA 与修好/修坏计数；具体数值随 E-02 撤回停用。`withdrawn`（原 E-02；成本/稳定性未测）
 - **三态可以显式化。** 开源侧 `oo-shacl` 的 exit 3（undetermined）进入 wrapper 后变成 `conforms: null`，外层映射为 exit 2；JSON 保留第三态，shell 退出码不保留。`已核（代码）`（E-20）
@@ -77,6 +77,8 @@ evidence: [E-02, E-20]
 > **旧口径停用**：旧 precision/catch/FA 数字随 E-02 撤回，不再作为口径示例，也不再给值。
 
 ## 7. 可证伪条件
+
+- **先按 W-01 自测**：200 题分层（类型/声明/语义各 ≥50）；catch/FA/净修复分开；per-flagged 成本——量不出就不谈效应。
 
 - 结构 checker 在 changes of meaning 上 catch >0 且 FA 可接受 → 推翻「语义错抓不到」；
 - 净修复（fixed − corrupted）稳定 >0，且成本低于人工 → 支持 judge 分支；
