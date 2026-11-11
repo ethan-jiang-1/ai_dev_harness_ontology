@@ -99,13 +99,13 @@ updated: 2026-11-11
 
 | 节 | 回答什么 | 01 现状 | 02 工程 | 03 机制 | 04 落地 |
 |---|---|---|---|---|---|
-| **0 一页结论** | 这份东西一句话是什么、给谁、最重要三句 | README §0 | README §0 | README §0 | README §0 |
-| **1 导读** | 先读哪份、按任务/时间怎么走 | `GUIDE.md` | `GUIDE.md` | `GUIDE.md` | `GUIDE.md` |
-| **2 地图** | 本份的核心框架（矩阵 / 五步法 / 四轴六位置 / 生命周期） | `sections/map.md` | `sections/map.md` | `sections/map.md` | `sections/map.md` |
-| **3 主体** | 逐项：能力 / recipe / 位置卡 / 建用治 | `capabilities/` | `recipes/` + `sections/approach.md` | `positions/` | `body/` |
-| **4 边界** | 证据等级、不能证明、反例/反模式 | `sections/boundaries.md` | `sections/boundaries.md` | `sections/boundaries.md` | `sections/boundaries.md` |
-| **5 验收** | 指标、stop、缺口、期待与数据需求 | `sections/acceptance.md` | `sections/acceptance.md` | `sections/acceptance.md` | `sections/acceptance.md` |
-| **6 关系与维护** | 与另外两份的关系、附录、更新规则 | [本页](#关系与维护) | [本页](#关系与维护) | [本页](#关系与维护) | [本页](#关系与维护) |
+| **0 一页结论** | 这份东西一句话是什么、给谁、最重要三句 | `02-sections/00-overview.md` | 同左 | 同左 | 同左 |
+| **1 导读** | 先读哪份、按任务/时间怎么走 | `02-sections/00-GUIDE.md` | 同左 | 同左 | 同左 |
+| **2 地图** | 本份的核心框架（矩阵 / 五步法 / 四轴六位置 / 生命周期） | `02-sections/02-map.md` | 同左 | 同左 | 同左 |
+| **3 主体** | 逐项：能力 / recipe / 位置卡 / 建用治 | `03-capabilities/` | `03-recipes/` + `02-sections/03-approach.md` | `03-positions/` | `03-body/` |
+| **4 边界** | 证据等级、不能证明、反例/反模式 | `02-sections/04-boundaries.md` | 同左 | 同左 | 同左 |
+| **5 验收** | 指标、stop、缺口、期待与数据需求 | `02-sections/05-acceptance.md` | 同左 | 同左 | 同左 |
+| **6 关系与维护** | 与另外两份的关系、附录、更新规则 | [本页](#关系与维护) | 同左 | 同左 | 同左 |
 
 **同构不等于同文**：01 的主体是「能力条目」，02 是「recipe 条目」，03 是「位置卡」，04 是「建/用/治三分册」；前三类条目都必须有 **一句话 / 适用 / 证据等级 / 边界 / 去哪** 这五个字段。
 
@@ -113,13 +113,13 @@ updated: 2026-11-11
 
 | 角色 | 01 现状 | 02 工程 | 03 机制 | 04 落地 |
 |---|---|---|---|---|
-| 索引 | `README.md`（只放 0/目录/关注） | `README.md` | `README.md` | `README.md` |
-| 导读 | `GUIDE.md` | `GUIDE.md` | `GUIDE.md` | `GUIDE.md` |
-| 分节 | `sections/`（map/boundaries/acceptance） | `sections/`（map/approach/boundaries/acceptance） | `sections/`（map/boundaries/acceptance） | `sections/`（map/boundaries/acceptance） |
-| 主体 | `capabilities/` + `README.md` | `recipes/` + `README.md`；总览在 `sections/approach.md` | `positions/` + `README.md` | `body/`（build/consume/govern） |
-| 支撑 | — | `operations/` | `across-positions/` | — |
-| 证据 | `data/` | `appendices/traceability.md` | `evidence/` | `evidence/` |
-| 附录 | — | `appendices/`（含 artifact-pack） | `appendix-constraint-spectrum.md` | — |
+| 索引 | `README.md`（只放 0/目录/关注） | 同左 | 同左 | 同左 |
+| 导读 | `02-sections/00-GUIDE.md` | 同左 | 同左 | 同左 |
+| 分节 | `02-sections/`（00-overview / 02-map / 04-boundaries / 05-acceptance） | 同左（多 03-approach） | 同左 | 同左（多 06-decision） |
+| 主体 | `03-capabilities/` | `03-recipes/`；总览在 `02-sections/03-approach.md` | `03-positions/` | `03-body/`（01-build / 02-consume / 03-govern） |
+| 支撑 | — | `04-operations/` | `04-across-positions/` | — |
+| 证据/工作底稿 | `09-data/` | `05-appendices/02-traceability.md` | `05-evidence/` | `04-evidence/` |
+| 附录/查阅 | `90+` 查阅页 | `05-appendices/` | `09-appendix...` + `90+` | `05-example/` + `90+` |
 
 ## 关系与维护
 
@@ -135,16 +135,16 @@ updated: 2026-11-11
 **维护规则（四份共用）：**
 
 - 新判断先回 `topics/` 的 claims/E，再改交付物；交付物不新增判断。结构性修改后跑 `python3 meta/tools/check_repo.py`。
-- 01：A/B/C/D 是交付层排序，不是 E；`data/` 与 `_plans/` 是工作底稿，不构成稳定判断。
-- 02：先改 `recipes/`，再回 README 索引；02 不新增 E。
-- 03：canonical 在 `positions/` 与 `across-positions/`；附录是长版论证；`H`/`D` 必须始终带标记。
+- 01：A/B/C/D 是交付层排序，不是 E；`09-data/` 与 `_plans/` 是工作底稿，不构成稳定判断。
+- 02：先改 `03-recipes/`，再回 README 索引；02 不新增 E。
+- 03：canonical 在 `03-positions/` 与 `04-across-positions/`；`09-appendix...` 是长版论证；`H`/`D` 必须始终带标记。
 - 04：不重复 01 的排序、02 的 recipe、03 的机制论证；04 不新增 E。
 
-**规则**：README 只做索引；正文按「分节 / 主体 / 支撑 / 证据 / 附录」放，不把长文塞回 README。每个目录都有 `README.md`，用同一张索引表。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG；每份 `GUIDE.md` 嵌本份图，README 不再嵌图。
+**规则**：README 只做索引；正文按「02-sections / 03-主体 / 04-支撑 / 05-附录 / 09-工作底稿 / 90+ 查阅」放，不把长文塞回 README。目录与文件编号规则见 [IA 整改计划](./_plans/2026-11-12-deliverable-ia-plan.md)。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG；每份 `02-sections/00-GUIDE.md` 嵌本份图，README 不再嵌图。
 
 ## 期待 → 数据（验收规格）
 
-四份交付物的 `sections/acceptance.md` 都有一节「期待与数据需求」：把交付物要回答的问题写成**可证伪的期待**，再倒推「支持它需要什么数据、现在有什么、缺什么」。
+四份交付物的 `02-sections/05-acceptance.md` 都有一节「期待与数据需求」：把交付物要回答的问题写成**可证伪的期待**，再倒推「支持它需要什么数据、现在有什么、缺什么」。
 
 它的作用不是承诺结果，而是让缺口显形：**量不出「支持它需要的数据」，就说明这条期待还停在推测。** 这是交付物的验收规格（非 E），不是新结论；数据回 `topics/` 或 `frontier` 补，不在交付物里补。
 

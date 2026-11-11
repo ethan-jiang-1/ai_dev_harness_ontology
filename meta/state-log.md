@@ -292,3 +292,13 @@ updated: 2026-11-11
 
 - 01=84 / 02=81 / 03=82 / 04=86（12 维，非冷读）；02/03 下降来自 gap 行扩大，不是文笔。
 - 02 canonical/regulated 的最后旧数字已标历史；`check_repo` 通过（436 md）。
+
+## 2026-11-12 交付物 IA 整改（README 索引 + 序号目录 + 语气）
+
+- **计划**：[2026-11-12-deliverable-ia-plan](../deliverables/_plans/2026-11-12-deliverable-ia-plan.md)。
+- **01**（`95ca558`）：README 索引化；`02-sections/00-overview`、`02-map`、`04-boundaries`、`05-acceptance`、`09-decision-record`、`90-glossary`、`91-canonical`、`92-k-ladder`、`93-templates`；`03-capabilities`、`09-data`。
+- **02**（`ad14c08`）：`02-sections`、`03-recipes`、`04-operations`、`05-appendices`；README 56 行。
+- **03**（`5927a9b`）：`02-sections`、`03-positions`、`04-across-positions`、`05-evidence`、`09-appendix`；README 56 行。
+- **04**（`136db9a`）：`02-sections`、`03-body`、`04-evidence`、`05-example`；README 60 行。
+- **链接**：700+ 相对链接按「旧位置解析、新位置重算」重写；目录表加纯文本路径列；`check_repo` 0 坏链/坏锚（450 md）。
+- **语气**：README 与 overview 去除故事化第二人称；案例改为第三人称事实框。

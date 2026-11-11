@@ -217,3 +217,17 @@ scope: deliverables 01–04 的 README 索引化、目录/文件编号、阅读�
 - 不做静态站点、不引入构建工具（仓库是研究档案，不是软件项目）。
 
 > 本计划是工作底稿，不是交付正文；不构成 E/L。
+
+---
+
+## 9. 执行记录
+
+| 批 | 状态 | 提交 | 结果 |
+|---|---|---|---|
+| P0 01 | 完成 | `95ca558` | README 索引化 + 00-overview + 02/03/09 编号；`check_repo` 通过 |
+| P1 02 | 完成 | `ad14c08` | 02-sections/03-recipes/04-operations/05-appendices；README 56 行；`check_repo` 通过（448 md） |
+| P2 03 | 完成 | `5927a9b` | 02-sections/03-positions/04-across-positions/05-evidence/09-appendix；README 56 行；`check_repo` 通过（449 md） |
+| P3 04 | 完成 | `136db9a` | 02-sections/03-body/04-evidence/05-example；README 61 行；`check_repo` 通过（450 md） |
+| P4 全局 | 进行中 | — | 入口表/结构表更新；冷读复核；最终提交 |
+
+> 每批都重写了旧路径链接（脚本从旧位置解析、按新位置重算），锚点未变；`check_repo` 0 坏链/坏锚。
