@@ -1,5 +1,5 @@
 ---
-updated: 2026-11-11
+updated: 2026-11-12
 ---
 
 # src：来源层（三类材料，各自一目录）
@@ -27,7 +27,7 @@ updated: 2026-11-11
 ```
 src/
 ├── papers/
-│   ├── manifest.md          # 全仓唯一论文登记（28 篇，含批次列）
+│   ├── manifest.md          # 全仓唯一论文登记（现行 10 篇；历史批次见审计）
 │   └── {arxiv_id}-{slug}/
 │       ├── {arxiv_id}-{slug}.pdf     # 原文，只读
 │       ├── paper.md                  # 正文全文 MD（保留页码标记）
@@ -80,7 +80,7 @@ src/
 
 ## 0.2 素材准入（宪章 §4 的落地，2026-11-11 起）
 
-五道门全部通过才进 `src/`；判定写在卡上。细则见 [CHARTER §4](../CHARTER.md#4-素材准入material-gate)，本页只写 src 的操作口径。
+五道门全部通过才进 `src/`；判定写在卡上。**判据以 [CHARTER §4](../CHARTER.md#4-素材准入material-gate) 为唯一出处**；下表只是按材料类型的操作速查，与宪章冲突时以宪章为准。
 
 | 门 | 论文 | 网页/材料 | 开源项目 |
 |---|---|---|---|
@@ -97,18 +97,7 @@ src/
 
 ## 0.3 准入字段与复审
 
-| 字段 | 取值 | 写什么 |
-|---|---|---|
-| `admission` | `admitted` / `admitted (probation)` / `signal` / `excluded` | 五门结论；没有就是未判 |
-| `gate_checked` | `YYYY-MM-DD` | 最后一次过门日期 |
-| `impact_evidence` | `I1: ...; I3: ...` | 逐条列独立信号；写不出两条就不要写 `admitted` |
-| `liveness` | `last_push` / `release` / `discussion` / `standard-in-force` | 最近一次活动及日期 |
-| `provenance_type` | `standard-body` / `academic` / `foundation` / `community` / `company` / `individual` | 来源结构，决定 G4 |
-| `reliability` / `impact` | `high` / `medium` / `low` | 粗分，不替代 `impact_evidence` |
-
-- **复审**：每 6 个月；`admitted` 的影响 6 个月未升级 → 降 `signal`；`signal` 补到两条独立信号才升。
-- **probation**：只给 2026-06 后新材料，6 个月内补第二信号；不得续期，不得作跨组织 E 的唯一锚点。
-- 标准/公司例外按 [CHARTER §4.4](../CHARTER.md#44-三个窄例外) 记，不另开口子。
+字段定义以 [conventions §字段与词汇](../meta/conventions.md#字段与词汇) 为唯一出处。卡必填 `admission` / `gate_checked` / `impact_evidence` / `liveness` / `provenance_type`；写不出两条独立信号就不要写 `admitted`。复审周期、probation 与窄例外以 [CHARTER §4.3/§4.4](../CHARTER.md#43-回溯与退出无-grandfathering) 为准，不另开口子。
 
 ## 1. 论文的规则（`papers/`）
 
@@ -189,32 +178,11 @@ open-source/{org}-{repo}/
 
 ## 4. 字段
 
-| 字段 | 取值 | 含义 |
-|---|---|---|
-| `status` | `seed` / `draft` / `stabilized` / `superseded` | 文档成熟度 |
-| `source_type` | `paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey` / `open-source` | 素材类型；证据天花板见 [source-types](../meta/source-types.md) |
-| `reading` | 论文/材料：`未读` / `综述级` / `摘要级` / `精读` / `已消化`；代码：`未读` / `已读代码` / `已跑通` | 读到什么程度（写在 card） |
-| `provenance` | 论文/材料：`原文正文` / `原文摘要` / `综述转述` / `未核`；代码：`一手代码` / `一手文档` / `未核` | 证据来自哪里（写在 card） |
-| `home` / `subtopic` / `also_supports` | `topics/<派>` / `<子主题>` / `[<子主题>]` | 归位；移动子主题只改 `subtopic`；一篇喂多个子主题时，主归位放 `subtopic`，其余放 `also_supports` |
-| `evidence_role` | `execution-test` / `mechanism-only` / `harness-evidence` / `boundary-ruler` | 对中心问题提供哪类证据 |
-| `execution_form` | `engine` / `compiled` / `context` / `label` / `none` / `unknown` | 本体以什么形态被执行；见 [execution-forms](../topics/execution-forms.md) |
-| `quality` | `A` / `B` / `C` | 证据强度粗分（写在 digest）；定义见 [conventions](../meta/conventions.md#字段与词汇) |
-
-开源卡另有三组字段（不进论文卡）：
-
-| 字段 | 取值 | 含义 |
-|---|---|---|
-| `commit` / `release` / `license` | SHA/tag / tag / SPDX | 版本与许可；**不 pin 不算入库** |
-| `scan_date` / `stars_at_scan` / `last_push` | 日期 / 数字 / 日期 | 扫描快照；star 只作影响力参考 |
-| `ontology_role` / `seam` / `execution_form` | `core/adjunct/none/unclear` / 六时刻 + `read-path/supply/reasoning/training/none` / `engine/compiled/context/label/none/unknown` | 本体地位、接缝/轴外位置、执行形态；**只写初判，定级在 digest**；旧 `execution` 字段已由 `execution_form` 取代 |
-
-`seam` 的取值来自 [topics/seams.md](../topics/seams.md)：六个硬时刻（`action-gate` / `evidence` / `checker` / `commit-gate` / `memory` / `determinism`）+ 四个轴外位置（`read-path` / `supply` / `reasoning` / `training`）+ `none`。不是接缝写 `none`，并在 digest 里说明是“回路外”还是“尚未判定”。
-
-正文推断句至少标一次 `已核` / `推测` / `存疑`；没有标的按 `推测`。
+字段与取值以 [conventions §字段与词汇](../meta/conventions.md#字段与词汇) 为唯一出处（含开源卡的 commit/seam/ontology_role 三组与 `seam` 取值说明）；`seam` 的时刻/轴外位置定义见 [topics/seams.md](../topics/seams.md)。正文推断句至少标一次 `已核` / `推测` / `存疑`；没有标的按 `推测`。
 
 ## 5. 新建的流程
 
-> 先过候选门槛：只有会改变判断/边界/交付物的来源才建卡；候选先记在对应派 `frontier.md`，不预建目录（见 [AGENTS](../AGENTS.md)「不要做」）。
+> 先过候选门槛：只有会改变判断/边界/交付物的来源才建卡；候选先记在对应派 `frontier.md`，不预建目录（见 [AGENTS](../AGENTS.md)「任务路由」）。
 
 ### 5.1 论文
 

@@ -1,12 +1,22 @@
 ---
 status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 ---
 
 # 状态日志（历史）
 
 > 本页是 [meta/state](./state.md) 的历史日志：逐次改动与**当时的**计数。
 > **这里的数字是快照，不是现行计数**；现行状态只看 [state](./state.md)。
+
+## 2026-11-12 指令层结构整改（ADR 0012）
+
+- **诊断**：[指令层审计](./audits/2026-11-12-instruction-layer-audit.md)——8 张路由表、准入规则 7 处复制、修复回路缺失、3 处已证实漂移。
+- **AGENTS 重写**：唯一任务路由表 + 常设修复回路（完成判据：被指句可追 admitted 源 digest 节，否则显式标推测/gap）；「单向不可反向」改为「判断顺流而下，证据逆流而上」。
+- **单一出处**：门→CHARTER §4；字段→conventions（词汇冻结，新增需 ADR）；计数→state；digest 契约→src/README；质量口径→rubric。README/loading/topics/deliverables/src README 的复制件删除或改指针。
+- **计划层**：_plans 现行唯一（IA 计划）；core-plan 降为交接快照/日志，不再自称「唯一执行口径」；16 处「现行」重标为参考/日志。
+- **漂移修正**：README 不再抄材料卡数（旧 9≠state 11）；src/README manifest 注释 28→10；AGENTS 的 G2 丢限定转述删除。
+- **新术语**：修复回路（GLOSSARY）；checklist §3 增修复回路收口检查。
+- **自检**：check_repo 通过（452 md）。
 
 ## 2026-11-11 撤回补偿：W 表 + 自测协议
 

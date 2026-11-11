@@ -31,7 +31,7 @@ updated: 2026-11-11
 
 ## 字段与词汇
 
-同一个字段在不同目录不能有不同含义。本仓库用以下字段，各自一套词汇：
+**字段词汇冻结（[ADR 0012](../adr/0012-instruction-layer-single-home.md)）**：新增字段或枚举值必须先过 ADR；本页是字段定义的唯一出处。同一个字段在不同目录不能有不同含义：
 
 | 字段 | 用在哪 | 取值 | 含义 |
 |---|---|---|---|
@@ -50,6 +50,7 @@ updated: 2026-11-11
 | `impact_evidence` | `src/` 卡 | `I1: ...; I3: ...` | 逐条列独立信号；`admitted` 必填 |
 | `liveness` | `src/` 卡 | 文本 | 最近一次活动及日期 |
 | `provenance_type` | `src/` 卡 | `standard-body` / `academic` / `foundation` / `community` / `company` / `individual` | 来源结构，决定 G4 |
+| `reliability` / `impact` | `src/` 论文卡 | `high` / `medium` / `low` | 可靠性/影响粗分，不替代 `impact_evidence` |
 
 **源位阶与术语（ADR 0011）**：
 

@@ -1,6 +1,6 @@
 # 按需加载：渐进披露
 
-这个仓库不要求一次读完。**先读路由，再按任务加载。**
+本页是**加载集与阅读路径的参考**；任务路由在 [AGENTS](../AGENTS.md)（唯一表）。这个仓库不要求一次读完：**先读路由，再按任务加载。**
 
 > **第 0 步：读宪章。** [CHARTER](../CHARTER.md) 决定你该不该动手建东西；本仓库只做消化、组织、研究，不做实施。
 
@@ -9,7 +9,7 @@
 0. [CHARTER](../CHARTER.md)：我们做什么/不做什么；交付物是文档。
 1. [README](../README.md) §1-3：问题、三个工位、六派。
 2. [THESIS](../THESIS.md) 的「研究问题」与 P1a/P1b/P1c、P2、P3a/P3b。
-3. [AGENTS](../AGENTS.md) 的「先定位落点」表。
+3. [AGENTS](../AGENTS.md) 的「任务路由」表。
 4. [topics/README](../topics/README.md)：四轴 + 4+1+1；[execution-forms](../topics/execution-forms.md)：第四根形态轴。
 5. [meta/state](./state.md)：当前计数、边界与最后自检；先看这一页，避免把旧数字当真。
 6. [conclusions](../topics/conclusions.md)：E-01…E-27 的等级与出处；至少读 E-01、E-04、E-20、E-21、E-22、E-23、E-24、E-25、E-26、E-27。
@@ -55,12 +55,13 @@
 
 ## 从交付物倒查（反向加载）
 
-> 三个交付物是三种「下游规格」。不要从 `src/papers/manifest.md` 开始扫；从交付物的期待出发，沿链走到「够回答」就停。
+> 每份交付物是一种「下游规格」。不要从 `src/papers/manifest.md` 开始扫；从交付物的期待出发，沿链走到「够回答」就停。
 
 ```
 D1 期待 → _plans/01-capability-status.md H1–H6 → topics 子主题 → digest §4/§5 → paper.md 指定节
 D2 recipe → topics/<子主题>/mechanism.md → digest §6.5 → open-source digest/代码
 D3 边界 → conclusions E 表 → digest §5/§9 → 附录 §3.7/§3.8
+D4 建用治 → 04 map/body → E-21/E-22 → digest §4/§5
 ```
 
 | 交付物 | 起点 | 走到哪停 | 默认不读 |
@@ -68,12 +69,13 @@ D3 边界 → conclusions E 表 → digest §5/§9 → 附录 §3.7/§3.8
 | 01 现状 | `01/sections/acceptance.md` + `_plans/01-capability-status.md` | 能填出 E1–E9 的 verdict + boundary | 全部 `paper.md`（只读指定节）、`card.md`（只作 provenance）、`references.md`/`appendix.md`、其他派 |
 | 02 工程 | `02/README §0 + sections/map + sections/approach + recipes/` | 能写出接口/字段/验收/停线 | 28 篇论文正文、其他派 mechanism、`conclusions` 全表 |
 | 03 机制 | `03/sections/map + positions + sections/boundaries` | 能指到 E-xx 与「不能证明什么」 | `src/` 原文、其他派 mechanism、全部 `paper.md` |
+| 04 建用治 | `04/02-sections/02-map.md` + `03-body/` | 能指到 E-21/E-22 与 admitted digest | 01/02/03 全篇、外部原文 |
 
 **三条反向规则**：
 
 1. **从 E 倒查，不从 manifest 顺读。** E 行已经链到 digest；digest 不够再回 `paper.md` 的指定表/节。
 2. **`digest.md` 是默认入口，`card.md` 只补 provenance。** 不要先读 card 再读 digest；没有 digest 的来源不算入库。
-3. **每份交付物只带自己的「不读」清单。** 01 不读其他派，02 不读论文正文，03 不读 `src/` 原文；跨交付物需要时，回到 `deliverables/README` 的「怎么读」。
+3. **每份交付物只带自己的「不读」清单。** 01 不读其他派，02 不读论文正文，03 不读 `src/` 原文，04 不读 01/02/03 全篇；跨交付物需要时，回到 `deliverables/README` 的「怎么读」。
 
 **支持层契约（`topics/` / `src/` 必须先满足）**：
 
@@ -89,17 +91,7 @@ D3 边界 → conclusions E 表 → digest §5/§9 → 附录 §3.7/§3.8
 
 ## 三条规则
 
-1. **`E-xx` 才是对外结论。** `E-xx` 在 `topics/conclusions.md`，可被 `deliverables/` 引用；`O-xx` 可作地址引用（[ADR 0009](../adr/0009-object-layer.md)），但主句仍须 `E-xx`；`L-xx` 只在本派 `claims.md` 里工作，进交付物前必须先升 `E-xx`。
-2. **派内工作只读该派目录。** 需要跨派时，先读 `conclusions` 的对应 `E-xx`，再回派里看细节；不要从派根开始把所有派扫一遍。
-3. **`status` 不是“完成度”。** `seed` = 结构在、内容已开始、未交叉核对；`draft` = 论证完整、可能变；`superseded` = 已归档的历史文档。先看内容，不要因为 `seed` 跳过。
-
-## 计数只有一个权威
-
-README、checklist、manifest 不再各写一套“当前有多少”。**计数与阻塞只看 [meta/state](./state.md)**；`python3 meta/tools/check_repo.py` 是机器可核的那一半。
-
-## 为什么不做一个总索引
-
-总索引会变成第二份需要维护的内容，而且会和各层 README 漂移。**路由只写“去哪”，不复制“是什么”。** 具体判断仍在各派 README / claims / conclusions 里。
+证据等级与字段见 [conventions](./conventions.md)；E/L 晋升与交稿检查见 [checklist](./checklist.md)；任务路由见 [AGENTS](../AGENTS.md)。本页只管加载。
 
 ## 渐进披露解决不了什么
 

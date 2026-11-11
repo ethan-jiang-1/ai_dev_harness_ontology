@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 ---
 
 # topics：六派与四轴
@@ -126,35 +126,13 @@ updated: 2026-11-11
 
 例：一篇「用 SHACL 校验工具调用参数并在执行前阻断」的论文 → 01/action-gate；只校验产出 → 02/checker；只把 SHACL 当表示/编译产物、不阻断 → 05/representation；只过滤检索结果 → 01/commit-gate 的读路径 + `seam: read-path`。
 
-## 九种读法
+## 怎么读这一层
 
-- **找工程思路** → 01 → 02 → 03：哪里最硬、代价是什么。
-- **找证据强度** → 06 → [conclusions](./conclusions.md)：哪些已核、哪些只是推测。
-- **找落地路径** → 05 → 03 → 01：先有本体，再让它被看见，最后让它能拦住东西。
-- **找时刻** → [seams.md](./seams.md)：六个接缝、轴外位置、选择规则、到派与部件的 crosswalk。
-- **找形态** → [execution-forms.md](./execution-forms.md)：引擎求值/编译/上下文/标签，以及 36 个来源的初判。
-- **找前沿** → 各派 `frontier.md`：前沿问题、信号源、检索式、候选队列。
-- **找局部判断** → 各派 [claims.md](./01-constraint/claims.md)：`L-xx`，尚未升到 E-xx。
-- **找地址/数** → [objects.md](./objects.md)：`O-xx` 硬对象（C/F/T/M/N/R/P），按 E / 交付物 / 类型索引；它是地址层，不是结论层。
-- **找 E 的承重数/条件** → [evidence-anchors.md](./evidence-anchors.md)：每条承重 E 的数、条件、digest 节；EXP-004b 显示加锚后 citation strict 25%→55–65%。
+任务路由（做什么→去哪）在 [AGENTS](../AGENTS.md)；从交付物倒查证据在 [meta/loading §从交付物倒查](../meta/loading.md#从交付物倒查反向加载)。本页只管派与轴的地图。横切索引四个：找跨派结论 → [conclusions](./conclusions.md)；找本派判断 → 该派 `claims.md`；找 E 的承重数/条件 → [evidence-anchors](./evidence-anchors.md)；找地址/对象 → [objects](./objects.md)。
 
-> **反向读法（不计入九种）**：从交付物的期待倒查证据 → [meta/loading §从交付物倒查](../meta/loading.md#从交付物倒查反向加载)。01 从 E1–E9 倒查，02 从 recipe 倒查，03 从边界倒查；不要从 `src/` 正着扫。
+## 论文进库的前置
 
-| 从哪来 | 先去 | 再去 | 缺的数 |
-|---|---|---|---|
-| 01 期待 | [conclusions](./conclusions.md) E 行 | digest §4/§5 | 对应派 `frontier.md` |
-| 02 recipe | 子主题 `mechanism.md` | digest §6 | 对应派 `frontier.md` |
-| 03 边界 | [conclusions](./conclusions.md) E 行 | digest §5/§9 | [附录](../deliverables/03-mechanism-reference/05-appendix-constraint-spectrum.md) §3.7 |
-
-## 论文进库的前置：低噪声三件套
-
-新论文进 `src/papers/{arxiv_id}-{slug}/` 后，**先转换，再建卡，再消化**：
-
-1. **PDF 完整转 MD**：`paper.md`（正文）+ `references.md`（参考文献）+ `appendix.md`（附录/补充材料）。正文保留 `<!-- page N -->` 页码标记。
-2. **参考文献单独成文件**：默认**不读**。它最容易把检索/摘要带偏；只有核引文、查出处时才打开。
-3. **附录单独成文件**：默认也不读。需要看额外表格、证明、提示词时再打开。
-
-转换用 `pymupdf4llm`（逐页转，保留顺序）；公式/表格可能有版式噪声，引用前回 PDF 核。消化时默认读 `paper.md` + `card.md` + `digest.md`，不读 `references.md`；这是信噪比控制的第一步。目录与命名见 [src/README](../src/README.md)。
+先转换、再建卡、再消化；`references.md` / `appendix.md` 默认不读。流程与低噪声三件套见 [src/README §1/§5](../src/README.md)，本页不复述。
 
 ## 证据准入：只从 admitted 源取判断
 
@@ -169,7 +147,7 @@ updated: 2026-11-11
 - 一条判断的唯一支撑被降级/移出 → 该判断同步降为 `推测` 或撤回；**不许“结论保留、出处换掉”**。
 - 多源支撑里有一源不合格 → 先看剩下的是否还够；不够就降级，并在 `claims.md` 记一条。
 - 交付物里的判断必须能追到 admitted 源；追不到的按 `推测` 处理或删。
-- 当前撤回清单：`E-02/03/04/06/10/11/13/16/26`；见 [来源清除审计](../meta/audits/2026-11-11-source-purge.md)。
+- 撤回清单以 [来源清除审计](../meta/audits/2026-11-11-source-purge.md) 为唯一出处，本页不维护副本。
 
 ## 三层来源：N 主干 / I 补充 / S 线索
 

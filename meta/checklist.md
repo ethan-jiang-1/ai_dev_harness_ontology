@@ -38,6 +38,7 @@
 
 - 正文引用的 `E-xx / Q-xx / C-xx` 都在 `conclusions.md` 有定义。
 - 每个「推测 / 存疑」有未核理由或反例。
+- 交付物缺陷走过[修复回路](../AGENTS.md)：被指的那句话能指到 admitted 源的 digest 节，或已显式标 `推测`/gap 并在 frontier 记「关闭它需要什么」。
 - 卡片/消化修正了旧判断 → `updates:` 列全，主题页已回改。
 - 派内新判断在 `claims.md`；没有跨派/交付物的理由时，不应改 `conclusions.md`。
 - `deliverables/` 引 `E-xx` 作结论；`O-xx` 只作地址（[ADR 0009](../adr/0009-object-layer.md)），不引 `L-xx`；O 不得替代 E 作主句。
