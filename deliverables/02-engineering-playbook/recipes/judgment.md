@@ -150,6 +150,8 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 用本体当外部判据，查出**结构/声明/模式**错误；把「通过/违反/没检查完」三态显式化。
 
+> **机制（D1）**：checker 把答案/查询送进 reasoner 或 SPARQL，检查类型/声明/domain-range；它只能判「结构上说不通」，判不了「意义变了」（语义错 0%）。空结果重试是更强的基线（见证据表）；curated precision 只略优于随机。**条件**：有声明/闭世界；**反例**：语义错为主时越查越误；**决策**：先建空结果基线，再谈 checker。
+
 ### 适用 / 不适用
 
 | 适用 | 不适用 |

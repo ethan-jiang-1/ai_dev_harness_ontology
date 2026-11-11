@@ -6,7 +6,7 @@ parent: ../README.md
 
 # 4. 边界与反例
 
-> 本章回答：15 条边界 + 12 条反例里最常被越过的部分。 ｜ 读完你应该能：说出这条判断不能证明什么、常见主张在哪被已测反例打掉。
+> 边界页回答：15 条边界 + 12 条反例里最常被越过的部分。 ｜ 目标：说出这条判断不能证明什么、常见主张在哪被已测反例打掉。
 
 ### 4.1 证据边界：15 条边界 + 12 条反例
 
@@ -20,7 +20,7 @@ parent: ../README.md
 
 > 反例集单独看：[R-table](../evidence/boundaries.md#0-反例集r-table)——12 条「常见主张 × 已测反例」，例如「平均 −38% 可上线」「有引擎就能拦」「审批越多越安全」。
 
-> 每条 E 的限定见 [evidence-ledger.md](../evidence/ledger.md)；更细的逐条解释见 [附录 §3.7](../appendix-constraint-spectrum.md#37-本章不能证明什么)。
+> 每条 E 的限定在 [evidence-ledger.md](../evidence/ledger.md)；更细的逐条解释见 [附录 §3.7](../appendix-constraint-spectrum.md#37-本章不能证明什么)。
 
 
 <a id="8-期待与数据需求验收规格"></a>

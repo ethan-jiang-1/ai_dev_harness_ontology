@@ -33,6 +33,8 @@ basis: E-04/E-13/E-15/E-16/E-20；action-gate & commit-gate mechanism
 > **不要把拦截率当保证。** 同一信息下，false-block 与 miss 是一条前沿；block-all 可以做到零 miss，但零可用性。没有可用性/合法放行指标，不能比较两个 gate。
 
 
+> **机制（D1）**：POLAR 用 Layer A（T1–T5 逆关系 + 权重）+ Layer B（每轮状态投影），对候选动作反向搜索 undo 序列；整条分数是 `min φ(u)`，一步不可逆归零，τ=0.80 以下 veto。**条件**：弱模型、不可逆、高代价；**反例**：T1-only≈full，增益更像广泛拦截；retail/强模型回退；**决策**：只 shadow，报 miss–false-block 前沿，不设单点。
+
 ### 适用 / 不适用
 
 | 适用 | 不适用 |
@@ -191,6 +193,8 @@ J(m) = γ_m · p̂ĉ + λk(m) + μq(m)
 ### 目标
 
 在检索结果进入上下文前，按用户上下文过滤；把「谁能看哪些节点」变成可执行的策略求值。
+
+> **机制（D1）**：trustgraph 的 `PolicyFilter` 在查询结果后跑 SHACL-AF；`_triple_blocked` 只查 `triple.s`，所以只删 subject 侧；target/rule 异常 → 不命中 → 放行；无策略 → passthrough。**条件**：有策略、有 user_context；**反例**：`?s ex:worksFor ?o` 中 `?o` 被 block、`?s` 可见时仍返回；**决策**：只做可见性，不当授权。
 
 ### 适用 / 不适用
 

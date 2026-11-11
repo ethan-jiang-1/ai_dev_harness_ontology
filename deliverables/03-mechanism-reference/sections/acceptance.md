@@ -27,6 +27,16 @@ parent: ../README.md
 
 **读者自检**：用 [reader-checks](./reader-checks.md) 的 5 组；那是「我读懂了没有」，不是 M1–M5。
 
+### 5.1.1 深度分层（D1/D2/D0）
+
+| 层 | 条 | 说明 |
+|---|---|---|
+| **D1** | action、checker、commit | ≥200 字机制箱：机制链 + 条件 + 反例 + 决策 |
+| **D2** | context、memory、evidence、outside | 一句 why（≤180 字） |
+| **D0** | 无 | — |
+
+> 不再报「7/7 都有 why」；报 **3 D1 / 4 D2 / 0 D0**。
+
 ### 5.2 缺口入口
 
 - 不是「怎么改词」，是「下一步做什么」：见 [gaps.md](../evidence/gaps.md)。
