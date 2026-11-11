@@ -1,6 +1,13 @@
+---
+status: draft
+updated: 2026-11-12
+---
+
 # 落地经济学 · 机制
 
 > 只写「怎么算、怎么选」。判断回 [findings](./findings.md)，边界/下一步回 [frontier](./frontier.md)。
+>
+> **2026-11-12 对账**：成本表中 **CASEL / N&D / CAI / FIRME / EvoMemState / CASTON 仍 admitted**（数字保留）；**POLAR / OntoAct / Ontology Catch / OA-RAG / OntoDoc / Grid 已撤回**——其成本/效应数字作历史示例，不作活证据（链接已指 tombstone）。五成本维度与算法框架是设计（`推测`）。
 
 ## 五个成本维度
 

@@ -25,7 +25,7 @@ evidence: [E-02, E-03]  # 均 withdrawn
 
 判定器的价值不是一个准确率，而是**在什么阈值下、漏掉多少、误报多少、误报后修复代价多大**。
 
-校准问的是：判定器的分数/等级在部署错误率 p 下对应多少 precision；阈值该按什么预算定。两篇 digest（Ontology Catch、OA-RAG）都只给单点/切片，没有做概率校准；本页只采用它们支持的口径，不把 ECE/isotonic/temperature 当已核机制。
+校准问的是：判定器的分数/等级在部署错误率 p 下对应多少 precision；阈值该按什么预算定。两篇 digest（Ontology Catch、OA-RAG，均已撤回）都只给单点/切片，没有做概率校准；本页只采用它们支持的口径（作历史参考），不把 ECE/isotonic/temperature 当已核机制。
 
 ## 当前判断
 

@@ -35,7 +35,7 @@ updated: 2026-11-12
 - **精化能自动化到小规模，但下游未闭环、覆盖率未报。** CASTON high 6/6 接受（2 位专家）；medium 接受率 default 0/2、pretrained 1/4、GPT-4o mini 1/5——不是「全 mixed」，只有 default 的 2 条是 mixed。GPT-4o mini 那格同时换了 LLM 与 embedding，不能拆成「更大模型」的效应。recall@30 / recall@10 与「下游错误 → 该修哪条公理」都没报。`已核`（数字）／`推测`（瓶颈解释）。详见 [refinement/F1、F2、F3、F5、F6](./refinement/findings.md)。
 - **来源差异有测量，「偏向标签」没有。** E-02（已撤回）：专家/LLM 生成/数据挖掘三种来源在漏检与误报上各有偏向、无单一向优（历史示例，不作活证据）。但「专家覆盖窄、LLM 语义漂移、数据挖掘把常见当应然」在生成路线的 digest 里都没有测量，是 `推测`，不作依据（[05-L8](./claims.md)、[generation/F4](./generation/findings.md)）。来源标记进判定权重也没有测（[generation/F5](./generation/findings.md)）。
 - **表示的可核结论只有「表达 ≠ 执行」。** SFE-O（已撤回）单域：OWL 2 表达力够，但数值不在 OWL 求解、约束未落成可执行 SHACL、热物性/扩散系数靠外部服务（历史示例，不作活证据）。「按消费位置选档位」「第二档够用」「第三档不划算」都是 `推测`，三档成本差无对照（[representation/README](./representation/README.md)）。
-- **生命周期先落「接受记录」，不是更强的生成器。** CASTON / FIRME 只到候选或身份对齐；Evontree 只到自评的训练收益（增益仅报告值、`存疑`）。没有一篇证明本体改动让独立判定器/agent 变好（`已核` 缺口）；八步回路与台账优先是综合判断（[05-L1](./claims.md) 的来源要求、[lifecycle/mechanism](./lifecycle/mechanism.md)）。
+- **生命周期先落「接受记录」，不是更强的生成器。** CASTON / FIRME（admitted）只到候选或身份对齐；Evontree（已撤回）只到自评的训练收益（增益仅报告值、`存疑`）。没有一篇证明本体改动让独立判定器/agent 变好（`已核` 缺口，据 CASTON/FIRME）；八步回路与台账优先是综合判断（[05-L1](./claims.md) 的来源要求、[lifecycle/mechanism](./lifecycle/mechanism.md)）。
 
 ## 来源与路线（索引）
 
