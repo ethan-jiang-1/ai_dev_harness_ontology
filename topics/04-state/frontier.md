@@ -40,6 +40,7 @@ rq: [RQ3]
 |---|---|---|---|
 | FIRME（2610.40482） | 跨期身份 + 来源/时间；克制用法 | 已入档 | 回正文核状态机与“印证条件” |
 | EvoMemState（2611.03743） | 关系状态 + 推理状态两层 | 已入档 | 补“检索完整性/grounded 准确率”数字 |
+| Selective Forgetting（2608.28978） | 图式长期 agent 记忆；**阴性结果**：LongMemEval 上 KG 记忆不如扁平向量（F1 0.417 vs 0.468，CI 不跨零）；forgetting 剪枝有效 | signal（G3 无独立采用、G5 代码无 license） | 与 E-01 怀疑立场一致；不建卡，作「KG 记忆未必更优」边界线索 |
 | 记忆一致性基准 | RQ3 的度量载体 | 待扫描 | 用检索式 5 |
 | 冲突处理线 | 阻塞 vs 标注 | 待扫描 | 用检索式 4 |
 | entity resolution + registry 线 | FIRME 的近邻 | 待扫描 | 雪球一层 |

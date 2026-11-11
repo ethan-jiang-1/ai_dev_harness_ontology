@@ -51,6 +51,7 @@ rq: [RQ2, RQ4]
 | Safety monitors for agentic systems（2610.20960） | 运行时监控/安全监视器 | 待扫描 | 读摘要；先过五门再建卡 |
 | OpenPort Protocol（2602.20196） | 工具访问的安全治理规范 | G1 不过（2026-02 首公开） | 除非窗口内新版本，不建卡 |
 | trustgraph（开源） | 读路径 SHACL-AF 策略过滤；写路径 commit gate 仍无 | 已入档 | 验证 fail-open 与对象方向；判断读/写是否两个时刻 |
+| ontology-rag-firewall（cloudbadal007） | OWL/SHACL 防火墙验合同条款、拦 agent 动作；read-path/checker 候选 | signal（G2 单作者、G3 无独立采用；11 star/2 fork） | 不建卡；read-path 第二实现候选，待独立采用再过门 |
 | OPA（开源） | 通用策略引擎；补访问控制策略层；不解析本体/不消费 Glyph 标签 | 已入档（adjunct） | 接 label→policy、冲突/审计测试 |
 
 ## 入档判据

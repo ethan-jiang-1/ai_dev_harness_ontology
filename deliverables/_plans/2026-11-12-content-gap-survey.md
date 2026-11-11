@@ -68,7 +68,7 @@ scope: 内容层缺口盘点（purge 后）
 
 ## 6. 外部前沿对齐（受限核实）
 
-> **工具状态（如实记录）**：`web_search` 已恢复（用户充值）；`web_fetch` 先前可用，已逐条核实 4 篇 probation 论文 + Agents benchmark 仓库。**随后开启的 VPN 把 arxiv.org / api.github.com / semanticscholar 等域名解析成非公网 IP，抓取工具的安全策略拒绝非公网地址，web_fetch 全面不可用**——需关闭 VPN 才能继续核实。下文「窗口内候选」是 web_search 发现、尚未 fetch 过门的线索，一律标待核，不作判断依据。
+> **工具状态（如实记录）**：`web_search` 已恢复（用户充值）。`web_fetch` 因 VPN 把域名解析成虚拟 IP 而被安全策略误拒；**改用 bash `curl` 走 VPN 隧道可正常抓公共页面（arXiv/GitHub API/AAAI）**，本节候选已据此逐一过门。下文判定为已核实结果。
 
 **4 篇 probation 论文逐条核实（arXiv 摘要，4/4）**：
 
@@ -85,11 +85,13 @@ scope: 内容层缺口盘点（purge 后）
 2. **probation 判定站得住**：4 篇都没有顶会/标准组织级 I1，确实只有 I2（多机构）一个信号；按宪章 probation 合理，第二信号缺口是真的，不是误判。
 3. **P0 线索已核（阴性）**：Agents 的 benchmark 仓库公开（MIT/Python，last push 2026-10-05）但 0 fork / 0 依赖 / 1 star / 0 issue，无外部使用者，I5 不成立——**释放代码 ≠ 有影响力**，probation 维持。这正是准入门该挡的：不能因「作者释放了代码」就转正。第二信号得另找（I3 独立采用 / I4 社区）。
 
-**web_search 已发现的窗口内候选（待 fetch 过门，VPN 关闭后核）**：
+**窗口内候选已逐一过门（bash curl 核实）**：
 
-- **Selective Forgetting**（arXiv 2608.28978，2026-08）：图式长期 agent 记忆——04 记忆派候选，需核「本体是否真执行」而非仅图检索。
-- **SARA**（AAAI，法律本体推理）：顶会 I1 候选，需核发表日期与「本体是否在执行位」。
-- **ontology-rag-firewall**（github cloudbadal007）：OWL/SHACL 防火墙拦 agent 动作——read-path/checker 候选，需核贡献者/独立采用（疑似单作者，大概率 signal）。
-- **Ontology-to-tools compilation**（arXiv 2602.03439，2026-02）：窗口前，只作背景，不入库。
+| 候选 | 窗口 G1 | 关键发现 | 五门判定 |
+|---|---|---|---|
+| **Selective Forgetting**（2608.28978，2026-08-29） | ✓ | KG 记忆在 LongMemEval **不如**扁平向量（token F1 0.417 vs 0.468，Δ=-0.050，CI[-0.085,-0.016]）；forgetting 剪枝模块有效（删 9.8% 节点 F1 不变）；作者自限单小模型单基准。代码 [Selective-Amnesia](https://github.com/skhanzad/Selective-Amnesia) **无 license**、11 star/1 fork、贡献者同组 | **signal**：G3 无独立采用、G5 无 license。阴性结果与 E-01 怀疑立场一致，留 04 frontier |
+| **SARA**（AAAI Vol.40，法律 Jur-KG） | ✗ **2026-03-17** | AAAI 顶会（I1）+ **部署在巴西一家法院**（I3）；LLM agent 接 Jurisprudential KG 做法律推理 | **excluded（G1 超窗）**：强证据但窗口前，只作背景，不入库 |
+| **ontology-rag-firewall**（cloudbadal007） | ✓ pushed 2026-09-13 | OWL/SHACL 防火墙验合同条款、拦 agent 动作；**单作者**（1 人 6 提交）、11 star/2 fork、0 issue | **signal**：G2 单贡献者、G3 无独立采用。留 01/read-path frontier |
+| **Ontology-to-tools compilation**（2602.03439） | ✗ 2026-02 | 本体编译成可执行工具约束 | 窗口前，只作背景 |
 
-**未答**：工程前沿把本体放回路哪一格、哪些流行说法证据薄弱、上述候选能否过门——待 VPN 关闭、`web_fetch` 恢复后按 [topic 协议](../../meta/topic-research-protocol.md) 逐一过五门。**宁缺毋滥：核不过就留 frontier，不入库。**
+**结论：窗口内「高影响 + 本体真执行」的来源确实稀缺**——强的（SARA）超窗，窗口内的（Selective Forgetting / firewall）独立影响不足。这印证了 P1 执行型证据缺口是**真的**，不是没搜到。**宁缺毋滥：四个候选都不 admitted，按判定留 frontier 或作背景。** 这也说明准入门在正确工作：没有因为「看起来相关」就放水。
