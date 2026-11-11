@@ -262,7 +262,7 @@ scope: deliverables/01–04
 ## 9. C2/B3 合并（2026-11-11）
 
 - **01**：六个能力页并入 [capabilities/README.md](../01-capability-status/03-capabilities/README.md)（01 27→21 个 md，-6）；保留 A/B/C/D 总表与 3.1–3.9 机制箱，锚点 `#knowledge` 等。原来 6 个 0 出链死胡同消失。
-- **04**：原 `run.md` + `data.md` 并入 [example/README.md](../04-ontology-in-production/example/README.md)（04 25→23，-2）；fixture 说明、命令、数据/坏样本在一页。
+- **04**：原 `run.md` + `data.md` 并入 [example/README.md](../04-ontology-in-production/05-example/README.md)（04 25→23，-2）；fixture 说明、命令、数据/坏样本在一页。
 - **机械读数**：01–04 110→102 个 md；<600 中文字符页 47→38；全仓 539→531。
 - **B3**：01–04 README 首屏各加一行内码映射；正文内码未全改，B3 仍按 2–3 记。
 - **未重打分**：C2 的结构性代价仍在（102 个 md），等真人冷读再复评；本轮只记录机械变化，不把合并写成分数提升。

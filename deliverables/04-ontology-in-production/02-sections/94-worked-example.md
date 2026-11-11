@@ -6,7 +6,7 @@ parent: ../README.md
 
 # 第二个 worked domain：3 表 / 6 列（示意）
 
-> **给谁**：已经读完 [transfer](./transfer.md)，想看「同一套推导换一个域」的人。
+> **给谁**：已经读完 [transfer](92-transfer.md)，想看「同一套推导换一个域」的人。
 > **这一页是示意图，不是第二个 fixture**：没有 TTL/JSON，不要求跑；数字只说明这套推导自洽，不是测量。
 > 为了演示多标签，这个域**故意**让 `ticket_body` 带两个 tag；主 fixture 是单标签。多标签规则选 B（最严），换 A/C 数字会变（见 §5）。
 
@@ -82,7 +82,7 @@ parent: ../README.md
 | **B 集合最严** | 任一 tag deny 即 deny；level 取 max | **4 列 / 3 表**（本页采用） | C.2 规则要按 sets 重写 |
 | **C 逐标签判定** | 每 tag 一条 decision；query 级取最严 | CQ2 列数同 B（4/3）；audit 每条 tag 一条 | query 级聚合规则 |
 
-> 这张表就是 [transfer §6.2](./transfer.md#p-multitag) 的实例：**多标签不是「加一个 tag」，它会改 CQ 的数字、policy 的输入和 audit 的粒度**。选 A 时必须写「哪个是主标签」，否则结果不可复算。
+> 这张表就是 [transfer §6.2](92-transfer.md#p-multitag) 的实例：**多标签不是「加一个 tag」，它会改 CQ 的数字、policy 的输入和 audit 的粒度**。选 A 时必须写「哪个是主标签」，否则结果不可复算。
 
 ## 6. policy（5 条规则 + 5 条测试）
 
@@ -127,7 +127,7 @@ principal 模型选 **B：终端用户角色**（`analyst` / `governance`）；`
 {"decision_id":"mini-0002","query_id":"MINI-LEAK-1","who":"analyst:alice","judged_subject":":t_account","subject_kind":"table","resource_level":null,"decision":"skip","reason":"table_subject_not_judged","execution_effect":"returned","leaked_object":":acct_email","leaked_object_level":3,"leak_check":"object_direction_failed"}
 ```
 
-> 只展示判定相关字段；完整必填字段（executor/snapshot/policy_version/tag_version/obligation/evidence/outcome/user_context）见 [audit.schema](../example/audit.schema.json) / [C.4](../body/govern.md)。
+> 只展示判定相关字段；完整必填字段（executor/snapshot/policy_version/tag_version/obligation/evidence/outcome/user_context）见 [audit.schema](../05-example/audit.schema.json) / [C.4](../03-body/03-govern.md)。
 
 ## 8. build_report（示意）
 
@@ -159,7 +159,7 @@ principal 模型选 **B：终端用户角色**（`analyst` / `governance`）；`
 
 ## 10. 相关页
 
-- 推导方法：[transfer](./transfer.md)；填表：[templates](./templates.md)。
-- 标签来源/准入：[label-source](./label-source.md)。
-- 主 fixture：[example/README](../example/README.md)。
-- 拍板：[decision](./decision.md)。
+- 推导方法：[transfer](92-transfer.md)；填表：[templates](93-templates.md)。
+- 标签来源/准入：[label-source](96-label-source.md)。
+- 主 fixture：[example/README](../05-example/README.md)。
+- 拍板：[decision](06-decision.md)。

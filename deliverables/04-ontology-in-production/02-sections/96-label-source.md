@@ -19,7 +19,7 @@ parent: ../README.md
 | 字段 | 要求 | 为什么 | 没有会怎样 |
 |---|---|---|---|
 | `column_id` | 稳定 IRI（库/表/列） | 和 ABox 的 `:Column` 对上 | 标签挂不到列；CQ1/CQ2 少行 |
-| `tag(s)` | 一个或多个叶标签 | 多标签是常态；fixture 是单标签 | 多标签列无法判；见 [transfer §6.2](./transfer.md#p-multitag) |
+| `tag(s)` | 一个或多个叶标签 | 多标签是常态；fixture 是单标签 | 多标签列无法判；见 [transfer §6.2](92-transfer.md#p-multitag) |
 | `level` | 每个 tag 一个 1–4 | policy 的 condition | policy 没有输入；R1–R4 无法判 |
 
 > **1–4 的工程含义（`推测`，不是标准原文）**：1=公开、2=内部、3=敏感、4=严格受限。GB/T 43697 只分三级；04 的 1–4 是「一般/重要/核心」加一档的工程映射，具体边界由 policy owner 定。
@@ -53,7 +53,7 @@ parent: ../README.md
 | # | 问题 | 为什么是硬门 | 不满足就 |
 |---|---|---|---|
 | 1 | 每列有 tag + level？ | policy 的输入 | 停；未标列不能当安全 |
-| 2 | 多标签怎么表示/取 level？ | 真实数据多标签 | 先定 [transfer §6.2](./transfer.md#p-multitag) 的 A/B/C |
+| 2 | 多标签怎么表示/取 level？ | 真实数据多标签 | 先定 [transfer §6.2](92-transfer.md#p-multitag) 的 A/B/C |
 | 3 | 已标/未标覆盖率？ | 未标 = fail-open | 先量 coverage；不要接 policy |
 | 4 | 漏标率/未标注率有独立抽样？ | 授权链路最关键的 FN | 只做只读试点；不接 deny |
 | 5 | taxonomy 封闭/可版本化？ | 标签空间漂移 | 先定版本；否则不可 replay |
@@ -92,8 +92,8 @@ parent: ../README.md
 
 ## 7. 和 04 其他页的关系
 
-- 标签/等级写进 TBox：见 [A.3](../body/build.md) / [transfer §2](./transfer.md)。
-- 多标签规则：见 [transfer §6.2](./transfer.md#p-multitag)。
-- 标签 → level → policy：见 [C.1](../body/govern.md) / [C.2](../body/govern.md)。
-- 没有标签来源时怎么决策：见 [decision §5.1](./decision.md)。
-- 第二个域的标签长什么样：见 [worked-example](./worked-example.md)。
+- 标签/等级写进 TBox：见 [A.3](../03-body/01-build.md) / [transfer §2](92-transfer.md)。
+- 多标签规则：见 [transfer §6.2](92-transfer.md#p-multitag)。
+- 标签 → level → policy：见 [C.1](../03-body/03-govern.md) / [C.2](../03-body/03-govern.md)。
+- 没有标签来源时怎么决策：见 [decision §5.1](06-decision.md)。
+- 第二个域的标签长什么样：见 [worked-example](94-worked-example.md)。

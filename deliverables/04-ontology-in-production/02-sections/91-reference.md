@@ -8,7 +8,7 @@ parent: ../README.md
 
 > 这些表已从研究底稿消化到 04，读正文时不需要跳出去。证据等级用「已核 / 推测 / 工程产物 / 未测」标，不在这里展开来源。
 >
-> **词源**：「leak oracle / principal / level 1–4 / skip」是 `local` 工程词；SHACL/shape/三态 = `N: W3C SHACL`；策略表达 = `N: W3C ODRL 2.2`，判定架构 = `N: OASIS XACML 3.0`；数据分级 = `N: GB/T 43697-2024`，个人信息 = `N: GB/T 35273-2020`。逐词见 [术语 §0](./glossary.md#term-sources)。
+> **词源**：「leak oracle / principal / level 1–4 / skip」是 `local` 工程词；SHACL/shape/三态 = `N: W3C SHACL`；策略表达 = `N: W3C ODRL 2.2`，判定架构 = `N: OASIS XACML 3.0`；数据分级 = `N: GB/T 43697-2024`，个人信息 = `N: GB/T 35273-2020`。逐词见 [术语 §0](90-glossary.md#term-sources)。
 
 ## 0. 契约 ↔ `build_report` 覆盖表 / canonical 计数
 
@@ -100,7 +100,7 @@ parent: ../README.md
 
 ## 5. 读路径十条用例
 
-> 上游有 4 条待核（E-23）：本表 10 条里 6 条已核、4 条待核；引用时按 [govern C.3](../body/govern.md) 的标注。
+> 上游有 4 条待核（E-23）：本表 10 条里 6 条已核、4 条待核；引用时按 [govern C.3](../03-body/03-govern.md) 的标注。
 
 | # | 用例 | 安全期望 | trustgraph（`184f622`） |
 |---|---|---|---|
@@ -151,4 +151,4 @@ parent: ../README.md
 
 > 细节/出处（可选）：原始研究底稿在 [`topics/`](../../../topics/README.md)；主路径不需要打开。
 
-> 回 [04 目录](../README.md) ｜ 回 [验收](./acceptance.md)
+> 回 [04 目录](../README.md) ｜ 回 [验收](05-acceptance.md)

@@ -10,8 +10,8 @@ parent: ../README.md
 > **回答**：怎么从「你的 5 张表 + 3 个消费者问题」推到 04 的 9 件产物；哪两件事必须你先拍板。
 > **不回答**：值不值得做（去 [01](../../01-capability-status/README.md)）、接哪个缝（去 [02](../../02-engineering-playbook/README.md)）、为什么是这些位置（去 [03](../../03-mechanism-reference/README.md)）。
 >
-> 这一页是**推导单**，不是第二份 fixture，也不是实施任务。它只把 [A](../body/build.md)/[B](../body/consume.md)/[C](../body/govern.md) 里已经成立的产物，倒着拆成「输入 → 判断 → 产物」。
-> 每一步的产物都能回 04 的九件产物；涉及证据的地方标 `已核 / 推测 / 未测`。填表用 [templates](./templates.md)；想看换一个域怎么走，读 [worked-example](./worked-example.md)。
+> 这一页是**推导单**，不是第二份 fixture，也不是实施任务。它只把 [A](../03-body/01-build.md)/[B](../03-body/02-consume.md)/[C](../03-body/03-govern.md) 里已经成立的产物，倒着拆成「输入 → 判断 → 产物」。
+> 每一步的产物都能回 04 的九件产物；涉及证据的地方标 `已核 / 推测 / 未测`。填表用 [templates](93-templates.md)；想看换一个域怎么走，读 [worked-example](94-worked-example.md)。
 
 ## 0. 先记住三条
 
@@ -23,15 +23,15 @@ parent: ../README.md
 
 | 你手上有什么 | 推导 | 产物 | 验收 | 模板 |
 |---|---|---|---|---|
-| 消费者、时刻、拒绝条件 | 契约 6 项 + 2 个决策（§6） | ① 消费者契约 | A1 | [TPL-1](./templates.md#tpl-1-契约) |
-| 表 / 列 / 标签清单 | 5 问 → 类 + 属性（§2） | ② TBox / ABox | A2–A3 | [TPL-0](./templates.md#tpl-0-表--列清单起点) / [TPL-2](./templates.md#tpl-2-tbox-清单) / [TPL-3](./templates.md#tpl-3-属性与边清单) |
-| 「哪种数据错会让 CQ 静默错」 | 3 步 → shape + 负例（§4） | ③ shapes | A3–A4 | [TPL-4](./templates.md#tpl-4-shape-与负例) |
-| 契约的 `answers` | 4 步 → CQ（§3） | ④ 3 条 SPARQL | A5 / B1–B3 | [TPL-1](./templates.md#tpl-1-契约) |
-| 标签 + 等级 + 角色 | 5 步 → policy（§5） | ⑤ policy 表 | C1–C2 | [TPL-5](./templates.md#tpl-5-policy-表与测试) |
-| 每条规则 + 冲突/默认/skip | 用例表 | ⑥ 策略测试 | C2 | [TPL-5](./templates.md#tpl-5-policy-表与测试) |
-| 查询面 / 表页面 / 聚合 / 版本 | 12 面 | ⑦ 泄漏用例 | C3 / C5 | [reference §5](./reference.md#5-读路径十条用例) |
-| 每个 decision | 最小单元 | ⑧ audit schema + 记录 | C4 | [TPL-6](./templates.md#tpl-6-audit-记录) |
-| 三段故障 | 10 类 × 3 段 | ⑨ 故障矩阵 | 骨架；未做注入实验 | [reference §7](./reference.md#7-故障矩阵10-类--3-段) |
+| 消费者、时刻、拒绝条件 | 契约 6 项 + 2 个决策（§6） | ① 消费者契约 | A1 | [TPL-1](93-templates.md#tpl-1-契约) |
+| 表 / 列 / 标签清单 | 5 问 → 类 + 属性（§2） | ② TBox / ABox | A2–A3 | [TPL-0](93-templates.md#tpl-0-表--列清单起点) / [TPL-2](93-templates.md#tpl-2-tbox-清单) / [TPL-3](93-templates.md#tpl-3-属性与边清单) |
+| 「哪种数据错会让 CQ 静默错」 | 3 步 → shape + 负例（§4） | ③ shapes | A3–A4 | [TPL-4](93-templates.md#tpl-4-shape-与负例) |
+| 契约的 `answers` | 4 步 → CQ（§3） | ④ 3 条 SPARQL | A5 / B1–B3 | [TPL-1](93-templates.md#tpl-1-契约) |
+| 标签 + 等级 + 角色 | 5 步 → policy（§5） | ⑤ policy 表 | C1–C2 | [TPL-5](93-templates.md#tpl-5-policy-表与测试) |
+| 每条规则 + 冲突/默认/skip | 用例表 | ⑥ 策略测试 | C2 | [TPL-5](93-templates.md#tpl-5-policy-表与测试) |
+| 查询面 / 表页面 / 聚合 / 版本 | 12 面 | ⑦ 泄漏用例 | C3 / C5 | [reference §5](91-reference.md#5-读路径十条用例) |
+| 每个 decision | 最小单元 | ⑧ audit schema + 记录 | C4 | [TPL-6](93-templates.md#tpl-6-audit-记录) |
+| 三段故障 | 10 类 × 3 段 | ⑨ 故障矩阵 | 骨架；未做注入实验 | [reference §7](91-reference.md#7-故障矩阵10-类--3-段) |
 
 > `build_report` 是 A.5 的内联样例，不单独成文件；所以是「九件产物」，不是十件。
 
@@ -58,7 +58,7 @@ parent: ../README.md
 | `Phone` / `Name` / `Financial` / `SSN` | 不同标签 + 等级 | CQ2（level 来自 tag）；标签层级 | 只建会被查询/判定的标签族 |
 | `Address` | 已删 | — | 没有任何 CQ/shape/policy 用 → 删 |
 
-**标签从哪来**：这一节只决定「建哪些类」；标签源是否可信、覆盖多少列、漏标多少，见 [label-source](./label-source.md)。
+**标签从哪来**：这一节只决定「建哪些类」；标签源是否可信、覆盖多少列、漏标多少，见 [label-source](96-label-source.md)。
 
 **读法**：`PII` 是 fixture 里最容易被问「用在哪」的类——它只作分组，不被任何 CQ 直接查。你的 TBox 清单如果写不出「用在哪」，就按 `Address` 的判据删掉，而不是为了「层级完整」保留。保留/删除是工程选择（`推测`），但必须写理由。
 
@@ -91,7 +91,7 @@ fixture 的三条：
 
 - 只能写成一句自然语言，写不出主语/输出 → 它不是 CQ，是需求；回 A.1 改契约。
 - 写出来了，但 expected 说不出 → 它还不能验收；先补「期望几行/几列」。
-- 写出来了，0 行不能分因 → 先补 [B.2 的 ASK 表](../body/consume.md#b2-三条查询--空结果分因)，不要先调 prompt。
+- 写出来了，0 行不能分因 → 先补 [B.2 的 ASK 表](../03-body/02-consume.md#b2-三条查询--空结果分因)，不要先调 prompt。
 
 **一个反例**：A.1 说「CQ 只是模板词，须在契约行可执行」。如果某一行写不出 1 个 CQ 或 1 个拒绝条件，删这行；不要为了填满 3 行编一个消费者。
 
@@ -120,12 +120,12 @@ shape 不是「给本体加约束」，是「哪种数据错会让这条 CQ 静�
 ## 5. 推导 4：标签 / 等级 → policy（5 步）
 
 1. **列取值域**：principal / action / kind 各有哪些值。principal 不是 consumer 的名字，见 §6.1。
-2. **标签 → level**：这是工程映射，不是标准。GB/T 43697 只分核心/重要/一般三级；GB/T 35273 只定义个人信息/敏感个人信息；「level 4 → 谁能读」是你的默认（`已核` 标准 / `推测` 映射）。标签源准入见 [label-source](./label-source.md)。
+2. **标签 → level**：这是工程映射，不是标准。GB/T 43697 只分核心/重要/一般三级；GB/T 35273 只定义个人信息/敏感个人信息；「level 4 → 谁能读」是你的默认（`已核` 标准 / `推测` 映射）。标签源准入见 [label-source](96-label-source.md)。
 3. **写规则**：id / principal / action / kind / condition / effect / priority / obligation；default 与 skip 的 reason 单独写。
 4. **冲突消解**：priority 数字最小；同优先级不同 effect = `undetermined`；不要偷偷把 T9 修成 allow/deny。
 5. **写测试**：每条规则至少 1 个 allow/deny/skip 用例；default / skip / 平局各 1 条；`clearance` 只有被规则消费才算输入。
 
-**三条硬规则**（抄自 [C.2](../body/govern.md)）：
+**三条硬规则**（抄自 [C.2](../03-body/03-govern.md)）：
 
 - 先 `kind` 后 `level`：表/数据集不按列判。
 - `skip` ≠ `allow`：它是第 4 种效果，必须带 reason。
@@ -195,9 +195,9 @@ shape 不是「给本体加约束」，是「哪种数据错会让这条 CQ 静�
 | **3 策略 / 审计** | 检查点 2 | policy 表 + 测试（fixture 8/11）+ audit schema + 3 条记录 | 10/11 有唯一期望；T9 显式；object 探针 | object 泄漏未修 → conditional | 1 周 |
 | **4 验收** | 检查点 3 | 5 组门槛 + 验收记录 | 5 组全过，或明确 conditional | 缺一条 → 演示/conditional | 0.5–1 天 |
 
-> 成本工作纸见 [templates TPL-9](./templates.md#tpl-9-成本工作纸)；公式与敏感性见 [decision §2.5](./decision.md)。
+> 成本工作纸见 [templates TPL-9](93-templates.md#tpl-9-成本工作纸)；公式与敏感性见 [decision §2.5](06-decision.md)。
 
-**如果只有半天**：只做检查点 0 的契约草稿 + [TPL-0](./templates.md#tpl-0-表--列清单起点) 清单，不要建 TBox。
+**如果只有半天**：只做检查点 0 的契约草稿 + [TPL-0](93-templates.md#tpl-0-表--列清单起点) 清单，不要建 TBox。
 **如果只有两天**：加 3 条 CQ 草稿与 raw 验证；TBox 从 5 个类开始，不要照抄 11 类。
 **如果已经有一个能用的执行层**：从检查点 3 开始；但契约与 TBox 仍要补，否则 policy 没有主语。
 
@@ -210,7 +210,7 @@ shape 不是「给本体加约束」，是「哪种数据错会让这条 CQ 静�
 - **多标签**：Glyph 是列级多标签（`已核`，Glyph digest；单企业，E-22）；04 fixture 是单标签；三种规则是工程选择（`推测`），没有实测。
 - **成本/工期**：2–4 人周建模、3–5 人日 shapes 是工程假设（`推测`；原 SFE-O 估算已移出），未绑定流程条数/团队规模；不能当验收线，更不能当报价。
 - **不证明**：这套推导在你的域有效；principal/多标签选择正确；规模可扩展；生产误报率/延迟。
-- **换域**：第二个 worked domain 见 [worked-example](./worked-example.md)；它只演示方法，不是效果。
+- **换域**：第二个 worked domain 见 [worked-example](94-worked-example.md)；它只演示方法，不是效果。
 - **停**：契约填不出、CQ 写不出、`targeted=0`、object 泄漏未修、没有 principal/多标签决策——任一出现，停在原地。
 
 ## 9. 读完自测（5 题）
@@ -220,6 +220,6 @@ shape 不是「给本体加约束」，是「哪种数据错会让这条 CQ 静�
 3. LEAK-T1 为什么「0 行」不是 leak 的定义？通过条件是什么？
 4. 你的契约里 `principal` 是服务身份还是用户角色？policy 判哪个？写进契约了吗？
 5. 你的多标签列，level 取哪个？shape 里写死了吗？policy 的输入还是标量吗？
-6. 你的标签源过得了 [label-source](./label-source.md) 的 3/4/5 硬门吗？没有漏标/覆盖率，你敢接 deny 吗？
+6. 你的标签源过得了 [label-source](96-label-source.md) 的 3/4/5 硬门吗？没有漏标/覆盖率，你敢接 deny 吗？
 
 > 五题里有一题答不出，回到对应小节；不要用「先建起来再说」跳过。

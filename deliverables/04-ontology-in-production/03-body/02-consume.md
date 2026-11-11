@@ -6,16 +6,16 @@ parent: ../README.md
 
 # B · 用：从资产到 3 条能跑的查询
 
-> 接 [A](./build.md)。示例是合成的（5 表/13 列）；200/5,000 是本文假设的「中型目录」，不是 Glyph 参照（Glyph ~98k 表 / ~3.4M 列，E-22）。标「示例」的数字只证明这张例子跑通。
+> 接 [A](01-build.md)。示例是合成的（5 表/13 列）；200/5,000 是本文假设的「中型目录」，不是 Glyph 参照（Glyph ~98k 表 / ~3.4M 列，E-22）。标「示例」的数字只证明这张例子跑通。
 >
 > **本章回答**：按你手上的资产选哪条路线、3 条 CQ 怎么跑、0 行怎么办。
 > **你需要准备**：A 的 TBox/ABox；你的资产（RDF / 关系库 / endpoint）。
 > **做完得到**：3 条 SPARQL、空结果分因表、纠错/OBDA 协议。
-> **怎么算做完**：B.6 验收；清单见 [acceptance](../sections/acceptance.md)。
+> **怎么算做完**：B.6 验收；清单见 [acceptance](../02-sections/05-acceptance.md)。
 
 ## B.0 决定表
 
-> **本表是工程选择，不是效果排序**：路线形态可读；原锚 E-26 已撤回，三条路线的分数不引用（见 [evidence §3.5](../evidence/ledger.md#w-table)）。
+> **本表是工程选择，不是效果排序**：路线形态可读；原锚 E-26 已撤回，三条路线的分数不引用（见 [evidence §3.5](../04-evidence/01-ledger.md#w-table)）。
 
 | 你先有 | 默认路线 | 反例 | 停 |
 |---|---|---|---|
@@ -25,7 +25,7 @@ parent: ../README.md
 | 已有生成器 + 可标注错例 | gate / selective correction（B.3） | Gate 分布外，trigger 漂移 | 没有 100 条目标分布标注 |
 | 什么都没有 | 先建 KG/本体 | 空图上选查询路线 | 回到 05 派（造与修） |
 
-按资产条件选，不按总分排。**四条路线在资产/规模/指标/成本上不可比**：三条路线各单设置、无头对头；OBDA 是另一种形态。完整矩阵、失败目录与「不可比清单」在 [参考表 §3–§4](../sections/reference.md)；本章只取 04 用得到的部分。
+按资产条件选，不按总分排。**四条路线在资产/规模/指标/成本上不可比**：三条路线各单设置、无头对头；OBDA 是另一种形态。完整矩阵、失败目录与「不可比清单」在 [参考表 §3–§4](../02-sections/91-reference.md)；本章只取 04 用得到的部分。
 
 
 ## B.1 四条路线各停在哪
@@ -39,7 +39,7 @@ parent: ../README.md
 
 ## B.2 三条查询 + 空结果分因
 
-前缀：`PREFIX : <https://ex.org/c#>`、`PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>`；ABox 在 [catalog.ttl](../example/catalog.ttl)。
+前缀：`PREFIX : <https://ex.org/c#>`、`PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>`；ABox 在 [catalog.ttl](../05-example/catalog.ttl)。
 
 **CQ1** 哪些列是 `:Email`（含子类）
 
@@ -80,7 +80,7 @@ SELECT ?dataset (COUNT(?col) AS ?n) WHERE {
 
 > CQ3 依赖 ABox 显式写 `?col a :Column`；不写类型会 0 行，这是查询前置，不是 coverage 问题。它数的是「没有 `hasTag` + `sensitivityLevel`」的列，不是「没有任何 tag」。
 
-> 上面三个期望都是 **raw**，不是 policy 后的结果。policy 后：CQ1/CQ2 在 analyst 下会变 0；CQ3 只给 governance（R8 dataset allow），analyst 不适用。见 [C.4](./govern.md)。
+> 上面三个期望都是 **raw**，不是 policy 后的结果。policy 后：CQ1/CQ2 在 analyst 下会变 0；CQ3 只给 governance（R8 dataset allow），analyst 不适用。见 [C.4](03-govern.md)。
 
 **0 行不是错，先分因**：
 
@@ -132,7 +132,7 @@ SELECT ?dataset (COUNT(?col) AS ?n) WHERE {
 | 4 | 本体超窗口 | 完整 OWL 太大 | 截断/丢公理 | ontology token 计数 + slice 对照 |
 | 5 | execution accuracy 当业务正确 | 只看分数 | 答案集对、业务错 | 自域配对 + 人工抽检 |
 
-完整 17 类与检测 query 见 [参考表 §4](../sections/reference.md)。
+完整 17 类与检测 query 见 [参考表 §4](../02-sections/91-reference.md)。
 
 ## B.6 验收
 
@@ -147,7 +147,7 @@ SELECT ?dataset (COUNT(?col) AS ?n) WHERE {
 
 ## B.7 证据与边界
 
-> 证据见 [evidence](../evidence/ledger.md)。
+> 证据见 [evidence](../04-evidence/01-ledger.md)。
 
 - 三条路线各单设置、无头对头 → 不能排序，不能当自域基线。
 - OBDA 重写落到 SQL，不证明查询正确或本体独立贡献。

@@ -13,35 +13,35 @@ parent: ../README.md
 
 - 要跑命令、看期望输出：见 [5 分钟跑通](#5-分钟跑通可选)。
 - 要看表/列/标签与坏样本：见 [数据与坏样本](#数据与坏样本)。
-- 要对照产物：见 [A](../body/build.md)/[B](../body/consume.md)/[C](../body/govern.md)。
+- 要对照产物：见 [A](../03-body/01-build.md)/[B](../03-body/02-consume.md)/[C](../03-body/03-govern.md)。
 
 ## 文件清单
 
 | 文件 | 是什么 | 对应产物 |
 |---|---|---|
-| [ontology.ttl](./ontology.ttl) | TBox：11 类 / 5 属性 | ② Turtle |
-| [catalog.ttl](./catalog.ttl) | ABox：5 表 / 13 列 / 标签 | ② Turtle |
-| [shapes.ttl](./shapes.ttl) | 2 条 SHACL shape | ③ shapes |
-| [policy.json](./policy.json) | 8 条策略规则 | ⑤ policy 表 |
-| [policy_tests.json](./policy_tests.json) | 11 条输入 → 期望 decision | ⑥ 策略测试 |
-| [leak_cases.json](./leak_cases.json) | 12 条泄漏用例 | ⑦ 泄漏用例 |
-| [audit.schema.json](./audit.schema.json) | audit record JSON Schema | ⑧ audit schema |
-| [audit_records.json](./audit_records.json) | 3 条 audit 记录（deny + skip/leak + allow） | ⑧ audit record |
-| [fault_matrix.json](./fault_matrix.json) | 10 类故障 × 3 段；注入骨架，不是实测 | ⑨ 故障矩阵 |
+| [ontology.ttl](ontology.ttl) | TBox：11 类 / 5 属性 | ② Turtle |
+| [catalog.ttl](catalog.ttl) | ABox：5 表 / 13 列 / 标签 | ② Turtle |
+| [shapes.ttl](shapes.ttl) | 2 条 SHACL shape | ③ shapes |
+| [policy.json](policy.json) | 8 条策略规则 | ⑤ policy 表 |
+| [policy_tests.json](policy_tests.json) | 11 条输入 → 期望 decision | ⑥ 策略测试 |
+| [leak_cases.json](leak_cases.json) | 12 条泄漏用例 | ⑦ 泄漏用例 |
+| [audit.schema.json](audit.schema.json) | audit record JSON Schema | ⑧ audit schema |
+| [audit_records.json](audit_records.json) | 3 条 audit 记录（deny + skip/leak + allow） | ⑧ audit record |
+| [fault_matrix.json](fault_matrix.json) | 10 类故障 × 3 段；注入骨架，不是实测 | ⑨ 故障矩阵 |
 
 > 支持页：[5 分钟跑通](#5-分钟跑通可选)（可选跑）· [数据与坏样本](#数据与坏样本)（数据/坏样本）。
 
 ## 文件怎么用（没有引擎）
 
-- [policy_tests.json](./policy_tests.json)：11 条输入 → 期望 decision。用任意 JSON/脚本按 `policy.json` 的 8 条规则判；T9 故意留成 `undetermined`，不要强行给 allow/deny；T11 是 governance 的 dataset 级 allow。
-- [leak_cases.json](./leak_cases.json)：12 条查询与期望；`expected_rows` 只对 filter/allow 用例有意义，deny/withhold 看 `expected_absent`；`trustgraph` 列是 pin `184f622` 的已知行为，不是实测。`object_direction_failed` 是预期缺口，不是用例写错。
-- [audit.schema.json](./audit.schema.json)：用 `jsonschema` 校验 [audit_records.json](./audit_records.json) 的三条记录（对应 [C.4](../body/govern.md)）；`policy_version/tag_version/snapshot` 必须能回放。
-- [fault_matrix.json](./fault_matrix.json)：10 类 × 3 段骨架；没有注入实验，不要当结果。
+- [policy_tests.json](policy_tests.json)：11 条输入 → 期望 decision。用任意 JSON/脚本按 `policy.json` 的 8 条规则判；T9 故意留成 `undetermined`，不要强行给 allow/deny；T11 是 governance 的 dataset 级 allow。
+- [leak_cases.json](leak_cases.json)：12 条查询与期望；`expected_rows` 只对 filter/allow 用例有意义，deny/withhold 看 `expected_absent`；`trustgraph` 列是 pin `184f622` 的已知行为，不是实测。`object_direction_failed` 是预期缺口，不是用例写错。
+- [audit.schema.json](audit.schema.json)：用 `jsonschema` 校验 [audit_records.json](audit_records.json) 的三条记录（对应 [C.4](../03-body/03-govern.md)）；`policy_version/tag_version/snapshot` 必须能回放。
+- [fault_matrix.json](fault_matrix.json)：10 类 × 3 段骨架；没有注入实验，不要当结果。
 
 ## 5 分钟跑通（可选）
 
 > 这是**可选的阅读对照**，不是交付标准，也不是运行记录。需要 `rdflib` + `pyshacl`（`pip install rdflib pyshacl`）。
-> 命令在本目录跑；下面的数字是 fixture 期望，不是实测。跑之前先看上面的 fixture 说明；跑不通先看 [症状地图](../sections/map.md)。
+> 命令在本目录跑；下面的数字是 fixture 期望，不是实测。跑之前先看上面的 fixture 说明；跑不通先看 [症状地图](../02-sections/02-map.md)。
 
 ### 1. 解析三个 TTL（期望 3/3 parsed）
 
@@ -86,14 +86,14 @@ for row in g.query(q): print(row)
 PY
 ```
 
-### 期望（与 [A.5](../body/build.md)/[B.2](../body/consume.md) 一致）
+### 期望（与 [A.5](../03-body/01-build.md)/[B.2](../03-body/02-consume.md) 一致）
 
 - 解析：3/3；TBox 11 类/5 属性；shapes 2。
 - `pyshacl`：`conforms=false`，2 violations（`tag_unknown` 缺 `sensitivityLevel`；`col_legacy` 的 `hasTag` 是字面量）；需 `ontology.ttl` 同图，否则 `TagHasLevel` 只检查显式 `a :Tag` 的个体，干净样本 `tag_email_1` 不会被 target。
 - CQ1：2 行（`col_email`、`col_customer_email`）/ 2 表；需 `ontology.ttl` 与 `catalog.ttl` 同图，只加载 ABox 会得到 1 行。
 - CQ2：4 表 / 7 列；CQ3：4 个 dataset 各 1。
 
-**跑不通时**：先看 [症状地图](../sections/map.md)；`0 violation` 可能是 shape 没有 target，不是数据干净。数据与坏样本见 [数据与坏样本](#数据与坏样本)。
+**跑不通时**：先看 [症状地图](../02-sections/02-map.md)；`0 violation` 可能是 shape 没有 target，不是数据干净。数据与坏样本见 [数据与坏样本](#数据与坏样本)。
 
 ## 数据与坏样本
 
@@ -127,7 +127,7 @@ PY
 ### 相关页
 
 - 文件清单：[回到文件清单](#文件清单)；怎么跑：[5 分钟跑通](#5-分钟跑通可选)。
-- 这些数据怎么进 TBox：[A.3](../body/build.md)。
+- 这些数据怎么进 TBox：[A.3](../03-body/01-build.md)。
 
 ## 注意
 

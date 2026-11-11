@@ -49,9 +49,9 @@ scope: 核心计划第 7 步（01→02→03→04 定义段接规范主干）
 | [03 commit](../03-mechanism-reference/03-positions/06-commit.md) | 顶部加词源 | XACML/ODRL 只到判定架构；commit gate/三段式 `local`（概念架构） |
 | [03 memory / evidence](../03-mechanism-reference/03-positions/02-memory.md) | 顶部加词源 | 记忆/接地 `local`；标准不定义机制 |
 | [04 README](../../deliverables/04-ontology-in-production/README.md) | 内码后加词源 | 本体/SHACL/ODRL/XACML/GB-T/ODCS 有 N；TBox/ABox、principal、level、skip、leak oracle `local` |
-| [04 术语 §0](../../deliverables/04-ontology-in-production/sections/glossary.md#term-sources) | 新增 12 行来源表 | 数据分级/个人信息/数据契约/OWL 有 N |
-| [04 build A.3](../../deliverables/04-ontology-in-production/body/build.md) | TBox/ABox 段加词源 | TBox/ABox `local`；类/属性语义 `N: OWL 2 Profiles` |
-| [04 govern C.1/C.2](../../deliverables/04-ontology-in-production/body/govern.md) | C.1 后加词源；C.2 `skip` 规则加标记 | 分级/个人信息有 N；level 1–4、skip、principal `local` |
+| [04 术语 §0](../04-ontology-in-production/02-sections/90-glossary.md#term-sources) | 新增 12 行来源表 | 数据分级/个人信息/数据契约/OWL 有 N |
+| [04 build A.3](../04-ontology-in-production/03-body/01-build.md) | TBox/ABox 段加词源 | TBox/ABox `local`；类/属性语义 `N: OWL 2 Profiles` |
+| [04 govern C.1/C.2](../04-ontology-in-production/03-body/03-govern.md) | C.1 后加词源；C.2 `skip` 规则加标记 | 分级/个人信息有 N；level 1–4、skip、principal `local` |
 
 ## 3. 验收（可复跑）
 

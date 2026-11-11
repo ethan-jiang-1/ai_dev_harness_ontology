@@ -16,7 +16,7 @@ parent: ../README.md
 
 | 问题 | 04 的答案 | 依据 / 限制 |
 |---|---|---|
-| 这张 fixture 能上线吗 | **不能**；它是 `conditional`，不是「可上线」 | C3 object 泄漏、T9 未定、写授权无实现（[acceptance](./acceptance.md)） |
+| 这张 fixture 能上线吗 | **不能**；它是 `conditional`，不是「可上线」 | C3 object 泄漏、T9 未定、写授权无实现（[acceptance](05-acceptance.md)） |
 | 这张 fixture 能试点吗 | 可以，但要收窄范围 + 补条件 | 见 §5；不是所有团队都适合 `conditional` |
 | 要花多少 | `推测`：建模 2–4 人周 + shapes 3–5 人日 + 集成 1–2 人周；打标/审计/执行层**未估** | §2；**不是报价**（缺打标/审计/执行层三项，且无单价） |
 | 多久 | 4 个阶段：3–5 天 / 3–5 周 / 1 周 / shadow 2–4 周（`推测`） | §3；按 5 表小域、1 个 owner 假设 |
@@ -34,7 +34,7 @@ parent: ../README.md
 | 这个能力今天能不能用、先做哪个 | 不回答 | [01](../../01-capability-status/README.md) |
 | 接哪个位置、用哪条 recipe、怎么上线 | 不回答；只借 02 的 R0/R8/R10/R11 | [02](../../02-engineering-playbook/README.md) |
 | 为什么是这些位置、边界在哪 | 不回答 | [03](../../03-mechanism-reference/README.md) |
-| 这条链的 9 件产物、5 组门槛、停在哪 | **回答** | 本页 + [acceptance](./acceptance.md) |
+| 这条链的 9 件产物、5 组门槛、停在哪 | **回答** | 本页 + [acceptance](05-acceptance.md) |
 | 这条链能不能试点、`conditional` 怎么处置 | **回答** | §5 |
 | 这条链要花什么、规模先断在哪 | **回答到「成本驱动项 + 量级」**；不出报价 | §2、§4 |
 
@@ -64,7 +64,7 @@ parent: ../README.md
 
 | 成本项 | 量级 | 来源/等级 | 谁填 | 你的值 |
 |---|---|---|---|---|
-| 建模（TBox + ABox） | 2–4 人周（5 表/13 列小域） | 工程假设，`推测`；原 SFE-O 已移出；[GUIDE](../GUIDE.md) | 数据/本体 |  |
+| 建模（TBox + ABox） | 2–4 人周（5 表/13 列小域） | 工程假设，`推测`；原 SFE-O 已移出；[GUIDE](00-GUIDE.md) | 数据/本体 |  |
 | shapes + 负例 | 3–5 人日 | 同上，`推测` | 数据/本体 |  |
 | 查询 / 集成（3 CQ + endpoint/agent；查询胶水未估） | 1–2 人周（外部服务集成估算） | representation，`推测` | 应用 |  |
 | 打标 / 等级 | **未估**；Glyph 单企业，无公开人日；怎么变成可测见 §2.5 | E-22，`未测` | 数据/治理 |  |
@@ -131,7 +131,7 @@ TCO_12m =
 
 > 时间是量级（`推测`），不是承诺；按 5 表小域、1 名熟悉该域的人、数据已可读假设。数据清洗/打标另加；多人协作不线性。
 >
-> 与 [transfer §7](./transfer.md) 的 5 个检查点对应：P0=检查点 0；P1=检查点 1–2；P2=检查点 3；P3=检查点 4 + 试点。
+> 与 [transfer §7](92-transfer.md) 的 5 个检查点对应：P0=检查点 0；P1=检查点 1–2；P2=检查点 3；P3=检查点 4 + 试点。
 
 | 阶段 | 入口 | 产物 | 出口 | 停 | 量级（`推测`） |
 |---|---|---|---|---|---|
@@ -200,7 +200,7 @@ TCO_12m =
 |---|---|---|---|
 | 内部、steward-only、只读 | **可试点（conditional）** | 收窄范围写进契约；audit；object 探针；版本；T9 显式 | 不要对 analyst/外部用户开放 |
 | 有外部用户 / 监管 / 多租户 | **停 / 换执行层** | 第二实现或修执行层；fail-closed；object 双向；写授权 | 不要用 trustgraph 单实现上线 |
-| 没有标签来源 / 没有 owner | **停在 A.1** | [label-source](./label-source.md) 的准入清单；等级、owner | 不要先建 TBox |
+| 没有标签来源 / 没有 owner | **停在 A.1** | [label-source](96-label-source.md) 的准入清单；等级、owner | 不要先建 TBox |
 | 只要 demo / 评审 | **演示** | 标 `conditional` + 未修清单 | 不要说「可上线」 |
 
 ### 5.2 升到 stable 的条件
@@ -238,7 +238,7 @@ TCO_12m =
 1. **问题与消费者**：谁、在什么时刻、要答什么/拒什么。
 2. **链路范围**：9 件产物里哪些做、哪些不做（读/写、列/表/数据集、内部/外部）。
 3. **5 组门槛现状**：过/未过/未测；`conditional` 的未过项写清。
-4. **成本与收益假设**：建设/运行/维护/人审/失败五维；至少 3 个数（建模/打标/执行层）；公式见 §2.5，工作纸见 [TPL-9](./templates.md#tpl-9-成本工作纸)；收益写防泄漏/审计/效率/复用，哪些能货币化。
+4. **成本与收益假设**：建设/运行/维护/人审/失败五维；至少 3 个数（建模/打标/执行层）；公式见 §2.5，工作纸见 [TPL-9](93-templates.md#tpl-9-成本工作纸)；收益写防泄漏/审计/效率/复用，哪些能货币化。
 5. **缺口与风险**：object 泄漏、T9、写授权、规模、单价。
 6. **选项**：build pilot / buy / do nothing；各自的代价与反事实。
 7. **建议**：`go` / `conditional` / `no-go` / `not enough data`；一句话理由。
@@ -273,7 +273,7 @@ TCO_12m =
 
 > 成本与工期是工程建议（`推测`）；04 没有做实验，也没有单价。
 
-- **成本口径**：[02 cost](../../02-engineering-playbook/04-operations/03-cost.md)（五维、TCO、单价表空、缺项规则）；§2.5 公式；[TPL-9](./templates.md#tpl-9-成本工作纸) 工作纸。
+- **成本口径**：[02 cost](../../02-engineering-playbook/04-operations/03-cost.md)（五维、TCO、单价表空、缺项规则）；§2.5 公式；[TPL-9](93-templates.md#tpl-9-成本工作纸) 工作纸。
 - **上线节奏**：[02 rollout](../../02-engineering-playbook/04-operations/04-rollout.md)（shadow → advisory → enforce；回滚；RACI）。
 - **go/no-go**：[02 evaluation](../../02-engineering-playbook/04-operations/02-evaluation.md)（go / no-go / not enough data）。
 - **量级估算**：工程假设（`推测`；原 SFE-O 估算已移出，只作历史）；[representation mechanism](../../../topics/05-produce/representation/mechanism.md)（1–2 人周集成，`推测`）；policy 2–4 人日借 [02 cost](../../02-engineering-playbook/04-operations/03-cost.md) R9（commit gate 的 policy 部分，04 读路径按同类量级类比）。

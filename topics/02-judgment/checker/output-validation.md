@@ -124,6 +124,6 @@ SELECT ?col ?tagLevel ?colLevel WHERE {
 - **golden count（2/4/7）只在 fixture 成立**：生产没有 ground truth，只能基线 + 分层抽样。
 - **CQ3 的文档矛盾**：`example/README` 写「CQ3 不把 `col_legacy` 算作未打标」，但期望结果是 4 个 dataset 各 1（含 `ds_legacy`）；按图计算，`col_legacy` 的 `hasTag` 是字面量、无 level，会被 CQ3 计入。**该改的是说明，不是数据**（`已核`：读图对账，未跑）。
 - **误报/成本未测**：6 类里只有 schema/cardinality 的成本低；cross-field 与 semantic plausibility 的误报没有本仓库数据。
-- **不要写「输出校验能拦住越权」**：它只能标出「结果与策略不一致」；执行层仍要看 [C](../../../deliverables/04-ontology-in-production/body/govern.md)。
+- **不要写「输出校验能拦住越权」**：它只能标出「结果与策略不一致」；执行层仍要看 [C](../../../deliverables/04-ontology-in-production/03-body/03-govern.md)。
 
 依据：E-02；[checker F7/F8](./findings.md)；[open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md)；gap：误报/成本、生产数据。

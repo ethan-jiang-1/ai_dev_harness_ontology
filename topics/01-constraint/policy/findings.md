@@ -37,5 +37,5 @@
 - **含义**：`标签 → level` 可以找标准；`level + principal + action → effect` 是工程选择，要写清是「我们的默认」，不是标准要求。
 - **可证伪**：找到任一标准/监管文件，直接给出「级别 × 角色 × 动作」的 allow/deny 表，F3 后退。
 - **边界**：条款号未核；标准可能要求「分级 + 审批 + 审计」，但不等于策略表。
-- **来源**：[GB/T 43697 卡](../../../src/web/gbt-43697/gbt-43697.card.md) · [GB/T 35273 卡](../../../src/web/gbt-35273/gbt-35273.card.md) · [04 C.2](../../../deliverables/04-ontology-in-production/body/govern.md)。
+- **来源**：[GB/T 43697 卡](../../../src/web/gbt-43697/gbt-43697.card.md) · [GB/T 35273 卡](../../../src/web/gbt-35273/gbt-35273.card.md) · [04 C.2](../../../deliverables/04-ontology-in-production/03-body/03-govern.md)。
 - **等级**：`已核`（GB/T 摘要）/ `推测`（映射）。

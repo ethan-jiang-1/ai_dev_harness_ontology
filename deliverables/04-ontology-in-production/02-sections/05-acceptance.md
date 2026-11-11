@@ -12,35 +12,35 @@ parent: ../README.md
 
 | # | 检查 | 怎么查 | 通过 | 未通过 |
 |---|---|---|---|---|
-| A1 | 契约 6 项无空 | 看 [A.1](../body/build.md) 表；每行有 consumer/principal/moment/answers/refuses/load | 6 项有值（`—`=明确不拒）；governance 行 principal=`governance`；每行有 1 个 CQ 或拒绝条件 | 回 A.1，不要先建本体 |
+| A1 | 契约 6 项无空 | 看 [A.1](../03-body/01-build.md) 表；每行有 consumer/principal/moment/answers/refuses/load | 6 项有值（`—`=明确不拒）；governance 行 principal=`governance`；每行有 1 个 CQ 或拒绝条件 | 回 A.1，不要先建本体 |
 | A2 | 3 个 TTL 可解析 | 看 `ontology.ttl`/`shapes.ttl`/`catalog.ttl` 是否存在且可解析（作者记录） | 3/3 parsed；`?c a owl:Class` = 11 | 查语法/前缀 |
 | A3 | shapes 有 target | 每个 shape 有 `sh:targetClass`/`targetNode`；`targeted>0` | 2/2 有目标；`TagHasLevel` 范围 1–4 | 补 target；否则 `conforms=true` 是空转 |
-| A4 | 已知 shape 坏样本被抓住 | 对照 shapes 与负例表（作者记录） | 2/2 shape 声明样本（字面量 tag、缺 level）；10 个契约坏样本只抓 2 个，见 [A.5](../body/build.md) | 查 shape 是否覆盖 |
-| A5 | 三条 CQ 期望对 | 对照 [B.2](../body/consume.md) 的 CQ1/CQ2/CQ3（raw，作者已核） | CQ1 2 列 2 表（steward）/ CQ2 7 列 4 表（steward）/ CQ3 4 数据集（governance），都是 raw | 0 行先分因，不要改 prompt |
+| A4 | 已知 shape 坏样本被抓住 | 对照 shapes 与负例表（作者记录） | 2/2 shape 声明样本（字面量 tag、缺 level）；10 个契约坏样本只抓 2 个，见 [A.5](../03-body/01-build.md) | 查 shape 是否覆盖 |
+| A5 | 三条 CQ 期望对 | 对照 [B.2](../03-body/02-consume.md) 的 CQ1/CQ2/CQ3（raw，作者已核） | CQ1 2 列 2 表（steward）/ CQ2 7 列 4 表（steward）/ CQ3 4 数据集（governance），都是 raw | 0 行先分因，不要改 prompt |
 
 ## B 用
 
 | # | 检查 | 怎么查 | 通过 | 未通过 |
 |---|---|---|---|---|
-| B1 | 资产→路线有记录 | 填 [B.0](../body/consume.md) 第一列 | 5 行里能选 1 行 | 回 B.0，不要凭框架选 |
-| B2 | 3 条 CQ 有 `query_id`/snapshot | 看 query log 或 [B.2](../body/consume.md) | 每条有 id/snapshot/version | 补记录 |
-| B3 | 0 行分因 | 用 [B.2](../body/consume.md) 的 ASK 表 | 每条 0 行有原因 | 不要重试同一条 |
-| B4 | 纠错有 2×2 或标「未测」 | 看 [B.3](../body/consume.md) | 有四格；或明确「未测」 | 没有就删「净收益」句 |
-| B5 | OBDA 有去公理消融或标「未做」 | 看 [B.4](../body/consume.md) | 有/无公理结果集；或「未做」 | 不要写「本体有贡献」 |
+| B1 | 资产→路线有记录 | 填 [B.0](../03-body/02-consume.md) 第一列 | 5 行里能选 1 行 | 回 B.0，不要凭框架选 |
+| B2 | 3 条 CQ 有 `query_id`/snapshot | 看 query log 或 [B.2](../03-body/02-consume.md) | 每条有 id/snapshot/version | 补记录 |
+| B3 | 0 行分因 | 用 [B.2](../03-body/02-consume.md) 的 ASK 表 | 每条 0 行有原因 | 不要重试同一条 |
+| B4 | 纠错有 2×2 或标「未测」 | 看 [B.3](../03-body/02-consume.md) | 有四格；或明确「未测」 | 没有就删「净收益」句 |
+| B5 | OBDA 有去公理消融或标「未做」 | 看 [B.4](../03-body/02-consume.md) | 有/无公理结果集；或「未做」 | 不要写「本体有贡献」 |
 
 ## C 治
 
 | # | 检查 | 怎么查 | 通过 | 未通过 |
 |---|---|---|---|---|
-| C1 | 三层来源写清 | 看 [C.1](../body/govern.md) | 标签/策略/执行各有来源或「无」 | 不要把标签当策略 |
-| C2 | 11 条策略测试有 decision | 看 [policy_tests.json](../example/policy_tests.json) | 10 条有唯一期望；T9 显式 undetermined；T11 governance dataset allow | 补优先级声明 |
-| C3 | object 方向探针 | 看 [C.3](../body/govern.md) 的 LEAK-T1（当前 trustgraph 返回行） | **敏感 object 不出现**；0 行只是粗粒度 deny 的一种形态 | 修执行层或降级 |
-| C4 | audit 字段齐 | 对照 [audit.schema.json](../example/audit.schema.json) + [audit_records.json](../example/audit_records.json) | 3 条记录必填字段齐；`decision_id` 可同 fixture 对照（严格 replay 需 hash/parser 版本） | 补版本/快照 |
-| C5 | 12 条泄漏用例有期望 | 看 [leak_cases.json](../example/leak_cases.json) | 12 条有期望；L4/L8/L9/L10/L11 需额外 fixture 或开关 | 补用例 |
+| C1 | 三层来源写清 | 看 [C.1](../03-body/03-govern.md) | 标签/策略/执行各有来源或「无」 | 不要把标签当策略 |
+| C2 | 11 条策略测试有 decision | 看 [policy_tests.json](../05-example/policy_tests.json) | 10 条有唯一期望；T9 显式 undetermined；T11 governance dataset allow | 补优先级声明 |
+| C3 | object 方向探针 | 看 [C.3](../03-body/03-govern.md) 的 LEAK-T1（当前 trustgraph 返回行） | **敏感 object 不出现**；0 行只是粗粒度 deny 的一种形态 | 修执行层或降级 |
+| C4 | audit 字段齐 | 对照 [audit.schema.json](../05-example/audit.schema.json) + [audit_records.json](../05-example/audit_records.json) | 3 条记录必填字段齐；`decision_id` 可同 fixture 对照（严格 replay 需 hash/parser 版本） | 补版本/快照 |
+| C5 | 12 条泄漏用例有期望 | 看 [leak_cases.json](../05-example/leak_cases.json) | 12 条有期望；L4/L8/L9/L10/L11 需额外 fixture 或开关 | 补用例 |
 
 ## 最小上线门槛（5 组）
 
-五组全满足才叫 **可上线候选**；缺一条就不是可上线——按缺口性质分 `conditional` / 演示 / `no-go`（见 [decision §6](./decision.md)）。
+五组全满足才叫 **可上线候选**；缺一条就不是可上线——按缺口性质分 `conditional` / 演示 / `no-go`（见 [decision §6](06-decision.md)）。
 
 > **三关 ≠ 五组门槛**：三关（load/validate/answer）是 `build_report` 对一次构建的记录；五组是上线门槛，另含 B/C 的查询、策略与泄漏。两者不是同一层，不要互相替代。
 
@@ -54,7 +54,7 @@ parent: ../README.md
 
 > 这些是 fixture 的期望值，不是运行记录；跑出不同数先查 `rdflib`/`pyshacl` 版本与 ABox 类型，不要先改数据。
 
-**当前 fixture 的默认结论是 `conditional`，不是 `可上线`**：C3 用的 trustgraph 已知 fail-open、只删 subject，object 探针会返回行；修法（第二实现/两侧约束/粗粒度 deny）不在 04 内。要过 C3，换或修执行层；否则只能交「conditional + 未修清单」。`conditional` 怎么处置、什么时候停，见 [decision](./decision.md)。
+**当前 fixture 的默认结论是 `conditional`，不是 `可上线`**：C3 用的 trustgraph 已知 fail-open、只删 subject，object 探针会返回行；修法（第二实现/两侧约束/粗粒度 deny）不在 04 内。要过 C3，换或修执行层；否则只能交「conditional + 未修清单」。`conditional` 怎么处置、什么时候停，见 [decision](06-decision.md)。
 
 ## 期待与数据需求（验收规格）
 
@@ -70,7 +70,7 @@ parent: ../README.md
 
 **怎么用**：X1/X2 是承重；填不出就停在 A.1，不要建 TBox。X3–X5 是边界；量不出来就写 `未测`，不要用通用经验补。期待不是承诺——它写的是「支持这条判断需要什么数据」，不是「我们已经有了」。
 
-> 对应动作：推导见 [transfer](./transfer.md)，填表见 [templates](./templates.md)，成本和 `conditional` 处置见 [decision](./decision.md)。
+> 对应动作：推导见 [transfer](92-transfer.md)，填表见 [templates](93-templates.md)，成本和 `conditional` 处置见 [decision](06-decision.md)。
 
 ## 加强项（不阻塞最小链）
 

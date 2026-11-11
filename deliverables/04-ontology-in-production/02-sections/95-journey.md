@@ -25,7 +25,7 @@ parent: ../README.md
 - CQ1 找 `:Email` 及子类；`tag_email_1` 是 `:WorkEmail`（`Email` 子类），加上 `col_customer_email`，所以 2 列 / 2 表。
 - CQ2 找 level≥3；7 列 / 4 表。
 - CQ3 找“没有带 level 的 tag”的列，按 dataset 分组；4 个 dataset 各 1。
-- 这些数字在 [B.2](../body/consume.md)；它们**不经过 policy**，所以不要拿它们当“最终可见结果”。
+- 这些数字在 [B.2](../03-body/02-consume.md)；它们**不经过 policy**，所以不要拿它们当“最终可见结果”。
 
 ## 2. policy：谁能不能看
 
@@ -34,7 +34,7 @@ parent: ../README.md
 - CQ3 是 dataset 级：governance 命中 R8（allow）；analyst 不适用（它没有 dataset 级规则，R5 是 skip）。没有 subject 的聚合查询不在列策略覆盖内。
 - LEAK-T1 的 subject 是 table：R5 给 **skip**。skip 是“未判定”，不是 allow，也不是 deny；执行层可以返回，也可以 withhold。
 
-判定顺序和 11 条测试见 [C.2](../body/govern.md)。T9 是故意留的 `undetermined`：steward 读 table 同时命中 R4 allow 和 R5 skip，两者同优先级。
+判定顺序和 11 条测试见 [C.2](../03-body/03-govern.md)。T9 是故意留的 `undetermined`：steward 读 table 同时命中 R4 allow 和 R5 skip，两者同优先级。
 
 ## 3. governed：执行层实际返回什么
 
@@ -52,9 +52,9 @@ parent: ../README.md
 ## 4. audit：留什么
 
 - **per-subject**：dec-0001 只记 `col_ssn`，outcome 是“col_ssn withheld”；不是“CQ2 的 0 列（7 列全拒）”。
-- **query 级 summary**：CQ2 的 0 列（7 列全拒）在 [C.4](../body/govern.md) 的 query log 表，不塞进一条 subject 记录。
-- **3 条样例**：[audit_records.json](../example/audit_records.json) 有 deny / skip+leak / allow 三种；CQ2 的其余 6 列、CQ3 的 governance 记录只出现在 query log，不是 JSON 全集。
-- **replay**：同 fixture 对照可以；严格 replay 需要内容 hash + parser 版本，当前 snapshot 是日期标签，见 [A.5](../body/build.md) 的版本来源表。
+- **query 级 summary**：CQ2 的 0 列（7 列全拒）在 [C.4](../03-body/03-govern.md) 的 query log 表，不塞进一条 subject 记录。
+- **3 条样例**：[audit_records.json](../05-example/audit_records.json) 有 deny / skip+leak / allow 三种；CQ2 的其余 6 列、CQ3 的 governance 记录只出现在 query log，不是 JSON 全集。
+- **replay**：同 fixture 对照可以；严格 replay 需要内容 hash + parser 版本，当前 snapshot 是日期标签，见 [A.5](../03-body/01-build.md) 的版本来源表。
 
 ## 5. 这页不证明什么
 

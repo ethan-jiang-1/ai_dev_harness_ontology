@@ -6,12 +6,12 @@ parent: ../README.md
 
 # C · 治：让 3 个查询变成「敢用」
 
-> 接 [A](./build.md)/[B](./consume.md)：示例合成（5 表/13 列）；执行层按代码核对写；不是生产泄漏率。
+> 接 [A](01-build.md)/[B](02-consume.md)：示例合成（5 表/13 列）；执行层按代码核对写；不是生产泄漏率。
 >
 > **本章回答**：谁有权看、泄漏怎么发现、审计留什么。
 > **你需要准备**：B 的结果；标签/等级；principal/clearance。
 > **做完得到**：policy 表、11 条策略测试、12 条泄漏用例、audit schema + 3 条样例。
-> **怎么算做完**：C.6 证据与边界 + [acceptance](../sections/acceptance.md) 的 C1–C5。
+> **怎么算做完**：C.6 证据与边界 + [acceptance](../02-sections/05-acceptance.md) 的 C1–C5。
 
 ## C.1 三层：标签 / 策略 / 执行
 
@@ -21,13 +21,13 @@ parent: ../README.md
 | 策略 | **有语义、有测试、缺领域映射**：GB/T 43697 只分三级，04 的 1–4 是工程映射；XACML/ODRL/Rego/ReBAC 语义不同；11 条测试 10 条有唯一期望（T9 优先级未定） | 执行；规则正确；标准原文 |
 | 执行 | **单实现**：trustgraph 读路径 post-filter；fail-open、只删 subject；无合格第二实现 | 写授权；通用行为；生产效果 |
 
-三层不能互推——有标签 ≠ 有策略 ≠ 执行正确；读路径的单实例 10 条用例里 4 类漏洞。标签来源/准入（覆盖、漏标、owner）见 [label-source](../sections/label-source.md)。
+三层不能互推——有标签 ≠ 有策略 ≠ 执行正确；读路径的单实例 10 条用例里 4 类漏洞。标签来源/准入（覆盖、漏标、owner）见 [label-source](../02-sections/96-label-source.md)。
 
 > **词源**：标签层的「数据分级」有 `N: GB/T 43697-2024`（核心/重要/一般三级），「个人信息」有 `N: GB/T 35273-2020`；04 的 `level 1–4` 与 2/3 阈值是**工程映射**（`local`），不是标准条款。策略层：`N: W3C ODRL 2.2` 定许可/禁止/义务的写法，`N: OASIS XACML 3.0` 定 PDP/PEP 与合并算法，但**都不定「谁读哪列」、不给默认结论**。执行层：`N: W3C SHACL-AF` 定规则与 target，不定「会不会拦」。`principal`、`skip`、`leak oracle` 是 `local`。
 
 ## C.2 策略表（可判定，不是标准）
 
-**8 条规则**（[policy.json](../example/policy.json)）；每条都带 `obligation: log`，它是审计字段，不参与判定。
+**8 条规则**（[policy.json](../05-example/policy.json)）；每条都带 `obligation: log`，它是审计字段，不参与判定。
 
 | # | id | principal | action | kind | condition | effect | 优先级 |
 |---|---|---|---|---|---|---|---|
@@ -50,7 +50,7 @@ parent: ../README.md
 
 为什么 T9 是 `undetermined`：steward 读 table 同时命中 R4（allow）和 R5（skip），两者都是优先级 20，effect 不同。**不把 T9 偷偷修成 allow/deny**；它暴露的是“kind 先于 principal”没写全。
 
-**11 条测试**（[policy_tests.json](../example/policy_tests.json)）：
+**11 条测试**（[policy_tests.json](../05-example/policy_tests.json)）：
 
 | # | principal | action | kind | level | 期望 | reason | 命中 |
 |---|---|---|---|---|---|---|---|
@@ -74,7 +74,7 @@ parent: ../README.md
 2. **`skip` ≠ `allow`**：`skip` 是 `N: OASIS XACML 3.0` / `N: W3C ODRL 2.2` 都没有的第 4 种效果（本工程 `local` 扩展）；必须带 `reason`，审计单列。
 3. **不要用 `clearance` 做策略条件**：它在 input 里但规则未消费；消费它需要另写规则，不是现有语义。
 
-> **principal 与多标签的落地选择**：见 [transfer §6](../sections/transfer.md)。04 的 8 条规则假设 `resource_level` 是标量、principal 是单一身份；这两件事不先拍板，11 条测试全绿也只证明测试内部自洽。
+> **principal 与多标签的落地选择**：见 [transfer §6](../02-sections/92-transfer.md)。04 的 8 条规则假设 `resource_level` 是标量、principal 是单一身份；这两件事不先拍板，11 条测试全绿也只证明测试内部自洽。
 
 **标准与工程的分界**：GB/T 43697 只分核心/重要/一般三级；GB/T 35273 只定义个人信息/敏感个人信息；04 的 1–4 数值 + 2/3 阈值是**工程映射**，不是标准条款。条款与 XACML/ODRL 语义见 evidence 附录。
 
@@ -97,9 +97,9 @@ SELECT ?col WHERE { :t_hr :hasColumn ?col }
 
 **`skip` 是“未判定”，不是安全声明**：执行层可以返回、也可以 withhold。当前 trustgraph 返回（泄漏）；安全期望是**敏感 object 不出现**，不是“结果必须 0 行”。如果过滤器只按 level 去掉 `col_ssn`、留下 `col_dept`，`col_dept` 的 level 是 null，按 R3 也应 deny，所以本 fixture 的 governed 结果是 0；关键是 `col_ssn` 不能出现，0 行是 policy 的结果，不是 leak 的定义。
 
-**两套不是一套**：10 条是 read-path 一致性用例（测实现差异），12 条是 [leak_cases.json](../example/leak_cases.json) 的泄漏面（object/alias/聚合/版本）；LEAK-T1 是后者的探针，编号不要混。12 条是**测试设计，不是可执行套件**：L4/L8/L9/L10/L11 需要额外 fixture 或开关（alias 三元组 / TriG / 版本缓存 / 缺 context / 无策略），reference §5 标了 `needs`。
+**两套不是一套**：10 条是 read-path 一致性用例（测实现差异），12 条是 [leak_cases.json](../05-example/leak_cases.json) 的泄漏面（object/alias/聚合/版本）；LEAK-T1 是后者的探针，编号不要混。12 条是**测试设计，不是可执行套件**：L4/L8/L9/L10/L11 需要额外 fixture 或开关（alias 三元组 / TriG / 版本缓存 / 缺 context / 无策略），reference §5 标了 `needs`。
 
-**10 条一致性用例里，本页只展开最关键的 4 条**（完整 10 条见 [参考表 §5](../sections/reference.md)；E-23 记 6 条已核、4 条待核）：
+**10 条一致性用例里，本页只展开最关键的 4 条**（完整 10 条见 [参考表 §5](../02-sections/91-reference.md)；E-23 记 6 条已核、4 条待核）：
 
 | 用例 | trustgraph（`184f622`） | 安全期望 |
 |---|---|---|
@@ -116,7 +116,7 @@ SELECT ?col WHERE { :t_hr :hasColumn ?col }
 {"decision_id":"dec-0002","query_id":"LEAK-T1","executor":"rdflib+pyshacl","snapshot":"example/ 2026-11-10","who":"analyst:alice","action":"read","judged_subject":":t_hr","subject_kind":"table","judged_triple":[":t_hr",":hasColumn",":col_ssn"],"resource_level":null,"user_context":{"role":"analyst","clearance":2},"policy_version":"0.4.0","tag_version":"0.1.0","decision":"skip","reason":"table_subject_not_judged","execution_effect":"returned","obligation":"log","evidence":[":tag_ssn_1"],"leaked_object":":col_ssn","leaked_object_level":4,"outcome":"returned t_hr/col_ssn","leak_check":"object_direction_failed"}
 ```
 
-> 完整 3 条在 [audit_records.json](../example/audit_records.json)（dec-0001 deny、dec-0002 skip/leak、dec-0003 allow）；正文只留 dec-0002。
+> 完整 3 条在 [audit_records.json](../05-example/audit_records.json)（dec-0001 deny、dec-0002 skip/leak、dec-0003 allow）；正文只留 dec-0002。
 
 **粒度**：审计记录是 **per-subject**（`judged_subject` 一个），query 级 summary 用下表，不塞进一条记录。dec-0001 的 outcome 是“col_ssn withheld”，不是“CQ2 的 0 列（7 列全拒）”——后者是 query log 的事。
 
@@ -131,7 +131,7 @@ SELECT ?col WHERE { :t_hr :hasColumn ?col }
 
 最小单元 = 请求 + `user_context` + 版本 + evidence + outcome + `execution_effect` + leak_check。`decision ∈ {allow,deny,skip,undetermined}`；`reason ∈ {policy_allow,policy_deny,table_subject_not_judged,default_deny,priority_gap}`；`execution_effect ∈ {returned,withheld,error}`；`leak_check ∈ {passed,object_direction_failed,aggregation_failed,alias_failed,version_mismatch,not_run}`。后三类是给 12 条用例留的位置；fixture 只填了 object 方向。
 
-**schema 与 replay**：[audit.schema.json](../example/audit.schema.json) 定义必填字段；[audit_records.json](../example/audit_records.json) 给 3 条记录。**没有 replay，审计只是日志**。
+**schema 与 replay**：[audit.schema.json](../05-example/audit.schema.json) 定义必填字段；[audit_records.json](../05-example/audit_records.json) 给 3 条记录。**没有 replay，审计只是日志**。
 
 **replay 四步**：
 
@@ -140,20 +140,20 @@ SELECT ?col WHERE { :t_hr :hasColumn ?col }
 3. 对 `decision / reason / execution_effect / outcome`；
 4. 不一致记 `replay_failed`。
 
-**但 fixture 的 snapshot 是日期标签，不是内容 hash；`tag_version`/`contract_version` 是 fixture 约定，parser 版本未记**。所以当前只能做“同 fixture 对照”，不能做严格 replay；要严格 replay，先补 hash + parser 版本（见 [A.5](./build.md) 的版本来源表）。
+**但 fixture 的 snapshot 是日期标签，不是内容 hash；`tag_version`/`contract_version` 是 fixture 约定，parser 版本未记**。所以当前只能做“同 fixture 对照”，不能做严格 replay；要严格 replay，先补 hash + parser 版本（见 [A.5](01-build.md) 的版本来源表）。
 
 ## C.5 输出校验与失败传播
 
 输出校验六类 + 三态；跨段故障会换形态。
 
-- **输出校验现在有六类**：schema / cardinality / provenance / freshness / cross-field / semantic plausibility；三态 pass/violation/undetermined，`pass` 只在 `targeted>0` 且 `skipped=0` 时给。见 [参考表 §6](../sections/reference.md)。
+- **输出校验现在有六类**：schema / cardinality / provenance / freshness / cross-field / semantic plausibility；三态 pass/violation/undetermined，`pass` 只在 `targeted>0` 且 `skipped=0` 时给。见 [参考表 §6](../02-sections/91-reference.md)。
 - **成本与 gap**：前四类低（schema/cardinality/provenance/freshness），第五类中，第六类高；目前只测了前两类。cross-field/合理性的误报未测；`0 violation` 可能只是 `targeted=0` 的空转。
-- **端到端失败传播 = 矩阵 + gap**：[参考表 §7](../sections/reference.md) 给 10 类 × 3 段与四条链；[fault_matrix.json](../example/fault_matrix.json) 是注入骨架；仍无注入实验。旁证只有部分：alias 错配沿后续观察传播（无自动回滚，幅度未测，`推测`）；中间产物错误是唯一无主机制类别（分类判断，非测量）。
+- **端到端失败传播 = 矩阵 + gap**：[参考表 §7](../02-sections/91-reference.md) 给 10 类 × 3 段与四条链；[fault_matrix.json](../05-example/fault_matrix.json) 是注入骨架；仍无注入实验。旁证只有部分：alias 错配沿后续观察传播（无自动回滚，幅度未测，`推测`）；中间产物错误是唯一无主机制类别（分类判断，非测量）。
 - Graph-Agentic 只作 signal。
 
 ## C.6 证据与边界
 
-> 证据见 [evidence](../evidence/ledger.md)。
+> 证据见 [evidence](../04-evidence/01-ledger.md)。
 
 本章不证明端到端访问控制/泄漏率/replay；限定的证据见 evidence。
 

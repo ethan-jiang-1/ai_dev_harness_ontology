@@ -29,7 +29,7 @@ parent: ../README.md
 - 不重复 01 的 A/B/C/D 排序；只给「这条链能不能跑」。
 - 不重复 02 的 13 条 recipe；只给「同一 fixture 上怎么串」。
 - 不重复 03 的六位置论证；只在每章末尾给「证据与边界」。
-- 不重复 02 的成本公式；只把 04 这条链的成本项与门槛列出来（[decision](./decision.md)）。
+- 不重复 02 的成本公式；只把 04 这条链的成本项与门槛列出来（[decision](06-decision.md)）。
 - 不新增 E；04 引的 E 是仓库内部结论编号，读者不需要打开 topics。
 
 ## 什么时候不该读 04
@@ -38,5 +38,5 @@ parent: ../README.md
 - 已经决定接哪个缝，只要操作步骤：读 02 对应 recipe。
 - 要评审「为什么是这些位置」：读 03。
 - 还在比较表/视图/本体：先看 [01](../../01-capability-status/README.md)；04 只说明这条链假设的差异（TBox/shape/CQ/policy 共用标识），不下结论。
-- 要做报价：04 只有量级（`推测`），见 [decision §2](./decision.md)；没有单价不出点估计。
-- 要做效果承诺/采购：04 不提供；见 [boundaries](./boundaries.md)。
+- 要做报价：04 只有量级（`推测`），见 [decision §2](06-decision.md)；没有单价不出点估计。
+- 要做效果承诺/采购：04 不提供；见 [boundaries](04-boundaries.md)。

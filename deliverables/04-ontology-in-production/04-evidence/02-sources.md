@@ -36,4 +36,4 @@ parent: README.md
 
 > 这些来源没有入库 digest/card；引用时标 `signal`，不作「已核」。
 
-> 回 [04 目录](../README.md) ｜ 回 [证据台账](./ledger.md)
+> 回 [04 目录](../README.md) ｜ 回 [证据台账](01-ledger.md)

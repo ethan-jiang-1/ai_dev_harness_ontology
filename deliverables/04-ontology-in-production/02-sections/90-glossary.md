@@ -31,8 +31,8 @@ parent: ../README.md
 | 词 | 一句话 | 在 04 哪里 |
 |---|---|---|
 | 本体（ontology） | 一组类、属性、约束，用来把“表/列/标签”说清楚 | A.3 |
-| TBox | 类与属性的定义（schema） | [A.3](../body/build.md) |
-| ABox | 具体实例（表、列、标签） | [A.3](../body/build.md) |
+| TBox | 类与属性的定义（schema） | [A.3](../03-body/01-build.md) |
+| ABox | 具体实例（表、列、标签） | [A.3](../03-body/01-build.md) |
 | 类 / 属性 / 实例 | 概念 / 关系 / 具体对象 | A.3 |
 | Turtle（TTL） | RDF 的一种文本写法 | example |
 | SPARQL | RDF 的查询语言 | B.2 |

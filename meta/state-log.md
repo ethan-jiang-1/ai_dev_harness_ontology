@@ -69,9 +69,9 @@ updated: 2026-11-11
 
 > 只做文档；fixture 只读复跑（rdflib/pyshacl/jsonschema），不做实验、不加 engine。现行计数看顶部表。
 
-- **新增**：[transfer](../deliverables/04-ontology-in-production/sections/transfer.md)（4 推导 + principal/多标签 2 决策 + 最小路径 + 自测）；[templates](../deliverables/04-ontology-in-production/sections/templates.md)（T1–T8 空表）；[decision](../deliverables/04-ontology-in-production/sections/decision.md)（成本五维/TCO、4 阶段、规模边界、conditional、memo、RACI）。
+- **新增**：[transfer](../deliverables/04-ontology-in-production/02-sections/92-transfer.md)（4 推导 + principal/多标签 2 决策 + 最小路径 + 自测）；[templates](../deliverables/04-ontology-in-production/02-sections/93-templates.md)（T1–T8 空表）；[decision](../deliverables/04-ontology-in-production/02-sections/06-decision.md)（成本五维/TCO、4 阶段、规模边界、conditional、memo、RACI）。
 - **验收**：acceptance 增「期待与数据需求」X1–X5（验收规格，非 E）；README/GUIDE/sections/map/relations/body 索引接通。
-- **缺口补齐**：新增 [label-source](../deliverables/04-ontology-in-production/sections/label-source.md)（标签源三种路径 + 准入 8 问 + 50 列验证 + 停）；[worked-example](../deliverables/04-ontology-in-production/sections/worked-example.md)（3 表/6 列、多标签 B、5 规则/5 测试/2 audit）；decision §2.5（打标/执行层/审计公式 + 敏感性）；templates T9（成本工作纸）。
+- **缺口补齐**：新增 [label-source](../deliverables/04-ontology-in-production/02-sections/96-label-source.md)（标签源三种路径 + 准入 8 问 + 50 列验证 + 停）；[worked-example](../deliverables/04-ontology-in-production/02-sections/94-worked-example.md)（3 表/6 列、多标签 B、5 规则/5 测试/2 audit）；decision §2.5（打标/执行层/审计公式 + 敏感性）；templates T9（成本工作纸）。
 - **结构**：README 归位——04/README 只留读者卡/问题索引/产物地图/起点/门槛与边界入口/支持页；8 步读路径移入 GUIDE，5 组门槛移入 acceptance，3 条不能证明移入 boundaries，why-not-SQL 移入 relations；example/README 拆出 run.md / data.md；evidence/README 拆出 ledger.md / sources.md。
 - **一致性**：CQ1 与 shape 片段加 `ontology.ttl` 同图前置；example 7→8 规则；T9 R4/R5；T11 命中 R5/R8；E-24 与 evidence 11 测试/8 规则/R4/R5；A.5 `CQ1` 改「2 列/2 表」；C.4/journey/B.6 去 `0/7` 混用；A.4 三组 catch/FA 补标签与样本量；glossary 加 PPV。
 - **复跑**：3/3 parse；11 类/5 属性；pyshacl 2 violations；CQ1 2（TBox 同图）/CQ2 7 列 4 表/CQ3 4 dataset；audit schema 0 错；policy 11/11（含 T11 命中 R5/R8）。
@@ -90,9 +90,9 @@ updated: 2026-11-11
 ## 2026-11-10 04 内容供给执行（W0–W3 主体，历史快照）
 
 - **W0**：12 张矩阵骨架入 [04-matrix-skeletons](../deliverables/_plans/2026-11-10-04-matrix-skeletons.md)；12 条承重句冻结。
-- **W1**：T2 [querying/compare](../topics/03-knowledge/querying/compare.md)（4×8 矩阵、17 类失败、决策树）；T5 [output-validation](../topics/02-judgment/checker/output-validation.md)（六类 + 三态）；[consume v2](../deliverables/04-ontology-in-production/body/consume.md)（决策表、2×2、失败目录）。
-- **W2**：T3 [policy](../topics/01-constraint/policy/README.md)（3 F / 3 G、7 列 schema、10 测试）；T4 [read-path](../topics/01-constraint/commit-gate/read-path.md)（10 用例、第二实现否决）；[govern v2](../deliverables/04-ontology-in-production/body/govern.md)（10 测试、12 泄漏用例、audit schema）。
-- **W3**：T1 [consumability](../topics/05-produce/representation/consumability.md)（三关、3×4、10 坏样本）；T6 [propagation](../topics/06-measure/metrics/propagation.md)（10×3 故障矩阵、成本量级）；[build v2](../deliverables/04-ontology-in-production/body/build.md)（三关、10 坏样本）。
+- **W1**：T2 [querying/compare](../topics/03-knowledge/querying/compare.md)（4×8 矩阵、17 类失败、决策树）；T5 [output-validation](../topics/02-judgment/checker/output-validation.md)（六类 + 三态）；[consume v2](../deliverables/04-ontology-in-production/03-body/02-consume.md)（决策表、2×2、失败目录）。
+- **W2**：T3 [policy](../topics/01-constraint/policy/README.md)（3 F / 3 G、7 列 schema、10 测试）；T4 [read-path](../topics/01-constraint/commit-gate/read-path.md)（10 用例、第二实现否决）；[govern v2](../deliverables/04-ontology-in-production/03-body/03-govern.md)（10 测试、12 泄漏用例、audit schema）。
+- **W3**：T1 [consumability](../topics/05-produce/representation/consumability.md)（三关、3×4、10 坏样本）；T6 [propagation](../topics/06-measure/metrics/propagation.md)（10×3 故障矩阵、成本量级）；[build v2](../deliverables/04-ontology-in-production/03-body/01-build.md)（三关、10 坏样本）。
 - **产物**：04 九件（5 主 + policy_tests / audit.schema / leak_cases / fault_matrix）。
 - **收口**：M1–M4/M8/M9 标准已入材料卡；Great Expectations / OpenLineage 已入 OSS digest；M5–M7/M10 按 D7 降为候选；E23–E27 全部已升（读路径/策略层/可消费性/路线/输出）；04 body 14.12k（执行后修订 ≤15k）；模板 2 / gap 3；已核 17。
 - **check**：495 文件；E=27，L=79；0 断链。

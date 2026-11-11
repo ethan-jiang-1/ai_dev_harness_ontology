@@ -6,7 +6,7 @@ parent: ../README.md
 
 # 可填模板：表/列、契约、TBox、shape、policy、audit、验收、成本
 
-> **给谁**：已经读完 [transfer](./transfer.md)、要开始填自己那一份的团队。
+> **给谁**：已经读完 [transfer](92-transfer.md)、要开始填自己那一份的团队。
 > **怎么用**：复制到你的项目文档，逐格填；**填不出就写「不知道」或「未做」，不要编**。每一格都有「判据」；没有判据的格，说明你还没决定。
 >
 > 这些是**空表**，不是 04 的 fixture；不要照抄 11 类、8 条规则、3 条 CQ。模板只保证「字段齐」，不保证「内容对」。
@@ -15,8 +15,8 @@ parent: ../README.md
 
 1. **先填 T1 和 T0**：T1 是契约，T0 是你的表/列清单；T1 填不出，后面的 T2–T7 不用填；T0 填不出，T2 只能照抄 fixture。
 2. **每个「通过」要有证据**：文件、命令输出、或一条可复跑的查询；「未测」不是「通过」。
-3. **两个决策先拍板**：principal 模型、多标签规则（[transfer §6](./transfer.md#6-两个必须你定的选择)）。没拍板，T5 的 policy 表先空着。
-4. **模板不是验收**：填完只说明字段齐；能不能上线看 [acceptance](./acceptance.md) 的 5 组门槛。
+3. **两个决策先拍板**：principal 模型、多标签规则（[transfer §6](92-transfer.md#6-两个必须你定的选择)）。没拍板，T5 的 policy 表先空着。
+4. **模板不是验收**：填完只说明字段齐；能不能上线看 [acceptance](05-acceptance.md) 的 5 组门槛。
 
 <a id="t0-表列清单"></a>
 ## TPL-0 表 / 列清单（起点）
@@ -28,8 +28,8 @@ parent: ../README.md
 
 **判据**：
 
-- 一列一行；不知道标签/等级写 `?`，不要猜。标签从哪来、够不够：见 [label-source](./label-source.md)。
-- 「多标签列？」写 Y/N；写 Y 的列就是 [transfer §6.2](./transfer.md#p-multitag) 的样本，先别急着建 shape。
+- 一列一行；不知道标签/等级写 `?`，不要猜。标签从哪来、够不够：见 [label-source](96-label-source.md)。
+- 「多标签列？」写 Y/N；写 Y 的列就是 [transfer §6.2](92-transfer.md#p-multitag) 的样本，先别急着建 shape。
 - 这张表是 T2（TBox）和 T4（shape）的输入；没有它，TBox 只能照抄 fixture 的 11 类。
 
 <a id="t1-契约"></a>
@@ -45,7 +45,7 @@ parent: ../README.md
 
 - 每行 6 项有值；`refuses` 写 `—` 表示「明确不拒」，不算空。
 - `answers` 至少 1 个 CQ id；`refuses` 写 `—` 时，要在 `answers` 里说清为什么不需要拒绝（fixture 的 UI/agent 就是这样）。
-- `principal` 写「判谁」，不是「谁调用」；三层见 [transfer §6.1](./transfer.md#p-principal)。
+- `principal` 写「判谁」，不是「谁调用」；三层见 [transfer §6.1](92-transfer.md#p-principal)。
 
 **两个决策**（填在契约下面，不要只放在脑子里）：
 
@@ -183,14 +183,14 @@ parent: ../README.md
 | B1–B5 |  |  |  |
 | C1–C5 |  |  |  |
 
-**判据**：没做就写「未做」，不要写「通过」；结果只能是 `go / conditional / no-go / not enough data` 之一（见 [decision](./decision.md)）。完整模板见 [acceptance](./acceptance.md#记录模板)。
+**判据**：没做就写「未做」，不要写「通过」；结果只能是 `go / conditional / no-go / not enough data` 之一（见 [decision](06-decision.md)）。完整模板见 [acceptance](05-acceptance.md#记录模板)。
 
 <a id="t9-成本工作纸"></a>
 ## TPL-9 成本工作纸
 
 | 项 | 公式 / 输入 | 你的参数 | 你的值 | 来源 / 备注 |
 |---|---|---|---|---|
-| 打标 | `N_col × t_label × (1 + r_review)` |  |  | 50 列样本；见 [decision §2.5](./decision.md) |
+| 打标 | `N_col × t_label × (1 + r_review)` |  |  | 50 列样本；见 [decision §2.5](06-decision.md) |
 | 执行层修复 | `spike + fix + test + rollout` |  |  | 3–5 天（`推测`）spike；object 探针 |
 | 审计运营 | `QPS × 86400`；`records × bytes × retention`；`sample × minutes` |  |  | 1 周 shadow |
 | 维护 | `changes/month × hours` |  |  | policy/tag/形状变更 |
