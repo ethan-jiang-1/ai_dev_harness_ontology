@@ -1,13 +1,15 @@
 ---
 status: draft
-updated: 2026-11-08
+updated: 2026-11-12
 rq: [RQ2, RQ4]
-evidence: [E-03]
+evidence: [E-03]  # withdrawn
 ---
 
 # 输出时证据契约
 
 > 模型生成结论时。判定尚未发生，但输出格式已被约束：每个结论必须附带依据，以及依据与本体的关系强度。这里不负责输出后的 checker（[checker](../checker/README.md)）。
+>
+> **2026-11-12 对账**：本页唯一来源 OA-RAG（E-03）已撤回（[tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36335)）。下列「当前判断」的数字/结论作**历史/机制参考，不作活证据**，等级降为 `推测`；机制框架保留作重启参考（对应交付物 01 的 gap 行 / W-02）。
 
 ## 状态
 
@@ -21,10 +23,12 @@ evidence: [E-03]
 
 ## 当前判断
 
-- **显式接地等级平均最优，但有例外。** 强制报告本体观察 + entailed/supported/related/unrelated，在三个本体、六个医学 QA 任务上平均优于文本 RAG；Test 2 MCQ Llama 52.2 vs RAGont(text) 53.4、Test 2 OQ Qwen 23.2 vs ReActont 32.9。`已核`
-- **等级是模型自评，不是保证。** OA-RAG 自己写明「不提供形式正确性保证」；等级与正确率同向，但未校准。`已核`
-- **检索是主瓶颈。** gold evidence 完全检索 MCQ 61.7% vs OQ 23.6%；检索到后 MCQ 95.1–98.4% 被引用。`已核`
-- **可复刻的是接口 + 预算 + 覆盖门，不是一张卡。** 三查询原语（DESCRIBE/ASK/SELECT）、concept card 固定字段、name linking/BM25 fallback 见于论文正文；论文给的预算上限是 10 tool actions + 5,000 generated tokens（Answer Step 2 另 512，附录 A）。未知 IRI >20% 停、1–2 人日/本体与 1–2 人周 reasoner 集成是 digest 的工程配方与估算，论文未测（`推测`；接口/预算 `已核`）。详见 [findings F4–F8](./findings.md)。
+> 下列均出自 OA-RAG（已撤回），作历史/机制参考，不作活证据。
+
+- **显式接地等级平均最优，但有例外（历史示例）。** 强制报告本体观察 + entailed/supported/related/unrelated，在三个本体、六个医学 QA 任务上平均优于文本 RAG；Test 2 MCQ Llama 52.2 vs RAGont(text) 53.4、Test 2 OQ Qwen 23.2 vs ReActont 32.9。`推测`（源撤回）
+- **等级是模型自评，不是保证（机制参考）。** OA-RAG 自己写明「不提供形式正确性保证」；等级与正确率同向，但未校准。`推测`（源撤回）
+- **检索是主瓶颈（历史示例）。** gold evidence 完全检索 MCQ 61.7% vs OQ 23.6%；检索到后 MCQ 95.1–98.4% 被引用。`推测`（源撤回）
+- **可复刻的是接口 + 预算 + 覆盖门，不是一张卡（机制参考）。** 三查询原语（DESCRIBE/ASK/SELECT）、concept card 固定字段、name linking/BM25 fallback 见于论文正文；论文给的预算上限是 10 tool actions + 5,000 generated tokens（Answer Step 2 另 512，附录 A）。未知 IRI >20% 停、1–2 人日/本体与 1–2 人周 reasoner 集成是 digest 的工程配方与估算，论文未测（`推测`；接口/预算源撤回）。详见 [findings F4–F8](./findings.md)。
 - **V1 受益者/痛点（`推测`）。** 受益者是医学/生物本体问答产品；痛点是答案无依据/不可审计、术语歧义、检索失败与推理失败分不开。详见 [mechanism · 客户价值](./mechanism.md)。
 
 ## 文件地图
@@ -37,7 +41,7 @@ evidence: [E-03]
 | 何时别用（无 reasoner/SPARQL、超出覆盖、文本阅读/计算为主） | [mechanism · 何时别用](./mechanism.md) |
 | 八条判断的证据/数字 | [findings](./findings.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
-| 原始论文 | `src/papers/2610.36335-oa-rag/` · [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36335) |
+| 原始论文（已移出） | [tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36335) |
 
 ## 边界
 

@@ -1,13 +1,15 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-12
 rq: [RQ2, RQ4, RQ5]
-evidence: [E-02]
+evidence: [E-02]  # withdrawn；代码级三态/覆盖见 E-20
 ---
 
 # 输出后判定：本体当 checker
 
 > 产出已形成、尚未被使用。这里问「用什么本体、以什么方式检查、代价是什么」，不负责动作前拦截（[action-gate](../../01-constraint/action-gate/README.md)）或推理期约束（[reasoning-gate](../../01-constraint/reasoning-gate/README.md)）。
+>
+> **2026-11-12 对账**：效应量来源 Ontology Catch（E-02）已撤回（[tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809)）——三源 catch/FA、precision、空结果基线、LLM judge 等数字作**历史示例，不作活证据**，等级降 `推测`。**仍 admitted 的是代码级发现（E-20）：三态 exit code、覆盖/保证权衡**，保持 `已核（代码）`。对应交付物 01 的 gap 行 / W-01。
 
 ## 状态
 
@@ -21,11 +23,11 @@ evidence: [E-02]
 
 ## 当前判断
 
-- **判定器本身是研究对象。** 不是「有没有本体」，而是「哪种来源、什么代价、漏检/误报怎么换」。`已核`
-- **三种来源无单一向优。** 真实答案上 curated catch 18.9%、FA 16.8%；data-derived 8.2%/3.5%；LLM 生成不稳定（同 recipe 不同 draw 差异大；masked 三个 draw 均值 5.0%/1.8%）。precision（人工故障 + 25% 错答案假设）curated 57.1、data-derived 72.3、LLM masked 93.7，不能与真实答案口径混用。`已核`
-- **curated 的 FA 主源是 declaration/domain-range，不是「与数据矛盾」。** 盲审 32 个 FA 的双标注一致项中 undeclared term 17、closed-world 11，data clash 0；Table 5 的矛盾是另一类观察，不能拿来解释 FA。`已核`
-- **先超过空结果重试基线。** 空结果重试在人工 fault 上 catch 79.2%、FA 0%；真实答案上 catch 2.5%、FA 0.1%。`已核`
-- **LLM judge 检错更多，但修坏多于修好。** 真实答案 catch 40.3%、FA 16.2%；40 修好 / 83 修坏；curated/data-derived 的结构检查对 changes of meaning 是 0%，judge 能抓这类错；但每条答案一次模型调用，成本/稳定性未测，不能默认更好。`已核`（Appendix C.2 比较器；部署判断 `推测`）
+- **判定器本身是研究对象（机制参考）。** 不是「有没有本体」，而是「哪种来源、什么代价、漏检/误报怎么换」。`推测`（源撤回）
+- **三种来源无单一向优（历史示例）。** 真实答案上 curated catch 18.9%、FA 16.8%；data-derived 8.2%/3.5%；LLM 生成不稳定（同 recipe 不同 draw 差异大；masked 三个 draw 均值 5.0%/1.8%）。precision（人工故障 + 25% 错答案假设）curated 57.1、data-derived 72.3、LLM masked 93.7，不能与真实答案口径混用。`推测`（源撤回）
+- **curated 的 FA 主源是 declaration/domain-range，不是「与数据矛盾」（历史示例）。** 盲审 32 个 FA 的双标注一致项中 undeclared term 17、closed-world 11，data clash 0；Table 5 的矛盾是另一类观察，不能拿来解释 FA。`推测`（源撤回）
+- **先超过空结果重试基线（历史示例）。** 空结果重试在人工 fault 上 catch 79.2%、FA 0%；真实答案上 catch 2.5%、FA 0.1%。`推测`（源撤回）
+- **LLM judge 检错更多，但修坏多于修好（历史示例）。** 真实答案 catch 40.3%、FA 16.2%；40 修好 / 83 修坏；curated/data-derived 的结构检查对 changes of meaning 是 0%，judge 能抓这类错；但每条答案一次模型调用，成本/稳定性未测，不能默认更好。`推测`（源撤回；部署判断亦 `推测`）
 - **同源检查的 catch 下降是探索性观察。** 同一 artifact 既做 context 又做 checker 时 catch 下降；机制（确认偏差 vs 信息冗余）未定，不能写成「必须不同源」的部署规则。`推测`
 - **checker 要报三态。** 通过 / 违反 / 未检查完；把「没检查完」合并进 pass 会污染 catch/FA 的分母。开源侧已有实现把 undetermined 做成独立 exit code。`已核`（代码；未跑）
 - **覆盖与保证不可兼得。** 同一 SHACL 引擎的两条路径：默认支持 `sh:sparql` 但会 skip；verified 覆盖 Core 但拒绝 `sh:sparql`（22/120）。选型时要说明用哪条、拒了什么。`已核`（代码；未跑）
@@ -39,7 +41,7 @@ evidence: [E-02]
 | 每条判断的证据/数字/条件 | [findings](./findings.md) |
 | 结果对象校验（六类 + 三态 + fixture 检查） | [output-validation](./output-validation.md) |
 | 还缺什么、下一步看什么 | [frontier](./frontier.md) |
-| 原始论文 | `src/papers/2610.37809-what-does-an-ontology-catch/` · [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809) |
+| 原始论文（已移出） | [tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809) |
 
 ## 边界
 
