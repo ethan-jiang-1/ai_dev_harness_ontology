@@ -70,6 +70,8 @@ parent: ../README.md
 > **14 行是「本体能做的事」，不是「六个位置」。** `read-path` / `supply` 是轴外位置，仍可作为能力行；不要把「轴外」读成「不该进矩阵」。
 
 > **#8 的 2026-11-11 复查**：read-path 有三个执行点（post-filter / rewrite / scan）。sparql-guard（rewrite）76/76 tests 复跑通过；10 用例实跑 7 pass、1 alias leak、0 false-block（EXP-002）。holosdb（scan）是 predicate 级、不能表达 node-level。但两者 1★、无 harness 调用点、无泄漏率，所以 #8 仍是 **B**，不升 A。见 [read-path §3](../../../topics/01-constraint/commit-gate/read-path.md)。
+
+**为什么 #10 是 A、#11 是 C**：#10 的边界（三态/派生 shapes/CI）能写成验收，且有代码级实现；#11 是模拟/固定 schema、无真实工厂，边界写不成验收。两者都不是「效果更好」，是「可验收性」不同。
 >
 > `context` / `compiled` / `engine` 是执行形态（机器拿本体做了什么），定义见 [02 §3](../../02-engineering-playbook/sections/map.md#24-选形态五种别把-context-当低配-engine)；不要把 `context` 当 `engine` 的低配。
 

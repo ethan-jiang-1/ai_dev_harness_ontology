@@ -22,7 +22,7 @@ target: 01/02/03（基准 04）
 |---|---:|---:|---|---|---|---|
 | 01 | **1.7** | 3.2 | 0（glossary 除外） | decision-record 3.4 / knowledge 3.2 | capability 摘要、`data/` 表 | **短而硬**；观点最清楚，体量最薄 |
 | 02 | 1.3 | **4.0** | 2（ledger、README） | canonical 3.5 / cost 2.8 / domains 2.6 | ledger 0.0（4.3k）、interfaces 0.3、offline 0.2 | **手册体**；操作多、判断少；34 次 shadow |
-| 03 | **1.1** | 3.1 | 5（placement/acceptance/README/positions-README/execution-forms） | action 3.7 / ledger 3.3 / context 2.2 | execution-forms 0.0、placement 0.0、acceptance 0.0 | **概念最锐，数字最薄**；61 次「本页」 |
+| 03 | **1.1** | 3.1 | 5（placement/acceptance/README/positions-README/execution-forms） | action 3.7 / ledger 3.3 / context 2.2 | execution-forms 0.0、placement 0.0、acceptance 0.0 | **概念最锐，数字最薄**；27 次「本页」（早先 61 是误计） |
 | 04 | **1.8** | 3.0 | 少 | govern/acceptance/journey | 部分章节 checklist 化 | **闭环最硬，但最窄**；111 次 fixture |
 
 > 硬句密度 04≈01>02>03；锐句密度 02>01≈03>04。**03 的硬密度最低，不是因为它没观点，而是它的观点是概念型的，不靠数字。**
@@ -64,7 +64,7 @@ target: 01/02/03（基准 04）
 
 **最水的三个**：
 1. `execution-forms` 是核心页，硬句 **0.0/k**；它靠分类和代码锚，不靠数。
-2. `placement`、`acceptance`、`positions/README`、`README` 都是 0.0/k；**61 次「本页」**，读者一直在被告诉「本页回答什么」。
+2. `placement`、`acceptance`、`positions/README`、`README` 都是 0.0/k；**27 次「本页」**（早先 61 是误计），读者一直在被告诉「本页回答什么」。
 3. 六张位置卡的 §1–§2（机制/触发/输入/输出）是 taxonomy；真正的判断在 §3–§7。
 
 **判断**：**观点最反常识的一份**（「强端更窄」「引擎不等于拦」），但**被框架税埋了**；第一页是目录，不是论点。
@@ -87,7 +87,7 @@ target: 01/02/03（基准 04）
 
 | 税 | 表现 | 数据 | 修法 |
 |---|---|---|---|
-| **框架税** | 每页重述 0–6 / 四轴 / 六位置 | 03「本页」61 次；01 六个能力页重复矩阵 | 框架只留一页；其余页直接从「判断」开头 |
+| **框架税** | 每页重述 0–6 / 四轴 / 六位置 | 03「本页」27 次（复核；早先 61 是误计）；01 六个能力页重复矩阵 | 框架只留一页；其余页直接从「判断」开头 |
 | **程序税** | 13 recipe × 10 字段、步骤/成本/验收 | 02「shadow」34 次；ledger/interfaces 0.0–0.3/k | 步骤压成「if X → Y，否则 Z」；schema 并进一个附录 |
 | **边界税** | 每条判断后跟 3 条 caveat | 03 卡的 §4/§6 常比 §3 长；02 的「工程建议/未测」满页 | 每页一个「边界」盒；正文只留主张与条件 |
 

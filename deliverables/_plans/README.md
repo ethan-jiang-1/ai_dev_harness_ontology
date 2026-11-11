@@ -8,6 +8,10 @@
 | [2026-11-10-04-matrix-skeletons.md](./2026-11-10-04-matrix-skeletons.md) | [04 建用治](../04-ontology-in-production/README.md) | **W0 矩阵骨架**：12 条承重句 × 12 张表；B1/B2/C2 已满，其余部分；空格=订单 |
 | [2026-11-10-04-deep-plan.md](./2026-11-10-04-deep-plan.md) | [04 建用治](../04-ontology-in-production/README.md) | **04 深挖**：按 04→topics→src→外部 走依据链；三链（可消费性/查询/治理）、18 行依据表、W0–W5；§6 是 workflow/subagent 执行编排；**D1–D6 已定并执行完**：正文 11,995/12k、导航 8.5%、5 件产物（TBox/shapes/ABox/3 SPARQL/policy/audit）；4 轮冷读，P0 定向复核 PASS；kill criterion 不 kill；剩余 P2 与输出校验/端到端失败传播 |
 | [2026-11-10-04-remediation-plan.md](./2026-11-10-04-remediation-plan.md) | [04 建用治](../04-ontology-in-production/README.md) | **04 内容整改（不做实现）**：新人冷读 6 组问题 → S/N/E/R/H 五类发现；C0 口径 → C1 读源/证据对齐 → C2 语义内容 → C3 新人内容 → C4 一致性 → C5 冷读；9 件产物不变，不加 engine/harness/reference filter/EXP；`topics/`、`src/`、`meta/` 只补条件与出处。**2026-11-10 已执行（内容层）**：04 raw/governed + 8 规则/11 测试 + 3 audit + journey/glossary；未跑示例/未做实验；check 499 文件 |
+| [2026-11-11-quality-lift-plan.md](./2026-11-11-quality-lift-plan.md) | 01/02/03 | **总体提拉**：先合并（02 双表/D1）→ 01 补 5 why → 03 补 5 why/降框架税 → 共同收口；DoD=10/14、10/13、7/7、本页≤20、同数≤1；3.5–5 人日；只提内容层 |
+| [2026-11-11-01-lift-plan.md](./2026-11-11-01-lift-plan.md) | 01 | 01 分计划：补 memory/离线 SHACL/推理/commit/确定性 5 条 why；去重 |
+| [2026-11-11-02-lift-plan.md](./2026-11-11-02-lift-plan.md) | 02 | 02 分计划：合并双阈值表、链 D1、补 R4/R9/R10/R11/R12 why |
+| [2026-11-11-03-lift-plan.md](./2026-11-11-03-lift-plan.md) | 03 | 03 分计划：补 memory/evidence/commit/outside why；`本页` 61→≤30；零硬页 5→2 |
 | [2026-11-11-content-audit.md](./2026-11-11-content-audit.md) | 01/02/03（基准 04） | **内容审计**：硬句/锐句/水句密度；01 短而硬、02 手册体、03 概念锐框架重、04 单点深；三个税（框架/程序/边界）与门口悖论；只评内容，不评流程 |
 | [2026-11-11-exp-004-citation-audit.md](./2026-11-11-exp-004-citation-audit.md) | 02 R4 | **EXP-004**：20 条 claim+E 行，两个 agent 标 S/P/N，κ=1.0；strict S=5/20；**EXP-004b** 加 evidence-anchors 后 55–65%，N 0；E 行是地址不是自足 warrant |
 | [2026-11-11-remediation-plan.md](./2026-11-11-remediation-plan.md) | 02/01/03 | **整改**：四个决定（不改 01 标签、03 M1/M2 只标 gap、顺序 02→01→03、接受两张排序）；02 产物包/术语/canonical/读者检查，01 规则/决策记录/术语/canonical，03 claim 走查/读者检查/术语；**2026-11-11 已执行**，冷读 01=yes、02/03=partial（真 gap） |
