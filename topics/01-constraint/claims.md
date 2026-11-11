@@ -9,21 +9,21 @@ updated: 2026-11-09
 
 | ID | 判断 | 等级 | 证据 | 备注 |
 |---|---|---|---|---|
-| 01-L1 | 安全应作为**结构问题**来问：问「是否存在可接受的逆操作序列」，而不是让模型给安全标签 | **推测（组织假设）** | POLAR 作者立场；实测边界见 01-L6 | 本派的方向性主张，不是实测结论；POLAR 只到「有逆序列」，结构贡献未隔离，不保证逆执行成功，也不判意图/授权 |
-| 01-L2 | 约束类机制的增益随模型基线能力升高而缩小 | 已核 | E-13 / POLAR | 六点描述性拟合，给不出零交叉阈值；证据仅 POLAR 三域六模型，不能当所有约束机制的能力曲线 |
-| 01-L3 | 推理期约束的形式决定天花板/护栏：限制知识源（curated KG）可能封顶（Q4DX 上 Jaundice/Vertigo 恒 0）；验证条件（OntoAct 三值逻辑）不一定封顶 | 已核 | OntoAct / 多 agent 诊断 | 两项任务形态不同，不是头对头；elimination 上 IfR 匹配/超过 OntoAct |
+| 01-L1 | 安全应作为**结构问题**来问：问「是否存在可接受的逆操作序列」，而不是让模型给安全标签 | withdrawn | POLAR 作者立场；实测边界见 01-L6 | 2026-11-11 源移出；待重写。本派的方向性主张，不是实测结论；POLAR 只到「有逆序列」，结构贡献未隔离，不保证逆执行成功，也不判意图/授权 |
+| 01-L2 | 约束类机制的增益随模型基线能力升高而缩小 | withdrawn | E-13 / POLAR | 2026-11-11 源移出；待重写。六点描述性拟合，给不出零交叉阈值；证据仅 POLAR 三域六模型，不能当所有约束机制的能力曲线 |
+| 01-L3 | 推理期约束的形式决定天花板/护栏：限制知识源（curated KG）可能封顶（Q4DX 上 Jaundice/Vertigo 恒 0）；验证条件（OntoAct 三值逻辑）不一定封顶 | withdrawn | OntoAct / 多 agent 诊断 | 2026-11-11 源移出；待重写。两项任务形态不同，不是头对头；elimination 上 IfR 匹配/超过 OntoAct |
 | 01-L4 | 多模式分配不是单轴更省：CASEL 相对 Uncertainty-Menu 审批更多（8.7% vs 6.9%）、task success 低 1.78 pp；相对 Risk-Menu 是「相近 harm、审批少约 30%」 | 已核（模拟） | CASEL | 20 seeds/120k actions；主表 τ̂=∞；γ_m 假设；不是部署 |
 | 01-L5 | 审批量是护栏的隐性成本：CASEL 8.7% vs Uncertainty 6.9% / Risk 12.6% / Consequence 13.8% | 已核（模拟） | CASEL | 审批疲劳未建模；不能只看 HSR |
-| 01-L6 | T1-only 接近 blanket veto，增益却不比 full 小；结构反向组合的贡献未被隔离 | 已核 | E-04 / POLAR | 作者自述；需同轨迹配对 |
-| 01-L7 | retail return/exchange 在 block log 里最多（150/103 次），但没有 harm/授权标签，不能判定是否误拦；合法意图需要意图/授权层 | 推测 | POLAR digest | 机制解释，非作者结论；false-veto 未测 |
+| 01-L6 | T1-only 接近 blanket veto，增益却不比 full 小；结构反向组合的贡献未被隔离 | withdrawn | E-04 / POLAR | 2026-11-11 源移出；待重写。作者自述；需同轨迹配对 |
+| 01-L7 | retail return/exchange 在 block log 里最多（150/103 次），但没有 harm/授权标签，不能判定是否误拦；合法意图需要意图/授权层 | withdrawn | POLAR digest | 2026-11-11 源移出；待重写。机制解释，非作者结论；false-veto 未测 |
 | 01-L8 | 护栏评估应报 harm–approval–cost 前沿，不是单一 HSR：CASEL HSR 7.02% / 审批 8.7%；Uncertainty 14.75% / 6.9%；Risk 5.82% / 12.6%；Consequence 4.38% / 13.8% | 已核（模拟） | CASEL | 主表 τ̂=∞；不是所有方法同 menu/cost；task success 也要报 |
 | 01-L9 | CASEL-NoRev 是 verify-only，同时去掉 sandbox/approve；15.53% 不能单归因给「可逆性路由」，其贡献未被隔离 | 已核（模拟；消融口径） | CASEL | 旧读「可逆性路由贡献大部分增益」作废 |
 | 01-L10 | full ledger 在 harm–compute 面被支配，但在低审批端（4.3% approvals / 11.82% HSR）仍是前沿点；「只对不可逆动作记账」未验证 | 已核（模拟） | CASEL | 54% 直接执行步骤 p_t c_t > r̄_t，ledger 前提失败 |
-| 01-L11 | 验证条件式推理期约束在 Tacit-FLE 三个规模上同时提高成功率、减少无效干预：small 78.6 vs IfR 64.3、medium 83.3 vs 66.7、large 90.0 vs 65.0；SI 1.6–2.4 vs IfR 6.4–17.8 | 已核（模拟） | OntoAct | Tacit-FLE 三个规模；Mars/ALFWorld 同向；合成/固定 schema；elimination 上 IfR 匹配/超过，不能推广为「验证条件总是更好」 |
-| 01-L12 | Spurious interventions 是被最终成功率掩盖的指标；应单独报 | 已核 | OntoAct / CASEL | 两篇都强调；CASEL 另报 approvals/coverage |
-| 01-L13 | 可推理 ≠ 可授权：`UNVERIFIED` 可进 Planner，但不能当 positive authorization support；需 claim-specific promotion | 已核（概念） | Commit Boundary | Commit Boundary 本身无实现；读路径授权已有实现（trustgraph `policy_filter.py`，已核）；写路径 commit gate 仍无；未升 E |
-| 01-L14 | 同源检索（hypothesis 诱导的多个结果）不算独立确认；「没检测到冲突」也不是 positive support | 已核（概念） | Commit Boundary | 上游 dependency lineage 未解决；未升 E |
-| 01-L15 | 推理期条件闸门只拦有适用 axiom 的动作；缺证据转 unresolved/观察，不是覆盖所有动作的安全保证 | 已核 | OntoAct / 多 agent 诊断 | 覆盖率是缺口（reasoning-gate F4/G1）；三环境模拟；作者明确不声称可部署 |
+| 01-L11 | 验证条件式推理期约束在 Tacit-FLE 三个规模上同时提高成功率、减少无效干预：small 78.6 vs IfR 64.3、medium 83.3 vs 66.7、large 90.0 vs 65.0；SI 1.6–2.4 vs IfR 6.4–17.8 | withdrawn | OntoAct | 2026-11-11 源移出；待重写。Tacit-FLE 三个规模；Mars/ALFWorld 同向；合成/固定 schema；elimination 上 IfR 匹配/超过，不能推广为「验证条件总是更好」 |
+| 01-L12 | Spurious interventions 是被最终成功率掩盖的指标；应单独报 | withdrawn | OntoAct / CASEL | 2026-11-11 源移出；待重写。两篇都强调；CASEL 另报 approvals/coverage |
+| 01-L13 | 可推理 ≠ 可授权：`UNVERIFIED` 可进 Planner，但不能当 positive authorization support；需 claim-specific promotion | withdrawn | Commit Boundary | 2026-11-11 源移出；待重写。Commit Boundary 本身无实现；读路径授权已有实现（trustgraph `policy_filter.py`，已核）；写路径 commit gate 仍无；未升 E |
+| 01-L14 | 同源检索（hypothesis 诱导的多个结果）不算独立确认；「没检测到冲突」也不是 positive support | withdrawn | Commit Boundary | 2026-11-11 源移出；待重写。上游 dependency lineage 未解决；未升 E |
+| 01-L15 | 推理期条件闸门只拦有适用 axiom 的动作；缺证据转 unresolved/观察，不是覆盖所有动作的安全保证 | withdrawn | OntoAct / 多 agent 诊断 | 2026-11-11 源移出；待重写。覆盖率是缺口（reasoning-gate F4/G1）；三环境模拟；作者明确不声称可部署 |
 | 01-L16 | 访问控制至少三层：标签/分类（Glyph 生产）、策略（无领域来源；OPA 为 adjunct 候选）、执行（trustgraph 单实现）；三层不能互推 | 推测（综合） | access-control F1–F3 | Glyph 单企业/标签层；trustgraph 单实现/只读代码；OPA 不解析本体/不消费标签 |
 | 01-L17 | Glyph 的标签层可工程化，但 NDCG/MAP 是检索指标、生产接受率是作者报告且对 FN 盲；不能当打标准确率或访问控制正确性 | 已核（一手正文；生产部署为作者报告）/ 推测（跨企业） | Glyph digest | 275-leaf 内部本体；无 OOD/漏标率；单企业 |
 | 01-L18 | trustgraph 的读路径 SHACL-AF 过滤是单实现、fail-open、只删 subject；读路径过滤 ≠ 写授权 | 已核（代码） | E-20 / commit-gate F5–F7 | 错误路径细节在 commit-gate；本派不复述 |

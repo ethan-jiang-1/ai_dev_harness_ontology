@@ -21,9 +21,9 @@ target: deliverables/04-ontology-in-production
 src digest → 子主题 F → 派 L → 跨派新 E（2 条）→ 04 引 E
 ```
 
-**硬规则 2（新鲜度）**：新来源只收 **2026-07-01 以后**。论文看首次提交/发表；开源项目看 `last_push`（2026-06 后仍活跃）。规则在 [src/README §0.1](../../src/README.md#02-来源新鲜度2026-11-09-起硬规则)，`check_repo` 查 `batch: 补给` + `published` / `last_push`。
+**硬规则 2（新鲜度）**：新来源只收 **2026-07-01 以后**。论文看首次提交/发表；开源项目看 `last_push`（2026-06 后仍活跃）。规则在 [src/README §0.1](../../src/README.md)，`check_repo` 查 `batch: 补给` + `published` / `last_push`。
 
-**硬规则 3（scope + 可靠性）**：新来源 origin 只收 **US / China / Germany / Singapore**；其他地区不要，留着没意义。论文卡写 `region`/`venue`/`reliability`/`impact`；preprint 不能默认 high；`reliability: low` 不入核心。规则在 [src/README §0.2](../../src/README.md#03-来源可靠性--影响力2026-11-09-起硬规则)。
+**硬规则 3（scope + 可靠性）**：新来源 origin 只收 **US / China / Germany / Singapore**；其他地区不要，留着没意义。论文卡写 `region`/`venue`/`reliability`/`impact`；preprint 不能默认 high；`reliability: low` 不入核心。规则在 [src/README §0.2](../../src/README.md)。
 
 ## 1. 决策
 

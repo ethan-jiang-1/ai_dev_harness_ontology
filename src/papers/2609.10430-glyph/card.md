@@ -21,6 +21,11 @@ also_supports: []
 evidence_role: mechanism-only
 execution_form: label
 updates: [topics/01-constraint/access-control/README.md, topics/01-constraint/sources.md]
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I3: Apple production catalog; company exception"
+liveness: arXiv v1 2026-09-09
+provenance_type: company
 ---
 
 # Glyph · 来源卡

@@ -76,3 +76,5 @@ X6 的验收线是「CMR 或 Acc@complete 相对基线 ≥ +10pp，merge precisi
 - false merge 的传播测量 + 回滚机制。
 - 无训练信号的 reasoning state 对照。
 - 下游任务指标：同一客户历史证据的引用正确率、任务成功率。
+
+> 回 [01 目录](../README.md) ｜ 回 [01 §数据表](../README.md#数据表工作底稿)

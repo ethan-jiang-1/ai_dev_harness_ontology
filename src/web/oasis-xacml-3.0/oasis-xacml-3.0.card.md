@@ -1,6 +1,7 @@
 ---
 status: draft
 source_type: standard
+standing: normative
 reading: 精读
 provenance: 原文正文
 updated: 2026-11-11
@@ -10,6 +11,11 @@ author: OASIS XACML Technical Committee
 published: 2013-01-22
 influence: OASIS Standard（2013-01-22），ABAC 的参照规范；PAP/PDP/PEP/PIP 与 combining algorithm 已是策略引擎与访问控制文献的通用术语（具体产品采用清单 待核）
 updates: []
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I1: OASIS Standard in force"
+liveness: standard-in-force
+provenance_type: standard-body
 ---
 
 # OASIS XACML 3.0 Core（eXtensible Access Control Markup Language）

@@ -7,12 +7,14 @@ parent: ../README.md
 # 术语与内码速查（03）
 
 > 第一次读 03 先看这一页。这里只解释「读 03 会用到的词与码」；完整术语见仓库根 [GLOSSARY](../../../GLOSSARY.md)。
+>
+> **术语基线**：ADR 0011 / 2026-11；K0–K4 标 `local`（论文条件，非 normative 源）。
 
 ## 1. 五个主张标记
 
 | 标记 | 含义 | 要求 | 例子 |
 |---|---|---|---|
-| **E** | 证据条目，来自 [conclusions](../../../topics/conclusions.md) | 必须链 conclusions；写清等级与限定 | E-04、E-20 |
+| **E** | 证据条目，来自 [conclusions](../../../topics/conclusions.md) | 必须链 conclusions；写清等级与限定 | E-12、E-20 |
 | **C** | 冲突/方法论条目 | 不是证据等级；不合成结论 | C-03、C-04 |
 | **H** | 组织假设 | 必须写「什么会推翻它」 | 强度–覆盖率反向 |
 | **D** | 设计提案/概念架构 | 必须写「无实现/未测」 | commit gate 三段式 |
@@ -24,9 +26,10 @@ parent: ../README.md
 
 | 词 | 含义 | 注意 |
 |---|---|---|
-| **六位置** | context → memory → evidence → checker → action → commit | 按时刻排，不按强度排 |
+| **六位置** | context → memory → evidence → checker → action → commit | 按回路功能排；context 是供给、determinism 是第六个时刻，不在强度谱上 |
 | **谱外/轴外** | determinism、read-path、supply、reasoning、training | 不在六位置强度谱上，但可以作为能力/边界出现 |
 | **seams（接缝）** | 本体在回路的哪个时刻介入 | 六个 seams + 轴外 |
+| **supply** | 查询/映射编译（OBDA 等），本体在供给时被执行 | 不是 `context`；不校验输出 |
 | **强度** | 违反时能否改变走向（剪动作/拒输出/阻落盘/要授权） | 不是「本体多完整」 |
 | **覆盖率** | 某位置能碰到的失效类别集合 | **不是百分比**；不是召回率 |
 | **执行形态** | 机器拿本体做了什么：`engine` / `compiled` / `context` / `label` / `none` | 「有引擎」≠「会拦」≠「有授权」 |
@@ -57,16 +60,30 @@ parent: ../README.md
 
 > 等级词汇以 [台账 §2](./../evidence/ledger.md) 的四档为准；`已核（概念架构）` 只在 commit 卡出现，不是第五档等级的证据。
 
+## 4.1 指标与符号
+
+| 符号 | 含义 | 坑 |
+|---|---|---|
+| `p_h` | 命中率：回答所需证据已在上下文中的比例 | 不是「检索到没有」 |
+| `p_min` | 编译盈亏平衡命中率：`2% + c/(0.929Q)` | `c/Q` 要自己量 |
+| `c` | 每次编译成本（相对单位） | 不是 token 单价 |
+| `Q` | 每问 token 预算 | 与上下文窗口不是一回事 |
+| `FA` | false alarm：checker 把对的判错的比例 | 与 catch 分开报 |
+| `HSR` | harm success rate：有害轨迹比例 | 不是 task success |
+| `CMR` | 跨期匹配率：同一实体跨会话能否对上 | 与 `Acc@complete` 不同 |
+| `SLB` | solver-like behavior：轨迹里先算答案、程序只复述 | 不是「模型推理强」 |
+| `δ` | miss 上限（校准证书的容忍度） | 不是 false-block 率 |
+
 ## 5. 内码
 
 | 码 | 指向 | 在哪 |
 |---|---|---|
 | `O-xx` | 对象地址（公式/代码/表/反例） | [objects](../../../topics/objects.md) |
 | `C-xx` | 冲突/方法论条目 | [conclusions](../../../topics/conclusions.md) |
-| `M1–M5` | 03 的 5 条研究期待 | [gaps](../evidence/gaps.md) |
+| `M1–M5` | 03 的 5 条研究期待（承重假设） | [gaps](../evidence/gaps.md) |
 | `B/R` | 边界 / 反例 | [boundaries](../evidence/boundaries.md) |
 | `T1–T5` | 动作本体里的类型化逆关系 | [action](../positions/action.md) |
-| `K0–K2` | 知识层（地址/名字+单位/投影） | [01 glossary](../../01-capability-status/sections/glossary.md) |
+| `K0–K4` | N&D 实验条件代号（原始点位/点位语义/知识投影文本/流程摘要/运行记录检索；**非标准**） | [01 K 页](../../01-capability-status/sections/k-ladder.md) |
 | `Q-01` / `RQ5` | 存疑条目 / 研究问题 | [conclusions](../../../topics/conclusions.md) |
 | `P0/P1b/P1c/P2` | 按机制分派的度量优先级 | [measurement](../across-positions/measurement.md) |
 

@@ -7,7 +7,7 @@ main_level: 推测
 
 # 表示 · 机制
 
-> 机制判断与三档划分见 [README](./README.md)；本页补的是「消费位置 → 可执行产物」这一步与实施层，不重复论证。SFE-O 的事实引自其 [digest](../../../src/papers/2610.37123-sfe-o/digest.md)（单域、无量化、无 agent 评测、`quality: C`）。digest 的「工程配方（E3）」（5–10 条 shapes、字段、工时）是消化者建议，不是论文产物；论文明确说约束尚未成为可执行 SHACL shapes。凡标 `推测` 的是本页的实施建议、阈值或人日，不是论文数字。第三处数据矛盾 digest 未收，见 [findings/F1](./findings.md) 与 card。
+> 机制判断与三档划分见 [README](./README.md)；本页补的是「消费位置 → 可执行产物」这一步与实施层，不重复论证。SFE-O 的事实引自其 [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123)（单域、无量化、无 agent 评测、`quality: C`）。digest 的「工程配方（E3）」（5–10 条 shapes、字段、工时）是消化者建议，不是论文产物；论文明确说约束尚未成为可执行 SHACL shapes。凡标 `推测` 的是本页的实施建议、阈值或人日，不是论文数字。第三处数据矛盾 digest 未收，见 [findings/F1](./findings.md) 与 card。
 
 ## 机制速览：从消费位置到执行落点
 
@@ -168,6 +168,6 @@ main_level: 推测
 ## 关联
 
 - [README](./README.md) · [findings](./findings.md) · [modeling](./modeling.md)
-- [SFE-O digest](../../../src/papers/2610.37123-sfe-o/digest.md) · [card](../../../src/papers/2610.37123-sfe-o/card.md)
+- [SFE-O digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123) · [card](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123)
 - [05 派 claims](../claims.md)（05-L4）· [sources](../sources.md)
 - [generation](../generation/README.md) · [refinement](../refinement/README.md) · [lifecycle](../lifecycle/README.md)

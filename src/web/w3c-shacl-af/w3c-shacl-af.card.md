@@ -1,6 +1,7 @@
 ---
 status: draft
 source_type: standard
+standing: normative
 reading: 摘要级
 provenance: 原文正文
 updated: 2026-11-11
@@ -10,6 +11,11 @@ author: W3C RDF Data Shapes Working Group（Knublauch / Allemang / Steyskal）
 published: 2017-06-08
 influence: W3C Working Group Note（不是 REC，自述 work in progress）；SHACL-AF 的 custom target / SPARQL rule 被 trustgraph 的 policy filter 直接使用（E-20）
 updates: []
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I1: W3C Note; trustgraph implementation"
+liveness: standard-in-force
+provenance_type: standard-body
 ---
 
 # W3C SHACL Advanced Features（SHACL-AF）

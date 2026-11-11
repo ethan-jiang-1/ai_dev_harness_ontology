@@ -1,7 +1,7 @@
 # 持久化前 · 机制
 
 > 只写「它怎么跑」。判断回 [findings](./findings.md)，边界/下一步回 [frontier](./frontier.md)。
-> 「工程发现 1–4」里的字段名/记录结构来自 [digest](../../../src/papers/2610.37407-commit-boundary/digest.md) §6.5 的工程配方（论文只给抽象对象，未给 schema），标 `推测`；commit 条件、promotion 规则、stop 门来自论文契约或 digest 明确条目，逐条标等级。
+> 「工程发现 1–4」里的字段名/记录结构来自 [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37407) §6.5 的工程配方（论文只给抽象对象，未给 schema），标 `推测`；commit 条件、promotion 规则、stop 门来自论文契约或 digest 明确条目，逐条标等级。
 
 ## 位置
 
@@ -142,6 +142,6 @@ Phase 1 授权 proposed mutation；Phase 2 验证 realized candidate；commit �
 
 ## 关联
 
-- [Commit Boundary digest](../../../src/papers/2610.37407-commit-boundary/digest.md)
+- [Commit Boundary digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37407)
 - [findings](./findings.md) · [frontier](./frontier.md)
 - [memory](../../04-state/memory/README.md)

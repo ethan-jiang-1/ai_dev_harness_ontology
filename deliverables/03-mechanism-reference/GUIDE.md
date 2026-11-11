@@ -34,7 +34,7 @@ parent: README.md
 | 0 | [README §0](./README.md#0-一页结论) | 知道这份参考的立场与承重墙 |
 | 1 | [sections/map.md](./sections/map.md) | 看懂主张类型、四轴、六位置 |
 | 2 | [positions/README.md](./positions/README.md) | 按 context→memory→evidence→checker→action→commit→outside 读位置卡 |
-| 3 | [across-positions/README.md](./across-positions/README.md) | 知道每个位置该量什么、覆盖什么、形态怎么分 |
+| 3 | [measurement](./across-positions/measurement.md) · [coverage](./across-positions/coverage.md) · [execution-forms](./across-positions/execution-forms.md) | 知道每个位置该量什么、覆盖什么、形态怎么分 |
 | 4 | [sections/boundaries.md](./sections/boundaries.md) | 说出 15 条边界 + 12 条反例里最常被越过的部分 |
 | 5 | [sections/acceptance.md](./sections/acceptance.md) | 知道 M1–M5 与下一步缺口 |
 | 6 | [sections/relations.md](./sections/relations.md) | 需要时跳 01/02 |

@@ -42,6 +42,8 @@ parent: ../README.md
 
 五组全满足才叫 **可上线候选**；缺一条就不是可上线——按缺口性质分 `conditional` / 演示 / `no-go`（见 [decision §6](./decision.md)）。
 
+> **三关 ≠ 五组门槛**：三关（load/validate/answer）是 `build_report` 对一次构建的记录；五组是上线门槛，另含 B/C 的查询、策略与泄漏。两者不是同一层，不要互相替代。
+
 | # | 组 | 通过长什么样 |
 |---|---|---|
 | 1 | A1–A4 | 契约 6 项无空；3 个 TTL 可解析；2 个 shape 有 target；2/2 坏样本被抓住 |

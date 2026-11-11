@@ -4,7 +4,13 @@
 
 | 文件 | 对应交付物 | 说明 | 状态 |
 |---|---|---|---|
-| [2026-11-11-quality-review.md](./2026-11-11-quality-review.md) | 01–04 | **质量评估（[rubric v1](../../meta/deliverable-quality.md)）**：基线 02/04 78、01 71、03 64；**收口后 04 84 / 02 82 / 01 79 / 03 78**；3 处红旗（04 Glyph 规模、03 相近 harm、03 57.2）与 4 处一致性错误已修；START 入口、X/N 命名空间、连续读法已落地；C2 已合并 8 个薄页（110→102）；B3 首屏加映射；残余见 §9 | 现行（基线+收口） |
+| [2026-11-11-core-plan.md](./2026-11-11-core-plan.md) | 全仓 | **核心计划**：证据重置 + ADR 0011 术语基线 + 01→02→03→04 收口；P0–P6、工作流、验收、checkpoint | **现行（核心）** |
+| [2026-11-11-command-board.md](./2026-11-11-command-board.md) | 全仓 | 逐批进度日志：P0–P4 每批改了什么、`check_repo` 结果 | 现行（日志） |
+| [2026-11-11-status.md](./2026-11-11-status.md) | 01–04 + 术语 | 一页状态：当前计数、不能信什么、未决项、checkpoint 建议 | 现行（状态） |
+| [2026-11-11-baseline-correction-plan.md](./2026-11-11-baseline-correction-plan.md) | 术语/标准线 | S0–S5：标准卡、10 词差异表、06-measure 试点 | 现行（子计划） |
+| [2026-11-11-adr-0011-handoff-to-01.md](./2026-11-11-adr-0011-handoff-to-01.md) | 01 | **跨会话交接**：ADR 0011 生效；K0–K4 按论文实验条件标注；不得把成熟度模型当行业标准 | 现行（已回执） |
+| [2026-11-11-quality-review.md](./2026-11-11-quality-review.md) | 01–04 | **质量评估（[rubric v1](../../meta/deliverable-quality.md)）**：基线 02/04 78、01 71、03 64；§10 冷读 04 84 / 02 80 / 01 76 / 03 74；**§11 整改后 02 86 / 04 86 / 03 84 / 01 82**；**§12.1 证据重置桌面复评 01 84 / 02 81 / 03 82 / 04 86**（非冷读）；02/03 下降来自 gap 行扩大，不是文笔；残留长尾与真人冷读 | 现行（基线+收口+冷读+复评） |
+| [2026-11-11-k-ladder-provenance.md](./2026-11-11-k-ladder-provenance.md) | 01 | **K0–K4 来源核查**：论文条件 vs 行业标准；OpenAlex 0 引用；K 记号撞车（K0–K6）；三处过度外推（K0 地址级、K1 别名/槽位、K2 整塔/固定分节）与修正 | 现行（术语核查） |
 | [2026-11-10-04-content-supply.md](./2026-11-10-04-content-supply.md) | [04 建用治](../04-ontology-in-production/README.md) | **内容供给**：12 条承重句 → 6 张矩阵/目录 → 12 个 M 来源 + 1 个论文槽位；W0–W3，8 条靠整理/标准、4 条靠新证据；停止线=并进 02 R13。**2026-11-10 已执行 W0–W3 主体**：6 页落 topics、04 九件产物；6 个标准卡已入（GB/T 43697/35273、ODRL、XACML、SHACL、ODCS）；M5–M7/M10 按 D7 降为候选；Great Expectations / OpenLineage 已入；E23–E27 全部已升、body 14.9k（修订 ≤15k） | 已执行 |
 | [2026-11-10-04-matrix-skeletons.md](./2026-11-10-04-matrix-skeletons.md) | [04 建用治](../04-ontology-in-production/README.md) | **W0 矩阵骨架**：12 条承重句 × 12 张表；B1/B2/C2 已满，其余部分；空格=订单 | 已执行（W0） |
 | [2026-11-10-04-deep-plan.md](./2026-11-10-04-deep-plan.md) | [04 建用治](../04-ontology-in-production/README.md) | **04 深挖**：按 04→topics→src→外部 走依据链；三链（可消费性/查询/治理）、18 行依据表、W0–W5；§6 是 workflow/subagent 执行编排；**D1–D6 已定并执行完**：正文 11,995/12k、导航 8.5%、5 件产物（TBox/shapes/ABox/3 SPARQL/policy/audit）；4 轮冷读，P0 定向复核 PASS；kill criterion 不 kill；剩余 P2 与输出校验/端到端失败传播 | 已执行 |

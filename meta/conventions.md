@@ -1,5 +1,5 @@
 ---
-updated: 2026-11-09
+updated: 2026-11-11
 ---
 
 # 写作约定
@@ -27,7 +27,7 @@ updated: 2026-11-09
 | 二手转述 | 写「转述自 X」，并加 `待核` |
 | 未读原文 | 不许写成事实；写成「某文报告」 |
 
-**综述的一句摘要不是论文结论。** 本仓库已经因此踩过一次坑：三篇论文的转述丢了限定条件，见 [综述卡](../src/web/weixin-laoliu/otology.card.md#转述与原文的差异)。
+**综述的一句摘要不是论文结论。** 本仓库已经因此踩过一次坑：三篇论文的转述丢了限定条件，见 [综述卡](audits/2026-11-11-source-purge.md#src-web-weixin-laoliu)。
 
 ## 字段与词汇
 
@@ -40,10 +40,23 @@ updated: 2026-11-09
 | `evidence_role` | 源卡 | `execution-test` / `mechanism-only` / `harness-evidence` / `boundary-ruler` / `unclear` | 对中心问题提供哪类证据：真的测了本体被执行 / 只提机制 / 提供 harness 证据 / 只做边界与尺子 |
 | `execution_form` | 源卡 | `engine` / `compiled` / `context` / `label` / `none` / `unknown` | 本体以什么形态被执行：引擎求值 / 编译成约束 / 作为上下文注入 / 只当标签 / 未执行 / 未判 |
 | `source_type` | `src/` 卡片 | `paper` / `preprint` / `blog` / `engineering` / `standard` / `talk` / `survey` / `open-source` | 素材类型；证据天花板见 [source-types](./source-types.md) |
+| `standing` | `src/` 标准卡 | `normative` / `informative` | 源位阶：规范性（可定义术语、定合格性）/ 资料性（只能举例、佐证）；`signal` 不是 standing，归 `admission` |
 | `reading` | 源卡 `card.md` | 论文/材料：`未读` / `综述级` / `摘要级` / `精读` / `已消化`；代码：`未读` / `已读代码` / `已跑通` | 读到什么程度；**不是证据等级** |
 | `provenance` | 源卡 `card.md` | 论文/材料：`原文正文` / `原文摘要` / `综述转述` / `未核`；代码：`一手代码` / `一手文档` / `未核` | 证据来自哪里 |
 | `quality` | `digest.md` | `A` / `B` / `C` | 证据强度粗分：A 多基准/真实部署/消融（代码：有测试且有生产/基准）；B 单基准/单域/有限评估（代码：有测试但单路径）；C 概念/模拟/小样本/无量化（代码：只读代码/无测试） |
 | `deliverable_status` | `deliverables/` | `draft` / `stable` / `frozen` | 交付阶段 |
+| `admission` | `src/` 卡 | `admitted` / `admitted (probation)` / `signal` / `excluded` | 五门结论；没有就是未判；见 [CHARTER §4](../CHARTER.md#4-素材准入material-gate) |
+| `gate_checked` | `src/` 卡 | `YYYY-MM-DD` | 最后一次过门日期 |
+| `impact_evidence` | `src/` 卡 | `I1: ...; I3: ...` | 逐条列独立信号；`admitted` 必填 |
+| `liveness` | `src/` 卡 | 文本 | 最近一次活动及日期 |
+| `provenance_type` | `src/` 卡 | `standard-body` / `academic` / `foundation` / `community` / `company` / `individual` | 来源结构，决定 G4 |
+
+**源位阶与术语（ADR 0011）**：
+
+- `normative` 可定义术语、定合格性；`informative` 只能举例、佐证。**术语定义只能引 `normative`。**
+- 自造词标 `local`，给出定义与边界，不得写成「业界 / 标准」；交付物首现处解释。
+- 标准卡不撑效应量：标准能定「什么叫顶层本体」，不能证明「本体提升 agent 效果」。
+- 术语差异判定：`aligned` / `narrower` / `broader` / `divergent` / `local`；`divergent` 与冒充行业词的 `local` 合计超过 1/3 即停，重定基调。执行见 [基线整改计划](../deliverables/_plans/2026-11-11-baseline-correction-plan.md)。
 
 开源卡另有两组字段，只在 `src/open-source/` 使用：
 

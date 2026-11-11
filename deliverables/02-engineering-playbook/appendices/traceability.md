@@ -1,32 +1,34 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 ---
 
 # 附录 B · 追溯表：R → E → mechanism → 边界
 
 > 每个 R 至少有一条 E、一个 mechanism 页、一个明确的「不能证明」。没有孤儿 recipe；没有只靠交付物新增的判断。
+>
+> **2026-11-11 证据重置**：R4/R5/R6/R12 的主 E 已撤回/移出，评级改 **gap**；本表保留旧行只作追溯，不再表示“可试点”。
 
 ## 1. 主表
 
 | R | 主 E | mechanism / 主题页 | 关键限定 | 01 评级 | 不能证明 |
 |---|---|---|---|---|---|
-| R0 准入 | E-02/E-03/E-12/E-20 | [05/representation](../../../topics/05-produce/representation/mechanism.md)、[checker F2](../../../topics/02-judgment/checker/findings.md) | SFE-O 单域；检查项是工程配方 | 前置 | 通过 R0 ≠ 有效 |
+| R0 准入 | E-12/E-20；E-02/E-03 撤回 | 工程建议；原 SFE-O/checker F2 移出 | 检查项是工程配方（`推测`） | 前置 | 通过 R0 ≠ 有效 |
 | R1 K1 | E-12 | [projection](../../../topics/03-knowledge/projection/mechanism.md) | 单工厂/9 任务/答案在文本 | A | 跨域增益 |
 | R2 投影 | E-12 | 同上 | 单 plant；排序非普适；顺序敏感 | B | 开放域/多设备；手工 SOP 对照 |
 | R3 编译 | E-08/E-14 | [compilation](../../../topics/03-knowledge/compilation/mechanism.md) | FRAMES；单 compiler；时延 3× 仅 7 题 | B | 准确率提升；企业语料 |
-| R4 证据 | E-03 | [evidence](../../../topics/02-judgment/evidence/mechanism.md) | 医学 QA；等级自评未校准 | B | 形式保证；跨域 |
-| R5 checker | E-02/E-20 | [checker](../../../topics/02-judgment/checker/mechanism.md) | 单 checker；25% 错答案假设；结构错 0% | B | 语义正确；真实错误分布 |
-| R6 动作闸 | E-04/E-15 | [action-gate](../../../topics/01-constraint/action-gate/mechanism.md) | 18 格仅 8 改善；T1-only；false-veto 未测 | B | 结构有效；安全保证 |
+| R4 证据 | E-03 withdrawn | [evidence](../../../topics/02-judgment/evidence/mechanism.md) | 旧数字停用 | **gap** | 形式保证；跨域 |
+| R5 checker | E-02 withdrawn；E-20 代码级 | [checker](../../../topics/02-judgment/checker/mechanism.md) | 旧数字停用 | **gap** | 语义正确；真实错误分布 |
+| R6 动作闸 | E-04/E-13 withdrawn；E-15 参照 | [action-gate](../../../topics/01-constraint/action-gate/mechanism.md) | 旧数字停用 | **gap** | 结构有效；安全保证 |
 | R7 记忆 | E-05/E-17 | [identity](../../../topics/04-state/identity/mechanism.md)、[memory](../../../topics/04-state/memory/mechanism.md) | 专有数据/文本 only/需训练信号 | B | 跨模态；false merge 传播 |
 | R8 读路径 | E-20 | [commit-gate F5–F7](../../../topics/01-constraint/commit-gate/findings.md)、[trustgraph](../../../src/open-source/trustgraph-ai-trustgraph/digest.md) | fail-open；subject-only；单实现（候选第二实现未入库） | B（条件性） | 写授权；object 方向；可上线 |
 | R9 落盘 | E-20 | [commit-gate](../../../topics/01-constraint/commit-gate/mechanism.md) | 概念；无实现；false-defer 未测 | C | 已落地；效果 |
 | R10 离线 SHACL | E-20 | [semantica](../../../src/open-source/semantica-agi-semantica/digest.md)、[open-ontologies](../../../src/open-source/fabio-rovai-open-ontologies/digest.md) | CLI；未跑通；派生 shapes 未测 | A | in-loop 自动拒收；语义正确 |
 | R11 OBDA | E-20 | [ontop](../../../src/open-source/ontop-ontop/digest.md) | OWL 2 QL；无 agent 集成；无消融 | A | 本体独立贡献；DL 推理 |
-| R12 受监管 | Grid（非 E） | [compilation 机制三](../../../topics/03-knowledge/compilation/mechanism.md)、[Grid](../../../src/papers/2611.03534-power-system-agentic/digest.md) | benchmark；非部署；相对最强 baseline +0.5pp | B（benchmark） | 客户指标；形式安全 |
+| R12 受监管 | Grid 已移出（非 E） | [compilation 机制三](../../../topics/03-knowledge/compilation/mechanism.md) | benchmark 已移出 | **gap** | 客户指标；形式安全 |
 
-> R12 没有对应 E-xx；它只作 benchmark 工程参考，不能当 E 引用。R0 也没有单一 E；它是把 E-02/E-03/E-12/E-20 的边界合成准入检查。
+> R12 的唯一 benchmark 已移出；现在没有 admitted 来源，不能当 E 引用。R0 也没有单一 E；它是工程建议，旧 E-02/E-03 已撤回。
 
 ## 2. 与 01 的 crosswalk
 
@@ -35,9 +37,9 @@ parent: ../README.md
 | K1 | R1 | A ↔ A |
 | 投影 | R2 | B ↔ B |
 | 编译 | R3 | B ↔ B |
-| evidence | R4 | B ↔ B |
-| checker | R5 | B ↔ B |
-| 动作闸 | R6 | B ↔ B |
+| evidence | R4 | **gap ↔ gap** |
+| checker | R5 | **gap ↔ gap** |
+| 动作闸 | R6 | **gap ↔ gap** |
 | 记忆 | R7 | B ↔ B |
 | 读路径 | R8 | B ↔ B（条件性；单实现） |
 | 落盘授权 | R9 | C ↔ C |

@@ -5,6 +5,8 @@
 这个仓库不是一次性成文的文档，而是一条**持续运转的消化流水线**：材料进来 → 精读成卡 → 沉淀成主题 → 抽成交付物。本页只做 **router**；判断在 topics，材料在 src，方法在 meta。
 
 > **先读宪章**：[CHARTER](./CHARTER.md)。这是研究档案，不是软件项目；我们消化、组织、研究资料，交付物是文档，不是可运行系统。
+>
+> **2026-11-11 证据重置**：宪章 §4 素材准入已生效——论文 28→10、9 条 E 撤回。只有 `admitted`（含 probation）材料能撑 E/L/交付物；`signal` 只进 `frontier`；源撤回后，引用它的判断同步失效。入口：[CHARTER §4](./CHARTER.md#4-素材准入material-gate) · [状态页](./deliverables/_plans/2026-11-11-status.md) · [术语基线 v0](./meta/term-baseline.md)。
 
 ---
 
@@ -26,6 +28,9 @@
 | 交付物 | [deliverables](./deliverables/README.md) |
 | 写作约定与模板 | [meta/README](./meta/README.md) |
 | 当前计数与阻塞 | [meta/state](./meta/state.md) |
+| 素材准入（G1–G5） | [CHARTER §4](./CHARTER.md#4-素材准入material-gate) |
+| 术语基线 v0 | [meta/term-baseline](./meta/term-baseline.md) |
+| 证据重置状态 | [meta/2026-11-11-status](./deliverables/_plans/2026-11-11-status.md) |
 | 第一次接触（人，10 分钟） | [START](./deliverables/START.md) |
 | 质量口径 / 最新评分 | [rubric](./meta/deliverable-quality.md) · [review](./deliverables/_plans/2026-11-11-quality-review.md) |
 | 按需加载 | [meta/loading](./meta/loading.md) |
@@ -72,6 +77,8 @@
 
 **三条规矩**：单向不可反向（deliverables 只从 topics 抽）；上游可以领先下游；每级自带台账。
 
+**2026-11-11 起加一条硬约束**：只有 `admitted`（含 probation）材料能撑判断；`signal` 只进 `frontier`；源撤回后，引用它的 E/L/交付段落同步失效。细则见 [CHARTER §4](./CHARTER.md#4-素材准入material-gate)。
+
 ### 2.1 三层信息流：各写给谁
 
 > 三层不是“三套深浅”，是**三种读者**。细则见 [ADR 0010](./adr/0010-three-layer-information-flow.md)。
@@ -103,9 +110,11 @@
 
 ## 4. 当前状态
 
-- `src/` — 28 个论文目录（20 基础 + 4 扫描 + 4 补给）；每目录 PDF + 三份 MD + `card.md` + `digest.md`（有图则 `figures/`）；8 个开源项目（4 本体 + OPA/Qlever 工程线 + Great Expectations 输出校验 + OpenLineage lineage，已 pin commit、已消化）；12 张材料卡（4 张 web + 8 张标准卡）+ 一本合并后的 [manifest](./src/papers/manifest.md)。
-- `topics/` — 六派成文；27 条 E（21 已核原文 + 2 已核代码 + 4 推测）、3 条 Q、4 条冲突；28 篇论文 + 8 个开源里，**9 个 execution-test（8 个回路上 + 1 训练侧）/ 16 个 mechanism-only / 8 个 harness-evidence / 3 个 boundary-ruler**（见各卡 `evidence_role`）；8 个开源项目提供代码级机制证据。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
+- `src/` — **10 个论文目录**（6 `admitted` + 4 `admitted (probation)`；18 篇按 [准入审计](./meta/audits/2026-11-11-source-purge.md) 移出）；每目录 PDF + 三份 MD + `card.md` + `digest.md`；8 个开源项目（已 pin commit、已消化）；9 张材料卡（1 张 HN + 8 张在役标准卡）+ [manifest](./src/papers/manifest.md)。
+- `topics/` — 六派成文；27 条 E（**14 已核原文 + 2 已核代码 + 2 推测 + 9 已撤回**）、3 条 Q、4 条冲突；10 篇论文 + 8 个开源里，**3 个 execution-test / 11 个 mechanism-only / 4 个 harness-evidence / 0 个 boundary-ruler**；8 个开源项目提供代码级机制证据。新增 [execution-forms](./topics/execution-forms.md) 形态轴。
 - `deliverables/` — 4 个子目录（3 层 + 1 条生命周期）：[01 现状](./deliverables/01-capability-status/README.md) / [02 工程实施](./deliverables/02-engineering-playbook/README.md) / [03 机制参考](./deliverables/03-mechanism-reference/README.md) / [04 建用治](./deliverables/04-ontology-in-production/README.md)；03 内含[约束强度谱长版附录](./deliverables/03-mechanism-reference/appendix-constraint-spectrum.md)。原 7 章书稿计划已废弃，没有独立 handbook。
+
+**2026-11-11 证据重置**：18 篇论文 + 3 个旧网页材料移出，9 条 E 撤回；主题页/交付物里仍有段落按被删源写成，重写完成前不得作为结论。这是当前第一优先级。
 
 **最大空缺是没有一条结论被独立复现。** 这是研究深度的缺口，不是阻塞：外部客户试点线已于 2026-11-09 删除，不再请求任何域/日志/题库/人/单价。当前可自主推进的是代码级执行证据与 digest 消化；不设实验；若未来要做验证，在仓库外做并只留指针。部署层回报、false-veto/false-defer、维护成本仍缺量化。
 

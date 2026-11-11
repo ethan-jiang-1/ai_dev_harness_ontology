@@ -2,3 +2,6 @@
 *.tmp
 .pi/
 .tmp-venv/
+
+__pycache__/
+*.pyc

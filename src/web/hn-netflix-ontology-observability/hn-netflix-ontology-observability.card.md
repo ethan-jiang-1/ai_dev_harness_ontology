@@ -12,6 +12,11 @@ influence: HN 131 points / 32 comments（2026-10-19）
 updates:
   - deliverables/04-ontology-in-production/body/govern.md
   - deliverables/04-ontology-in-production/evidence/README.md
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I2+I4: 131 points / 32 comments"
+liveness: 2026-10-19
+provenance_type: community
 ---
 
 # HN：Netflix ontology-driven observability 的争论

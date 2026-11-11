@@ -1,8 +1,8 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
-basis: E-02/E-03/E-12/E-20；SFE-O；checker F2
+basis: 工程建议（推测）；E-12/E-20 仍 admitted；E-02/E-03/SFE-O 已撤回
 ---
 
 # R0 · 本体可执行性体检
@@ -15,7 +15,7 @@ basis: E-02/E-03/E-12/E-20；SFE-O；checker F2
 
 **先证明「有消费者、有执行落点、名字/单位对、声明够用」，再选接缝。** 否则后面的 R1–R12 都建在沙上：投影会抄错单位，checker 会对每条正确答案误报，action gate 会拿过期状态做硬 veto。
 
-**为什么是这四项**：四项分别对应四类已核失败——命名/单位（E-12）、缺声明/闭世界（E-02）、覆盖/检索（E-03）、执行落点（E-20）；任何一项不过，后面的 R1–R12 都在沙上。
+**为什么是这四项**：四项分别对应四类失败模式（工程建议，`推测`）——命名/单位（E-12）、缺声明/闭世界、覆盖/检索、执行落点（E-20）。原 E-02/E-03/SFE-O 已撤回，旧数字不能再用；任何一项不过，后面的 R1–R12 都在沙上。
 
 ## 1. 适用 / 不适用
 
@@ -33,9 +33,9 @@ basis: E-02/E-03/E-12/E-20；SFE-O；checker F2
 | # | 检查 | 问什么 | 通过线（工程建议，`推测`） | 不过怎么办 | 证据 |
 |---|---|---|---|---|---|
 | 1 | 名字 / 单位 / 别名 | 同一个量是否有唯一 tag、单位、别名？ | 3 个代表性任务里，primary trap 不再由命名/单位歧义造成 | 先做 R1；不要做投影/编译 | E-12：K0→K1 避坑率 +54.6pp（单工厂、9 任务） |
-| 2 | 声明 / domain-range | 用到的类/属性是否都有声明？ | 抽样 50 条数据，未声明 term = 0；domain/range 缺口有清单 | 先补声明；补不了的进人工队列 | E-02：curated 的 FA 主源是 undeclared term / closed-world，不是「与数据矛盾」 |
-| 3 | 覆盖 / 词汇 | 任务里的实体/关系，本体覆盖多少？ | 200 题抽样，unknown IRI < 20%；gold evidence 检索率 ≥ 50% | 先补本体或换 R5 data-derived；不要做 R4 等级 | E-03：检索是主瓶颈（MCQ 61.7% vs OQ 23.6%）；20%/50% 是工程门 |
-| 4 | 执行落点 / 版本 | 每条要执行的约束，是否有 shape/代码检查 + 一个能触发它的负例？ | 每个约束都有落点 + 负例；版本/来源字段齐全 | 只交付文档，不称「可执行本体」 | SFE-O：OWL 2 表达力够，但约束未落成可执行 SHACL |
+| 2 | 声明 / domain-range | 用到的类/属性是否都有声明？ | 抽样 50 条数据，未声明 term = 0；domain/range 缺口有清单 | 先补声明；补不了的进人工队列 | 工程建议；原 E-02 撤回，待新源 |
+| 3 | 覆盖 / 词汇 | 任务里的实体/关系，本体覆盖多少？ | 200 题抽样，unknown IRI < 20%；gold evidence 检索率 ≥ 50% | 先补本体或换 R5 data-derived；不要做 R4 等级 | 工程建议；原 E-03 撤回，待新源 |
+| 4 | 执行落点 / 版本 | 每条要执行的约束，是否有 shape/代码检查 + 一个能触发它的负例？ | 每个约束都有落点 + 负例；版本/来源字段齐全 | 只交付文档，不称「可执行本体」 | SFE-O（超临界 CO₂ 萃取本体论文）：OWL 2 表达力够，但约束未落成可执行 SHACL |
 
 ### 2.1 检查 1：名字 / 单位 / 别名
 
@@ -56,7 +56,7 @@ basis: E-02/E-03/E-12/E-20；SFE-O；checker F2
 2. 缺声明的，先自动补 domain/range；补不了的进人工队列。
 3. 用 50 条真实数据跑一次 SHACL/声明检查，记录误报。
 
-**为什么先做**：curated checker 的 precision 仅略优于随机（+1.6 点，CI 跨零），FA 主源是 undeclared term 与 closed-world；每个缺失声明会经 declaration check 对用到它的正确答案误报（E-02，checker F2）。不补声明就上 checker，会得到「抓得多、杀得也多」的假象。
+**为什么先做**：缺声明/闭世界会让 checker 对正确答案误报——这是工程判断（`推测`），不是旧 E-02 数字。原 E-02 / checker F2 已撤回；要用，先找新源。
 
 ### 2.3 检查 3：覆盖 / 词汇
 
@@ -66,7 +66,7 @@ basis: E-02/E-03/E-12/E-20；SFE-O；checker F2
 2. 统计 unknown IRI、未覆盖关系、只能 near-match 的词汇。
 3. 先修检索/覆盖，再谈 grounding 等级；等级只反映覆盖缺口时，不要拿它当质量信号。
 
-**为什么先做**：OA-RAG 的检索是主瓶颈（gold evidence 完整检索 MCQ 61.7% vs OQ 23.6%）；检索率 <50% 时，加等级/推理层没有意义（E-03）。20% unknown IRI 是 [evidence 机制](../../../topics/02-judgment/evidence/mechanism.md) 的工程门，不是论文阈值。
+**为什么先做**：检索/覆盖不够时，加等级/推理层没有意义——这是工程判断（`推测`）。原 E-03（OA-RAG）已撤回，旧检索率数字停用；20% unknown IRI 是工程门，不是论文阈值。
 
 ### 2.4 检查 4：执行落点 / 版本
 
@@ -77,7 +77,7 @@ basis: E-02/E-03/E-12/E-20；SFE-O；checker F2
 3. 记录 artifact 版本：本体、shapes、映射、投影、policy 各自版本 + 生成时间。
 4. 生成物只读；改动回源，不手工修生成物。
 
-**为什么先做**：SFE-O 的结论是「表达 ≠ 执行」：OWL 2 能表达类/关系/约束，但数值、约束执行、外部服务都在 OWL 外；论文明确说约束尚未成为可执行 SHACL，不能把「模型评审通过」当 DoD（[SFE-O digest](../../../src/papers/2610.37123-sfe-o/digest.md)）。没有负例的 shape 只是声明，不是判据。
+**为什么先做**：SFE-O 的结论是「表达 ≠ 执行」：OWL 2 能表达类/关系/约束，但数值、约束执行、外部服务都在 OWL 外；论文明确说约束尚未成为可执行 SHACL，不能把「模型评审通过」当 DoD（[SFE-O digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123)）。没有负例的 shape 只是声明，不是判据。
 
 ## 3. 你手上是什么，就走哪条
 
@@ -135,7 +135,7 @@ basis: E-02/E-03/E-12/E-20；SFE-O；checker F2
 
 ## 7. 反模式
 
-1. **把 OWL 文件当可执行。** 表达力够 ≠ 有执行落点；SFE-O 的约束仍在文档里（[digest](../../../src/papers/2610.37123-sfe-o/digest.md)）。
+1. **把 OWL 文件当可执行。** 表达力够 ≠ 有执行落点；SFE-O 的约束仍在文档里（[digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123)）。
 2. **把 SHACL 通过当语义正确。** shapes 派生可能过度/不足；`inference="none"` 不展开子类（E-20）。
 3. **没有消费者先建塔。** 投影/编译/checker 都没有调用点，最后只剩文档。
 4. **把 curated 当权威。** precision 仅略优于随机；先审计/补声明（E-02）。
@@ -147,7 +147,7 @@ basis: E-02/E-03/E-12/E-20；SFE-O；checker F2
 | 判断 | 等级 | 条件 / 不能说明 |
 |---|---|---|
 | K0→K1 避坑率 +54.6pp | 已核 | 单工厂、9 任务、答案基本写在文本里；不能外推跨域 |
-| curated checker precision 仅略优于随机（+1.6 点，CI 跨零） | 已核 | UniProt；人工故障 + 25% 错答案假设；不是所有 curated |
+| curated checker precision 仅略优于随机（+1.6 点） | **历史**（原 E-02 撤回） | 旧数字停用；不再引用 |
 | curated FA 主源是 undeclared term / closed-world | 已核 | 32 条盲审 + 消融；不是全量分解 |
 | 检索是主瓶颈（MCQ 61.7% vs OQ 23.6%） | 已核 | 医学 QA、三个本体、2 backbone |
 | 表达 ≠ 执行 | 已核（限 SFE-O） | 单域、无 agent 评测、`quality: C`；不能推出「第二档够用」 |
@@ -157,10 +157,10 @@ basis: E-02/E-03/E-12/E-20；SFE-O；checker F2
 
 ## 9. 交接
 
-- 名字/单位问题 → [R1](knowledge.md#r1--k1-语义层先把名字和单位对齐)
+- 名字/单位问题 → [R1](knowledge.md#r1--点位语义k1先把-tag-名和单位对齐)
 - 声明/覆盖问题 → [R5](judgment.md#r5--输出后-checker先超过空结果重试) 或 [R10 ](offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态)
 - 查询/映射问题 → [R11 ](offline-and-obda.md#r11--obda-查询重写本体在查询编译时被执行)
-- 消费者是投影 → [R2](knowledge.md#r2--知识投影把领域知识写成固定分节的文本)
+- 消费者是投影 → [R2](knowledge.md#r2--知识投影文本把领域知识写成文本固定分节是工程建议)
 - 消费者是动作闸 → [R6](constraint.md#r6--动作前可逆性闸只在不可逆高代价弱模型时试)
 
-**出处**：[SFE-O digest](../../../src/papers/2610.37123-sfe-o/digest.md) · [05/representation 机制](../../../topics/05-produce/representation/mechanism.md) · [checker F2](../../../topics/02-judgment/checker/findings.md) · [E-02/E-03/E-12/E-20](../../../topics/conclusions.md)
+**出处**：SFE-O/E-02/E-03 已移出；本页只保留工程建议（`推测`）。E-12/E-20 仍 admitted；撤回清单见 [审计](../../../meta/audits/2026-11-11-source-purge.md)。

@@ -34,8 +34,8 @@ src/open-source/
 | harness 接缝 | 能挂到哪个时刻（action-gate / evidence / checker / commit-gate / memory / determinism）；不是接缝就写 `none` |
 | 证据 | tests/benchmarks/issues/生产案例，不只看 README |
 | 可研究性 | 能否定位到文件/符号；能否与 22 篇 digest 对照 |
-| 活跃度 | **`last_push` ≥ 2026-07-01（新入档硬门槛）**；2026-06 后仍活跃才算 |
-| 影响力 | star/采用/标准地位；**star 只作参考，不单独决定入选** |
+| 准入 | **CHARTER §4 五门**：`last_push` ≥ **2026-06-01**；180 天内有提交；≥2 名独立贡献者；有 release/tag |
+| 影响力 | 采用/依赖/生产案例/标准地位，**≥2 个独立信号**；star 与 README 承诺不算信号 |
 
 **排除项**：纯图检索（无 schema 约束/校验/推理）、闭源核心、README 承诺多于代码、star 异常但无提交历史。
 
@@ -43,7 +43,7 @@ src/open-source/
 
 扫描快照见 [`_scan-2026-11-09.md`](./_scan-2026-11-09.md)。**复核说明**：2026-11-09 已在 card 所 pin 的 commit 上，对 4 个本轮项目做只读代码核对（未跑测试）；关键路径与结论见各 `digest.md` 的「2026-11-09 代码核对」段，跨项目矩阵见 [execution-forms](../../topics/execution-forms.md#代码级核对2026-11-09)。标 `待核` 的路径仍需实际运行/复核。
 
-> **新鲜度**：现有 6 个项目的 `last_push` 为 2026-11-04/09，全部满足“2026-06 之后仍活跃”。新项目 `last_push` < 2026-07-01 不建卡；`check_repo` 会查。
+> **准入**：现有 8 个项目的 `last_push` 为 2026-11-04/09，全部过 G1/G2；卡上有 `admission: admitted` 与 `impact_evidence`。新项目 `last_push` < 2026-06-01 不建卡；五门见 [CHARTER §4](../../CHARTER.md#4-素材准入material-gate)。
 
 ### 本轮消化（8：4 本体 + 2 工程线 + 1 输出校验 + 1 lineage）
 

@@ -5,6 +5,9 @@ updated: 2026-11-11
 
 # topics：六派与四轴
 
+> **2026-11-11 证据重置**：18 篇论文 + 3 个旧网页材料已移出，9 条 E 撤回。本页与各派页里按被删源写成的段落，**重写前不得作为判断**；清单见 [来源清除审计](../meta/audits/2026-11-11-source-purge.md)。
+
+
 流水线的第二个工位。材料在 `src/` 里被读懂，在这里被综合成**可引用的判断**。
 
 分类轴是**本体凭什么起作用**，不是主题。每一派回答一个工程问题，流派差异在目录名上就能看出来。
@@ -59,12 +62,12 @@ updated: 2026-11-11
 
 | 派 | 回答的问题 | 核心工程思想 | 介入时刻 | 约束强度 | 代表 |
 |---|---|---|---|---|---|
-| [05 生产](./05-produce/README.md) | 本体从哪来、怎么修 | 来源影响可信度（推测）；精化比新建常见（推测） | 本体未存在时 | — | CASTON、SFE-O、OntoDoc |
-| [03 知识](./03-knowledge/README.md) | 怎么让它知道得对 | **投影 pooled 最高但非普适**；编译只省预算、准确率 neutral | 供给时 | 弱 | Narrow & Deep、CAI、Grid Agents |
-| [01 约束](./01-constraint/README.md) | 怎么不让它做错事 | 安全是**结构问题**：问「存在可逆序列吗」 | 动作前 / 落盘前 | **强** | POLAR、Commit Boundary、OntoAct |
-| [02 判定](./02-judgment/README.md) | 怎么知道它做错了 | 判据必须外部且**可度量** | 输出时 / 输出后 | 强 | Ontology Catch、OA-RAG |
+| [05 生产](./05-produce/README.md) | 本体从哪来、怎么修 | 来源影响可信度（推测）；精化比新建常见（推测） | 本体未存在时 | — | CASTON（其余论文锚已移出） |
+| [03 知识](./03-knowledge/README.md) | 怎么让它知道得对 | **投影 pooled 最高但非普适**；编译只省预算、准确率 neutral | 供给时 | 弱 | Narrow & Deep、CAI、GGC |
+| [01 约束](./01-constraint/README.md) | 怎么不让它做错事 | 安全是**结构问题**：问「存在可逆序列吗」 | 动作前 / 落盘前 | **强** | CASEL、Glyph |
+| [02 判定](./02-judgment/README.md) | 怎么知道它做错了 | 判据必须外部且**可度量** | 输出时 / 输出后 | 强 | （论文锚已移出；看 OSS/标准） |
 | [04 状态](./04-state/README.md) | 怎么让它记得对 | 记忆是**状态**不是集合；本体克制到只做对齐与印证 | 跨轮 | 中 | EvoMemState、FIRME |
-| [06 测量](./06-measure/README.md) | 它到底有没有用 | 答对≠内部有本体；失败多归工作流 | 旁路 | 元 | MIOE、Diagnose、SLB |
+| [06 测量](./06-measure/README.md) | 它到底有没有用 | 答对≠内部有本体；失败多归工作流 | 旁路 | 元 | SLB、Agents Are Systems |
 
 底座另置于 [00-harness](./00-harness/README.md)：控制回路的七个部件，01-04 都是往这些部件上接。
 
@@ -152,6 +155,21 @@ updated: 2026-11-11
 3. **附录单独成文件**：默认也不读。需要看额外表格、证明、提示词时再打开。
 
 转换用 `pymupdf4llm`（逐页转，保留顺序）；公式/表格可能有版式噪声，引用前回 PDF 核。消化时默认读 `paper.md` + `card.md` + `digest.md`，不读 `references.md`；这是信噪比控制的第一步。目录与命名见 [src/README](../src/README.md)。
+
+## 证据准入：只从 admitted 源取判断
+
+`topics/` 的判断只能建立在 `src/` 里 `admission: admitted`（含 `admitted (probation)`）的材料上。这是 [CHARTER §4](../CHARTER.md#4-素材准入material-gate) 在判断层的落地。
+
+| 源的状态 | 在 topics 里怎么用 |
+|---|---|
+| `admitted` / `admitted (probation)` | 可撑 `L-xx` / `E-xx`；引 `digest.md`，不引 `card.md` 当内容 |
+| `signal` | 只作 `frontier.md` 的线索；**不写进 claims/README/子主题，不撑 E** |
+| `excluded` / `withdrawn` | 不引用；已有引用删掉或降级 |
+
+- 一条判断的唯一支撑被降级/移出 → 该判断同步降为 `推测` 或撤回；**不许“结论保留、出处换掉”**。
+- 多源支撑里有一源不合格 → 先看剩下的是否还够；不够就降级，并在 `claims.md` 记一条。
+- 交付物里的判断必须能追到 admitted 源；追不到的按 `推测` 处理或删。
+- 当前撤回清单：`E-02/03/04/06/10/11/13/16/26`；见 [来源清除审计](../meta/audits/2026-11-11-source-purge.md)。
 
 ## 怎么增长
 

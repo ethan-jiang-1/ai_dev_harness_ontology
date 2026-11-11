@@ -19,6 +19,12 @@ updates:
   - topics/05-produce/claims.md
   - topics/05-produce/sources.md
   - topics/conclusions.md
+published: 2026-10
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I2: Manchester + Jonkoping + NUS; I5: code"
+liveness: arXiv 2026-10
+provenance_type: academic
 ---
 
 # Ontology Refinement with Embeddings and LLMs - A Case Study on CASTON · 来源卡

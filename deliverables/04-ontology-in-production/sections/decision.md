@@ -76,6 +76,7 @@ parent: ../README.md
 | token / 查询 | **未测**；fixture 是本地 rdflib | 04 C.4，`未测` | 平台 |  |
 
 > 这些是量级，不是报价；每一项都要用第一个 sprint 的实录工时校准。没有单价就只出公式与敏感性（[02 cost](../../02-engineering-playbook/operations/cost.md#4-单价表当前全空)）。
+>
 
 ### 2.3 TCO 与「缺项」规则
 
@@ -237,7 +238,7 @@ TCO_12m =
 1. **问题与消费者**：谁、在什么时刻、要答什么/拒什么。
 2. **链路范围**：9 件产物里哪些做、哪些不做（读/写、列/表/数据集、内部/外部）。
 3. **5 组门槛现状**：过/未过/未测；`conditional` 的未过项写清。
-4. **成本与收益假设**：建设/运行/维护/人审/失败五维；至少 3 个数（建模/打标/执行层）；公式见 §2.5，工作纸见 [T9](./templates.md#t9-成本工作纸)；收益写防泄漏/审计/效率/复用，哪些能货币化。
+4. **成本与收益假设**：建设/运行/维护/人审/失败五维；至少 3 个数（建模/打标/执行层）；公式见 §2.5，工作纸见 [TPL-9](./templates.md#tpl-9-成本工作纸)；收益写防泄漏/审计/效率/复用，哪些能货币化。
 5. **缺口与风险**：object 泄漏、T9、写授权、规模、单价。
 6. **选项**：build pilot / buy / do nothing；各自的代价与反事实。
 7. **建议**：`go` / `conditional` / `no-go` / `not enough data`；一句话理由。
@@ -272,10 +273,10 @@ TCO_12m =
 
 > 成本与工期是工程建议（`推测`）；04 没有做实验，也没有单价。
 
-- **成本口径**：[02 cost](../../02-engineering-playbook/operations/cost.md)（五维、TCO、单价表空、缺项规则）；§2.5 公式；[T9](./templates.md#t9-成本工作纸) 工作纸。
+- **成本口径**：[02 cost](../../02-engineering-playbook/operations/cost.md)（五维、TCO、单价表空、缺项规则）；§2.5 公式；[TPL-9](./templates.md#tpl-9-成本工作纸) 工作纸。
 - **上线节奏**：[02 rollout](../../02-engineering-playbook/operations/rollout.md)（shadow → advisory → enforce；回滚；RACI）。
 - **go/no-go**：[02 evaluation](../../02-engineering-playbook/operations/evaluation.md)（go / no-go / not enough data）。
-- **量级估算**：[SFE-O digest](../../../src/papers/2610.37123-sfe-o/digest.md)（2–4 人周/3–5 人日，`推测`）；[representation mechanism](../../../topics/05-produce/representation/mechanism.md)（1–2 人周集成，`推测`）；policy 2–4 人日借 [02 cost](../../02-engineering-playbook/operations/cost.md) R9（commit gate 的 policy 部分，04 读路径按同类量级类比）。
+- **量级估算**：[SFE-O digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123)（2–4 人周/3–5 人日，`推测`）；[representation mechanism](../../../topics/05-produce/representation/mechanism.md)（1–2 人周集成，`推测`）；policy 2–4 人日借 [02 cost](../../02-engineering-playbook/operations/cost.md) R9（commit gate 的 policy 部分，04 读路径按同类量级类比）。
 - **条件项**：E-22（标签单企业）、E-23（读路径单实现/fail-open）、E-20（写授权无实现）。
 - **不证明**：ROI、真数据误报率、延迟、规模、第二实现、严格 replay。
 - **停**：没有单价/owner/第二实现，只出 `conditional` 清单，不出 `go`。

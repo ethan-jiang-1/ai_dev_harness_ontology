@@ -42,7 +42,7 @@ evidence: [E-01, E-08, E-14]
 | 受监管支线的接口/stop/拒答/客户指标 | [F8](./findings/regulatory.md#f8) · [F9](./findings/regulatory.md#f9) · [F10](./findings/regulatory.md#f10) · [F11](./findings/regulatory.md#f11) |
 | 还缺什么、下一步看什么 | [frontier](./frontier.md) |
 | CAI 原卡 | `src/papers/2610.41172-context-as-infrastructure/card.md` · [digest](../../../src/papers/2610.41172-context-as-infrastructure/digest.md) |
-| Grid 原卡 | `src/papers/2611.03534-power-system-agentic/card.md` · [digest](../../../src/papers/2611.03534-power-system-agentic/digest.md) |
+| Grid 原卡 | `src/papers/2611.03534-power-system-agentic/card.md` · [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2611-03534) |
 
 ## 边界
 

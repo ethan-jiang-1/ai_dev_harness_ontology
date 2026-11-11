@@ -14,18 +14,20 @@ parent: README.md
 
 1. 读 [README §0 一页结论](./README.md#0-一页结论)：先知道 A 可先落地、B 可试点、C 只能设计、D 反向。
 2. 读 [地图 §2](./sections/map.md)：看能力矩阵与 X1–X9 verdict；不要一开始就翻逐项。
-3. 记住一句话：**最确定的是 K1（名字/单位），其余都要先量 1–3 个数。**
+3. 记住一句话：**最确定的是点位语义（tag 名/单位/质量码；论文的 K1），其余都要先量 1–3 个数。**
+4. 被 K0/K1/K2 卡住：读 [K 页](./sections/k-ladder.md)；它讲清「谁定义的、是不是标准、K3/K4 为什么不在主路径」。
 
-## 连续读法（4 页，约 25 分钟）
+## 连续读法（5 页，约 30 分钟）
 
 按顺序读，不要跳：
 
 1. [README §0 一页结论](./README.md#0-一页结论)：A/B/C/D 四档。
 2. [地图 §2.1 判定口径](./sections/map.md#21-判定口径)：有序规则怎么走。
-3. [决策记录 · 记录 1](./sections/decision-record.md)：K1 为什么是 A，换域怎么停。
+3. [决策记录 · 记录 1](./sections/decision-record.md)：点位语义（K1）为什么是 A，换域怎么停。
 4. [边界 §4.3 反向](./sections/boundaries.md#43-反向在已测条件下不要做)：哪些事在已测条件下不要做。
+5. [验收 §5.2](./sections/acceptance.md#52-期待与数据需求验收规格)：每条期待要量什么、没过怎么办。
 
-这四页回答：**值不值得做、为什么是 A/B/C/D、什么情况下不要做。** 其余页是查阅，不是必读。
+这五页回答：**值不值得做、为什么是 A/B/C/D、什么情况下不要做、还差什么数。** 其余页是查阅，不是必读。
 
 ## 推荐顺序
 
@@ -36,9 +38,9 @@ parent: README.md
 | 2 | [capabilities/README.md](./capabilities/README.md) | 按 A→B→C→D 找到你关心的能力 |
 | 3 | [sections/boundaries.md](./sections/boundaries.md) | 说出哪些不能当工作前提、哪些是反向 |
 | 4 | [sections/acceptance.md](./sections/acceptance.md) | 知道立项前还要量什么 |
-| 5 | [sections/relations.md](./sections/relations.md) | 需要时跳 02/03 |
+| 5 | [关系与维护](../README.md#关系与维护) | 需要时跳 02/03 |
 | 6 | [sections/decision-record.md](./sections/decision-record.md) | 看一条能力怎么从证据走到 A/B |
-| 7 | [sections/glossary.md](./sections/glossary.md) + [canonical](./sections/canonical.md) | 查内码/阈值，不再翻三页 |
+| 7 | [sections/glossary.md](./sections/glossary.md) + [K 页](./sections/k-ladder.md) + [canonical](./sections/canonical.md) | 查内码/阈值/K 来源，不再翻三页 |
 | 8 | [sections/templates.md](./sections/templates.md) | 要自己填时，用空表 |
 
 ## 按目的
@@ -50,6 +52,7 @@ parent: README.md
 | 判断某能力能不能试点 | 地图的 B 行 | 对应 capability 文件 + 验收 |
 | 评审「这个承诺靠不靠谱」 | 边界 | 验收 + 03 的 evidence |
 | 只想知道「还差多远」 | 验收 | 地图的 X1–X9 verdict |
+| 被 K0/K1/K2 弄晕 | [K 页](./sections/k-ladder.md) | [glossary](./sections/glossary.md) |
 
 ## 三种读法
 
@@ -61,7 +64,7 @@ parent: README.md
 
 ## 如果只做一件事
 
-**先做 K1，再建账本。** K1 是已测最大增益、最便宜、最可回退；账本是所有 go/no-go 的前提。
+**先做点位语义（K1），再建账本。** 点位语义（tag 名/单位/质量码；论文 K1）是已测最大增益、最便宜、最可回退；账本是所有 go/no-go 的前提。
 
 ## 不要先读
 

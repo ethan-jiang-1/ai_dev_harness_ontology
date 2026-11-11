@@ -15,7 +15,7 @@
 
 - **案例**：POLAR 18 个模型-域格只有 8 个 reward 改善；作者声明 reward 是任务奖励，不是防伤害的直接度量——被 veto 的风险动作不体现在 reward 里。
 - **含义**：用 reward 判护栏，「改善」只说明任务完成，不说明伤害没发生。把有效护栏判成失败是**推断**：POLAR 没有同批防伤害测量，不能从 8/18 推出「护栏无效」或「有效」（`推测`）。
-- **来源**：[POLAR digest](../../../src/papers/2610.08082-polar/digest.md) §5、Table 3；E-04。
+- **来源**：[POLAR digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) §5、Table 3；E-04。
 
 ## F2 · catch/FA 非对称，precision 另口径
 
@@ -23,7 +23,7 @@
 - **precision 是另一口径**：curated 57.1 / data-derived 72.3 / masked LLM 93.7 / 空结果 100，来自**人工故障 + 假设错答案占 25%**，不能与上面的真实答案 catch/FA 拼成一组。把 18.9/16.8 套同一公式约 27.3%，是反推，论文未直接给。
 - **人工故障/control**：curated catch 60.1% / FA 15.0%；data-derived 75.6 / 9.7；空结果 79.2 / 0。16.8/3.5 与 15.0/9.7 都叫 FA，但分属真实答案与人工故障两表，**不能跨表拼**。
 - **含义**：只看 accuracy 会把「多抓错、多杀对」混在一起；FA 触发重试，specific feedback 修好 28.3% 的 flagged wrong、也修坏 1.0% 的 flagged correct（generic 为 20.2 / 0.2）。
-- **来源**：[Ontology Catch digest](../../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) Table 2/3, p.7；§4.1–4.3；E-02。
+- **来源**：[Ontology Catch digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809) Table 2/3, p.7；§4.1–4.3；E-02。
 
 ## F3 · 过程不可见
 

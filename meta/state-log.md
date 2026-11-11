@@ -35,7 +35,7 @@ updated: 2026-11-11
 - **02**：新增 [artifact-pack](../deliverables/02-engineering-playbook/appendices/artifact-pack.md)、[glossary](../deliverables/02-engineering-playbook/sections/glossary.md)、[canonical](../deliverables/02-engineering-playbook/sections/canonical.md)、5 组读者检查；对账 false-veto / R1 / 162（补 13 plant elements）。冷读 partial：卡点是 citation 正确性等真 gap；顺手修了 9.7k total vs 5,000 generated 的口径。
 - **01**：A/B/C/D 改为有序规则（含 undetermined）；新增 [decision-record](../deliverables/01-capability-status/sections/decision-record.md)（K1→A、读路径→B、离线 SHACL→A）、[glossary](../deliverables/01-capability-status/sections/glossary.md)、[canonical](../deliverables/01-capability-status/sections/canonical.md)；9 条期待补「没过怎么办」；C 桶统一 3；#12 标非本体。冷读第二轮 `yes`。
 - **03**：新增 [claim-walkthrough](../deliverables/03-mechanism-reference/sections/claim-walkthrough.md)、[reader-checks](../deliverables/03-mechanism-reference/sections/reader-checks.md)、[glossary](../deliverables/03-mechanism-reference/sections/glossary.md)；修 coverage「只有 G 没有 ●」→ C/E/F/G、覆盖率定义、E-22 台账、30%→31%、M1–M5 去重。冷读 partial：强读法需实测，属真 gap。
-- **第二轮收口（2026-11-11）**：01 模板 + 第四记录（落盘→C）+ 逐数等级；02 分诊优先级 + 第二个 worked example（R1）+ citation 协议；03 placement + claim 模板 + D2 清理 + alias 规范；EXP-003 alias 前置。外部来源：新增 [ALCE](../src/web/alce/alce.card.md)、[OWL 2 Profiles](../src/web/w3c-owl2-profiles/w3c-owl2-profiles.card.md)、[SHACL-AF](../src/web/w3c-shacl-af/w3c-shacl-af.card.md) 三张卡（摘要级/待核，不升 E）。复评见 [gap report §10.7](../deliverables/_plans/2026-11-10-gap-assessment-report.md#107-第二轮收口2026-11-11外部来源--文档层)。
+- **第二轮收口（2026-11-11）**：01 模板 + 第四记录（落盘→C）+ 逐数等级；02 分诊优先级 + 第二个 worked example（R1）+ citation 协议；03 placement + claim 模板 + D2 清理 + alias 规范；EXP-003 alias 前置。外部来源：新增 [ALCE](audits/2026-11-11-source-purge.md#src-web-alce)、[OWL 2 Profiles](../src/web/w3c-owl2-profiles/w3c-owl2-profiles.card.md)、[SHACL-AF](../src/web/w3c-shacl-af/w3c-shacl-af.card.md) 三张卡（摘要级/待核，不升 E）。复评见 [gap report §10.7](../deliverables/_plans/2026-11-10-gap-assessment-report.md#107-第二轮收口2026-11-11外部来源--文档层)。
 - **证据层（2026-11-11）**：EXP-004 引文审计（20 对，κ=1.0；E 行 strict S=5/20；E+锚 11–13/20）；EXP-005 alias 前置在真实 sparql-guard 上 leak 1→0、false-block 0；EXP-006 holosdb 20/20 单测复跑通过；M1 因无干净被试标 `未测`（见 [03 gaps](../deliverables/03-mechanism-reference/evidence/gaps.md)）。
 - **未做**：不改 04；不新增 E/L；M1/M2 仍 gap；citation 仍无标签；不做外部读者。
 - **自检**：529 文件；`check_repo` 通过（2026-11-11）。
@@ -236,3 +236,34 @@ updated: 2026-11-11
 - 页面/E：`03/querying`、`01/access-control`；E-21/E-22；04 B.3/C.1 引 E，build 保持 signal。
 - 工程线：OPA、Qlever 入档；Web：HN Netflix 材料卡（不升 E）。
 - 自检：`check_repo` 通过（462 文件；E=22，L=73；28 论文/6 开源）。
+
+## 2026-11-11 K0–K4 来源核查
+
+- 新增 [K0–K4 来源说明](../deliverables/01-capability-status/sections/k-ladder.md) 与 [核查笔记](../deliverables/_plans/2026-11-11-k-ladder-provenance.md)。
+- 结论：K0–K4 是 N&D 论文（arXiv:2610.11768）的五个累积实验条件，**不是行业标准，也不是成熟度模型**；OpenAlex 2026-11-11 快照为 preprint、0 引用；另一篇 2026 preprint 用 K0–K6 表示知识操作，记号已撞车。
+- 定义修正：K0 = PLC 地址 + 原始整数（不再叫「地址级标签」）；K1 = tag 名/单位/质量码，别名/槽位是工程扩展；K2 = 塔投影文本（不含推导量），固定分节是工程建议。
+- 01/02/03/04 的定义锚点与首用处改用「原始点位 / 点位语义 / 知识投影文本」；K 只作回查标签。
+
+## 2026-11-11 证据重置收口（交付物第一轮）
+
+- 指挥板：[meta/2026-11-11-command-board.md](../deliverables/_plans/2026-11-11-command-board.md)；01 回执见 [handoff](../deliverables/_plans/2026-11-11-adr-0011-handoff-to-01.md)。
+- 01：E-02/E-03/E-04/E-13/E-16 撤回后，#4/#5/#6/#11 转 gap；计数 **A=3 / B=4 / C=2 / 非本体=1 / gap=4**；首屏/地图/canonical/决策记录/验收/边界/能力页已同步。
+- 02：R4/R5/R6/R12 转 gap；计数 **A=3 / B=4 / C=1 / gap=4**（不含 R0）；受影响 recipe/索引/验收/追溯已标撤回。
+- 03/04：受影响位置卡、证据台账、边界、附录已加“withdrawn/历史”标注；未逐句重写的旧数字不得作为结论。
+- 自检：`check_repo` 通过（434 md；10 论文 / 8 开源 / 11 材料卡）。
+
+## 2026-11-11 术语基线 v0 + 03 附录
+
+- 新建 [term-baseline.md](./term-baseline.md)：10 词 v0；K 行 `local`；8 张标准卡补 `standing: normative`。
+- 03 附录 evidence/checker/action 三节与证据表已改为“原锚撤回/历史”；02 R4/R5/R6 证据段删旧数字。
+- `check_repo` 通过（435 md）。
+
+## 2026-11-11 长尾清理（02/03）
+
+- 02 R4/R5 的预算、成本、步骤与 domains 的 OA-RAG 数字改历史；03 checker/action 开头、附录 3.5/3.6 证据行改撤回。
+- `check_repo` 通过（435 md）。
+
+## 2026-11-11 桌面复评（证据重置后）
+
+- 01=84 / 02=81 / 03=82 / 04=86（12 维，非冷读）；02/03 下降来自 gap 行扩大，不是文笔。
+- 02 canonical/regulated 的最后旧数字已标历史；`check_repo` 通过（436 md）。

@@ -1,7 +1,7 @@
 # 机制尺子 · 发现（F）
 
 > `F` 编号是子主题局部编号；跨页引用写 `mechanism/Fx`。
-> 分数均为 Disentangle（Cause 与 Iso 的平均），不是准确率。机制与数字见 [MIOE digest](../../../src/papers/2610.38326-mioe/digest.md) §4（对应一手 Table 2/3）；Table/Fig. 页码指原文。
+> 分数均为 Disentangle（Cause 与 Iso 的平均），不是准确率。机制与数字见 [MIOE digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-38326) §4（对应一手 Table 2/3）；Table/Fig. 页码指原文。
 
 ## 索引
 
@@ -39,7 +39,7 @@
 
 - **多任务**（MDBM/MDAS）：**best-vs-best 配对差** Iso +0.081 / Cause −0.052（不是多任务整体平均）；Disentangle 仍升。
 - **多层**：instance-of 上 DAS 512×4 0.667（+0.102，全表最高）、MDAS 256×4 0.666（+0.074）、MDAS 512×4 0.663（+0.070）；subclass-of 的 MDAS 512×4 0.565（+0.052）。
-- **Δ 基线**：相对同方法、同总维的单层结果。DAS 512×4 的基线是单层 DAS rank 2048 ≈0.565（由 0.667−0.102 反推），**不是** [digest §4.1](../../../src/papers/2610.38326-mioe/digest.md) 的 DAS 0.584；subclass MDAS 的基线是 0.513。0.667/0.666/0.663 的差距可能在小样本噪声内。
+- **Δ 基线**：相对同方法、同总维的单层结果。DAS 512×4 的基线是单层 DAS rank 2048 ≈0.565（由 0.667−0.102 反推），**不是** [digest §4.1](../../../meta/audits/2026-11-11-source-purge.md#src-2610-38326) 的 DAS 0.584；subclass MDAS 的基线是 0.513。0.667/0.666/0.663 的差距可能在小样本噪声内。
 - **小 rank 前提**：单层审计用 rank 1024/2048；256–512 的单层小 rank 下 Cause 会掉，0.40/0.55 阈值作废，只认随机子空间对照（digest §6.2 的工程线；论文未做该阈值对照，`推测`）。
 - **含义**：权衡不是免费（多任务用 Cause 换 Iso）；多层把计算分布在短层段。
 - **来源**：§4.2, p.5；Table 3 及 caption, p.7；digest §4.2。

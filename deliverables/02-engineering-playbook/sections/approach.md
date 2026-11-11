@@ -13,22 +13,24 @@ parent: ../README.md
 ### 3.1 十二条工程做法（R0–R12）
 
 > 本节只做索引；完整配方（十字段：目标与适用 / 前提 / 接缝与形态 / 数据契约 / 步骤 / 证据 / 成本 / 验收与 stop / 失效模式 / 可抄锚点）在 [`recipes/`](../recipes/README.md)。每条 recipe 都与 E-xx 和 mechanism.md 对齐；见 [appendices/traceability](../appendices/traceability.md)。
+>
+> **2026-11-11 证据重置**：R4/R5/R6/R12 转 gap；当前 A=3 / B=4 / C=1 / gap=4（不含 R0 配方）。
 
 | R | 一句话 | 接缝/形态 | 主证据 | 成熟度 | 完整配方 |
 |---|---|---|---|---|---|
-| **R0** | 先证明本体能被执行（名字/单位、声明、覆盖、落点） | 准入 | E-02/E-03/E-12/E-20 | 配方 | [readiness](../recipes/readiness.md) |
-| **R1** | 先把名字、单位、别名对齐；K1 够就停 | 供给 / context | E-12 | A | [knowledge](../recipes/knowledge.md#r1--k1-语义层先把名字和单位对齐) |
-| **R2** | 固定分节文本投影；先 K1 再投影 | 供给 / context | E-12 | B | [knowledge](../recipes/knowledge.md#r2--知识投影把领域知识写成固定分节的文本) |
+| **R0** | 先证明本体能被执行（名字/单位、声明、覆盖、落点） | 准入 | E-12/E-20；E-02/E-03 已撤回 | 配方 | [readiness](../recipes/readiness.md) |
+| **R1** | 先把 tag 名/单位/质量码对齐（可加别名/槽位）；K1 够就停 | 供给 / context | E-12 | A | [knowledge](../recipes/knowledge.md#r1--点位语义k1先把-tag-名和单位对齐) |
+| **R2** | 知识投影文本（固定分节是工程建议）；先 K1 再投影 | 供给 / context | E-12 | B | [knowledge](../recipes/knowledge.md#r2--知识投影文本把领域知识写成文本固定分节是工程建议) |
 | **R3** | 只买 claim+span；先算 `p_min` | 供给 / compiled | E-08/E-14 | B | [knowledge](../recipes/knowledge.md#r3--证据编译只买-claim--逐字-span) |
-| **R4** | 输出带观察与 grounding；等级要校准 | 输出时 / compiled | E-03 | B | [judgment](../recipes/judgment.md#r4--输出证据契约让答案带依据和接地等级) |
-| **R5** | 先超过空结果重试；catch/FA 分开 | 输出后 / compiled | E-02 | B | [judgment](../recipes/judgment.md#r5--输出后-checker先超过空结果重试) |
-| **R6** | 只在不可逆/高代价/弱模型时试；先 shadow | 动作前 / compiled | E-04/E-15 | B | [constraint](../recipes/constraint.md#r6--动作前可逆性闸只在不可逆高代价弱模型时试) |
+| **R4** | 输出带观察与 grounding；等级要校准 | 输出时 / compiled | E-03 withdrawn | **gap** | [judgment](../recipes/judgment.md#r4--输出证据契约让答案带依据和接地等级) |
+| **R5** | 先超过空结果重试；catch/FA 分开 | 输出后 / compiled | E-02 withdrawn | **gap** | [judgment](../recipes/judgment.md#r5--输出后-checker先超过空结果重试) |
+| **R6** | 只在不可逆/高代价/弱模型时试；先 shadow | 动作前 / compiled | E-04/E-13 withdrawn；E-15 参照 | **gap** | [constraint](../recipes/constraint.md#r6--动作前可逆性闸只在不可逆高代价弱模型时试) |
 | **R7** | 先 registry，再状态；CMR 与 precision 同看 | 跨轮 / compiled | E-05/E-17 | B | [state](../recipes/state.md) |
 | **R8** | 只做可见性，不当授权；已入库单实现/ fail-open 未修 | read-path / engine | E-20 | B（条件性） | [constraint](../recipes/constraint.md#r8--读路径过滤只做可见性不要当授权) |
 | **R9** | 只能设计，不能声称落地 | 落盘前 / 无实现 | E-20 | C | [constraint](../recipes/constraint.md#r9--落盘前授权现在只能设计不要声称已落地) |
 | **R10** | 离线/CI SHACL；三态不可折叠 | 离线/CI / compiled | E-20 | A | [offline-and-obda](../recipes/offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态) |
 | **R11** | 查询时编译；不是闸/判定器 | supply / engine | E-20 | A | [offline-and-obda](../recipes/offline-and-obda.md#r11--obda-查询重写本体在查询编译时被执行) |
-| **R12** | 证据 + solver + 人签核；不是准确率项目 | 供给+输出+人 | Grid | B（benchmark） | [regulated](../recipes/regulated.md) |
+| **R12** | 证据 + solver + 人签核；不是准确率项目 | 供给+输出+人 | Grid 已移出 | **gap** | [regulated](../recipes/regulated.md) |
 
 #### 3.1.1 为什么 R0 在 R1 前
 
@@ -67,7 +69,7 @@ parent: ../README.md
 |---|---|---|---|
 | 代码级 | 真实接口、调用链、失败行为 | 4 个开源项目（E-20） | 抄接口与边界；不抄效果 |
 | 公式级 | 可算的盈亏平衡/代价 | 编译 `p_min = 2% + c/(0.929Q)`（E-14）；CASEL `J(m)`（E-15，`γ_m` 是假设） | 代自己的数；不抄论文的 `c`/`γ` |
-| 协议级 | 判定/标注/三态 | catch/FA 分开报（E-02）；grounding 四等级（E-03）；promotion 七条（Commit Boundary，概念） | 抄协议；不抄阈值 |
+| 协议级 | 判定/标注/三态 | 原 E-02/E-03 撤回；这些协议只作历史模板；promotion 七条来自已删 Commit Boundary，只作概念 | 不抄阈值；待新源再抄协议 |
 | 参数级 | 具体设置 | POLAR T1–T5/τ=0.80；OntoAct 三值；FIRME 匹配顺序/0.8 | 只当起点，按域重标 |
 | 流程级 | 步骤顺序 | CAI parse→chunk→enrich→validate→assemble→register；OA-RAG DESCRIBE/ASK/SELECT | 抄流程；不抄规模 |
 | 概念级 | 设计问题 | commit gate；determinism；多智能体共享本体 | 只能当设计清单，不能当实现 |

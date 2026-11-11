@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif">
   <rect width="960" height="470" fill="#fbfbf9"/>
   <text x="40" y="42" font-size="22" font-weight="600" fill="#111">01 能力地图：先看判定，再看机制</text>
-  <text x="40" y="68" font-size="13" fill="#666">A 可先落地 ｜ B 可试点 ｜ C 只能设计 ｜ D 反向；判定是交付层排序，不是新的 E</text>
+  <text x="40" y="68" font-size="13" fill="#666">A 可先落地 ｜ B 可试点 ｜ C 只能设计 ｜ D 反向；A=3 / B=4 / C=2 / gap=4；判定是交付层排序，不是新的 E</text>
 
   <g>
     <rect x="40" y="96" width="880" height="76" rx="10" fill="#eef5ff" stroke="#3b6ea5"/>
@@ -16,7 +16,7 @@
     <rect x="40" y="184" width="880" height="76" rx="10" fill="#eefaf2" stroke="#2f7d54"/>
     <rect x="40" y="184" width="8" height="76" rx="4" fill="#2f7d54"/>
     <text x="66" y="212" font-size="17" font-weight="700" fill="#194d33">B · 可试点</text>
-    <text x="66" y="238" font-size="13" fill="#194d33">投影 ｜ 编译 ｜ 证据契约 ｜ checker ｜ 动作闸 ｜ 记忆 ｜ 读路径</text>
+    <text x="66" y="238" font-size="13" fill="#194d33">知识投影文本 ｜ 编译 ｜ 记忆 ｜ 读路径</text>
     <text x="700" y="212" font-size="12" fill="#2f7d54">有效应量，但限定强</text>
     <text x="700" y="234" font-size="12" fill="#2f7d54">先量 1–3 个数再决定</text>
   </g>
@@ -25,7 +25,7 @@
     <rect x="40" y="272" width="880" height="76" rx="10" fill="#fff8e8" stroke="#a8791f"/>
     <rect x="40" y="272" width="8" height="76" rx="4" fill="#a8791f"/>
     <text x="66" y="300" font-size="17" font-weight="700" fill="#5e4410">C · 只能设计</text>
-    <text x="66" y="326" font-size="13" fill="#5e4410">落盘授权 ｜ 跨运行确定性 ｜ 多智能体共享本体</text>
+    <text x="66" y="326" font-size="13" fill="#5e4410">落盘授权 ｜ 跨运行确定性</text>
     <text x="690" y="300" font-size="12" fill="#a8791f">机制在，效果没被独立测</text>
     <text x="690" y="322" font-size="12" fill="#a8791f">可以设计，不能承诺</text>
   </g>
@@ -34,6 +34,7 @@
     <rect x="40" y="360" width="880" height="76" rx="10" fill="#fdeeee" stroke="#a33b3b"/>
     <rect x="40" y="360" width="8" height="76" rx="4" fill="#a33b3b"/>
     <text x="66" y="388" font-size="17" font-weight="700" fill="#5e2020">D · 反向：在已测条件下不要做</text>
-    <text x="66" y="414" font-size="13" fill="#5e2020">强 RAG 下为准确率买工件 ｜ curated 当权威 ｜ reward 证明护栏 ｜ 没有账本就上机制</text>
+    <text x="66" y="414" font-size="13" fill="#5e2020">强 RAG 下为准确率买工件 ｜ commit 概念架构当落地 ｜ 没有账本就上机制（curated/reward 两条待新源）</text>
   </g>
+<text x="40" y="458" font-size="12" fill="#a33b3b">gap / 待新源：证据契约 ｜ checker ｜ 动作闸 ｜ 推理期（原锚 E-02/03/04/16 已撤回）；多智能体 = undetermined</text>
 </svg>

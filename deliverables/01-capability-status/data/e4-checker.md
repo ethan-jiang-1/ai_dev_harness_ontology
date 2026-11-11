@@ -7,7 +7,9 @@ target: X4 checker
 
 # X4 数据表：checker 的 catch/FA 有 prior，但没有你的故障分布
 
-> **工作底稿，不是交付正文。** 数字用于更新 D1 的 X4 verdict；正式引用走 E-02 与 [02/checker](../../../topics/02-judgment/checker/README.md)。来源为 Ontology Catch digest 与论文 Table 2/3/4/6；不新增结论。
+> **2026-11-11 证据重置：E-02 已撤回。** 本表只作历史底稿；旧数字不得作为结论或门槛。
+>
+> **工作底稿，不是交付正文。** 数字曾用于 X4 verdict；正式引用曾走 E-02。来源 Ontology Catch（已移出）；不新增结论。
 
 ## 1. 已发表什么
 
@@ -79,3 +81,5 @@ X4 的验收线是「增量 catch ≥5pp、FA ≤15%」，反事实是空结果�
 - 真实 agent trace 的错误分布：若语义错为主，结构 checker 不适用。
 - FA 预算：若业务能接受 >15%，curated 的高 catch 可能值得；若不能，data-derived 更稳。
 - LLM judge 的净修复/成本：若修坏降下来，可能改变来源选择。
+
+> 回 [01 目录](../README.md) ｜ 回 [01 §数据表](../README.md#数据表工作底稿)

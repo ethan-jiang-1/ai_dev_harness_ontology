@@ -20,6 +20,11 @@ home: topics/05-produce
 subtopic: lifecycle
 also_supports: []
 updates: []
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I2+I5: 12 contributors, W3C SHACL suite, 16 releases"
+liveness: last_push 2026-11-04
+provenance_type: community
 ---
 
 # fabio-rovai/open-ontologies · 来源卡
@@ -58,8 +63,8 @@ Rust 实现的本体工程工具链：SHACL 校验、变更影响/闭包差分�
 
 | 论文 digest | 机制 | 这里对应 / 缺失 |
 |---|---|---|
-| [Commit Boundary](../../papers/2610.37407-commit-boundary/digest.md) | 落盘前的授权/证据判据 | 变更前的 SHACL 校验与差分；是否阻断 commit 未核 |
-| [OntoDoc](../../papers/2611.01276-ontodoc/digest.md) | 本体文档化/生成 | 未定位（待核） |
+| [Commit Boundary](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37407) | 落盘前的授权/证据判据 | 变更前的 SHACL 校验与差分；是否阻断 commit 未核 |
+| [OntoDoc](../../../meta/audits/2026-11-11-source-purge.md#src-2611-01276) | 本体文档化/生成 | 未定位（待核） |
 
 ## 局限
 

@@ -19,6 +19,12 @@ updates:
   - topics/06-measure/claims.md
   - topics/06-measure/sources.md
   - topics/conclusions.md
+published: 2026-11
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I2: Drexel + AI2; I5: code"
+liveness: arXiv 2026-11
+provenance_type: academic
 ---
 
 # Solver-Like Behavior in Large Language Models as Formalizers · 来源卡

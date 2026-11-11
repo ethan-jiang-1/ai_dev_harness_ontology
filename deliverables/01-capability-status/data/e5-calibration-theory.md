@@ -50,4 +50,4 @@ target: X5 false-veto / false-block
 - 有部署把 miss 预算与 false-block 曲线一起报 → 可给 X5 一个可操作的验收线。
 - 有本体-specific 的校准实验 → 才能谈「本体闸的 false-veto 前沿」。
 
-> 回到 [数据表索引](./README.md)。
+> 回到 [数据表索引](../README.md#数据表工作底稿)。

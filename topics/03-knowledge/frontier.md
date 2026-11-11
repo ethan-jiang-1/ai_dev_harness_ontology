@@ -68,3 +68,7 @@ rq: [RQ1, RQ5]
 1. 从 Narrow & Deep 抽出 9 个任务的设计，判断哪些是“答案在文本里”。
 2. 用检索式 1/4 找投影粒度的对照实验。
 3. 若要验证，写一个仓库外最小对照：同一知识，投影 vs 查询 vs 检索。
+
+## 候选（signal，未准入）
+
+- **共享本体语义层（Emil Eifrem, Neo4j, AI Engineer 2026-07-22）**：业务本体 + 技术本体 + 映射 + 执行轨迹，把发现/可信/接线/学习从各 agent 收进一个有治理的层。按 material gate 判 `signal`（会议主 track 不算信号、公司自述、无独立采用），**不撑 L/交付物**；只作线索。URL: https://ai.engineer/talks/VGN22pPpb-8-thinner-agents-on-smarter-substrate-ontology-based

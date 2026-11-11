@@ -67,3 +67,7 @@ rq: [RQ4]
 1. 做一张“机制类型 → 失效形态 → 主指标 → 过程指标”的表。
 2. 用检索式 1/2 找评测方法论与部署指标。
 3. 把 22 篇里所有“用错尺子”的例子抽出来，补 C-03。
+
+## 候选（signal，未准入）
+
+- **多 agent 交接失败（ZS Associates, AI Engineer 2026-07-23）**：四 agent + orchestrator 找到正确原因却建议错动作；重建为确定性检测 + 单 agent 判断 + KG 控制面。按 material gate 判 `signal`（会议主 track 不算信号、公司案例、无独立复现），**不撑 L/交付物**；只作线索。URL: https://ai.engineer/talks/u6jJcIFDLE4-why-we-killed-our-multi-agent-pipeline

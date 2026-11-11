@@ -6,18 +6,16 @@ updated: 2026-11-10
 
 这里放 `source_type` 为 `blog` / `engineering` / `standard` / `talk` / `survey` / `paper` 的原样材料；arXiv 论文 PDF 在 [papers](../papers/)。
 
-## 2026 影响力门槛（2026-11-09 起）
+## 素材准入（2026-11-11 起，CHARTER §4）
 
-- 只收 **2026 年**（优先 2026-07 以后）的讨论；作者/机构/平台要有可核的影响力证据：HN points/comments、Reddit upvotes、业内引用、标准/厂商采用、作者 reputation。
-- 论坛帖也收，但卡里写清：谁说的、在哪、多少讨论/阅读、哪些是作者经验、哪些是转述。
-- **博客/论坛不是 E**：`已核` 只到“作者报告了 X”；一般性结论默认 `推测`；只有改变判断时才进 topics。
-- 卡加 `influence` 字段，写证据（“HN 612 points / 340 comments”“Thoughtworks Radar Vol.34”），不写“很有影响力”。
+- **G1**：发布 ≥ **2026-06-01**；旧材料立即移出，不留“历史语料”。
+- **G3**：卡上 `impact_evidence` 至少列 2 个独立信号（I1–I5），至少 1 个 I1–I3；浏览/points/会议主 track 不单独算。
+- **G4**：组织/社区/标准优先；公司博客、CEO 演讲、产品页只作 `signal`，不进 `src/`；有独立采用/社区印证的按 §4.4 窄例。
+- **G5**：URL + 日期 + 作者/机构 + 快照；缺一不建卡。
+- 卡必填 `admission` / `gate_checked` / `impact_evidence` / `liveness` / `provenance_type`；没有 `impact_evidence` 的按 `signal` 处理。
+- **标准/规范**：走 §4.4.1 在役例外——仍是现行版本 + 2026-06 后维护/≥2 活跃实现；休眠/被取代的按 `excluded`。全文有版权时只存自包含卡 + `source:` URL，条款号未核标 `待核`。
 
-## 标准 / 规范（2026-11-10 起）
-
-- 标准/规范用 `source_type: standard` 入档；**不套 2026 影响力线**（标准看是否仍在用/被采用，不看发布年份）。
-- 全文可公开抓取时，卡里写条款号并标 `精读 / 原文正文`；全文有版权/抓不到时，只存**自包含材料卡 + `source:` URL**，`reading: 摘要级`、`provenance: 原文摘要`，条款号一律 `待核`。
-- 卡必须写清：它定义什么、不定义什么、能填哪一格、不能推出什么；不要把标准摘要写成「已验证」。
+> 旧“2026 影响力门槛”“标准不套影响力线”两节由本节替代。判定示例见 [来源清除审计](../../meta/audits/2026-11-11-source-purge.md) 与 [材料审计](../../meta/audits/2026-11-11-material-gate.md)。
 
 ## 规则
 

@@ -147,9 +147,9 @@
 ## 关联
 
 - [CASTON digest](../../../src/papers/2610.21466-caston-refinement/digest.md)（精化·定位与验证）
-- [Evontree digest](../../../src/papers/2510.26683-evontree/digest.md)（获取 / 训练侧自演化）
+- [Evontree digest](../../../meta/audits/2026-11-11-source-purge.md#src-2510-26683)（获取 / 训练侧自演化）
 - [FIRME digest](../../../src/papers/2610.40482-firme/digest.md)（对齐·身份 registry 与衰减）
-- [OntoAct digest](../../../src/papers/2610.21983-ontoact/digest.md)（**只**为工程发现 4 的写入准入/覆盖率 stop/schema 成本；推理期机制归 [01/reasoning-gate](../../01-constraint/reasoning-gate/README.md)）
+- [OntoAct digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-21983)（**只**为工程发现 4 的写入准入/覆盖率 stop/schema 成本；推理期机制归 [01/reasoning-gate](../../01-constraint/reasoning-gate/README.md)）
 - 本页 dashboard：[lifecycle README](./README.md)；兄弟主题：[generation](../generation/README.md) · [refinement](../refinement/README.md)
 - 下游消费者：[checker](../../02-judgment/checker/README.md) · [identity](../../04-state/identity/README.md) · [memory](../../04-state/memory/README.md)
 - 本派结论：[claims](../claims.md)（05-L1 / 05-L2 / 05-L5 / 05-L9）

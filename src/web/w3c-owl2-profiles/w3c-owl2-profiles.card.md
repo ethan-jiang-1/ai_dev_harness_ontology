@@ -1,6 +1,7 @@
 ---
 status: draft
 source_type: standard
+standing: normative
 reading: 摘要级
 provenance: 原文摘要
 updated: 2026-11-11
@@ -10,6 +11,11 @@ author: W3C OWL Working Group
 published: 2012-12-11
 influence: W3C Recommendation；OWL 2 RL 的 eq-rep-s/p/o 是「sameAs 必须替换」的可实现规则表；GraphDB / Virtuoso / RDF4J 的实现差异见下（文档级，待核）
 updates: []
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I1: W3C Recommendation; active implementations"
+liveness: standard-in-force
+provenance_type: standard-body
 ---
 
 # W3C OWL 2 Profiles：sameAs 的替换规则

@@ -4,17 +4,20 @@ source_type: preprint    # paper | preprint
 reading: 未读            # 未读 | 综述级 | 摘要级 | 精读 | 已消化
 provenance: 未核         # 原文正文 | 原文摘要 | 综述转述 | 未核
 updated: YYYY-MM-DD
-batch:                   # 补给 = 2026-07-01 后新入档；历史卡可空
-published: YYYY-MM-DD    # 首次提交/发表；补给批必须 ≥ 2026-07-01
-region:                  # 机构/国家，如 US / China / Germany / ...
+admission: signal        # admitted | admitted (probation) | signal | excluded（CHARTER §4）
+gate_checked: YYYY-MM-DD # 最后一次过门
+published: YYYY-MM-DD    # G1：首次提交/发表 ≥ 2026-06-01
+liveness:                # G2：最近一次版本/实现/讨论/采用
+impact_evidence: ""      # G3：I1..I5 逐条；admitted 至少两条、至少一条 I1–I3
+provenance_type: academic # standard-body | academic | foundation | community | company | individual
+region:                  # 机构/国家（新入档限 US/China/Germany/Singapore）
 venue:                   # 会议/期刊/arXiv preprint/生产系统
-reliability: medium      # high | medium | low（补给批必填）
-impact: medium           # high | medium | low（补给批必填）
+reliability: medium      # high | medium | low
+impact: medium           # high | medium | low
 arxiv:
 title:
 authors:
 pdf: <stem>.pdf          # 同目录 PDF
-direction:               # 源综述分类 1-4；前沿扫描用 5
 home:                    # 归位：topics/<派>
 subtopic:                # 子主题目录（主归位，可空）
 also_supports: []        # 其余被喂到的子主题（可空）

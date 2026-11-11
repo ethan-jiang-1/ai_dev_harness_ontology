@@ -148,5 +148,5 @@ Grid Ontology = 27 docs / 6,347 pages 的法规/标准 + 语义/程序/情景记
 ## 关联
 
 - [CAI 卡](../../../src/papers/2610.41172-context-as-infrastructure/card.md) · [digest](../../../src/papers/2610.41172-context-as-infrastructure/digest.md)
-- [Grid 卡](../../../src/papers/2611.03534-power-system-agentic/card.md) · [digest](../../../src/papers/2611.03534-power-system-agentic/digest.md)
+- [Grid 卡](../../../meta/audits/2026-11-11-source-purge.md#src-2611-03534) · [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2611-03534)
 - [findings](./findings.md) · [frontier](./frontier.md)

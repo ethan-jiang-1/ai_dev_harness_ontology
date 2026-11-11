@@ -78,20 +78,37 @@ src/
 
 **反向阅读锚点（digest 契约）**：§4「结果：数字与条件」、§5「这些数字不能说明什么」、§6「工程上怎么用」、§8「与仓库判断的关系」——这四节编号固定，不重排；新增内容放 §9/§10。反向读不到 §4/§5 时，才回 `paper.md` 的指定表/节。
 
-## 0.2 来源新鲜度（2026-11-09 起，硬规则）
+## 0.2 素材准入（宪章 §4 的落地，2026-11-11 起）
 
-- **论文**：新入档论文的**首次提交/发表**必须 **≥ 2026-07-01**。2025 年及更早的材料不再新入档；已有 24 篇是历史语料，不回填，也不据此新开判断。
-- **开源项目**：新入档项目的 `last_push` 必须 **≥ 2026-07-01**（2026 年 6 月之后仍活跃）。只有 star/README、没有近期提交的不算。
-- **登记**：新论文卡带 `batch: 补给` + `published: YYYY-MM-DD`；新开源卡带 `last_push`；`check_repo` 机械校验（论文只查 `补给` 批，避免误伤历史卡）。
-- **理由**：在快速变化的 ontology/agent 工程里，2025 的材料经常把过时假设带进来；宁可少一条，不拿旧结论撑新判断。
+五道门全部通过才进 `src/`；判定写在卡上。细则见 [CHARTER §4](../CHARTER.md#4-素材准入material-gate)，本页只写 src 的操作口径。
 
-## 0.3 来源可靠性 / 影响力（2026-11-09 起，硬规则）
+| 门 | 论文 | 网页/材料 | 开源项目 |
+|---|---|---|---|
+| G1 时效 | 首次提交/发表 ≥ **2026-06-01** | 发布 ≥ **2026-06-01** | `last_push` ≥ **2026-06-01** |
+| G2 活跃 | 2026-06 后有版本/实现/讨论/采用 | 90 天内有新讨论/引用 | 180 天内有提交；≥2 名独立贡献者；有 release/tag |
+| G3 影响 | `impact_evidence` 列 ≥2 个独立信号，至少 1 个 I1–I3 | 同左；`influence` 写点数/评论/引用/采用，不写形容词 | 采用/依赖/生产案例；star 只作辅助 |
+| G4 来源 | 组织/社区优先；公司过 §4.4 | 同左；厂商文只作 signal | 基金会/社区/标准组织优先；公司项目要有独立采用 |
+| G5 可核验 | arXiv/DOI + 日期 + 机构 | URL + 日期 + 作者/机构 + 快照 | commit + license + `file:symbol` |
 
-- **scope**：新来源 origin 只收 **US / China / Germany / Singapore**；其他地区不新入档（已有历史语料不回填）。scope 内再按 `venue` / 生产 / benchmark 采用 / 强组 track record 看 reliability / impact。
-- **论文**：卡上写 `region`（机构/国家）、`venue`、`reliability`（high/medium/low）、`impact`（high/medium/low），并给一句依据。preprint 不能默认 high。
-- **降级**：preprint-only + 无采用 + 无强组 = signal，不单独撑 E；`reliability: low` 不入核心。
-- **开源**：`stars` / contributors / commits / 生产采用 + `last_push ≥ 2026-07-01`；低星/单作者/停更只作候选。
-- **理由**：来源本身不可靠，数字越漂亮越误导。
+- `admission: admitted` 才能建卡；`signal` 只进对应派 `frontier.md` 候选队列；`excluded` 不建目录，已入库的移出。
+- 卡必填：`admission` / `gate_checked` / `impact_evidence` / `liveness` / `provenance_type`；论文卡另有 `published` / `venue` / `reliability` / `impact` / `region`。
+- **区域 scope（沿用，独立于五门）**：新入档论文/项目的 origin 只收 **US / China / Germany / Singapore**；这是选题范围，不是影响门槛。
+- **旧口径作废**：2026-07-01 起点、“`batch: 补给` 才查新鲜度”、“历史语料不回填”——全部由本节替代。回溯审计见 [来源清除审计](../meta/audits/2026-11-11-source-purge.md)。
+
+## 0.3 准入字段与复审
+
+| 字段 | 取值 | 写什么 |
+|---|---|---|
+| `admission` | `admitted` / `admitted (probation)` / `signal` / `excluded` | 五门结论；没有就是未判 |
+| `gate_checked` | `YYYY-MM-DD` | 最后一次过门日期 |
+| `impact_evidence` | `I1: ...; I3: ...` | 逐条列独立信号；写不出两条就不要写 `admitted` |
+| `liveness` | `last_push` / `release` / `discussion` / `standard-in-force` | 最近一次活动及日期 |
+| `provenance_type` | `standard-body` / `academic` / `foundation` / `community` / `company` / `individual` | 来源结构，决定 G4 |
+| `reliability` / `impact` | `high` / `medium` / `low` | 粗分，不替代 `impact_evidence` |
+
+- **复审**：每 6 个月；`admitted` 的影响 6 个月未升级 → 降 `signal`；`signal` 补到两条独立信号才升。
+- **probation**：只给 2026-06 后新材料，6 个月内补第二信号；不得续期，不得作跨组织 E 的唯一锚点。
+- 标准/公司例外按 [CHARTER §4.4](../CHARTER.md#44-三个窄例外) 记，不另开口子。
 
 ## 1. 论文的规则（`papers/`）
 
@@ -230,7 +247,8 @@ open-source/{org}-{repo}/
 
 | 材料 | 卡 / 消化 | 阅读 / 来源 | 已喂到 |
 |---|---|---|---|
-| 老刘说NLP · 本体4方向20工作（2026-11-04） | [otology.card.md](./web/weixin-laoliu/otology.card.md) | 已消化 / 综述转述 | `topics/conclusions.md`、`topics/README.md`、`topics/05-produce/lifecycle/README.md`、`topics/domains.md` |
+| 10 篇过门论文（6 admitted + 4 probation） | 各目录 `card.md` / `digest.md` | 精读/L2/L1 见各卡；4 篇 probation 到 2027-05-11 | E-01/05/07/08/09/12/14/15/17/18/21/22；03/04/05/06 派页 |
+| 18 篇移出论文 | [tombstone](../meta/audits/2026-11-11-source-purge.md) | — | E-02/03/04/06/10/11/13/16/26 已撤回；主题页待重写 |
 | HN · Netflix ontology-driven observability（2026-10-19） | [card](./web/hn-netflix-ontology-observability/hn-netflix-ontology-observability.card.md) | 已消化 / thread 原文 | 04 C.5/B.2 signal；不升 E |
 | GB/T 43697-2024 数据分类分级规则 | [card](./web/gbt-43697/gbt-43697.card.md) | 摘要级 / 原文摘要 | 01/policy、04 C.2；三级 vs 1–4 是工程映射 |
 | GB/T 35273-2020 个人信息安全规范 | [card](./web/gbt-35273/gbt-35273.card.md) | 摘要级 / 原文摘要 | 01/policy；PII 类别，不是 level 表 |
@@ -238,21 +256,21 @@ open-source/{org}-{repo}/
 | OASIS XACML 3.0 | [card](./web/oasis-xacml-3.0/oasis-xacml-3.0.card.md) | 精读 / 原文正文 | 01/policy F2；合并算法/obligation |
 | W3C SHACL | [card](./web/w3c-shacl/w3c-shacl.card.md) | 摘要级 / 原文摘要 | 05/consumability、02/output-validation、04 A.4/A.5 |
 | ODCS v3.1.0 | [card](./web/odcs-v3.1/odcs-v3.1.card.md) | 精读 / 原文正文 | 05/consumability §3、04 A.1/A.5 |
-| ALCE（EMNLP 2023） | [card](./web/alce/alce.card.md) | 摘要级 / 原文摘要 | 02 R4 citation 协议；**外部参照，未入 papers/** |
 | W3C OWL 2 Profiles | [card](./web/w3c-owl2-profiles/w3c-owl2-profiles.card.md) | 摘要级 / 原文摘要 | read-path §9 alias 规则；02 R8、03 claim 走查 |
 | W3C SHACL-AF | [card](./web/w3c-shacl-af/w3c-shacl-af.card.md) | 摘要级 / 原文正文 | read-path fail-open 的标准边界；02 R8、03 claim 走查 |
-| Kirrane 2020（Query Based AC） | [card](./web/kirrane-2020-qbac/kirrane-2020-qbac.card.md) | 摘要级 / 原文摘要 | read-path 重写 vs 结果过滤；02 R8、03 claim 走查；**外部参照，未入 papers/** |
-| 24 篇历史论文（20 基础 + 4 扫描） | 各目录 `card.md` / `digest.md` | L3 12 篇 / L2 8 篇 / L1 4 篇 | 六派 README、claims、conclusions（E-01…E-27） |
-| 4 篇补给（GGC / Glyph / NLKGQ / KGVoyager） | 各目录 `card.md` / `digest.md` | 精读；L2/L1 见各 card | `topics/03-knowledge/querying`、`topics/01-constraint/access-control`、conclusions（P1/P2 新 E） |
-| 开源项目 | 状态与进度见 [open-source/README](./open-source/README.md)；未建卡的不算入库 | 8 个本轮已消化（4 本体 + OPA/Qlever 工程线 + Great Expectations 输出校验 + OpenLineage lineage）；3 个 <1,000★ 仍不建卡 | `topics/01-constraint`（commit-gate F5–F7、access-control）、`topics/02-judgment`（checker F7–F8、output-validation）、`topics/05-produce`（generation F7、lifecycle 判断 4）、`topics/03-knowledge`（querying） |
+| ISO/IEC 21838（顶层本体） | [card](./web/iso-iec-21838/iso-iec-21838.card.md) | 摘要级 / 原文摘要 | 05/representation；TLO 与领域本体边界 |
+| OMG Commons 1.3 | [card](./web/omg-commons/omg-commons.card.md) | 摘要级 / 原文摘要 | 05/representation；可复用模块与最小承诺 |
+| 开源项目 | 状态与进度见 [open-source/README](./open-source/README.md) | 8 个已消化（4 本体 + OPA/Qlever + Great Expectations + OpenLineage） | `topics/01-constraint`、`02-judgment`、`03-knowledge`、`05-produce` |
 
-> 论文按篇记；开源按项目记在 `open-source/README` 的状态表里，标准按卡记；本页只留总账——**一处明细，一处总账，不重复**。标准全文有版权时不存原文，只存自包含卡 + `source:` URL；`reading/provenance` 如实，条款号未核就标 `待核`。
+> 论文按篇记；开源按项目记在 `open-source/README`；标准按卡记。**一处明细，一处总账。**
+> 2026-11-11 起，论文层只保留 10 篇过门来源；被删的 18 篇不再出现在台账内容里，只在 [审计](../meta/audits/2026-11-11-source-purge.md) 留 tombstone。
 
 ## 7. 已知缺口
 
-- 28 篇都有 card + digest；**digest 已全部重写为自包含版本**（L3 250–360 行、L2 160–260、L1 100–240）；4 篇补给按 L1/L2 落（见各卡）；历史审计表见 [digest-audit](../meta/archive/2026-11/digest-audit.md)。
-- L1 4 篇只到一页判断（Peeling/Evontree/SFE-O/ReX-GG），没有深读正文。
+- **第一优先级：重写被删源的段落。** 18 篇论文 + 3 个旧网页已移出，主题页/交付物里仍有按它们写成的数字与判断；链接已指向 tombstone，但段落未改完。重写前不得引用。
+- 10 篇过门论文中 4 篇是 `probation`（GGC/Agents/N&D/CASEL）：只有 I2 + 真实评估，缺 I3/I4/I5；2027-05-11 前补不到第二信号就移出。
+- 9 条 E 已撤回（E-02/03/04/06/10/11/13/16/26），E-21 改写为 GGC 单路线，E-19 降为 `推测`；交付物引用这些编号的段落同步失效。
 - 部署层回报、false-veto/false-defer、维护成本仍缺量化。
-- 部分论文有 v2/v3 版本，当前取下载当日最新版；版本变化可能改变结论。
 - `quality` 是粗分，不是同行评审结论；引用时仍看证据等级。
-- 开源侧：本轮 4 个（≥1,000★）全部已消化（trustgraph、semantica、ontop、open-ontologies）；3 个 <1,000★ 已删除目录（元数据留在扫描快照）。**04 记忆 / 06 度量** 还没有「本体真执行」的开源样本，语义检索类项目不计入。这是缺口，不硬凑。
+- 开源侧：8 个已消化；`04 记忆 / 06 度量` 仍缺「本体真执行」的开源样本，语义检索类不计入。
+- 硬对象 94 里有 15 个锚在已删论文上（O-F08/F10/F15/N01/N07–N09/N13–N15/R02/R05/R12 等）；下轮要么换锚，要么标 withdrawn。

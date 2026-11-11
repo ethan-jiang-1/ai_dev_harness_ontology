@@ -1,11 +1,13 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 basis: Grid digest；compilation 机制三
 ---
 
 # R12 · 受监管知识供给：证据 + solver + 人签核
+
+> **2026-11-11 证据重置**：原锚 **Grid（2611.03534）已移出**；R12 转 **gap / 待新源**。以下机制描述与旧 benchmark 数字只作回查，不再作为“可执行配方”的依据。
 
 > 这不是「让模型更准」的 recipe，而是**受监管工作**的架构：答案必须引用证据，数字必须由成熟 solver 算，人做最终决策。三者写进架构，不写进 prompt。
 >
@@ -16,7 +18,7 @@ basis: Grid digest；compilation 机制三
 让 agent 准备「可审计的法规证据 + 可复算的研究结果」，由人签核；把责任留在人，把检索/计算/整理交给系统。
 
 
-> **为什么是 B**：Grid 是 benchmark 的 99.9%，不是运营商规模；人签核是流程，不是准确率；citation precision ≥0.95 是工程门。
+> **为什么是 gap**：原唯一锚 Grid 已移出 §4 准入；没有 admitted 来源，不能再判 B，也不设“citation precision ≥0.95”门槛。待新源后重走判定。
 ## 适用 / 不适用
 
 | 适用 | 不适用 |
@@ -81,7 +83,7 @@ decision_point:
 
 - Grid Ontology 法规证据 recall **0.967**（Claude Code 0.856）；正确拒答不可回答 **45/51**（Grid digest Table 3）。
 - 端到端 **99.9%** E score / 中位 **13.9s**；519 tasks/8 families；516/519 工作验证通过（Table 4）。
-- 对照：Codex CLI 99.4%/21.6s；Power-Agent 99.4%/16.8s；Claude Code 85.4%/22.0s；base GPT-6.1 sol 40.8%/58.2s；Fable 5.1 28.3%/162.5s。
+- **旧 Grid 对照（已移出）**：Codex CLI 99.4%/21.6s；Power-Agent 99.4%/16.8s；Claude Code 85.4%/22.0s；base GPT-6.1 sol 40.8%/58.2s；Fable 5.1 28.3%/162.5s。只作历史，不再作为 R12 的门槛。
 - **相对最强 agent baseline 只高 0.5pp**（99.9 vs 99.4）；大差距只在 vs base model。
 - PowerMCP 只在 **46/519** 任务被调用；503 个仍靠 agent 自己写代码；Power-Agent 也到 99.4%，但慢 2.9s → **工具在环境里 ≠ 工具在回路里**。
 - optimizer 让加固方案平均便宜 **33–67%**。
@@ -124,8 +126,10 @@ decision_point:
 
 ## 可抄锚点
 
-- [Grid digest](../../../src/papers/2611.03534-power-system-agentic/digest.md) 的 §4 数字、§6.1 复刻顺序、§6.5 契约/成本/stop。
+- [Grid digest](../../../meta/audits/2026-11-11-source-purge.md#src-2611-03534) 的 §4 数字、§6.1 复刻顺序、§6.5 契约/成本/stop。
 - [compilation 机制三](../../../topics/03-knowledge/compilation/mechanism.md) 的受监管支线、citation/拒答、strict pass。
 - 不要抄「工具必须到达研究 = 分数保证」；作者立场是设计原则，不是效应量。
 
-**出处**：[Grid digest](../../../src/papers/2611.03534-power-system-agentic/digest.md) · [compilation 机制](../../../topics/03-knowledge/compilation/mechanism.md)
+**出处**：[Grid digest](../../../meta/audits/2026-11-11-source-purge.md#src-2611-03534) · [compilation 机制](../../../topics/03-knowledge/compilation/mechanism.md)
+
+> 回 [recipes 索引](./README.md) ｜ 回 [02 目录](../README.md)

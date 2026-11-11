@@ -27,7 +27,7 @@
 - **等级**：前两处 `已核`（digest §4.1）；第三处 `已核`（论文结论段报告了该疑似），但其「是错误」的状态 `存疑`。
 - **条件/边界**：单域、数据层；作者未修正，只标记。不能把第三处写成「已知错误」；否则负例口径会把一个可能正确的表达式判成错。
 - **工程含义**：负例集和 `contradicts[]` 都要分 `confirmed` / `possible` 两级。两处确定矛盾可当 confirmed 负例；第三处只能当 possible 用例，验证「shape 能把它标出来」而不是「shape 能判它错」。
-- **来源**：digest §4.1（两处）；[card](../../../src/papers/2610.37123-sfe-o/card.md)（记三处）；[论文正文结论段](../../../src/papers/2610.37123-sfe-o/paper.md)（第三处原文 "a bed-volume expression possibly missing a geometric factor"）。**digest 未收第三处**，本次按论文/card 补记，digest 待回补。
+- **来源**：digest §4.1（两处）；[card](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123)（记三处）；[论文正文结论段](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123)（第三处原文 "a bed-volume expression possibly missing a geometric factor"）。**digest 未收第三处**，本次按论文/card 补记，digest 待回补。
 
 ## F2 · SHACL 只到校验器，判定器角色未测
 
@@ -37,7 +37,7 @@
 - **反例/风险**：若把 report 直接映射成 reject，干净数据会被误挡；论文没有干净数据的误报数字。
 - **接口含义**：`validate(graph) -> report[]`；报告至少能定位 `{focus_node, path, constraint, severity, message, source}`（字段是本页建议，`推测`）。报告要能被消费者读取，而不是只跑通脚本。
 - **stop**：没有能触发 shape 的负例 → 只做文档；没有消费者读报告 → 不做「可执行本体」；把报告当最终判定 → 停，先补策略与误报测量。
-- **来源**：digest §0/§4.1/§6.1/§7/§9；[论文结论段](../../../src/papers/2610.37123-sfe-o/paper.md)。
+- **来源**：digest §0/§4.1/§6.1/§7/§9；[论文结论段](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123)。
 
 ## F3 · 矛盾标了，但没进置信度
 
@@ -46,7 +46,7 @@
 - **条件/边界**：三处矛盾里有一处是 `possible`；若统一降权，会把疑似当已错。至少要分 `confirmed` / `possible`，并保留两侧 value/source。
 - **接口含义（本页建议，`推测`）**：`contradicts[]` 元素带 `{other_value, other_source, status, note}`；`confidence` 先只记录来源与评审状态，不假装是校准过的概率。
 - **stop**：矛盾未裁决 → 不交下游；把 `possible` 自动当 `confirmed` → 停并交人裁。
-- **来源**：digest §4.1/§9；[论文结论段](../../../src/papers/2610.37123-sfe-o/paper.md)。
+- **来源**：digest §4.1/§9；[论文结论段](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123)。
 
 ## F4 · 成本只有量级猜测，不能当预算门
 

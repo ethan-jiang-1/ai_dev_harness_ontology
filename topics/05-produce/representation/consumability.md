@@ -38,7 +38,7 @@ evidence: [E-12]
 
 **读法**：这张表是能力矩阵，不是效应量。E-12 的 +54.6pp 是**文本投影**的命名/单位效应（n=1 工厂、9 任务），不是三档对照；不能拿来证明「词表够用」。SFE-O 只证明「逻辑档表达 ≠ 执行」，不能证明结构表覆盖多数场景。
 
-依据：E-12；[SFE-O digest](../../../src/papers/2610.37123-sfe-o/digest.md) §4.1；[SHACL 材料卡](../../../src/web/w3c-shacl/w3c-shacl.card.md)、[LinkML docs](https://linkml.io/linkml/)（待入库）。
+依据：E-12；[SFE-O digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123) §4.1；[SHACL 材料卡](../../../src/web/w3c-shacl/w3c-shacl.card.md)、[LinkML docs](https://linkml.io/linkml/)（待入库）。
 
 ## 3. 契约六项 ↔ `build_report`
 

@@ -419,7 +419,7 @@ scope: gap-assessment
 - **文档层级差**：从 19.5 降到 **14.0**（满分 60），约 **77% 补上、23% 还在**。
 - **剩余 23% 的构成**：01 的 D2（逐数口径）/D8（边界逐条可指认）；02 的 D2/D10（citation 标签）；03 的 D2/D10（强读法测量）。
 - **证据层没有变**：02 的 citation 仍无标签（只有协议 + ALCE 定义）；03 的 M1/M2 仍无测量（只有协议）；01 仍无 fixture（只有 4 份记录）；E 层仍以单源为主。**这一层的缺口还是原来的一半。**
-- **新卡**：[ALCE](../../src/web/alce/alce.card.md)、[OWL 2 Profiles](../../src/web/w3c-owl2-profiles/w3c-owl2-profiles.card.md)、[SHACL-AF](../../src/web/w3c-shacl-af/w3c-shacl-af.card.md)；三张都标摘要级/待核，不升 E。
+- **新卡**：[ALCE](../../meta/audits/2026-11-11-source-purge.md#src-web-alce)、[OWL 2 Profiles](../../src/web/w3c-owl2-profiles/w3c-owl2-profiles.card.md)、[SHACL-AF](../../src/web/w3c-shacl-af/w3c-shacl-af.card.md)；三张都标摘要级/待核，不升 E。
 - **证据层（EXP-004/005/M1）**：citation 审计（20 对，κ=1.0）显示 E 行单独只支持 5/20；加 [evidence-anchors](../../topics/evidence-anchors.md) 后 **11–13/20（55–65%）**、N 0；剩余 P 是处方/类型问题。alias 前置在真实 sparql-guard 上 leak 1→0、false-block 0；holosdb 20/20 单测复跑通过（EXP-006）；M1 因无干净被试标 `未测`。三件都写清了「差哪一步」。
 - **一句话**：**页面层的 gap 只剩 1/4；证据层的 gap 仍是 1/2，而且现在写清了「差哪一步」。**
 

@@ -7,7 +7,9 @@ target: X5 false-veto
 
 # X5 数据表：false-veto 能不能从已发表数据估出来？
 
-> **工作底稿，不是交付正文。** 数字用于更新 D1 的 X5 verdict；正式引用仍走 E-xx 与 [01/action-gate](../../../topics/01-constraint/action-gate/README.md)。来源为 POLAR digest 与论文 Table 5/6、Appendix B.3；不在这里新增结论。
+> **2026-11-11 证据重置：E-04/E-13 已撤回。** 本表只作历史底稿；旧数字不得作为结论或门槛。
+>
+> **工作底稿，不是交付正文。** 数字曾用于 X5 verdict；正式引用曾走 E-xx 与 action-gate。来源 POLAR（已移出）；不在这里新增结论。
 
 ## 1. 已发表什么
 
@@ -53,3 +55,5 @@ target: X5 false-veto
 - 有同轨迹配对实验，分离 T1-only 与 full。
 
 **没有这些，X5 的 false-veto 保持 `unknown`；D1 的能力地图不分层改变。**
+
+> 回 [01 目录](../README.md) ｜ 回 [01 §数据表](../README.md#数据表工作底稿)

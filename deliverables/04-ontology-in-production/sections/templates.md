@@ -19,7 +19,7 @@ parent: ../README.md
 4. **模板不是验收**：填完只说明字段齐；能不能上线看 [acceptance](./acceptance.md) 的 5 组门槛。
 
 <a id="t0-表列清单"></a>
-## T0 表 / 列清单（起点）
+## TPL-0 表 / 列清单（起点）
 
 | 表 | 列 | 类型 | 现在有标签？ | 等级 | 多标签列？ | 备注 |
 |---|---|---|---|---|---|---|
@@ -33,7 +33,7 @@ parent: ../README.md
 - 这张表是 T2（TBox）和 T4（shape）的输入；没有它，TBox 只能照抄 fixture 的 11 类。
 
 <a id="t1-契约"></a>
-## T1 契约
+## TPL-1 契约
 
 | consumer | principal | moment | answers（CQ id + 期望） | refuses（条件） | load（怎么加载） |
 |---|---|---|---|---|---|
@@ -55,7 +55,7 @@ parent: ../README.md
 | 多标签规则 | A 单标签 / B 集合最严 / C 逐标签 | 契约 + shape + policy |  |
 
 <a id="t2-tbox-清单"></a>
-## T2 TBox 清单
+## TPL-2 TBox 清单
 
 | 类 | 父类 | 为什么在 | 用在哪（CQ / shape / policy） | 删 / 留 |
 |---|---|---|---|---|
@@ -70,7 +70,7 @@ parent: ../README.md
 - 父类不是「为了好看」：`PII` 这种分组类如果没有 CQ 直接查，写不出用途就删。
 
 <a id="t3-属性与边清单"></a>
-## T3 属性与边清单
+## TPL-3 属性与边清单
 
 | 属性 | domain | range | 反向边显式写？ | 用在哪 |
 |---|---|---|---|---|
@@ -84,7 +84,7 @@ parent: ../README.md
 - 每个属性至少被一条 CQ/shape/policy 用；没有就删。
 
 <a id="t4-shape-与负例"></a>
-## T4 shape 与负例
+## TPL-4 shape 与负例
 
 | 约束 | 形态（shape / ASK / CQ） | target | 已知违反 | 干净样本 | 现在抓住？ |
 |---|---|---|---|---|---|
@@ -99,7 +99,7 @@ parent: ../README.md
 - `violations=2` 只证明两个已声明样本被抓住；干净样本误报没测就写「未测」。
 
 <a id="t5-policy-表与测试"></a>
-## T5 policy 表与测试
+## TPL-5 policy 表与测试
 
 | id | principal | action | kind | condition | effect | priority | obligation | reason |
 |---|---|---|---|---|---|---|---|---|
@@ -123,7 +123,7 @@ parent: ../README.md
 **判据**：有唯一期望的用例数写清（fixture 10/11）；平局写 `undetermined`；default 与 skip 各 1 条（如有）；`clearance` 只出现在输入、不影响 decision。
 
 <a id="t6-audit-记录"></a>
-## T6 audit 记录
+## TPL-6 audit 记录
 
 | 字段 | 填什么 | 必填？ |
 |---|---|---|
@@ -154,7 +154,7 @@ parent: ../README.md
 - 严格 replay 需要内容 hash + parser 版本；只有日期标签就写「同 fixture 对照」，不要写「可回放」。
 
 <a id="t7-build_report"></a>
-## T7 build_report
+## TPL-7 build_report
 
 | 字段 | 填什么 | 判据 |
 |---|---|---|
@@ -175,7 +175,7 @@ parent: ../README.md
 **判据**：两个分母不要混；`violations=2` 不等于干净；`parsed=true` 不等于可用。
 
 <a id="t8-验收记录"></a>
-## T8 验收记录
+## TPL-8 验收记录
 
 | 检查 | 结果 | 证据 | 未做 |
 |---|---|---|---|
@@ -186,7 +186,7 @@ parent: ../README.md
 **判据**：没做就写「未做」，不要写「通过」；结果只能是 `go / conditional / no-go / not enough data` 之一（见 [decision](./decision.md)）。完整模板见 [acceptance](./acceptance.md#记录模板)。
 
 <a id="t9-成本工作纸"></a>
-## T9 成本工作纸
+## TPL-9 成本工作纸
 
 | 项 | 公式 / 输入 | 你的参数 | 你的值 | 来源 / 备注 |
 |---|---|---|---|---|

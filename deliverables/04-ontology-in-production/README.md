@@ -3,10 +3,13 @@ status: draft
 deliverable_status: draft
 updated: 2026-11-11
 target: 要落地一个小型本体查询应用的团队
-basis: E-02/E-04/E-06/E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-26/E-27；工程产物；未测
+basis: E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-27；E-02/E-04/E-06/E-26 已撤回；工程产物；未测
 ---
 
 # 04 · 从本体到应用：建、用、治
+
+> **2026-11-11 证据重置**：本份引用的 E-02/E-04/E-06/E-26 已撤回；涉及这些编号的段落只作历史，不再作为“必须这样做”的证据。E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-27 仍可用。
+
 
 > **给谁**：一个要落地小型本体查询应用的小团队——做数据/本体的人、做应用/agent 的人、做治理/安全的人，共用一套产物。
 > **解决什么**：把「消费者要什么」变成可读的 Turtle、可对照的 3 条查询、可对照的策略（10/11 有唯一期望；11 条测试未跑）、可审计的决策记录。
@@ -16,13 +19,44 @@ basis: E-02/E-04/E-06/E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-26/E-27；工程
 >
 > **第一次来**：先读 [START](../START.md)（10 分钟），再回本份。
 >
-> **内码**：A.x/B.x/C.x = 建/用/治三册；其余内码（E-xx/O-xx/T:/S:）见 [术语](./sections/glossary.md)。
+> **内码**：A.x/B.x/C.x = 建/用/治三册；E-xx = 跨派结论；T: = topics 页；S: = src digest；O-xx = 对象地址；T9 = steward 读表这条优先级测试；X1–X5 = 04 的验收期待。完整解释见 [术语](./sections/glossary.md)。
 >
-> **读者姿态**：本份面向人；主路径不要求打开 `topics/`。矩阵、失败目录、用例已消化到 [参考表](./sections/reference.md)；出处附录在 [evidence](./evidence/README.md)，可选。
+> **读者姿态**：本份面向人；主路径不要求打开 `topics/`。矩阵、失败目录、用例已消化到 [参考表](./sections/reference.md)；出处附录在 [evidence/ledger.md](./evidence/ledger.md)，可选。
 >
 > **宪章**：[CHARTER](../../CHARTER.md)。本份是读本/验收材料；示例是阅读对照用的 fixture，不是要交付的系统。命令片段是可选说明，不是实施任务。
 >
 > **为什么不用 SQL/表？** 见 [relations](./sections/relations.md)；04 不在这里下结论。
+
+## 先看前 7 天
+
+你带 3 个人做一个小型本体查询应用。第 1 周不要建 TBox；先写 6 行消费者契约（consumer / principal / moment / answers / refuses / load）。6 项写不出就停——这是 04 的第一个 gate（A.1）。
+
+第 1 周结束，你手上应该有 3 件东西：
+
+| # | 产物 | 现在的验收 | 没有怎么办 |
+|---|---|---|---|
+| 1 | 消费者契约 6 项 | **A1 硬检查**：6 项无空；governance 行 principal=governance；每行 1 个 CQ 或拒绝条件 | 回 A.1，不建 TBox |
+| 2 | principal 模型 + 多标签规则两个决策 | **没有硬验收**：X2/X3 自己标「未闭合 / 缺多标签 fixture」；至少要写决策、owner、失败条件 | 标 `conditional`（有条件通过，不是失败），不要假装通过 |
+| 3 | 3 条 CQ 草稿 | **fixture 之外没有硬验收**：每条有 expected + 0 行分因（[transfer §3](./sections/transfer.md) / §7）；A5 只对 fixture 的 2/2、7/4、4 负责 | 回 transfer §2–§3，不要先写查询 |
+
+> 这三件是 04 的「第一周可交付」，不是工期承诺；成本/阶段见 [decision](./sections/decision.md)。
+
+**前 7 天怎么排（示意，不是报价）**：
+
+| 天 | 做什么 | 产出 | 验收 |
+|---|---|---|---|
+| 1 | 拉 3 个 owner（数据/应用/治理），写 6 行契约 | 契约草稿 | 6 项无空 |
+| 2 | 定 principal 模型 + 多标签规则 | 两个决策 + owner | 写失败条件；否则 `conditional` |
+| 3–4 | 从契约推 TBox（≤11 类） | `ontology.ttl` / `catalog.ttl` | 类/属性计数对得上 |
+| 5 | 写 2 条 shape + 负例 | `shapes.ttl` + 负例表 | 2/2 有 target |
+| 6 | 3 条 CQ + expected | 查询草稿 | 每条 expected + 0 行分因 |
+| 7 | 跑三关，写 `build_report` | `build_report` | load/validate/answer 有记录 |
+
+> 第 7 天的最小声响是「三关有记录」，不是「全部通过」；`targeted=0` 不是 pass。
+
+> **只读 5 页（约 30 分钟）**：本页 §0 → [GUIDE 30 分钟 8 步](./GUIDE.md#p-30min) → [A.1 / A.3 / A.5](./body/build.md) → [B.2](./body/consume.md) → [C.3 / C.4](./body/govern.md)。
+>
+> **证据等级**：本份是读本/验收材料；示例是 fixture，数字是期望值，不是实测；`conditional` 不是失败，是未决项。
 
 ## 0. 你带着什么问题来
 
@@ -61,8 +95,8 @@ basis: E-02/E-04/E-06/E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-26/E-27；工程
 | 1 | 消费者契约 | 数据/应用/治理三方 | 立项 | 6 项无空；每行有 1 个 CQ 或拒绝条件 | [build A.1](./body/build.md) |
 | 2 | TBox + ABox | 数据/本体 | 建 | `rdflib` 解析；11 类/5 属性 | [ontology.ttl](./example/ontology.ttl) · [catalog.ttl](./example/catalog.ttl) |
 | 3 | shapes + 负例 | 数据/本体 | 建 | `pyshacl` 报 2 violations | [shapes.ttl](./example/shapes.ttl) · [A.4](./body/build.md) |
-| 4 | 3 条 SPARQL | 应用 | 用 | CQ1 2 列 2 表（steward）/ CQ2 7 列 4 表（steward）/ CQ3 4 数据集（governance），raw | [B.2](./body/consume.md) |
-| 5 | policy 表 | 治理 | 治 | 8 条规则；T9 未定；T11 governance dataset allow | [policy.json](./example/policy.json) · [C.2](./body/govern.md) |
+| 4 | 3 条 SPARQL | 应用 | 用 | CQ1 2 列 2 表（steward，数据管家身份）/ CQ2 7 列 4 表（steward）/ CQ3 4 数据集（governance），raw | [B.2](./body/consume.md) |
+| 5 | policy 表 | 治理 | 治 | 8 条规则；T9（steward 读表的优先级测试）未定；T11 governance dataset allow | [policy.json](./example/policy.json) · [C.2](./body/govern.md) |
 | 6 | 策略测试 | 治理 | 治 | 11 条输入→期望；T9 undetermined | [policy_tests.json](./example/policy_tests.json) |
 | 7 | 泄漏用例 | 治理 | 治 | 12 条测试设计；object/alias/聚合/版本；部分需额外 fixture | [leak_cases.json](./example/leak_cases.json) |
 | 8 | audit schema + 3 条记录 | 治理 | 治 | 必填字段齐；同 fixture 对照；严格 replay 需 hash/parser | [audit.schema.json](./example/audit.schema.json) · [audit_records.json](./example/audit_records.json) · [C.4](./body/govern.md) |
@@ -85,7 +119,7 @@ basis: E-02/E-04/E-06/E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-26/E-27；工程
 
 > 5 组、通过长什么样、可勾项与当前 `conditional` 结论都在 [验收清单](./sections/acceptance.md)。入口：A1–A4 / A5+B1–B3 / C1–C3 / C4–C5 / 无未修漏洞。
 >
-> `conditional` 的处置与停见 [decision](./sections/decision.md)；GUIDE 的 10 分钟/2 小时/1 天是阅读路径，不是门槛数。
+> `conditional`（有条件通过，不是失败）的处置与停见 [decision](./sections/decision.md)；GUIDE 的 10 分钟/2 小时/1 天是阅读路径，不是门槛数。
 
 ## 5. 不能证明什么（3 条）
 
@@ -109,9 +143,9 @@ basis: E-02/E-04/E-06/E-12/E-19/E-20/E-21/E-22/E-23/E-24/E-25/E-26/E-27；工程
 | 卡住了 | [症状地图](./sections/map.md) |
 | 验收 | [验收清单](./sections/acceptance.md) |
 | 与 01/02/03 的分工 | [关系](./sections/relations.md) |
-| 支持页索引 | [sections/README](./sections/README.md) |
 | 证据台账（附录） | [evidence/ledger.md](./evidence/ledger.md) |
+| 标准卡/外部 signal | [evidence/sources.md](./evidence/sources.md) | 6 张标准卡；未入库 signal 清单 |
 
 > 读法：**先读本章开头「本章回答 / 你需要准备 / 做完得到什么」，再按小节读**。章末的「证据与边界」第一遍可跳过。
 >
-> 内码：`E-xx` = 跨派结论；`T:` = topics 页；`S:` = src digest；`O-xx` = 对象地址；`F/K` = 派内 finding/知识层级；`推测 / 未测` = 证据等级。完整解释见 [glossary](./sections/glossary.md)。第一遍可以跳过；需要时再回 [evidence](./evidence/README.md)。
+> 内码：`E-xx` = 跨派结论；`T:` = topics 页；`S:` = src digest；`O-xx` = 对象地址；`F/K` = 派内 finding / N&D 实验条件代号（非标准）；`推测 / 未测` = 证据等级。完整解释见 [glossary](./sections/glossary.md)。第一遍可以跳过；需要时再回 [evidence/ledger.md](./evidence/ledger.md)。

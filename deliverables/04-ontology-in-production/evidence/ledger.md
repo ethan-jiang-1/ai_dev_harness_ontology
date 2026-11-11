@@ -1,10 +1,13 @@
 ---
 status: draft
-updated: 2026-11-10
+updated: 2026-11-11
 parent: README.md
 ---
 
 # 证据台账：E / 按章 / O
+
+> **2026-11-11 证据重置**：E-02/E-04/E-06/E-26 已撤回；下表对应行只作回查，不再作为 04 的结论锚。
+
 
 > 本页是台账，不是正文。E 是结论，O 是地址；引用时不要把 O 当结论。正文只在章末说「见这里」，不重复内码。
 
@@ -12,9 +15,9 @@ parent: README.md
 
 | E | 用在哪 | 等级 |
 |---|---|---|
-| E-02 | 建：负例/验收 | 已核 |
-| E-04 | 边界：输入 gate≠输出校验 | 已核 |
-| E-06 | 边界：失败在 workflow | 已核 |
+| E-02 | 建：负例/验收 | **withdrawn** |
+| E-04 | 边界：输入 gate≠输出校验 | **withdrawn** |
+| E-06 | 边界：失败在 workflow | **withdrawn** |
 | E-12 | 建：薄层优先 | 已核 |
 | E-19 | 全篇：位置×成本 | 推测（综合） |
 | E-20 | 用/治：执行形态 | 已核（代码） |
@@ -23,7 +26,7 @@ parent: README.md
 | E-23 | 治：读路径 10 用例 / 第二实现 | 已核（代码） |
 | E-24 | 治：策略层语义 / 11 测试 / 优先级空洞 | 已核（标准摘要+文件） |
 | E-25 | 建：三关 / 10 坏样本 / 2 抓 2 | 已核（标准卡+文件） |
-| E-26 | 用：四路线按资产选 | 推测（综合） |
+| E-26 | 用：四路线按资产选 | **withdrawn** |
 | E-27 | 治：输出六类 + 跨段传播 | 推测（综合） |
 
 依据：[conclusions](../../../topics/conclusions.md)；不新增 E。
@@ -37,7 +40,7 @@ parent: README.md
 | [policy](../../../topics/01-constraint/policy/README.md) | 治：策略 schema + 11 测试 | GB/T/XACML/ODRL/Atlas/Ranger/OpenFGA（待入库） |
 | [read-path](../../../topics/01-constraint/commit-gate/read-path.md) | 治：10 条用例 + 第二实现 | trustgraph + sparql-guard/Jena（候选/退役） |
 | [output-validation](../../../topics/02-judgment/checker/output-validation.md) | 治：六类 + 三态 | pyshacl/open-ontologies/PROV/GE |
-| [propagation](../../../topics/06-measure/metrics/propagation.md) | 治：10 类 × 3 段 | E-06/E-05 + 三段 artifacts |
+| [propagation](../../../topics/06-measure/metrics/propagation.md) | 治：10 类 × 3 段 | **E-06 withdrawn**；E-05 + 三段 artifacts |
 
 > 这些页不是 E；04 的主句仍落 `E-xx`。页只回答「证据怎么排成表」，不新增判断。三关协议、11 条策略测试、12 条泄漏用例、10×3 故障矩阵是**工程产物**，标「工程产物 / 待核」，不升 E；引用时写 `工程产物`，不写成「已验证」。
 
@@ -48,10 +51,10 @@ parent: README.md
 | A | A.1 契约 | [consumability §3](../../../topics/05-produce/representation/consumability.md)；工程产物 | 未测（无 CQ） |
 | A | A.2 档位 | E-12 / O-F14 | 推测 |
 | A | A.3 本体 | E-22 / O-N28；T:01/access-control F1 | 工程产物 |
-| A | A.4 shapes | SFE-O §4.1；E-02 / O-F08；PPV 见 §4 | 未测 |
+| A | A.4 shapes | **原 SFE-O/E-02 已移出/撤回**；只作历史模板 | 未测 |
 | A | A.5 三关 | E-25；[consumability §1/§6](../../../topics/05-produce/representation/consumability.md)；版本来源表 | 工程产物 |
 | A | 全章 | T:05/representation、T:05/generation、S:SFE-O/Catch/N&D/Glyph | 边界 |
-| B | B.0/B.1 路线 | E-21 / E-26；[compare](../../../topics/03-knowledge/querying/compare.md) §1–§3 | 已核（单设置）/ 推测（综合） |
+| B | B.0/B.1 路线 | E-21 单路线；**E-26 withdrawn** | 已核（单设置）/ 推测（综合） |
 | B | B.2 查询 | 工程产物（3 条 SPARQL）；E-21；T:querying §5；[Qlever digest](../../../src/open-source/ad-freiburg-qlever/digest.md) | 工程产物 |
 | B | B.3 纠错 | E-21；[querying/F1](../../../topics/03-knowledge/querying/findings.md) | 未测：2×2、空结果 |
 | B | B.4 OBDA | E-20；[Ontop digest](../../../src/open-source/ontop-ontop/digest.md) | 已核（代码） |

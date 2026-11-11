@@ -77,7 +77,7 @@
 
 ## 实施与客户价值（A3/A4）
 
-> 本节回答「改变哪个实施决策、客户哪个指标会动、怎么验证」。数字出自四条 digest（[OntoDoc](../../../src/papers/2611.01276-ontodoc/digest.md) / [ReX-GG](../../../src/papers/2610.41901-rex-gg/digest.md) / [Peeling](../../../src/papers/2610.41785-peeling-matryoshka/digest.md) / [Evontree](../../../src/papers/2510.26683-evontree/digest.md)）；digest 没给的成本/比例标 `推测`。
+> 本节回答「改变哪个实施决策、客户哪个指标会动、怎么验证」。数字出自四条 digest（[OntoDoc](../../../meta/audits/2026-11-11-source-purge.md#src-2611-01276) / [ReX-GG](../../../meta/audits/2026-11-11-source-purge.md#src-2610-41901) / [Peeling](../../../meta/audits/2026-11-11-source-purge.md#src-2610-41785) / [Evontree](../../../meta/audits/2026-11-11-source-purge.md#src-2510-26683)）；digest 没给的成本/比例标 `推测`。
 
 ### 实施决策
 
@@ -115,7 +115,7 @@
 - **prompt 是资产。** OntoDoc 的假设层收益绑定在这套四阶段 prompt 上（win 54–61%）；重写 prompt 会丢掉 assumptions 层前提，复刻只能到「看起来像」。
 - **互评排序不是放行证据。** ReX 的 k、Borda、去偏（E3 建议）只能把候选排好序，仍需人工 precision 才谈自动放行。
 
-来源：[OntoDoc digest](../../../src/papers/2611.01276-ontodoc/digest.md) · [ReX-GG digest](../../../src/papers/2610.41901-rex-gg/digest.md) · [Peeling digest](../../../src/papers/2610.41785-peeling-matryoshka/digest.md) · [Evontree digest](../../../src/papers/2510.26683-evontree/digest.md)
+来源：[OntoDoc digest](../../../meta/audits/2026-11-11-source-purge.md#src-2611-01276) · [ReX-GG digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-41901) · [Peeling digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-41785) · [Evontree digest](../../../meta/audits/2026-11-11-source-purge.md#src-2510-26683)
 
 ### 工程发现 3｜成本：四篇都没有金额
 
@@ -178,8 +178,8 @@
 
 ## 关联
 
-- [OntoDoc digest](../../../src/papers/2611.01276-ontodoc/digest.md)
-- [ReX-GG digest](../../../src/papers/2610.41901-rex-gg/digest.md)
-- [Peeling digest](../../../src/papers/2610.41785-peeling-matryoshka/digest.md)
-- [Evontree digest](../../../src/papers/2510.26683-evontree/digest.md)
+- [OntoDoc digest](../../../meta/audits/2026-11-11-source-purge.md#src-2611-01276)
+- [ReX-GG digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-41901)
+- [Peeling digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-41785)
+- [Evontree digest](../../../meta/audits/2026-11-11-source-purge.md#src-2510-26683)
 - [findings](./findings.md) · [frontier](./frontier.md)

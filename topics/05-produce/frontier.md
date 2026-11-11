@@ -71,3 +71,7 @@ rq: [RQ2, RQ3]
 1. **可消费性评测**：按 [generation/N1](./generation/frontier.md) 找评测口径，先能回答「判定器能否加载/解释/复现生成结构」；没有这个数，生成路线只能停在候选。
 2. **精化召回**：先有专家标注的真错全集，再报 recall@30/@10（[refinement/F5](./refinement/findings.md)）；否则 6/6 不能当覆盖率。
 3. **表示选型**：先写消费者契约，再比较第二档（结构表 + SHACL）与第三档；不拿 digest 的 2–4 人周估算当测量，也不默认第二档够用（[representation/mechanism](./representation/mechanism.md)）。
+
+## 候选（signal，未准入）
+
+- **本体/KG 的成本结构（叶小钗, 人人都是产品经理, 2026-08-31）**：数据清洗偶尔 >50%、小场景常从 10 万级起步、AI 把初稿成本降到约 1/10，但维护/治理未消失。按 material gate 判 `signal`（个人经验、浏览/评论不算信号），**不撑 L/交付物**；只作线索。URL: https://www.woshipm.com/ai/6457053.html

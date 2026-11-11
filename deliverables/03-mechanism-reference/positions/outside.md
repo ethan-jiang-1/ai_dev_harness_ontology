@@ -1,12 +1,15 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 position: outside
 evidence: [E-16, E-17, E-20]
 ---
 
 # 谱外位置：determinism、read-path、supply、reasoning、training
+
+> **2026-11-11 证据重置**：**E-16 已撤回**；本页的 reasoning 部分只作回查。E-17（记忆）与 E-20（read-path/supply）仍 admitted；determinism 仍只有设计。
+
 
 > **一句话**：六个位置不是全集。至少还有五类位置对中心问题重要，但它们不满足「单次路径上的强度谱」或「六时刻硬闸」的条件；本页说明为什么放在谱外，以及什么会让它们升进来。
 
@@ -65,7 +68,7 @@ evidence: [E-16, E-17, E-20]
 
 ### 3.4 reasoning（推理期）
 
-**机制**：OntoAct 用三值条件 ⊤/⊥/? + 假设 revision；限制知识源（curated KG）可能封顶，验证条件可能同时提高成功率与减少无效干预。`已核`（E-16；模拟、固定 schema、无真实工厂）
+**机制**：OntoAct 用三值条件 ⊤/⊥/? + 假设 revision；限制知识源（curated KG）可能封顶，验证条件可能同时提高成功率与减少无效干预。`withdrawn`（原 E-16；模拟、固定 schema、无真实工厂）
 
 **边界**：与 action-gate 的边界未稳定；它只拦有适用条件公理的动作，缺证据转观察；不是安全保证。
 

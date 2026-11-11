@@ -75,25 +75,25 @@ updated: 2026-11-07
 | 论文 | 证据类型 | 页/图 | 杠杆 | 落点 |
 |---|---|---|---|---|
 | [CAI](../../../src/papers/2610.41172-context-as-infrastructure/card.md) | 实证·基准 + 成本模型 | 13/2 | E-01、E-08、C-04 | 03/compilation（现挂 00，读完改 home） |
-| [Ontology Catch](../../../src/papers/2610.37809-what-does-an-ontology-catch/card.md) | 实证·基准 | 13/3 | E-02、P3 | 02/checker |
-| [POLAR](../../../src/papers/2610.08082-polar/card.md) | 实证·基准 | 17/4 | E-04、E-13 | 01/action-gate |
+| [Ontology Catch](../../audits/2026-11-11-source-purge.md#src-2610-37809) | 实证·基准 | 13/3 | E-02、P3 | 02/checker |
+| [POLAR](../../audits/2026-11-11-source-purge.md#src-2610-08082) | 实证·基准 | 17/4 | E-04、E-13 | 01/action-gate |
 | [Narrow & Deep](../../../src/papers/2610.11768-narrow-and-deep/card.md) | 实证·真实试验台 | 28/6 | E-12、C-04 | 03/projection |
-| [Diagnose the Workflow](../../../src/papers/2610.35267-diagnose-workflow/card.md) | 实证·方法论 | 16/1 | E-06、P2 | 06/failure-attribution（现挂 00，读完改 home） |
+| [Diagnose the Workflow](../../audits/2026-11-11-source-purge.md#src-2610-35267) | 实证·方法论 | 16/1 | E-06、P2 | 06/failure-attribution（现挂 00，读完改 home） |
 | [FIRME](../../../src/papers/2610.40482-firme/card.md) | 实证·基准 | 20/4 | E-05 | 04/memory |
-| [OntoAct](../../../src/papers/2610.21983-ontoact/card.md) | 实证·基准 | 49/3（另有 76 张嵌入图） | reasoning-gate | 01/reasoning-gate |
+| [OntoAct](../../audits/2026-11-11-source-purge.md#src-2610-21983) | 实证·基准 | 49/3（另有 76 张嵌入图） | reasoning-gate | 01/reasoning-gate |
 | [CASEL](../../../src/papers/2610.36570-casel/card.md) | 实证·模拟 | 6/3 | 01-L4/L5、成本 | 01/action-gate |
-| [Grid Agents](../../../src/papers/2611.03534-power-system-agentic/card.md) | 实证·部署 + 基准 | 18/3 | 03/02、domains | 03（compilation 或 projection，读完定；双重 02） |
+| [Grid Agents](../../audits/2026-11-11-source-purge.md#src-2611-03534) | 实证·部署 + 基准 | 18/3 | 03/02、domains | 03（compilation 或 projection，读完定；双重 02） |
 | [SLB](../../../src/papers/2611.02395-solver-like-behavior/card.md) | 实证·基准 | 28/9 | E-07、E-09 | 06/trace（现挂 04，读完改 home） |
-| [MIOE](../../../src/papers/2610.38326-mioe/card.md) | 机制研究 | 29/17 | E-10 | 06/mechanism |
-| [OntoDoc](../../../src/papers/2611.01276-ontodoc/card.md) | 实证·基准 | 33/1 | 05/03 | 05/generation |
+| [MIOE](../../audits/2026-11-11-source-purge.md#src-2610-38326) | 机制研究 | 29/17 | E-10 | 06/mechanism |
+| [OntoDoc](../../audits/2026-11-11-source-purge.md#src-2611-01276) | 实证·基准 | 33/1 | 05/03 | 05/generation |
 
 ### L2 结构读（6）
 
 | 论文 | 证据类型 | 页/图 | 杠杆 | 落点 |
 |---|---|---|---|---|
-| [OA-RAG](../../../src/papers/2610.36335-oa-rag/card.md) | 实证·基准 | 13/7 | E-03 | 02/evidence |
-| [多 agent 诊断](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/card.md) | 实证·基准 | 9/2 | 01-L3 | 01/reasoning-gate |
-| [Commit Boundary](../../../src/papers/2610.37407-commit-boundary/card.md) | **概念架构**（无实现/无实证） | 32/2 | commit-gate 规范 | 01/commit-gate |
+| [OA-RAG](../../audits/2026-11-11-source-purge.md#src-2610-36335) | 实证·基准 | 13/7 | E-03 | 02/evidence |
+| [多 agent 诊断](../../audits/2026-11-11-source-purge.md#src-2610-36325) | 实证·基准 | 9/2 | 01-L3 | 01/reasoning-gate |
+| [Commit Boundary](../../audits/2026-11-11-source-purge.md#src-2610-37407) | **概念架构**（无实现/无实证） | 32/2 | commit-gate 规范 | 01/commit-gate |
 | [EvoMemState](../../../src/papers/2611.03743-evomemstate/card.md) | 实证·基准 | 30/13 | 04 状态 | 04/memory |
 | [Agents are Systems](../../../src/papers/2610.01618-agents-are-systems/card.md) | 实证·基准 + 评测方法 | 28/8 | 06 评测 | 06/metrics |
 | [CASTON](../../../src/papers/2610.21466-caston-refinement/card.md) | 实证·专家评估 | 5/2 | 05 精化 | 05/refinement |
@@ -102,10 +102,10 @@ updated: 2026-11-07
 
 | 论文 | 证据类型 | 页/图 | 为什么不深读 | 落点 |
 |---|---|---|---|---|
-| [Peeling the Matryoshka](../../../src/papers/2610.41785-peeling-matryoshka/card.md) | 实证·基准 | 13/6 | 嵌入分类结构，不在 harness 回路上；只值 E-11 的一次快速核验，不值档案 | 05/generation |
-| [Evontree](../../../src/papers/2510.26683-evontree/card.md) | 实证·训练侧 | 10/2 | 训练侧自演化，摘要无数字，与「回路位置」关系弱 | 05/generation |
-| [SFE-O](../../../src/papers/2610.37123-sfe-o/card.md) | 概念/域本体 | 8/0 | 域本体设计，无量化的机制证据；只取它的局限清单 | 05/representation |
-| [ReX-GG](../../../src/papers/2610.41901-rex-gg/card.md) | 工程·用户研究 | 9/4 | 轻量集成流水线，工程味足但本体杠杆低 | 05/generation |
+| [Peeling the Matryoshka](../../audits/2026-11-11-source-purge.md#src-2610-41785) | 实证·基准 | 13/6 | 嵌入分类结构，不在 harness 回路上；只值 E-11 的一次快速核验，不值档案 | 05/generation |
+| [Evontree](../../audits/2026-11-11-source-purge.md#src-2510-26683) | 实证·训练侧 | 10/2 | 训练侧自演化，摘要无数字，与「回路位置」关系弱 | 05/generation |
+| [SFE-O](../../audits/2026-11-11-source-purge.md#src-2610-37123) | 概念/域本体 | 8/0 | 域本体设计，无量化的机制证据；只取它的局限清单 | 05/representation |
+| [ReX-GG](../../audits/2026-11-11-source-purge.md#src-2610-41901) | 工程·用户研究 | 9/4 | 轻量集成流水线，工程味足但本体杠杆低 | 05/generation |
 
 **为什么 05 只有 1 篇 L3**：05 的问题是「本体从哪来、多少钱」，答案分散在手工（N&D）、curated（Grid Agents）、编译（CAI）、抽象（OntoAct）与生成/精化（OntoDoc、CASTON）里。与其把 6 篇 05 都精读，不如做一次 **「本体生产成本」集群综合**，用 05 的六篇（1 L3 + 1 L2 + 4 L1）做横向对照（见 Wave 3）。06 同理，用集群而不是逐篇堆。
 

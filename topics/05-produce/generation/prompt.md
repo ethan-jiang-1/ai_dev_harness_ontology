@@ -16,7 +16,7 @@ updated: 2026-11-07
 ## 输入
 
 - 本子主题 [README](./README.md)、派 [claims](../claims.md)、派 [sources](../sources.md)
-- 卡片：[OntoDoc](../../../src/papers/2611.01276-ontodoc/card.md)、[Peeling](../../../src/papers/2610.41785-peeling-matryoshka/card.md)、[Evontree](../../../src/papers/2510.26683-evontree/card.md)、[ReX-GG](../../../src/papers/2610.41901-rex-gg/card.md)
+- 卡片：[OntoDoc](../../../meta/audits/2026-11-11-source-purge.md#src-2611-01276)、[Peeling](../../../meta/audits/2026-11-11-source-purge.md#src-2610-41785)、[Evontree](../../../meta/audits/2026-11-11-source-purge.md#src-2510-26683)、[ReX-GG](../../../meta/audits/2026-11-11-source-purge.md#src-2610-41901)
 - 允许补充检索：ontology generation evaluation / downstream utility / consumability
 
 ## 输出

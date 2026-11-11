@@ -20,6 +20,11 @@ home: topics/03-knowledge
 subtopic:
 also_supports: []
 updates: []
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I2+I3: OBDA reference implementation, long-term maintenance"
+liveness: last_push 2026-11-04
+provenance_type: academic
 ---
 
 # ontop/ontop · 来源卡

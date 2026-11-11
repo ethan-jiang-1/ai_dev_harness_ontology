@@ -2,10 +2,13 @@
 status: draft
 updated: 2026-11-09
 parent: ../README.md
-basis: topics/domains；E-03/E-04/E-05/E-12/E-17
+basis: topics/domains；E-05/E-12/E-17 仍 admitted；E-03/E-04 已撤回
 ---
 
 # 领域适配：同一机制，换域先换约束
+
+> **2026-11-11 证据重置**：本页 basis 中的 E-02/E-03/E-04/E-13 已撤回；相关数字只作历史，不再作为“已测”依据。
+
 
 > 领域不是案例集，是**对机制的额外约束**。同一份 recipe 换域，阈值、覆盖率、标签、审批都变；不能把单域数字当跨域常数。
 
@@ -16,7 +19,7 @@ basis: topics/domains；E-03/E-04/E-05/E-12/E-17
 | 工业设备 | 知识窄而深，参数来源必须可追 | R0/R1/R2/R5 | N&D：K1 +54.6pp、K2 +19.8pp；单 plant | tag/单位/别名；投影字符上限；primary trap |
 | 电网规划 | 法规/标准硬约束，数字必须由 solver 算 | R12/R3/R10 | Grid：99.9%、citation recall 0.967、45/51 拒答 | citation/拒答阈值；solver 版本；人签核 SLA |
 | 金融投研 | 实体跨期身份漂移，来源/时效必须保留 | R7/R9 | FIRME：CMR +7.8–12.1pp、merge precision 85.6–97.5% | 匹配阈值 0.8；五态；alias 回滚；周期口径 |
-| 医学诊断 | 缺证据要追问，推理可审计 | R4/R5/R6 | OA-RAG：50.5/68.1%；多 agent 诊断：覆盖封顶 | 检索率门槛；grounding 校准；追问上限 |
+| 医学诊断 | 缺证据要追问，推理可审计 | R4/R5/R6（均 gap） | 原 OA-RAG（已移出）50.5/68.1% 只作历史；旧多 agent 诊断也待新源 | 检索率门槛；grounding 校准；追问上限 |
 | 生物医学/农业 KG | 资源描述缺失，术语与自然语言不匹配 | R0/R1/R5 | OntoDoc：completeness 3.43→3.84；无下游 | 术语表；描述补全；不要自动生成后直接执行 |
 
 ## 2. 工业设备
@@ -100,4 +103,6 @@ basis: topics/domains；E-03/E-04/E-05/E-12/E-17
 4. 本体覆盖/术语/单位够吗？先 R0。
 5. 失败代价是否可逆？不可逆 → R6/R9，不要只做 R4/R5。
 
-**出处**：[domains](../../../topics/domains.md) · [E-03/E-04/E-05/E-12/E-17](../../../topics/conclusions.md)
+**出处**：[domains](../../../topics/domains.md) · E-05/E-12/E-17；E-03/E-04 已撤回
+
+> 回 [02 目录](../README.md) ｜ 回 [账本](./ledger.md)

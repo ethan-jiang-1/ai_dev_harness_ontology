@@ -7,6 +7,9 @@ basis: 06/feasibility、06/metrics、06/trace；E-02/E-04/E-08/E-14/E-18
 
 # 账本：先记原始记录，再谈指标
 
+> **2026-11-11 证据重置**：本页 basis 中的 E-02/E-03/E-04/E-13 已撤回；相关数字只作历史，不再作为“已测”依据。
+
+
 > 没有账本，`p_h`、false-veto、审批成本、catch/FA 都算不出来；所有 go/no-go 都退化成「感觉」。
 >
 > 账本不是「日志」：日志是非结构化流水，账本是**按查询/决策一行、字段稳定、可复算**的数据表。见 [GLOSSARY](../../../GLOSSARY.md)。
@@ -15,7 +18,7 @@ basis: 06/feasibility、06/metrics、06/trace；E-02/E-04/E-08/E-14/E-18
 
 | 账本 | 一行是什么 | 用来算 | 主要 owner |
 |---|---|---|---|
-| **Query ledger** | 一次查询/回答 | `p_h`、miss penalty、token/问、p95、轮次、φ | 检索/上下文平台 |
+| **Query ledger** | 一次查询/回答 | `p_h`、miss penalty、token/问、p95、轮次、err_rate | 检索/上下文平台 |
 | **Decision ledger** | 一次动作/审批/回滚 | HSR、false-veto、审批率、task success、`J(m)` | 工具/平台/风控 |
 
 **不要用 query ledger 算 false-veto**：它没有 blocked decision 的合法/伤害标签。**不要用 decision ledger 算 `p_h`**：它没有证据充分率。
@@ -39,7 +42,7 @@ model, prompt_version, tool_version, policy_version, ontology_version
 query_id, user/session_hash, query_text_ref,
 retrieval: {tool, top_k, hit|miss, claim_ids[], chunk_ids[], span_coverage},
 tokens: {in, out, total}, latency_ms, rounds,
-gate: {verdict: pass|flag|unknown, constraint_id?, phi?},
+gate: {verdict: pass|flag|unknown, constraint_id?, err_rate?},
 citations: [{doc_id, version, page, span}],
 answer_ref, error_type?
 ```
@@ -48,7 +51,7 @@ answer_ref, error_type?
 
 - token 按**每问总量**，不是单次模型调用。
 - `hit/miss` 是证据充分性门（`p_h` 的分子/分母），不是「检索到没有」。
-- `phi` 只对 accepted query 抽样审计；没有审计就写 `unknown`。
+- `err_rate` 只对 accepted query 抽样审计；没有审计就写 `unknown`。
 - p95 按时延分布算，不用均值代替。
 
 **最小示例**：
@@ -94,7 +97,7 @@ harm=unknown, false_veto=unknown
 |---|---|---|---|
 | `p_h` | 证据充分、可替换的查询比例 | 全部查询 | 把「检索到」当 hit |
 | `p_min` | `2% + c/(0.929Q)` | 自有 `c`、`Q` | 用论文 `c=10` |
-| `φ` | accepted query 中答错的比例 | accepted query 抽样 | 用 `p_h` 代 φ |
+| `err_rate` | accepted query 中答错的比例 | accepted query 抽样 | 用 `p_h` 代 err_rate |
 | catch | 被 checker flag 且确实错的比例 | 人工标注错误 | 与 FA 混成 accuracy |
 | FA | 被 flag 但答案正确的比例 | 被 flag 的正确答案 | 用 precision 代替 |
 | false-veto | blocked 中「本可合法执行且低 harm」的比例 | blocked decisions | 用 retention/block count 代算 |
@@ -110,7 +113,7 @@ harm=unknown, false_veto=unknown
 - 主指标 + 过程指标并报；非对称代价（漏/误）分开。
 - 成本标 `per_checked` 还是 `per_flagged`；换口径即不可比。
 - 没有 CI 的比率不要写「显著」；没有重复运行不要写「更好」。
-- 任何「门通过率」进 memo，必须同页给 φ 或标 `unknown`。
+- 任何「门通过率」进 memo，必须同页给 err_rate 或标 `unknown`。
 
 ## 6. 保留与安全
 
@@ -128,7 +131,7 @@ harm=unknown, false_veto=unknown
 1. **锁口径**：token/伤害/审批/成本单位四个口径先写死。
 2. **建表**：按上面字段建两本账；先落 7 天历史流量或 200–500 条决策。
 3. **回放**：能按 arm/机制出分布；算 baseline 的 token/p95/审批率。
-4. **抽检**：100 条 accepted query 估 φ；100 条 blocked 标 false-veto。
+4. **抽检**：100 条 accepted query 估 err_rate；100 条 blocked 标 false-veto。
 5. **复算**：换人按同一账本重算，结论一致才算数。
 
 ## 8. 反模式

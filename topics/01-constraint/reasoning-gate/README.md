@@ -35,7 +35,7 @@ evidence: [E-16]
 | 症状映射/接口/参数/成本/stop/客户指标（工程发现 1–4） | [mechanism](./mechanism.md) 的「工程发现 1–4」 |
 | 四条判断的证据/数字 | [findings](./findings.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
-| 原始论文 | [OntoAct digest](../../../src/papers/2610.21983-ontoact/digest.md) · [多 agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md) |
+| 原始论文 | [OntoAct digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-21983) · [多 agent digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36325) |
 
 ## 边界
 

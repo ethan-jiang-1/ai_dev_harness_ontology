@@ -11,6 +11,13 @@
 - 没有把“能跑”当交付标准；没有因为示例不能跑就补实现。
 - 例外只有 `meta/tools/` 的只读自检。
 
+## 0.1 素材准入
+
+- 新卡有 `admission` / `gate_checked` / `impact_evidence` / `liveness` / `provenance_type`；`admitted` 至少两条独立信号，至少一条 I1–I3。
+- `signal` 没进 `src/`；`excluded` 没建卡；**历史语料没有“已引用/已消化/名校”豁免**。
+- 被删源的引用已改 tombstone；依赖它的 E/L 已撤回、降级或换锚。
+- 公司自证、会议主 track、star/浏览不算影响信号；标准走 §4.4 在役例外并写活动证据。
+
 ## 1. 链接
 
 - 所有相对链接的文件与 `#锚点` 都存在（`check_repo` 会查）。

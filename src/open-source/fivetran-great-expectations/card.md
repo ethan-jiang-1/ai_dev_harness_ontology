@@ -22,6 +22,11 @@ also_supports: []
 updates:
   - topics/02-judgment/checker/output-validation.md
   - deliverables/04-ontology-in-production/body/govern.md
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I3: production adoption"
+liveness: last_push 2026-11-09
+provenance_type: company
 ---
 
 # fivetran/great_expectations · 来源卡

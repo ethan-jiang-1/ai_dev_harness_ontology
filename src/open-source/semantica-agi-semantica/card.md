@@ -20,6 +20,11 @@ home: topics/03-knowledge
 subtopic:
 also_supports: []
 updates: []
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I2+I4+I5: 100+ contributors, 24 releases, 14475 stars"
+liveness: last_push 2026-11-08
+provenance_type: company
 ---
 
 # semantica-agi/semantica · 来源卡
@@ -58,8 +63,8 @@ graph-native context / accountable AI 平台；本体模块负责生成 OWL、�
 
 | 论文 digest | 机制 | 这里对应 / 缺失 |
 |---|---|---|
-| [OntoDoc](../../papers/2611.01276-ontodoc/digest.md) | 本体生成/文档化 | 有 OWL 生成器与文档模块；生成质量未独立评测（待核） |
-| [What Does an Ontology Catch](../../papers/2610.37809-what-does-an-ontology-catch/digest.md) | 本体作为判定器 | pyshacl 校验是「判定」，但没有漏检/误报的测量 |
+| [OntoDoc](../../../meta/audits/2026-11-11-source-purge.md#src-2611-01276) | 本体生成/文档化 | 有 OWL 生成器与文档模块；生成质量未独立评测（待核） |
+| [What Does an Ontology Catch](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809) | 本体作为判定器 | pyshacl 校验是「判定」，但没有漏检/误报的测量 |
 
 ## 局限
 

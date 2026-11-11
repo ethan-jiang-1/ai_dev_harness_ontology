@@ -119,9 +119,9 @@ open-ontologies diff old.ttl new.ttl → OntologyService::diff → JSON
 
 | digest | 论文机制 | 代码里对应 | 缺什么 / 差异 |
 |---|---|---|---|
-| [What Does an Ontology Catch](../../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) | 本体当 checker；catch/FA 是核心 | SHACL 求值器 + W3C ratchet；**第三态 undetermined** | 没有 catch/FA 测量；没有真实错误分布 |
-| [Commit Boundary](../../../src/papers/2610.37407-commit-boundary/digest.md) | 落盘前授权；证据≠授权 | `closure_diff` 报告影响面 + exit code | 报告不是授权；没有 promotion/scope 语义 |
-| [SFE-O](../../../src/papers/2610.37123-sfe-o/digest.md) | 约束「未落 SHACL 只是文档」 | 这里 SHACL 真的被求值（两条路径） | 但本次没跑起来，不能当「已证」 |
+| [What Does an Ontology Catch](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809) | 本体当 checker；catch/FA 是核心 | SHACL 求值器 + W3C ratchet；**第三态 undetermined** | 没有 catch/FA 测量；没有真实错误分布 |
+| [Commit Boundary](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37407) | 落盘前授权；证据≠授权 | `closure_diff` 报告影响面 + exit code | 报告不是授权；没有 promotion/scope 语义 |
+| [SFE-O](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123) | 约束「未落 SHACL 只是文档」 | 这里 SHACL 真的被求值（两条路径） | 但本次没跑起来，不能当「已证」 |
 
 **一句话**：它最值得带走的是**证据工程**：把「没检查完」做成独立状态、把指标的 gaming direction 写进 payload、把「verified」限定在定理覆盖的范围内。这些是 checker 类工作可以借鉴的，与它跑不跑起来无关。
 

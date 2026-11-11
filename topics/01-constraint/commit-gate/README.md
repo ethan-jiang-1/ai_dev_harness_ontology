@@ -38,7 +38,7 @@ evidence: []
 | 七条判断的证据/边界 | [findings](./findings.md) |
 | 10 条读路径用例、第二实现评估 | [read-path](./read-path.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
-| 原始论文 | [Commit Boundary digest](../../../src/papers/2610.37407-commit-boundary/digest.md) |
+| 原始论文 | [Commit Boundary digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37407) |
 
 ## 边界
 

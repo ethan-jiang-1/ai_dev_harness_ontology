@@ -53,6 +53,18 @@ claim: <一句话>
 判不了: <缺哪个测试>
 ```
 
+**填好的例子（不是新判断，事实见 [claim 走查](./claim-walkthrough.md)）**：
+
+```text
+claim: 读路径过滤能防止敏感数据泄漏吗？
+位置: read-path（轴外，不在六位置强度谱）
+时刻: 检索返回前
+粒度: node / subject 侧（trustgraph 只删 subject）
+形态: engine（SHACL-AF 求值）
+异常: fail-open
+判不了: object 方向、第二实现、写授权未测 → 成立到「best-effort 可见性过滤」，不是授权
+```
+
 ## 3. 边界
 
 - **位置 ≠ 效应量**：放对位置不证明有用；效应量回 E-xx。

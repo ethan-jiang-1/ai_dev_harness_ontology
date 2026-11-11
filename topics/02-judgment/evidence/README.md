@@ -37,7 +37,7 @@ evidence: [E-03]
 | 何时别用（无 reasoner/SPARQL、超出覆盖、文本阅读/计算为主） | [mechanism · 何时别用](./mechanism.md) |
 | 八条判断的证据/数字 | [findings](./findings.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
-| 原始论文 | `src/papers/2610.36335-oa-rag/` · [digest](../../../src/papers/2610.36335-oa-rag/digest.md) |
+| 原始论文 | `src/papers/2610.36335-oa-rag/` · [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36335) |
 
 ## 边界
 

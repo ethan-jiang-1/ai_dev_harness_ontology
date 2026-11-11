@@ -23,14 +23,14 @@ parent: ../README.md
 
 | 你手上有什么 | 推导 | 产物 | 验收 | 模板 |
 |---|---|---|---|---|
-| 消费者、时刻、拒绝条件 | 契约 6 项 + 2 个决策（§6） | ① 消费者契约 | A1 | [T1](./templates.md#t1-契约) |
-| 表 / 列 / 标签清单 | 5 问 → 类 + 属性（§2） | ② TBox / ABox | A2–A3 | [T0](./templates.md#t0-表列清单) / [T2](./templates.md#t2-tbox-清单) / [T3](./templates.md#t3-属性与边清单) |
-| 「哪种数据错会让 CQ 静默错」 | 3 步 → shape + 负例（§4） | ③ shapes | A3–A4 | [T4](./templates.md#t4-shape-与负例) |
-| 契约的 `answers` | 4 步 → CQ（§3） | ④ 3 条 SPARQL | A5 / B1–B3 | [T1](./templates.md#t1-契约) |
-| 标签 + 等级 + 角色 | 5 步 → policy（§5） | ⑤ policy 表 | C1–C2 | [T5](./templates.md#t5-policy-表与测试) |
-| 每条规则 + 冲突/默认/skip | 用例表 | ⑥ 策略测试 | C2 | [T5](./templates.md#t5-policy-表与测试) |
+| 消费者、时刻、拒绝条件 | 契约 6 项 + 2 个决策（§6） | ① 消费者契约 | A1 | [TPL-1](./templates.md#tpl-1-契约) |
+| 表 / 列 / 标签清单 | 5 问 → 类 + 属性（§2） | ② TBox / ABox | A2–A3 | [TPL-0](./templates.md#tpl-0-表--列清单起点) / [TPL-2](./templates.md#tpl-2-tbox-清单) / [TPL-3](./templates.md#tpl-3-属性与边清单) |
+| 「哪种数据错会让 CQ 静默错」 | 3 步 → shape + 负例（§4） | ③ shapes | A3–A4 | [TPL-4](./templates.md#tpl-4-shape-与负例) |
+| 契约的 `answers` | 4 步 → CQ（§3） | ④ 3 条 SPARQL | A5 / B1–B3 | [TPL-1](./templates.md#tpl-1-契约) |
+| 标签 + 等级 + 角色 | 5 步 → policy（§5） | ⑤ policy 表 | C1–C2 | [TPL-5](./templates.md#tpl-5-policy-表与测试) |
+| 每条规则 + 冲突/默认/skip | 用例表 | ⑥ 策略测试 | C2 | [TPL-5](./templates.md#tpl-5-policy-表与测试) |
 | 查询面 / 表页面 / 聚合 / 版本 | 12 面 | ⑦ 泄漏用例 | C3 / C5 | [reference §5](./reference.md#5-读路径十条用例) |
-| 每个 decision | 最小单元 | ⑧ audit schema + 记录 | C4 | [T6](./templates.md#t6-audit-记录) |
+| 每个 decision | 最小单元 | ⑧ audit schema + 记录 | C4 | [TPL-6](./templates.md#tpl-6-audit-记录) |
 | 三段故障 | 10 类 × 3 段 | ⑨ 故障矩阵 | 骨架；未做注入实验 | [reference §7](./reference.md#7-故障矩阵10-类--3-段) |
 
 > `build_report` 是 A.5 的内联样例，不单独成文件；所以是「九件产物」，不是十件。
@@ -195,9 +195,9 @@ shape 不是「给本体加约束」，是「哪种数据错会让这条 CQ 静�
 | **3 策略 / 审计** | 检查点 2 | policy 表 + 测试（fixture 8/11）+ audit schema + 3 条记录 | 10/11 有唯一期望；T9 显式；object 探针 | object 泄漏未修 → conditional | 1 周 |
 | **4 验收** | 检查点 3 | 5 组门槛 + 验收记录 | 5 组全过，或明确 conditional | 缺一条 → 演示/conditional | 0.5–1 天 |
 
-> 成本工作纸见 [templates T9](./templates.md#t9-成本工作纸)；公式与敏感性见 [decision §2.5](./decision.md)。
+> 成本工作纸见 [templates TPL-9](./templates.md#tpl-9-成本工作纸)；公式与敏感性见 [decision §2.5](./decision.md)。
 
-**如果只有半天**：只做检查点 0 的契约草稿 + [T0](./templates.md#t0-表列清单) 清单，不要建 TBox。
+**如果只有半天**：只做检查点 0 的契约草稿 + [TPL-0](./templates.md#tpl-0-表--列清单起点) 清单，不要建 TBox。
 **如果只有两天**：加 3 条 CQ 草稿与 raw 验证；TBox 从 5 个类开始，不要照抄 11 类。
 **如果已经有一个能用的执行层**：从检查点 3 开始；但契约与 TBox 仍要补，否则 policy 没有主语。
 

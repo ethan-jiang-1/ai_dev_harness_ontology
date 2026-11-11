@@ -122,8 +122,8 @@ r = engine.validate_graph(data, shacl=shacl)
 
 | digest | 论文机制 | 代码里对应 | 缺什么 / 差异 |
 |---|---|---|---|
-| [OntoDoc](../../../src/papers/2611.01276-ontodoc/digest.md) | 先写 assumptions 再生成描述；生成物只到说明 | 有 `from_data` / `from_text` 生成路径 + OWL 导出 | 生成质量未测；没有 assumptions 步骤 |
-| [What Does an Ontology Catch](../../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) | 本体当 checker；漏检/误报是核心指标 | 有 checker 执行器（pyshacl）+ 派生 shapes | 没有 catch/FA 测量；没有真实错误分布 |
+| [OntoDoc](../../../meta/audits/2026-11-11-source-purge.md#src-2611-01276) | 先写 assumptions 再生成描述；生成物只到说明 | 有 `from_data` / `from_text` 生成路径 + OWL 导出 | 生成质量未测；没有 assumptions 步骤 |
+| [What Does an Ontology Catch](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809) | 本体当 checker；漏检/误报是核心指标 | 有 checker 执行器（pyshacl）+ 派生 shapes | 没有 catch/FA 测量；没有真实错误分布 |
 | [生成 subtopic 的判断](../../../topics/05-produce/generation/README.md) | 「四篇都没有交付下游能直接消费的本体；可消费性没测」 | **代码侧提供了消费路径**：ontology → SHACL → 校验 | 只证明管线能跑，不证明生成物可消费；不能反推论文 |
 
 **一句话**：它把「本体 → 可执行约束」这段路修通了，但没有测「修出来的约束对不对」。

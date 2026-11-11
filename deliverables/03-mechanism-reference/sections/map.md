@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -16,7 +16,7 @@ parent: ../README.md
 
 | 标记 | 含义 | 例子 | 要求 |
 |---|---|---|---|
-| **E** | 证据条目，来自 [conclusions](../../../topics/conclusions.md)；等级看原表 | E-04、E-20；E-19 是 `推测` | 必须链 conclusions；写清等级与限定 |
+| **E** | 证据条目，来自 [conclusions](../../../topics/conclusions.md)；等级看原表 | E-12、E-20；E-19 是 `推测` | 必须链 conclusions；写清等级与限定 |
 | **C** | 冲突/方法论条目 | C-03、C-04 | 不是证据等级；不合成结论 |
 | **H** | 组织假设 | 强度–覆盖率反向 | 必须写「什么会推翻它」 |
 | **D** | 设计提案/概念架构 | commit gate 三段式；覆盖率矩阵 | 必须写「无实现/未测」 |
@@ -64,9 +64,9 @@ parent: ../README.md
 |---|---|---|---|---|---|---|---|
 | context | 模型看到什么 | 投影/编译 | 否 | E-01/E-12/E-14 | token/编译 | 规则被执行 | [→](../positions/context.md) |
 | memory | 下一轮记得什么 | 状态/对齐 | 否 | E-05/E-17 | 维护/训练信号 | 跨运行确定性 | [→](../positions/memory.md) |
-| evidence | 产出带什么依据 | 证据契约 | 否 | E-03 | token/集成 | 形式保证 | [→](../positions/evidence.md) |
-| checker | 产出对不对 | 外部判据 | 是 | E-02/E-20 | 每条判定/维护 | 语义正确 | [→](../positions/checker.md) |
-| action | 动作能不能做 | 可逆性/条件 | 是 | E-04/E-13/E-15/E-16 | 审批/误拦 | 结构有效/安全 | [→](../positions/action.md) |
+| evidence | 产出带什么依据 | 证据契约 | 否 | E-03 撤回 → **gap** | token/集成 | 形式保证 | [→](../positions/evidence.md) |
+| checker | 产出对不对 | 外部判据 | 是 | E-02 撤回；E-20 代码级 | 每条判定/维护 | 语义正确 | [→](../positions/checker.md) |
+| action | 动作能不能做 | 可逆性/条件 | 是 | E-04/E-13/E-16 撤回；E-15 参照 | 审批/误拦 | 结构有效/安全 | [→](../positions/action.md) |
 | commit | 证据够不够授权 | 授权判据 | 是（设计） | E-20 + gap | 无实现 | 已落地 | [→](../positions/commit.md) |
 
 > 这不是「六个都该做」；是「六个位置问的问题不同」。选择规则见 [02 §2](../../02-engineering-playbook/sections/map.md#23-选位置六个时刻--四个轴外位置)。
@@ -83,7 +83,7 @@ parent: ../README.md
 位置      context   memory   evidence  checker  action  commit
 ```
 
-**这是组织假设（H），不是 E。** 它把六位置排成一个「越强越窄」的次序，但没有被任何一条 E 直接测量；E-01/E-04 只作边界证据，不作证明。
+**这是组织假设（H），不是 E。** 它把六位置排成一个「越强越窄」的次序，但没有被任何一条 E 直接测量；E-01 只作边界证据，E-04 已撤回。
 
 #### 2.4.2 矩阵（D，操作定义）
 

@@ -16,18 +16,18 @@
 
 | 机制 | 建设 | 运行 | 维护/人审 | 盈亏平衡/边界 | 来源 |
 |---|---|---|---|---|---|
-| 01 动作闸门（POLAR） | 每域本体（T1–T5、curator 权重） | 每次候选调用反向搜索；轻量 | 阈值校准；false-veto 未测 | 收益随基线能力下降（六点描述性拟合，不是部署阈值）；T1-only ≈ blanket veto | [POLAR](../../../src/papers/2610.08082-polar/digest.md) |
+| 01 动作闸门（POLAR） | 每域本体（T1–T5、curator 权重） | 每次候选调用反向搜索；轻量 | 阈值校准；false-veto 未测 | 收益随基线能力下降（六点描述性拟合，不是部署阈值）；T1-only ≈ blanket veto | [POLAR](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) |
 | 01 多模式分配（CASEL） | per-tool consequence 元数据；sandbox/approval | 每次 `p̂ĉ` + J(m) | 审批 8.7–13.8%（模拟，主表 τ=∞）；γ_m 假设 | harm–approval–cost 前沿；不是最低 HSR | [CASEL](../../../src/papers/2610.36570-casel/digest.md) |
-| 01 推理闸门（OntoAct） | ontology schema + 世界知识构造 | 每次条件求值 + LLM 提议 | schema/记录维护；构造 token 另算 | 三值条件；固定 schema；模拟 | [OntoAct](../../../src/papers/2610.21983-ontoact/digest.md) |
-| 02 checker（Ontology Catch） | curated/data-derived/LLM 本体 | curated 66k tokens/46s；data 28k/17s（每被 flag 的答案，不是每答案） | 审计；false alarm 重试 | 必须先超过空结果重试基线 | [Catch](../../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) |
-| 02 证据契约（OA-RAG） | concept cards + reasoner + SPARQL | 5.8 calls/9.7k tokens（Test 3） | grounding 校准；本体维护 | 同 8k 预算下 84.9% vs 66.7% | [OA-RAG](../../../src/papers/2610.36335-oa-rag/digest.md) |
+| 01 推理闸门（OntoAct） | ontology schema + 世界知识构造 | 每次条件求值 + LLM 提议 | schema/记录维护；构造 token 另算 | 三值条件；固定 schema；模拟 | [OntoAct](../../../meta/audits/2026-11-11-source-purge.md#src-2610-21983) |
+| 02 checker（Ontology Catch） | curated/data-derived/LLM 本体 | curated 66k tokens/46s；data 28k/17s（每被 flag 的答案，不是每答案） | 审计；false alarm 重试 | 必须先超过空结果重试基线 | [Catch](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809) |
+| 02 证据契约（OA-RAG） | concept cards + reasoner + SPARQL | 5.8 calls/9.7k tokens（Test 3） | grounding 校准；本体维护 | 同 8k 预算下 84.9% vs 66.7% | [OA-RAG](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36335) |
 | 03 投影（N&D） | 塔 + 投影（45k 字符） | prompt token；9B 可跑 | 投影/知识节点维护 | 答案在文本里才有效；9B+投影 > 750B 不带 | [N&D](../../../src/papers/2610.11768-narrow-and-deep/digest.md) |
 | 03 编译（CAI） | 编译成本 `c`（query-equivalent） | 条件性 −91%/+1.9%；平均 −38% | 增量重抽；时延约 3×（7 题配对） | `p_h > 2% + c/(0.929Q)` | [CAI](../../../src/papers/2610.41172-context-as-infrastructure/digest.md) |
 | 04 记忆（FIRME） | registry/alias + 本体 | 每次匹配/更新 | false merge 污染；人审 | alias +7.8–12.1 pp CMR；token −7.2% | [FIRME](../../../src/papers/2610.40482-firme/digest.md) |
 | 04 状态（EvoMemState） | 本体 + GRPO 训练 | 检索/遍历 + policy | 训练信号；多模态未测 | Acc@complete +11.5/+31.2 | [EvoMem](../../../src/papers/2611.03743-evomemstate/digest.md) |
-| 05 生成（OntoDoc） | 4 阶段 pipeline | 每 IRI 多次 LLM/检索 | 人审；假设层信息损失 | completeness 3.43→3.84；无下游 | [OntoDoc](../../../src/papers/2611.01276-ontodoc/digest.md) |
+| 05 生成（OntoDoc） | 4 阶段 pipeline | 每 IRI 多次 LLM/检索 | 人审；假设层信息损失 | completeness 3.43→3.84；无下游 | [OntoDoc](../../../meta/audits/2026-11-11-source-purge.md#src-2611-01276) |
 | 05 精化（CASTON） | 微调 embedding | 30×10 候选 + LLM | 专家审；medium 接受 0/2（default）、1/4（pretrained）、1/5（GPT-4o mini） | high 6/6；pretrained 57.1% | [CASTON](../../../src/papers/2610.21466-caston-refinement/digest.md) |
-| 证据 + solver（Grid） | 法规语料 + 领域工具 + solver | 每次研究；13.9 s | 人签核；法规更新 | 99.9% vs base 40.8%；optimizer −33–67% | [Grid](../../../src/papers/2611.03534-power-system-agentic/digest.md) |
+| 证据 + solver（Grid） | 法规语料 + 领域工具 + solver | 每次研究；13.9 s | 人签核；法规更新 | 99.9% vs base 40.8%；optimizer −33–67% | [Grid](../../../meta/audits/2026-11-11-source-purge.md#src-2611-03534) |
 
 ## 三个可算的盈亏平衡
 
@@ -96,7 +96,7 @@
 ### 组织/成本
 
 - **owner 三缺一即失效**（`推测`）：平台/评测 owner 拥有账本与单价表（本页交付物）；域 owner 拥有本体/投影与 curator 权重；财务/风控提供事故成本与审批人时口径。缺第三项，E4 退化成公式。
-- **人日**（全为 `推测`）：动作本体（POLAR Layer A）每域 2–5 curator 人日，接真实状态投影（Layer B）1–2 人周（[POLAR digest](../../../src/papers/2610.08082-polar/digest.md) §6.5 的估算，论文未测）；控制器 + 校准 + `c_base` 审计 + sandbox/审批集成 2–4 人周（[CASEL digest](../../../src/papers/2610.36570-casel/digest.md) §6.5 的估算）；账本 + 单价表 3–5 人日（本页首次提出，无出处）。三档不能相加当 TCO——它们分属不同 owner，且都只有量级精度。
+- **人日**（全为 `推测`）：动作本体（POLAR Layer A）每域 2–5 curator 人日，接真实状态投影（Layer B）1–2 人周（[POLAR digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) §6.5 的估算，论文未测）；控制器 + 校准 + `c_base` 审计 + sandbox/审批集成 2–4 人周（[CASEL digest](../../../src/papers/2610.36570-casel/digest.md) §6.5 的估算）；账本 + 单价表 3–5 人日（本页首次提出，无出处）。三档不能相加当 TCO——它们分属不同 owner，且都只有量级精度。
 - **运行**：编译一次性 `c` + 每次查询条件性变化（hit −91% / miss +1.9%）；证据替换的配对子集时延约 3×（46.7 s → 140 s，**仅 7 题**，不是 N=200 的时延）。
 - **人审**：审批 8.7%（CASEL，模拟，τ=∞）到 13.8%（Consequence-Menu）——是各臂比例，不是同一机制的区间；每次审批的真实人时未测（G2/G3）——没有本人群实测前，NPV 里只能放区间敏感性，不能放点估计。
 - **维护**：增量重抽、`c_base`/`γ_m` 重标、本体修订；G3 未关，按季度复盘人时并录入账本。

@@ -100,3 +100,5 @@ artifact: {kind: ontology|projection|shapes|policy|prompt|model|registry,
 5. **把 advisory 当 enforce。** 建议不被执行，不等于机制有效。
 
 **出处**：[action-gate 机制](../../../topics/01-constraint/action-gate/mechanism.md) · [commit-gate 机制](../../../topics/01-constraint/commit-gate/mechanism.md) · [06/feasibility](../../../topics/06-measure/feasibility/mechanism.md)
+
+> 回 [02 目录](../README.md) ｜ 回 [账本](./ledger.md)

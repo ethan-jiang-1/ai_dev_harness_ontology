@@ -209,7 +209,7 @@ topics 现有的三件套回答的是「这篇说了什么」：
 - **产物**：10 条用例 × 2 实现矩阵；最小可移植策略；修法清单（已测 / 未测）。
 - **验收**：第二实现 pin commit + `file:symbol`；10 条有期望；≥1 条修法有代码锚；不把「有实现」当「安全」。
 - **服务**：C3 / C4。
-- **来源**：N4 第二实现；`AuthorizationPairs`（[2610.16838](../../src/papers/2610.16838-same-operation-different-permission/digest.md)，已有）作合法/禁止样本；trustgraph 已有。
+- **来源**：N4 第二实现；`AuthorizationPairs`（[2610.16838](../../meta/audits/2026-11-11-source-purge.md#src-2610-16838)，已有）作合法/禁止样本；trustgraph 已有。
 - **等级**：`已核（代码）`，不外推。
 
 ### T5 输出校验
@@ -266,10 +266,10 @@ topics 现有的三件套回答的是「这篇说了什么」：
 
 | 已有资产 | 里面有什么 | 现在用在哪 | 还能填哪格 |
 |---|---|---|---|
-| [AuthorizationPairs 2610.16838](../../src/papers/2610.16838-same-operation-different-permission/digest.md) | 80 lawful / 80 forbidden、同操作不同权限 | 01 的 P0 扫描；04 未用 | C3/C4 的「合法/禁止」测试样本 |
+| [AuthorizationPairs 2610.16838](../../meta/audits/2026-11-11-source-purge.md#src-2610-16838) | 80 lawful / 80 forbidden、同操作不同权限 | 01 的 P0 扫描；04 未用 | C3/C4 的「合法/禁止」测试样本 |
 | [Glyph 2609.10430](../../src/papers/2609.10430-glyph/digest.md) | 275-leaf 分类本体、列级标签、约 72% NON_SENSITIVE | C.1 标签层（E-22） | C1 的「标签→level」类别表 |
 | [E-06 Diagnose](../../topics/06-measure/failure-attribution/README.md) | 五角色 + 七变量、工作流失败 | 04 的边界一句话 | D1 的失败目录骨架 |
-| [DBLP-QuAD 3.1（NLKGQ）](../../src/papers/2609.14652-nlkgq/digest.md) | 1,000 题、确定性参考、Match/Exact | B.1/B.2 | B1 矩阵的「问题量/指标」列 |
+| [DBLP-QuAD 3.1（NLKGQ）](../../meta/audits/2026-11-11-source-purge.md#src-2609-14652) | 1,000 题、确定性参考、Match/Exact | B.1/B.2 | B1 矩阵的「问题量/指标」列 |
 | [Ontop](../../src/open-source/ontop-ontop/digest.md) | TBox 饱和 + SPARQL→SQL、最小命令 | B.4 一句 | B4 消融协议 + 成本量级 |
 
 ### 4.1 三条准入（现有规则 + 两条修正）

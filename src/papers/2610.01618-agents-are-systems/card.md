@@ -19,6 +19,12 @@ updates:
   - topics/06-measure/claims.md
   - topics/06-measure/sources.md
   - topics/conclusions.md
+published: 2026-10
+admission: admitted (probation)
+gate_checked: 2026-11-11
+impact_evidence: "I2: TUM + Helmholtz + Inria"
+liveness: arXiv 2026-10
+provenance_type: academic
 ---
 
 # Agents Are Systems, Not Models: Rethinking Agentic Evaluation · 来源卡

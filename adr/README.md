@@ -19,5 +19,6 @@ updated: 2026-11-10
 | [0008](./0008-thin-subtopics-merge-audit.md) | 薄子主题合并审计 | 15 个薄页本轮不合并；给出门槛与下轮复核点 |
 | [0009](./0009-object-layer.md) | 证据对象层（O-xx） | 交付物可引 O 作地址、主句仍落 E；**已接受（方案 A）** |
 | [0010](./0010-three-layer-information-flow.md) | 三层信息流 | `src` 给 Agent 干货、`topics` 给 Agent+人判断、`deliverables` 给人成品；主路径自包含 |
+| [0011](./0011-source-standing-and-term-baseline.md) | 源位阶与术语基线 | `normative` 定词、`informative` 佐证；术语定义不许引资料性源 |
 
 **新增 ADR 的判据**：改变目录/层级/字段契约，或引入新的源类型/验证方式。只改内容判断，不写 ADR。

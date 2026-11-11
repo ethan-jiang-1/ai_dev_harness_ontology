@@ -20,6 +20,12 @@ updates:
   - topics/04-state/claims.md
   - topics/04-state/sources.md
   - topics/conclusions.md
+published: 2026-10
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I3: Vanguard production data; company exception"
+liveness: arXiv 2026-10
+provenance_type: company
 ---
 
 # FIRME: Registry-Anchored Memory Graphs for Evolving, Heterogeneous Investor Knowledge · 来源卡

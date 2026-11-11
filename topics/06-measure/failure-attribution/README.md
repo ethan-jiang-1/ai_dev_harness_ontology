@@ -36,7 +36,7 @@ evidence: [E-06]
 | 四条判断的证据/边界 | [findings](./findings.md) F1–F4 |
 | 映射失败/候选截断/Top-1·Top-3 与 case-level | [findings](./findings.md) F5–F7；[mechanism](./mechanism.md) 的「数据/接口」「客户指标」 |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
-| 原始论文 | [Diagnose digest](../../../src/papers/2610.35267-diagnose-workflow/digest.md) · [Multi-agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md) |
+| 原始论文 | [Diagnose digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-35267) · [Multi-agent digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36325) |
 
 > 编号沿用 [digest ledger](../../../meta/archive/2026-11/full-audit/digest-ledger.md)：D-11 = Diagnose，D-15 = Multi-agent。
 

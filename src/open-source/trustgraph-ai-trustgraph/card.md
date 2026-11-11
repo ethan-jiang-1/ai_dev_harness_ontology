@@ -20,6 +20,11 @@ home: topics/01-constraint
 subtopic:
 also_supports: []
 updates: []
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I2+I3: 30 contributors, 1603 commits, 2902 stars"
+liveness: last_push 2026-11-08
+provenance_type: company
 ---
 
 # trustgraph-ai/trustgraph · 来源卡
@@ -59,8 +64,8 @@ AI governance platform for agents；本体有两个用途——抽取阶段的�
 
 | 论文 digest | 机制 | 这里对应 / 缺失 |
 |---|---|---|
-| [Commit Boundary](../../papers/2610.37407-commit-boundary/digest.md) | 授权判据：可推理 ≠ 可授权 | 读路径的可见性判定；写路径的 commit gate 未定位（待核） |
-| [POLAR](../../papers/2610.08082-polar/digest.md) | 动作执行前按本体剪枝 | 形态不同：这里过滤查询结果，不是剪动作 |
+| [Commit Boundary](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37407) | 授权判据：可推理 ≠ 可授权 | 读路径的可见性判定；写路径的 commit gate 未定位（待核） |
+| [POLAR](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) | 动作执行前按本体剪枝 | 形态不同：这里过滤查询结果，不是剪动作 |
 
 ## 局限
 

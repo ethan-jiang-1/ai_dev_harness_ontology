@@ -34,7 +34,7 @@ evidence: [E-04, E-13, E-15]
 | 接口/参数/标注协议/成本公式/替代方案/stop 与客户指标 | [mechanism](./mechanism.md) 的「工程发现 1–4」 |
 | 每条判断的证据/数字/条件 | [findings](./findings.md) |
 | 还缺什么、下一步看什么 | [frontier](./frontier.md) |
-| POLAR 原卡 | `src/papers/2610.08082-polar/card.md` · [digest](../../../src/papers/2610.08082-polar/digest.md) |
+| POLAR 原卡 | `src/papers/2610.08082-polar/card.md` · [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) |
 | CASEL 原卡 | `src/papers/2610.36570-casel/card.md` · [digest](../../../src/papers/2610.36570-casel/digest.md) |
 
 ## 边界

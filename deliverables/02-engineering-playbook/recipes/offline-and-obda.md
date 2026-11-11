@@ -216,3 +216,5 @@ CLI: ontop query -m mapping.ttl -t ontology.ttl -q query.rq -p db.properties
 - 只抄「TBox 饱和 + 查询重写」的接口与边界；不要抄「本体有效果」。
 
 **出处**：[execution-forms 代码核对](../../../topics/execution-forms.md#代码级核对2026-11-09) · [semantica digest](../../../src/open-source/semantica-agi-semantica/digest.md) · [open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md) · [ontop digest](../../../src/open-source/ontop-ontop/digest.md)
+
+> 回 [recipes 索引](./README.md) ｜ 回 [02 目录](../README.md)

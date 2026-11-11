@@ -75,6 +75,6 @@ main_level: 推测
 | schema/SHACL/外部服务/成本/stop/sprint 怎么落 | [mechanism](./mechanism.md) |
 | 建模规范如何压缩自由度 | [modeling](./modeling.md) |
 | 可消费性三关、三档×四位置矩阵、10 个坏样本 | [consumability](./consumability.md) |
-| SFE-O 原文消化 | [digest](../../../src/papers/2610.37123-sfe-o/digest.md) · [card](../../../src/papers/2610.37123-sfe-o/card.md) |
+| SFE-O 原文消化 | [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123) · [card](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123) |
 | 派级前沿/候选 | [05 frontier](../frontier.md) |
 | 相邻子主题 | [generation](../generation/README.md) · [refinement](../refinement/README.md) · [lifecycle](../lifecycle/README.md) |

@@ -5,9 +5,11 @@ parent: ../README.md
 note: filled sample for reading, not a run record
 ---
 
-# 附录 D · 一份填好的产物包（R4 证据契约）
+# 附录 D · 一份填好的产物包（R4 证据契约；历史模板）
 
-> **这是什么**：把 [R4](../recipes/judgment.md#r4--输出证据契约让答案带依据和接地等级) 的十个字段，用 [case](./case.md) 的冷却水场景填一遍，让你看到「做完长什么样」。
+> **2026-11-11 证据重置**：R4 的原锚 E-03 已撤回；本包只作“字段怎么填”的历史模板，不再表示 R4 可执行/可验收。表中 `已核` 只表示该值在旧 R4 示例里出现过，**不是当前 admitted 证据**。
+>
+> **这是什么**：把 [R4](../recipes/judgment.md#r4--输出证据契约让答案带依据和接地等级) 的十个字段，用 [case](./case.md) 的冷却水场景填一遍，让你看到「字段长什么样」。
 >
 > **不是什么**：不是运行记录，不是客户案例，不是效果证明。每个值都标了 `已核` / `推测` / `untested`；标 `untested` 的格子就是你要在自己的域里补的。
 >
@@ -104,7 +106,7 @@ snapshot=2026-11-11, notes="R4 样例；latency 未测"
 | 字段 | 本场景 | 等级 |
 |---|---|---|
 | `hit/miss` | `hit`（有观察） | `untested` |
-| `tokens` | 9.7k（**总** tokens；R4 的 Qwen Test 3 均值，generated 未单列） | `已核`（E-03） |
+| `tokens` | 9.7k（**总** tokens；R4 的 Qwen Test 3 均值，generated 未单列） | `历史`（E-03 撤回） |
 | `latency` | `untested` | `untested` |
 | `citations` | 3 | `untested` |
 | `span_coverage` | 0.92 | `untested` |
@@ -120,7 +122,7 @@ snapshot=2026-11-11, notes="R4 样例；latency 未测"
 | 引用率 | `untested` | <85% | 工程建议 | 只做提示，不自动放行 |
 | 净修复 | 不适用（R4 不做修复） | — | — | — |
 | grounding 校准 | 未做 | 未校准 → 不自动路由 | R4 校准协议 | 只做排序/人工分流 |
-| 预算 | 5.8 calls / 9.7k **总** tokens（generated 未单列） | >5,000 **generated** tokens / >10 actions | R4 | 口径不同，不能直接判；先记 total，下一轮单列 generated |
+| 预算 | 5.8 calls / 9.7k **总** tokens（**历史**，E-03 撤回） | >5,000 **generated** tokens / >10 actions | R4 历史 | 口径不同；新源前不设门槛 |
 
 **结论**：本场景的 R4 只能到 `shadow + 人工分流`；`citation correctness` 没有 recipe，见 [R5 的 judge 分支](../recipes/judgment.md#r5--输出后-checker先超过空结果重试)（40 修好/83 修坏，净修复为负）。
 

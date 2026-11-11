@@ -4,11 +4,14 @@ source_type: blog       # blog | engineering | standard | talk | survey | paper
 reading: 未读           # 未读 | 综述级 | 摘要级 | 精读 | 已消化
 provenance: 未核        # 原文正文 | 原文摘要 | 综述转述 | 未核
 updated: YYYY-MM-DD
-batch:                  # 补给 = 2026-07-01 后新入档；历史卡可空
+admission: signal       # admitted | admitted (probation) | signal | excluded（CHARTER §4）
+gate_checked: YYYY-MM-DD
+liveness:               # G2：最近一次讨论/版本/采用
+impact_evidence: ""     # G3：I1..I5 逐条；admitted 至少两条
+provenance_type: individual # standard-body | academic | foundation | community | company | individual
 source:                 # 同目录原文或 URL
 author:
-published:              # 首次发表；补给批必须 ≥ 2026-07-01
-influence:              # 2026 影响力证据：HN points/comments、Reddit upvotes、引用/采用
+published:              # G1：首次发表 ≥ 2026-06-01
 updates: []             # 本卡修正后需要回改的 topics 文档
 ---
 

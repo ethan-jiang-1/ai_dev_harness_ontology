@@ -39,7 +39,7 @@ evidence: [E-02]
 | 每条判断的证据/数字/条件 | [findings](./findings.md) |
 | 结果对象校验（六类 + 三态 + fixture 检查） | [output-validation](./output-validation.md) |
 | 还缺什么、下一步看什么 | [frontier](./frontier.md) |
-| 原始论文 | `src/papers/2610.37809-what-does-an-ontology-catch/` · [digest](../../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) |
+| 原始论文 | `src/papers/2610.37809-what-does-an-ontology-catch/` · [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809) |
 
 ## 边界
 

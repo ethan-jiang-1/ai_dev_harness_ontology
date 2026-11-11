@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 basis: E-02/E-03/E-20；evidence & checker mechanism
 ---
@@ -22,6 +22,8 @@ basis: E-02/E-03/E-20；evidence & checker mechanism
 ---
 
 ## R4 · 输出证据契约：让答案带依据和接地等级
+
+> **2026-11-11 证据重置**：原锚 **E-03 已撤回**；R4 转 **gap / 待新源**。以下机制描述与旧数字只作回查，不再作为“可执行配方”的依据。能力判定见 [01 map §2.2b](../../01-capability-status/sections/map.md#22b-gap待新源4-行)。
 
 ### 目标
 
@@ -61,7 +63,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 **concept card 字段**：`iri, label, definition, parents[], children[], relations[], comments[], source`；单卡截断 1–2k 字符。
 
-**预算**：≤10 tool actions；≤5,000 generated tokens（Answer Step 2 另 512）；实测均值 5.8 calls / 9.7k tokens（Qwen Test 3），不是上限。
+**预算**：旧协议（≤10 tool actions、≤5,000 generated tokens、实测 5.8 calls / 9.7k tokens）随 E-03 撤回，只作历史；重启 R4 先找新源，不沿用旧预算当门槛。
 
 ### 做法
 
@@ -87,11 +89,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 ### 证据
 
-- 三个大本体、六个医学 QA、2 backbone：平均 **50.5%/68.1%**；Tests 1–2 **+10–15pp**；Test 3 同 8k 预算 **84.9% vs 66.7%**；9.7k vs 96.7k tokens/问（E-03）。
-- grounding 分布：entailed+supported 70.0%/53.2%；unrelated 0.2%/7.8%；部分答案无 grounding（E=∅）。
-- Qwen Test 3：entailed 94.9% 正确、supported 82.1% 正确；这是切片，不是校准曲线。
-- 检索是主瓶颈：gold evidence 完整检索 MCQ 61.7% vs OQ 23.6%。
-- 不是单一变量：concept card、ReAct、fallback、answering step 都在变；去掉 answering step 平均掉 2.9–5.8 点。
+**原锚 E-03 已撤回；R4 现在没有 admitted 来源。** 旧数字（平均 50.5%/68.1%、+10–15pp、9.7k tokens 等）只保留在历史底稿，不再作为 R4 的证据。要重启 R4，先找能复算 grounding 等级/校准的新源；在那之前不设门槛、不做自动路由。
 
 ### 成本
 
@@ -99,7 +97,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 |---|---|---|
 | concept card 生成 | 1–2 人日/本体 | 推测 |
 | reasoner/SPARQL 集成 | 1–2 人周 | 推测 |
-| 运行 | 5.8 calls / 9.7k tokens 每问（Qwen Test 3） | 已核（观测） |
+| 运行 | 5.8 calls / 9.7k tokens（Qwen Test 3） | **历史**（E-03 撤回） |
 | 校准标注 | 100–200/等级；人日未测 | 推测 |
 
 ### 验收 / 停
@@ -125,7 +123,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 > R4 只测「有没有引用」；不测「引用是否支持结论」。这一节是边界 + 最小协议，**不是新 E**。
 >
-> 外部依据：[ALCE 卡](../../../src/web/alce/alce.card.md)（EMNLP 2023）；AIS 的「According to P, s」判定式与 AttributionBench 的「自动判官约 80% macro-F1 上限」作对照（转述，待核）。
+> 外部依据：[ALCE 卡](../../../meta/audits/2026-11-11-source-purge.md#src-web-alce)（EMNLP 2023）；AIS 的「According to P, s」判定式与 AttributionBench 的「自动判官约 80% macro-F1 上限」作对照（转述，待核）。
 
 - **两个概念**：citation presence（答案带 observations/span）≠ citation correctness（引用支持结论）。R4 的「引用率 ≥85%」是前者。
 - **判 P，不判真**：把句子还原成去语境的独立命题（补代词/时间/指代）；问「According to P, s 是否成立」，而不是「s 对不对」。
@@ -146,11 +144,13 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 ## R5 · 输出后 checker：先超过空结果重试
 
+> **2026-11-11 证据重置**：原锚 **E-02 已撤回**；R5 转 **gap / 待新源**。以下机制描述与旧 catch/FA、空结果重试数字只作回查，不再作为“可执行配方”的依据。能力判定见 [01 map §2.2b](../../01-capability-status/sections/map.md#22b-gap待新源4-行)。
+
 ### 目标
 
 用本体当外部判据，查出**结构/声明/模式**错误；把「通过/违反/没检查完」三态显式化。
 
-> **机制（D1）**：checker 把答案/查询送进 reasoner 或 SPARQL，检查类型/声明/domain-range；它只能判「结构上说不通」，判不了「意义变了」（语义错 0%）。空结果重试是更强的基线（见证据表）；curated precision 只略优于随机。**条件**：有声明/闭世界；**反例**：语义错为主时越查越误；**决策**：先建空结果基线，再谈 checker。
+> **机制（L1）**：checker 把答案/查询送进 reasoner 或 SPARQL，检查类型/声明/domain-range；它只能判「结构上说不通」，判不了「意义变了」。**原锚 E-02 已撤回**：旧空结果重试基线、curated precision 等数字停用。**条件**：有声明/闭世界；**反例**：语义错为主时越查越误；**决策**：先找新源，再谈 checker。
 
 ### 适用 / 不适用
 
@@ -180,20 +180,18 @@ output: {verdict: pass|flag|unknown,
          constraint_id, query_fragment, message, evidence}
 ```
 
+`data_summary` = 可用的数据摘要（表/列/范围/空值/样例），**不是全量数据**；用于判断 checker 有没有足够事实判。
+
 **三态不可折叠**：`unknown` 不阻断，也不能并进 `pass`；否则 catch/FA 的分母被污染（checker F7）。
 
 ### 做法
 
-1. **先建空结果重试基线**：查询空就重试，不需要本体；人工 fault 上 catch 79.2%、FA 0%（E-02）。
-2. **只有能抓「有结果但答错」的增量，才建 checker**；增量 <5pp 不建。
-3. **选来源**：
-   - data-derived：FA 低（3.5%）、catch 低（8.2%）；适合先上。
-   - curated：catch 高（18.9%）、FA 高（16.8%）；先审计/补声明。
-   - masked LLM：不稳定；不要当默认。
-   - **不要盲目组合**：curated+data-derived 的 catch 只多 0.6pp、FA 多 1.0pp（F4）。
-4. **200 题回放**：报 catch / FA / precision / per-1k cost；人工抽 50 条。
-5. **三态显式化**：pass/flag/unknown；unknown 不阻断。
-6. **feedback 默认 generic**：specific 修复 28.3% 但 corrupt 1.0%；generic 20.2%/0.2%；未验证前先 generic（工程默认，不是安全结论）。
+1. **先找新源**：原锚 E-02 已撤回，旧空结果重试 79.2%/0%、curated 18.9%/16.8%、data-derived 8.2%/3.5% 都不能再用。
+2. **只有能抓「有结果但答错」的增量，才建 checker**；增量门槛要由新源/本域回放重定，不沿用旧 +5pp。
+3. **来源选择**：curated / data-derived / masked LLM 的偏向是机制假设（`推测`）；没有新源前不做默认推荐，也不盲目组合。
+4. **200 题回放**：报 catch / FA / precision / per-1k cost；人工抽 50 条；**这些是测量项，不是旧结论**。
+5. **三态显式化**：pass/flag/unknown；unknown 不阻断（E-20 的接口层面仍成立）。
+6. **feedback 默认 generic**：specific 可能修好也可能修坏；没有新源前先 generic（工程默认，不是安全结论）。
 
 ### LLM judge 分支（不是免费升级）
 
@@ -204,11 +202,8 @@ output: {verdict: pass|flag|unknown,
 
 ### 证据
 
-- curated 18.9/16.8；data-derived 8.2/3.5；masked LLM 5.0/1.8；空结果重试 2.5/0.1（真实答案，UniProt，3,383 可检查；E-02）。
-- precision（人工故障 + 25% 错答案假设）：curated 57.1、data-derived 72.3、LLM masked 93.7；**不能与真实答案口径拼接**。
-- curated precision 仅略优于同率随机（+1.6 点，CI −2.3~+6.3）。
-- 成本：curated **65,976 tokens / 46.0 s per flagged**；data-derived **28,076 / 17 s per flagged**；不是 per checked。
-- 空结果重试 catch 79.2%/FA 0% 是强基线；真实答案 catch 2.5%/FA 0.1%。
+**原锚 E-02 已撤回；R5 现在没有 admitted 来源。** 旧数字（curated/data-derived catch/FA、空结果重试 79.2%/0%、净修复等）只保留在历史底稿，不再作为 R5 的证据。要重启 R5，先找能复算 catch/FA/净修复的新源；空结果重试基线也要重新找锚。
+
 
 ### 成本
 

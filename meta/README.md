@@ -33,6 +33,8 @@ updated: 2026-11-11
 
 | 文件 | 作用 | 状态 |
 |---|---|---|
+| [term-baseline.md](./term-baseline.md) | ADR 0011 的术语差异表 v0（10 词）：origin/判定/动作 | 现行 v0（2026-11-11） |
+| [执行计划](../deliverables/_plans/README.md) | 核心计划、进度板、一页状态、术语/标准子计划 | 现行（2026-11-11） |
 | [open-source-digestion-plan.md](./open-source-digestion-plan.md) | 开源项目怎么吸收进 topics | 现行（2026-11-09） |
 | [open-source-absorption.md](./open-source-absorption.md) | 代码发现 → topics 的吸收矩阵 | 现行（2026-11-09） |
 

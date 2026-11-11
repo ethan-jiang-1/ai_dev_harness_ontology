@@ -90,7 +90,7 @@ CLI: ontop query -m ... -t ... -q ... -p ...
 Layer A: tool {name, args, mutating, slots[]}
          inverse_edge {tool, tier T1–T5, weight, loss_class, bound?, curator, status}
 Layer B: slot(entity_type, id) = value; state_hash
-output:  {decision: APPROVE|VETO|ESCALATE, phi, pi, bottleneck}
+output:  {decision: APPROVE|VETO|ESCALATE, phi, bottleneck}
 log:     {tool, entity, tier, phi, tau, decision, reason,
           trajectory_id, approval, rollback}
 ```
@@ -162,8 +162,10 @@ decision_point {decision_id, findings, citations, signer, timestamp}
 ## 8. 最容易错的四个接口
 
 1. **`conforms:null` vs `false`。** 前者是「没检查完」，不能当 pass；shell exit code 可能把两者折叠。
-2. **`p_h` vs `φ`。** `p_h` 是证据门放行率，不是答对率；φ 要另抽 accepted query。
+2. **`p_h` vs `err_rate`。** `p_h` 是证据门放行率，不是答对率；err_rate 要另抽 accepted query。
 3. **`approval` 没有 minutes。** 只记「批准了」算不出审批成本。
 4. **commit verdict 只有 status。** 没有 `failed_claims[]`/`unresolved[]`，defer 无法重入。
 
 **出处**：[execution-forms](../../../topics/execution-forms.md) · 各 R 的 mechanism 页 · E-20
+
+> 回 [02 目录](../README.md) ｜ 回 [追溯](./traceability.md)

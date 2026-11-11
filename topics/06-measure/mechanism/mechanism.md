@@ -57,7 +57,7 @@
 
 ## 实施与客户价值（A3/A4）
 
-> 读者是要决定「能不能因为模型答对，就撤掉外部判定器 / 减人审」的人。机制与数字来自 [MIOE digest](../../../src/papers/2610.38326-mioe/digest.md) §4/§5（一手是 Table 2/3）；接口字段、成本、人日、排期与客户收益来自 digest §6.2/§6.5/§6.6 的**工程配方或本页推定**；训练超参（epoch/batch/seed）来自 Appendix Table 4。配方不是论文实测：字段名、2 人周 / 1–3 GPU 天 / 2–3 人日等一律 `推测`，逐条标等级；分档路线的证据（G5）未关，试点前不进 [deliverables](../../../deliverables/README.md)。
+> 读者是要决定「能不能因为模型答对，就撤掉外部判定器 / 减人审」的人。机制与数字来自 [MIOE digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-38326) §4/§5（一手是 Table 2/3）；接口字段、成本、人日、排期与客户收益来自 digest §6.2/§6.5/§6.6 的**工程配方或本页推定**；训练超参（epoch/batch/seed）来自 Appendix Table 4。配方不是论文实测：字段名、2 人周 / 1–3 GPU 天 / 2–3 人日等一律 `推测`，逐条标等级；分档路线的证据（G5）未关，试点前不进 [deliverables](../../../deliverables/README.md)。
 
 ### 实施决策
 
@@ -162,6 +162,6 @@
 
 ## 关联
 
-- [MIOE digest](../../../src/papers/2610.38326-mioe/digest.md)
+- [MIOE digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-38326)
 - [findings](./findings.md) · [frontier](./frontier.md)
 - [metrics](../metrics/README.md)

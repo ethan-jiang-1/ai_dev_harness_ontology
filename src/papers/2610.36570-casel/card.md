@@ -19,6 +19,12 @@ updates:
   - topics/01-constraint/claims.md
   - topics/01-constraint/sources.md
   - topics/conclusions.md
+published: 2026-10
+admission: admitted (probation)
+gate_checked: 2026-11-11
+impact_evidence: "I2: CMU + Dartmouth"
+liveness: arXiv 2026-10
+provenance_type: academic
 ---
 
 # CASEL: Consequence-Aware Selective Execution for Reliable Long-Horizon Tool-Using Agents · 来源卡

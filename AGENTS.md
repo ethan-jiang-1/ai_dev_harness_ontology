@@ -60,9 +60,30 @@
 2. **区分一手与转述。** 读原文就引 `src/` 下的文件或 arXiv 编号；读综述就在卡片里写「转述自」并标 `待核`。**综述摘要不等于论文结论**——转述常丢限定条件，本仓库已因三处转述失真修正过结论。
 3. **反例与正例同权重。** 与结论冲突的证据照样入库，并在 conclusions 里保留冲突条目。
 
+## 素材准入（先过门，再建卡）
+
+任何新材料进 `src/` 前，先按 [CHARTER §4](./CHARTER.md#4-素材准入material-gate) 过五道门；**这是建卡的前置，不是建卡后的评分**。
+
+| 门 | 一分钟问法 | 卡上记什么 |
+|---|---|---|
+| G1 时效 | 首次公开 ≥ 2026-06-01？开源 `last_push` ≥ 2026-06-01？ | `published` / `last_push` |
+| G2 活跃 | 180 天内还有提交/版本/讨论/采用吗？ | `liveness` |
+| G3 影响 | 除作者外，至少两个独立信号？至少一个 I1–I3？ | `impact_evidence`（逐条列 I1–I5） |
+| G4 来源 | 组织/社区/标准，还是公司自证？公司过 §4.4 了吗？ | `provenance_type` |
+| G5 可核验 | URL + 日期 + 机构 + 版本/commit 齐吗？ | `source` / `commit` |
+
+- 五门全过 → `admission: admitted`，建 `card.md` / `digest.md`。
+- G1/G5 过、G2/G3 未证 → `admission: signal`，只写进 `frontier.md` 候选队列，**不建目录、不进 topics/deliverables**。
+- G1/G4/G5 失败 → `admission: excluded`，不建目录；已入库的移出，并在 `meta/audits/` 登记。
+- **没有 `impact_evidence` 的卡不算 admitted；`check_repo` 会查。**
+- 标准走 §4.4 的在役例外；公司生产报告走 §4.4 的窄例外，最高只作 `engineering` 证据。
+
+**回溯**：旧材料不豁免。审计窗口（2026-11-11 → 2026-12-11）内只做重判，不再拿旧材料开新判断；窗口结束按 [论文/旧网页审计](./meta/audits/2026-11-11-source-purge.md) 与 [新增材料审计](./meta/audits/2026-11-11-material-gate.md) 的判定执行。
+
 ## 写之后
 
 - 跑 `python3 meta/tools/check_repo.py`；失败不提交。
+- 新卡先填 `admission` / `gate_checked` / `impact_evidence` / `liveness`；不合格的不要用 `updates:` 洗白。
 - 问一句「这次动笔改变了哪条判断」：改了 → 先写本派 `claims.md`；跨派或进交付物才升 [conclusions](./topics/conclusions.md)；没改 → 只补来源。
 - 如果修正了旧判断，回改所有引用它的主题页，并在 `card.md` / `digest.md` 的 `updates:` 登记。
 - 更新被改文件的 `updated` 与 `status`，并在 [src 台账](./src/README.md) 记一笔。
@@ -79,6 +100,9 @@
 - 不把 `frontier.md` 写成第二篇综述——它只放「下一步做什么」，稳定判断回 `README.md`。
 - 不为候选建 `card.md` / `digest.md` 而没有「改变哪条判断」的理由。
 - 不把博客/工程观察当论文结论；一般性结论默认 `推测`。
+- 不为没有 `impact_evidence` 的材料建卡；不把公司自证、会议主 track、star/浏览当影响信号。
+- 不用“历史语料/已经引用过/作者是名校”给旧材料续命；质量或影响不达标，立即移出。
+- 不把 `signal` 写进 `claims.md` / 派 README / 交付物；它只配待在 `frontier.md` 候选队列。
 - 不按来源类型（papers/blogs）建子主题；子主题按子机制。
 - 不把派内局部判断直接写进 `conclusions.md`；先写本派 `claims.md`。
 - 不把 `runs/` 里的输出直接当 README 结论；先审 run，再升 `claims.md` / README。

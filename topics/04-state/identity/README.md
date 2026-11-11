@@ -32,7 +32,7 @@ evidence: [E-05]
 | registry/时序图/commit gate/写侧契约/冷启动/失效 | [mechanism](./mechanism.md) |
 | 四条判断的证据/数字（含 alias 增量条件、写侧最小字段） | [findings](./findings.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
-| 原始论文 | [FIRME digest](../../../src/papers/2610.40482-firme/digest.md) · [Commit Boundary digest](../../../src/papers/2610.37407-commit-boundary/digest.md) |
+| 原始论文 | [FIRME digest](../../../src/papers/2610.40482-firme/digest.md) · [Commit Boundary digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37407) |
 
 ## 边界
 

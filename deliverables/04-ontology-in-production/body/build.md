@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-10
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -41,6 +41,7 @@ parent: ../README.md
 
 **契约六项与 `build_report` 只部分对应**：`violations` ≠ `refuses`，`missing_fields` ≠ 契约缺字段；覆盖表见 [参考表 §0](../sections/reference.md)。
 
+
 ### CQ 只是模板词：须在契约行可执行
 
 ①`?col :hasTag ?t . ?t a/rdfs:subClassOf* :Email`（UI）；②`sensitivityLevel ≥ 3` + `columnOfTable` 反查（agent）；③`FILTER NOT EXISTS { ?col :hasTag ?t }`（治理）。
@@ -53,7 +54,7 @@ parent: ../README.md
 | 要跑 shape / 查询 / 授权判定 | 结构表 | 有可判定的关系与约束 |
 | 要从公理推出隐含分类 | 逻辑表 | 需要 reasoner；解释成本高 |
 
-本例选结构表（`推测`）：三条契约无隐含分类。**薄层优先**：K0=地址级、K1=命名+单位、K2=投影文本；K0→K1 是 **54.6 个百分点**（占两层总增益 74.4pp 的 73.4%），K1→K2 再加 19.8pp（26.6%，`O-F14`）。这是文本投影的命名/单位效应（单工厂、9 任务），不是三档对照。
+本例选结构表（`推测`）：三条契约无隐含分类。**薄层优先**：原始点位（K0）→ 点位语义（K1）→ 知识投影文本（K2）；K0→K1 是 **54.6 个百分点**（占两层总增益 74.4pp 的 73.4%），K1→K2 再加 19.8pp（26.6%，`O-F14`）。这是文本投影的点位语义效应（单工厂、9 任务），不是三档对照；K 是 N&D 实验条件代号，定义见 [01 K 页](../../01-capability-status/sections/k-ladder.md)。
 
 三档 × 四位置矩阵见 [参考表 §1](../sections/reference.md)：结构表是唯一三关都 `supported` 的档；词表 validate/explain 弱；逻辑表 explain 无可移植路径。能力矩阵，不是效应量；薄层优先的 +54.6pp 不是三档对照。
 
@@ -96,7 +97,7 @@ Shapes：[shapes.ttl](../example/shapes.ttl)（2 条：TagHasLevel、HasTagClass
 
 其余 6 个（S1/S2/S3/S5/S9/S10）分别缺 principal/moment/refuse/version、无 dataset 边、版本不一致；现状均为 silent 或 answer undercoverage。
 
-SFE-O 未交付可执行 shape，只借做法。分开报：违反检出/干净样本误报/人审接受率；Ontology Catch 的真实答案 catch/FA（UniProt，4,410 条 / 3,383 可检查）是 curated 18.9%/16.8%、data-derived 8.2%/3.5%、masked LLM 5.0%/1.8%——这三组不是 precision；PPV 是另一口径（假设错答案基率下的 precision），复算见 [evidence](../evidence/ledger.md) 的 O-F08。
+SFE-O（本体工程论文）未交付可执行 shape，只借做法。分开报：违反检出/干净样本误报/人审接受率；Ontology Catch 的真实答案 catch/FA（UniProt，4,410 条 / 3,383 可检查）是 curated 18.9%/16.8%、data-derived 8.2%/3.5%、masked LLM 5.0%/1.8%——这三组不是 precision；PPV 是另一口径（假设错答案基率下的 precision），复算见 [evidence](../evidence/ledger.md) 的 O-F08（对象地址）。
 
 ## A.5 可消费性闸门（产物：`build_report`）
 
@@ -123,7 +124,7 @@ SFE-O 未交付可执行 shape，只借做法。分开报：违反检出/干净�
 
 三关是记录，不是产物属性；`targeted=0` 不是 pass。
 
-> 空表见 [templates T7](../sections/templates.md#t7-build_report)；从 CQ 到三关的推导见 [transfer §7](../sections/transfer.md)。
+> 空表见 [templates TPL-7](../sections/templates.md#tpl-7-build_report)；从 CQ 到三关的推导见 [transfer §7](../sections/transfer.md)。
 
 **交接**：`build_report` 的 `targeted/violations`→B 的先决条件；`query_id`→C.4；`policy_version`→A.5。
 

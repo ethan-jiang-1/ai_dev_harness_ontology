@@ -1,15 +1,21 @@
 ---
 status: draft
 source_type: standard
+standing: normative
 reading: 摘要级
 provenance: 原文摘要
-updated: 2026-11-10
+updated: 2026-11-11
 batch:
 source: https://www.w3.org/TR/shacl/
 author: W3C Data Shapes Working Group
 published: 2017-07-20
 influence: W3C Recommendation；SHACL Core 是 RDF 图约束的事实标准，pyshacl / TopBraid / Jena 等实现与 W3C data-shapes test suite 均以它为基线（实现清单与通过率 待核）
 updates: []
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I1: W3C Recommendation; active implementations"
+liveness: standard-in-force
+provenance_type: standard-body
 ---
 
 # W3C SHACL（Shapes Constraint Language）

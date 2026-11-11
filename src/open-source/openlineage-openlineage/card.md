@@ -22,6 +22,11 @@ also_supports: []
 updates:
   - topics/06-measure/metrics/propagation.md
   - deliverables/04-ontology-in-production/body/govern.md
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I1+I3: LF AI & Data, production adoption"
+liveness: last_push 2026-11-09
+provenance_type: foundation
 ---
 
 # OpenLineage/OpenLineage · 来源卡

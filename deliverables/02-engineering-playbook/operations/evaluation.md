@@ -7,6 +7,9 @@ basis: E-02/E-04/E-08/E-14/E-18；06/metrics；06/trace
 
 # 评测设计：先量噪声，再量效应
 
+> **2026-11-11 证据重置**：本页 basis 中的 E-02/E-03/E-04/E-13 已撤回；相关数字只作历史，不再作为“已测”依据。
+
+
 > 大多数「机制有效/无效」的争论，不是效应不存在，而是**没有先量噪声、没有预注册、没有分母**。E-18：54% 的 score variance 来自同一配置的重复运行（真实尝试、过 hurdle；排除 hurdle 后 46.1%）。
 
 ## 1. 五条硬规则
@@ -33,7 +36,7 @@ basis: E-02/E-04/E-08/E-14/E-18；06/metrics；06/trace
 | 机制 | 样本 | 为什么 |
 |---|---:|---|
 | K1/投影 | 3 任务 × 2 臂；9 任务扩展 | N&D 的任务构造 |
-| 编译 | 100–200 问；100–400 条 φ 审计 | `p_h`/miss 分布；φ 区间 |
+| 编译 | 100–200 问；100–400 条 err_rate 审计 | `p_h`/miss 分布；err_rate 区间 |
 | 证据契约 | 200 题 | OA-RAG 口径 |
 | checker | 200 题 + 50 条人工抽检 | catch/FA 初值 |
 | 动作闸 | 200–500 shadow 决策 + 100 条 blocked 标注 | false-veto |
@@ -112,8 +115,10 @@ decision: go|no-go|not enough data
 1. **先跑再定指标。** 事后挑一个显著的结果。
 2. **不量噪声就 A/B。** 效应可能小于 run-to-run。
 3. **只报均值。** 掩盖两端与子群。
-4. **把 `p_h` 当 φ。** 放行率不是正确率。
+4. **把 `p_h` 当 err_rate。** 放行率不是正确率。
 5. **把 5 runs 当万能。** 稀疏事件仍需更大样本/更长窗口。
 6. **机制 owner 兼评测 owner。** 口径会漂；至少独立复核。
 
 **出处**：[06/metrics](../../../topics/06-measure/metrics/mechanism.md) · [06/feasibility](../../../topics/06-measure/feasibility/mechanism.md) · [E-18](../../../topics/conclusions.md)
+
+> 回 [02 目录](../README.md) ｜ 回 [账本](./ledger.md)

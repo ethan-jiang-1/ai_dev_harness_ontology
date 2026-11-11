@@ -132,6 +132,6 @@
 
 ## 关联
 
-- [OA-RAG digest](../../../src/papers/2610.36335-oa-rag/digest.md)
+- [OA-RAG digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36335)
 - [findings](./findings.md) · [frontier](./frontier.md)
 - [checker](../checker/README.md)

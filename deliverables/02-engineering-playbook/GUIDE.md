@@ -50,7 +50,7 @@ parent: README.md
 | 3 | [对应 recipe](./recipes/README.md) | 写出接口、步骤、验收、stop |
 | 4 | [sections/boundaries.md](./sections/boundaries.md) | 知道哪些是反模式、不能证明什么 |
 | 5 | [sections/acceptance.md](./sections/acceptance.md) | 知道怎么验收、什么时候停 |
-| 6 | [sections/relations.md](./sections/relations.md) | 需要时跳 01/03 |
+| 6 | [关系与维护](../README.md#关系与维护) | 需要时跳 01/03 |
 | 7 | [sections/canonical.md](./sections/canonical.md) + [glossary](./sections/glossary.md) | 查阈值/内码，不再翻三页 |
 
 ## 按目的

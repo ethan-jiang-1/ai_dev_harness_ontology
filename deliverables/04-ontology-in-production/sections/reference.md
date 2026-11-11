@@ -146,3 +146,5 @@ parent: ../README.md
 **读法**：同一「0 行」可能是 2/4/5/10；同一「allow」可能是 3/6/9。先定位到段，再改 prompt/策略。
 
 > 细节/出处（可选）：原始研究底稿在 [`topics/`](../../../topics/README.md)；主路径不需要打开。
+
+> 回 [04 目录](../README.md) ｜ 回 [验收](./acceptance.md)

@@ -37,7 +37,7 @@ evidence: [E-10]
 | 接口、训练参数、成本、stop、第一个 sprint | [mechanism §实施与客户价值](./mechanism.md#实施与客户价值a3a4)、[§stop](./mechanism.md#stop-condition) |
 | 五条判断的证据/边界 | [findings](./findings.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
-| 原始论文 | [MIOE digest](../../../src/papers/2610.38326-mioe/digest.md) |
+| 原始论文 | [MIOE digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-38326) |
 
 ## 边界
 

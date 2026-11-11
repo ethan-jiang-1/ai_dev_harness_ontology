@@ -233,4 +233,4 @@ evidence: [E-20, E-23]
 - 对照：Kirrane 等 2017（Semantic Web 8(2)）把 sameAs 放进访问控制传播；关键句为转述，二手；GraphDB/Stardog/Virtuoso/RDF4J 文档只作工程证据，不是规范。
 - 本页只用它说明「规则能写到什么程度」，不用它升 E。
 
-- [Kirrane 2020 卡](../../../src/web/kirrane-2020-qbac/kirrane-2020-qbac.card.md)：把「查询重写」与「结果过滤」放在同一策略下用 secure/sound/maximum 对照；FILTER 式重写在否定/子查询/聚合下不正确；倾向「像未授权数据不存在」的 fail-closed 语义。**这是 §4 矩阵里「聚合/否定」两格的外部形式化依据**，但仍不是 RDF 上的泄漏率。
+- [Kirrane 2020 卡](../../../meta/audits/2026-11-11-source-purge.md#src-web-kirrane-2020-qbac)：把「查询重写」与「结果过滤」放在同一策略下用 secure/sound/maximum 对照；FILTER 式重写在否定/子查询/聚合下不正确；倾向「像未授权数据不存在」的 fail-closed 语义。**这是 §4 矩阵里「聚合/否定」两格的外部形式化依据**，但仍不是 RDF 上的泄漏率。

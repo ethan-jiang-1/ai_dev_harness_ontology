@@ -23,6 +23,11 @@ updates:
   - topics/03-knowledge/querying/README.md
   - topics/03-knowledge/claims.md
   - topics/03-knowledge/sources.md
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I3: Text2SPARQL/QRAKEN adoption"
+liveness: last_push 2026-11-09
+provenance_type: academic
 ---
 
 # ad-freiburg/qlever · 来源卡

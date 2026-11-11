@@ -12,16 +12,27 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 >
 > **第一次来**：先读 [START](../START.md)（10 分钟），再回本份。
 >
-> **内码**：B1–B15 = 证据边界；N01–N12 = 常见主张的反例；M1–M5 = 承重假设；O-xx = 对象地址。详见 [术语](./sections/glossary.md)。
+> **2026-11-11 证据重置**：E-02/E-03/E-04/E-06/E-10/E-11/E-13/E-16/E-26 已撤回。03 的 checker/evidence/action/outside 位置卡保留机制描述，但**不再把它们当 admitted 结论**；每张卡顶部有单卡提示。
 
-> **怎么用**：先读 [GUIDE.md](./GUIDE.md)；下面按四层展开。
+## 先走一条 claim
 
+同事说：「读路径过滤能防止敏感数据泄漏。」03 不直接答「能/不能」，而是把它拆成三句：**机器在哪个时刻做了什么？只删哪一侧？异常时放行还是拒绝？**
 
-> **这不是一本手册，也不是教程。** 它是交付物的「依据层」：解释为什么把本体接在六个位置、三根分类轴怎么分、每条判断的证据边界在哪。
+现状：trustgraph 在正常路径、有 policy、只读检索、只删 subject 的条件下，能把被 block 的 subject 侧三元组删掉；但异常 fail-open、object 方向未测、只有 1 个实现、不拦写/落盘。所以这句话只能成立到「best-effort 可见性过滤」，**不能成立到「访问控制/授权」**（E-20/E-22；完整走查见 [claim 走查](./sections/claim-walkthrough.md)）。
+
+同一套读法也适用于「编译成 SHACL 比塞进 prompt 更可靠」：判词是 M1（同一本体换位置/形态）**未开**，不能成立到「编译更好」；最接近的模板是 Grammar Prompting（同一文法放 prompt vs 约束解码；见 [gaps §3.1](./evidence/gaps.md#31-m1同本体跨位置)）。
+
+**三条判断（读完能复述）：**
+
+1. **强度不是好坏。** 强度问「违反时能不能改变走向」；覆盖率问「能碰到多少类失效」。强端管得硬，但管得少。
+2. **尺子跟机制走。** 不改变走向的供给/契约位置，准确率/token 仍可用；能改变走向的判定/动作/落盘位置，用单一 accuracy/reward 会错配（C-03）。**注意：支撑这条的 E-04 已撤回；判断本身降为 `推测`，待新源。**
+3. **六个位置问的问题不同；承重墙是 M1/M2。** 没有同本体跨位置对照，也没有覆盖率测量；这份参考能给出分类与边界，不能给出效应量。
+
+> **只读 5 页（约 30 分钟）**：本页 §0 → [地图 §2.3 六位置表](./sections/map.md#23-六个位置一页表) → [Claim 走查](./sections/claim-walkthrough.md) → [边界前五条](./sections/boundaries.md) → [证据台账](./evidence/ledger.md)。
 >
-> 2026-11-09 起，03 从「一篇长附录」升级成四层：**入口（本页）→ 位置卡 → 横切页 → 证据台账/边界/缺口**。原第三章保留为长版论证 [appendix-constraint-spectrum.md](./appendix-constraint-spectrum.md)（约 0.97 万字）；附录是历史论证，位置细节以 `positions/` 为准。
-
-
+> **内码**：B1–B15 = 证据边界；N01–N12 = 常见主张的反例；M1–M5 = 承重假设/研究期待；O-xx = 对象地址。详见 [术语](./sections/glossary.md)。
+>
+> **证据等级**：`已核` 只表示原文/代码读对了，不表示命题被验证；`H` 是组织假设，`D` 是工作定义/设计提案（概念架构），`G` 是缺口。不要把 03 的分类当成效应量。
 
 ## 0. 一页结论
 
@@ -38,7 +49,6 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 | 节 | 文件 | 内容 |
 |---|---|---|
 | 导读 | [GUIDE.md](./GUIDE.md) | 先读哪一页、按什么顺序 |
-| 分节索引 | [sections/README.md](./sections/README.md) | 各分节的一页索引 |
 | 2 地图 | [sections/map.md](./sections/map.md) | 主张类型、四轴、六位置、强度矩阵 |
 | 3 主体 | [positions/README.md](./positions/README.md) | 六张位置卡 + 三张横切页索引 |
 | 4 边界 | [sections/boundaries.md](./sections/boundaries.md) | 15 条边界 + 12 条反例；全文在 [boundaries.md](./evidence/boundaries.md) |
@@ -50,7 +60,7 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 | Placement | [sections/placement.md](./sections/placement.md) | 五步把 claim 放到正确位置 |
 | 模板 | [sections/templates.md](./sections/templates.md) | claim 走查空表 |
 | 证据台账 | [evidence/ledger.md](./evidence/ledger.md) | E-xx 支持/不支持哪个位置 |
-| 证据索引 | [evidence/README.md](./evidence/README.md) | 台账/边界/缺口的一页索引 |
+| 缺口 | [evidence/gaps.md](./evidence/gaps.md) | M1–M5、负结果、下一步 |
 
 ## 关注什么 / 需要什么材料
 

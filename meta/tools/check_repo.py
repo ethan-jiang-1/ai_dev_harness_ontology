@@ -37,7 +37,8 @@ DELIVERABLE_STATUS = {"draft", "stable", "frozen"}
 SEAM = {"action-gate", "evidence", "checker", "commit-gate", "memory", "determinism", "read-path", "supply", "reasoning", "training", "none"}
 EXECUTION_FORM = {"engine", "compiled", "context", "label", "none", "unknown"}
 EVIDENCE_ROLE = {"execution-test", "mechanism-only", "harness-evidence", "boundary-ruler", "unclear"}
-FRESHNESS_CUTOFF = "2026-07-01"
+ADMISSION = {"admitted", "admitted (probation)", "signal", "excluded"}
+FRESHNESS_CUTOFF = "2026-06-01"
 
 RAW_PAPER = re.compile(r"^src/papers/[^/]+/(paper|references|appendix)\.md$")
 SKIP_FRONTMATTER = {"README.md", "AGENTS.md", "GLOSSARY.md", "THESIS.md"}
@@ -157,6 +158,7 @@ def main() -> int:
             ("seam", SEAM),
             ("execution_form", EXECUTION_FORM),
             ("evidence_role", EVIDENCE_ROLE),
+            ("admission", ADMISSION),
         ):
             value = scalar(fields, key)
             if value and value not in allowed:
@@ -233,10 +235,12 @@ def main() -> int:
                     errors.append(f"unknown subtopic {sub!r}: src/papers/{d}/card.md")
             if not scalar(card, "subtopic"):
                 warnings.append(f"no subtopic: src/papers/{d}/card.md")
-            if scalar(card, "batch") == "补给":
+            if scalar(card, "admission") and scalar(card, "admission").startswith("admitted"):
                 published = scalar(card, "published")
                 if not published or published < FRESHNESS_CUTOFF:
-                    errors.append(f"stale 补给 source (published {published!r}): src/papers/{d}/card.md")
+                    errors.append(f"stale admitted source (published {published!r}): src/papers/{d}/card.md")
+                if not scalar(card, "impact_evidence"):
+                    errors.append(f"admitted without impact_evidence: src/papers/{d}/card.md")
 
     # 4b. evidence role / execution form coverage
     role_counts = Counter()
@@ -261,12 +265,12 @@ def main() -> int:
     # 5. manifest coverage
     manifest = os.path.join(papers_dir, "manifest.md")
     if os.path.exists(manifest):
-        rows = re.findall(r"^\|\s*\d+\s*\|\s*(?:基础|扫描|补给)\s*\|\s*(\d{4}\.\d{4,5})\s*\|", open(manifest, encoding="utf-8").read(), re.M)
+        rows = re.findall(r"^\|\s*\d+\s*\|\s*admitted[^|]*\|\s*(\d{4}\.\d{4,5})\s*\|", open(manifest, encoding="utf-8").read(), re.M)
         if len(rows) != len(paper_dirs):
             errors.append(f"manifest rows: expected {len(paper_dirs)}, found {len(rows)}")
-        batch = "批次" in open(manifest, encoding="utf-8").read()
-        if not batch:
-            errors.append("manifest has no batch column")
+        admission_col = "准入" in open(manifest, encoding="utf-8").read()
+        if not admission_col:
+            errors.append("manifest has no 准入 column")
 
     # 6. open-source inventory
     oss_dir = os.path.join(ROOT, "src/open-source")
@@ -319,10 +323,12 @@ def main() -> int:
         if line.startswith("## "):
             section = line[3:].strip()
         m = re.match(r"\|\s*(E-\d+)\s*\|", line)
+        if m and "| withdrawn |" in line:
+            continue
         if m and section in {"已核（一手原文摘要）", "已核（代码）", "推测（未核原文）", "存疑", "冲突"}:
             key = {"已核（一手原文摘要）": "已核", "已核（代码）": "已核", "推测（未核原文）": "推测"}.get(section, section)
             counts[key] += 1
-    if counts["已核"] != 23 or counts["推测"] != 4:
+    if counts["已核"] != 16 or counts["推测"] != 2:
         warnings.append(f"conclusion levels changed: {dict(counts)} (meta/state may need update)")
 
     # 7b. state.md is the single authoritative count; keep it equal to the tree

@@ -12,7 +12,18 @@ _Avoid_: 框架、Agent 平台、脚手架
 
 **本体（Ontology）**:
 领域概念、关系与约束的显式规范，独立于任何一次具体的模型调用。
+_origin_: `standard`（ISO/IEC 21838-1 给 TLO 的要求；我们的定义比 TLO 宽，判 `broader`）｜ _anchor_: ISO/IEC 21838-1（条款号 `待核`）｜ _scope_: 可指 TLO 或领域本体；不要把它当成「一个标准认证的领域本体」。
 _Avoid_: 知识图谱（那是实例层）、分类法、词表
+
+**顶层本体（Top-level Ontology, TLO）**:
+小、通用、不含领域词的上层本体；BFO 是 ISO/IEC 21838-2 的参考 TLO。
+_origin_: `standard`（ISO/IEC 21838-1/-2）｜ _anchor_: ISO/IEC 21838-1/-2（条款号 `待核`）｜ _scope_: 只定 TLO 的合格性；不覆盖领域本体、不构成成熟度分级。
+_Avoid_: 通用本体（易与“通用概念库”混）、领域本体
+
+**领域本体（Domain Ontology）**:
+面向一个具体领域的概念、关系与约束；ISO/IEC 21838 不定义它。
+_origin_: `local`｜ _anchor_: —｜ _scope_: 本仓库工作词；不要写成“标准认证的领域本体”。
+_Avoid_: 顶层本体、全域本体
 
 **接缝（Seam）**:
 本体与 harness 发生耦合的具体位置，也是本体的语义真正转为控制的位置。
@@ -21,6 +32,11 @@ _Avoid_: 集成点、接口层、适配层
 **本体塔（Ontology Tower）**:
 为单一工业领域构建的窄而深的分层本体，而非跨域的大而全本体。
 _Avoid_: 全域本体
+
+**知识条件（K0–K4）**:
+Narrow & Deep 论文（arXiv:2610.11768）给自己的五个累积实验条件编的号：K0 原始点位、K1 点位语义、K2 知识投影文本、K3 流程摘要、K4 运行记录检索。**不是行业标准，也不是本体成熟度模型**；引用时必须带论文名，别写成「K1 级本体」。见 [K0–K4 来源说明](./deliverables/01-capability-status/sections/k-ladder.md)。
+_origin_: `local`（论文条件，非 normative 源）｜ _anchor_: arXiv:2610.11768 Table 1 / §2.8 ｜ _scope_: 只描述 N&D 的五个累积条件，不能推成行业层级或成熟度。
+_Avoid_: 知识层级、本体成熟度、K1 级本体
 
 ### 控制
 

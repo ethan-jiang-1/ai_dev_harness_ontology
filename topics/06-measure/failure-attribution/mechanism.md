@@ -2,7 +2,7 @@
 
 > 只写「怎么诊断」。判断回 [findings](./findings.md)，边界/下一步回 [frontier](./frontier.md)。
 >
-> 编号沿用 [digest ledger](../../../meta/archive/2026-11/full-audit/digest-ledger.md)：D-11 = [Diagnose digest](../../../src/papers/2610.35267-diagnose-workflow/digest.md)，D-15 = [Multi-agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md)。
+> 编号沿用 [digest ledger](../../../meta/archive/2026-11/full-audit/digest-ledger.md)：D-11 = [Diagnose digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-35267)，D-15 = [Multi-agent digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36325)。
 
 ## 问题
 
@@ -67,11 +67,11 @@ Diagnose the Workflow（Before Blaming the LLM…）把 NL→本体接地 ABox D
 
 ## 实施与客户价值（A3/A4）
 
-> 读者是「要不要给失败归因立一个预算项」的人。上文的五角色/七变量只是诊断词汇，本身不产出结论；这一节写它改变哪个工程决定、需要什么数据、什么情况下必须停。**诊断框架本身没有效应量**：D-11 是 position paper（单案例、无量化）。带数字的阈值和参数凡出自 [Diagnose digest](../../../src/papers/2610.35267-diagnose-workflow/digest.md) §6.5 的，都是作者的工程线、不是实测；从 [Multi-agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md) 引入的数字（映射率、Top-1/Top-3、case-level）是 Q4DX 单基准实测，不能外推到 NL→本体归因。未标来源的推算一律 `推测`。
+> 读者是「要不要给失败归因立一个预算项」的人。上文的五角色/七变量只是诊断词汇，本身不产出结论；这一节写它改变哪个工程决定、需要什么数据、什么情况下必须停。**诊断框架本身没有效应量**：D-11 是 position paper（单案例、无量化）。带数字的阈值和参数凡出自 [Diagnose digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-35267) §6.5 的，都是作者的工程线、不是实测；从 [Multi-agent digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36325) 引入的数字（映射率、Top-1/Top-3、case-level）是 Q4DX 单基准实测，不能外推到 NL→本体归因。未标来源的推算一律 `推测`。
 
 ### 实施决策
 
-1. **模型替换的预算排在七变量表之后。** D-11 的作者明确说错误主要来自结构，更强模型不一定补 template/vocabulary 缺口（D-11 digest §5 第 5 条）；[Multi-agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md) 给同向证据：curated 本体没有的诊断恒为 0（§5 第 6 条），本体覆盖封顶。`已核`（作者框架；D-15 只给出「覆盖封顶」的证据，没有错误分布实测，不能写成「诊断错误主要来自 KG」）→ **改变的决定**：模型升级/换 vendor 的评审必须附一张 15–20 例的七变量表；若高摩擦项集中在 Vocabulary/Template，先批本体/模板预算，不批模型预算。
+1. **模型替换的预算排在七变量表之后。** D-11 的作者明确说错误主要来自结构，更强模型不一定补 template/vocabulary 缺口（D-11 digest §5 第 5 条）；[Multi-agent digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36325) 给同向证据：curated 本体没有的诊断恒为 0（§5 第 6 条），本体覆盖封顶。`已核`（作者框架；D-15 只给出「覆盖封顶」的证据，没有错误分布实测，不能写成「诊断错误主要来自 KG」）→ **改变的决定**：模型升级/换 vendor 的评审必须附一张 15–20 例的七变量表；若高摩擦项集中在 Vocabulary/Template，先批本体/模板预算，不批模型预算。
 2. **归因结论必须带 `owner` 与 `redesign_lever`，否则不进修复队列。** 「语义不太对」「模型弱」不是工单（F1 已核，框架）；表头字段里只有这两个能变成动作。**改变的决定**：triage/周会的工单准入标准——没有 lever 的 case 只能进观察池，不占修复排期。
 3. **修复顺序锁死为 Input/Context → Grounding/Template → Validation 分层，语义留人审。** D-11 digest §6.4 建议先修前两项，理由是「成本最低、收益最直接」；这条理由无前后对照，只算作者判断（`推测`），而「digest 这样建议」本身是 `已核`（引文准确）。因此 **改变的决定**：第一个 sprint 不允许同时改本体、模板和模型；一次只动一组变量，否则同 batch 重测无法归因。
 4. **验收看同一 batch 的前后对照，不看「换了个说法」。** D-11 digest §6.4 第 7 步要求重测同一 case，§6.5 要求预写 go/no-go。`已核`（引文准确）→ **改变的决定**：试点立项时先写死成功/失败阈值再开跑；跑完用同一批 case 重算，而不是换一批「看起来更好」的例子。
@@ -157,6 +157,6 @@ Diagnose the Workflow（Before Blaming the LLM…）把 NL→本体接地 ABox D
 
 ## 关联
 
-- [Diagnose digest](../../../src/papers/2610.35267-diagnose-workflow/digest.md)
+- [Diagnose digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-35267)
 - [findings](./findings.md) · [frontier](./frontier.md)
 - [00-harness/verification](../../00-harness/verification.md)

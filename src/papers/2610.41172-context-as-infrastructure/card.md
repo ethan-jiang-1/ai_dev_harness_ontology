@@ -21,6 +21,12 @@ updates:
   - topics/03-knowledge/claims.md
   - topics/03-knowledge/sources.md
   - topics/00-harness/context.md
+published: 2026-10
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I2: infiniflow + ECNU; I3: RAGFlow open-source"
+liveness: arXiv 2026-10
+provenance_type: company
 ---
 
 # CAI · 来源卡

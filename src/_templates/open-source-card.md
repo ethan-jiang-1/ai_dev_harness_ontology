@@ -4,6 +4,11 @@ source_type: open-source
 reading: 未读           # 未读 | 已读代码 | 已跑通
 provenance: 未核         # 一手代码 | 一手文档 | 未核
 updated: YYYY-MM-DD
+admission: signal       # admitted | admitted (probation) | signal | excluded（CHARTER §4）
+gate_checked: YYYY-MM-DD
+impact_evidence: ""     # G3：采用/依赖/贡献者/release，逐条
+liveness:               # G2：last_push / release 日期
+provenance_type: community # standard-body | academic | foundation | community | company | individual
 repo: {org}/{repo}
 url: https://github.com/{org}/{repo}
 commit:                 # SHA 或 release tag，必须 pin
@@ -11,7 +16,7 @@ release:
 license:
 scan_date: YYYY-MM-DD
 stars_at_scan: 0        # 只作影响力参考，不是质量证明
-last_push: YYYY-MM-DD   # 新入档必须 ≥ 2026-07-01（2026-06 后仍活跃）
+last_push: YYYY-MM-DD   # G1：必须 ≥ 2026-06-01；180 天内有提交
 ontology_role: unclear  # core | adjunct | none | unclear（初判，定级在 digest）
 seam: none              # 六时刻 | read-path | supply | reasoning | training | none
 execution_form: unknown # engine | compiled | context | label | none | unknown（初判，定级在 digest）

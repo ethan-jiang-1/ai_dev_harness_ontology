@@ -23,6 +23,11 @@ updates:
   - topics/01-constraint/access-control/README.md
   - topics/01-constraint/claims.md
   - topics/01-constraint/sources.md
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I1+I3: CNCF graduated, production adoption"
+liveness: last_push 2026-11-09
+provenance_type: foundation
 ---
 
 # open-policy-agent/opa · 来源卡

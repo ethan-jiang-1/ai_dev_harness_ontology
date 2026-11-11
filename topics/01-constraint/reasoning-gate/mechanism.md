@@ -73,7 +73,7 @@
 - **准入不是全收。** 类型检查 + 来源非空 + 每类 2–3 条测试 + corpus check（至多一条矛盾 transition）才进入世界知识；`f_admit` 的字段级规则要写死（类型/来源/引用模式/时间范围），不能只写「测试全过」（digest 工程配方）。
 - **block 后回传结构固定。** 用 `{failed_conditions[], unresolved[], evidence_refs[]}` 而不是只给自然语言理由；agent 可按字段改 claims/hypotheses/action。
 
-来源：[OntoAct digest](../../../src/papers/2610.21983-ontoact/digest.md) · [多 agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md)
+来源：[OntoAct digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-21983) · [多 agent digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36325)
 
 ### 工程发现 2｜参数：能抄的是条件，不是值
 
@@ -83,7 +83,7 @@
 - **axiom 准入测试 2–3 条/类、corpus check 至多一条矛盾 transition**（digest 工程配方，`推测`）。
 - **三值求值不引入 LLM 自评。** 条件求值是符号检查；LLM 只提议 claims/hypotheses/action。
 
-来源：[OntoAct digest](../../../src/papers/2610.21983-ontoact/digest.md) · [多 agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md)
+来源：[OntoAct digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-21983) · [多 agent digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36325)
 
 ### 工程发现 3｜成本与测量口径
 
@@ -94,7 +94,7 @@
 - **测量口径**：只看最终成功率会被「重复失败后终于成功」骗；同时报 spurious interventions（SI）与 turns。OntoAct SI 1.9/2.4/1.6 vs IfR 6.4/11.9/17.8。
 - **多 agent 的聚合会掩盖 case-level。** 同时报 Top-1/Top-3 与「可解决歧义」子集；追问可能伤 Top-3（50% 完整度 26.3→24.2）。
 
-来源：[OntoAct digest](../../../src/papers/2610.21983-ontoact/digest.md) · [多 agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md)
+来源：[OntoAct digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-21983) · [多 agent digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36325)
 
 ### 工程发现 4｜stop 与客户指标
 
@@ -109,7 +109,7 @@
 - **V3**（`推测`）：单域 20–30 episode；成功 = SI 降 ≥30% 且 false-block ≤10%、专家工时降 ≥10%；失败 = 覆盖率 <40% 或 SI 不降；停止线 = 年省专家工时 < 维护成本。
 - **替代方案**（`推测`/缺口）：纯 LLM + 事后审计；curated KG/规则引擎；买 CMMS/知识图谱产品；开源 ontology + tool-calling。论文只与 IfR/WALL-E/ReAct* 比，没有与这些工程替代做同口径成本-效果。
 
-来源：[OntoAct digest](../../../src/papers/2610.21983-ontoact/digest.md) · [多 agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md)
+来源：[OntoAct digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-21983) · [多 agent digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36325)
 
 ### 第一个 sprint
 
@@ -127,6 +127,6 @@ schema 覆盖低；真实传感器噪声；环境机制频繁变化；无专家�
 
 ## 关联
 
-- [OntoAct digest](../../../src/papers/2610.21983-ontoact/digest.md)
-- [多 agent digest](../../../src/papers/2610.36325-ontology-multiagent-diagnosis/digest.md)
+- [OntoAct digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-21983)
+- [多 agent digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36325)
 - [findings](./findings.md) · [frontier](./frontier.md)

@@ -36,7 +36,7 @@ evidence: []
 | 接口/参数/成本/stop/客户指标（从 digest 吸收的 4 条工程发现；schema 是 E3 建议、成本/收益决策框架是 E4，均非论文产物） | [mechanism](./mechanism.md)「工程发现 1–4」（接口、参数、成本、stop 与客户指标） |
 | F1–F7 的证据/等级/边界 | [findings](./findings.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
-| 原始论文 | [OntoDoc digest](../../../src/papers/2611.01276-ontodoc/digest.md) · [ReX-GG digest](../../../src/papers/2610.41901-rex-gg/digest.md) · [Peeling digest](../../../src/papers/2610.41785-peeling-matryoshka/digest.md) · [Evontree digest](../../../src/papers/2510.26683-evontree/digest.md) · [SFE-O digest](../../../src/papers/2610.37123-sfe-o/digest.md) |
+| 原始论文 | [OntoDoc digest](../../../meta/audits/2026-11-11-source-purge.md#src-2611-01276) · [ReX-GG digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-41901) · [Peeling digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-41785) · [Evontree digest](../../../meta/audits/2026-11-11-source-purge.md#src-2510-26683) · [SFE-O digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123) |
 
 ## 边界
 

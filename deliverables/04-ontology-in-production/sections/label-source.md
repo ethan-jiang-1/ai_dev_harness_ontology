@@ -21,6 +21,8 @@ parent: ../README.md
 | `column_id` | 稳定 IRI（库/表/列） | 和 ABox 的 `:Column` 对上 | 标签挂不到列；CQ1/CQ2 少行 |
 | `tag(s)` | 一个或多个叶标签 | 多标签是常态；fixture 是单标签 | 多标签列无法判；见 [transfer §6.2](./transfer.md#p-multitag) |
 | `level` | 每个 tag 一个 1–4 | policy 的 condition | policy 没有输入；R1–R4 无法判 |
+
+> **1–4 的工程含义（`推测`，不是标准原文）**：1=公开、2=内部、3=敏感、4=严格受限。GB/T 43697 只分三级；04 的 1–4 是「一般/重要/核心」加一档的工程映射，具体边界由 policy owner 定。
 | `confidence` / `provenance` | per-tag 来源/分数/理由 | audit 的 `evidence`；复核 | 审计答不出「为什么是这个标签」 |
 | `as_of` / taxonomy version | 标签/本体的版本 | replay、变更对账 | 版本漂移；审计不可回放 |
 | `owner` | 谁维护标签/等级 | 出事时找谁 | 无人对漏标/错标负责 |

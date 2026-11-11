@@ -77,7 +77,7 @@
 - **日志**：POLAR 记 `{tool, entity, tier, phi, tau, decision, reason}`；CASEL 每个 call 记动作、可逆性、`c_base`、`p̂`、决策、审批人/时间、是否回滚。没有日志就算不出 false-veto/审批成本。
 - **工具 schema**：`tool, args, mutating, slots[]`；Layer A 五谓词；Layer B `slot(entity_type,id)=value` + `state_hash`。
 
-来源：[POLAR digest](../../../src/papers/2610.08082-polar/digest.md) · [CASEL digest](../../../src/papers/2610.36570-casel/digest.md)
+来源：[POLAR digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) · [CASEL digest](../../../src/papers/2610.36570-casel/digest.md)
 
 ### 工程发现 2｜参数：能抄的是条件，不是值
 
@@ -92,7 +92,7 @@
 - **动作混合**：论文 58% read / 28% reversible / 14% irreversible；自己的流量先统计，偏离会改 approvals/HSR；不可逆长尾要过采样。
 - **维护**：工具/槽位变更后更新 Layer A 注释与 Layer B 投影；否则逆搜索用的是过期边。
 
-来源：[POLAR digest](../../../src/papers/2610.08082-polar/digest.md) · [CASEL digest](../../../src/papers/2610.36570-casel/digest.md)
+来源：[POLAR digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) · [CASEL digest](../../../src/papers/2610.36570-casel/digest.md)
 
 ### 工程发现 3｜成本：人时没有实测，E4 只给公式
 
@@ -134,7 +134,7 @@
     - **Stage 2（4–6 周，shadow/A-B）**：主指标 HSR；按基线 HSR 与最小可检测差异先算样本量/功效；预注册审批率、false-veto、task success 为副指标；不要用 Stage 1 的 2 周样本硬判 HSR（HSR 是稀疏事件）。
     - 成功 = 审批 ≤10% 且 HSR 相对降 ≥30%、task success 不降 >2pp；失败 = AUC 无差异或 false-veto >5%；停止线 = 年省伤害 < 年化（建设+算力+审批人时+维护），不是只比审批人力。
 
-来源：[POLAR digest](../../../src/papers/2610.08082-polar/digest.md) · [CASEL digest](../../../src/papers/2610.36570-casel/digest.md)
+来源：[POLAR digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) · [CASEL digest](../../../src/papers/2610.36570-casel/digest.md)
 
 ### 第一个 sprint
 
@@ -146,6 +146,6 @@
 
 ## 关联
 
-- [POLAR 卡](../../../src/papers/2610.08082-polar/card.md) · [digest](../../../src/papers/2610.08082-polar/digest.md)
+- [POLAR 卡](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) · [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082)
 - [CASEL 卡](../../../src/papers/2610.36570-casel/card.md) · [digest](../../../src/papers/2610.36570-casel/digest.md)
 - [findings](./findings.md) · [frontier](./frontier.md)

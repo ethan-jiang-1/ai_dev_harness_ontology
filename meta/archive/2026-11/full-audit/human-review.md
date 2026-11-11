@@ -12,8 +12,8 @@
 |---|---|---|---|---|
 | D1 | CAI（2610.41172） | [digest](../../../../src/papers/2610.41172-context-as-infrastructure/digest.md) §6.5/§6.6 | ① 2% 门/样本量/stop 是否可执行？② 成本能否报批（缺什么）？③ 第一个 sprint 是否排得出？ | pass / fail / 不确定 |
 | D2 | N&D（2610.11768） | [digest](../../../../src/papers/2610.11768-narrow-and-deep/digest.md) §6.5/§6.6 | ① 15/5 出口与 3 任务×2 模型是否匹配？② 投影 2–3 人日 vs 2 天是否可信？③ 可追溯性是否被夸大？ | pass / fail / 不确定 |
-| D3 | Evontree（2510.26683） | [digest](../../../../src/papers/2510.26683-evontree/digest.md) §4.2/§4.3/§6 | ① Table 6 消融后，“规则贡献”是否被说清？② 1 万 raw→90 gap 的规模是否可接受？③ 安全 stop 是否可执行？ | pass / fail / 不确定 |
-| D4 | Ontology Catch（2610.37809） | [digest](../../../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) §6.5/§6.6 | ① catch/FA 采纳门在你域是否合理？② per-flagged 成本是否够算？③ 空结果基线是否被尊重？ | pass / fail / 不确定 |
+| D3 | Evontree（2510.26683） | [digest](../../../audits/2026-11-11-source-purge.md#src-2510-26683) §4.2/§4.3/§6 | ① Table 6 消融后，“规则贡献”是否被说清？② 1 万 raw→90 gap 的规模是否可接受？③ 安全 stop 是否可执行？ | pass / fail / 不确定 |
+| D4 | Ontology Catch（2610.37809） | [digest](../../../audits/2026-11-11-source-purge.md#src-2610-37809) §6.5/§6.6 | ① catch/FA 采纳门在你域是否合理？② per-flagged 成本是否够算？③ 空结果基线是否被尊重？ | pass / fail / 不确定 |
 | D5 | SLB（2611.02395） | [digest](../../../../src/papers/2611.02395-solver-like-behavior/digest.md) §6.5/§6.6 | ① placeholders 契约是否可照做？② 50 题验收是否够？③ 闭源无 trace 的 audit-only 是否可接受？ | pass / fail / 不确定 |
 
 ## 二、5 个 topic（实施/价值向）

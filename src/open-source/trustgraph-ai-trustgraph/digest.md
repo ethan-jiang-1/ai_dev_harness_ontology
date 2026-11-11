@@ -107,8 +107,8 @@ TriplesQueryRequest（可带 user_context）
 
 | digest | 论文机制 | 代码里对应 | 缺什么 / 差异 |
 |---|---|---|---|
-| [Commit Boundary](../../../src/papers/2610.37407-commit-boundary/digest.md) | 可推理 ≠ 可授权；授权判据应显式、绑定 scope/version，落盘前校验 | **有真实实现，但在读路径**：独立的策略层 + user_context + SHACL-AF 判定，不把模型推断当授权 | 写路径的 commit gate 仍无实现（Commit Boundary 的 F4 不变）；没有 `P_auth` 的 promotion/scope 语义，也没有 false-defer 测量 |
-| [POLAR](../../../src/papers/2610.08082-polar/digest.md) | 动作执行前按可逆性剪枝 | 形态不同：先让数据返回，再按策略删节点；不剪动作 | 位置不同（读路径 vs 动作前）；没有可逆性、没有 harm 度量 |
+| [Commit Boundary](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37407) | 可推理 ≠ 可授权；授权判据应显式、绑定 scope/version，落盘前校验 | **有真实实现，但在读路径**：独立的策略层 + user_context + SHACL-AF 判定，不把模型推断当授权 | 写路径的 commit gate 仍无实现（Commit Boundary 的 F4 不变）；没有 `P_auth` 的 promotion/scope 语义，也没有 false-defer 测量 |
+| [POLAR](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) | 动作执行前按可逆性剪枝 | 形态不同：先让数据返回，再按策略删节点；不剪动作 | 位置不同（读路径 vs 动作前）；没有可逆性、没有 harm 度量 |
 | [CASEL](../../../src/papers/2610.36570-casel/digest.md) | 护栏要报 harm–approval–cost 前沿 | 没有审批环节；只有可见/不可见 | 没有审批成本、没有 harm 度量，不能与 CASEL 的数字直接比 |
 
 **一句话**：它支持「授权判据可以与推理分离」这个原则（Commit Boundary 的 L13），但把实现位置放在读路径；因此不能用来证明 commit gate 可落地。

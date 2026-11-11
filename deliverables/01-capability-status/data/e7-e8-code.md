@@ -68,3 +68,5 @@ target: X7 read-path / X8 commit gate
 - 第二个 SHACL/策略过滤实现，且能测 object 方向 → X7 可升第七时刻/更强 verdict。
 - 任何 commit gate 实现 + false-defer → X8 可从 `C 只能设计` 升级。
 - 异常/对象用例跑出泄漏 → X7 的 `supported（限定）` 要收窄。
+
+> 回 [01 目录](../README.md) ｜ 回 [01 §数据表](../README.md#数据表工作底稿)

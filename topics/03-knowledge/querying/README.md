@@ -35,7 +35,7 @@ evidence: [E-21]
 | F1–F3 的数字、条件、边界、来源 | [findings](./findings.md) |
 | 按资产选路线、失败目录、不可比清单 | [compare](./compare.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
-| 原始材料 | [GGC digest](../../../src/papers/2607.28082-ggc/digest.md) · [NLKGQ digest](../../../src/papers/2609.14652-nlkgq/digest.md) · [KGVoyager digest](../../../src/papers/2609.01780-kgvoyager/digest.md) |
+| 原始材料 | [GGC digest](../../../src/papers/2607.28082-ggc/digest.md) · [NLKGQ digest](../../../meta/audits/2026-11-11-source-purge.md#src-2609-14652) · [KGVoyager digest](../../../meta/audits/2026-11-11-source-purge.md#src-2609-01780) |
 
 ## 边界
 
@@ -48,4 +48,4 @@ evidence: [E-21]
 
 - 派：[03 知识](../README.md) · 本派 claims：[03-L12–L16](../claims.md)
 - 结论：[E-21](../../conclusions.md)（P1 新 E）；对照页：[compare](./compare.md)
-- 卡片（provenance）：[GGC](../../../src/papers/2607.28082-ggc/card.md) · [NLKGQ](../../../src/papers/2609.14652-nlkgq/card.md) · [KGVoyager](../../../src/papers/2609.01780-kgvoyager/card.md)
+- 卡片（provenance）：[GGC](../../../src/papers/2607.28082-ggc/card.md) · [NLKGQ](../../../meta/audits/2026-11-11-source-purge.md#src-2609-14652) · [KGVoyager](../../../meta/audits/2026-11-11-source-purge.md#src-2609-01780)

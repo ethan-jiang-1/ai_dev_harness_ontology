@@ -10,6 +10,8 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-09, E-12, E-13, E-14, E-15, E-1
 
 > 03 的每一条边界都要能回答三件事：**限制谁、凭什么、什么会改变它。** 边界表是原附录 §3.7 的展开；编号 B1–B15 沿用原顺序。
 >
+> **2026-11-11 证据重置**：E-02/E-04/E-13 等已撤回；N02/N05/N12 的旧反例不能再当“已测”。本页保留编号只作回查；受影响的边界见各行标注。
+>
 > **B 与 N 的分工**：B 说「这条判断不能证明什么」；N 说「有人这么主张、但已被测反例打掉」。N01–N12 的完整对象记录是 `O-R01`–`O-R12`（O 编号不变，见 [objects.md](../../../topics/objects.md)）。
 >
 > 用法：写 03 的判断前先查边界表；如果一条判断不在边界表里，它可能还没被消化。
@@ -22,17 +24,19 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-09, E-12, E-13, E-14, E-15, E-1
 | # | 常见主张 | 已测反例（带数） | 什么会推翻它 | O | 出处 |
 |---|---|---|---|---|---|
 | N01 | 结构化上下文/本体能提准确率 | 被测工件（claim 树/RAPTOR/PageIndex/实体图/wiki）在 FRAMES 上 acc. neutral；ontology 行 `not measured`；N=200、p=91% 时两臂分辨率约 ±5.6pp | 换 benchmark 出现可检出增益，或配对 A/B 超过 δ | O-R01 | E-01 |
-| N02 | 护栏必然提升任务表现 | 18 格仅 8 格改善；airline 六模型四个 +0.11–0.18；retail/强模型回退；T1-only≈blanket veto | 同轨迹配对后改善面显著扩大，或 harm 标签显示 net benefit | O-R02 | E-04 / Q-03 |
+| N02 | 护栏必然提升任务表现 | **原锚 E-04/E-13 已撤回**；旧 18 格/8 改善、T1-only 观察停用，待新源 | 新源复现后再说 | O-R02 | E-04/E-13 withdrawn |
 | N03 | 深结构比薄语义层更值 | K0→K1 +54.6pp vs K1→K2 +19.8pp；薄层约贡献 73% | 跨域深结构增益超过薄层 | O-R03 | E-12 |
 | N04 | 投影排序普适（文本 > JSON > 查询） | GLM JSON 0.900 > 文本 0.891；Qwen 工具 0.407 < 检索 0.538；pooled 0.777 只是平均 | 更多模型上文本—JSON 排序不翻转 | O-R04 | E-12 |
-| N05 | curated 本体更可靠 | curated precision 仅比随机高 1.6 点（CI 跨零）；真实答案 FA 16.8%；data-derived FA 3.5% | 第二域 curated 显著优于随机 | O-R05 | E-02 |
+| N05 | curated 本体更可靠 | **原锚 E-02 已撤回**；旧 precision/FA 数字停用，待新源 | 新源复现后再说 | O-R05 | E-02 withdrawn |
 | N06 | 有引擎就能拦 | trustgraph fail-open、只删 subject；open-ontologies 只做 CI/报告；semantica 校验时 `inference="none"`；ontop 重写不是 gate | 第二实现 fail-closed 且有写授权 | O-R06 | E-20 |
 | N07 | 有标签就能做访问控制 | 标签层（Glyph）/策略层（OPA 无领域本体）/执行层（trustgraph 单实现）不能互推；读路径过滤 ≠ 写授权 | 端到端策略+执行验证 | O-R07 | E-22 |
 | N08 | 平均 −38% 可上线 | −38% = 43%×−91% + 57%×+1.9%；p_h=43% 是反推；时延 3× 只在 7 题上测 | 实测 p_h 与 43% 差 >10pp 且平均收益翻转 | O-R08 | E-08 / E-14 |
 | N09 | 审批越多越安全 | CASEL 8.7% approvals/7.02% HSR；Uncertainty 6.9%/14.75%；Risk 12.6%/5.82%；Consequence 13.8%/4.38% | 审批疲劳建模后排序翻转 | O-R09 | E-15 |
 | N10 | 不做身份对齐也能记忆 | no-alias CMR −7.8–12.1pp；LLM-Norm 2.3–3.7× 差；human audit +9.0–16.5pp | 无身份对照显示同等 CMR | O-R10 | E-05 |
 | N11 | SLB 可靠提示词消除 | cautionary prompts 只减约 1/4；placeholders 减 SLB token 97% 而准确率 +2.6；85% traces/24% tokens | prompt 使 SLB 降至 <5% 且不损准确率 | O-R11 | E-09 |
-| N12 | reward 可证明护栏安全 | 18 格中仅 8 格改善；airline 4/6 模型 +0.11–0.18；retail/强模型回退；作者声明 reward 不是 harm 度量；无 harm 标签 | harm 标签使 reward 与 harm 一致 | O-R12 | Q-03 / E-04 |
+| N12 | reward 可证明护栏安全 | **原锚 E-04 已撤回**；旧 18 格数字停用；Q-03 待新源重写 | 新源 + harm 标签 | O-R12 | E-04 withdrawn |
+
+> 符号：HSR=harm success rate；CMR=跨期匹配率；SLB=solver-like behavior；δ=miss 上限；FA=false alarm。完整表见 [术语 §4.1](../sections/glossary.md#41-指标与符号)。
 
 ## 1. 边界表（B1–B15）
 
@@ -40,14 +44,14 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-09, E-12, E-13, E-14, E-15, E-1
 |---|---|---|---|
 | B1 | **强度–覆盖率反向没有被直接测量。** 直线是组织假设；矩阵是操作化尝试，也不是测量 | 03 §4；coverage | 出现可复算的覆盖率测量；或强端在广覆盖上稳定有效 |
 | B2 | **E-01 的 ontology 是 `not measured`。** 不能写「本体无增益」；它测的是摘要树/大纲/wiki/实体图 | context；C-04 | 同一实验把 ontology 作为被测变量；或跨 harness 复现 |
-| B3 | **E-04 的结构贡献未隔离、false-veto 未测。** 不能写「结构判据有效」；false-veto 应报 miss–false-block 前沿，不是单点 ≤5% | action；M1/M3 | 同轨迹配对显示 full 相对 T1-only 的 Δ>0；或 false-veto 被标注为前沿 |
-| B4 | **E-13 是六点描述性拟合。** 不能当预测曲线/零交叉阈值 | action；能力梯度 | 更多模型-域点；或受控能力扫描 |
+| B3 | **原锚 E-04 已撤回**；旧「结构贡献未隔离」观察停用，待新源 | action；M1/M3 | 新源复现 |
+| B4 | **原锚 E-13 已撤回**；旧六点拟合停用，待新源 | action；能力梯度 | 新源 + 更多模型-域点 |
 | B5 | **E-12 是单工厂、9 任务、答案基本写在文本里。** 排序非普适；深度本体未测 | context；P1b/P1c | 跨域复现；答案不在文本里的任务；深度结构对照 |
 | B6 | **E-15 是模拟、无本体变量。** 不是本体增益；审批疲劳未建模 | action；M4 | 真实部署的 harm/审批数据；带本体变量的对照 |
-| B7 | **E-16 是模拟、固定 schema、无真实工厂。** 不是安全保证 | action/reasoning | 真实工厂；可变 schema；安全属性测试 |
+| B7 | **原锚 E-16 已撤回**；旧模拟观察停用，待新源 | action/reasoning | 新源 + 真实工厂 |
 | B8 | **E-20 是代码级、4 个项目、只读未跑测试。** 不是效应量；不能证明「形态改变行为」 | execution-forms；commit | 跑测试/对照；更多实现；同本体换形态消融 |
-| B9 | **E-02 是单 checker 实验。** precision 是 25% 错答案假设；false-veto 未测；不能当部署估计 | checker；M4 | 真实错误分布；跨域；净修复/成本测量 |
-| B10 | **E-03 的等级是模型自评、未校准。** 检索是主瓶颈；不是形式保证 | evidence | 独立等级标注；gold evidence 完整检索；句级 span |
+| B9 | **原锚 E-02 已撤回**；旧单 checker 观察停用，待新源 | checker；M4 | 新源 + 真实错误分布 |
+| B10 | **原锚 E-03 已撤回**；旧等级观察停用，待新源 | evidence | 新源 + 独立等级标注 |
 | B11 | **E-05 是专有数据、3 period。** 未匹配 ≠ 关系结束；无年度周期 | memory | 跨域/跨年；公开数据复现；false merge 传播测量 |
 | B12 | **E-17 是文本 only、需训练信号。** 跨模态未测；reasoning state 不可形式验证 | memory | 跨模态；无训练信号的 state；形式审计 |
 | B13 | **commit 写路径无实现。** E-20 只给否定性证据；三段式是概念架构 | commit | 可运行的写授权实现；false-defer 测量 |
@@ -57,7 +61,7 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-09, E-12, E-13, E-14, E-15, E-1
 ## 2. 三条最容易越过的线
 
 1. **B2：** 把 E-01 写成「本体无增益」。这是 03 最容易被引用的误读；E-01 的 ontology 是 `not measured`。
-2. **B3：** 把 E-04 写成「结构判据有效」。T1-only 接近 blanket veto，结构贡献没被隔离；作者自己也没说结构有效。
+2. **B3：** 原锚 E-04 已撤回；不要再写「结构判据有效」，旧 T1-only 观察也不再作为反例。
 3. **B13：** 把 commit gate 的概念架构写成「已落地」。四个开源项目里没有单次写授权；这是 03 最薄的一格。
 
 ## 3. 怎么用

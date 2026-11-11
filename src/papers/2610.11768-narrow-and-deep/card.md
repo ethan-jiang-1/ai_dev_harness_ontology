@@ -20,6 +20,12 @@ updates:
   - topics/03-knowledge/sources.md
   - topics/domains.md
   - topics/conclusions.md
+published: 2026-10
+admission: admitted (probation)
+gate_checked: 2026-11-11
+impact_evidence: "I2: KIER + UST; real testbed"
+liveness: arXiv 2026-10
+provenance_type: academic
 ---
 
 # Narrow and Deep: An Ontology Tower as the Knowledge of an LLM Agent for an Industrial Equipment System · 来源卡

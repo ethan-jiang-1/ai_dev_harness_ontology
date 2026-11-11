@@ -7,6 +7,9 @@ note: illustrative reconstruction; not a deployment
 
 # 附录 C · 端到端示例（示意，不是部署）
 
+> **2026-11-11 证据重置**：本案例的 R5（checker）原锚 E-02 已撤回；Week 3 只作“怎么填/怎么停”的历史示例，不要照做。今天可照做的是 R1/R2（R5/R6 待新源）。
+
+
 > **这是用公开证据拼出的设计走查，不是客户案例。** 场景取自 N&D 的工业设备设定，数字只引用论文已报告值；没有报告的地方写 `[待测]`，不编。
 >
 > 目的：让读者看到「R0 → 选一条 → 账本 → 两周 shadow → go/no-go」长什么样。它不证明这套组合在真实工厂有效。
@@ -26,15 +29,15 @@ note: illustrative reconstruction; not a deployment
 
 | 检查 | 结果 | 决定 |
 |---|---|---|
-| 消费者 | 值班问答 agent，读上下文；无写权限 | 可做 R1/R2/R5；不做 R6/R9 |
+| 消费者 | 值班问答 agent，读上下文；无写权限 | 可做 R1/R2；R5 已 gap；不做 R6/R9 |
 | 名字/单位 | 3 个任务里 2 个 primary trap 来自单位/别名 | 先做 R1 |
 | 声明 | 抽样 50 条，7 条用到未声明属性 | 先补声明，否则 checker 会误报 |
 | 覆盖 | 200 题抽样 unknown IRI `[待测]`；估计 >20% | 先补术语，不先做 R4 等级 |
 | 执行落点 | 只有 2 条约束有 SHACL；无负例 | R5 暂缓，先补 shape/负例 |
 
-**R0 结论**：`fix_first`。先 R1 + 补声明；R2/R5 排后。
+**R0 结论**：`fix_first`。先 R1 + 补声明；R2 排后；R5 待新源。
 
-## 3. Week 1：R1（K1）
+## 3. Week 1：R1（点位语义，K1）
 
 **数据契约**：
 
@@ -46,7 +49,7 @@ slot: {entity_type: "pump", slot: "outlet_pressure", unit: "bar"}
 **做法**：
 
 1. 3 个任务各标 primary trap（单位、设计值/当前值、别名）。
-2. K0：地址级标签 + 原始单位；K1：统一 tag/单位/别名。
+2. K0 基线：PLC 地址 + 原始整数（现场原始单位/别名照原样保留）；K1：统一 tag 名/单位/质量码，别名/槽位按需加（工程扩展）。
 3. 同一 9B 模型回放 3 任务 × 2 臂；每臂 5 次（噪声地板）。
 4. 报 primary-trap avoidance 与 element score，分开报。
 
@@ -81,13 +84,13 @@ stop: < +5pp、>60k、维护 >2 人周/月
 
 **结果**：`[待测]`。若通过，进 R5；若不过，只交付 K1。
 
-## 5. Week 3：R5（checker）
+## 5. Week 3：R5（checker；历史示例，原锚撤回）
 
 **前置**：补声明；写 5–10 条 shapes + 负例（单位必填、范围、source 必填、矛盾标记、连接完整性）。
 
 **基线**：
 
-- 空结果重试：人工 fault 上 catch 79.2%/FA 0%（E-02）；先跑本域 200 题。
+- 空结果重试：**原 E-02 已撤回，旧 79.2%/0% 停用**；先找新源，再跑本域 200 题。
 - data-derived check：先上低 FA；curated 先审计/补声明。
 
 **预注册**：
@@ -124,7 +127,7 @@ Baseline: K0 / K1 / K2 / 空结果重试
 Primary: ...
 Result: point + CI
 Stop line: ...
-Decision: go R2 | go R5 | stop at K1 | not enough data
+Decision: go R2 | R5 待新源 | stop at K1 | not enough data
 Risks: 单系统、答案在文本、维护工时、语义错未覆盖
 ```
 
@@ -147,3 +150,5 @@ Risks: 单系统、答案在文本、维护工时、语义错未覆盖
 **一句话**：示例只展示「怎么走」，不展示「走了有效」。
 
 **出处**：[projection 机制](../../../topics/03-knowledge/projection/mechanism.md) · [checker 机制](../../../topics/02-judgment/checker/mechanism.md) · [E-02/E-12](../../../topics/conclusions.md)
+
+> 回 [02 目录](../README.md) ｜ 回 [接口](./interfaces.md)

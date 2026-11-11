@@ -62,7 +62,7 @@ parent: ../README.md
 
 ## 4. 四条不成立条件（缺一条就不能当闸）
 
-1. **异常 fail-open**：解析/执行出错时放行，而不是拒绝。Kirrane 2020 的形式化对照指出 FILTER 式重写在否定/子查询/聚合下不正确；结果过滤与「像不存在」不是同一语义（[卡](../../../src/web/kirrane-2020-qbac/kirrane-2020-qbac.card.md)）。SHACL-AF 对不支持的 custom target 只写「behavior undefined」+ SHOULD warn，不要求拒绝；fail-open 是实现选择，不是标准要求（[SHACL-AF 卡](../../../src/web/w3c-shacl-af/w3c-shacl-af.card.md)）。
+1. **异常 fail-open**：解析/执行出错时放行，而不是拒绝。Kirrane 2020 的形式化对照指出 FILTER 式重写在否定/子查询/聚合下不正确；结果过滤与「像不存在」不是同一语义（[卡](../../../meta/audits/2026-11-11-source-purge.md#src-web-kirrane-2020-qbac)）。SHACL-AF 对不支持的 custom target 只写「behavior undefined」+ SHOULD warn，不要求拒绝；fail-open 是实现选择，不是标准要求（[SHACL-AF 卡](../../../src/web/w3c-shacl-af/w3c-shacl-af.card.md)）。
 2. **只删 subject 侧**：object 方向可能泄漏；没有 object 用例。
 3. **不拦写/落盘**：它不改变写路径；不能替代 commit gate。
 4. **单实现**：只有 trustgraph 一个 pin commit；没有第二实现/阻断测试。

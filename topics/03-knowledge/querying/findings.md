@@ -43,7 +43,7 @@
   - 口径：89.9% 是 **Match（允许 superset）**，81.3% 才是 Exact；3.1 是作者修订的参考，不是官方榜；与 2.0 分数不可直接比。
   - 10 模型：Qwen3.6-27B 是主配置；小模型明显更低；完整表在 Table 4，引用带模型/规模。
 - **边界**：单作者 preprint、无同行评审、无独立复现；单 snapshot/单 endpoint 为主；完整 ontology 每次进上下文，词汇超窗口时需要选择/缩减，本文未处理；entity linking 不在范围（266 题带 bracketed URI）；闭源模型未测；QuAD 3.1 的修复与所评系统同一作者。
-- **来源**：[NLKGQ digest](../../../src/papers/2609.14652-nlkgq/digest.md) §3–§5、§8；arXiv:2609.14652v1；[card](../../../src/papers/2609.14652-nlkgq/card.md) 只作 provenance。
+- **来源**：[NLKGQ digest](../../../meta/audits/2026-11-11-source-purge.md#src-2609-14652) §3–§5、§8；arXiv:2609.14652v1；[card](../../../meta/audits/2026-11-11-source-purge.md#src-2609-14652) 只作 provenance。
 - **等级**：`已核`（单系统/数字，Table 2–4, p.6）/ `推测`（跨域）。
 
 ## F3 · KGVoyager：不依赖 ontology 的 agentic navigation
@@ -58,7 +58,7 @@
   - 消融（Table 4）：移除 exploration 在三对比较上掉 1.5–8.6 分；search/execution 工具始终需要；domain/range 搜索工具在 full 与 ablated 都被隐藏（实现细节）。
   - 失败分析：156 例两级分类；主要失败是 schema/词汇不匹配、执行错误、答案格式。
 - **边界**：只支持用 `rdf:type` 标注类型的图；Wikidata 那类自有类型体系不直接支持，要 adapter；4 个 benchmark 都小（88–108 题），三个题集同源（Proto-OKN 作者/基础设施），不是 4 个独立域；单系统基线 GRASP；成本口径未报告；preprint/匿名仓库、无独立复现。
-- **来源**：[KGVoyager digest](../../../src/papers/2609.01780-kgvoyager/digest.md) §3–§5、§8；arXiv:2609.01780v2；[card](../../../src/papers/2609.01780-kgvoyager/card.md) 只作 provenance。
+- **来源**：[KGVoyager digest](../../../meta/audits/2026-11-11-source-purge.md#src-2609-01780) §3–§5、§8；arXiv:2609.01780v2；[card](../../../meta/audits/2026-11-11-source-purge.md#src-2609-01780) 只作 provenance。
 - **等级**：`已核`（数字，Table 3/4, p.7–8）/ `推测`（跨域）。
 
 ## 三条路线不能互推

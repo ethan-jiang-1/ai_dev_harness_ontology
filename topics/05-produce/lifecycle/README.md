@@ -71,8 +71,8 @@ evidence: [E-02, E-05]
 | 生命周期回路、三篇各闭合哪段、证据与边界 | [mechanism](./mechanism.md)「机制」「证据锚点」 |
 | 接口/参数/成本/stop/客户指标（吸收的 4 条工程发现：观察级契约、幂等键、`CMR=MMR×precision`、准入/覆盖率 stop/schema 成本） | [mechanism](./mechanism.md)「工程发现」 |
 | 实施决策 D1–D5、人日、第一个 sprint、客户指标与反例 | [mechanism](./mechanism.md)「实施与客户价值」 |
-| 三篇原始 digest | [CASTON](../../../src/papers/2610.21466-caston-refinement/digest.md) · [Evontree](../../../src/papers/2510.26683-evontree/digest.md) · [FIRME](../../../src/papers/2610.40482-firme/digest.md) |
-| 准入闸门的出处（只借这一处） | [OntoAct digest](../../../src/papers/2610.21983-ontoact/digest.md) |
+| 三篇原始 digest | [CASTON](../../../src/papers/2610.21466-caston-refinement/digest.md) · [Evontree](../../../meta/audits/2026-11-11-source-purge.md#src-2510-26683) · [FIRME](../../../src/papers/2610.40482-firme/digest.md) |
+| 准入闸门的出处（只借这一处） | [OntoAct digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-21983) |
 | 相关主题 | [generation](../generation/README.md) · [refinement](../refinement/README.md) · [checker](../../02-judgment/checker/README.md) |
 
 本页即 dashboard（薄页，未拆 findings/frontier）：判断在本页，机制/实施/工程发现在 [mechanism](./mechanism.md)。

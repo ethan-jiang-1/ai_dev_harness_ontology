@@ -10,7 +10,7 @@ evidence: [E-20, E-22]
 
 > 同一份本体放在同一个位置，机器拿它做的事也可能不同。**「有引擎」不等于「会拦」，更不等于「有授权」。**
 >
-> 上游是 [topics/execution-forms.md](../../../topics/execution-forms.md)；代码核对是 E-20/E-22，不是效应量。每行的 `O` 是代码锚地址（[objects.md](../../../topics/objects.md)）。
+> 上游是 [topics/execution-forms.md](../../../topics/execution-forms.md)；代码核对是 E-20/E-22，不是效应量。每行的 `O` 是代码锚地址（[objects.md](../../../topics/objects.md)）：`O-C01`–`O-C15` 是「文件:符号」对象，不是结论编号。
 >
 > **规模**：5 行 × 6 列；4 个项目、31 条单测；OPA 是策略层候选。
 

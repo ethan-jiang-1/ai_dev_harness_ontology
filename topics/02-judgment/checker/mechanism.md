@@ -142,6 +142,6 @@
 
 ## 关联
 
-- [Ontology Catch digest](../../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md)
+- [Ontology Catch digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809)
 - [findings](./findings.md) · [frontier](./frontier.md)
 - [00-harness/verification](../../00-harness/verification.md)

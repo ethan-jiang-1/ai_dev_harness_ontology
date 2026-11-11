@@ -89,5 +89,5 @@
 ## 关联
 
 - [README](./README.md) · [findings](./findings.md) · [frontier](./frontier.md)
-- [Ontology Catch digest](../../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) · [OA-RAG digest](../../../src/papers/2610.36335-oa-rag/digest.md)
+- [Ontology Catch digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809) · [OA-RAG digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36335)
 - [checker](../checker/README.md) · [evidence](../evidence/README.md) · [06 metrics](../../06-measure/metrics/README.md)

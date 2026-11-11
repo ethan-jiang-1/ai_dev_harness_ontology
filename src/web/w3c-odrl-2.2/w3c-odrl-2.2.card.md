@@ -1,15 +1,21 @@
 ---
 status: draft
 source_type: standard
+standing: normative
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-10
+updated: 2026-11-11
 batch:
 source: https://www.w3.org/TR/odrl-model/
 author: W3C Permissions & Obligations Expression Working Group（编辑 Renato Iannella、Serena Villata）
 published: 2018-02-15
 influence: W3C Recommendation（2018-02-15），与同日发布的 ODRL Vocabulary & Expression 共同构成 ODRL 2.2，是「内容/数据使用条款」表达最常被引用的标准基线，数据空间与媒体许可多以 ODRL profile 形式挂靠（具体采用清单 待核）
 updates: []
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I1: W3C Recommendation"
+liveness: standard-in-force
+provenance_type: standard-body
 ---
 
 # W3C ODRL 2.2 · Information Model（权利/合约表达，不是执行引擎）

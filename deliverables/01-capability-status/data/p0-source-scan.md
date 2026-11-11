@@ -81,3 +81,5 @@ target: X5 false-veto / X7 read-path / X8 commit gate
 2. ~~读 2607.22868 正文的 false-block/miss 前沿与校准部分~~ **已完成并入档**；下一步：把 T2 前沿搬到本体 checker，不急着升 E。
 3. 继续扫第二个 read-path 实现（P1）；没有就保持 `unknown`。
 4. 把本页结论回写 [plan](../../_plans/01-capability-status.md) §4 的 P0 行与 D1 §9 的 verdict。
+
+> 回 [01 目录](../README.md) ｜ 回 [01 §数据表](../README.md#数据表工作底稿)

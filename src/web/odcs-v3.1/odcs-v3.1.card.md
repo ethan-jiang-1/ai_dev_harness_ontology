@@ -1,15 +1,21 @@
 ---
 status: draft
 source_type: standard
+standing: normative
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-10
+updated: 2026-11-11
 batch:
 source: https://bitol-io.github.io/open-data-contract-standard/v3.1.0/
 author: LF AI & Data / Bitol（Open Data Contract Standard 项目）
 published: 2025-12-08
 influence: LF AI & Data（Bitol）托管的开放 data contract 标准，v3.1.0 于 2025-12-08 批准（APPROVED）；data contract 类工具/平台互操作的参照之一（采用面未核，见待核末条）
 updates: []
+admission: admitted
+gate_checked: 2026-11-11
+impact_evidence: "I1: LF AI & Data / Bitol approved"
+liveness: standard-in-force
+provenance_type: foundation
 ---
 
 # Open Data Contract Standard (ODCS) v3.1.0

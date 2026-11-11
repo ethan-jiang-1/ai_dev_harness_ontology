@@ -126,5 +126,5 @@ Commit Boundary（概念架构）把「可推理的证据」与「可授权身�
 ## 关联
 
 - [FIRME digest](../../../src/papers/2610.40482-firme/digest.md)
-- [Commit Boundary digest](../../../src/papers/2610.37407-commit-boundary/digest.md)
+- [Commit Boundary digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37407)
 - [findings](./findings.md) · [frontier](./frontier.md)

@@ -13,7 +13,7 @@ basis: E-05/E-17；identity & memory mechanism
 
 让同一实体跨期可对齐，让冲突/失效/来源可保留，让当前请求只取可用子集；避免「同一实体碎裂」与「错误合并长期污染」。
 
-> **为什么（D2）**：跨期匹配靠 registry 对齐实体；merge precision 85.6–97.5%，部分低于 90%，所以先 registry 再状态。
+> **为什么（L2）**：跨期匹配靠 registry 对齐实体；merge precision 85.6–97.5%，部分低于 90%，所以先 registry 再状态。
 
 ## 适用 / 不适用
 

@@ -23,6 +23,11 @@ execution_form: none
 updates:
   - topics/03-knowledge/querying/README.md
   - topics/execution-forms.md
+admission: admitted (probation)
+gate_checked: 2026-11-11
+impact_evidence: "I2: NTU + A*STAR"
+liveness: arXiv v1 2026-07-30
+provenance_type: academic
 ---
 
 # GGC · 来源卡

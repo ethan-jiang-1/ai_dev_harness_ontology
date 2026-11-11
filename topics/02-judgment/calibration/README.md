@@ -43,7 +43,7 @@ evidence: [E-02, E-03]
 | prompt 与运行记录 | [prompt](./prompt.md) · [runs](./runs/README.md) |
 | 相邻：来源选择/接口 | [checker](../checker/README.md) · [evidence](../evidence/README.md) |
 | 尺子与成本 | [metrics](../../06-measure/metrics/README.md) · [feasibility](../../06-measure/feasibility/README.md) |
-| 原始论文 | [Ontology Catch digest](../../../src/papers/2610.37809-what-does-an-ontology-catch/digest.md) · [OA-RAG digest](../../../src/papers/2610.36335-oa-rag/digest.md) |
+| 原始论文 | [Ontology Catch digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809) · [OA-RAG digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36335) |
 
 ## 边界
 

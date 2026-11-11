@@ -26,6 +26,8 @@ basis: E-04/E-13/E-15/E-16/E-20；action-gate & commit-gate mechanism
 
 ## R6 · 动作前可逆性闸：只在不可逆、高代价、弱模型时试
 
+> **2026-11-11 证据重置**：原锚 **E-04/E-13 已撤回**；R6 转 **gap / 待新源**。以下机制描述与旧 τ²-bench/T1-only 数字只作回查；CASEL（E-15）只是非本体参照，不能补这一行。能力判定见 [01 map §2.2b](../../01-capability-status/sections/map.md#22b-gap待新源4-行)。
+
 ### 目标
 
 在副作用发生前，按「是否存在可接受的逆操作序列」剪枝/审批；把「安全」从模型自评换成可检查的世界状态/本体事实。
@@ -33,7 +35,7 @@ basis: E-04/E-13/E-15/E-16/E-20；action-gate & commit-gate mechanism
 > **不要把拦截率当保证。** 同一信息下，false-block 与 miss 是一条前沿；block-all 可以做到零 miss，但零可用性。没有可用性/合法放行指标，不能比较两个 gate。
 
 
-> **机制（D1）**：POLAR 用 Layer A（T1–T5 逆关系 + 权重）+ Layer B（每轮状态投影），对候选动作反向搜索 undo 序列；整条分数是 `min φ(u)`，一步不可逆归零，τ=0.80 以下 veto。**条件**：弱模型、不可逆、高代价；**反例**：T1-only≈full，增益更像广泛拦截；retail/强模型回退；**决策**：只 shadow，报 miss–false-block 前沿，不设单点。
+> **机制（L1）**：POLAR（τ²-bench 的可逆性闸论文）用 Layer A（T1–T5 逆关系 + 权重）+ Layer B（每轮状态投影），对候选动作反向搜索 undo 序列；整条分数是 `min φ(u)`（φ = 该步的可逆性分数 0–1），一步不可逆归零，τ=0.80 以下 veto。**条件**：弱模型、不可逆、高代价；**反例**：T1-only≈full，增益更像广泛拦截；retail/强模型回退；**决策**：只 shadow，报 miss–false-block 前沿，不设单点。
 
 ### 适用 / 不适用
 
@@ -84,7 +86,7 @@ state_hash
 **输出**：
 
 ```text
-{decision: APPROVE|VETO|ESCALATE, phi, pi, bottleneck}
+{decision: APPROVE|VETO|ESCALATE, phi, bottleneck}
 ```
 
 `APPROVE|VETO|ESCALATE` 是 DecisionPolicy，不是本体的一部分。
@@ -104,7 +106,7 @@ state_hash
 4. **shadow 200–500 决策**；标 100 条 blocked 的 false-veto；报 harm/审批/task success。
 5. **先做可逆性路由 + shadow**；不要一上来做六模式分配（CASEL 的 `γ_m` 是假设）。
 
-### 可选：CASEL 六模式（第二阶段）
+### 可选：CASEL（审批/分配模拟）六模式（第二阶段）
 
 | mode | 做什么 | 前置 |
 |---|---|---|
@@ -122,18 +124,14 @@ J(m) = γ_m · p̂ĉ + λk(m) + μq(m)
 ```
 
 - `γ_m` 是**干预后的残余失败比例**，论文是假设值（direct/verify/sandbox/approve = 1.00/0.42/0.15/0.04），不是测量。
-- `k` = 0/1.0/1.6/2.2；`q` = 0/0/0.04/0.65；`λ:μ = 0.02:0.015`。
+- `k(m)` = 模式的计算/工程成本权重（0/1.0/1.6/2.2）；`q(m)` = 审批/延迟成本权重（0/0/0.04/0.65）；`λ:μ = 0.02:0.015` 是两者的相对价格。
 - **没有 `γ_m` 数据不要算 `J(m)`**；没有校准 `p̂`，阈值和账本都没有意义。
 - CASEL 主表 7.02% HSR / 8.7% approvals 是 `τ̂=∞`（阈值关闭）下的结果；不能当「开了阈值」的成绩。
 
 ### 证据
 
-- τ²-bench 上六个模型中四个在 airline 域提升 **0.11–0.18**；但 **18 个模型-域组合仅 8 个整体改善**，retail 与更强模型常回退（E-04）。
-- **T1-only 接近 blanket veto，增益却不比 full 小**；结构反向组合的贡献未被隔离（E-04）。
-- 作者声明 reward 不是防止伤害的直接度量；false-veto 未测。
-- 约束类增益随模型基线能力升高而缩小（E-13，六点描述性拟合，不能当阈值）。
-- CASEL：HSR 14.75%→7.02%、审批 8.7%；最低 HSR 是 Consequence-Menu 4.38%/13.8%，Risk-Menu 5.82%/12.6%；模拟、`γ_m` 假设、审批疲劳未建模（E-15）。
-- OntoAct 的推理期条件闸（E-16）是另一条支线；它与 R6 的边界尚未稳定，本 recipe 不把它当动作闸。
+**原锚 E-04/E-13/E-16 已撤回；R6 现在没有 admitted 来源。** 旧数字（18 格/8 改善、T1-only、六点拟合等）只保留在历史底稿，不再作为 R6 的证据。CASEL（E-15）是非本体参照，不能补这一格。要重启 R6，先找能复算 false-block/harm 的新源。
+
 
 ### 成本
 
@@ -194,7 +192,7 @@ J(m) = γ_m · p̂ĉ + λk(m) + μq(m)
 
 在检索结果进入上下文前，按用户上下文过滤；把「谁能看哪些节点」变成可执行的策略求值。
 
-> **机制（D1）**：trustgraph 的 `PolicyFilter` 在查询结果后跑 SHACL-AF；`_triple_blocked` 只查 `triple.s`，所以只删 subject 侧；target/rule 异常 → 不命中 → 放行；无策略 → passthrough。**条件**：有策略、有 user_context；**反例**：`?s ex:worksFor ?o` 中 `?o` 被 block、`?s` 可见时仍返回；**决策**：只做可见性，不当授权。
+> **机制（L1）**：trustgraph 的 `PolicyFilter` 在查询结果后跑 SHACL-AF；`_triple_blocked` 只查 `triple.s`，所以只删 subject 侧；target/rule 异常 → 不命中 → 放行；无策略 → passthrough。**条件**：有策略、有 user_context；**反例**：`?s ex:worksFor ?o` 中 `?o` 被 block、`?s` 可见时仍返回；**决策**：只做可见性，不当授权。
 
 ### 适用 / 不适用
 
@@ -239,7 +237,7 @@ output: filtered triples/nodes + block reason (if logged)
 - **fail-open**：target/rule 异常 → 当作不命中/无判定；缺 `sh:select`/`sh:construct` → 跳过；无策略 → 原样返回。只有「有策略 + 缺 user_context」是 fail-closed（F6）。**SHACL-AF 对不支持的 custom target 只写「behavior undefined」+ SHOULD warn，不要求拒绝**；fail-open 是实现选择，不是标准要求（[SHACL-AF 卡](../../../src/web/w3c-shacl-af/w3c-shacl-af.card.md)）。
 - **只删 subject 侧**：`_triple_blocked` 只查 `triple.s`；object 方向可能泄漏（F7）。
 - **单实现（已入库）**：四个开源项目里只有 trustgraph 做读路径；read-path 仍是轴外位置（E-20；seams）。
-- **重写 vs 结果过滤有形式化对照**：Kirrane 2020 用 secure/sound/maximum 比较两者，指出 FILTER 式重写在否定/子查询/聚合下不正确；[卡](../../../src/web/kirrane-2020-qbac/kirrane-2020-qbac.card.md)。
+- **重写 vs 结果过滤有形式化对照**：Kirrane 2020 用 secure/sound/maximum 比较两者，指出 FILTER 式重写在否定/子查询/聚合下不正确；[卡](../../../meta/audits/2026-11-11-source-purge.md#src-web-kirrane-2020-qbac)。
 - **第二执行点（候选，未入库）**：`Matdata-eu/sparql-guard`（Apache-2.0，HEAD `6b68d769`）：TS 代理，用**查询重写**而非返回后过滤；fail-closed、subject+object 两侧、SHACL Core 子集；**2026-11-11 仓库外复跑 76/76 通过（EXP-001）**。它仍未按仓库标准入库（单作者/1★/无 harness 调用点/无独立泄漏率），只能当执行点线索。
 - **第三执行点（候选，未入库）**：`pwin/triplestore`（holosdb，`666238f`）：扫描期按 **predicate/graph** 过滤，默认 deny、fail-closed；`holos-engine/src/view.rs` 有调用点；20 条 security 单测（未复跑）。**EXP-002**：sparql-guard 10 用例实跑 7 pass、1 alias leak、0 false-block；alias 是策略建模边界。**EXP-003**：前置解析能修 node-level（post-filter/rewrite），不修 predicate-level（scan）。规范只强制「已断言 sameAs 则展开」（OWL 2 RL），不强制「先于过滤」；授权按 alias 逐个判，合并单独授权。`Scope` 没有 Subject/Object，**不能表达 node-level**，所以不是 trustgraph 的替代。
 - 31 条策略单测存在；未做异常注入/对象方向测试。
@@ -396,3 +394,5 @@ verdict: {status: PASS|BREACH|UNKNOWN_EVIDENCE,
 - [identity 机制](../../../topics/04-state/identity/mechanism.md) 的 merge/split 写侧契约。
 
 **出处**：[action-gate 机制](../../../topics/01-constraint/action-gate/mechanism.md) · [commit-gate 机制](../../../topics/01-constraint/commit-gate/mechanism.md) · [E-04/E-15/E-20](../../../topics/conclusions.md)
+
+> 回 [recipes 索引](./README.md) ｜ 回 [02 目录](../README.md)
