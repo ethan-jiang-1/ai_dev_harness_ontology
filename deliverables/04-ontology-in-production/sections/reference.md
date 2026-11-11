@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-10
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -88,7 +88,7 @@ parent: ../README.md
 | 6 | wrapper 手工 | 原生词不透明 | wrapper→native 映射单测 |
 | 7 | 非 `rdf:type` 图 | Wikidata 类体系 | `ASK { ?s a ?c }` 抽样 |
 | 8 | 探索成本膨胀 | 图/属性规模大 | iterations / tool calls / wall-clock |
-| 9 | benchmark 小且同源 | 88–108 题、3 个同源 | 换独立域；报 CI |
+| 9 | benchmark 小且同源 | 题量小、同源 | 换独立域；报 CI |
 | 10 | 重写正确但结果错 | OBDA | 原生 SQL vs 重写 SQL 结果集 |
 | 11 | OWL 2 QL 表达力 | 超 QL 公理 | `ontop validate`；列被拒公理 |
 | 12 | 执行准确≠业务正确 | 只看 accuracy | 自域配对 + 人工抽检 |

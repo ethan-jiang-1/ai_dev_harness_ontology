@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 basis: R0–R12 的 mechanism/数据契约；E-20
 ---

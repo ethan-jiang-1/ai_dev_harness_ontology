@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 basis: E-20；execution-forms 代码核对；semantica / open-ontologies / ontop digest
 ---

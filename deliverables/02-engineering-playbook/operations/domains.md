@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 basis: topics/domains；E-05/E-12/E-17 仍 admitted；E-03/E-04 已撤回
 ---

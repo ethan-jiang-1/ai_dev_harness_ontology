@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 basis: 06/feasibility、06/metrics、06/trace；E-08/E-14/E-18（E-02/E-04 已撤回）
 ---
