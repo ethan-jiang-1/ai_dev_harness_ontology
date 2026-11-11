@@ -68,7 +68,7 @@ scope: 内容层缺口盘点（purge 后）
 
 ## 6. 外部前沿对齐（受限核实）
 
-> **工具限制（如实记录）**：本轮 `web_search` 端点返回 HTTP 402（余额不足），宽口径前沿发现不可用；两个只读调研代理因此中断。本节是用 `web_fetch` 对**已知关键来源**的逐条直接核实，不是完整的前沿扫描。Semantic Scholar 引用 API 亦限流（429），引用/采用计数未能取到。**「与做本体/前沿的人理解是否一致」这一问，本轮只答到「仓库对已有来源的消化是否忠实」，未答到「与外部共同体共识是否一致」；后者待搜索恢复后补。**
+> **工具状态（如实记录）**：`web_search` 已恢复（用户充值）；`web_fetch` 先前可用，已逐条核实 4 篇 probation 论文 + Agents benchmark 仓库。**随后开启的 VPN 把 arxiv.org / api.github.com / semanticscholar 等域名解析成非公网 IP，抓取工具的安全策略拒绝非公网地址，web_fetch 全面不可用**——需关闭 VPN 才能继续核实。下文「窗口内候选」是 web_search 发现、尚未 fetch 过门的线索，一律标待核，不作判断依据。
 
 **4 篇 probation 论文逐条核实（arXiv 摘要，4/4）**：
 
@@ -85,4 +85,11 @@ scope: 内容层缺口盘点（purge 后）
 2. **probation 判定站得住**：4 篇都没有顶会/标准组织级 I1，确实只有 I2（多机构）一个信号；按宪章 probation 合理，第二信号缺口是真的，不是误判。
 3. **P0 线索已核（阴性）**：Agents 的 benchmark 仓库公开（MIT/Python，last push 2026-10-05）但 0 fork / 0 依赖 / 1 star / 0 issue，无外部使用者，I5 不成立——**释放代码 ≠ 有影响力**，probation 维持。这正是准入门该挡的：不能因「作者释放了代码」就转正。第二信号得另找（I3 独立采用 / I4 社区）。
 
-**未答（待搜索恢复）**：窗口内有没有新的过门执行型来源（尤其 04 记忆 / 06 度量）；工程前沿把本体放在回路哪一格；哪些流行说法证据薄弱。这些是宽口径前沿问题，`web_search` 恢复后按 [topic 协议](../../meta/topic-research-protocol.md) 重扫。
+**web_search 已发现的窗口内候选（待 fetch 过门，VPN 关闭后核）**：
+
+- **Selective Forgetting**（arXiv 2608.28978，2026-08）：图式长期 agent 记忆——04 记忆派候选，需核「本体是否真执行」而非仅图检索。
+- **SARA**（AAAI，法律本体推理）：顶会 I1 候选，需核发表日期与「本体是否在执行位」。
+- **ontology-rag-firewall**（github cloudbadal007）：OWL/SHACL 防火墙拦 agent 动作——read-path/checker 候选，需核贡献者/独立采用（疑似单作者，大概率 signal）。
+- **Ontology-to-tools compilation**（arXiv 2602.03439，2026-02）：窗口前，只作背景，不入库。
+
+**未答**：工程前沿把本体放回路哪一格、哪些流行说法证据薄弱、上述候选能否过门——待 VPN 关闭、`web_fetch` 恢复后按 [topic 协议](../../meta/topic-research-protocol.md) 逐一过五门。**宁缺毋滥：核不过就留 frontier，不入库。**
