@@ -15,7 +15,7 @@ evidence: [E-02, E-20]
 
 > **一句话**：本体在这里是**外部判据**，不是模型自评。它能把「类型/声明/模式」错误变成可阻断的信号，但抓不住「意义变了」；而且判定器自己会误报，误报会把对的东西改坏。
 
-**为什么结构错能拦、语义错抓不到**：checker 用 reasoner/SPARQL 检查类型/声明/domain-range；意义变化不在图里。**原锚 E-02 已撤回**：旧 curated FA 16.8%、precision 57.1%、空结果重试 79.2%/0% 等数字停用，不能拼成「准确率」。**条件**：有声明/闭世界；**反例**：语义错为主时越查越误；**决策**：先找新源，再谈 checker。
+**为什么结构错能拦、语义错抓不到**：checker 用 reasoner/SPARQL 检查类型/声明/domain-range；意义变化不在图里。**原锚 E-02 已撤回**：旧 curated FA、precision、空结果重试等数字一律停用、不再给值，不能拼成「准确率」。**条件**：有声明/闭世界；**反例**：语义错为主时越查越误；**决策**：先找新源，再谈 checker。
 
 **为什么不是相邻位置**：不是 evidence（evidence 带依据，checker 判对错）；不是 action（checker 不改动作）。
 
@@ -42,22 +42,22 @@ evidence: [E-02, E-20]
 
 ## 3. 能改变什么
 
-- **三来源各有偏向，无单一向优。** 真实答案 catch/FA：curated 18.9/16.8、data-derived 8.2/3.5、masked LLM 5.0/1.8；precision（人工故障 + 25% 错答案假设）57.1/72.3/93.7。`withdrawn`（原 E-02；单 checker 实验）
-- **curated 的精确度仅略优于随机。** +1.6 点，CI 跨零；FA 主源是 declaration/domain-range（盲审 32 个 FA：undeclared term 17、closed-world 11、data clash 0）。`withdrawn`（原 E-02）
-- **空结果重试是强基线。** 人工 fault 上 catch 79.2%、FA 0%；真实答案 catch 2.5%、FA 0.1%。`withdrawn`（原 E-02）
-- **LLM judge 检错更多，但修坏多于修好。** 真实答案 catch 40.3%、FA 16.2%；40 修好 / 83 修坏。`withdrawn`（原 E-02；附录 C.2 比较器；成本/稳定性未测）
+- **三来源各有偏向，无单一向优。** 旧观察里 curated/data-derived/masked LLM 的 catch/FA 与 precision 各不相同，没有单一向优；具体数值随 E-02 撤回停用。`withdrawn`（原 E-02；单 checker 实验）
+- **curated 的精确度仅略优于随机。** 旧观察给的是「略高于随机、区间跨零」；常见 FA 源是未声明术语与闭世界假设。具体数值随 E-02 撤回停用。`withdrawn`（原 E-02）
+- **空结果重试可能是一个强基线。** 旧观察里它在人工故障上 catch 高、FA 低；具体数值随 E-02 撤回停用，重启前必须重测。`withdrawn`（原 E-02）
+- **LLM judge 可能检错更多，但「修坏」也可能多于「修好」。** 旧观察给了 catch/FA 与修好/修坏计数；具体数值随 E-02 撤回停用。`withdrawn`（原 E-02；成本/稳定性未测）
 - **三态可以显式化。** 开源侧 `oo-shacl` 的 exit 3（undetermined）进入 wrapper 后变成 `conforms: null`，外层映射为 exit 2；JSON 保留第三态，shell 退出码不保留。`已核（代码）`（E-20）
 
 ## 4. 拦不住什么 / 失效模式
 
 | 失效 | 说明 | 证据/等级 |
 |---|---|---|
-| 语义错抓不到 | 类型都对、关系方向反/边界划错（changes of meaning），结构检查 0% | `withdrawn`（原 E-02） |
-| 误报引发「修坏」 | 正确答案被 flag，agent 去修；specific feedback corrupt 1.0% | `withdrawn`（原 E-02） |
+| 语义错抓不到 | 类型都对、关系方向反/边界划错（changes of meaning）；结构检查抓不到（机制判断，`推测`） | `withdrawn`（原 E-02） |
+| 误报引发「修坏」 | 正确答案被 flag，agent 去修；旧观察有「specific feedback 修坏」的比例，数值停用 | `withdrawn`（原 E-02） |
 | 把 curated 当权威 | curated precision 仅略优于随机；缺声明会对正确答案误报 | `withdrawn`（原 E-02） |
 | 三态折叠 | unknown 并进 pass，污染 catch/FA 分母 | `已核（代码）`（E-20） |
 | 覆盖与保证不可兼得 | 支持 `sh:sparql` 但 skip；verified 覆盖 Core 但拒绝 22/120 | `已核（代码）`（E-20） |
-| 同源检查 | 同一 artifact 既做 context 又做 checker 时 catch 下降；机制未定 | `推测`（E-02 的探索性观察） |
+| 同源检查 | 同一 artifact 既做 context 又做 checker 时 catch 可能下降；机制未定 | `推测`（原 E-02 的探索性观察，源已撤回） |
 | 没有 ground truth | 部署时只能抽样审计，无法直接算全量曲线 | `withdrawn`（原 E-02 的部署度量边界） |
 
 ## 5. 使能条件
@@ -74,7 +74,7 @@ evidence: [E-02, E-20]
 | E-02 | **withdrawn** | 三来源 catch/FA；curated FA 归因；空结果基线；judge 净修复 | 部署 precision；false-veto；跨域；语义错 |
 | E-20 | 已核（代码） | 三态接口；覆盖–保证边界；执行≠授权 | 效应量；所有实现；语义正确 |
 
-> **旧口径停用**：precision 57.1% 等数字随 E-02 撤回，不再作为口径示例。
+> **旧口径停用**：旧 precision/catch/FA 数字随 E-02 撤回，不再作为口径示例，也不再给值。
 
 ## 7. 可证伪条件
 

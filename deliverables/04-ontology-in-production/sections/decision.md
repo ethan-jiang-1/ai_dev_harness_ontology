@@ -18,7 +18,7 @@ parent: ../README.md
 |---|---|---|
 | 这张 fixture 能上线吗 | **不能**；它是 `conditional`，不是「可上线」 | C3 object 泄漏、T9 未定、写授权无实现（[acceptance](./acceptance.md)） |
 | 这张 fixture 能试点吗 | 可以，但要收窄范围 + 补条件 | 见 §5；不是所有团队都适合 `conditional` |
-| 要花多少 | 建模 2–4 人周 + shapes 3–5 人日 + 集成 1–2 人周（`推测`）；打标/审计/执行层**未估**，测法见 §2.5 | §2；SFE-O digest 的 `推测` 估算，不是报价 |
+| 要花多少 | 建模 2–4 人周 + shapes 3–5 人日 + 集成 1–2 人周（`推测`）；打标/审计/执行层**未估**，测法见 §2.5 | §2；工程假设（原 SFE-O 估算已移出），不是报价 |
 | 多久 | 4 个阶段：3–5 天 / 3–5 周 / 1 周 / shadow 2–4 周（`推测`） | §3；按 5 表小域、1 个 owner 假设 |
 | 什么时候停 | 契约填不出 / `targeted=0` / object 泄漏未修 / 无 owner / 无回滚 | §5、§6 |
 | 什么会改变判断 | 第二实现、真数据误报率、单价、规模测试 | §7；缺这些只能 `conditional` 或 `not enough data` |
@@ -64,7 +64,7 @@ parent: ../README.md
 
 | 成本项 | 量级 | 来源/等级 | 谁填 | 你的值 |
 |---|---|---|---|---|
-| 建模（TBox + ABox） | 2–4 人周（5 表/13 列小域） | SFE-O digest，`推测`；[GUIDE](../GUIDE.md) | 数据/本体 |  |
+| 建模（TBox + ABox） | 2–4 人周（5 表/13 列小域） | 工程假设，`推测`；原 SFE-O 已移出；[GUIDE](../GUIDE.md) | 数据/本体 |  |
 | shapes + 负例 | 3–5 人日 | 同上，`推测` | 数据/本体 |  |
 | 查询 / 集成（3 CQ + endpoint/agent；查询胶水未估） | 1–2 人周（外部服务集成估算） | representation，`推测` | 应用 |  |
 | 打标 / 等级 | **未估**；Glyph 单企业，无公开人日；怎么变成可测见 §2.5 | E-22，`未测` | 数据/治理 |  |
@@ -265,7 +265,7 @@ TCO_12m =
 |---|---|
 | 「fixture 5 表跑通，说明 200 表也能跑」 | 200/5k 是本文假设的中型目录，不是 Glyph 参照（Glyph ~98k 表/3.4M 列，E-22），也不是本 fixture 的容量证明；规模未测 |
 | 「`conditional` 就是失败」 | `conditional` 是未决项：可收窄试点，不是可上线，也不是永久标签 |
-| 「2–4 人周就是报价」 | 是 SFE-O digest 自标 `推测` 的估算，未绑定流程条数/团队规模；不是报价 |
+| 「2–4 人周就是报价」 | 是工程假设（`推测`；原 SFE-O 估算已移出），未绑定流程条数/团队规模；不是报价 |
 | 「04 说这条路值得做」 | 04 只给链的产物/门槛/停；值不值得去 01 |
 | 「一条 CQ 跑通就是有效果」 | 只证明这条链在该 fixture 上自洽；效果要自域对照/配对 |
 
@@ -276,7 +276,7 @@ TCO_12m =
 - **成本口径**：[02 cost](../../02-engineering-playbook/operations/cost.md)（五维、TCO、单价表空、缺项规则）；§2.5 公式；[TPL-9](./templates.md#tpl-9-成本工作纸) 工作纸。
 - **上线节奏**：[02 rollout](../../02-engineering-playbook/operations/rollout.md)（shadow → advisory → enforce；回滚；RACI）。
 - **go/no-go**：[02 evaluation](../../02-engineering-playbook/operations/evaluation.md)（go / no-go / not enough data）。
-- **量级估算**：[SFE-O digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123)（2–4 人周/3–5 人日，`推测`）；[representation mechanism](../../../topics/05-produce/representation/mechanism.md)（1–2 人周集成，`推测`）；policy 2–4 人日借 [02 cost](../../02-engineering-playbook/operations/cost.md) R9（commit gate 的 policy 部分，04 读路径按同类量级类比）。
+- **量级估算**：工程假设（`推测`；原 SFE-O 估算已移出，只作历史）；[representation mechanism](../../../topics/05-produce/representation/mechanism.md)（1–2 人周集成，`推测`）；policy 2–4 人日借 [02 cost](../../02-engineering-playbook/operations/cost.md) R9（commit gate 的 policy 部分，04 读路径按同类量级类比）。
 - **条件项**：E-22（标签单企业）、E-23（读路径单实现/fail-open）、E-20（写授权无实现）。
 - **不证明**：ROI、真数据误报率、延迟、规模、第二实现、严格 replay。
 - **停**：没有单价/owner/第二实现，只出 `conditional` 清单，不出 `go`。

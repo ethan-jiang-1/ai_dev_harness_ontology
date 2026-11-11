@@ -2,7 +2,7 @@
 status: draft
 updated: 2026-11-11
 parent: ../README.md
-basis: E-02/E-03/E-20；evidence & checker mechanism
+basis: E-20；evidence & checker mechanism（E-02/E-03 已撤回）
 ---
 
 # R4–R5 · 判定：输出时带依据，输出后查结构
@@ -65,7 +65,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 **concept card 字段**：`iri, label, definition, parents[], children[], relations[], comments[], source`；单卡截断 1–2k 字符。
 
-**预算**：旧协议（≤10 tool actions、≤5,000 generated tokens、实测 5.8 calls / 9.7k tokens）随 E-03 撤回，只作历史；重启 R4 先找新源，不沿用旧预算当门槛。
+**预算**：旧协议（tool actions 上限、生成 token 上限、实测调用/token 数）随 E-03 撤回，只作历史；重启 R4 先找新源，不沿用旧预算当门槛。
 
 ### 做法
 
@@ -91,7 +91,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 ### 证据
 
-**原锚 E-03 已撤回；R4 现在没有 admitted 来源。** 旧数字（平均 50.5%/68.1%、+10–15pp、9.7k tokens 等）只保留在历史底稿，不再作为 R4 的证据。要重启 R4，先找能复算 grounding 等级/校准的新源；在那之前不设门槛、不做自动路由。
+**原锚 E-03 已撤回；R4 现在没有 admitted 来源。** 旧的检索率/引用率/接地增益/调用与 token 数一律停用、不再给值，只保留在历史底稿。要重启 R4，先找能复算 grounding 等级/校准的新源；在那之前不设门槛、不做自动路由。
 
 ### 成本
 
@@ -99,7 +99,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 |---|---|---|
 | concept card 生成 | 1–2 人日/本体 | 推测 |
 | reasoner/SPARQL 集成 | 1–2 人周 | 推测 |
-| 运行 | 5.8 calls / 9.7k tokens（Qwen Test 3） | **历史**（E-03 撤回） |
+| 运行 | 旧调用数/token 口径随 E-03 撤回，不再给值 | **历史** |
 | 校准标注 | 100–200/等级；人日未测 | 推测 |
 
 ### 验收 / 停
@@ -115,7 +115,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 ### 失效模式
 
 - **等级自评。** 模型给自己打分；作者写明不提供形式正确性保证。
-- **等级未校准。** 94.9/82.1 是一个切片，不能当阈值依据。
+- **等级未校准。** 旧切片数字随 E-03 撤回停用，不能当阈值依据；要校准先补独立标注。
 - **等级通胀。** 全标 supported，字段存在但无区分度。
 - **引用形式化。** 引用了观察，但结论与观察无关。
 - **格式开销。** 每条结论都带证据会增加输出 token；论文没有单列这项开销。
@@ -139,8 +139,9 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 ### 可抄锚点
 
-- [evidence 机制](../../../topics/02-judgment/evidence/mechanism.md) 的「OA-RAG 实际做法」「接口与预算」「stop」。
-- OA-RAG 的三原语、name linking、E=∅ 处理；不要抄「等级=保证」。
+> **源已移出**：OA-RAG 已按 §4 移出；下面只作历史读法，不要照抄。
+- [evidence 机制](../../../topics/02-judgment/evidence/mechanism.md) 的「实际做法」「接口与预算」「stop」——当历史模板读。
+- 三原语、name linking、E=∅ 处理只作结构参考；**不要抄「等级=保证」**。
 
 ---
 
@@ -188,7 +189,7 @@ output: {verdict: pass|flag|unknown,
 
 ### 做法
 
-1. **先找新源**：原锚 E-02 已撤回，旧空结果重试 79.2%/0%、curated 18.9%/16.8%、data-derived 8.2%/3.5% 都不能再用。
+1. **先找新源**：原锚 E-02 已撤回；旧空结果重试基线、curated/data-derived 的 catch/FA 数字一律停用，不再给值。
 2. **只有能抓「有结果但答错」的增量，才建 checker**；增量门槛要由新源/本域回放重定，不沿用旧 +5pp。
 3. **来源选择**：curated / data-derived / masked LLM 的偏向是机制假设（`推测`）；没有新源前不做默认推荐，也不盲目组合。
 4. **200 题回放**：报 catch / FA / precision / per-1k cost；人工抽 50 条；**这些是测量项，不是旧结论**。
@@ -198,13 +199,12 @@ output: {verdict: pass|flag|unknown,
 ### LLM judge 分支（不是免费升级）
 
 - 输入：问题 + 查询 + 结果 + 答案；每条答案一次模型调用。
-- 收益：UniProt 真实答案 catch 40.3%、FA 16.2%、precision 31.3；能抓 changes of meaning（结构检查 0%）。
-- 代价：把 flag 当行动信号后 **40 条修好 / 83 条修坏**；人工故障上会 flag 30–38% 答案仍正确的查询。
+- **旧观察（E-02，已撤回）**：judge 能抓结构检查抓不到的语义错，但「修坏」可能多于「修好」；具体 catch/FA/净修复数字停用，不再给值。
 - 规则：先测 **净修复（fixed − corrupted）**、每条答案模型调用成本、稳定性；不能只看 catch，也不能默认 judge 更好。
 
 ### 证据
 
-**原锚 E-02 已撤回；R5 现在没有 admitted 来源。** 旧数字（curated/data-derived catch/FA、空结果重试 79.2%/0%、净修复等）只保留在历史底稿，不再作为 R5 的证据。要重启 R5，先找能复算 catch/FA/净修复的新源；空结果重试基线也要重新找锚。
+**原锚 E-02 已撤回；R5 现在没有 admitted 来源。** 旧的 catch/FA、空结果重试基线、净修复数字一律停用、不再给值，只保留在历史底稿。要重启 R5，先找能复算 catch/FA/净修复的新源；空结果重试基线也要重新找锚。
 
 
 ### 成本
@@ -213,14 +213,14 @@ output: {verdict: pass|flag|unknown,
 per-1k cost = flag_rate × per-flagged cost × 1000
 ```
 
-先量 `flag_rate`；66k 不是每答案成本。LLM judge 按每条答案一次调用计，单位成本未测。
+先量 `flag_rate`；旧 per-flagged 成本随 E-02 停用，不再给值。LLM judge 按每条答案一次调用计，单位成本未测。
 
 ### 验收 / 停
 
 | 指标 | 通过线（工程建议） | 停 |
 |---|---|---|
-| 增量 catch | ≥5pp | <5pp → 停 |
-| FA | ≤15% | >15% → 停 |
+| 增量 catch | 旧线 ≥5pp；**只作测量项**（新源前不设线） | 量不出 → 停 |
+| FA | 旧线 ≤15%；**只作测量项**（新源前不设线） | 量不出 → 停 |
 | 净修复 | >0（judge 分支） | ≤0 → 不用 judge |
 | per-1k 成本 | ≤人工审核 1/3 | 超过 → 停 |
 | 语义错为主 | 换 judge/人工 | 结构 checker 抓不到 → 不要硬上 |
@@ -229,18 +229,18 @@ per-1k cost = flag_rate × per-flagged cost × 1000
 ### 失效模式
 
 - **误报导致修坏。** 正确答案被 flag，agent 去修，把对的改成错的。
-- **漏检语义错误。** 类型都对、关系方向反了/边界划错；结构检查 0%。
+- **漏检语义错误。** 类型都对、关系方向反了/边界划错；结构检查抓不到这类（机制判断，`推测`）。
 - **判定器不可解释。** 只说错、不说哪条约束，模型只能换姿势重试。
 - **串联放大误报。** 前一级误报引发下游大量无效工作。
-- **把 curated 当权威。** FA 主源是缺声明/闭世界，不是「与数据矛盾」；先审计/补声明。
-- **把 LLM judge 当更好替代。** 检错更多，但修坏多于修好；先测净修复。
+- **把 curated 当权威。** 常见 FA 源是缺声明/闭世界（机制假设，待新源验证）；先审计/补声明。
+- **把 LLM judge 当更好替代。** 旧观察提示「修坏可能多于修好」（E-02 已撤回）；先测净修复。
 - **用 accuracy 评估 checker。** catch 与 FA 混在一起，会得出反向结论。
 - **同源 context+checker。** catch 下降是探索性观察；机制未定，不要写成部署规则。
 
 ### 可抄锚点
 
 - [checker 机制](../../../topics/02-judgment/checker/mechanism.md) 的「三种来源」「判定回路」「成本」「stop」。
-- Ontology Catch 的 catch/FA 口径、空结果基线、per-flagged 成本；不要抄「curated 权威」。
+- Ontology Catch 已移出：catch/FA 口径、空结果基线、per-flagged 成本**只作历史**；不要抄「curated 权威」。
 - [open-ontologies 的三态 ](offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态)；第三态是接口设计，不是效果证据。
 
 **出处**：[evidence 机制](../../../topics/02-judgment/evidence/mechanism.md) · [checker 机制](../../../topics/02-judgment/checker/mechanism.md) · [E-02/E-03](../../../topics/conclusions.md)

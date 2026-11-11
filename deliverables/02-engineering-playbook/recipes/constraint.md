@@ -2,7 +2,7 @@
 status: draft
 updated: 2026-11-11
 parent: ../README.md
-basis: E-04/E-13/E-15/E-16/E-20；action-gate & commit-gate mechanism
+basis: E-15/E-20；action-gate & commit-gate mechanism（E-04/E-13/E-16 已撤回）
 ---
 
 # R6 · R8 · R9 · 约束：动作前、读路径、落盘前
@@ -341,7 +341,7 @@ verdict: {status: PASS|BREACH|UNKNOWN_EVIDENCE,
 ### 证据
 
 - 只有概念架构；四个开源项目里没有单次写授权（E-20；commit-gate F4/F5）。
-- Commit Boundary 自述无实现、无实证；保证依赖 7 条假设（域策略充分、promotion 可靠、强制执行等）。
+- 原 Commit Boundary（源已移出）自述无实现、无实证；其保证依赖若干假设（域策略充分、promotion 可靠、强制执行等），只作历史。
 - 读路径有实现（trustgraph），但那是 R8，不是 commit gate；不能外推成「授权不可执行」。
 - false-defer 未测；domain policy 编写成本未测。
 

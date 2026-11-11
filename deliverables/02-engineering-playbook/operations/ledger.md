@@ -2,7 +2,7 @@
 status: draft
 updated: 2026-11-09
 parent: ../README.md
-basis: 06/feasibility、06/metrics、06/trace；E-02/E-04/E-08/E-14/E-18
+basis: 06/feasibility、06/metrics、06/trace；E-08/E-14/E-18（E-02/E-04 已撤回）
 ---
 
 # 账本：先记原始记录，再谈指标
@@ -141,7 +141,7 @@ harm=unknown, false_veto=unknown
 3. **用均值代替分布。** 平均 −38% 会掩盖 −91%/+1.9%。
 4. **用 retention 代 false-veto。** 保留率不是「拦对了多少」。
 5. **缺 `repeat_idx`。** 无法区分效应与 run-to-run 噪声。
-6. **缺 `cost_unit`。** 66k per flagged 被当每答案成本。
+6. **缺 `cost_unit`。** 把 per-flagged 成本当每答案成本（旧 per-flagged 值随 E-02 停用）。
 7. **自评账本。** 机制 owner 兼评测 owner，口径会漂。
 
 ## 9. 交接

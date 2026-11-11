@@ -3,7 +3,7 @@ status: draft
 deliverable_status: draft
 updated: 2026-11-11
 position: outside
-evidence: [E-16, E-17, E-20]
+evidence: [E-16, E-17, E-20]  # E-16 withdrawn
 ---
 
 # 谱外位置：determinism、read-path、supply、reasoning、training
@@ -33,7 +33,7 @@ evidence: [E-16, E-17, E-20]
 | determinism | 跨运行 | 04 状态 | 设计 | 把两次产物投影到本体结构，比对漂移；或作为生成时的约束 | 无 E；E-17 是跨轮，不是跨运行 | 不在单次路径上；无实现、无度量 |
 | read-path | 轴外 | 01 约束 | `engine` | 检索结果进入上下文前，按 user_context + SHACL-AF 过滤；被 block 的 subject 侧三元组删除 | E-20（trustgraph） | 只有 1 个实现；fail-open；只删 subject 侧 |
 | supply | 轴外 | 03 知识 | `engine` | 查询编译：TBox 饱和 + 重写 → SQL；改变「给什么」，不直接拦模型动作 | E-20（ontop） | 不是 gate；不校验输出 |
-| reasoning | 轴外 | 01 约束 | `compiled` | 推理期条件验证：三值 ⊤/⊥/? + 假设 revision；缺证据转观察 | E-16（OntoAct；模拟） | 与 action-gate 的边界未稳定；模拟、固定 schema |
+| reasoning | 轴外 | 01 约束 | `compiled` | 推理期条件验证：三值 ⊤/⊥/? + 假设 revision；缺证据转观察 | 原 E-16（OntoAct；模拟；**已撤回**） | 与 action-gate 的边界未稳定；模拟、固定 schema |
 | training | 轴外 | 05 生产 | `none` | 训练侧用规则筛数据/注入结构；不在推理回路内 | 训练侧项目（报告值，`存疑`） | 不在回路内；增益仅报告值 |
 
 ## 3. 逐个说明

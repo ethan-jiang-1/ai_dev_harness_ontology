@@ -7,6 +7,8 @@ parent: ../README.md
 # 3. 主体：R0–R12 与参考实现
 
 > 本章回答：R0–R12 怎么选、开源/论文能抄什么、架构和路线怎么排。 ｜ 读完你应该能：选一条 recipe 并写出接口。
+>
+> **词源**：R0–R12 / 接缝 / 形态 / 准入门槛是 `local` 工程词；数据契约可对 `N: ODCS v3.1.0`；约束/校验 = `N: W3C SHACL`，查询重写 = `N: W3C OWL 2 Profiles`。标准只定词，不给配方成功保证。
 
 <a id="4-九条工程做法r1r9"></a>
 <a id="4-十二条工程做法r0r12"></a>
@@ -70,7 +72,7 @@ parent: ../README.md
 | 代码级 | 真实接口、调用链、失败行为 | 4 个开源项目（E-20） | 抄接口与边界；不抄效果 |
 | 公式级 | 可算的盈亏平衡/代价 | 编译 `p_min = 2% + c/(0.929Q)`（E-14）；CASEL `J(m)`（E-15，`γ_m` 是假设） | 代自己的数；不抄论文的 `c`/`γ` |
 | 协议级 | 判定/标注/三态 | 原 E-02/E-03 撤回；这些协议只作历史模板；promotion 七条来自已删 Commit Boundary，只作概念 | 不抄阈值；待新源再抄协议 |
-| 参数级 | 具体设置 | POLAR T1–T5/τ=0.80；OntoAct 三值；FIRME 匹配顺序/0.8 | 只当起点，按域重标 |
+| 参数级 | 具体设置 | FIRME 匹配顺序/0.8（E-05）；POLAR/OntoAct 的 τ、三值等**源已移出**，只作历史参数 | 只当起点，按域重标 |
 | 流程级 | 步骤顺序 | CAI parse→chunk→enrich→validate→assemble→register；OA-RAG DESCRIBE/ASK/SELECT | 抄流程；不抄规模 |
 | 概念级 | 设计问题 | commit gate；determinism；多智能体共享本体 | 只能当设计清单，不能当实现 |
 

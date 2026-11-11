@@ -120,7 +120,7 @@ parent: ../README.md
 | **C-03** | 尺子跟机制走的冲突条目 | [conclusions](../../../topics/conclusions.md) |
 | **D1** | 01 的工作底稿编号（不是判定 D，也不是深度层） | [01 §数据表](../README.md#数据表工作底稿) |
 | **L1/L2/L0** | 01 的深度分层：机制箱 / 一句 why / 只有范围注 | [canonical §4](./canonical.md#4-深度分层l1l2l0) |
-| **26 / 15 / 3** | 换词检查（2026-11-09，26 源）：15 个换词仍成立、3 个依赖 OWL/DL | [boundaries §4.4](./boundaries.md) |
+| **换词检查** | 早期统计「换成任意结构化上下文后仍成立」的比例；**计数已随源重置停用** | [boundaries §4.4](./boundaries.md) |
 | **τ / φ / γ_m** | 阈值 / 可逆性分数 / 残余失败比例（动作闸） | [03 action](../../03-mechanism-reference/positions/action.md) |
 
 > `D1` 这个代号只出现在 `data/` 的工作底稿里，指「第一轮证据回抽」；与判定 **D 反向**、深度层 **L1** 都无关。

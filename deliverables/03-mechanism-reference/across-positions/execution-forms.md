@@ -62,9 +62,9 @@ evidence: [E-20, E-22]
 |---|---|---|---|
 | context | `context` / `compiled` | E-12/E-14；N&D/CAI | 不执行，只供给 |
 | memory | `compiled` | E-05/E-17；FIRME/EvoMem | 状态结构，不是推理器 |
-| evidence | `compiled` / `context` | E-03；OA-RAG | 输出契约，不阻断 |
-| checker | `compiled` / `engine` | E-02/E-20；Catch/semantica | 判定≠策略；三态要显式 |
-| action | `compiled` | E-04/E-16；POLAR/OntoAct | 机制多种，收益窄 |
+| evidence | `compiled` / `context` | E-03（已撤回，只作历史） | 输出契约，不阻断 |
+| checker | `compiled` / `engine` | E-20；E-02 已撤回 | 判定≠策略；三态要显式 |
+| action | `compiled` | E-15 参照；E-04/E-16 已撤回 | 机制多种，收益窄 |
 | commit | 无实现（设计） | commit-gate 概念 | 不能声称已落地 |
 | read-path | `engine` | trustgraph | best-effort；单实现 |
 | supply | `engine` | ontop | 查询重写，不是闸 |

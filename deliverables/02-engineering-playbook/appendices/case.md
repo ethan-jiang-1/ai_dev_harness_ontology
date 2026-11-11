@@ -149,6 +149,6 @@ Risks: 单系统、答案在文本、维护工时、语义错未覆盖
 
 **一句话**：示例只展示「怎么走」，不展示「走了有效」。
 
-**出处**：[projection 机制](../../../topics/03-knowledge/projection/mechanism.md) · [checker 机制](../../../topics/02-judgment/checker/mechanism.md) · [E-02/E-12](../../../topics/conclusions.md)
+**出处**：[projection 机制](../../../topics/03-knowledge/projection/mechanism.md) · [checker 机制](../../../topics/02-judgment/checker/mechanism.md) · E-12（E-02 已撤回，只作历史）
 
 > 回 [02 目录](../README.md) ｜ 回 [接口](./interfaces.md)

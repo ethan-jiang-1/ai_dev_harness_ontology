@@ -31,8 +31,8 @@ parent: ../README.md
 资产选择见 B.0。四条路线各停在哪：
 
 - **GGC**：生成后 Gate 判该不该改，只改高风险；单 KG/单骨干、无 2×2，空结果不进 Gate。
-- **NLKGQ**：完整 OWL 单次进上下文；单 snapshot、本体超窗口要 slice，wrapper 手工。
-- **KGVoyager**：think–act–observe + search/explore/execute；只支持 `rdf:type` 图，benchmark 小。
+- **NLKGQ**（原论文已移出，只作路线形态）：完整 OWL 单次进上下文；单 snapshot、本体超窗口要 slice，wrapper 手工。
+- **KGVoyager**（原论文已移出，只作路线形态）：think–act–observe + search/explore/execute；只支持 `rdf:type` 图，benchmark 小。
 - **OBDA**：本体 + R2RML → 查询时重写 SQL；只支持 OWL 2 QL，重写正确 ≠ 查询正确。
 
 ## B.2 三条查询 + 空结果分因

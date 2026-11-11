@@ -27,9 +27,9 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-12, E-14, E-15, E-16, E-17, E-1
 |---|---|---|---|---|---|
 | context | 不准 / 内部没有 | primary-trap avoidance；element score；准确率 | 知识没覆盖 vs 投影太长/顺序错 | K1；纯文本 RAG | E-12/E-14/E-01 |
 | memory | 做错 / 内部没有 | CMR；Acc@complete | false merge vs false split/漏配 | 不做 registry；LLM-Norm | E-05/E-17 |
-| evidence | 不准 / 输出对了 | 准确率；引用率 | 无依据 vs 过度引用/等级通胀 | 纯文本 RAG | E-03 |
-| checker | 做错 | 增量 catch；FA | 漏检 vs 误报后修坏 | 空结果重试 | E-02/E-20 |
-| action | 做错 / 没做 | harm/HSR；false-veto；审批量 | 误拦合法动作 vs 漏放有害动作 | 不上护栏；blanket veto | E-04/E-13/E-15/E-16 |
+| evidence | 不准 / 输出对了 | 准确率；引用率 | 无依据 vs 过度引用/等级通胀 | 纯文本 RAG | E-03（已撤回） |
+| checker | 做错 | 增量 catch；FA | 漏检 vs 误报后修坏 | 空结果重试 | E-20；E-02 已撤回 |
+| action | 做错 / 没做 | harm/HSR；false-veto；审批量 | 误拦合法动作 vs 漏放有害动作 | 不上护栏；blanket veto | E-15；E-04/E-13/E-16 已撤回 |
 | commit | 做错 / 没做 | false-defer；false merge；授权正确率 | 误 defer vs 误放行 | 不做 gate；直接 merge | E-20 + 设计 |
 | read-path | 做错 | 泄漏率（subject/object）；误拦率 | 泄漏 vs 误拦 | 不过滤 | E-20 |
 | determinism | 没做 | 收敛/漂移；重复运行一致率 | 假收敛 vs 假漂移 | 同输入重复运行；无锚点 | 设计（无 E） |
@@ -42,7 +42,7 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-12, E-14, E-15, E-16, E-17, E-1
 
 | 机制类型 | 任务账（accuracy / reward） | 风险/成本账（harm–approval / token） |
 |---|---|---|
-| **约束**（action / checker） | **E-04 已撤回**；旧 18 格数字停用 | E-15：CASEL 7.02% HSR / 8.7% approvals；比 Risk-Menu 少约 30% 审批（12.6%→8.7%，相对降 30.95%；HSR 高 1.2pp，7.02% vs 5.82%） |
+| **约束**（action / checker） | **E-04 已撤回**；旧格数停用 | E-15：CASEL 7.02% HSR / 8.7% approvals；比 Risk-Menu 少约 30% 审批（12.6%→8.7%，相对降 30.95%；HSR 高 1.2pp，7.02% vs 5.82%） |
 | **知识供给**（context） | E-01：被测工件 acc. neutral；E-12：K2 在单工厂 +19.8pp（薄层） | E-08/E-14：平均 −38%，但 −91%/+1.9% 两端；O-F15：同预算 token 效率 12.7×（派生） |
 
 **读法**：同一行的两格方向可以相反——约束类在任务账上混合/负，在风险账上前沿更优；知识供给在准确率上 neutral，在 token 上正收益。**这是 C-03 的具体化，不是新实验**：逐格标 `已核`，翻转标 `推测（综合）`（[06-L16](../../../topics/06-measure/claims.md)）。要升 E，需要「同一机制、同一数据、两把尺子」的对照。
@@ -59,7 +59,7 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-12, E-14, E-15, E-16, E-17, E-1
 - 每个位置量的是不同的东西：token、catch/FA、审批量、false-defer、伤害率。
 - 合成一个分数会丢掉「代价/误拦/审批」；同一机制可以在任务账上变好、风险账上变坏。
 - 同一场景可能要叠加多个位置；表里的先后是**错误传播路径**，不是优先级。
-- 强端不是默认答案：E-04 的 retail/强模型回退、E-13 的能力梯度都说明，强端在高基线下可能只剩代价。
+- 强端不是默认答案：原 E-04 的 retail/强模型回退、E-13 的能力梯度都提示「强端在高基线下可能只剩代价」；这两条源已撤回，只作方向。
 
 > **组织建议（非 E）**：不要用单一 score 做 go/no-go；至少给「主指标 + 非对称代价 + 成本口径 + 噪声带」四栏。没有这四栏，评审材料只作诊断。
 
@@ -67,8 +67,8 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-12, E-14, E-15, E-16, E-17, E-1
 
 | 证据 | 支持什么 | 不能证明什么 |
 |---|---|---|
-| E-02 | catch/FA 可测；空结果基线 | 部署 precision；false-veto |
-| E-04 | reward 不是防伤害度量；回退 | 结构判据有效；所有护栏 |
+| E-02（已撤回） | catch/FA 可测；空结果基线 | 部署 precision；false-veto |
+| E-04（已撤回） | reward 不是防伤害度量；回退 | 结构判据有效；所有护栏 |
 | E-15 | harm–approval–cost 前沿 | 本体增益；审批疲劳 |
 | E-18 | 噪声地板；配置轴 | 跨域常数 |
 | C-03 | 度量错配是冲突主因（`推测`） | 不是新证据；不能替代机制级测量 |

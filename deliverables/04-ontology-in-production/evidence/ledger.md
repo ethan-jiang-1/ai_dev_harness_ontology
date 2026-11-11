@@ -72,7 +72,7 @@ parent: README.md
 
 | O | 是什么 | 值/公式 | 出处 |
 |---|---|---|---|
-| O-F08 | PPV 复算（A.4 的“PPV 见 evidence”） | `PPV = π·Se / (π·Se + (1−π)·FA)`；π=0.25；curated Se=60.1%、FA=15.0% → 57.2%（原文 57.1） | [objects](../../../topics/objects.md) |
+| O-F08 | PPV 复算方法（A.4 的“PPV 见 evidence”） | `PPV = π·Se / (π·Se + (1−π)·FA)`；π 与 Se/FA 都是输入。**旧 checker 输入（E-02）已撤回，数值停用**；要复算先用新源重填 Se/FA | [objects](../../../topics/objects.md) |
 | O-F14 | E-12 边际分解（A.2 的 54.6pp） | 54.6 + 19.8 = 74.4pp；薄层占 73.4% | [objects](../../../topics/objects.md) |
 
-> O 是地址，不是结论；正文主句仍落 E。`PPV` 是复算值，不是论文直接给的 precision。
+> O 是地址，不是结论；正文主句仍落 E。`PPV` 是复算方法，不是论文直接给的 precision；旧输入随 E-02 撤回停用。

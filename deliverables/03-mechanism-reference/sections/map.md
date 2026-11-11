@@ -7,6 +7,8 @@ parent: ../README.md
 # 2. 地图：主张、轴、位置
 
 > 这一节回答：主张类型、四轴、六位置、强度矩阵。 ｜ 目标：把一条判断放到正确的位置上。
+>
+> **词源**：「六位置 / 接缝 / 强度 / 覆盖率 / 执行形态」是 `local` 工作词（无标准锚）；「约束/校验」有 `N: W3C SHACL`，「策略表达/判定架构」有 `N: W3C ODRL 2.2` / `N: OASIS XACML 3.0`——但这些标准只定词，不定强度。逐词见 [术语 §0](./glossary.md#term-sources)。
 
 <img src="../../_figures/03-six-positions.svg" alt="六位置地图" width="100%">
 
@@ -91,8 +93,8 @@ parent: ../README.md
 
 | 读法 | 是否成立 | 说明 |
 |---|---|---|
-| 越强，能**阻断**的失效类别越少 | 近似成立 | action/checker/memory 各只对 1 类 `●`；context/evidence/read-path 0 类；commit/determinism 没有 `●`（只有 ◐/?D） |
-| 越强，能**影响**的失效类别越少 | **不成立** | checker 有 4 个 `●/◐`，action 只有 3 个 |
+| 越强，能**阻断**的失效类别越少 | 近似成立（撤回后只剩 1 个 `●`） | E-02/E-04 撤回后，只有 `memory` 对 1 类 `●`；`action` 是 `?D`（无实现）、`checker` 是 `◐`（只碰结构错）；context/evidence/read-path 0 类；commit/determinism 只有 ◐/?D |
+| 越强，能**影响**的失效类别越少 | **不成立** | checker 有 4 个 `●/◐`，action 只有 2 个 |
 | 强度可以排成一条线 | **不成立** | 位置是专门化的；commit/determinism 的 `?D` 不能当强弱 |
 
 **操作结论**：要问「这个位置能不能碰到这类失效」，查 [coverage 矩阵](../across-positions/coverage.md)，不查直线。直线只说明「强端少而硬、弱端多而软」。

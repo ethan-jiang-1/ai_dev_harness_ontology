@@ -8,6 +8,8 @@ evidence: [E-20]
 
 # commit：证据够不够授权
 
+> **2026-11-11 证据重置**：本卡的概念架构来自 Commit Boundary（2610.37407），该源已按 §4 移出；`已核（概念架构）`只表示「读对了原文」，**不再作为 admitted 依据**。机制描述保留，效应/落地结论不保留。
+
 > **一句话**：这是六个位置里证据最薄的一格。它的机制是「把可推理的证据」与「有权推动持久化的证据」分开；但只有概念架构，没有实现、没有 false-defer 数据。**不能把设计当已落地。**
 >
 > **词源**：「授权判定架构」可对到 `N: OASIS XACML 3.0`（PDP/PEP 与合并算法），「许可/禁止/义务」可对到 `N: W3C ODRL 2.2`；两者都**不定义「什么算证据齐」、不给审计字段、不含执行点**。「commit gate / 落盘授权 / 证据齐-冲突清-版本有效」是本仓库的概念架构（`local`，且只到 `已核（概念架构）`）。
@@ -37,7 +39,7 @@ evidence: [E-20]
 | 输出 | `verdict {status: PASS / BREACH / UNKNOWN_EVIDENCE, failed_claims[], unresolved[], scope_valid, versions_valid}` |
 | 下一步 | PASS + scope/version 有效才 commit；BREACH 拒绝/升级；UNKNOWN defer，不丢弃证据 |
 
-> 字段名是 digest 的工程配方（论文只给抽象对象，未给 schema），标 `推测`；commit 条件、promotion 规则来自论文契约，标 `已核（概念架构）`。
+> 字段名是工程配方（`推测`）；commit 条件、promotion 规则来自原 Commit Boundary 论文契约——该源已移出，只作概念架构，不再是 admitted 依据。
 
 ## 3. 能改变什么（设计上）
 
@@ -73,7 +75,7 @@ evidence: [E-20]
 | 证据 | 等级 | 支持什么 | 不能证明什么 |
 |---|---|---|---|
 | E-20 | 已核（代码） | 四个项目没有单次写授权；执行≠授权；三态折叠 | 写路径不可实现；效应量；false-defer |
-| commit-gate 概念架构 | 已核（概念架构） | 三条件、状态机、promotion、两阶段 | 已落地；false-defer；policy 正确 |
+| commit-gate 概念架构（源已移出） | 已核（概念架构）→ **历史** | 三条件、状态机、promotion、两阶段 | 已落地；false-defer；policy 正确 |
 
 > 这一格的「能阻断」是**设计属性**，不是已实现属性。03 的位置表里必须写「是（设计）」；任何「已落地」的写法都是过度解读。
 

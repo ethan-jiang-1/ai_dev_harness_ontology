@@ -98,7 +98,7 @@ source: P&ID rev C + tag 表 2026-10
 ## 5. 账本行
 
 ```text
-q-001, arm=context, hit=true, tokens=9.7k, latency=untested, rounds=2,
+q-001, arm=context, hit=true, tokens=<实测>, latency=untested, rounds=2,
 gate=pass, citations=3, span_coverage=0.92, grounding=supported,
 snapshot=2026-11-11, notes="R4 样例；latency 未测"
 ```
@@ -106,7 +106,7 @@ snapshot=2026-11-11, notes="R4 样例；latency 未测"
 | 字段 | 本场景 | 等级 |
 |---|---|---|
 | `hit/miss` | `hit`（有观察） | `untested` |
-| `tokens` | 9.7k（**总** tokens；R4 的 Qwen Test 3 均值，generated 未单列） | `历史`（E-03 撤回） |
+| `tokens` | **总** tokens 口径（generated 未单列）；旧均值随 E-03 撤回停用 | `历史` |
 | `latency` | `untested` | `untested` |
 | `citations` | 3 | `untested` |
 | `span_coverage` | 0.92 | `untested` |

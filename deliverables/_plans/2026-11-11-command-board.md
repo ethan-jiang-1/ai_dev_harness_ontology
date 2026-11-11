@@ -188,3 +188,12 @@ scope: 交付物证据重置 + ADR 0011 术语基线
 - **第 9 步（冷读）**：代理冷读第一轮 68/100，抓 2 处口径冲突（START「只记一句」说「让某些事不发生」，与 01「动作前的拦不能承诺」相反；map §2.2「等级」列混装 `gap`/`设计`，读成「gap=C」）；已修。第二轮复核 86/100，再补 3 处：`gap` 收窄为「曾有 E 被撤回」、#14 的例外写明、START 两个裸词就地解释。见 [cold-read](./2026-11-11-cold-read.md)。**真人冷读仍未做。**
 - **第 10 步（checkpoint）**：`check_repo` 通过（442 md；0 坏链 / 0 坏锚 / 未定义 ID）；质量桌面复评 §12.2：01=85 / 02=82 / 03=83 / 04=87（非真人冷读）；提交最终 checkpoint（用户授权「一口气做完」）。
 - **仍剩**：真人冷读、C2 冗余/体量、02/03 长尾旧数字逐句删、ISO 21838 条款号。
+
+### 2026-11-11 · 精读 + 长尾清理（用户要求「替我读内容并判断」）
+
+- **精读**：[content-read](./2026-11-11-content-read.md) 逐页读 01–04（约 41 万字符），判词 01 B+ / 02 B / 03 B+ / 04 B+；四个强项（决策页、recipe 骨架、位置卡、fixture 自包含）与四个弱项（历史数残留、排除源当工程经验、D 标签洗白证据、C2 体量）都写了证据行号。
+- **清理**：撤回源（E-02/03/04/13/16/26、Grid、OA-RAG、OntoAct、Commit Boundary、SFE-O）的具体数值从 01–04 主路径删除或改定性，共 40+ 处；涉及 01 acceptance/canonical/boundaries/README/glossary、02 R5/R12/R0/cost/domains/ledger/evaluation/artifact-pack、03 evidence/checker/action/appendix/execution-forms/measurement/gaps、04 decision/transfer/build/reference/consume/boundaries/ledger。
+- **两处判断修正**：① 03 覆盖率矩阵 `action×A` `●`→`?D`、`checker×B` `●`→`◐`（原用撤回 E 撑 `●`）；② 04/02 的成本不再挂 SFE-O，改「工程假设（`推测`），原源已移出」。
+- **审计**：只读审计代理返回 23 条（数值残留 13 / 未标注 3 / 结论级 7），全部处置；复核 grep 只剩 admitted 源。
+- **自检**：`check_repo` 通过（443 md）。
+- **仍剩**：真人冷读、C2 体量、ISO 条款号、02 rollout/traceability 未逐句核。

@@ -99,7 +99,7 @@ Shapes：[shapes.ttl](../example/shapes.ttl)（2 条：TagHasLevel、HasTagClass
 
 其余 6 个（S1/S2/S3/S5/S9/S10）分别缺 principal/moment/refuse/version、无 dataset 边、版本不一致；现状均为 silent 或 answer undercoverage。
 
-SFE-O 与 Ontology Catch 已移出（2026-11-11 源清除）；旧 catch/FA（curated 18.9%/16.8 等）只作历史，不再作为验收依据。要重算 checker，先找新的 admitted 来源；PPV 口径见 [evidence](../evidence/ledger.md) 的 O-F08（历史地址）。
+SFE-O 与 Ontology Catch 已移出（2026-11-11 源清除）；旧 catch/FA 数字一律停用、不再给值，不再作为验收依据。要重算 checker，先找新的 admitted 来源；PPV 口径见 [evidence](../evidence/ledger.md) 的 O-F08（历史地址）。
 
 ## A.5 可消费性闸门（产物：`build_report`）
 

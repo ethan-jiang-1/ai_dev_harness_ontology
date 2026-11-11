@@ -8,6 +8,13 @@ updated: 2026-11-11
 > 本页是 [meta/state](./state.md) 的历史日志：逐次改动与**当时的**计数。
 > **这里的数字是快照，不是现行计数**；现行状态只看 [state](./state.md)。
 
+## 2026-11-11 内容精读 + 长尾旧数字清理
+
+- **精读**：[content-read](../deliverables/_plans/2026-11-11-content-read.md) 逐页读 01–04（约 41 万字符），判词 01 B+ / 02 B / 03 B+ / 04 B+。
+- **清理**：撤回源（E-02/03/04/13/16/26、Grid、OA-RAG、OntoAct、Commit Boundary）的具体数值从 02/03/04 主路径删除或改定性；01 的 acceptance/canonical/boundaries/README/glossary 同步。
+- **修正**：03 覆盖率矩阵 `action×A` 由 `●`→`?D`、`checker×B` 由 `●`→`◐`（原用撤回 E 撑 `●`）；SFE-O 不再作为 R0/成本出处；04 路线分数表标「源已移出、数值停用」；commit 卡点名 Commit Boundary 已移出。
+- **自检**：`check_repo` 通过（443 md）；全文扫描只剩 admitted 源（E-05/E-12/E-14/E-17/E-20/E-21）的数字。
+
 ## 2026-11-11 规范主干接线 + 术语 v1 + 冷读收口
 
 - **第 7 步**：四份术语页各加「§0 名词从哪来（N / local）」；01/02/03/04 + START 的定义句标 `（N: 标准名）`/`（local）`；`topics/trunk.md §5.1` 给标准→页面索引。

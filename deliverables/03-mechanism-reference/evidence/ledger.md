@@ -18,13 +18,13 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-06, E-07, E-08, E-09, E-10, E-11, E-1
 
 | 位置 | 主证据 | 边界证据 | 不能用的证据 |
 |---|---|---|---|
-| context | E-12、E-14 | E-01、E-08 | E-04（动作）、E-02（判定） |
-| memory | E-05、E-17 | E-18（噪声） | E-12（知识供给）、E-03（输出契约） |
+| context | E-12、E-14 | E-01、E-08 | E-04/E-02（均已撤回，只作历史） |
+| memory | E-05、E-17 | E-18（噪声） | E-12（知识供给）、E-03（已撤回，只作历史） |
 | evidence | **gap（E-03 撤回）** | — | E-01（工件无增益） |
 | checker | E-20（代码级：三态/结构检查）；**E-02 撤回** | — | E-04（动作）、E-15（审批） |
 | action | **gap（E-04/E-13/E-16 撤回）**；E-15 仅参照 | E-18（噪声） | E-02（checker）、E-12（供给） |
-| commit | E-20（否定性） | commit-gate 概念架构（非 E） | E-04（动作闸）、E-02（checker） |
-| read-path | E-20 / E-22 | E-02（三态） | E-04（动作）、E-15（审批） |
+| commit | E-20（否定性） | commit-gate 概念架构（非 E；源已移出） | E-04/E-02（均已撤回） |
+| read-path | E-20 / E-22 | 三态接口见 E-20（E-02 已撤回） | E-04（已撤回）、E-15（审批） |
 | determinism | 无 E | E-17（跨轮，不是跨运行）、E-18（噪声） | E-05（跨期身份） |
 
 ## 2. 逐条
@@ -34,7 +34,7 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-06, E-07, E-08, E-09, E-10, E-11, E-1
 | E-01 | 已核 | 强检索 harness 下，被测量的结构化工件在 FRAMES 上无准确率增益；PageIndex 大纲退化；ontology `not measured` | context 的边界；C-04 | 本体无增益；可外推到所有工件 |
 | E-02 | 已核 · **withdrawn** | 三来源 catch/FA 各有偏向；curated precision 仅略优于随机；空结果重试是关键基线；judge 修坏多于修好 | checker；evidence 的口径边界；M4 | 部署 precision；false-veto；跨域；语义错 |
 | E-03 | 已核 · **withdrawn** | 强制接地等级平均最优；Tests 1–2 +10–15pp；等级是模型自评；检索是主瓶颈 | evidence | 形式保证；等级校准；句级 span |
-| E-04 | 已核 · **withdrawn** | 18 格仅 8 改善；retail/强模型回退；T1-only ≈ blanket veto；结构贡献未隔离；false-veto 未测 | action；C-03；M1/M3 的边界 | 结构判据有效；reward 低估；合法意图误拦 |
+| E-04 | 已核 · **withdrawn** | 旧格数/改善数停用；retail/强模型回退；T1-only ≈ blanket veto；结构贡献未隔离；false-veto 未测 | action；C-03；M1/M3 的边界 | 结构判据有效；reward 低估；合法意图误拦 |
 | E-05 | 已核 | 本体做对齐/印证；alias CMR +7.8–12.1pp；token −40.3% | memory/identity | 长期污染；跨运行；通用域；registry 净效应 |
 | E-06 | 已核 · **withdrawn** | 本体接地类失败多来自工作流（输入/接地/模板/校验/修复）；语法通过≠语义充分 | 工作流背景；P2；failure attribution | 失败分布；跨域量化 |
 | E-07 | 已核 | 形式化器存在 solver-like behavior：轨迹里算出答案，程序只复述 | 过程尺子；formalization 边界 | 本体增益；所有任务 |
@@ -43,7 +43,7 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-06, E-07, E-08, E-09, E-10, E-11, E-1
 | E-10 | 已核 · **withdrawn** | 本体预测机制上可干预，但无法与类别辅助信息干净分离 | 06 mechanism；内部本体不干净 | harness 执行；位置效应 |
 | E-11 | 推测 · **withdrawn** | 训练好的检索嵌入中，前缀维度与分类法粒度对齐 | representation 边界 | 任何执行/位置结论 |
 | E-12 | 已核（分数）/存疑（排序） | 投影文本 pooled 最高但非普适；K0→K1 +54.6pp、K1→K2 +19.8pp；单工厂 9 任务 | context；P1b/P1c；M1 的形态半 | 跨域排序；深度本体；文本永远最好 |
-| E-13 | 已核 · **withdrawn** | 约束收益随基线能力升高而缩小；斜率 −0.76/−0.67/−0.31；六点拟合 | action 的能力边界 | 预测曲线；零交叉阈值；部署规则 |
+| E-13 | 已核 · **withdrawn** | 约束收益可能随基线能力升高而缩小；六点拟合（数值停用） | action 的能力边界 | 预测曲线；零交叉阈值；部署规则 |
 | E-14 | 已核 | 编译盈亏平衡是条件性的：`p_h > 2%`、`p_min = 2% + c/(0.929Q)`；平均 −38% 是混合；配对时延约 3× | context 的经济学；RQ5 | 普适 token 节省；本体增益 |
 | E-15 | 已核 | CASEL 模拟 HSR 14.75→7.02%、审批 8.7%；最低 HSR 4.38%；无本体变量 | action 的审批/分配；M4 | 本体增益；审批疲劳；所有方法同 menu |
 | E-16 | 已核 · **withdrawn** | 约束形式决定天花板/护栏；三值条件 + revision 提高成功率、减少无效干预 | action/reasoning | 安全保证；真实工厂；所有知识源 |
