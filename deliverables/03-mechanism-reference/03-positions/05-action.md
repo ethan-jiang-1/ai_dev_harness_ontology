@@ -3,7 +3,7 @@ status: draft
 deliverable_status: draft
 updated: 2026-11-11
 position: action
-evidence: [E-04, E-13, E-15, E-16]
+evidence: [E-04, E-13, E-15, E-16]  # E-04/13/16 withdrawn
 ---
 
 # action：动作能不能做

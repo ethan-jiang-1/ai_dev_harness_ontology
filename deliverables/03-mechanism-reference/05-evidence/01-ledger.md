@@ -3,7 +3,7 @@ status: draft
 deliverable_status: draft
 updated: 2026-11-11
 section: evidence-ledger
-evidence: [E-01, E-02, E-03, E-04, E-05, E-06, E-07, E-08, E-09, E-10, E-11, E-12, E-13, E-14, E-15, E-16, E-17, E-18, E-19, E-20, E-22, C-03, C-04]
+evidence: [E-01, E-02, E-03, E-04, E-05, E-06, E-07, E-08, E-09, E-10, E-11, E-12, E-13, E-14, E-15, E-16, E-17, E-18, E-19, E-20, E-22, C-03, C-04]  # E-02/03/04/06/10/11/13/16 withdrawn
 ---
 
 # 证据台账：每条 E 支持哪个位置

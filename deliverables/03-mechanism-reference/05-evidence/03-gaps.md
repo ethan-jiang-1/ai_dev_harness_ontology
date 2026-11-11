@@ -3,7 +3,7 @@ status: draft
 deliverable_status: draft
 updated: 2026-11-11
 section: gaps
-evidence: [E-01, E-04, E-12, E-18, E-20]
+evidence: [E-01, E-04, E-12, E-18, E-20]  # E-04 withdrawn
 ---
 
 # 缺口：M1–M5 与下一步

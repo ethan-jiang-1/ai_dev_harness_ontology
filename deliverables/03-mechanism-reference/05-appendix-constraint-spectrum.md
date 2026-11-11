@@ -5,7 +5,7 @@ updated: 2026-11-11
 appendix: constraint-spectrum
 target: 工程负责人 / 架构师
 length: 约 1.0 万字（中文字符，初稿）
-evidence: [E-01, E-02, E-03, E-04, E-05, E-12, E-13, E-14, E-15, E-16, E-17, E-20, C-03]
+evidence: [E-01, E-02, E-03, E-04, E-05, E-12, E-13, E-14, E-15, E-16, E-17, E-20, C-03]  # E-02/03/04/13/16 withdrawn
 ---
 
 # 附录 · 约束强度谱

@@ -3,7 +3,7 @@ status: draft
 deliverable_status: draft
 updated: 2026-11-11
 position: checker
-evidence: [E-02, E-20]
+evidence: [E-02, E-20]  # E-02 withdrawn
 ---
 
 # checker：产出对不对

@@ -3,7 +3,7 @@ status: draft
 deliverable_status: draft
 updated: 2026-11-11
 section: coverage
-evidence: [E-01, E-02, E-03, E-04, E-05, E-12, E-17, E-20, C-03]
+evidence: [E-01, E-02, E-03, E-04, E-05, E-12, E-17, E-20, C-03]  # E-02/03/04 withdrawn
 ---
 
 # 覆盖率：从一条线到一张矩阵
