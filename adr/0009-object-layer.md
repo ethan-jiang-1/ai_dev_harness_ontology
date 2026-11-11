@@ -7,7 +7,7 @@
 
 交付物反复卡在「有判断、没有可指认的数/代码/停线」。盘点结果：`E-xx` 行只有 1/22 写了表号/节号；精确到 `file:symbol` 的代码锚只有 6 个；13 行停线没有一行写出处；~960 处表头没有一张有 ID。
 
-[hard-objects-plan](../deliverables/_plans/2026-11-09-hard-objects-plan.md) 的首轮执行已把地址层建起来：[objects.md](../topics/objects.md) 入库 91 个对象（C15/F13/T13/M3/N29/R12/P6；H3 33 / H2 58），10 条承重 E 各 ≥3 个对象，E 级 H3 8/10。
+[hard-objects-plan](../deliverables/_plans/2026-11-09-hard-objects-plan.md) 的首轮执行已把地址层建起来：[objects.md](../topics/objects.md) 入库 91 个对象（C15/F13/T13/M3/N29/R12/P6；H3 33 / H2 58），10 条承重 E 各 ≥3 个对象，E 级 H3 8/10（首轮快照；现行 94 / H3 36 / 10/10 见 [state](../meta/state.md)）。
 
 现在的规则是「交付物只引 `E-xx`」（[checklist](../meta/checklist.md) §3）。O 层要成立，必须回答：**交付物能不能引 O？**
 

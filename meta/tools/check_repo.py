@@ -329,11 +329,11 @@ def main() -> int:
     state_path = os.path.join(ROOT, "meta/state.md")
     state_text = texts.get(state_path, "")
     if os.path.exists(state_path):
-        state_match = re.search(r"\|\s*最后自检\s*\|[^\n]*?(\d+)\s*文件", state_text)
+        state_match = re.search(r"\|\s*最后自检\s*\|[^\n]*?(\d+)\s*个\s*md", state_text)
         if not state_match:
-            warnings.append("meta/state.md has no '最后自检 ... <N> 文件' row")
+            warnings.append("meta/state.md has no '最后自检 ... <N> 个 md' row")
         elif int(state_match.group(1)) != len(files):
-            errors.append(f"meta/state file count {state_match.group(1)} != actual {len(files)}")
+            errors.append(f"meta/state md count {state_match.group(1)} != actual {len(files)}")
 
         web_cards = sum(
             1 for _, _, fs in os.walk(os.path.join(ROOT, "src/web"))
@@ -426,8 +426,14 @@ def main() -> int:
                 if oid not in object_ids:
                     warnings.append(f"undefined {oid}: {name}")
 
+        state_objects = re.search(r"\|\s*硬对象\s*\|\s*(\d+)", state_text)
+        if not state_objects:
+            warnings.append("meta/state.md has no 硬对象 count row")
+        elif int(state_objects.group(1)) != len(object_ids):
+            errors.append(f"meta/state object count {state_objects.group(1)} != actual {len(object_ids)}")
+
     # 8. summary
-    print(f"files: {len(files)}  papers: {len(paper_dirs)}  open-source: {len(oss_projects)}")
+    print(f"md files: {len(files)}  papers: {len(paper_dirs)}  open-source: {len(oss_projects)}")
     print(f"defined: E={len(defined_e)} Q={len(defined_q)} C={len(defined_c)} L={len(defined_l)}")
     print(f"conclusion levels: {dict(counts)}")
     print(f"evidence_role: {dict(role_counts)}")
