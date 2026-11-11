@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-12
 scope: evidence-objects
 ---
 
@@ -14,15 +14,15 @@ scope: evidence-objects
 >
 > **schema**：`claim / value / address / domain / provenance / hardness / falsifier / feeds`；`status` 默认 `active`，变更见文末。硬度：**H2 可核对**（`§/表` 地址 + 域）；**H3 可复算/可执行**（公式例、`file:symbol`、行 ID）。H1（带数无地址）不进本表。
 
-## 计数（2026-11-10）
+## 计数（2026-11-12 对账）
 
 | 项 | 值 |
 |---|---|
-| 对象总数 | **94** |
-| 类型 | C 15 / F 15 / T 13 / M 4 / N 29 / R 12 / P 6 |
-| 硬度 | **H3 36** / H2 58 / H1 0 |
-| 停线出处 | E/公式 5；混合 5；工程建议/gap 3（共 13） |
-| E 覆盖 | 27 条 E 中 13 条有对象；10 条承重 E 全部 ≥3 |
+| 注册对象 | **94**（含 20 已撤回，编号保留供回链） |
+| 现存对象 | **74**（H3 33 / H2 41） |
+| 类型（注册） | C 15 / F 15 / T 13 / M 4 / N 29 / R 12 / P 6 |
+| 已撤回 | 20：F08/F10/F15、N01–N03/N07–N09/N13–N15、R02/R05/R12、T05–T07、P02/P03 |
+| E 覆盖 | 现存 10 条 E 有对象；E-02/03/04 行为撤回存档 |
 
 **怎么用**：先按交付物页找 E，再从 E 索引找对象；`feeds` 列是该对象在交付物里的落点。引用时写 `E-xx（O-N02）`——E 是结论，O 是地址。
 
@@ -74,9 +74,9 @@ scope: evidence-objects
 | O-T02 | K1 语义层 | 剩余 trap 与深知识无关 → 停 | deliverables/02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺 | 单工厂/9 任务 | 工程建议 + E-12 | H2 | 深知识成为主要剩余错误来源 | 02 recipes/knowledge |
 | O-T03 | 投影 | <5pp、>60k 字符、>2 人周/月 → 停 | deliverables/02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺 | 单工厂；顺序敏感 | 工程建议 + E-12 | H2 | 跨域复现显示 +5pp 在 60k 内稳定 | 02 recipes/knowledge |
 | O-T04 | 编译 | p_h 的 95% CI 下界 ≤ p_min → 停（不用点估计） | deliverables/02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺 | 冻结/变更语料分开 | E-14 / O-F01 | H3 | 预注册序贯设计能更早判且不增错误率 | 02 recipes/knowledge；01 data/e3 |
-| O-T05 | 证据契约 | 检索率 <50% → 停（先修检索） | deliverables/02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺 | 医学 QA；gold evidence 场景 | 工程建议 + E-03 | H2 | 检索率低但 grounding 仍能补足 | 02 recipes/judgment |
-| O-T06 | checker | 增量 catch <5pp、FA >15% → 停（先超空结果重试） | deliverables/02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺 | UniProt 真实答案；人工故障 | 工程建议 + E-02 | H2 | 第二域显示 5pp/15% 不适用 | 02 recipes/judgment；01 data/e4 |
-| O-T07 | 动作闸 | 在 miss 预算下 false-block 前沿不可接受 → 停；不要用单点 5% | deliverables/02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺 | τ²-bench；blocked log 无标签 | E-04 + 2607.22868 | H2 | 有标签数据使单点阈值可判定 | 02 recipes/constraint；01 data/e5 |
+| O-T05 | （已撤回）证据契约 | 检索率 <50% → 停（先修检索）；阈值随源停用，协议设计可换锚复用 | meta/audits/2026-11-11-source-purge.md#src-2610-36335 | 医学 QA；gold evidence 场景 | 工程建议 + E-03（已撤回） | H2 | 检索率低但 grounding 仍能补足 | 02 recipes/judgment |
+| O-T06 | （已撤回）checker | 增量 catch <5pp、FA >15% → 停（先超空结果重试）；阈值随源停用 | meta/audits/2026-11-11-source-purge.md#src-2610-37809 | UniProt 真实答案；人工故障 | 工程建议 + E-02（已撤回） | H2 | 第二域显示 5pp/15% 不适用 | 02 recipes/judgment；01 data/e4 |
+| O-T07 | （已撤回）动作闸 | 在 miss 预算下 false-block 前沿不可接受 → 停；不要用单点 5%；阈值随源停用 | meta/audits/2026-11-11-source-purge.md#src-2610-08082 | τ²-bench；blocked log 无标签 | E-04 + 2607.22868（均已移出） | H2 | 有标签数据使单点阈值可判定 | 02 recipes/constraint；01 data/e5 |
 | O-T08 | 记忆 | merge precision <90% → 停 | deliverables/02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺 | 专有数据；文本 only | 工程建议 + E-05 | H2 | 第二域显示 90% 过高/过低 | 02 recipes/state；01 data/e6 |
 | O-T09 | 读路径 | fail-open 未修 或 object 方向未测 → 停 | deliverables/02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺 | 单实现；SHACL-AF | E-20 / O-C03 / O-C02 | H3 | 第二实现证明 object 方向受控且异常路径 fail-closed | 02 recipes/constraint；01 data/e7-e8 |
 | O-T10 | 落盘授权 | false-defer >20%、unresolved >10%、审计不可追 → 停 | deliverables/02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺 | 无实现；只有概念契约 | 工程建议 / gap | H2 | 有实现且 false-defer 可测 | 02 recipes/constraint |
@@ -91,7 +91,7 @@ scope: evidence-objects
 | O-M01 | 覆盖率矩阵 | 七类失效 × 八位置；位置是专门化的，不能排成强度线，也不能合成百分比；行 ID `row-<失效类>` | deliverables/03-mechanism-reference/04-across-positions/01-coverage.md#3-矩阵 | H/D 分类设计；不是 E | 06-L15 + coverage | H3 | 同一失效在 >1 位置出现同等效应，专门化不成立 | 03 coverage；01 map |
 | O-M02 | 执行形态矩阵 | 6 行（trustgraph/semantica/ontop/open-ontologies/OPA/Qlever）× 语义/失败模式；行 ID `row-<project>` | topics/execution-forms.md#代码级核对2026-11-09 | pin commits；只读代码 | E-20 | H3 | 两个项目在同一行为上语义相同，分类 collapse | 03 execution-forms；03 positions |
 | O-M03 | 度量分派 | 八行：位置 → 主指标/过程指标/反事实/停；行 ID `row-<position>` | topics/06-measure/metrics/mechanism.md#按位置分派八行设计 | 设计，非测量 | 06-L13 + C-03 | H3 | 同一机制换尺子结论一致，错配不成立 | 02 §5.1；06 metrics |
-| O-M04 | 机制类型 × 尺子 2×2 | 2 行（约束/知识供给）× 2 列（任务账/风险成本账）；逐格已核，方向翻转是跨来源综合；行 ID `row-<机制>` | deliverables/03-mechanism-reference/04-across-positions/03-measurement.md#25-机制类型与尺子分派 | 无同数据集两把尺子对照；C-03 的具体化 | 06-L16；C-03；E-01/E-04/E-08/E-12/E-14/E-15 | H3 | 同数据集两把尺子结论一致，或某格证据被推翻 | 03 measurement；02 §5.1 |
+| O-M04 | 机制类型 × 尺子 2×2 | 2 行（约束/知识供给）× 2 列（任务账/风险成本账）；逐格已核，方向翻转是跨来源综合；行 ID `row-<机制>` | deliverables/03-mechanism-reference/04-across-positions/03-measurement.md#25-机制类型与尺子分派 | 无同数据集两把尺子对照；C-03 的具体化 | 06-L16；C-03；E-01/E-08/E-12/E-14/E-15（E-04 已撤回，约束格现以 E-15 为锚） | H3 | 同数据集两把尺子结论一致，或某格证据被推翻 | 03 measurement；02 §5.1 |
 
 ## N · 数值（29）
 
@@ -149,20 +149,22 @@ scope: evidence-objects
 | ID | claim | value | address | domain | provenance | 硬度 | falsifier | feeds |
 |---|---|---|---|---|---|---|---|---|
 | O-P01 | p_h 标定（shadow） | 样本 1,600–2,000；臂 gate-on/off；指标 p_h CI/整臂准确率/p95/成本；判定 CI 下界 > p_min 且整臂非劣 δ；停 CI 下界 ≤ p_min | src/papers/2610.41172-context-as-infrastructure/digest.md#6-工程上怎么用 | FRAMES 类语料；预登记固定样本量 | E-14 / O-F01 / O-F06 | H2 | 预注册序贯设计或更大样本改变结论 | 02 evaluation；01 §5.2 |
-| O-P02 | checker 评估 | 样本 200 题 + 空结果基线；指标增量 catch/FA/净修复/per-1k；判定 catch ≥5pp、FA ≤15%、净修复 >0；停基线胜出 | deliverables/02-engineering-playbook/02-sections/05-acceptance.md#53-期待与数据需求验收规格 | 单域；故障分布未定 | E-02 / O-T06 | H2 | 第二域显示阈值不适用 | 02 §5.3；01 data/e4 |
-| O-P03 | false-veto 标注 | 样本 100 条 blocked + 授权标签（AuthorizationPairs 80/80 映射）；指标 false-block/miss 前沿；判定按 miss 预算选点；停无标签 | deliverables/01-capability-status/09-data/e5-false-veto.md#2-缺什么 | POLAR blocked log；单 gate | E-04 / 2607.22868 | H2 | 标签定义不可复现 | 01 data/e5；02 constraint |
+| O-P02 | （已撤回）checker 评估 | 样本 200 题 + 空结果基线；指标增量 catch/FA/净修复/per-1k；判定 catch ≥5pp、FA ≤15%、净修复 >0；停基线胜出；阈值随源停用，协议设计可换锚复用 | meta/audits/2026-11-11-source-purge.md#src-2610-37809 | 单域；故障分布未定 | E-02 / O-T06（已撤回） | H2 | 第二域显示阈值不适用 | 02 §5.3；01 data/e4 |
+| O-P03 | （已撤回）false-veto 标注 | 样本 100 条 blocked + 授权标签（AuthorizationPairs 80/80 映射）；指标 false-block/miss 前沿；判定按 miss 预算选点；停无标签；标注协议可换锚复用 | meta/audits/2026-11-11-source-purge.md#src-2610-08082 | POLAR blocked log；单 gate | E-04 / 2607.22868（均已移出） | H2 | 标签定义不可复现 | 01 data/e5；02 constraint |
 | O-P04 | 记忆三层评估 | 样本 200 units/setting；指标 CMR/human audit/round-trip；判定 +10pp、merge precision ≥90%；停 precision <90% | src/papers/2610.40482-firme/digest.md#41-memory-usability | 专有数据；文本 only | E-05 / E-17 | H2 | 三层不可互替被打破 | 01 data/e6；04 memory |
 | O-P05 | read-path 泄漏率 | 样本 第二实现 + object 方向用例；指标泄漏率/误拦/时延；判定泄漏 0 且 object 方向受控；停 fail-open 未修 | deliverables/01-capability-status/09-data/e7-e8-code.md#3-还缺什么 | 单实现现状；SHACL-AF | E-20 | H2 | 第二实现 fail-closed 且 object 受控 | 02 §5.3；01 data/e7-e8 |
 | O-P06 | 受监管 citation/strict-pass | 样本 20–50 单；指标 citation 精度/strict-pass 违规/签核；判定 ≥0.95 且违规 0；停不可达 | deliverables/02-engineering-playbook/03-recipes/12-regulated.md#验收--停 | Grid 类；真实运营商未测 | 工程建议 + Grid signal | H2 | 客户侧显示 0.95/0 不可达 | 02 regulated；04 govern |
 
 ## 索引 · 按 E
 
+> E-02/03/04 已撤回（源未过准入）；其下行是存档，对象除 O-M04（已换锚 E-15 等）外全部 withdrawn，不得引用。
+
 | E | 对象数 | H3 | H2 | 对象 |
 |---|---|---|---|---|
 | E-01 | 6 | 2 | 4 | O-F09 O-M04 O-N22 O-N23 O-N24 O-R01 |
-| E-02 | 7 | 1 | 6 | O-F08 O-T06 O-N07 O-N08 O-N09 O-R05 O-P02 |
-| E-03 | 5 | 1 | 4 | O-F15 O-T05 O-N13 O-N14 O-N15 |
-| E-04 | 9 | 2 | 7 | O-F10 O-T07 O-M04 O-N01 O-N02 O-N03 O-R02 O-R12 O-P03 |
+| E-02（withdrawn） | 7 | 1 | 6 | O-F08 O-T06 O-N07 O-N08 O-N09 O-R05 O-P02 |
+| E-03（withdrawn） | 5 | 1 | 4 | O-F15 O-T05 O-N13 O-N14 O-N15 |
+| E-04（withdrawn） | 9 | 2 | 7 | O-F10 O-T07 O-M04 O-N01 O-N02 O-N03 O-R02 O-R12 O-P03 |
 | E-05 | 7 | 1 | 6 | O-F11 O-T08 O-N16 O-N17 O-N18 O-R10 O-P04 |
 | E-08 | 4 | 3 | 1 | O-F07 O-M04 O-N20 O-R08 |
 | E-09 | 1 | 0 | 1 | O-R11 |
@@ -196,6 +198,7 @@ scope: evidence-objects
 
 ## 变更记录
 
+- 2026-11-12 purge 对账：O-T05/T06/T07/P02/P03 五个停线/协议补标「已撤回」（唯一锚 E-02/E-03/E-04 已撤回，按本页「E 撤销则 O 撤销」规则）；累计 20 撤回、现存 74（H3 33 / H2 41）。O-M04 的锚去掉 E-04，约束格改以 E-15 为锚。阈值/协议设计本身可在换锚过门新源后复用；撤回对象不得被交付物引用。
 - 2026-11-09 首轮：67 个对象入库（C15/F7/T13/M3/N29）；H3 27、H2 40。
 - 2026-11-09 补完轮（R5）：加 F6（可复算）+ R12 + P6；累计 91 个对象（C15/F13/T13/M3/N29/R12/P6）；H3 33、H2 58。
 - 2026-11-10 R6：加 F14/F15（E-12/E-03 的可复算量）+ M04（机制×尺子 2×2）；累计 94 个对象；H3 36、H2 58；E 级 H3 10/10。

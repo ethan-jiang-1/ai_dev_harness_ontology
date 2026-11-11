@@ -20,7 +20,7 @@ updated: 2026-11-12
 | 主题 | 6 派 + 23 个子主题 + 00-harness 七部件 + 6 时刻 + 1 条形态轴 |
 | 结论 | 27 条 E：14 已核原文 + 2 已核代码 + 2 推测 + **9 已撤回**；3 条 Q；4 条 C |
 | 局部判断 | 79 条 L（01:19 / 02:10 / 03:16 / 04:7 / 05:10 / 06:17）；其中 **27 条 withdrawn**（源移出） |
-| 硬对象 | 94（H3 36 / H2 58；E 级 H3 10/10） |
+| 硬对象 | 94 注册（**20 已随源撤回**；现存 74：H3 33 / H2 41）；明细见 [objects](../topics/objects.md) 变更记录 |
 | 证据配比（10 篇 + 8 开源） | 3 execution-test / 11 mechanism-only / 4 harness-evidence / 0 boundary-ruler |
 | 执行形态（18 源：10 论文 + 8 开源） | engine 3 / compiled 3 / context 1 / label 1 / none 10 |
 | 交付物 | 4 个子目录 + 共用入口 [START](../deliverables/START.md)：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-ontology-in-production；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（README + GUIDE + 3 body + sections + evidence，E-21/E-22 已升、未入库 signal 另列）；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |

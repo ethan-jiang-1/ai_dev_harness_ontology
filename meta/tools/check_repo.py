@@ -384,7 +384,8 @@ def main() -> int:
                 except OSError:
                     heading_cache[path] = set()
                 else:
-                    slugs = set()
+                    text = strip_code(text)
+                    slugs = set(re.findall(r"""<[^>]*\bid=["']([^"']+)["']""", text))
                     for line in text.splitlines():
                         if line.startswith("#"):
                             h = re.sub(r"^#+\s+", "", line).strip().lower()
