@@ -42,6 +42,7 @@ rq: [RQ4, RQ5]
 | OA-RAG（2610.36335） | 接地等级显式化；六个医学任务 | 已移出（[tombstone](../../meta/audits/2026-11-11-source-purge.md#src-2610-36335)：单机构） | 接地等级方向待新源 |
 | MIOE（2610.38326） | “答对≠内部有本体”，影响判定器的必要性论证 | 已移出（[tombstone](../../meta/audits/2026-11-11-source-purge.md#src-2610-38326)：单机构） | 与 06 共享方向 |
 | checker calibration 线 | 误报代价与校准 | 待扫描 | 用检索式 1/5 |
+| ToolRosetta（2610.24055） | 量化 guard 误报代价：shell 形式下专用 guard FP 升 21–47 点、拦 1/3–9/10 良性动作；带 placebo 对照；JSON 基准准确率不预测 code-acting 下的操作点 | signal（NeurIPS 2026 workshop 弱 I1、无代码/独立采用） | 正中 P2 false-veto 缺口；不建卡，待独立影响信号再过门 |
 | 串联判定 / cascade 线 | 早期误报放大 | 待扫描 | 用检索式 3 |
 | LOGicalThought（2510.01530） | 逻辑本体接地；四基准 +11.84% | G1 不过（2025-10 首公开） | 不建卡；方向并入 checker 校准线 |
 | CORE-LLM-Bench（Zenodo 2026） | 受控神经符号基准；9,048 QA 实例 | 待核 G1/G3 | 先核发表日期与独立信号 |

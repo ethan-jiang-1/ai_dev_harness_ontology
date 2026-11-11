@@ -92,6 +92,7 @@ scope: 内容层缺口盘点（purge 后）
 | **Selective Forgetting**（2608.28978，2026-08-29） | ✓ | KG 记忆在 LongMemEval **不如**扁平向量（token F1 0.417 vs 0.468，Δ=-0.050，CI[-0.085,-0.016]）；forgetting 剪枝模块有效（删 9.8% 节点 F1 不变）；作者自限单小模型单基准。代码 [Selective-Amnesia](https://github.com/skhanzad/Selective-Amnesia) **无 license**、11 star/1 fork、贡献者同组 | **signal**：G3 无独立采用、G5 无 license。阴性结果与 E-01 怀疑立场一致，留 04 frontier |
 | **SARA**（AAAI Vol.40，法律 Jur-KG） | ✗ **2026-03-17** | AAAI 顶会（I1）+ **部署在巴西一家法院**（I3）；LLM agent 接 Jurisprudential KG 做法律推理 | **excluded（G1 超窗）**：强证据但窗口前，只作背景，不入库 |
 | **ontology-rag-firewall**（cloudbadal007） | ✓ pushed 2026-09-13 | OWL/SHACL 防火墙验合同条款、拦 agent 动作；**单作者**（1 人 6 提交）、11 star/2 fork、0 issue | **signal**：G2 单贡献者、G3 无独立采用。留 01/read-path frontier |
+| **ToolRosetta**（2610.24055，2026-10-16） | ✓ | 量化 guard 误报代价：shell 形式下专用 guard FP 升 21–47 点、拦 1/3–9/10 良性动作；placebo 对照；**正中 P2 false-veto 缺口** | **signal**：NeurIPS 2026 workshop（弱 I1）、无代码/独立采用。留 02 frontier |
 | **Ontology-to-tools compilation**（2602.03439） | ✗ 2026-02 | 本体编译成可执行工具约束 | 窗口前，只作背景 |
 
-**结论：窗口内「高影响 + 本体真执行」的来源确实稀缺**——强的（SARA）超窗，窗口内的（Selective Forgetting / firewall）独立影响不足。这印证了 P1 执行型证据缺口是**真的**，不是没搜到。**宁缺毋滥：四个候选都不 admitted，按判定留 frontier 或作背景。** 这也说明准入门在正确工作：没有因为「看起来相关」就放水。
+**结论：窗口内「高影响 + 本体真执行」的来源确实稀缺**——强的（SARA）超窗，窗口内的（Selective Forgetting / firewall / ToolRosetta）独立影响不足（ToolRosetta 是 workshop，另两个单作者/无 license）。这印证了 P1/P2 执行型与代价量化缺口是**真的**，不是没搜到。**宁缺毋滥：五个候选都不 admitted，按判定留 frontier 或作背景。** 其中 **ToolRosetta 最贴近 P2 false-veto 缺口**，值得优先跟踪其影响信号。这也说明准入门在正确工作：没有因为「看起来相关」就放水。
