@@ -1,29 +1,33 @@
 # 用错了尺子 · 发现（F）
 
 > `F` 编号是子主题局部编号；跨页引用写 `metrics/Fx`。一句里混有事实与推断时，在句末分别标；未标处按 `推测` 处理。
+>
+> **2026-11-12 对账**：F1/F2 的源 POLAR（E-04）/ Ontology Catch（E-02）已撤回（[审计](../../../meta/audits/2026-11-11-source-purge.md)）。其数字只作**历史示例**，不作活证据；F1/F2 降为 `推测`（方法论框架，C-03 的展开）。F3/F4 的源（SLB/Agents）仍 admitted，保持 `已核`。
 
 ## 索引
 
 | ID | 判断（一行） | 等级 |
 |---|---|---|
-| F1 | reward 不是防伤害度量；用它判护栏会漏掉防伤害（后果为推断） | 已核 |
-| F2 | catch/FA 与 precision 不能跨口径拼；混报会掩盖非对称代价 | 已核 |
+| F1 | reward 不是防伤害度量；用它判护栏会漏掉防伤害（后果为推断） | 推测（源 POLAR 已撤回） |
+| F2 | catch/FA 与 precision 不能跨口径拼；混报会掩盖非对称代价 | 推测（源 Ontology Catch 已撤回） |
 | F3 | 输出正确会掩盖过程无效 | 已核 |
 | F4 | 单次 score 不可靠；复合指标的定义域/档位决定可比性 | 已核 |
 
 ## F1 · reward 不是防伤害
 
-- **案例**：POLAR 18 个模型-域格只有 8 个 reward 改善；作者声明 reward 是任务奖励，不是防伤害的直接度量——被 veto 的风险动作不体现在 reward 里。
-- **含义**：用 reward 判护栏，「改善」只说明任务完成，不说明伤害没发生。把有效护栏判成失败是**推断**：POLAR 没有同批防伤害测量，不能从 8/18 推出「护栏无效」或「有效」（`推测`）。
-- **来源**：[POLAR digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) §5、Table 3；E-04。
+- **案例（POLAR 已撤回，历史示例）**：POLAR 18 个模型-域格只有 8 个 reward 改善；作者声明 reward 是任务奖励，不是防伤害的直接度量——被 veto 的风险动作不体现在 reward 里。
+- **含义**：用 reward 判护栏，「改善」只说明任务完成，不说明伤害没发生。把有效护栏判成失败是**推断**：POLAR 没有同批防伤害测量，不能从 8/18 推出「护栏无效」或「有效」（`推测`）。**「reward≠防伤害」作为方法论框架保留（C-03 展开，`推测`）；POLAR 的具体数字不作活证据。**
+- **来源**：[POLAR tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082)（原 §5、Table 3）；E-04 已撤回。
 
 ## F2 · catch/FA 非对称，precision 另口径
+
+> **Ontology Catch 已撤回（E-02）；下列数字为历史示例，不作活证据。「不同口径不能拼」作为度量规则保留（`推测`，C-03 展开）。**
 
 - **真实答案（UniProt，4,410 条 / 3,383 可检查）**：curated catch 18.9% / FA 16.8%；data-derived 8.2 / 3.5；masked LLM 5.0 / 1.8；空结果重试 2.5 / 0.1。
 - **precision 是另一口径**：curated 57.1 / data-derived 72.3 / masked LLM 93.7 / 空结果 100，来自**人工故障 + 假设错答案占 25%**，不能与上面的真实答案 catch/FA 拼成一组。把 18.9/16.8 套同一公式约 27.3%，是反推，论文未直接给。
 - **人工故障/control**：curated catch 60.1% / FA 15.0%；data-derived 75.6 / 9.7；空结果 79.2 / 0。16.8/3.5 与 15.0/9.7 都叫 FA，但分属真实答案与人工故障两表，**不能跨表拼**。
 - **含义**：只看 accuracy 会把「多抓错、多杀对」混在一起；FA 触发重试，specific feedback 修好 28.3% 的 flagged wrong、也修坏 1.0% 的 flagged correct（generic 为 20.2 / 0.2）。
-- **来源**：[Ontology Catch digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809) Table 2/3, p.7；§4.1–4.3；E-02。
+- **来源**：[Ontology Catch tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809)（原 Table 2/3, p.7；§4.1–4.3）；E-02 已撤回。
 
 ## F3 · 过程不可见
 

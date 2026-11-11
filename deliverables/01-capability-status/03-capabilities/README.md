@@ -1,3 +1,8 @@
+---
+status: draft
+updated: 2026-11-12
+parent: ../README.md
+---
 
 # 01 主体：能力条目
 

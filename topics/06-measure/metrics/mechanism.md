@@ -1,6 +1,8 @@
 # 度量错配 · 机制
 
 > 只写「它怎么错、怎么选」。判断回 [findings](./findings.md)，边界/下一步回 [frontier](./frontier.md)。
+>
+> **2026-11-12 对账**：本页多处引 POLAR（E-04）/ Ontology Catch（E-02）/ OA-RAG（E-03），均已撤回（[审计](../../../meta/audits/2026-11-11-source-purge.md)）。**这些数字只作历史示例，不作活证据**；「尺子跟机制走」的分派框架是**设计（`推测`）**，不是已验证方法。仍 admitted 的锚是 E-01/E-08/E-12/E-14/E-15/E-17/E-18/E-20（CAI/N&D/CASEL/FIRME/EvoMemState/Agents/SLB/代码）。
 
 ## 问题
 
@@ -19,8 +21,10 @@
 
 ## 四个案例
 
-1. **POLAR**：reward 衡量护栏，18 个模型-域格只有 8 个 reward 改善，看着像失败；但作者声明 reward 不是防止伤害的度量。**护栏关心的是「伤害没发生」，reward 只记录「任务完成了」**（`推测`：本页对作者立场的改写；被 veto 的风险动作不体现在 reward 里，`已核`）。
-2. **Ontology Catch**：curated checker 在**真实答案**上 catch 18.9%、FA 16.8%；precision 57.1% 是**人工故障 + 假设 25% 错答案**下的数，**不能与前者拼成一组**。只看 accuracy 会把「多抓错、多杀对」混在一起。
+> 案例 1/2 的源 POLAR / Ontology Catch 已撤回，数字作历史示例；案例 3/4 的源（SLB/Agents）仍 admitted。
+
+1. **POLAR（已撤回，历史示例）**：reward 衡量护栏，18 个模型-域格只有 8 个 reward 改善，看着像失败；但作者声明 reward 不是防止伤害的度量。**护栏关心的是「伤害没发生」，reward 只记录「任务完成了」**（`推测`：本页对作者立场的改写；被 veto 的风险动作不体现在 reward 里）。
+2. **Ontology Catch（已撤回，历史示例）**：curated checker 在**真实答案**上 catch 18.9%、FA 16.8%；precision 57.1% 是**人工故障 + 假设 25% 错答案**下的数，**不能与前者拼成一组**。只看 accuracy 会把「多抓错、多杀对」混在一起。
 3. **SLB**：程序跑对不代表在搜索；85% 轨迹有 SLB、24% token 是 SLB，输出评估区分不出 hardcoded 与 independent。
 4. **Agents are Systems**：在真实尝试（过 hurdle）中，54% 的 score 方差来自重复同一配置；单次跑分不可靠；Information > 模型/预算；验证靠工具不靠 prompt（prompt 19→22%，oracle 翻三倍）。
 
@@ -43,9 +47,9 @@
 |---|---|---|---|---|---|---|---|
 | context | 不准 / 内部没有 | primary-trap avoidance；element score；任务准确率 | token/问、p95、投影字符数、顺序版本 | 知识没覆盖（漏） vs 投影太长/顺序错（误） | K1 命名+单位；纯文本 RAG | K2−K1 <5pp；投影 >60k 字符；维护 >2 人周/月 | E-12 / E-14 / E-01 |
 | memory | 做错 / 内部没有 | CMR；Acc@complete | merge precision；reattachment recall；抽取 round-trip | false merge vs false split/漏配 | 不做 registry；LLM-Norm | merge precision <90%；Complete Retrieval <80%；冲突 >20% | E-05 / E-17 |
-| evidence | 不准 / 输出对了 | 准确率；引用率 | 检索率；grounding 校准；tool calls/tokens | 无依据（漏） vs 过度引用/等级通胀（误） | 纯文本 RAG | 检索率 <50%；grounding 通胀 >90%；无独立标注 | E-03 |
-| checker | 做错 | 增量 catch；FA | per-1k 成本；flag rate；净修复（fixed−corrupted） | 漏检 vs 误报后修坏 | 空结果重试 | 增量 catch <5pp；FA >15%；净修复 ≤0 | E-02 / E-20 |
-| action | 做错 / 没做 | harm/HSR；false-veto；审批量 | 保留率；p95；回滚率 | 误拦合法动作 vs 漏放有害动作 | 不上护栏；blanket veto | false-veto >5%；task success 降 >2pp；保留率 <20% 或 >95% | E-04 / E-13 / E-15 / E-16 |
+| evidence | 不准 / 输出对了 | 准确率；引用率 | 检索率；grounding 校准；tool calls/tokens | 无依据（漏） vs 过度引用/等级通胀（误） | 纯文本 RAG | 检索率 <50%；grounding 通胀 >90%；无独立标注 | E-03（已撤回） |
+| checker | 做错 | 增量 catch；FA | per-1k 成本；flag rate；净修复（fixed−corrupted） | 漏检 vs 误报后修坏 | 空结果重试 | 增量 catch <5pp；FA >15%；净修复 ≤0 | E-02（已撤回）/ E-20 |
+| action | 做错 / 没做 | harm/HSR；false-veto；审批量 | 保留率；p95；回滚率 | 误拦合法动作 vs 漏放有害动作 | 不上护栏；blanket veto | false-veto >5%；task success 降 >2pp；保留率 <20% 或 >95% | E-04/E-13/E-16（已撤回）/ E-15 |
 | commit | 做错 / 没做 | false-defer；false merge；授权正确率 | unresolved 率；审计完整率；重入时延 | 误 defer 正确变更 vs 误放行错误变更 | 不做 gate；直接 merge | false-defer >20%；unresolved >10%；无审计/事务 | E-20（否定性）+ 设计 |
 | read-path | 做错 | 泄漏率（subject/object）；误拦率 | p95；缓存命中；策略异常率 | 泄漏 vs 误拦 | 不过滤 | fail-open 未修；object 方向泄漏；只有 1 个实现 | E-20 |
 | determinism | 没做 | 收敛/漂移（结构投影差异）；重复运行一致率 | anchor 覆盖率；归因命中率；重放成本 | 假收敛 vs 假漂移 | 同输入重复运行；无锚点 | 无度量/无实现；漂移无法归因 | 设计（无 E） |
@@ -78,7 +82,7 @@
 
 ## 实施与客户价值（A3/A4）
 
-> 读者是要验收一个机制、又不想再被尺子骗一次的评测/平台 owner。本节不重讲四种量错，只回答这把尺子改变哪个决定、要什么账本、何时必须停。**指标分派表仍是设计，不是已验证的方法**（[G1](./frontier.md) 未关）；数字出自上文与各文 digest（POLAR / Ontology Catch / SLB / Agents / CAI），未标出处的推算是 `推测`。
+> 读者是要验收一个机制、又不想再被尺子骗一次的评测/平台 owner。本节不重讲四种量错，只回答这把尺子改变哪个决定、要什么账本、何时必须停。**指标分派表仍是设计，不是已验证的方法**（[G1](./frontier.md) 未关）；数字出自上文与各文 digest（POLAR / Ontology Catch / SLB / Agents / CAI），**其中 POLAR / Ontology Catch 已撤回，其数字为历史示例、不作活证据**；未标出处的推算是 `推测`。
 
 ### 实施决策
 
