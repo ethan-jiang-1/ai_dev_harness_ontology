@@ -19,3 +19,5 @@ parent: ../README.md
 **不能做什么**：不保证跨运行确定性；文本 only、需训练信号；false merge 的长期污染未测；未匹配 ≠ 关系结束。
 
 **距离**：先建 registry，再谈内容/检索；merge precision 与 CMR 一起看；没有自动回滚。
+
+> 回到 [能力索引](./README.md)。

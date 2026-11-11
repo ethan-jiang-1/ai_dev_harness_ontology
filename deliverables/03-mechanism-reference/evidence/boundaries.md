@@ -1,7 +1,7 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-10
+updated: 2026-11-11
 section: boundaries
 evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-09, E-12, E-13, E-14, E-15, E-16, E-17, E-18, E-20, E-22, C-03]
 ---
@@ -10,28 +10,29 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-08, E-09, E-12, E-13, E-14, E-15, E-1
 
 > 03 的每一条边界都要能回答三件事：**限制谁、凭什么、什么会改变它。** 边界表是原附录 §3.7 的展开；编号 B1–B15 沿用原顺序。
 >
-> **B 与 R 的分工**：B 说「这条判断不能证明什么」；R 说「有人这么主张、但已被测反例打掉」。R01–R12 的完整记录在 [objects.md](../../../topics/objects.md) 的 `O-R01`–`O-R12`。
+> **B 与 N 的分工**：B 说「这条判断不能证明什么」；N 说「有人这么主张、但已被测反例打掉」。N01–N12 的完整对象记录是 `O-R01`–`O-R12`（O 编号不变，见 [objects.md](../../../topics/objects.md)）。
 >
 > 用法：写 03 的判断前先查边界表；如果一条判断不在边界表里，它可能还没被消化。
 
-## 0. 反例集（R-table）
+<a id="0-反例集r-table"></a>
+## 0. 反例集（N-table）
 
 > 每行都是「常见主张 → 已测反例 → 什么会推翻这条反例」。没有数的反例不进表。
 
 | # | 常见主张 | 已测反例（带数） | 什么会推翻它 | O | 出处 |
 |---|---|---|---|---|---|
-| R01 | 结构化上下文/本体能提准确率 | 被测工件（claim 树/RAPTOR/PageIndex/实体图/wiki）在 FRAMES 上 acc. neutral；ontology 行 `not measured`；N=200、p=91% 时两臂分辨率约 ±5.6pp | 换 benchmark 出现可检出增益，或配对 A/B 超过 δ | O-R01 | E-01 |
-| R02 | 护栏必然提升任务表现 | 18 格仅 8 格改善；airline 六模型四个 +0.11–0.18；retail/强模型回退；T1-only≈blanket veto | 同轨迹配对后改善面显著扩大，或 harm 标签显示 net benefit | O-R02 | E-04 / Q-03 |
-| R03 | 深结构比薄语义层更值 | K0→K1 +54.6pp vs K1→K2 +19.8pp；薄层约贡献 73% | 跨域深结构增益超过薄层 | O-R03 | E-12 |
-| R04 | 投影排序普适（文本 > JSON > 查询） | GLM JSON 0.900 > 文本 0.891；Qwen 工具 0.407 < 检索 0.538；pooled 0.777 只是平均 | 更多模型上文本—JSON 排序不翻转 | O-R04 | E-12 |
-| R05 | curated 本体更可靠 | curated precision 仅比随机高 1.6 点（CI 跨零）；真实答案 FA 16.8%；data-derived FA 3.5% | 第二域 curated 显著优于随机 | O-R05 | E-02 |
-| R06 | 有引擎就能拦 | trustgraph fail-open、只删 subject；open-ontologies 只做 CI/报告；semantica 校验时 `inference="none"`；ontop 重写不是 gate | 第二实现 fail-closed 且有写授权 | O-R06 | E-20 |
-| R07 | 有标签就能做访问控制 | 标签层（Glyph）/策略层（OPA 无领域本体）/执行层（trustgraph 单实现）不能互推；读路径过滤 ≠ 写授权 | 端到端策略+执行验证 | O-R07 | E-22 |
-| R08 | 平均 −38% 可上线 | −38% = 43%×−91% + 57%×+1.9%；p_h=43% 是反推；时延 3× 只在 7 题上测 | 实测 p_h 与 43% 差 >10pp 且平均收益翻转 | O-R08 | E-08 / E-14 |
-| R09 | 审批越多越安全 | CASEL 8.7% approvals/7.02% HSR；Uncertainty 6.9%/14.75%；Risk 12.6%/5.82%；Consequence 13.8%/4.38% | 审批疲劳建模后排序翻转 | O-R09 | E-15 |
-| R10 | 不做身份对齐也能记忆 | no-alias CMR −7.8–12.1pp；LLM-Norm 2.3–3.7× 差；human audit +9.0–16.5pp | 无身份对照显示同等 CMR | O-R10 | E-05 |
-| R11 | SLB 可靠提示词消除 | cautionary prompts 只减约 1/4；placeholders 减 SLB token 97% 而准确率 +2.6；85% traces/24% tokens | prompt 使 SLB 降至 <5% 且不损准确率 | O-R11 | E-09 |
-| R12 | reward 可证明护栏安全 | 单 gate/6 模型下 reward 不升反降；作者声明 reward 不是 harm 度量；无 harm 标签 | harm 标签使 reward 与 harm 一致 | O-R12 | Q-03 / E-04 |
+| N01 | 结构化上下文/本体能提准确率 | 被测工件（claim 树/RAPTOR/PageIndex/实体图/wiki）在 FRAMES 上 acc. neutral；ontology 行 `not measured`；N=200、p=91% 时两臂分辨率约 ±5.6pp | 换 benchmark 出现可检出增益，或配对 A/B 超过 δ | O-R01 | E-01 |
+| N02 | 护栏必然提升任务表现 | 18 格仅 8 格改善；airline 六模型四个 +0.11–0.18；retail/强模型回退；T1-only≈blanket veto | 同轨迹配对后改善面显著扩大，或 harm 标签显示 net benefit | O-R02 | E-04 / Q-03 |
+| N03 | 深结构比薄语义层更值 | K0→K1 +54.6pp vs K1→K2 +19.8pp；薄层约贡献 73% | 跨域深结构增益超过薄层 | O-R03 | E-12 |
+| N04 | 投影排序普适（文本 > JSON > 查询） | GLM JSON 0.900 > 文本 0.891；Qwen 工具 0.407 < 检索 0.538；pooled 0.777 只是平均 | 更多模型上文本—JSON 排序不翻转 | O-R04 | E-12 |
+| N05 | curated 本体更可靠 | curated precision 仅比随机高 1.6 点（CI 跨零）；真实答案 FA 16.8%；data-derived FA 3.5% | 第二域 curated 显著优于随机 | O-R05 | E-02 |
+| N06 | 有引擎就能拦 | trustgraph fail-open、只删 subject；open-ontologies 只做 CI/报告；semantica 校验时 `inference="none"`；ontop 重写不是 gate | 第二实现 fail-closed 且有写授权 | O-R06 | E-20 |
+| N07 | 有标签就能做访问控制 | 标签层（Glyph）/策略层（OPA 无领域本体）/执行层（trustgraph 单实现）不能互推；读路径过滤 ≠ 写授权 | 端到端策略+执行验证 | O-R07 | E-22 |
+| N08 | 平均 −38% 可上线 | −38% = 43%×−91% + 57%×+1.9%；p_h=43% 是反推；时延 3× 只在 7 题上测 | 实测 p_h 与 43% 差 >10pp 且平均收益翻转 | O-R08 | E-08 / E-14 |
+| N09 | 审批越多越安全 | CASEL 8.7% approvals/7.02% HSR；Uncertainty 6.9%/14.75%；Risk 12.6%/5.82%；Consequence 13.8%/4.38% | 审批疲劳建模后排序翻转 | O-R09 | E-15 |
+| N10 | 不做身份对齐也能记忆 | no-alias CMR −7.8–12.1pp；LLM-Norm 2.3–3.7× 差；human audit +9.0–16.5pp | 无身份对照显示同等 CMR | O-R10 | E-05 |
+| N11 | SLB 可靠提示词消除 | cautionary prompts 只减约 1/4；placeholders 减 SLB token 97% 而准确率 +2.6；85% traces/24% tokens | prompt 使 SLB 降至 <5% 且不损准确率 | O-R11 | E-09 |
+| N12 | reward 可证明护栏安全 | 18 格中仅 8 格改善；airline 4/6 模型 +0.11–0.18；retail/强模型回退；作者声明 reward 不是 harm 度量；无 harm 标签 | harm 标签使 reward 与 harm 一致 | O-R12 | Q-03 / E-04 |
 
 ## 1. 边界表（B1–B15）
 

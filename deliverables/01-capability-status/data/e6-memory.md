@@ -1,13 +1,13 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 type: evidence-note
-target: E6 memory/identity
+target: X6 memory/identity
 ---
 
-# E6 数据表：CMR/Acc@complete 有 prior，但跨域和 false merge 没底
+# X6 数据表：CMR/Acc@complete 有 prior，但跨域和 false merge 没底
 
-> **工作底稿，不是交付正文。** 数字用于更新 D1 的 E6 verdict；正式引用走 E-05/E-17 与 [04/memory](../../../topics/04-state/memory/README.md)、[04/identity](../../../topics/04-state/identity/README.md)。来源为 FIRME/EvoMemState digest 与论文 Table 3/4、Table A2；不新增结论。
+> **工作底稿，不是交付正文。** 数字用于更新 D1 的 X6 verdict；正式引用走 E-05/E-17 与 [04/memory](../../../topics/04-state/memory/README.md)、[04/identity](../../../topics/04-state/identity/README.md)。来源为 FIRME/EvoMemState digest 与论文 Table 3/4、Table A2；不新增结论。
 
 ## 1. FIRME 已发表什么
 
@@ -38,9 +38,9 @@ target: E6 memory/identity
 | 规模 | 4 基准、9 baseline、ablation、跨系统迁移 | 文本 only；GRPO 需答案/评分器 |
 | 边界 | Reasoning State 不可形式验证 | 不是形式保证 |
 
-## 3. 用 D1 的 E6 阈值去套
+## 3. 用 D1 的 X6 阈值去套
 
-E6 的验收线是「CMR 或 Acc@complete 相对基线 ≥ +10pp，merge precision ≥90%」。
+X6 的验收线是「CMR 或 Acc@complete 相对基线 ≥ +10pp，merge precision ≥90%」。
 
 | 证据 | 是否过线 | 说明 |
 |---|---|---|
@@ -50,7 +50,7 @@ E6 的验收线是「CMR 或 Acc@complete 相对基线 ≥ +10pp，merge precisi
 | EvoMem Acc@complete +11.5/+31.2 | **是** | 但 Complete Retrieval 85.6% ≈ baseline 86.4，增益在「会用」 |
 | 跨域复现 | **没有** | 专有投资人数据 + S&P；无第二独立域 |
 
-**结论**：E6 是 `supported（限定）`——alias/状态层在已测设置里有增量，但**不是所有设置都过 +10pp / 90%**；跨域和 false merge 传播仍是空的。D1 不应写「记忆层稳定 +10pp」，应写「有条件」。
+**结论**：X6 是 `supported（限定）`——alias/状态层在已测设置里有增量，但**不是所有设置都过 +10pp / 90%**；跨域和 false merge 传播仍是空的。D1 不应写「记忆层稳定 +10pp」，应写「有条件」。
 
 ## 4. 缺什么
 
@@ -60,7 +60,7 @@ E6 的验收线是「CMR 或 Acc@complete 相对基线 ≥ +10pp，merge precisi
 - **客户任务指标**：CMR/Acc@complete 不等于 agent 任务成功；论文没有下游任务对照。
 - **维护成本**：registry/alias/本体维护未测。
 
-## 5. E6 verdict 候选
+## 5. X6 verdict 候选
 
 | 子句 | verdict | 依据 | 边界 |
 |---|---|---|---|

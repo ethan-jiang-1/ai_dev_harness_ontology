@@ -1,13 +1,13 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 type: evidence-note
-target: E3 compilation economics
+target: X3 compilation economics
 ---
 
-# E3 数据表：`p_h` 能算，但不能从论文抄
+# X3 数据表：`p_h` 能算，但不能从论文抄
 
-> **工作底稿，不是交付正文。** 数字用于更新 D1 的 E3 verdict；正式引用走 E-08/E-14 与 [03/compilation](../../../topics/03-knowledge/compilation/README.md)。来源为 CAI digest 与论文 §4.4/§8.6；不新增结论。
+> **工作底稿，不是交付正文。** 数字用于更新 D1 的 X3 verdict；正式引用走 E-08/E-14 与 [03/compilation](../../../topics/03-knowledge/compilation/README.md)。来源为 CAI digest 与论文 §4.4/§8.6；不新增结论。
 
 ## 1. 已发表什么
 
@@ -41,7 +41,7 @@ target: E3 compilation economics
 - **平均 −38% 不能立项**：它掩盖 hit/miss 两端；先量 `p_h` 与 miss，再谈 token 节省。
 - **时延是硬约束**：3× 只在 7 题上测；如果 KPI 是任务完成时间，token 节省可能不划算。
 
-## 4. E3 verdict 候选
+## 4. X3 verdict 候选
 
 | 子句 | verdict | 依据 | 边界 |
 |---|---|---|---|
@@ -50,7 +50,7 @@ target: E3 compilation economics
 | 目标流量 `p_h ≥ p_min` | **`unknown`（部署前）** | 缺自己的 `p_h`/`c`/`Q`/miss | 必须 shadow 量 |
 | 编译降准确率 | `supported（限定）` | E-01；强 harness 下无可检出增益 | 单基准；ontology not measured |
 
-**结论**：E3 是 `conditional`——公式成立，部署结论取决于自己的三到五个数。D1 应写「先量 `p_h`，再谈买不买」，不是「平均省 38%」。
+**结论**：X3 是 `conditional`——公式成立，部署结论取决于自己的三到五个数。D1 应写「先量 `p_h`，再谈买不买」，不是「平均省 38%」。
 
 ## 5. 什么会改变它
 

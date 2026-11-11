@@ -48,9 +48,9 @@ POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是�
 | 文件/目录 | 作用 |
 |---|---|
 | `README.md` | 本页：派地图 + top claims；不展开机制 |
-| `claims.md` | 本派局部结论账本（`01-Lx`） |
-| `sources.md` | 本派卡片索引 |
-| `frontier.md` | 本派候选队列 |
+| [claims.md](./claims.md) | 本派局部结论账本（`01-Lx`） |
+| [sources.md](./sources.md) | 本派卡片索引 |
+| [frontier.md](./frontier.md) | 本派候选队列 |
 | `<子主题>/README.md` | dashboard：覆盖/计数/当前判断/文件地图 |
 | `<子主题>/findings.md` + `findings/` | 该子主题的发现与证据 |
 | `<子主题>/mechanism.md` | 机制怎么跑 + 「工程发现 1–4」（接口/参数/成本/stop/客户指标） |

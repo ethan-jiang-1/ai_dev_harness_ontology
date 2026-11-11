@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 ---
 
 # meta：规则、模板与历史
@@ -14,10 +14,11 @@ updated: 2026-11-09
 | [../CHARTER.md](../CHARTER.md) | **全仓宪章**：研究档案，不做实施 | 进入仓库先读 |
 | [conventions.md](./conventions.md) | 证据等级、字段、命名、台账纪律 | 动笔前必读 |
 | [checklist.md](./checklist.md) | 交稿前检查 | 每次改完 |
+| [deliverable-quality.md](./deliverable-quality.md) | **交付物质量评分卡**（12 维 + 5 门槛 + 抽样协议） | 评估/打磨 `deliverables/` 时 |
 | [source-types.md](./source-types.md) | 素材类型与证据天花板 | 引入新类型/博客/开源时 |
 | [topic-research-protocol.md](./topic-research-protocol.md) | 派与子主题怎么长、frontier 怎么用 | 开新子主题/做扫描时 |
 | [loading.md](./loading.md) | 按任务加载（渐进披露） | 接手时 |
-| [state.md](./state.md) | **当前计数、阻塞、最后自检** | 想知道“现在到哪了” |
+| [state.md](./state.md) | **当前计数、阻塞、最后自检**；历史日志见 [state-log](./state-log.md) | 想知道“现在到哪了” |
 | [models.md](./models.md) | **可用模型与本地约束**（不装本地模型；只用 Yovole 两个） | 要跑任何模型依赖的实验时 |
 
 ## 模板与工具

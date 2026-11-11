@@ -1,13 +1,13 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 type: evidence-note
-target: E4 checker
+target: X4 checker
 ---
 
-# E4 数据表：checker 的 catch/FA 有 prior，但没有你的故障分布
+# X4 数据表：checker 的 catch/FA 有 prior，但没有你的故障分布
 
-> **工作底稿，不是交付正文。** 数字用于更新 D1 的 E4 verdict；正式引用走 E-02 与 [02/checker](../../../topics/02-judgment/checker/README.md)。来源为 Ontology Catch digest 与论文 Table 2/3/4/6；不新增结论。
+> **工作底稿，不是交付正文。** 数字用于更新 D1 的 X4 verdict；正式引用走 E-02 与 [02/checker](../../../topics/02-judgment/checker/README.md)。来源为 Ontology Catch digest 与论文 Table 2/3/4/6；不新增结论。
 
 ## 1. 已发表什么
 
@@ -41,11 +41,11 @@ target: E4 checker
 - **C5 feedback**：specific 修复 28.3% / corrupt 1.0%；generic 20.2% / 0.2%；最终准确率差异未确立。
 - **FA 归因（Table 6）**：盲审 32 个双标注一致项中，undeclared term 17、closed-world 11、data clash 0。
 
-## 2. 用 D1 的 E4 阈值去套
+## 2. 用 D1 的 X4 阈值去套
 
-E4 的验收线是「增量 catch ≥5pp、FA ≤15%」，反事实是空结果重试（真实答案 catch 2.5%/FA 0.1%）。
+X4 的验收线是「增量 catch ≥5pp、FA ≤15%」，反事实是空结果重试（真实答案 catch 2.5%/FA 0.1%）。
 
-| 来源 | 增量 catch vs 空结果 | FA | 是否过 E4 线 |
+| 来源 | 增量 catch vs 空结果 | FA | 是否过 X4 线 |
 |---|---:|---:|---|
 | curated | 18.9 − 2.5 = **+16.4pp** | **16.8%** | **否**：FA 超 15% |
 | data-derived | 8.2 − 2.5 = **+5.7pp** | **3.5%** | **是**（UniProt 真实答案上） |
@@ -62,7 +62,7 @@ E4 的验收线是「增量 catch ≥5pp、FA ≤15%」，反事实是空结果�
 - **语义错误**：结构检查 0%；需要独立 judge/人工，但 judge 也有修坏问题。
 - **部署 precision**：没有 ground truth 时算不出；只能 100–400 条分层抽样 + Wilson CI。
 
-## 4. E4 verdict 候选
+## 4. X4 verdict 候选
 
 | 子句 | verdict | 依据 | 边界 |
 |---|---|---|---|
@@ -71,7 +71,7 @@ E4 的验收线是「增量 catch ≥5pp、FA ≤15%」，反事实是空结果�
 | curated 过线 | `contradicted` | FA 16.8% > 15% | 高 catch 但高 FA；需先审计/补声明 |
 | 部署有效 | **`unknown`** | 缺自己的故障分布/标注 | 先建 200 题基线 |
 
-**结论**：E4 不是「checker 有没有用」，而是「哪种来源、在什么错误分布上、过不过你的 FA 预算」。D1 应写 `supported（限定）` + `unknown（部署）`，并明确 curated 的 FA 超线。
+**结论**：X4 不是「checker 有没有用」，而是「哪种来源、在什么错误分布上、过不过你的 FA 预算」。D1 应写 `supported（限定）` + `unknown（部署）`，并明确 curated 的 FA 超线。
 
 ## 5. 什么会改变它
 

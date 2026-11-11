@@ -1,7 +1,7 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 position: context
 evidence: [E-01, E-08, E-12, E-14]
 ---
@@ -10,7 +10,7 @@ evidence: [E-01, E-08, E-12, E-14]
 
 > **一句话**：本体在这一格只被「读」，不被「执行」。它能改变模型知道什么，不能改变模型必须做什么；把它当约束用，是这一格最常见的误用。
 
-> **为什么不是相邻位置（D2）**：不是 memory（不跨轮）、不是 evidence（不改输出字段）；它只改模型看到什么。
+> **为什么不是相邻位置**：不是 memory（不跨轮）、不是 evidence（不改输出字段）；它只改模型看到什么。
 
 ## 1. 机制
 

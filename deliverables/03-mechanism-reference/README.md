@@ -9,6 +9,8 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 # 03 · 机制参考：六个位置、三根分类轴与证据边界
 
 > **读者**：架构师 / 研究者 ｜ **回答**：为什么是这些位置/形态、证据边界在哪 ｜ **不回答**：具体怎么做（去 02）、今天能做成什么（去 01）。
+>
+> **第一次来**：先读 [START](../START.md)（10 分钟），再回本份。
 
 > **怎么用**：先读 [GUIDE.md](./GUIDE.md)；下面按四层展开。
 
@@ -22,7 +24,7 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 ## 0. 一页结论
 
 - **强度不是好坏。** 强度问「违反时能不能改变走向」；覆盖率问「能碰到多少类失效」。强端管得硬，但管得少。
-- **强端不是更好，是更窄。** 但它不是一条可排序的强度线：六位置是专门化的，查 [coverage 矩阵](./across-positions/coverage.md)，不查直线。
+- **强端不是更好，是更窄（组织假设，非 E；证据见附录 §3.2）。** 它不是一条可排序的强度线：六位置是专门化的，查 [coverage 矩阵](./across-positions/coverage.md)，不查直线。
 - **尺子跟机制走。** 不改变走向的供给/契约位置，准确率/token 仍可用；能改变走向的判定/动作/落盘位置，用单一 accuracy/reward 会错配（C-03）。
 - **六个位置问的问题不同。** context 看到什么、memory 记得什么、evidence 带什么依据、checker 对不对、action 能不能做、commit 够不够授权；不是「六个都该做」。
 - **承重墙是 M1/M2。** 没有同本体跨位置对照，也没有覆盖率测量；这份参考能给出分类与边界，不能给出效应量。
@@ -34,6 +36,7 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 | 节 | 文件 | 内容 |
 |---|---|---|
 | 导读 | [GUIDE.md](./GUIDE.md) | 先读哪一页、按什么顺序 |
+| 分节索引 | [sections/README.md](./sections/README.md) | 各分节的一页索引 |
 | 2 地图 | [sections/map.md](./sections/map.md) | 主张类型、四轴、六位置、强度矩阵 |
 | 3 主体 | [positions/README.md](./positions/README.md) | 六张位置卡 + 三张横切页索引 |
 | 4 边界 | [sections/boundaries.md](./sections/boundaries.md) | 15 条边界 + 12 条反例；全文在 [boundaries.md](./evidence/boundaries.md) |
@@ -44,7 +47,8 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 | Claim 走查 | [sections/claim-walkthrough.md](./sections/claim-walkthrough.md) | 读路径能不能防泄漏 |
 | Placement | [sections/placement.md](./sections/placement.md) | 五步把 claim 放到正确位置 |
 | 模板 | [sections/templates.md](./sections/templates.md) | claim 走查空表 |
-| 证据 | [evidence-ledger.md](./evidence/ledger.md) | E-xx 支持/不支持哪个位置 |
+| 证据台账 | [evidence/ledger.md](./evidence/ledger.md) | E-xx 支持/不支持哪个位置 |
+| 证据索引 | [evidence/README.md](./evidence/README.md) | 台账/边界/缺口的一页索引 |
 
 ## 关注什么 / 需要什么材料
 

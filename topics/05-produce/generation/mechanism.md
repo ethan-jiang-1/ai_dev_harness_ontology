@@ -97,6 +97,8 @@
 - **层级产物**：`{child, parent, confidence}`（Chu-Liu/Edmonds 解码输出）。
 - **自演化产物**：`(head, relation, tail, ConfirmValue, reliable, gap)`。
 - **批处理**：`generate(iri_list, endpoint, config)`；幂等键 `(iri, ontology_version, generator_version)`；自演化 `extract(root_concepts, depth≥3) → confirm(triples, prompts) → close_rules → select_gap(τ*) → inject(gap, mode=implicit|mix)`。
+<a id="可消费性闸门"></a>
+
 - **可消费性闸门（本页新增，四条路线均未做，`推测`）**：`load(artifact) → {parsed, violations, missing_fields}` + 一次真实任务（checker 加载判定 / 层级检索 / agent 消费），记成功/失败与失败原因。
 - **日志**：每 IRI 记路线、token、检索命中、ASK 结果、人审结论；没有日志算不出每术语成本与 reject 率。
 

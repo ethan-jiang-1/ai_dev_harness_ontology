@@ -30,7 +30,7 @@ parent: ../README.md
 
 | 项 | 内容 |
 |---|---|
-| 怎么查 | 查 [boundaries](../evidence/boundaries.md) 的 B1–B15 与 R01–R12 |
+| 怎么查 | 查 [boundaries](../evidence/boundaries.md) 的 B1–B15 与 N01–N12 |
 | 通过 | 能说出「什么条件下不成立」+「什么会推翻它」；不是「永远不行」 |
 | 未通过 | 把边界读成「无效」，或把反例读成「所有情况都不行」 |
 

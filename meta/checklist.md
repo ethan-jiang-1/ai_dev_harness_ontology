@@ -2,7 +2,7 @@
 
 每次改完跑一遍。任何一条不通过，不要提交。
 
-先跑 `python3 meta/tools/check_repo.py`；它覆盖链接、枚举、E/L 编号、论文/开源清单与计数。下面是脚本查不了的语义项。
+先跑 `python3 meta/tools/check_repo.py`；它覆盖文件与锚点链接、枚举、E/L 编号、论文/开源清单与计数。下面是脚本查不了的语义项。
 
 ## 0. 宪章
 
@@ -13,7 +13,7 @@
 
 ## 1. 链接
 
-- 所有相对链接的目标存在。
+- 所有相对链接的文件与 `#锚点` 都存在（`check_repo` 会查）。
 - 标签指向正确概念，不只是「能点开」；重点查 `seams.md`、`frontier.md`、`conclusions.md` 的交叉链接。
 - 旧结构名（`30-seams`、`src_notes/`、`topics/harness/` 等）不再出现。
 
@@ -44,7 +44,7 @@
 - 6 派 / 6 个 `frontier.md` / 6 个 `claims.md` / 6 个 `sources.md` / 6 个硬时刻 + 轴外位置。
 - 06 有 5 个子主题（mechanism / failure-attribution / trace / metrics / feasibility）。
 - 标题里的「N 种读法」与下面的条目数一致。
-- 自检脚本能数的（论文/开源/ID/枚举/链接），以脚本输出为准。
+- 自检脚本能数的（论文/开源/ID/枚举/链接/锚点），以脚本输出为准。
 
 ## 5. 术语
 
@@ -74,4 +74,4 @@
 - 每个数字带数据、模型、样本量、设置；没有裸数字；关键数字带表号/页码。
 - 不靠「详见 card」补上下文；链接只放原文/代码。
 - 长度：L3 250–360 行；L2 160–260；L1 100–240（目标，不是门；自包含优先）。
-- 过 [digest-audit](archive/2026-11/digest-audit.md) 的标准。
+- 过 [digest 模板](../src/_templates/paper-digest.md) 的自包含要求；长度目标见 [conventions](./conventions.md#阅读深度l1l2l3)。

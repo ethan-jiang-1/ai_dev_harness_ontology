@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-10
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -97,7 +97,7 @@ SELECT ?col WHERE { :t_hr :hasColumn ?col }
 
 **两套不是一套**：10 条是 read-path 一致性用例（测实现差异），12 条是 [leak_cases.json](../example/leak_cases.json) 的泄漏面（object/alias/聚合/版本）；LEAK-T1 是后者的探针，编号不要混。12 条是**测试设计，不是可执行套件**：L4/L8/L9/L10/L11 需要额外 fixture 或开关（alias 三元组 / TriG / 版本缓存 / 缺 context / 无策略），reference §5 标了 `needs`。
 
-**10 条一致性用例里已核的 4 条**（完整表见 [参考表 §5](../sections/reference.md)）：
+**10 条一致性用例里，本页只展开最关键的 4 条**（完整 10 条见 [参考表 §5](../sections/reference.md)；E-23 记 6 条已核、4 条待核）：
 
 | 用例 | trustgraph（`184f622`） | 安全期望 |
 |---|---|---|

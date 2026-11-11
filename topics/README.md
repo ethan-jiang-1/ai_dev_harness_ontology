@@ -123,13 +123,13 @@ updated: 2026-11-10
 
 例：一篇「用 SHACL 校验工具调用参数并在执行前阻断」的论文 → 01/action-gate；只校验产出 → 02/checker；只把 SHACL 当表示/编译产物、不阻断 → 05/representation；只过滤检索结果 → 01/commit-gate 的读路径 + `seam: read-path`。
 
-## 八种读法
+## 九种读法
 
 - **找工程思路** → 01 → 02 → 03：哪里最硬、代价是什么。
 - **找证据强度** → 06 → [conclusions](./conclusions.md)：哪些已核、哪些只是推测。
 - **找落地路径** → 05 → 03 → 01：先有本体，再让它被看见，最后让它能拦住东西。
 - **找时刻** → [seams.md](./seams.md)：六个接缝、轴外位置、选择规则、到派与部件的 crosswalk。
-- **找形态** → [execution-forms.md](./execution-forms.md)：引擎求值/编译/上下文/标签，以及 26 个来源的初判。
+- **找形态** → [execution-forms.md](./execution-forms.md)：引擎求值/编译/上下文/标签，以及 36 个来源的初判。
 - **找前沿** → 各派 `frontier.md`：前沿问题、信号源、检索式、候选队列。
 - **找局部判断** → 各派 [claims.md](./01-constraint/claims.md)：`L-xx`，尚未升到 E-xx。
 - **找地址/数** → [objects.md](./objects.md)：`O-xx` 硬对象（C/F/T/M/N/R/P），按 E / 交付物 / 类型索引；它是地址层，不是结论层。

@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -32,3 +32,5 @@ parent: ../README.md
 **不能做什么**：结构检查对 changes of meaning 基本抓不到（0%）；LLM judge 检错更多（catch 40.3%/FA 16.2%），但 40 条修好 / 83 条修坏；空结果重试是必须超过的基线（人工 fault 上 catch 79.2%、FA 0%）。
 
 **距离**：false-veto 未测；单 checker 实验；curated 需要先审计/补声明；没有标注集就不知道曲线。
+
+> 回到 [能力索引](./README.md)。

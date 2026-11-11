@@ -1,8 +1,8 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 type: evidence-note
-target: E5 false-veto / E7 read-path / E8 commit gate
+target: X5 false-veto / X7 read-path / X8 commit gate
 ---
 
 # P0 源扫描：false-veto 与 commit gate
@@ -13,10 +13,10 @@ target: E5 false-veto / E7 read-path / E8 commit gate
 
 | 检索 | 命中 | 判断 |
 |---|---|---|
-| `What Can Be Enforced? 2607.22868` | arXiv 2607.22868，26 页，理论 + 实验 | **高相关**；给 false-block/miss 前沿与 conformal 校准，可能改写 E5 的「false-veto 不可测」表述 |
-| `commit boundary implementation entity resolution` | Zenodo 23580733（Commit Boundary 原论文，已入档）；arXiv 2610.16838（授权 benchmark） | **无实现**；E8 仍是 `unknown/无实现` |
+| `What Can Be Enforced? 2607.22868` | arXiv 2607.22868，26 页，理论 + 实验 | **高相关**；给 false-block/miss 前沿与 conformal 校准，可能改写 X5 的「false-veto 不可测」表述 |
+| `commit boundary implementation entity resolution` | Zenodo 23580733（Commit Boundary 原论文，已入档）；arXiv 2610.16838（授权 benchmark） | **无实现**；X8 仍是 `unknown/无实现` |
 | `false veto guardrail annotation blocked decisions agent` | arXiv 2610.16838；POLAR（已入档） | **高相关**；直接测「同操作、不同权限」下的误拦 |
-| `SHACL access control read path policy filter ontology` | GraphDB 文档；无第二个独立实现 | E7 的第二个实现本轮未找到；保持 `unknown` |
+| `SHACL access control read path policy filter ontology` | GraphDB 文档；无第二个独立实现 | X7 的第二个实现本轮未找到；保持 `unknown` |
 
 ## 2. 候选 A：What Can Be Enforced?（2607.22868）
 
@@ -29,9 +29,9 @@ target: E5 false-veto / E7 read-path / E8 commit gate
 - 有界表示攻击会加 robustness margin；benign calibration 不自动迁移。
 - 实验：静态诊断、受控模型枚举、表示重写、配对闭环重跑。
 
-**为什么重要**：它把「false-veto」从「没有标签所以不可测」推进到「有 false-block/miss 前沿与校准证书」。如果成立，D1 的 E5 不应只写 `unknown`，而应写「可校准，但需要策略表示与 oracle 谓词；POLAR 没有这些」。
+**为什么重要**：它把「false-veto」从「没有标签所以不可测」推进到「有 false-block/miss 前沿与校准证书」。如果成立，D1 的 X5 不应只写 `unknown`，而应写「可校准，但需要策略表示与 oracle 谓词；POLAR 没有这些」。
 
-**go/no-go**：**go（P0，已入档 2026-11-09）**。它不是实证误拦率，不能直接填 E5 的「false-veto ≤5%」；但它给出 false-block/miss 前沿与校准协议，已写成 L2 digest（`src/papers/2607.22868-what-can-be-enforced/digest.md`），作为 E5 的边界，不升 E。
+**go/no-go**：**go（P0，已入档 2026-11-09）**。它不是实证误拦率，不能直接填 X5 的「false-veto ≤5%」；但它给出 false-block/miss 前沿与校准协议，已写成 L2 digest（`src/papers/2607.22868-what-can-be-enforced/digest.md`），作为 X5 的边界，不升 E。
 
 **入档判据**：报告 false-block/miss 前沿或校准协议，且能映射到 POLAR 的 blocked log；否则只进 `frontier`。
 
@@ -44,7 +44,7 @@ target: E5 false-veto / E7 read-path / E8 commit gate
 - 发现：很多被 block 的操作来自 **failed reviews**，不是正确的拒绝；修输出格式能恢复可用决策，但会改变哪些授权请求被放行；加第二个 reviewer 会去掉一些错误，但也会拒绝合法授权。
 - 结论：guardrail 应同时在「拦住的未授权动作」和「放过的已授权动作」上评估。
 
-**为什么重要**：这正是 E5 的 false-veto 与 E8 的 authorization 的交集；它提供了「同操作、不同权限」的评估设计，能补 POLAR 的「block log 无授权标签」。如果它的数据/代码公开，可作为 E5/E8 的实证来源。
+**为什么重要**：这正是 X5 的 false-veto 与 X8 的 authorization 的交集；它提供了「同操作、不同权限」的评估设计，能补 POLAR 的「block log 无授权标签」。如果它的数据/代码公开，可作为 X5/X8 的实证来源。
 
 **go/no-go**：**go（P0，已入档 2026-11-09）**。它比 A 更直接：有 benchmark、有授权标签、有误拦结果。已下载 PDF、转 MD、建卡、L2 digest（`src/papers/2610.16838-same-operation-different-permission/digest.md`）；数字见 §3.1。
 
@@ -65,15 +65,15 @@ target: E5 false-veto / E7 read-path / E8 commit gate
 
 **对 D1 的意义**：
 
-- E5 的 false-veto 仍没有「本体闸」的一手数；但 2610.16838 证明**授权标签 + 请求级配对**可以测「误拦合法请求」，而且误拦很常见（Safeguard 174/767）。这为 E5 提供了**评估方法**，不是 POLAR 的替代数字。
-- E8 的授权问题被具体化：guardrail 的「拒绝」可能是 review 失败，不是正确拒绝；commit gate 也需要区分「拒绝未授权」与「review 不可用」。
-- 它**不改变** E5/E8 的 verdict：E5 false-veto 仍 `unknown`（POLAR 无标签）；E8 仍无 commit gate 实现。它改变的是「下一步怎么测」。
+- X5 的 false-veto 仍没有「本体闸」的一手数；但 2610.16838 证明**授权标签 + 请求级配对**可以测「误拦合法请求」，而且误拦很常见（Safeguard 174/767）。这为 X5 提供了**评估方法**，不是 POLAR 的替代数字。
+- X8 的授权问题被具体化：guardrail 的「拒绝」可能是 review 失败，不是正确拒绝；commit gate 也需要区分「拒绝未授权」与「review 不可用」。
+- 它**不改变** X5/X8 的 verdict：X5 false-veto 仍 `unknown`（POLAR 无标签）；X8 仍无 commit gate 实现。它改变的是「下一步怎么测」。
 
-## 4. 对 E7/E8 的即时结论
+## 4. 对 X7/X8 的即时结论
 
-- **E7**：本轮没有找到第二个独立 read-path 实现；`read-path` 保持轴外，object 方向仍 `unknown`。
-- **E8**：本轮没有找到 commit gate 实现；Commit Boundary 仍是概念架构；E8 保持 `C 只能设计`，false-defer `unknown`。
-- **E5**：POLAR 仍无 false-veto 标签；但 A/B 两个候选说明「可校准/可评估」的路径存在。D1 应把 E5 从「完全不可测」改成「**有校准/评估路径，但没有一手误拦数**」。
+- **X7**：本轮没有找到第二个独立 read-path 实现；`read-path` 保持轴外，object 方向仍 `unknown`。
+- **X8**：本轮没有找到 commit gate 实现；Commit Boundary 仍是概念架构；X8 保持 `C 只能设计`，false-defer `unknown`。
+- **X5**：POLAR 仍无 false-veto 标签；但 A/B 两个候选说明「可校准/可评估」的路径存在。D1 应把 X5 从「完全不可测」改成「**有校准/评估路径，但没有一手误拦数**」。
 
 ## 5. 下一步
 

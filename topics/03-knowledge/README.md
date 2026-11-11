@@ -55,9 +55,9 @@ updated: 2026-11-09
 | 文件/目录 | 作用 |
 |---|---|
 | `README.md` | 本页：派地图 + top claims；不展开机制 |
-| `claims.md` | 本派局部结论账本（`03-Lx`） |
-| `sources.md` | 本派 digest/card 索引 |
-| `frontier.md` | 本派候选队列 |
+| [claims.md](./claims.md) | 本派局部结论账本（`03-Lx`） |
+| [sources.md](./sources.md) | 本派 digest/card 索引 |
+| [frontier.md](./frontier.md) | 本派候选队列 |
 | `<子主题>/README.md` | dashboard：覆盖/计数/当前判断/文件地图 |
 | `<子主题>/findings.md` | 该子主题的发现与证据（F1、F2…；大了再拆 `findings/`） |
 | `<子主题>/findings/*.md` | 按证据线拆开的详细发现（accuracy/economics/regulatory…） |

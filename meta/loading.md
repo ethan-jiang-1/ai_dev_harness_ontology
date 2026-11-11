@@ -50,7 +50,7 @@
 | 做 03 机制 | [03 GUIDE](../deliverables/03-mechanism-reference/GUIDE.md) + [03 §2–§4](../deliverables/03-mechanism-reference/README.md) + [sections/map](../deliverables/03-mechanism-reference/sections/map.md) + [positions](../deliverables/03-mechanism-reference/positions/README.md) + `positions/<位置>.md` + [boundaries](../deliverables/03-mechanism-reference/evidence/boundaries.md) + [conclusions](../topics/conclusions.md)；长版论证再看[附录](../deliverables/03-mechanism-reference/appendix-constraint-spectrum.md) §3.1–3.3/§3.7 | `src/` 原文、其他派 `mechanism.md`、全部 `paper.md` |
 | 做 04 落地 | [04 GUIDE](../deliverables/04-ontology-in-production/GUIDE.md) + [04 地图](../deliverables/04-ontology-in-production/sections/map.md) + [04 建/用/治](../deliverables/04-ontology-in-production/body/README.md) + [E-21/E-22](../topics/conclusions.md) + [03/querying](../topics/03-knowledge/querying/README.md) + [01/access-control](../topics/01-constraint/access-control/README.md) | 01/02/03 全篇、外部原文 |
 | 用模型做第二意见（不用于实验） | [meta/models](./models.md) | 本地模型/实验被试 |
-| 查结构决策 | [adr/](../adr/README.md)（0001–0008） | 全部 meta |
+| 查结构决策 | [adr/](../adr/README.md)（0001–0010） | 全部 meta |
 | 查 meta 有什么 | [meta/README](./README.md)：现行 / 模板 / 历史 | `archive/` |
 
 ## 从交付物倒查（反向加载）

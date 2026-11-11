@@ -14,6 +14,7 @@
 - 按需加载（渐进披露）：[meta/loading](./meta/loading.md)
 - 当前状态与阻塞：[meta/state](./meta/state.md)
 - meta 里有什么：[meta/README](./meta/README.md)
+- 本地噪音：`.tmp-venv/`、`.pi/` 不是仓库内容；搜索/统计时排除
 
 ## 先定位落点
 
@@ -68,6 +69,7 @@
 - 新术语进 [GLOSSARY](./GLOSSARY.md)；改了术语含义，扫一遍引用它的文档。
 - 新候选先放 `frontier.md` 的候选队列；只有会改变判断时才建卡，入档时先更新本派 `sources.md`。
 - 交稿前过一遍 [checklist](./meta/checklist.md)。
+- 改 `deliverables/` 用 [交付物质量评分卡](./meta/deliverable-quality.md) 打分，别临时另起维度；报告落 `deliverables/_plans/`。
 
 ## 不要做
 

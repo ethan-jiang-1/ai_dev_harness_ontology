@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -18,4 +18,6 @@ parent: ../README.md
 
 **不能做什么**：不能证明「结构判据有效」；不能证明「护栏总是更好」；不能覆盖合法意图主导的场景（retail 退货/换货）；不能证明逆执行一定成功。
 
-**距离**：false-veto 标注、同轨迹配对、能力梯度阈值都没有；强模型下可能只剩代价（E-13 是六点描述性拟合，给不出零交叉阈值）。已入档 2610.16838（授权 benchmark；Safeguard 174/767 false denials）与 2607.22868（false-block/miss 前沿；δ=.05 时可能只能 block-all），但两者都是通用 guardrail，不是本体闸；E5 的 false-veto 仍是 `unknown`。
+**距离**：false-veto 标注、同轨迹配对、能力梯度阈值都没有；强模型下可能只剩代价（E-13 是六点描述性拟合，给不出零交叉阈值）。已入档 2610.16838（授权 benchmark；Safeguard 174/767 false denials）与 2607.22868（false-block/miss 前沿；δ=.05 时可能只能 block-all），但两者都是通用 guardrail，不是本体闸；X5 的 false-veto 仍是 `unknown`。
+
+> 回到 [能力索引](./README.md)。

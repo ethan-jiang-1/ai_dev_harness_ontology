@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-10
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -75,7 +75,7 @@ parent: ../README.md
 - 3 条 CQ 全对照 + 2×2 纠错配对。
 - OBDA 去公理消融。
 - 10 类故障注入 + 跨段 replay。
-- 200 表/5k 列规模测试。
+- 200 表/5k 列（本文假设的中型目录，不是 Glyph 量级）规模测试。
 
 ## 记录模板
 

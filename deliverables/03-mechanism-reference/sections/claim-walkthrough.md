@@ -8,7 +8,7 @@ parent: ../README.md
 
 > **这是什么**：把一条常见主张拆成可判句，走一遍「位置 → 证据 → 成立到哪 → 什么条件下不成立」。
 >
-> **不是什么**：不是新 E，不是新测量。每个判断都落回 [E-20](../../../topics/conclusions.md)、[E-22](../../../topics/conclusions.md)、[R07](../evidence/boundaries.md) 与 [outside §3.2](../positions/outside.md#32-read-path检索返回前)。
+> **不是什么**：不是新 E，不是新测量。每个判断都落回 [E-20](../../../topics/conclusions.md)、[E-22](../../../topics/conclusions.md)、[N07](../evidence/boundaries.md) 与 [outside §3.2](../positions/outside.md#32-read-path检索返回前)。
 >
 > **工作定义（`D`，不是 E）**：本文的「泄漏」= 不该被该 principal 看到的 subject 侧或 object 侧三元组，出现在查询/检索返回的结果里。03 没有独立的「敏感数据」分类；这是为这条走查设的工作定义。
 
@@ -28,7 +28,7 @@ parent: ../README.md
 |---|---|---|---|
 | 1 | 机器在检索返回前，按 policy 删除了被 block 的 subject 侧三元组 | **成立** | E-20：trustgraph 加载 SHACL-AF NodeShape，跑 `sh:SPARQLTarget` + `sh:SPARQLRule`，命中 `tg-pol:blocks` 的 subject 侧三元组从结果删除 |
 | 2 | 删除后，敏感数据不会出现在结果里 | **只在窄条件成立**：正常路径 + 有 policy + subject 侧；object 方向/Fail-open 不成立 | E-20 的边界；本文 §3 |
-| 3 | 因此它能当访问控制（授权） | **不成立** | E-22/R07：读路径 ≠ 写授权；有标签 ≠ 有策略 ≠ 执行正确 |
+| 3 | 因此它能当访问控制（授权） | **不成立** | E-22/N07：读路径 ≠ 写授权；有标签 ≠ 有策略 ≠ 执行正确 |
 
 > **「防止」是第 2 句的强读法。** 第 1 句成立不代表第 2 句成立；第 2 句成立也不代表第 3 句成立。
 

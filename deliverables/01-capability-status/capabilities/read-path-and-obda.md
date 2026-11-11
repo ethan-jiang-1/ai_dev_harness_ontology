@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -21,3 +21,5 @@ trustgraph 在查询结果返回前跑 SHACL-AF 策略，命中 `tg-pol:blocks` 
 **不能做什么**：不能当写授权，不能当动作闸，不能证明对象方向也受控；ontop 只支持 OWL 2 QL，不做 DL 推理。
 
 **距离**：read-path 只有 1 个独立实现；需要第二个实现才决定是否升第七时刻。
+
+> 回到 [能力索引](./README.md)。

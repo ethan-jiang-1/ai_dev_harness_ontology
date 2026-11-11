@@ -1,13 +1,13 @@
 ---
 status: draft
-updated: 2026-11-10
+updated: 2026-11-11
 parent: ../README.md
 ---
 
 # 例子数据（fixture）：索引
 
 > 5 表 / 13 列 / 5 dataset。**断言式三元组存储，无 entailment**；`:hasColumn` 与 `:columnOfTable` 两侧显式写入；`owl:inverseOf` 只是文档。**决策单位 = triple subject（列）**。
-> `tag_email_1` 是 `:WorkEmail`（`:Email` 子类），CQ1 的 `rdfs:subClassOf*` 因此真正被执行；前提是 TBox 与 ABox 同图。200 表/5,000 列只作 Glyph 量级参照，不是本 fixture。
+> `tag_email_1` 是 `:WorkEmail`（`:Email` 子类），CQ1 的 `rdfs:subClassOf*` 因此真正被执行；前提是 TBox 与 ABox 同图。200 表/5,000 列是本文假设的中型目录，不是 Glyph 参照（Glyph ~98k 表 / ~3.4M 列，E-22），也不是本 fixture。
 
 ## 怎么用
 

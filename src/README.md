@@ -46,7 +46,7 @@ src/
 └── README.md
 ```
 
-## 0. 两个角色 + 一份原文，一句话
+## 0.1 两个角色 + 一份原文，一句话
 
 | 文件 | 角色 | 谁读 |
 |---|---|---|
@@ -78,14 +78,14 @@ src/
 
 **反向阅读锚点（digest 契约）**：§4「结果：数字与条件」、§5「这些数字不能说明什么」、§6「工程上怎么用」、§8「与仓库判断的关系」——这四节编号固定，不重排；新增内容放 §9/§10。反向读不到 §4/§5 时，才回 `paper.md` 的指定表/节。
 
-## 0.1 来源新鲜度（2026-11-09 起，硬规则）
+## 0.2 来源新鲜度（2026-11-09 起，硬规则）
 
 - **论文**：新入档论文的**首次提交/发表**必须 **≥ 2026-07-01**。2025 年及更早的材料不再新入档；已有 24 篇是历史语料，不回填，也不据此新开判断。
 - **开源项目**：新入档项目的 `last_push` 必须 **≥ 2026-07-01**（2026 年 6 月之后仍活跃）。只有 star/README、没有近期提交的不算。
 - **登记**：新论文卡带 `batch: 补给` + `published: YYYY-MM-DD`；新开源卡带 `last_push`；`check_repo` 机械校验（论文只查 `补给` 批，避免误伤历史卡）。
 - **理由**：在快速变化的 ontology/agent 工程里，2025 的材料经常把过时假设带进来；宁可少一条，不拿旧结论撑新判断。
 
-## 0.2 来源可靠性 / 影响力（2026-11-09 起，硬规则）
+## 0.3 来源可靠性 / 影响力（2026-11-09 起，硬规则）
 
 - **scope**：新来源 origin 只收 **US / China / Germany / Singapore**；其他地区不新入档（已有历史语料不回填）。scope 内再按 `venue` / 生产 / benchmark 采用 / 强组 track record 看 reliability / impact。
 - **论文**：卡上写 `region`（机构/国家）、`venue`、`reliability`（high/medium/low）、`impact`（high/medium/low），并给一句依据。preprint 不能默认 high。
@@ -205,7 +205,7 @@ open-source/{org}-{repo}/
 4. **写 digest**：按 §3 骨架；先写「三句话」，再补术语/方法/数字/边界/工程。
 5. **抽图**：2–3 张承载机制/结果的图；带页码、出处、「看什么」。
 6. **落 topics**：更新派 `sources.md`（内容链 digest）→ `claims.md` / 子主题 dashboard；跨派才动 conclusions。
-7. **自检**：过 [checklist](../meta/checklist.md) 与 [digest-audit](../meta/archive/2026-11/digest-audit.md) 标准。
+7. **自检**：过 [checklist](../meta/checklist.md) 与 [digest 模板](./_templates/paper-digest.md) 的自包含要求；长度目标见 [conventions](../meta/conventions.md#阅读深度l1l2l3)。
 
 ### 5.2 开源项目
 

@@ -3,7 +3,7 @@ status: draft
 source_type: standard
 reading: 精读
 provenance: 原文正文
-updated: 2026-11-10
+updated: 2026-11-11
 batch:
 source: https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html
 author: OASIS XACML Technical Committee
@@ -73,7 +73,7 @@ updates: []
 
 - 规范对象是 ABAC 的**通用策略语言 + 求值模型**，刻意与传输协议、存储、策略管理流程解耦：§3.1 明说不限制 repository 位置、不规定 data-flow 的通信协议；§5.11 明说引用解析不在范围内。
 - 覆盖「策略怎么求值」；不覆盖「策略从哪来」「属性可不可信」「执行点布在哪」「义务怎么真做到」——这四件事在本仓库正是 04 C.1 的三层分离要处理的部分。
-- 04 的场景（单企业 200 表 / 5,000 列、读路径 post-filter、一条会 fail-open 的查询改写）比 XACML 的模型窄：XACML 预设存在独立 PDP 和一个**能履行 obligation 的 PEP**，04 的执行层没有这两个前提。
+- 04 的场景（单企业、**假设** 200 表 / 5,000 列；Glyph 的真实量级是 ~98k 表 / ~3.4M 列，E-22；读路径 post-filter、一条会 fail-open 的查询改写）比 XACML 的模型窄：XACML 预设存在独立 PDP 和一个**能履行 obligation 的 PEP**，04 的执行层没有这两个前提。
 - 本卡只对「规范条文怎么写」作判断；对「某实现/某产品是否照此实现」不作判断。
 
 ## 证据强度

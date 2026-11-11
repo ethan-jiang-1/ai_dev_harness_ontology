@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -45,3 +45,5 @@ claim–leaf（主张-证据叶子）编译在证据充分时省 91% token，不
 **不能做什么**：不能拿平均 −38% 当上线依据；它不是准确率项目；证据替换用检索轮次换 token，配对子集时延约 3×（仅 7 题）。
 
 **距离**：先量自己的 `p_h`、miss penalty、`c`、`Q`；`p_h < p_min` 就不做。
+
+> 回到 [能力索引](./README.md)。

@@ -1,7 +1,7 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 position: checker
 evidence: [E-02, E-20]
 ---
@@ -10,7 +10,7 @@ evidence: [E-02, E-20]
 
 > **一句话**：本体在这里是**外部判据**，不是模型自评。它能把「类型/声明/模式」错误变成可阻断的信号，但抓不住「意义变了」；而且判定器自己会误报，误报会把对的东西改坏。
 
-**为什么结构错能拦、语义错抓不到（D1）**：checker 用 reasoner/SPARQL 检查类型/声明/domain-range；意义变化不在图里，所以语义错 0%；curated FA 16.8%、precision 57.2%，只略优于随机。**条件**：有声明/闭世界；**反例**：语义错为主时越查越误；**决策**：先空结果基线。 空结果重试在人工 fault 上 catch 79.2%/FA 0%；judge 40 条修好、83 条修坏，所以别用 judge 当默认。
+**为什么结构错能拦、语义错抓不到**：checker 用 reasoner/SPARQL 检查类型/声明/domain-range；意义变化不在图里，所以语义错 0%。但判定器自己会误报：curated 在真实答案上 FA 16.8%；在「人工故障 + 25% 错答案」假设下 precision 57.1%（只比随机高 1.6 点，CI 跨零）。两个数不是一套分母，不能拼成「准确率」。**条件**：有声明/闭世界；**反例**：语义错为主时越查越误；**决策**：先空结果基线。空结果重试在人工 fault 上 catch 79.2%/FA 0%；judge 40 条修好、83 条修坏（E-02 附录），所以别用 judge 当默认。
 
 **为什么不是相邻位置**：不是 evidence（evidence 带依据，checker 判对错）；不是 action（checker 不改动作）。
 

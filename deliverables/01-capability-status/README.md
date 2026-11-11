@@ -9,6 +9,8 @@ basis: E-01–E-20, C-01–C-04
 # 01 · 现状：本体接进 harness，今天能完成什么
 
 > **读者**：决策者 / 工程负责人 ｜ **回答**：今天能做成什么、不能承诺什么 ｜ **不回答**：具体怎么做（去 02）、为什么是这些位置（去 03）。
+>
+> **第一次来**：先读 [START](../START.md)（10 分钟），再回本份。
 
 
 > 这份交付物回答三个问题：**现在能确定做成什么、哪些只是能试点、哪些还差得远。** 它不介绍本体，也不教怎么建；它只把 `topics/` 里的判断摆成一张可决策的地图。
@@ -33,7 +35,7 @@ basis: E-01–E-20, C-01–C-04
 
 > **多智能体共享本体**：只有方向，没有机制/设计/一手证据，标 **`undetermined`**。**本体自动生成/精化**是 source（[05 生产](../../topics/05-produce/README.md)），不在本表；不要硬塞进 A/B/C。判定规则见 [map §2.1](./sections/map.md#21-判定口径)。
 
-**最像「肯定没问题」的只有一件：先把名字、单位、槽位对齐（K1）。** 其余都是「有条件能试」或「还差得远」。
+**最像「可以先做」的只有一件：先把名字、单位、槽位对齐（K1）。** 其余都是「有条件能试」或「还差得远」；K1 也只在单工厂、9 任务里测过，换域要重测。
 
 > 还有一类方向尚未形成 E（例如本体自动生成/精化到可消费），只在派内判断里，本表不把它们当结论；见 [05 生产](../../topics/05-produce/README.md)。
 
@@ -49,7 +51,7 @@ basis: E-01–E-20, C-01–C-04
 
 补充一条：**很多证据不是本体专属。** 在当时的 26 个来源里，15 个的结论把「本体」换成「任意结构化上下文」仍成立（`推测`，分类判断）；只有 3 个依赖 OWL/DL 语义。读下面的「本体证据」时，先把这条放在旁边。
 
-**第一轮 verdict（2026-11-09）**：9 条期待里，5 条 `supported（限定）`（E1/E2/E4/E6/E7 的存在性），1 条 `conditional`（E3），3 条 `unknown`（E5 false-veto、E8 写路径、E9 确定性）。**没有 9/9 supported；这不是失败，是 D1 要展示的现状。** 详见 [§2.4](./sections/map.md#24-e1e9-verdict2026-11-09-第一轮) 与 [`data/`](./data/)。
+**第一轮 verdict（2026-11-09）**：按**半边**计，9 条期待里 6 条有 `supported（限定）` 半边（X1/X2/X4/X5/X6/X7），1 条 `conditional`（X3），4 条有 `unknown` 半边（X5 的 false-veto、X7 的 object 方向、X8 写路径、X9 确定性）；X5/X7 同时占两档，所以两边相加不是 9。**没有 9/9 supported；这不是失败，是 D1 要展示的现状。** 详见 [§2.4](./sections/map.md#24-x1x9-verdict2026-11-09-第一轮) 与 [`data/`](./data/)。
 
 
 <a id="6-如果只做一件事"></a>
@@ -71,13 +73,14 @@ basis: E-01–E-20, C-01–C-04
 | 节 | 文件 | 内容 |
 |---|---|---|
 | 导读 | [GUIDE.md](./GUIDE.md) | 先读哪一页、按什么顺序 |
-| 2 地图 | [sections/map.md](./sections/map.md) | 能力矩阵、判定口径、E1–E9 verdict |
+| 分节索引 | [sections/README.md](./sections/README.md) | 各分节的一页索引 |
+| 2 地图 | [sections/map.md](./sections/map.md) | 能力矩阵、判定口径、X1–X9 verdict |
 | 3 主体 | [capabilities/README.md](./capabilities/README.md) | 六组能力条目 |
 | 4 边界 | [sections/boundaries.md](./sections/boundaries.md) | 工作前提、反例、证据边界 |
 | 5 验收 | [sections/acceptance.md](./sections/acceptance.md) | 距离、期待与数据需求 |
 | 6 关系 | [sections/relations.md](./sections/relations.md) | 与 02/03 的关系、维护 |
-| 术语 | [sections/glossary.md](./sections/glossary.md) | E1–E9 vs E-01–E-20、A/B/C/D、K0–K2 |
-| 阈值 | [sections/canonical.md](./sections/canonical.md) | 14 行计数、E1–E9 门槛、一个数只写一次 |
+| 术语 | [sections/glossary.md](./sections/glossary.md) | X1–X9 vs E-01–E-20、A/B/C/D、K0–K2 |
+| 阈值 | [sections/canonical.md](./sections/canonical.md) | 14 行计数、X1–X9 门槛、一个数只写一次 |
 | 决策记录 | [sections/decision-record.md](./sections/decision-record.md) | K1→A、读路径→B、离线 SHACL→A、落盘→C、投影→B、checker→B、OBDA 对照 |
 | 模板 | [sections/templates.md](./sections/templates.md) | 决策记录/能力行/期待行空表 |
 | 证据 | [data/README.md](./data/README.md) | e3/e4/e5/e6/e7-e8 数据表、P0/P1 扫描 |

@@ -8,11 +8,11 @@ Read-only. Run from the repo root:
 Exit code 0 = pass, 1 = errors. Warnings do not fail.
 
 It checks the things a human checklist kept missing:
-  * relative links resolve
+  * relative links resolve, including the #anchor part
   * frontmatter enums are legal
   * E/Q/C/L ids are defined before use
   * paper directories, manifest rows and card fields agree
-  * known counts in the ledgers agree with the filesystem
+  * meta/state.md's file count agrees with the filesystem
 
 It deliberately does not judge prose or evidence quality.
 """
@@ -23,6 +23,7 @@ import os
 import re
 import sys
 from collections import Counter
+from urllib.parse import unquote
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -48,7 +49,7 @@ def rel(path: str) -> str:
 
 def md_files():
     for dirpath, dirnames, filenames in os.walk(ROOT):
-        dirnames[:] = [d for d in dirnames if d != ".git"]
+        dirnames[:] = [d for d in dirnames if d not in {".git", ".tmp-venv", ".pi"}]
         for name in filenames:
             if name.endswith(".md"):
                 yield os.path.join(dirpath, name)
@@ -56,6 +57,30 @@ def md_files():
 
 def strip_code(text: str) -> str:
     return re.sub(r"```.*?```", "", text, flags=re.S)
+
+
+def heading_slug(heading: str) -> str:
+    """Approximate GitHub's heading anchor slug (CJK kept, punctuation dropped)."""
+    h = re.sub(r"`", "", heading)
+    h = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", h)
+    h = re.sub(r"<[^>]+>", "", h).strip().lower()
+    h = re.sub(r"[^\w\u4e00-\u9fff\- ]", "", h)
+    return h.replace(" ", "-")
+
+
+def anchors_for(path: str) -> set[str]:
+    """Heading slugs plus explicit <a id="..."> anchors in one markdown file."""
+    text = strip_code(open(path, encoding="utf-8").read())
+    anchors = set(re.findall(r"""<[^>]*\bid=["']([^"']+)["']""", text))
+    seen = Counter()
+    for line in text.splitlines():
+        if not line.startswith("#"):
+            continue
+        base = heading_slug(re.sub(r"^#+\s+", "", line))
+        n = seen[base]
+        anchors.add(base if n == 0 else f"{base}-{n}")
+        seen[base] += 1
+    return anchors
 
 
 def parse_frontmatter(text: str):
@@ -89,19 +114,29 @@ def main() -> int:
         except UnicodeDecodeError:
             warnings.append(f"non-utf8: {rel(path)}")
 
-    # 1. relative links
+    # 1. relative links (file target + anchor)
+    anchor_cache = {}
     for path, text in texts.items():
         body = strip_code(text)
         for m in re.finditer(r"!?\[[^\]]*\]\(([^)\s]+)\)", body):
             target = m.group(1)
-            if target.startswith(("http://", "https://", "mailto:", "#")):
+            if target.startswith(("http://", "https://", "mailto:")):
                 continue
-            target = target.split("#")[0]
-            if not target:
+            file_part, _, anchor = target.partition("#")
+            anchor = unquote(anchor).strip()
+            if file_part:
+                resolved = os.path.normpath(os.path.join(os.path.dirname(path), file_part))
+                if not os.path.exists(resolved):
+                    errors.append(f"broken link: {rel(path)} -> {file_part}")
+                    continue
+            else:
+                resolved = path
+            if not anchor or not resolved.endswith(".md") or not os.path.isfile(resolved):
                 continue
-            resolved = os.path.normpath(os.path.join(os.path.dirname(path), target))
-            if not os.path.exists(resolved):
-                errors.append(f"broken link: {rel(path)} -> {target}")
+            if resolved not in anchor_cache:
+                anchor_cache[resolved] = anchors_for(resolved)
+            if anchor not in anchor_cache[resolved]:
+                errors.append(f"broken anchor: {rel(path)} -> {rel(resolved)}#{anchor}")
 
     # 2. frontmatter enums
     for path, text in texts.items():
@@ -290,6 +325,15 @@ def main() -> int:
     if counts["已核"] != 23 or counts["推测"] != 4:
         warnings.append(f"conclusion levels changed: {dict(counts)} (meta/state may need update)")
 
+    # 7b. state.md is the single authoritative count; keep it equal to the tree
+    state_path = os.path.join(ROOT, "meta/state.md")
+    if os.path.exists(state_path):
+        state_match = re.search(r"\|\s*最后自检\s*\|[^\n]*?(\d+)\s*文件", texts.get(state_path, ""))
+        if not state_match:
+            warnings.append("meta/state.md has no '最后自检 ... <N> 文件' row")
+        elif int(state_match.group(1)) != len(files):
+            errors.append(f"meta/state file count {state_match.group(1)} != actual {len(files)}")
+
     # 9. object registry (topics/objects.md): warn-only
     objects_path = os.path.join(ROOT, "topics/objects.md")
     object_ids = set()
@@ -369,7 +413,7 @@ def main() -> int:
         for e in errors:
             print("  -", e)
         return 1
-    print("\nOK: links, frontmatter, ids, inventory, counts")
+    print("\nOK: links, anchors, frontmatter, ids, inventory, counts")
     return 0
 
 

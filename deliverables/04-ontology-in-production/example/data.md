@@ -1,12 +1,12 @@
 ---
 status: draft
-updated: 2026-11-10
+updated: 2026-11-11
 parent: README.md
 ---
 
 # 数据与坏样本
 
-> fixture：5 表 / 13 列 / 5 dataset。数据是合成的，不代表任何真实目录；200 表/5,000 列只是 Glyph 的量级参照，不是本 fixture（`O-N28`）。
+> fixture：5 表 / 13 列 / 5 dataset。数据是合成的，不代表任何真实目录；200 表/5,000 列是本文假设的「中型目录」规模，**不是 Glyph**——Glyph 是 ~98,000 表 / ~3.4M 列（E-22），也不是本 fixture（`O-N28`）。
 
 ## 数据
 

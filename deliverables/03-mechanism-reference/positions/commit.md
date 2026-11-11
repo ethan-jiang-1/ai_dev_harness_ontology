@@ -1,7 +1,7 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 position: commit
 evidence: [E-20]
 ---
@@ -10,7 +10,7 @@ evidence: [E-20]
 
 > **一句话**：这是六个位置里证据最薄的一格。它的机制是「把可推理的证据」与「有权推动持久化的证据」分开；但只有概念架构，没有实现、没有 false-defer 数据。**不能把设计当已落地。**
 
-**为什么只有设计（D1）**：commit gate 要把「可推理证据」与「有权落盘的证据」分开；四个开源项目没有单次写授权（E-20），也没有 false-defer 标签。**条件**：三条契约；**反例**：把设计当已落地；**决策**：只读/影子，不声称落地。 commit 的三条契约（证据齐/冲突清/版本有效）没有 mutation class 实现；false-defer 未测；四个项目都没有单次写授权。
+**为什么只有设计**：commit gate 要把「可推理证据」与「有权落盘的证据」分开；四个开源项目没有单次写授权（E-20），也没有 false-defer 标签。**条件**：三条契约；**反例**：把设计当已落地；**决策**：只读/影子，不声称落地。 commit 的三条契约（证据齐/冲突清/版本有效）没有 mutation class 实现；false-defer 未测；四个项目都没有单次写授权。
 
 **为什么不是相邻位置**：不是 action（action 在副作用前拦动作，commit 在落盘/merge 前判授权）；不是 checker（checker 判输出对不对，commit 判有没有权写）。
 

@@ -1,13 +1,13 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 type: evidence-note
-target: E5 false-veto / false-block
+target: X5 false-veto / false-block
 ---
 
-# E5 校准理论：false-veto 是一个前沿，不是一个阈值
+# X5 校准理论：false-veto 是一个前沿，不是一个阈值
 
-> **工作底稿，不是交付正文。** 来源：arXiv 2607.22868；2026-11-09 已入档，L2 digest 在 `src/papers/2607.22868-what-can-be-enforced/digest.md`。用于改写 E5 的表述，不新增 E。
+> **工作底稿，不是交付正文。** 来源：arXiv 2607.22868；2026-11-09 已入档，L2 digest 在 `src/papers/2607.22868-what-can-be-enforced/digest.md`。用于改写 X5 的表述，不新增 E。
 
 ## 1. 它证明什么
 
@@ -28,13 +28,13 @@ target: E5 false-veto / false-block
 - 表示攻击：simultaneous inference 在 8/11 fully cached judges 上检测到 miss 增加；第 9 个点估计为正。它诊断一个 operating point，不能单独认证/否证 margin-aware calibration。
 - 代码/缓存分数：`https://github.com/shawnray-research/certified-agent-guardrails`（未读/未跑）。
 
-## 3. 对 E5 的改写
+## 3. 对 X5 的改写
 
 **不要写「false-veto ≤5%」当作单一验收线。** 更准确的写法：
 
 > false-veto 是「在给定 miss 上限下的 false-block 前沿」；要报 **miss–false-block 曲线**（或至少几个 operating points），而不是一个点。低 miss 证书可能只能靠 block-all 获得；那样的「零漏检」没有可用性。
 
-这把 E5 从「false-veto 未测 → unknown」推进到「**false-veto 可校准，但要报前沿；POLAR 没有标签，仍不能算**」。verdict 仍是 `unknown`（POLAR 一手数），但 expectation 的写法要改：D1 的 E5 不应只写 `≤5%`，应写「在 miss 预算下报 false-block 前沿」。
+这把 X5 从「false-veto 未测 → unknown」推进到「**false-veto 可校准，但要报前沿；POLAR 没有标签，仍不能算**」。verdict 仍是 `unknown`（POLAR 一手数），但 expectation 的写法要改：D1 的 X5 不应只写 `≤5%`，应写「在 miss 预算下报 false-block 前沿」。
 
 ## 4. 边界
 
@@ -47,5 +47,7 @@ target: E5 false-veto / false-block
 ## 5. 什么会改变它
 
 - 在 POLAR 的 blocked log 上标授权标签 → 可把 retention 换成 false-block 点。
-- 有部署把 miss 预算与 false-block 曲线一起报 → 可给 E5 一个可操作的验收线。
+- 有部署把 miss 预算与 false-block 曲线一起报 → 可给 X5 一个可操作的验收线。
 - 有本体-specific 的校准实验 → 才能谈「本体闸的 false-veto 前沿」。
+
+> 回到 [数据表索引](./README.md)。

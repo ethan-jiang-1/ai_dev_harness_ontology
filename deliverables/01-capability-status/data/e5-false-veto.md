@@ -1,13 +1,13 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 type: evidence-note
-target: E5 false-veto
+target: X5 false-veto
 ---
 
-# E5 数据表：false-veto 能不能从已发表数据估出来？
+# X5 数据表：false-veto 能不能从已发表数据估出来？
 
-> **工作底稿，不是交付正文。** 数字用于更新 D1 的 E5 verdict；正式引用仍走 E-xx 与 [01/action-gate](../../../topics/01-constraint/action-gate/README.md)。来源为 POLAR digest 与论文 Table 5/6、Appendix B.3；不在这里新增结论。
+> **工作底稿，不是交付正文。** 数字用于更新 D1 的 X5 verdict；正式引用仍走 E-xx 与 [01/action-gate](../../../topics/01-constraint/action-gate/README.md)。来源为 POLAR digest 与论文 Table 5/6、Appendix B.3；不在这里新增结论。
 
 ## 1. 已发表什么
 
@@ -36,7 +36,7 @@ target: E5 false-veto
 - **保留率不是 false-veto 率**：airline 36.6% 是「有非空候选池的 logged decisions」在固定轨迹上的保留率，不是「拦对了多少」。
 - **T1-only ≈ blanket veto**：airline 没有 T1 注释，T1-only 对所有 mutating 调用 veto；它的增益与 full 相近，说明收益可能来自保守拒绝，而不是结构反向组合。
 
-## 4. E5 verdict 候选
+## 4. X5 verdict 候选
 
 | 子句 | verdict | 依据 | 边界 |
 |---|---|---|---|
@@ -44,7 +44,7 @@ target: E5 false-veto
 | false-veto ≤5% | **`unknown`** | 1,745 条 blocked 无标签；论文明确说不能算 | 需要人工标注或部署标签 |
 | 部署有效 | `conditional` | 弱模型/高不可逆风险下有信号；强模型/retail 回退 | 能力梯度是六点拟合，无阈值 |
 
-**结论**：E5 的 false-veto 不能从已发表数据估出来；**不要用 retention 或 block count 代算**。D1 应写 `unknown`，并把它列为「距离」里最硬的一块。
+**结论**：X5 的 false-veto 不能从已发表数据估出来；**不要用 retention 或 block count 代算**。D1 应写 `unknown`，并把它列为「距离」里最硬的一块。
 
 ## 5. 什么会改变它
 
@@ -52,4 +52,4 @@ target: E5 false-veto
 - 有第二个部署报告 false-veto/误拦率，且给出 harm/授权标签。
 - 有同轨迹配对实验，分离 T1-only 与 full。
 
-**没有这些，E5 的 false-veto 保持 `unknown`；D1 的能力地图不分层改变。**
+**没有这些，X5 的 false-veto 保持 `unknown`；D1 的能力地图不分层改变。**

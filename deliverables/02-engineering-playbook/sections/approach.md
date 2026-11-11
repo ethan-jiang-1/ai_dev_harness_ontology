@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -12,7 +12,7 @@ parent: ../README.md
 <a id="4-十二条工程做法r0r12"></a>
 ### 3.1 十二条工程做法（R0–R12）
 
-> 本节只做索引；完整配方（十字段：目标/前提/接口/步骤/证据/成本/验收/失效/锚点）在 [`recipes/`](../recipes/README.md)。每条 recipe 都与 E-xx 和 mechanism.md 对齐；见 [appendices/traceability](../appendices/traceability.md)。
+> 本节只做索引；完整配方（十字段：目标与适用 / 前提 / 接缝与形态 / 数据契约 / 步骤 / 证据 / 成本 / 验收与 stop / 失效模式 / 可抄锚点）在 [`recipes/`](../recipes/README.md)。每条 recipe 都与 E-xx 和 mechanism.md 对齐；见 [appendices/traceability](../appendices/traceability.md)。
 
 | R | 一句话 | 接缝/形态 | 主证据 | 成熟度 | 完整配方 |
 |---|---|---|---|---|---|

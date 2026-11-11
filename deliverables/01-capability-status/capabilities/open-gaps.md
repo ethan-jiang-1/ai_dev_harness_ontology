@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-11
 parent: ../README.md
 ---
 
@@ -18,3 +18,5 @@ parent: ../README.md
 - **commit 是 C 不是 B**：有三条设计契约，但没有 mutation class 实现、没有 false-defer 标签；只能设计，不能 shadow。
 - **确定性是 C**：只有设计提案，没有实现/度量；跨轮记忆（E-17）不是跨运行重放，E-18 的 54% 是噪声地板，不是收敛度量。
 - **多智能体是空白不是 C**：没有可判定设计，也没有一手证据；C 至少有机制/设计。
+
+> 回到 [能力索引](./README.md)。

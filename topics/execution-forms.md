@@ -14,7 +14,7 @@ rq: [RQ1, RQ2, RQ5]
 
 这根轴也是论文与开源项目的接点：论文常停在「提出机制」，代码能回答「机器到底跑没跑」。开源卡的 `execution_form` 是第一次把这个区分落到字段上；本页把它扩展到全部来源。
 
-**一个换词检查（2026-11-09，按 digest §3/§4/§8 分类，不是元分析）**：26 个来源里 15 个的结论把「本体」换成「任意结构化上下文」仍然成立（`推测`，分类判断）；只有 3 个（MIOE、Ontology Catch、OA-RAG）的结论依赖 OWL/DL 语义。这个配比说明：仓库过去测的更多是「结构化上下文 + harness 位置」，不是「本体形态」。形态轴就是把这部分说清楚。
+**一个换词检查（2026-11-09，当时 26 个来源，按 digest §3/§4/§8 分类，不是元分析）**：这 26 个里 15 个的结论把「本体」换成「任意结构化上下文」仍然成立（`推测`，分类判断）；只有 3 个（MIOE、Ontology Catch、OA-RAG）的结论依赖 OWL/DL 语义。这个配比说明：仓库过去测的更多是「结构化上下文 + harness 位置」，不是「本体形态」。形态轴就是把这部分说清楚。
 
 ## 五档
 
@@ -31,9 +31,9 @@ rq: [RQ1, RQ2, RQ5]
 
 `engine` 是统称：代码核对发现它至少覆盖 OWL 2 QL 查询重写（ontop）、SHACL-AF 策略求值（trustgraph）、SHACL 校验（semantica）、SHACL→SPARQL/verified Core（open-ontologies）四种语义。计数时不要把四种合成一个「强执行」。
 
-## 26 个来源的初判
+## 36 个来源的初判（2026-11-11 更新）
 
-计数：`engine` 4 / `compiled` 7 / `context` 2 / `label` 1 / `none` 12。
+计数：`engine` 4 / `compiled` 7 / `context` 3 / `label` 2 / `none` 20（28 论文 + 8 开源）。
 
 | 来源 | 形态 | 依据（digest） | 备注 |
 |---|---|---|---|
@@ -63,6 +63,16 @@ rq: [RQ1, RQ2, RQ5]
 | Evontree | `none` | 训练侧规则筛数据 | 训练 |
 | MIOE | `none` | 测模型内部表示，不是 harness 执行 | 尺子 |
 | SFE-O | `none` | OWL 表达力够，但约束未落成可执行 SHACL | 表示边界 |
+| GGC | `none` | 选择性纠错；本体不在执行位 | 查询 |
+| Glyph | `label` | 列描述 + 敏感本体打标；不产策略判定 | 标签/治理 |
+| NLKGQ | `context` | 完整 OWL 进上下文；无外部求值 | 查询 |
+| KGVoyager | `none` | agentic navigation；不依赖 ontology | 查询 |
+| What Can Be Enforced | `none` | 运行时安全理论；无本体执行 | 边界 |
+| Same Operation | `none` | 授权 benchmark；本体不在执行位 | 判定/授权 |
+| Qlever | `none` | SPARQL 引擎；不做本体求值 | 工程线 |
+| OPA | `none` | 通用策略引擎；Rego 不是本体 | 工程线 |
+| Great Expectations | `none` | 数据质量断言；非本体 | 输出校验 |
+| OpenLineage | `none` | lineage 元数据；非本体执行 | 治理 |
 
 > 初判来自各 digest 的 §3/§4/§8；与卡片 `execution_form` 保持一致。改一档要同时改卡、本页与 digest 的判定段。4 个开源项目已在 pin commit 上做代码级核对，见下节。
 

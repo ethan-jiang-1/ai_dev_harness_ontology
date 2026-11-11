@@ -28,3 +28,4 @@ parent: ../README.md
 16. **把 R12 的 99.9% 当部署。** 它相对最强 agent baseline 只高 0.5pp；benchmark 不是运营商规模。
 17. **把 blocked 当正确拒绝。** 被 block 可能是 review 失败/不可用；要同操作、不同权限成对测，并同时报合法放行。
 
+> 回到 [02 目录](../README.md) ｜ 下一节 [验收](./acceptance.md)。
