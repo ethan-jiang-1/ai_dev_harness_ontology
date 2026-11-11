@@ -58,7 +58,7 @@ scope: 内容层缺口盘点（purge 后）
 
 > 排序原则：先补「会让现有判断塌方」的，再补「中心问题最核心」的，最后补「锦上添花」的。每项标注「补什么证据 / 过哪道门 / 改变哪条判断」。
 
-- **P0 · 保证据基座不塌**：为 4 篇 probation 论文找第二独立信号（I3 采用 / I4 社区 / I5 资产）。这是倒计时任务，塌了会连带撤回大量 E。**已核实的线索**：Agents Are Systems 摘要明确「release the benchmark and more than 18,000 agent trajectories」——若该数据/代码有外部使用者，可作 I5；下一步核对其仓库的外部依赖/采用。其余三篇（GGC/N&D 纯预印本、CASEL 仅 CBASE 2026 小型会议）暂无 I1，需 I3/I4/I5。→ 改变：probation 转正或移出。
+- **P0 · 保证据基座不塌**：为 4 篇 probation 论文找第二独立信号（I3 采用 / I4 社区 / I5 资产）。这是倒计时任务，塌了会连带撤回大量 E。**已核查的线索（阴性结果）**：Agents Are Systems 释放了 benchmark 仓库 [lusxvr/rethinking-agent-evaluation](https://github.com/lusxvr/rethinking-agent-evaluation)（公开、MIT、Python，last push 2026-10-05），但 **0 fork / 0 依赖 / 1 star / 0 issue——无外部使用者，I5 不成立**，不能据此转正，probation 维持。其余三篇（GGC/N&D 纯预印本、CASEL 仅 CBASE 2026 小型会议）暂无 I1，需 I3/I4/I5。→ 改变：probation 转正或移出。本条是「释放代码 ≠ 有影响力」的实例，门该挡就挡。
 - **P1 · 补执行型证据（中心问题核心）**：
   - 04 记忆 / 06 度量的「本体真执行」开源样本（engine/compiled，pin commit，独立采用）。→ 改变：E-20 的形态矩阵、04/06 的代码级证据。
   - read-path 第二独立实现 + harness 调用点。→ 改变：是否升第七时刻。
@@ -75,7 +75,7 @@ scope: 内容层缺口盘点（purge 后）
 | 论文 | 真实性 | 与仓库 digest 一致 | venue / I1 | 第二信号线索 |
 |---|---|---|---|---|
 | GGC（2607.28082） | ✓ | ✓ 90.23→98.33、省 45%、MCQA、选择性纠错 | 纯预印本，无 venue，I1 弱 | 无 I1；需 I3/I4/I5 |
-| Agents（2610.01618） | ✓ | ✓ 54% 方差、信息>模型、验证工具>提示、18k 轨迹 | 无 venue，I1 弱 | **释放 benchmark+18k 轨迹 → I5 候选**（待核外部使用者） |
+| Agents（2610.01618） | ✓ | ✓ 54% 方差、信息>模型、验证工具>提示、18k 轨迹；单位 TUM/Helmholtz/Inria 确认 | 无 venue，I1 弱 | benchmark 仓库已核：公开 MIT，但 **0 fork/0 依赖/1 star → 无外部使用者，I5 不成立**，维持 probation |
 | N&D（2610.11768） | ✓ | ✓ 本体塔、+20pp 避坑、9B≈750B、9 任务、真实试验台 | 纯预印本，无 venue，I1 弱 | 无 I1；需 I3/I4/I5 |
 | CASEL（2610.36570） | ✓ | ✓ 14.75→7.02%、120k 动作、20 seeds；摘要自述「effectiveness assumed, not measured」 | CBASE 2026（小型会议，非顶会），I1 弱 | 无 I1；需 I3/I4/I5 |
 
@@ -83,6 +83,6 @@ scope: 内容层缺口盘点（purge 后）
 
 1. **证据基座忠实**：4 篇承重论文的摘要与仓库 digest 的关键数字/限定逐条吻合，连 CASEL「有效性是假设不是测量」、N&D「单试验台」这类限定都如实保留。**仓库对已有来源的消化是忠实的，没有夸大**——这是「full picture 一致」在来源层的正面证据。
 2. **probation 判定站得住**：4 篇都没有顶会/标准组织级 I1，确实只有 I2（多机构）一个信号；按宪章 probation 合理，第二信号缺口是真的，不是误判。
-3. **P0 有一条可查线索**：Agents 的 benchmark+轨迹释放是最接近 I5 的一条，优先核对其公开仓库的外部依赖/采用。
+3. **P0 线索已核（阴性）**：Agents 的 benchmark 仓库公开（MIT/Python，last push 2026-10-05）但 0 fork / 0 依赖 / 1 star / 0 issue，无外部使用者，I5 不成立——**释放代码 ≠ 有影响力**，probation 维持。这正是准入门该挡的：不能因「作者释放了代码」就转正。第二信号得另找（I3 独立采用 / I4 社区）。
 
 **未答（待搜索恢复）**：窗口内有没有新的过门执行型来源（尤其 04 记忆 / 06 度量）；工程前沿把本体放在回路哪一格；哪些流行说法证据薄弱。这些是宽口径前沿问题，`web_search` 恢复后按 [topic 协议](../../meta/topic-research-protocol.md) 重扫。
