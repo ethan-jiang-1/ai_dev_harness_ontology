@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 rq: [RQ1, RQ2, RQ5]
 ---
 
@@ -14,7 +14,7 @@ rq: [RQ1, RQ2, RQ5]
 
 这根轴也是论文与开源项目的接点：论文常停在「提出机制」，代码能回答「机器到底跑没跑」。开源卡的 `execution_form` 是第一次把这个区分落到字段上；本页把它扩展到全部来源。
 
-**一个换词检查（2026-11-09，当时 26 个来源，按 digest §3/§4/§8 分类，不是元分析）**：这 26 个里 15 个的结论把「本体」换成「任意结构化上下文」仍然成立（`推测`，分类判断）；只有 3 个（MIOE、Ontology Catch、OA-RAG）的结论依赖 OWL/DL 语义。这个配比说明：仓库过去测的更多是「结构化上下文 + harness 位置」，不是「本体形态」。形态轴就是把这部分说清楚。
+**一个换词检查（2026-11-09 历史快照，purge 前 26 来源，不是元分析）**：当时 26 个里 15 个的结论把「本体」换成「任意结构化上下文」仍然成立（`推测`，分类判断）；只有 3 个（MIOE、Ontology Catch、OA-RAG）的结论依赖 OWL/DL 语义。**这三篇已于 2026-11-11 移出**（[审计](../meta/audits/2026-11-11-source-purge.md)），此配比只作历史观察，现行配比按下表 18 来源重算。形态轴就是把「结构化上下文 + harness 位置」与「本体形态」说清楚。
 
 ## 五档
 
@@ -31,44 +31,26 @@ rq: [RQ1, RQ2, RQ5]
 
 `engine` 是统称：代码核对发现它至少覆盖 OWL 2 QL 查询重写（ontop）、SHACL-AF 策略求值（trustgraph）、SHACL 校验（semantica）、SHACL→SPARQL/verified Core（open-ontologies）四种语义。计数时不要把四种合成一个「强执行」。
 
-## 36 个来源的初判（2026-11-11 更新）
+## 18 个来源的初判（2026-11-12 对账）
 
-计数：`engine` 4 / `compiled` 7 / `context` 3 / `label` 2 / `none` 20（28 论文 + 8 开源）。
+计数：`engine` 3 / `compiled` 3 / `context` 1 / `label` 1 / `none` 10（10 论文 + 8 开源）。与 [meta/state](../meta/state.md) 一致。18 篇移出论文的形态判定随源撤回，见 [清除审计](../meta/audits/2026-11-11-source-purge.md)，不再列。
 
 | 来源 | 形态 | 依据（digest） | 备注 |
 |---|---|---|---|
-| OA-RAG | `engine` | OWL/DL reasoner + SPARQL `DESCRIBE/ASK/SELECT` | 本体同时当推理器与注释源 |
 | trustgraph | `engine` | `policy/policy_filter.py` 自研 SHACL-AF 求值 | 读路径授权；轴外位置 `read-path` |
 | ontop | `engine` | TBox 饱和 + 查询重写成 SQL | 供给/查询编译；轴外位置 `supply` |
 | open-ontologies | `engine` | `shacl.rs` / `shacl_verified.rs` 两条求值路径 | 工具面；执行未跑起来（C2） |
-| POLAR | `compiled` | Datalog 动作本体 + 状态投影，代码算逆序列 | 动作前剪枝 |
-| OntoAct | `compiled` | 三值条件 ⊤/⊥/? + 假设 revision，代码验证 | 推理期 |
-| Ontology Catch | `compiled` | 本体编译成 checker（pass/flag/unknown） | 输出后判定 |
-| 多 agent 诊断 | `compiled` | 代码在 SYMP/DOID/HPO 上算确定性评分 | LLM 只做语言 |
 | FIRME | `compiled` | product–topic 本体 + registry/规则融合 | 记忆对齐 |
 | EvoMemState | `compiled` | 本体引导 relational state + 策略 | 记忆状态 |
 | semantica | `compiled` | 本体 `to_shacl` → pyshacl | 离线/CLI；checker 组件 |
 | N&D | `context` | 本体塔投影成约 45k 字符文本进 prompt | 供给 |
-| Grid Agents | `context` | 作者明说「知识系统，不是形式 OWL」 | 受监管供给 |
-| ReX-GG | `label` | 本体只当标签表（四种关系） | 不参与判定 |
+| Glyph | `label` | 列描述 + 敏感本体打标；不产策略判定 | 标签/治理 |
 | CAI | `none` | Table 1 ontology 是 `not measured` | 边界证据 |
 | CASEL | `none` | 无本体变量；审批/风险分配 | harness 证据 |
 | SLB | `none` | 「本体」是标注体系，不是域本体 | harness 证据 |
 | Agents are Systems | `none` | 全文无本体变量 | harness 证据 |
 | CASTON | `none` | 本体精化，未测下游执行 | 生产 |
-| Diagnose | `none` | 本体接地 DSL 的任务诊断 | 边界证据 |
-| Commit Boundary | `none` | 概念协议，无实现 | 生产/治理 |
-| OntoDoc | `none` | 本体生成，未测下游 | 生产 |
-| Peeling | `none` | 从嵌入抽分类法，未测下游 | 生产/表示 |
-| Evontree | `none` | 训练侧规则筛数据 | 训练 |
-| MIOE | `none` | 测模型内部表示，不是 harness 执行 | 尺子 |
-| SFE-O | `none` | OWL 表达力够，但约束未落成可执行 SHACL | 表示边界 |
 | GGC | `none` | 选择性纠错；本体不在执行位 | 查询 |
-| Glyph | `label` | 列描述 + 敏感本体打标；不产策略判定 | 标签/治理 |
-| NLKGQ | `context` | 完整 OWL 进上下文；无外部求值 | 查询 |
-| KGVoyager | `none` | agentic navigation；不依赖 ontology | 查询 |
-| What Can Be Enforced | `none` | 运行时安全理论；无本体执行 | 边界 |
-| Same Operation | `none` | 授权 benchmark；本体不在执行位 | 判定/授权 |
 | Qlever | `none` | SPARQL 引擎；不做本体求值 | 工程线 |
 | OPA | `none` | 通用策略引擎；Rego 不是本体 | 工程线 |
 | Great Expectations | `none` | 数据质量断言；非本体 | 输出校验 |

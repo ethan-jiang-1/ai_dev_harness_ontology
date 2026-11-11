@@ -67,7 +67,7 @@ D4 建用治 → 04 map/body → E-21/E-22 → digest §4/§5
 | 交付物 | 起点 | 走到哪停 | 默认不读 |
 |---|---|---|---|
 | 01 现状 | `01/sections/acceptance.md` + `_plans/01-capability-status.md` | 能填出 E1–E9 的 verdict + boundary | 全部 `paper.md`（只读指定节）、`card.md`（只作 provenance）、`references.md`/`appendix.md`、其他派 |
-| 02 工程 | `02/README §0 + sections/map + sections/approach + recipes/` | 能写出接口/字段/验收/停线 | 28 篇论文正文、其他派 mechanism、`conclusions` 全表 |
+| 02 工程 | `02/README §0 + sections/map + sections/approach + recipes/` | 能写出接口/字段/验收/停线 | 10 篇论文正文、其他派 mechanism、`conclusions` 全表 |
 | 03 机制 | `03/sections/map + positions + sections/boundaries` | 能指到 E-xx 与「不能证明什么」 | `src/` 原文、其他派 mechanism、全部 `paper.md` |
 | 04 建用治 | `04/02-sections/02-map.md` + `03-body/` | 能指到 E-21/E-22 与 admitted digest | 01/02/03 全篇、外部原文 |
 
