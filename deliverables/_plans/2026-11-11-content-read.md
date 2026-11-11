@@ -16,11 +16,13 @@ scope: deliverables/01–04 精读与质量判断（代理精读，非真人）
 | 交付物 | 规模 | 本轮读到的页 |
 |---|---|---|
 | 01 | 19 文件 / 7.6 万字符 | README、GUIDE、map、capabilities、decision-record、boundaries、acceptance、canonical、glossary、K 页；data/ 只抽查 |
-| 02 | 25 文件 / 12.4 万字符 | README、map、approach、canonical、acceptance、boundaries、R0–R12 的 R4/R5/R6/R8/R9/R10/R11/R12、R1–R3 关键段、operations 的 cost/domains/ledger/evaluation、interfaces/artifact-pack/case 关键段 |
-| 03 | 26 文件 / 10.4 万字符 | README、map、glossary、六张位置卡、coverage、measurement、execution-forms、evidence 的 ledger/boundaries/gaps、附录 §3.1–§3.8；placement/reader-checks 抽查 |
-| 04 | 20 文件 / 10.7 万字符 | README、GUIDE、build、consume、govern、decision、reference、transfer、acceptance、boundaries、glossary、evidence/ledger；templates/worked-example 抽查 |
+| 02 | 25 文件 / 12.4 万字符 | README、map、approach、canonical、acceptance、boundaries、R0–R12 全部、operations 的 cost/domains/ledger/evaluation/rollout、interfaces/artifact-pack/case/traceability |
+| 03 | 26 文件 / 10.4 万字符 | README、map、glossary、六张位置卡、coverage、measurement、execution-forms、placement、reader-checks、templates、relations、claim-walkthrough、evidence 的 ledger/boundaries/gaps、附录 §3.1–§3.8 |
+| 04 | 20 文件 / 10.7 万字符 | README、GUIDE、build、consume、govern、decision、reference、transfer、acceptance、boundaries、glossary、map、journey、relations、templates、worked-example、evidence/ledger、example/README |
 
 **读法**：先按「读者卡 → §0 → 地图 → 主体 → 边界 → 验收」走一遍，再带着「这句话的证据在哪、限定有没有丢」回查；不是通读字数，是逐条判断句读。
+
+> **第二轮补读（2026-11-11 晚）**：把首轮只抽查的页全部读完（02 rollout/traceability/case；03 placement/reader-checks/templates/relations；04 map/journey/relations/templates/worked-example/example）。结论不变；新增 3 处小问题（`02/case` 的旧 79.2%/0% 与 0% 语义检查、01 README 重复 GUIDE 的 5 页路径、02 canonical 双 banner），已修。
 
 ## 1. 一句话判断
 
@@ -153,7 +155,9 @@ scope: deliverables/01–04 精读与质量判断（代理精读，非真人）
 | `04/evidence/ledger.md` | O-F08 用 E-02 输入复算 PPV | 保留公式、停用旧输入 |
 | `04/sections/boundaries.md` | 三条路线旧分数；checker 边界；输入 gate 观察 | 删值/标撤回 |
 | `04/body/build.md`、`sections/glossary.md` | 旧 catch/FA 值；SFE-O 未标移出 | 删值/标移出 |
-| 四份 glossary §0 + 正文定义页 | 定义来源 | 上一轮已接线；本轮补 03 map/02 approach/04 reference 三处 |
+| 四份 glossary §0 + 正文定义页 | 定义来源 | 上一轮已接线；本轮补 03 map/03 placement/02 approach/04 reference 四处 |
+| `02/case.md` | 旧 79.2%/0%、结构检查 0% | 改定性；预注册门槛标「旧口径停用」 |
+| `01/README.md`、`02/canonical.md` | 5 页路径与双 banner 重复 | 改为 GUIDE 指针 / 合并 banner（C2） |
 
 ## 5. 还没解决（诚实清单）
 

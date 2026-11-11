@@ -7,6 +7,8 @@ parent: ../README.md
 # Placement：把一条 claim 放到正确的位置
 
 > 这一步回答「它属于哪个位置」；不是「它有没有用」。五步，判不了就写 `undetermined`。
+>
+> **词源**：「位置 / 时刻 / 粒度 / gate / filter / 形态」是 `local` 工作词（无标准锚）；「约束 / 校验」有 `N: W3C SHACL`，「策略表达 / 判定架构」有 `N: W3C ODRL 2.2` / `N: OASIS XACML 3.0`，但都不定义「gate」。逐词见 [术语 §0](./glossary.md#term-sources)。
 
 ## 0. 五步
 
