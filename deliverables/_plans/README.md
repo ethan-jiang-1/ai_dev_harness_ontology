@@ -2,10 +2,11 @@
 
 > 这里放**交付物的执行计划/工作底稿**，不是交付正文。它们可以引用 `src/` 与 `topics/`，但不构成 E、不新增规则、不进对外阅读路径。常设规则在 [AGENTS](../../AGENTS.md) / [CHARTER](../../CHARTER.md)。
 >
-> **现行计划至多一份**（当前：[05 证据池修复计划](./2026-11-12-05-evidence-pool-plan.md)，2026-11-12 执行完毕转“已执行”；[缺口补齐计划](./2026-11-12-05-gap-closure-plan.md) 已执行完；04b OKF 严格化已执行完，IA 整改暂停）。其余是日志或参考：日志记当时改了什么，参考是被引用的报告/快照；都不指导新的写入。当前计数与阻塞看 [meta/state](../../meta/status/state.md)。结构决策见 [ADR 0012](../../adr/0012-instruction-layer-single-home.md)。
+> **现行计划至多一份**（当前：无（05 收口计划 2026-11-12 执行完毕）；[缺口补齐计划](./2026-11-12-05-gap-closure-plan.md) 已执行完；04b OKF 严格化已执行完，IA 整改暂停）。其余是日志或参考：日志记当时改了什么，参考是被引用的报告/快照；都不指导新的写入。当前计数与阻塞看 [meta/state](../../meta/status/state.md)。结构决策见 [ADR 0012](../../adr/0012-instruction-layer-single-home.md)。
 
 | 文件 | 对应交付物 | 说明 | 状态 |
 |---|---|---|---|
+| [2026-11-12-05-closeout-plan.md](./2026-11-12-05-closeout-plan.md) | 05 | **收口**：会场扫（VLDB/ICDM）、补读、联通与 Glyph 一致性、主路径压缩 33.6k→28.1k、首屏配比 | 已执行（2026-11-12） |
 | [2026-11-12-05-evidence-pool-plan.md](./2026-11-12-05-evidence-pool-plan.md) | 05 | **证据池修复**：接通 `src/papers/`（Glyph、Narrow and Deep）、新准入 CoeusBI / UniDataAgent、评估 AstraZeneca / Same Context / Auditable、补收益侧与欧洲 gap | 已执行（2026-11-12） |
 | [2026-11-12-05-gap-closure-plan.md](./2026-11-12-05-gap-closure-plan.md) | 05 | **缺口补齐**：七条 gap 的二轮补搜（TED API / HN / QCon / 云厂商 / 审计机关 / FOI）+ 上游回写 + 05 回写 + 冷读；命中江西 <50 万、江南 36 人月、小红书 B、NHS 29/137；仍阴性清单见 90.3 | 已执行（2026-11-12） |
 | [2026-11-12-04b-okf-strict-plan.md](./2026-11-12-04b-okf-strict-plan.md) | 05 · 4b | **04b 严格化**：拆规范边界/映射机制/采用证据三层；SCIMIN 复核降为 signal（不入库）、Kunstenpunt/京东降为线索、删伪阈值；上游改 E-32/L-22 + 新增 L-23 | 已执行（2026-11-12） |

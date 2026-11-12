@@ -125,6 +125,8 @@ parent: ../README.md
 | **上线后被关停/废弃的本体/KG 项目** | 英文工程博客、HN（Algolia 检索 2026-06 后 `knowledge graph`/`semantic layer`/`ontology`）、KGC/SEMANTiCS 议程、TED、UK Contracts Finder、中国政府采购网、arXiv、**NAO/GAO/ANAO** | **未找到第一方复盘**；中国 7 例流标/终止全在授标前（供应商不足 3 家），且已重新采购/转谈判；唯一"撤销合同"案例与本体无关；审计机关无本体/KG 专项；**NHS FDP 是"宣称 vs 使用"落差，不是关停** | 一条带结局（取消/回退/降级）与规模的 postmortem |
 | 重型平台被替换（窗口内） | TED、UK Contracts Finder、新闻 | 最强案例 MHCLG 用自建替换 Palantir Foundry（2026-05-19）**超窗，只作背景**；窗口内只有 Westpac（非技术原因）；NHS 是合同存续争议（2026-12 决定），不是替换完成 | 窗口内的技术性替换复盘 |
 | **失败率** | Atlan/Improvado、HN、咨询报告、审计机关 | 只有二手"<15%"说法，原始统计未核；另有"60% 指标中台死在第二年"无样本/分母，未采用 | 可核的样本框+分母+年份 |
+| **会场级论文扫**（2026-11-12） | VLDB vol19 全目录（457 篇标题）、ICDM 2026 站点、SIGMOD 2026 industrial track | VLDB 命中 1 篇 BI（CoeusBI，已入）与 1 篇 KG 运维（DBAIOps）；后者 arXiv 2025-08 首曝，**G1 超窗**，只作背景；Hamilton（交互式本体学习）是学术 demo，非生产；ICDM/SIGMOD 站点未取到（ICDM 以论文脚注核到 UniDataAgent Demo） | 会场站点的 accepted list 可访问后重扫 |
+| **DBAIOps（VLDB 19，KG 运维）** | 判 **G1 超窗**：arXiv 2508.01136（2025-08）早于 2026-06；PVLDB 版只是正式发表 | 首曝日期晚于 2026-06 的版本/报告 |
 | **制造业/工业本体生产案例** | arXiv、会议、厂商案例、采购公告 | 只有**真实试验台研究**（[Narrow and Deep](https://arxiv.org/abs/2610.11768)，9 任务/4 模型/投影 +19.8pp）与采购公告（中船、东北大学）；**无企业级生产复盘** | 一家制造企业的具名部署复盘（规模+失败） |
 | **讲稿/PPT（把摘要级升成可核）** | QCon 上海 2026 PPT 服务（`ppt.infoq.cn`，conid=173，117 个议题） | 中泰议题**有幻灯片**（pptid 5426）但**下载需登录**，未取得；小红书 DIBP **无幻灯片**（pptid 为空）→ 摘要级就是上限 | 登录账号、讲者公开分享或会议录像 |
 | **同数据集对照**（本体 vs 无本体） | 论文/工业报告；HN 2026-06 后检索 | 无**生产级**对照；找到两类非生产对照：厂商自测 504 次（Greptime，语义层分支部分改善/部分变差、未过统计校正）与**学术受控研究**（[Same Context](https://arxiv.org/abs/2610.20959)：7 模型/1,514 任务/5 benchmark，语义层收益依赖 agent 行为）；二者都不算生产信号 | 预注册的 A/B 或 shadow 对照 |

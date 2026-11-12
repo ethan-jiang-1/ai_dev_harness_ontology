@@ -13,6 +13,8 @@ basis: E-28/E-29/E-30/E-31/E-32；8 条 admitted/probation 生产证据（含 Ap
 > **不回答**：怎么建（去 [04](../04-worked-example/README.md)）、具体怎么做（去 [02](../02-engineering-playbook/README.md)）、凭什么（去 [03](../03-mechanism-reference/README.md)）、值不值得投（去 [01](../01-capability-status/README.md)）。
 >
 > **定性：现状（描述·实证）**。本份只描述现状与证据，不讲怎么建；定位全文见 [SCOPE](./SCOPE.md)。
+>
+> **一句话配比**：8 条生产证据里，严格 OWL/对象本体只有 **1 条**（Netflix），语义层/标签层 **6 条**，业务本体试点 1 条。所以本份答的是「**本体在生产里以什么薄形态存在**」，不是「本体塔普及了吗」。
 
 ## 先看一个真实问题
 
