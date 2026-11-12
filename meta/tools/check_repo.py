@@ -263,6 +263,21 @@ def main() -> int:
         if scalar(card, "execution_form") in EXECUTION_FORM:
             form_counts[scalar(card, "execution_form")] += 1
 
+    # 4b-2. active conclusion rows must carry a 做法 sentence + a practice link (route B)
+    sec = None
+    for line in conclusions.splitlines():
+        if line.startswith("## "):
+            sec = line[3:].strip()
+            continue
+        m = re.match(r"\|\s*(E-\d+)\s*\|", line)
+        if not m or sec == "已撤回（源未过准入）" or "| withdrawn |" in line:
+            continue
+        eid = m.group(1)
+        if "做法" not in line:
+            warnings.append(f"{eid} has no 做法 sentence (route B: E is an index, practice must be one line)")
+        if not re.search(r"mechanism|read-path|execution-forms|output-validation|consumability|policy/", line):
+            warnings.append(f"{eid} has no practice link (route B: point at mechanism where steps/params/stop live)")
+
     # 4c. every deliverable has a SCOPE.md positioning contract (ADR 0014)
     deliv_dir = os.path.join(ROOT, "deliverables")
     for d in sorted(os.listdir(deliv_dir)):
