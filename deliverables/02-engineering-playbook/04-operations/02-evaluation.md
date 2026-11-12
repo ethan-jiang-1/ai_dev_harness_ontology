@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 parent: ../README.md
 basis: E-08/E-14/E-18；06/metrics；06/trace（E-02/E-04 已撤回）
 ---
@@ -36,7 +36,7 @@ basis: E-08/E-14/E-18；06/metrics；06/trace（E-02/E-04 已撤回）
 | 机制 | 样本 | 为什么 |
 |---|---:|---|
 | K1/投影 | 3 任务 × 2 臂；9 任务扩展 | N&D 的任务构造 |
-| 编译 | 100–200 问；100–400 条 err_rate 审计 | `p_h`/miss 分布；err_rate 区间 |
+| 编译 | 100–200 问 smoke；判门 1,600–2,000 shadow；100–400 条 err_rate 审计 | `p_h` 的 CI 下界；err_rate 区间 |
 | 证据契约 | 200 题 | W-02 的测量设计 |
 | checker | 200 题 + 50 条人工抽检 | catch/FA 初值 |
 | 动作闸 | 200–500 shadow 决策 + 100 条 blocked 标注 | false-veto |
@@ -44,6 +44,8 @@ basis: E-08/E-14/E-18；06/metrics；06/trace（E-02/E-04 已撤回）
 | commit gate | 20–50 条 false-defer 样本 | 契约最小验证 |
 
 **样本量不是保证。** 稀疏事件（false-veto、false merge）需要按预期率算功效；2 周 log-only 不够判 HSR。
+
+> 编译的 100–200 问只够 smoke；判门要 1,600–2,000 条 shadow 的 95% CI 下界 > `p_min`，不能拿点估计过门。标定协议见 [compilation mechanism §p_h 标定](../../../topics/03-knowledge/compilation/mechanism.md#p_h-calibration)。
 
 ## 4. 预注册模板
 

@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 type: evidence-note
 target: X3 compilation economics
 ---
@@ -25,6 +25,8 @@ target: X3 compilation economics
 | 门实现 | §7 seam 说三特征（unit count/source diversity/entity coverage）；§7 judge selection 与 Listing 1 说 Qwen/StartLux judge | 论文内部不一致；`p_h` 的测量对象随实现变 |
 | φ（false-accept） | Eq(11)：`φ=(a_T−a_A)/(a_T−a_F)`；论文**没有报 φ**；100–400 条审计只设计、未跑 | 100 labels 区间约 4–16%；400 labels 约 7–13% |
 | 样本量 | 100–200 问只够 smoke；判 `p_h` 约需 1,600–2,000 条 shadow 查询（±0.7–0.8pp） | digest 推算；不是论文数 |
+
+> 判门口径：`p_h` 的 95% CI 下界 > `p_min`，不看点估计；标定协议见 [compilation mechanism §p_h 标定](../../../topics/03-knowledge/compilation/mechanism.md#p_h-calibration)。
 
 ## 2. 缺什么
 

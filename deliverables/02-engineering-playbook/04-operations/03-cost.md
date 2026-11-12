@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 parent: ../README.md
 basis: 06/feasibility；E-08/E-12/E-14/E-15（E-04/E-13 已撤回）
 ---
@@ -36,6 +36,7 @@ p_h > 2% + c / (0.929 Q)
 - `p_h` = 证据充分、可替换的查询比例。
 - 示例：`c=10`、`Q=1,000` → 3.12%；`p_h=2.5%` 仍亏。
 - **平均 −38% 不能当上线依据**；先量 miss penalty。
+- 判门用 `p_h` 的 95% CI 下界，不用点估计；100–200 问只作 smoke，判门要 1,600–2,000 条 shadow（见 [compilation §p_h](../../../topics/03-knowledge/compilation/mechanism.md#p_h-calibration)）。
 
 ### 2.2 动作分配
 

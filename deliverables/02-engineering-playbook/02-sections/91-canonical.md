@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 parent: ../README.md
 ---
 
@@ -48,7 +48,7 @@ parent: ../README.md
 | R0 | 四项检查 pass/flag/unknown | 任一 `unknown` 当 pass | 工程建议（O-T01） | 改人工清单 | 最低准入集；无对照 | 有对照研究 |
 | R1 | primary-trap avoidance | 绝对 ≥0.90 **或** 相对 ≥+10pp（预注册） | 工程建议 + E-12（O-T02） | 先做 K0 回放 | 绝对目标 vs 相对增益，两者不等价 | 跨域基线 |
 | R2 | primary-trap / element | ≥+5pp；≤60k 字符；≤2 人周/月 | 工程建议 + E-12（O-T03） | 先量 K1 基线 | E-12 投影约 45k；上限是工程留量（`推测`） | 多设备/长文档 |
-| R3 | token/问、p95 | `p_h ≥ p_min = 2% + c/(0.929Q)` | E-14 / O-F01（O-T04） | 先量 `p_h` | 成本模型；`c=10,Q=1000` → 3.08% | 自己的 `c`/`Q`/`p_h` |
+| R3 | token/问、p95 | `p_h` 的 95% CI 下界 > `p_min = 2% + c/(0.929Q)` | E-14 / O-F01（O-T04） | 先 shadow 量 `p_h`（smoke 100–200，判门 1,600–2,000） | 成本模型；`c=10,Q=1000` → 3.08% | 自己的 `c`/`Q`/`p_h` |
 | R4 **gap** | 检索率、引用率、grounding | **按 W-02 重测；原门槛作废** | E-03 withdrawn | 200 题 + 每级 100–200 标注 | 先修检索，再谈等级 | 新源 + 校准 |
 | R5 **gap** | 增量 catch、FA、净修复 | **按 W-01 重测；原门槛作废** | E-02 withdrawn | 200 题分层 + 净修复 | 空结果重试基线要在本域重跑 | 新源 + 故障分布 |
 | R6 **gap** | harm、审批、false-veto、task success | **按 W-03 重测；原门槛作废** | E-04/E-13 withdrawn；E-15 仅参照 | shadow 200–500 + 100 blocked | 先标 blocked，再谈阈值 | 新源 + blocked 标签 + 同轨迹配对 |

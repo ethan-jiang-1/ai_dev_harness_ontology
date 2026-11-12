@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 parent: ../README.md
 basis: E-08/E-12/E-14；projection & compilation mechanism
 ---
@@ -282,7 +282,7 @@ eval_table:  {query_id, arm, hit/miss, token_in/out, latency, rounds,
 1. **先跑基线**：同语料、同 harness 的准确率、token/问、p95、轮次；不可比就写明不可比。
 2. **compiler v0**：只抽 claim + span；span 对不上就丢，不让模型修。
 3. **保留原词法检索器**；树只做 carrier；默认 E2 substitution + raw chunk fallback。
-4. **量 `p_h`、miss penalty、`c`、`Q`**；算 `p_min = 2% + c/(0.929Q)`。
+4. **量 `p_h`、miss penalty、`c`、`Q`**：先 100–200 问 smoke，判门按 1,600–2,000 条 shadow 的 **95% CI 下界**；算 `p_min = 2% + c/(0.929Q)`，不能拿点估计过门（标定见 [compilation §p_h](../../../topics/03-knowledge/compilation/mechanism.md#p_h-calibration)）。
 5. **A/B 分桶**：按 collection hash 分桶；主指标预登记；报 hit/miss 分布，不报平均 −38%。
 
 ### 证据
@@ -306,7 +306,7 @@ eval_table:  {query_id, arm, hit/miss, token_in/out, latency, rounds,
 
 | 门 | 通过 | 停 |
 |---|---|---|
-| `p_h` | ≥ `p_min`（用自有 `c`、`Q`） | `p_h < p_min` → 停，转 harness 侧：收紧读预算、改停策略、缓存、并行检索 |
+| `p_h` | **95% CI 下界** > `p_min`（用自有 `c`、`Q`；100–200 问只作 smoke） | CI 下界 ≤ `p_min` → 停，转 harness 侧：收紧读预算、改停策略、缓存、并行检索 |
 | p95 | 不超预算 | 超预算 → 只在 token 是硬成本的小片流量灰度 |
 | span 覆盖 | ≥50%（工程门） | <50% → 不买 |
 | 准确率 | 不下降 | 下降 → 停 |
@@ -325,7 +325,7 @@ eval_table:  {query_id, arm, hit/miss, token_in/out, latency, rounds,
 
 ### 可抄锚点
 
-- [compilation 机制](../../../topics/03-knowledge/compilation/mechanism.md) 的「机制一/二」「数据/接口」「stop」「第一个 sprint」。
+- [compilation 机制](../../../topics/03-knowledge/compilation/mechanism.md) 的「机制一/二」「数据/接口」「stop」「p_h 标定」「第一个 sprint」。
 - CAI 的 parse→chunk→enrich→validate→assemble→register；只抄流程，不抄规模。
 - 受监管语料不要共用这条预算；走 [R12](12-regulated.md)。
 
@@ -339,4 +339,4 @@ eval_table:  {query_id, arm, hit/miss, token_in/out, latency, rounds,
 4. **把「结构化」当「本体专属」。** E-01 的 ontology 是 `not measured`；E-08/E-12 是工件/供给证据。
 5. **不记版本。** 投影/编译/知识节点不同步，模型会学到旧规则。
 
-**出处**：[projection 机制](../../../topics/03-knowledge/projection/mechanism.md) · [compilation 机制](../../../topics/03-knowledge/compilation/mechanism.md) · [E-08/E-12/E-14](../../../topics/conclusions.md)
+**出处**：[projection 机制](../../../topics/03-knowledge/projection/mechanism.md) · [compilation 机制](../../../topics/03-knowledge/compilation/mechanism.md#p_h-calibration) · [E-08/E-12/E-14](../../../topics/conclusions.md)

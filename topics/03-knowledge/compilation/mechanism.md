@@ -73,7 +73,7 @@ Grid Ontology = 27 docs / 6,347 pages 的法规/标准 + 语义/程序/情景记
 1. **不把编译立项成「准确率项目」。** 预算和 KPI 只挂 token、时延、审计，不挂 accuracy 提升；供应商若以「结构让回答更准」报价，要求其出示与强词法 harness 的对照。（`已核`：强 harness 下结构化工件无可检出准确率增益，F1）
 2. **只买证据叶子，不买散文结构。** v1 只入库 claim + 逐字 span；摘要树、大纲、wiki、实体图不进第一版；span 对不上就丢弃，不让模型修。这条把「编译」从内容工程降级成校验工程，也是 claim-leaf 与「去 claim 的 carrier」的分界：RAPTOR 摘要树在 FRAMES 上 neutral，PageIndex 大纲在 FRAMES 规模实测为负（[F6](./findings/accuracy.md#f6)）。
 3. **保留原词法检索器，树只做 carrier。** 默认 E2 substitution + raw chunk fallback；不把树/图当 router。时延是硬约束时改用 E1 或决策门，不买 E2 的 token 节省（那是用轮次换 token）。（`已核`：树是 carrier，不是 retriever；时延硬约束时不应买 token 节省）
-4. **先算账再扩语料。** 用自有 `c`、`Q` 算 `p_min`，先量 `p_h` 与 miss penalty；`p_h < p_min` 就不编译，转 harness 侧（收紧读预算、改停策略、缓存重复查询、并行检索）。决策依据不是平均 −38%。（`已核`：F2/F3）
+4. **先算账再扩语料。** 用自有 `c`、`Q` 算 `p_min`，先量 `p_h` 与 miss penalty；`p_h` 的 95% CI 下界 ≤ `p_min` 就不编译，转 harness 侧（收紧读预算、改停策略、缓存重复查询、并行检索）。决策依据不是平均 −38%。（`已核`：F2/F3；标定见 [p_h 标定](#p_h-calibration)）
 5. **受监管语料走另一条支线，不共用同一条预算。** 数字由 solver 算、答案必须带 citation（不能引用就拒答）、人签核、工作可重放；领域工具要在回路里，但两个 99.4% 的 baseline 说明写代码也能到同一档，别把「工具到达研究」当分数保证（`推测`）。没有 solver 与可引用语料，就不要用「编译法规」立项。（数字/契约 `已核`：F5/F11）
 
 ### 数据/接口
@@ -92,7 +92,7 @@ Grid Ontology = 27 docs / 6,347 pages 的法规/标准 + 语义/程序/情景记
 | 引用/拒答 | citation `{doc_id, version, page, span, clause_id, retrieved_at}`；拒答规则（证据不足/引用缺失）配置并记录 | 每条结论可核；不能引用就不答；45/51 是结果不是阈值 | Grid §4.1 · §6.5；[F11](./findings/regulatory.md#f11) |
 | 记忆/中断 | memory `{kind: semantic\|procedural\|episodic, content, source, approved_by, version}`；决策点 `{decision_id, findings, citations, signer, timestamp}` | 共享变更人批准；未签核不继续 | Grid §6.5；[F8](./findings/regulatory.md#f8) |
 
-**协议**：A/B 按 collection hash 分桶，主指标预登记；token 端点报 hit/miss 分布而不是平均；`p_h` 只能量在证据充足性门上。
+**协议**：A/B 按 collection hash 分桶，主指标预登记；token 端点报 hit/miss 分布而不是平均；`p_h` 只能量在证据充足性门上，判门用 95% CI 下界而不是点估计（见 [p_h 标定](#p_h-calibration)）。
 
 ### 组织/成本
 
@@ -105,16 +105,29 @@ Grid Ontology = 27 docs / 6,347 pages 的法规/标准 + 语义/程序/情景记
 
 ### stop condition
 
-1. `p_h < p_min = 2.0% + c/(0.929Q)`（用自有 `c`、`Q`）→ 停，转 harness 侧，不要用平均 −38% 继续说服。（公式 `已核`）
-2. `p_h > p_min` 但 p95 时延超预算 → 只在 token 是硬成本的一小片流量灰度，不全量。（`已核` 的建议 + `推测` 的落地方式）
+1. `p_h` 的 95% CI 下界 ≤ `p_min = 2.0% + c/(0.929Q)`（用自有 `c`、`Q`）→ 停，转 harness 侧，不要用平均 −38% 继续说服。（公式 `已核`；判门口径见 [p_h 标定](#p_h-calibration)）
+2. `p_h` 的 CI 下界 > `p_min` 但 p95 时延超预算 → 只在 token 是硬成本的一小片流量灰度，不全量。（`已核` 的建议 + `推测` 的落地方式）
 3. φ 的 95% CI 宽于业务可接受（例如 ±5pp）→ 扩审计样本，不自动放行。（`已核`）
 4. 维护人时价值 > 省下的 token 价值 → 停；编译不是免费。（`已核`）
 5. 抽样中带可定位 span 的 claim 占比低于预登记下限（举例 <50%，`推测`）→ 停：E2 的 hit 依赖可替换的叶子，抽不出来的语料不该买。
 6. 走受监管支线时：strict-pass 漏报 >0（state 不匹配未被发现）→ 停，先修重放；日志缺 `study_type`/`solver_version` → 视为不可判，先补契约；citation precision <0.95 或拒答率异常 → 停，先修检索（45/51 是结果，不是阈值；阈值须配置化）。（`已核`：[F9](./findings/regulatory.md#f9) · [F11](./findings/regulatory.md#f11)）
 
+<a id="p_h-calibration"></a>
+### p_h 标定（判门用）
+
+`p_h` 不是语料属性，是「你的门 × 你的语料 × 你的抽取器」的属性；换门、换语料、换抽取器都要重标。标定顺序固定为：量基线 → 小范围编译 → shadow 量 `p_h` → A/B 判准确率。
+
+1. **先 shadow**：门照常计算并记录决策，但不执行；查询仍走未编译路径。被拒查询的反事实答案不可观测，不能用被拒样本调门；shadow 只给 `p_h`、接受/拒绝构成与门成本，给不了整臂准确率。
+2. **100–200 问只够 smoke**：在 `p_h≈2.8%` 处，95% CI 约 ±2.3–3.2pp，分不清 2.0 与 3.6；这一档只能看管线是否跑通，不能判 go/no-go。
+3. **判门要 1,600–2,000 条 shadow 查询**（约 ±0.7–0.8pp；[CAI digest](../../../src/papers/2610.41172-context-as-infrastructure/digest.md) 推算，非论文数）；按预登记样本量一次判读，不能边看边停。真实 `p_h` 贴近阈值时样本量会爆炸（真实 3.5% 约需 9,000 条，`推测`）。
+4. **判据是 `p_h` 的 95% CI 下界 > `p_min`**，不是点估计；`p_min = 2% + c/(0.929Q)`，`c`、`Q` 用自有数。
+5. **门实现先固定**：论文里三特征规则（unit count/source diversity/entity coverage）与 Qwen judge 两套不一致；部署前选定一种并记版本，否则 `p_h` 的测量对象会变。
+
+> 等级：shadow 标定、CI 判门、门实现不一致来自 [CAI digest](../../../src/papers/2610.41172-context-as-infrastructure/digest.md)（`已核`）；1,600–2,000 条与 9,000 条是 digest 推算（`推测`，非论文数）。
+
 ### 第一个 sprint
 
-2 周、单 collection、单个 harness 版本；不做全量语料，不做树/图/wiki 导航，不做 ontology（CAI 里未被测量）。
+2 周、单 collection、单个 harness 版本；不做全量语料，不做树/图/wiki 导航，不做 ontology（CAI 里未被测量）。**本 sprint 只出 smoke 与 shadow 采样计划，不判 go/no-go。**
 
 | 天 | 做什么 | 产出 |
 |---|---|---|
@@ -122,18 +135,18 @@ Grid Ontology = 27 docs / 6,347 pages 的法规/标准 + 语义/程序/情景记
 | D4–D6 | 建评测表并落库，能按 arm 出 hit/miss 分布 | 评测表 schema + 一份真实数据 |
 | D7–D9 | compiler v0：只抽 claim + span，校验不过即丢，registry 写 `source_version/extractor_version/acl` | 可重放的编译脚本 |
 | D10 | E2 开关（per-tool policy）+ collection hash 分桶 + raw chunk fallback | 灰度开关 |
-| D11–D12 | 在 100–200 问上量 `p_h`、miss penalty、`c`、`Q`，跑 `p_min` | 算账表 |
-| D13–D14 | 预登记主指标，写 go/no-go 一页 | 决策记录 |
+| D11–D12 | 在 100–200 问上 smoke 量 `p_h`、miss penalty、`c`、`Q`，跑 `p_min`；同时启动 shadow 采样 | 算账表 + shadow 采样计划 |
+| D13–D14 | 预登记主指标与判门样本量（1,600–2,000 条），写 go/no-go 模板 | 决策记录（样本未到不判） |
 
-**交付物**：基线报告；评测表 schema 与落库；compiler v0（仅 claim + span）；E2 开关与 collection hash 分桶；`p_min` 计算器；一页 go/no-go。
-**出口**：能在同一 harness 上重放 A/B，并算出 `p_h`、`p_min`、φ 区间、p95；若 `p_h < p_min` 或 p95 超预算，明确写「不扩」并转 harness 侧 sprint。增量维护与 E1/E3 留到第二 sprint。
+**交付物**：基线报告；评测表 schema 与落库；compiler v0（仅 claim + span）；E2 开关与 collection hash 分桶；`p_min` 计算器；一页 go/no-go 模板。
+**出口**：能在同一 harness 上重放 A/B，并算出 `p_h` 的 95% CI 下界、`p_min`、φ 区间、p95；shadow 样本 <1,600–2,000 时只出 smoke 结论、不判 go/no-go；若 CI 下界 ≤ `p_min` 或 p95 超预算，明确写「不扩」并转 harness 侧 sprint。增量维护与 E1/E3 留到第二 sprint。
 
 ### 客户指标/V3
 
 - **受益者**（`推测`）：agent 平台/检索团队（token 预算与 p95 的 owner）；次要受益者是受监管场景的合规/评审负责人（周期与审计）。
 - **指标**：每千问 query-equivalent 成本（主）、token/问、p95 时延、轮次、准确率（护栏，不得下降）、审计通过率/千条、维护人时/月；受监管支线换成申请周期（天）、评审工时/单、返工率、审计发现数、每单加固成本、strict-pass 违规率、citation precision。其中 `每单加固成本` 只有 optimizer 的相对降幅 33–67%（不是绝对金额），`审计发现数` 没有观测，其余是记录项，不能当成功线（`推测`：[F10](./findings/regulatory.md#f10)）。
 - **反事实**：不编译 → 继续 BM25/grep + 原 harness；基线可测，不做的代价是 token 与时延，**不是准确率**（`已核` F1）。这个反事实就是本页最强的对手：论文自己把 harness 侧列为替代方案。
-- **V3 试点**（`推测`）：单语料、100–200 问、只做 E2。成功 = token 降 ≥20% 且准确率不降、p95 不超预算、φ 的 CI 在业务可接受内；失败 = `p_h < p_min`、或 p95 超预算、或准确率下降；**停止线 = 年省 token 价值 < 维护人时成本**。
+- **V3 试点**（`推测`）：单语料、100–200 问 smoke + 1,600–2,000 条 shadow 判门、只做 E2。成功 = token 降 ≥20% 且准确率不降、p95 不超预算、φ 的 CI 在业务可接受内、`p_h` 的 95% CI 下界 > `p_min`；失败 = CI 下界 ≤ `p_min`、p95 超预算、或准确率下降；**停止线 = 年省 token 价值 < 维护人时成本**。
 - **受监管支线 V3**（`推测`）：单运营商、20–50 单。成功 = 评审工时降 ≥20%、周期降 ≥10%、strict-pass 违规 0、citation precision ≥0.95；失败 = 违规 >0 或工时不降；停止线 = 年省工时 < TCO。
 
 ### 反例

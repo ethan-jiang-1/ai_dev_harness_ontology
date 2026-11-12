@@ -8,6 +8,15 @@ updated: 2026-11-12
 > 本页是 [meta/state](./state.md) 的历史日志：逐次改动与**当时的**计数。
 > **这里的数字是快照，不是现行计数**；现行状态只看 [state](./state.md)。
 
+## 2026-11-12 路线 B 收口：坏链/错页 + p_h 标定贯通
+
+- **问题**：349a8e4 批量追加后有 11 条嵌套坏链（内外两层方括号指向同一 mechanism）；E-01/E-18 指错页，E-14 的 p_h 口径与 compilation mechanism/02 相反。
+- **conclusions**：11 条链接改为单层；E-01→compilation §实施决策，E-18→metrics §方法要求，E-14→新 p_h 标定锚点；E-08/E-19 路径标签改为名字；E-21 阈值改为“自己的 gate 重标，论文数值只作单设置参考”；E-23 改为动作先行；E-07 去掉断裂标记；E-22 补“换域/换 backbone 重跑融合消融”。18 条在役做法逐条过三条测试，只改不满足的 4 条，其余保留；E-14/E-22/E-23 的做法句压回一句级。
+- **compilation**：新增“p_h 标定（判门用）”（100–200 smoke；1,600–2,000 shadow + 95% CI 下界；先 shadow；门实现先固定），并对齐 §实施决策/§stop/§第一个 sprint/§V3。
+- **02**：evaluation 样本表、R3 做法与验收、acceptance/canonical 的 R3 停线改为 CI 下界；01 e3 数据表加标定指针，形成 E-14→mechanism→交付物的贯通样例。
+- **check_repo**：嵌套链接记为 error（已验证注入后 exit 1）；路线 B 的做法/链接覆盖仍保留 warning。
+- **自检**：`check_repo` 通过（504 md，计数不变）；05 未纳入本轮。
+
 ## 2026-11-12 meta 目录重组 + meta/AGENTS.md 门牌 + 每份交付物 SCOPE.md
 
 - **问题**：meta 根 14 个文件平铺，fresh agent 进来不知道读哪个；交付物只有 README，定位靠 meta 一个远页，容易跑偏。

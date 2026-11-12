@@ -140,6 +140,12 @@ def main() -> int:
             if anchor not in anchor_cache[resolved]:
                 errors.append(f"broken anchor: {rel(path)} -> {rel(resolved)}#{anchor}")
 
+    # 1b. malformed nested links (botched bulk edit: [[label](url)]([label](url)))
+    for path, text in texts.items():
+        for lineno, line in enumerate(text.splitlines(), 1):
+            if "]([" in line:
+                errors.append(f"malformed nested link: {rel(path)}:{lineno}")
+
     # 2. frontmatter enums
     for path, text in texts.items():
         fields, _ = parse_frontmatter(text)
