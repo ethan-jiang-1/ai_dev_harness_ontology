@@ -27,7 +27,7 @@ updated: 2026-11-12
 ```
 src/
 ├── papers/
-│   ├── manifest.md          # 全仓唯一论文登记（现行 10 篇；历史批次见审计）
+│   ├── manifest.md          # 全仓唯一论文登记（现行 12 篇；历史批次见审计）
 │   └── {arxiv_id}-{slug}/
 │       ├── {arxiv_id}-{slug}.pdf     # 原文，只读
 │       ├── paper.md                  # 正文全文 MD（保留页码标记）
@@ -217,7 +217,9 @@ open-source/{org}-{repo}/
 
 | 材料 | 卡 / 消化 | 阅读 / 来源 | 已喂到 |
 |---|---|---|---|
-| 10 篇过门论文（6 admitted + 4 probation） | 各目录 `card.md` / `digest.md` | 精读/L2/L1 见各卡；4 篇 probation 到 2027-05-11 | E-01/05/07/08/09/12/14/15/17/18/21/22；03/04/05/06 派页 |
+| 12 篇过门论文（8 admitted + 4 probation） | 各目录 `card.md` / `digest.md` | 精读/L2/L1 见各卡；4 篇 probation 到 2027-05-11 | E-01/05/07/08/09/12/14/15/17/18/21/22；03/04/05/06 派页 |
+| UniDataAgent（中国联通，2026-09-23） | [card](./papers/2609.27257-unidataagent/card.md) / [digest](./papers/2609.27257-unidataagent/digest.md) | 已消化 / 原文正文 | 05 中国；E-28/E-30/E-31 |
+| CoeusBI（百度，VLDB 2026，2026-06-13） | [card](./papers/2606.15384-coeusbi/card.md) / [digest](./papers/2606.15384-coeusbi/digest.md) | 已消化 / 原文正文 | 05 中国；E-28/E-30/E-31 |
 | 18 篇移出论文 | [tombstone](../meta/audits/2026-11-11-source-purge.md) | — | E-02/03/04/06/10/11/13/16/26 已撤回；主题页待重写 |
 | HN · Netflix ontology-driven observability（2026-10-19） | [card](./web/hn-netflix-ontology-observability/hn-netflix-ontology-observability.card.md) | 已消化 / thread 原文 | 04 C.5/B.2 signal；不升 E |
 | 中泰证券 QCon 2026（2026-09-02） | [card](./web/qcon-2026-zhongtai-ontology/qcon-2026-zhongtai-ontology.card.md) | 摘要级 / 议题页 | 05 中国；E-28/E-29/E-30 |

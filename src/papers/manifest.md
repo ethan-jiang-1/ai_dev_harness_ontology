@@ -4,12 +4,12 @@ updated: 2026-11-11
 
 # 论文清单
 
-**10 篇过门 / 18 篇移出**（2026-11-11 按 [CHARTER §4](../../CHARTER.md#4-素材准入material-gate) 全量重审）。这是全仓唯一的论文登记处。
+**12 篇过门 / 18 篇移出**（2026-11-11 按 [CHARTER §4](../../CHARTER.md#4-素材准入material-gate) 全量重审）。这是全仓唯一的论文登记处。
 
 > 旧口径“28 篇（20 基础 + 4 扫描 + 4 补给）”“历史语料不回填”已作废。判定与理由见 [来源清除审计](../../meta/audits/2026-11-11-source-purge.md)。
-> 6 篇 `admitted`、4 篇 `admitted (probation)`；probation 到 **2027-05-11** 补不到第二信号就移出。
+> 8 篇 `admitted`、4 篇 `admitted (probation)`；probation 到 **2027-05-11** 补不到第二信号就移出。
 
-## 过门（10）
+## 过门（12）
 
 | # | 准入 | arXiv | 短标题 | 页 | 归位 | 文件 | 卡片 | 消化 |
 |---|---|---|---|---|---|---|---|---|
@@ -23,6 +23,8 @@ updated: 2026-11-11
 | 8 | admitted | 2610.41172 | Context as Infrastructure | 13 | 03/compilation | [pdf](./2610.41172-context-as-infrastructure/2610.41172-context-as-infrastructure.pdf) | [✓](./2610.41172-context-as-infrastructure/card.md) | [✓](./2610.41172-context-as-infrastructure/digest.md) |
 | 9 | admitted | 2611.02395 | Solver-Like Behavior | 28 | 06/trace | [pdf](./2611.02395-solver-like-behavior/2611.02395-solver-like-behavior.pdf) | [✓](./2611.02395-solver-like-behavior/card.md) | [✓](./2611.02395-solver-like-behavior/digest.md) |
 | 10 | admitted | 2611.03743 | EvoMemState | 30 | 04/memory | [pdf](./2611.03743-evomemstate/2611.03743-evomemstate.pdf) | [✓](./2611.03743-evomemstate/card.md) | [✓](./2611.03743-evomemstate/digest.md) |
+| 11 | admitted | 2606.15384 | CoeusBI | 12 | 06/feasibility | [pdf](./2606.15384-coeusbi/2606.15384-coeusbi.pdf) | [✓](./2606.15384-coeusbi/card.md) | [✓](./2606.15384-coeusbi/digest.md) |
+| 12 | admitted | 2609.27257 | UniDataAgent | 4 | 06/feasibility | [pdf](./2609.27257-unidataagent/2609.27257-unidataagent.pdf) | [✓](./2609.27257-unidataagent/card.md) | [✓](./2609.27257-unidataagent/digest.md) |
 
 ## 移出（18）
 

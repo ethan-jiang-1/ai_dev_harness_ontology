@@ -8,6 +8,30 @@ updated: 2026-11-12
 > 本页是 [meta/state](./state.md) 的历史日志：逐次改动与**当时的**计数。
 > **这里的数字是快照，不是现行计数**；现行状态只看 [state](./state.md)。
 
+## 2026-11-12 05 证据池修复：接通 papers + CoeusBI / UniDataAgent 准入
+
+- **诊断**：05 的 8 条证据全来自 `src/web/`，与 `src/papers/` 断开；已过门的 Apple Glyph 与 Narrow and Deep 从未进入 05，窗口内还有一批未评的工业论文。
+- **接通（不改准入）**：Glyph 进 06.1（#6）、00 证据表、03.5、02.1、90.1；判 **A（probation）**——card 是 `admitted`（§4.4 公司例外），但 05 的 A 要求独立信号，Glyph 只有 I3；到期 2027-03-09。上游改 E-28/E-29 与 L18/L19：新增「**权限会前置地限制语义生产**」（最敏感表不许先读值再分类）。
+- **新准入**：`src/papers/2606.15384-coeusbi/`（百度，VLDB 2026 accepted，I1 VLDB + I2 百度/北邮）判 `admitted`，05 判 **A**；`src/papers/2609.27257-unidataagent/`（联通软研院+南开，I1 ICDM 2026 Demo + I2）判 `admitted`，05 判 **A**。复核时补核了两条会议信息：CoeusBI 已见 PVLDB Vol.19 p.4076 + DOI + artifact；UniDataAgent 的 arXiv HTML 脚注写明「accepted by ICDM 2026 Demo track」，据此把 probation 升为 admitted。两篇都补齐 card/digest/paper/references/appendix/README，manifest 10→12。
+- **评估不入库**：AstraZeneca（19 作者全属公司、15,000 用户/首年）→ `signal`，进 06.1b/frontier；Same Context（USC/Oracle/UPenn，7 模型/1,514 任务）→ 学术对照，进 90.3 G6 行与 frontier；Auditable by Construction（单作者、公开基准）→ 不建卡，只进 frontier。
+- **结构补口**：05.5c 收益侧（6 个收益点，逐条说明为什么不能当 ROI）；8.2 缺口 8（非中美无生产案例）；02.1 叠加例子（中泰 OKF+治理资产、Sigma dbt→Snowflake）并注明「两个语义层并行」仍无案例。
+- **微观核实**：QCon PPT 服务 API（`/serv/ppt/list`，conid=173）——中泰有幻灯片但下载需登录，小红书 DIPB 无幻灯片（摘要级是上限）；Medact 的 FDP briefing 被 Cloudflare 挡，FOI 原始数据未取得；江西 KG 项目未见采购公告，`<50 万` 口径仍未说明。
+- **自检**：`check_repo` 通过（550 md；E=32，Q=3，C=4，L=86；12 论文 / 8 开源 / 17 材料卡）。
+
+## 2026-11-12 05 缺口二轮补搜：三条 signal + 两条价格锚点 + 阴性清单
+
+- **问题**：05 的七条 gap 停在“已判定不存在/缺”，但部分检索面没扫过：TED 结构化 API、HN Algolia 日期检索、QCon 2026 日程（找中国具名案例）、云厂商产品名 + 客户、审计机关（NAO/GAO/ANAO）、FOI 调查报道。计划见 [gap closure plan](../../deliverables/_plans/2026-11-12-05-gap-closure-plan.md)。
+- **命中（全部 signal/B 级，不过门）**：
+  - 江西农商联合银行（金科创新社 2026-09-29）：**投入 <50 万元（上限）**；2026-05 需求→08 上线→10 月推广 86 家；6 试点/68 用户/3,000+ 隐性关系；三层解耦含「业务语义层」。
+  - 江南农商银行（2026-09-22）：**12 个月、3 人核心组 ≈36 人月**；2,000+ 知识页/500 DAU；文档整理 2.7→0.27 工时/份，年省 ~1,200 工时。
+  - 小红书 DIBP（QCon 上海 2026-10-22/24）：2026-02 起建，覆盖 **80%+ 员工**、主动会话周活 **8,800+**；Context Layer。判 **B**（具名采用，摘要级）。
+  - NHS FDP × Palantir（Guardian 2026-11-02 / Register 2026-11-03）：£330M 合同；**29 家 FOI 否认使用**（Register 以 137 家「realising benefits」为分母≈21%；Guardian 记为「live」）；OSR 介入。判 **signal（调查报道）**，是「宣称 vs 使用」不是工程复盘。
+  - 价格锚点：东北大学本体仿真服务 **¥80 万/1 年**（比选预算，2026-11-09）；Leibniz-IWT **€270k** 本体开发服务（TED 469346-2026，2026-07-08）。
+- **上游回写**：mechanism F9 限定（不再说“没有一条给人月/金额”）、F10 证据（小红书 + NHS）、新增「2026-11-12 补搜」小节；findings F9；06-L21 改写 + 新增 **06-L24**；E-31 限定与出处；frontier 新增四行候选。
+- **下游回写**：05 的 00（判断三/四）、03（NHS）、04（4.4.6 表加成本列 + 新增 4.4.7 小红书 + 4.5/4.7）、05（新增 D 组客户自述 + 5.5b 人月行 + 读法五句）、06（6.1b 三行 + 6.4）、08（缺口 3/5/6 + 反例）、90（90.2 三行、90.2d 四行、90.3 五格、90.3b 两行口径、90.4 检索面）、README（30 秒结论 3、证据基座）。
+- **仍阴性（本轮新扫）**：五平台产品名 + 客户 0；审计机关无本体/KG 专项；HN 2026-06 后无 KG 关停复盘；无生产级同数据集对照（只有 Greptime 厂商 504 次对照，C）；仍无同一买方建设+维护配对、无人月单价、无回收期。
+- **自检**：`check_repo` 通过（537 md；E=32，Q=3，C=4，L=86）。
+
 ## 2026-11-12 04b OKF 严格化：拆层 + 补证 + 降级
 
 - **问题**：用户指 4b 是“硬挤进去”的，未走严格流程；尤其“靠向本体”一段混了三种东西——规范边界（不是本体）、映射机制（可以投影）、采用/迁移证据（有人在试），并夹带了没有上游的源（SCIMIN、Linked.Archi 无卡；Kunstenpunt/京东海博是 `signal` 却当交付物证据）与伪精度阈值（≥2 跳 >20%、>10^4 concept 等，无任何来源）。
@@ -15,6 +39,7 @@ updated: 2026-11-12
 - **补证与判定（先建卡、后降级）**：读 [SCIMIN-CRM · Semantic MediaWiki](https://ceur-ws.org/Vol-4293/paper50.pdf)（SEMANTiCS 2026 / CEUR Vol-4293 paper50，2026-10-13）——**本体先行**：OWL 本体 + SMW 标注 + LLM 候选 + 自动校验 + 专家 HITL + 受控发布。**初判 `admitted` 是手松了**：这是承建方（AKKODIS Research）写自己的 demonstrator，G3 的“多机构/I3 采用”都在同一个 Horizon Europe 项目内部，不是独立采用；无量化/规模/成本。按用户“尽量找严格”的要求**复核降为 `signal`，移出 `src/`**，只留 frontier 与 90 线索；正名 `CRM = Critical Raw Materials`。另核 Linked.Archi（2026-07-17）/ Atlas interop spike（2026-07-02）/ GMEOW 三份独立实现，均判 C。
 - **上游改写**：mechanism OKF 节把“从 OKF 到本体”重写为**两个方向 + 一条缝**（投影有损 / 上提需关系定型人审 / relationship-typing gap），映射缺口分“规范明确不做 / 规范明确没有 / 实现与分析”三档；E-32 补“非对称投影 + 没有完成迁移的案例”；L-22 收窄，新增 **06-L23**（非对称投影，已核工程文档互证）；frontier 新增三份实现 + 两条抓取失败待评估（Zenodo NKB、SAP community）。
 - **下游回写**：4b 重写为 9 节（结论 / 问题 / 规范 / 谁在用 / Knowledge Catalog / 两个方向 / 3 条信号 / 反例 / 证据台账）；删伪阈值与 GitHub 501 计数（复跑 477，只进 90）；Kunstenpunt 从“B 类反例”降为 `signal` 且改“数据标准先行”；京东海博移出正文只留 90.2c；90.3 新增“OKF→本体迁移完成案例 = 0”阴性行；README 证据基座加“admitted 格式/架构证据 2”。
+- **图与文字对齐（SVG 生产在前，重写在后）**：`landscape-stack.svg` 底部原写“可长期用，也可按需升级到语义层”，与重写后的“不会自己升级、无迁移完成案例”冲突——改为“不是本体；要约束/权限时另建语义层”；Wiki/OKF 卡片摘要由“低成本 · LLM 友好”改为“非本体 · 无约束”（价值说明下沉到底部注）。`heavy-to-light.svg` 的 Wiki/OKF 卡补“非本体 · 无推理”，证据徽标由“A（中泰）/ signal”改成“A（中泰）· 迁移案例 0”。两张图的 `<desc>` 与 02 图注同步补“知识容器、不是本体”。
 - **自检**：`check_repo` 通过（537 md；E=32，Q=3，C=4，L=85；10 论文 / 8 开源 / 17 材料卡；0 坏链/0 坏锚）；顺带把脚本里过期的结论等级期望 15/3 同步为 19/4。
 
 ## 2026-11-12 05 三期：可读性收口（77 → 85.6）

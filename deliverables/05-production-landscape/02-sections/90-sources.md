@@ -18,18 +18,22 @@ parent: ../README.md
 | 3 | [Snowflake 内部 context layer](https://www.snowflake.com/en/blog/snowflake-internal-context-layer-for-ai-agents/) · [卡](../../../src/web/snowflake-context-layer-2026/snowflake-context-layer-2026.card.md) | 2026-08-17 | engineering | `admitted (probation)` | 5,600 员工/320k 查询（2025-07）；400+ 用户/5,400+ 查询；semantic views 版本化/CI/eval；十亿行视图延迟、Dynamic Tables 维护爆炸 | 单公司自述；无外部采用；无成本/准确率 |
 | 4 | [Sigma 2,883-model semantic layer](https://www.getdbt.com/blog/sigma-dbt-dagster-semantic-layer) · [卡](../../../src/web/sigma-semantic-layer-2026/sigma-semantic-layer-2026.card.md) | 2026-10-27 | engineering | `admitted (probation)` | 2,883 dbt 模型/63 job/6 region；SQL/Jinja 版本化；PII/列级控制；dbt Summit 2026 | 供应商自己跑自己的产品；无成本/失败/准确率 |
 | 5 | [Netflix 本体驱动可观测性](https://netflixtechblog.com/ontology-driven-observability-building-an-end-to-end-knowledge-graph-at-netflix-scale-421392cf5adf) · [卡](../../../src/web/netflix-ontology-observability-2026/netflix-ontology-observability-2026.card.md) | 2026-10-16 | engineering | `admitted` | 49,000 目录；2B 请求/日；38M 日志/秒；65M 并发流；OWL/SHACL/SPARQL + 自建 QuipuDB；12 namespace | 无成本/收益；自建图存储是例外；假设有时错 |
+| 6 | [Apple Glyph: column description & sensitivity-ontology tagging](https://arxiv.org/abs/2609.10430) · [digest](../../../src/papers/2609.10430-glyph/digest.md) | 2026-09-09 | engineering（论文）/ `admitted`（§4.4 公司例外；05 判 **A（probation）**：缺独立信号） | ~3.4M 列/98,000 表/4 业务线/3 后端；275 叶内部敏感性本体；6 周 ~24,000 条 steward 判定、接受率 63.3%→99.8%；~30 人年手工等价 | 单企业；无美元成本/漏标率；接受率 association、对 FN 盲；标签质量≠策略执行 |
+| 7 | [CoeusBI: interactive BI at Baidu](https://www.vldb.org/pvldb/vol19/p4076-lian.pdf) · [digest](../../../src/papers/2606.15384-coeusbi/digest.md) | 2026-06-13 | engineering（论文）/ `admitted`（I1 PVLDB 19 + I2 百度/北邮 + I5 artifact） | 百度数据平台、**数千用户/日**；生产集 EX 6.03%→23.49%；灰度 50 人/3 周、完成时间 −55.7%；90.8% golden SQL 含 JOIN | 单公司单业务线；无成本/失败率；EX≠业务正确；不是 OWL 本体 |
+
+| 8 | [UniDataAgent: ontology-grounded question-to-report](https://arxiv.org/abs/2609.27257) · [digest](../../../src/papers/2609.27257-unidataagent/digest.md) | 2026-09-23 | engineering（论文）/ `admitted`（I1 ICDM 2026 Demo + I2 联通/南开） | 27 张企业表/数千指标类型；40 问严格准确率 95.0% vs 文档 RAG 72.5%；本体构建「数小时 vs 约一周」、报表「几分钟 vs 数个工作日」 | 单企业单域；40 问小样本；工时定性；无失败率/维护数据 |
 
 **准入自检**：
 
 > 另有 1 张 `admitted` 格式卡（[Google OKF](../../../src/web/google-okf/google-okf.card.md)，见 90.2c）；它不是生产案例，不进上面的台账。
 
-| 门 | 中泰 QCon | 中泰 CCSA | Snowflake | Sigma | Netflix |
-|---|---|---|---|---|---|
-| G1 时效 ≥2026-06 | ✓ | ✓ | ✓ | ✓ | ✓ |
-| G2 活跃 | QCon 2026 | CCSA WG15 2026 | Snowflake 2026 博客 | dbt Summit 2026 | Netflix 博客 2026-10 + HN 讨论 |
-| G3 独立信号 | I2 中泰+QCon；I3 生产；I4 会议 | I2 中泰+CCSA；I3 生产；I4 案例 | I2 Snowflake+生态（**合作方，独立性弱**）；I3 内部 5,600 人 | I2 Sigma+dbt Labs（**合作方，独立性弱**）；I3 生产；I4 Summit | I2 Netflix+W3C 栈；I3 生产；I4 HN 131 分/32 评论 |
-| G4 来源 | 公司 talk（§4.4） | 公司案例（§4.4） | 公司工程博客（§4.4） | 公司工程博客（§4.4） | 公司工程博客（§4.4） |
-| G5 可核 | URL+日期+讲者 | URL+日期+讲者 | URL+日期+作者 | URL+日期+作者 | URL+日期+作者 |
+| 门 | 中泰 QCon | 中泰 CCSA | Snowflake | Sigma | Netflix | Apple Glyph | CoeusBI | UniDataAgent |
+|---|---|---|---|---|---|---|---|---|
+| G1 时效 ≥2026-06 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| G2 活跃 | QCon 2026 | CCSA WG15 2026 | Snowflake 2026 博客 | dbt Summit 2026 | Netflix 博客 2026-10 + HN 讨论 | arXiv v1 2026-09-09 | arXiv 2026-06 + VLDB 2026 accepted | arXiv v2 2026-10；ICDM 2026 Demo |
+| G3 独立信号 | I2 中泰+QCon；I3 生产；I4 会议 | I2 中泰+CCSA；I3 生产；I4 案例 | I2 Snowflake+生态（**合作方，独立性弱**）；I3 内部 5,600 人 | I2 Sigma+dbt Labs（**合作方，独立性弱**）；I3 生产；I4 Summit | I2 Netflix+W3C 栈；I3 生产；I4 HN 131 分/32 评论 | **I3 Apple 生产目录**（§4.4 公司例外）；无 I1/I2 | **I1 VLDB 2026 同行评审 + I2 百度/北邮** | **I1 ICDM 2026 Demo + I2 联通软研院/南开** |
+| G4 来源 | 公司 talk（§4.4） | 公司案例（§4.4） | 公司工程博客（§4.4） | 公司工程博客（§4.4） | 公司工程博客（§4.4） | 论文 + 公司生产系统（§4.4） | 学术会议（工业 track） | 学术预印本 + 企业系统 |
+| G5 可核 | URL+日期+讲者 | URL+日期+讲者 | URL+日期+作者 | URL+日期+作者 | URL+日期+作者 | arXiv+PDF+日期+作者 | arXiv+PDF+表号+日期 | arXiv+PDF+Table I |
 
 > `probation` 的两条（Snowflake/Sigma）是单公司自述，只作工程证据，不单独撑跨组织结论。按 [CHARTER §4.4.3](../../../CHARTER.md#44-三个窄例外)「发表后 6 个月内补第二信号」：Snowflake（2026-08-17）到期 **2027-02-17**、Sigma（2026-10-27）到期 **2027-04-27**；补不到就降 `signal` 并移出。
 >
@@ -48,12 +52,15 @@ parent: ../README.md
 | [腾讯 DataBuddy](https://cloud.tencent.com/developer/article/2684075) | 2026-06-05 | 3,000+ 企业试用；两家匿名头部银行；95.9%（厂商口径） | 无具名客户/成本/失败；B-/C+ |
 | [华为 DataArts](https://www.huaweicloud.com/product/dap.html) | 2026-10 公测 | 本体为平台底层知识核心；供应链 Agent 场景 | 公测；无客户/规模/失败；C |
 | [阿里 UModel/STAROps](https://github.com/alibaba/UnifiedModel) | 2026-06-01 | 开源 + 阿里云内部可观测生产；458 stars/71 forks/6 contributors | 开源版不含控制面/多租户授权；无外部采用；B-/C+ |
-| [银行 KG/本体采购](https://wap.stockstar.com/detail/RB2026072400019041) | 2026-05/07/10（浦发超窗） | 三单合同 ¥49.4 万/¥115 万/¥178.8 万；中标方海致星图/知因智慧/星环 | 不是九家大厂；只证需求/预算，不证效果 |
+| [银行 KG/本体采购](https://wap.stockstar.com/detail/RB2026072400019041) | 2026-05/07/10（浦发超窗） | 三单合同 ¥49.4 万/¥115 万/¥178.8 万；中标方海致星图/知因智慧/星环 | 不是这五家大厂的订单；只证需求/预算，不证效果 |
 | [Anthropic 自助分析](https://claude.com/resources/articles/how-anthropic-enables-self-service-data-analytics-with-claude) | 2026-06-03 | 95% 查询自动化/~95% 准确；无 skills ≤21%；离线 95%→65%/月；对抗复核 +6% 准确/+32% token/+72% 延迟；LLM 自动生成 metric 定义 net-negative | 单公司工程博客；HN 讨论弱；只作机制证据 |
 | [AngelList 放弃语义层](https://www.angellist.com/blog/the-semantic-layer-nobody-maintains) | 2026-08-28 | 1,400+ 模型/59 域/13k 行索引/27k 列；GitHub Actions “几美元/月”；“stale semantics worse than none” | 单公司；HN 2 分；无准确率；是换实现，不是项目失败 |
 | [AWS Builder Center 语义层成本](https://builder.aws.com/content/3KvFN69cxO83mHPPRm71A5I820C/measuring-a-semantic-layer-evidence-cost-and-control-from-an-agentic-analytics-build) | 2026-10-19 | POC 50 用户/2,000 问/月；整层 $90–175/月；5 类 silent failure；live chat paraphrase agreement 4% | 客户匿名；POC；AWS 自证；只作量级线索 |
 | [VentureBeat VB Pulse](https://venturebeat.com/data/companies-are-building-governed-semantic-layers-most-say-their-ai-agents-are-getting-context-somewhere-else) | 2026-10-06（报告 2026-11-06） | n=107/100；39% 生产用语义层；其中 28% 是 agent 主要上下文源（全体 13%）；采用者 78% vs 未采用 37% 报告上下文失败 | 自选样本、41% 顾问、不能推因果；只作弱信号 |
 | [Atlan: KG pitfalls](https://atlan.com/know/ai-agent/knowledge-graph/enterprise-knowledge-graph-pitfalls/) | 2026-09-10 | “<15% 企业 KG 项目过 pilot”；组织/技术/经济三类失败 | **原始统计不可核**：追到 Improvado 2025-09-29 只有一句无出处的 “industry surveys suggest”；不采用该数字 |
+| [小红书 DIBP（QCon 上海 2026）](https://qcon.infoq.cn/2026/shanghai/presentation/7343) | 2026-10-22/24 | 2026-02 起建 DataAgent；覆盖 80%+ 员工、主动会话周活 8,800+；Context Layer（数据/指标/业务语义/代码/血缘） | **B（具名采用，摘要级）**：无成本/失败/准确率；不是 OWL 本体；单一信号；不改变五平台阴性 |
+| [NHS FDP × Palantir（Guardian）](https://www.theguardian.com/technology/2026/nov/02/palantir-unused-nhs-hospital-trusts) · [Register](https://www.theregister.com/public-sector/2026/11/03/nhs-counts-palantir-benefits-at-trusts-that-say-theyre-not-using-it/5307222) | 2026-11-02/03 | £330M 合同；29 家 trust 的 FOI 回复否认使用（Register 以 137 家“realising benefits”为分母≈21%；Guardian 称 137 家为“live”）；OSR 介入 | 调查报道 + FOI，不是工程复盘；谈 FDP 使用非 Ontology 深度；只作 signal |
+| [Greptime Agent RCA Bench](https://greptime.com/blogs/2026-09-08-agent-rca-bench-interface-semantic-layer) | 2026-09-11 | 504 次/6 模型，三种查询接口含语义层分支；语义层分支部分故障类型改善（106→112），节点故障变差（24→12）；端到端效率指标未过统计校正 | **厂商自测 benchmark**（公开数据/代码）；不算独立信号；只作“同任务对照”线索，不撑结论 |
 | [Stardog customers](https://www.stardog.com/company/customers/) | 未标日期 | Boehringer Ingelheim、NASA、NIH、Springer Nature | 客户页/旧案例；未过 2026-06 门 |
 | [Ontotext STM case](https://www.ontotext.com/knowledgehub/case-studies/leading-stm-publishers-improved-data-consumption-reuse-with-knowledge-platform/) | 未标日期 | 匿名 STM publisher 的知识平台 | 匿名+厂商案例；C |
 
@@ -76,9 +83,10 @@ parent: ../README.md
 
 | 来源 | 日期 | 它是什么 | 为什么只是 signal |
 |---|---|---|---|
-| [贵州农商联合银行 KG](https://www.fintechinchina.com/cases/9863)（金科创新社） | 2026-10-08 | HugeGraph+华为大数据；1,000 日活/TPS 100/跑批 <3h；"仍在计算查询阶段" | 客户自述+评选，无独立复核、无成本/失败 |
-| [江西农商联合银行](https://www.fintechinchina.com/cases/9803)（金科创新社） | 2026-09-29 | NebulaGraph+OceanBase；全省 86 家农商行；3,000+ 隐性关系；有效线索 >85% | 同上 |
-| [江南农商银行](https://www.fintechinchina.com/cases/9766)（金科创新社） | 2026-09-22 | Neo4j+pgvector；2,000+ 知识页/500 DAU/**3 人核心组**/可用率 99.5% | 同上 |
+| [贵州农商联合银行 KG](https://www.fintechinchina.com/cases/9863)（金科创新社） | 2026-10-08 | HugeGraph+华为大数据；1,000 日活/TPS 100/跑批 <3h；2024-06 设计→2025-04 上线；"仍在计算查询阶段" | 客户自述+评选，无独立复核、无成本/失败 |
+| [江西农商联合银行](https://www.fintechinchina.com/cases/9803)（金科创新社） | 2026-09-29 | NebulaGraph+OceanBase；全省 86 家；6 试点机构/68 用户/3,000+ 隐性关系；有效线索 >85%；2026-05→08 上线；**投入 <50 万（上限）** | 同上；"<50 万"口径未说明（疑不含外部数据采购） |
+| [江南农商银行](https://www.fintechinchina.com/cases/9766)（金科创新社） | 2026-09-22 | Neo4j+pgvector；2,000+ 知识页/500 DAU/可用率 99.5%；**12 个月、3 人核心组 ≈36 人月**；文档整理省 ~1,200 工时/年 | 同上；工时节约为自报估算 |
+| [东北大学 智能工厂本体仿真服务](http://www.czzx.neu.edu.cn/2026/1109/c12062a482618/page.htm) | 2026-11-09 | 预算 **¥80 万 / 1 年**；本体建模+模型仓库+运行+应用，3 个业务本体；比选采购 | 采购公告；只到比选，无成交/上线/效果 |
 | [中国联通软研院 政企本体建模](https://bj.zhiliaobiaoxun.com/article/110498214) | 2026-08-25 招标 / 2026-09-21 结果 | 预算 190 万、限价 180.5 万；4 个本体模型；两次流标（投标人不足 3 家）后转谈判，亚信中标 | 采购公告；只到授标前，无上线/效果 |
 | [渝农商行 × 腾讯云 智能知识中台](http://stock.stockstar.com/RB2026072400019821.shtml) | 2026-07-21 成交 | 128.5 万；具名客户 | 产品线未证（不能写成 DataBuddy/Topbase 上线） |
 | [上海银行 × 海致星图 关联图谱优化](https://wap.stockstar.com/detail/RB2026072400019041) | 2026-07-19 | 49.4 万；员工异常行为监测 | 只证采购 |
@@ -108,16 +116,18 @@ parent: ../README.md
 
 | 想找什么 | 查了什么 | 结果 | 关闭它需要什么 |
 |---|---|---|---|
-| 中国大厂 2026-06 后**外部采用**（阿里/蚂蚁/腾讯/华为/京东） | 官网、云文档、开发者社区、会议（QCon/CCKS/AICon/云栖/HC）、招聘、采购平台、案例库、arXiv | **五平台 0 条「具名客户 + 可追一手」**；能过门的客户侧材料集中在海致星图/星环/金山云/中电云计算/中科世通亨奇与三家农商行自建（signal） | 客户署名复盘或会议 talk；平台名 + 客户名 + 规模 |
-| Palantir 客户侧**一手工程复盘**（2026） | Palantir 公告、客户新闻、会议 | 只有公司公告/客户名单；无客户自己写的规模/成本/失败；**Westpac 2026-11 退出，但动因是活动人士施压** | 客户 engineering blog / conference industry talk |
-| 本体/语义层**全生命周期 TCO** | 工程博客、会议、USASpending、UK Contracts Finder、TED、中国政府采购网 | 有五类价（平台 £10.09M/5 年、语义层支持 $1.14M/年、建设 ¥49–276 万、维护 ¥178.8 万/年、POC $37–175/月）；**无人月、无同一买方建设+维护配对、无回收期** | 企业财务/采购披露，或带账本的复盘 |
-| 本体/语义层**人月/工时** | 工程博客、会议、arXiv（429 限流）、中国政府采购网、招标聚合站、上市公司募投、招聘 JD | **无可当 A 类的人月披露**。两条带数字的都不合格：Data Praxis 2026-06-19 是**构造案例**（1→12 人 / 24 个月，非客户披露）；玄同科技 2026-10-20 是**匿名厂商软文**（2 专家 + 1 知识工程师 × 半年，返工场景）。联通 2026-10-27「图谱知识增强」招标正文在付费墙后，未读到工作量清单 | 客户署名复盘（团队 × 月数）、招标文件的工作量/人月单价表、或募投「新增研发 N 人 + 建设期」 |
+| 中国大厂 2026-06 后**外部采用**（阿里/蚂蚁/腾讯/华为/京东） | 官网、云文档、开发者社区、会议（QCon/CCKS/AICon/云栖/HC）、招聘、采购平台、案例库、arXiv；**2026-11-12 加搜产品名 + 客户**（Context0/DataBuddy/DataArts/TuGraph/Oxygen） | **五平台 0 条「具名客户 + 可追一手」**；能过门的客户侧材料集中在海致星图/星环/金山云/中电云计算/中科世通亨奇与三家农商行自建（signal）；另找到小红书（B，但不在五平台之列） | 客户署名复盘或会议 talk；平台名 + 客户名 + 规模 |
+| Palantir 客户侧**一手工程复盘**（2026） | Palantir 公告、客户新闻、会议；**2026-11-12 加搜 FOI/监管** | 仍无客户自己写的规模/成本/失败；**Westpac 2026-11 退出（非技术原因）**；新找到 NHS FDP 客户侧否认（29/137 家 FOI 说未使用，OSR 介入）——是使用口径争议，不是工程复盘 | 客户 engineering blog / conference industry talk |
+| 本体/语义层**全生命周期 TCO** | 工程博客、会议、USASpending、UK Contracts Finder、TED（API 检索 `ontology`/`Ontologie`/`knowledge graph`，PD≥2026-06-01）、中国政府采购网 | 五类价 + **两条客户自述投入**（江西 <50 万上限；江南 3 人×12 月）；TED 只回 2 条相关采购（Leibniz-IWT €270k 开发服务、Sciensano €264k），**无人月、无同一买方建设+维护配对、无回收期** | 企业财务/采购披露，或带账本的复盘 |
+| 本体/语义层**人月/工时** | 工程博客、会议、arXiv（429 限流）、中国政府采购网、招标聚合站、上市公司募投、招聘 JD、**TED API** | **无 A 类人月**；本轮只补到客户自述一条（江南农商 3 人×12 月 ≈36 人月）。仍不合格的：Data Praxis 是构造案例；玄同科技是匿名软文；联通招标正文在付费墙后 | 客户署名复盘（团队 × 月数）、招标文件的工作量/人月单价表、或募投「新增研发 N 人 + 建设期」 |
 | OKF 的企业级采用 | Google OKF 博客/GitHub/Knowledge Catalog；中国案例；GitHub 搜索 `"open knowledge format" in:description`（477，2026-11-12 快照） | **西方未找到具名生产采用**（只有工具/框架实现与教程，C）；中国仅中泰（`admitted`）+ 京东海博（`signal`）；无 A 类 | 具名组织 + 规模 + 成本/失败 + 独立印证 |
 | **OKF/Wiki → 本体迁移完成案例** | Google 博客/规范、GitHub、CEUR/SEMANTiCS、工程博客、Linked.Archi/Atlas/GMEOW | **0 条**：有投影/上提实现与“先 OKF 再提升”的框架建议，无组织披露完成迁移（路径/时间线/成本/失败） | 一份带迁移前后规模与成本的复盘；或迁移中断的 postmortem |
-| **上线后被关停/废弃的本体/KG 项目** | 英文工程博客、HN、KGC/SEMANTiCS 议程、TED、UK Contracts Finder、中国政府采购网、arXiv | **未找到第一方复盘**；中国 7 例流标/终止全在授标前（供应商不足 3 家），且已重新采购/转谈判；唯一"撤销合同"案例与本体无关 | 一条带结局（取消/回退/降级）与规模的 postmortem |
-| 重型平台被替换（窗口内） | TED、UK Contracts Finder、新闻 | 最强案例 MHCLG 用自建替换 Palantir Foundry（2026-05-19）**超窗，只作背景**；窗口内只有 Westpac（非技术原因） | 窗口内的技术性替换复盘 |
-| **失败率** | Atlan/Improvado、HN、咨询报告 | 只有二手"<15%"说法，原始统计未核；另有"60% 指标中台死在第二年"无样本/分母，未采用 | 可核的样本框+分母+年份 |
-| **同数据集对照**（本体 vs 无本体） | 论文/工业报告 | 本窗口内未找到生产级对照 | 预注册的 A/B 或 shadow 对照 |
+| **上线后被关停/废弃的本体/KG 项目** | 英文工程博客、HN（Algolia 检索 2026-06 后 `knowledge graph`/`semantic layer`/`ontology`）、KGC/SEMANTiCS 议程、TED、UK Contracts Finder、中国政府采购网、arXiv、**NAO/GAO/ANAO** | **未找到第一方复盘**；中国 7 例流标/终止全在授标前（供应商不足 3 家），且已重新采购/转谈判；唯一"撤销合同"案例与本体无关；审计机关无本体/KG 专项；**NHS FDP 是"宣称 vs 使用"落差，不是关停** | 一条带结局（取消/回退/降级）与规模的 postmortem |
+| 重型平台被替换（窗口内） | TED、UK Contracts Finder、新闻 | 最强案例 MHCLG 用自建替换 Palantir Foundry（2026-05-19）**超窗，只作背景**；窗口内只有 Westpac（非技术原因）；NHS 是合同存续争议（2026-12 决定），不是替换完成 | 窗口内的技术性替换复盘 |
+| **失败率** | Atlan/Improvado、HN、咨询报告、审计机关 | 只有二手"<15%"说法，原始统计未核；另有"60% 指标中台死在第二年"无样本/分母，未采用 | 可核的样本框+分母+年份 |
+| **制造业/工业本体生产案例** | arXiv、会议、厂商案例、采购公告 | 只有**真实试验台研究**（[Narrow and Deep](https://arxiv.org/abs/2610.11768)，9 任务/4 模型/投影 +19.8pp）与采购公告（中船、东北大学）；**无企业级生产复盘** | 一家制造企业的具名部署复盘（规模+失败） |
+| **讲稿/PPT（把摘要级升成可核）** | QCon 上海 2026 PPT 服务（`ppt.infoq.cn`，conid=173，117 个议题） | 中泰议题**有幻灯片**（pptid 5426）但**下载需登录**，未取得；小红书 DIBP **无幻灯片**（pptid 为空）→ 摘要级就是上限 | 登录账号、讲者公开分享或会议录像 |
+| **同数据集对照**（本体 vs 无本体） | 论文/工业报告；HN 2026-06 后检索 | 无**生产级**对照；找到两类非生产对照：厂商自测 504 次（Greptime，语义层分支部分改善/部分变差、未过统计校正）与**学术受控研究**（[Same Context](https://arxiv.org/abs/2610.20959)：7 模型/1,514 任务/5 benchmark，语义层收益依赖 agent 行为）；二者都不算生产信号 | 预注册的 A/B 或 shadow 对照 |
 
 ## 90.3b 口径与不可比说明
 
@@ -134,6 +144,8 @@ parent: ../README.md
 | **POC vs 生产** | AWS $90–175/月（50 用户/2,000 问/月的 POC）；PolarDB $37.59/月、$1.65/月（组件）；AngelList“几美元/月”（CI 运行） | 生产运行成本；与平台年费放在一张表里排名 | POC 便宜 = **规模小 + 治理人力不计**；它只证“跑起来不贵”，不证“生产便宜” |
 | **规模口径**（资产数 ≠ 实体数 ≠ 查询/用户） | 知识资产：9,137 知识目录 / 6,503 指标文档 / 2,622 表 / 12 万+ 血缘（中泰）；消费面：5,600 员工 / 320k 查询、400+ 用户 / 5,400+ 查询（Snowflake）；模型/任务：2,883 模型 / 63 job（Sigma）；目录：49,000（Netflix） | 把知识资产数当本体实体数；把用户数当查询量；跨公司比“规模” | 四类数各指不同东西；本份**没有一家**同时给“实体数 + 查询量 + 用户数”，不能拼成一张规模榜 |
 | **同一来源的两种口径** | 中泰 6,000+ 指标（QCon 议题摘要）vs 3,400+ 公司级指标（同页讲者简介） | 相加、取平均、把 3,400 写成对 6,000+ 的“更正” | 可能不是同一口径（AI Native 环境 vs 公司级语义体系）；分别引用，不互相替代 |
+| **客户自述投入 vs 合同/报价** | 江西农商「投入不到 50 万」（**上限**，口径未说明，疑不含外部数据采购）；江南农商「3 人核心组 × 12 个月」（**只算核心组**，评审/业务配合未计）；东北大学 ¥80 万/1 年（**比选预算**，非成交） | 当成交价、当 TCO、当人月单价；把「上限」读成「实际花费」 | 三条都是**上界或局部**，不能相加；它们只回答“量级”，不回答“花了多少、值不值” |
+| **宣称 vs 使用**（NHS FDP） | 137 家 trust 被列为「realising benefits」，29 家 FOI 回复未上线/未使用；£330M 合同存续待 2026-12 决定 | 当“项目失败率”或“客户流失率” | FOI 回复是**客户自述**，媒体是调查报道；既不是工程复盘，也不是全量普查 |
 
 **怎么比**：
 
@@ -145,9 +157,9 @@ parent: ../README.md
 
 ## 90.4 检索日志（摘要）
 
-- 时间：2026-11-12。
-- 检索面：美国重型平台/语义层、中国大厂/采用者、失败/成本、标准/招聘/采购、2026 工业论文。
-- 关键词：`ontology production 2026`、`semantic layer production case study`、`Palantir ontology customer 2026`、`阿里云 本体 客户`、`蚂蚁 TuGraph 生产`、`腾讯 Topbase 2026`、`CCSA TC601 WG15`、`knowledge graph postmortem`、`ontology maintenance cost`、`FIBO EDM Council 2026`。
-- 抓取限制：`web_fetch` 对部分域名被策略拒绝；改用 `curl` 或 `r.jina.ai` 读取；微信公众号多被 CAPTCHA，改用官网/会议页/转载。
+- 时间：2026-11-12（含当日**第二轮补搜**）。
+- 检索面：美国重型平台/语义层、中国大厂/采用者、失败/成本、标准/招聘/采购、2026 工业论文；第二轮加：**arXiv API（按日期筛 2026-06 后）**、**QCon PPT 服务 API（conid=173）**、**TED API**（结构化检索采购公告）、**HN Algolia API**（2026-06 后按日期）、**QCon 上海 2026 日程/议题页**（找中国具名案例）、**云厂商产品名 + 客户**、**审计机关（NAO/GAO/ANAO）**、**FOI/调查报道**。
+- 关键词：`ontology production 2026`、`semantic layer production case study`、`Palantir ontology customer 2026`、`阿里云 本体 客户`、`蚂蚁 TuGraph 生产`、`腾讯 Topbase 2026`、`CCSA TC601 WG15`、`knowledge graph postmortem`、`ontology maintenance cost`、`FIBO EDM Council 2026`；第二轮：`ontology`/`Ontologie`/`knowledge graph`（TED，PD≥2026-06-01）、`Context0`/`DataBuddy`/`DataArts`/`TuGraph`/`Oxygen` + 客户、`人月 本体`、`knowledge graph failed`、`Palantir NHS`。
+- 抓取限制：`web_fetch` 对部分域名被策略拒绝（返回非公网 IP）；改用 `curl`；微信公众号多被 CAPTCHA，改用官网/会议页/转载；TED/HN 用公开 API。
 - 黑名单：采/引前已查 [excluded-sources](../../../meta/rules/excluded-sources.md)；未使用命中源。
-- 结论：**不是没搜，是这类材料稀缺**；05 的价值之一是把“缺什么”写清楚。
+- 结论：**不是没搜，是这类材料稀缺**；第二轮把三条从“没查”变成“查过、只有 signal”，其余仍阴性；05 的价值之一是把“缺什么、查过哪”写清楚。

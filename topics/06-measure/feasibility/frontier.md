@@ -6,6 +6,13 @@
 
 | 候选 | 日期 | 主张什么 | 卡在哪 | 若过门能支撑什么 |
 |---|---|---|---|---|
+| [AstraZeneca Research Assistant](https://arxiv.org/abs/2608.12395) | 2026-08-06 | 药企内部 LLM + KG 系统；**15,000 名内部用户/首年**；响应 10–30 秒 | 19 作者全属 AstraZeneca（无 I2）；技术报告、无同行评审；无失败/成本披露 | 补到独立采用/社区讨论后可作「企业内 KG 系统规模」的 admitted |
+| [Same Context, Different Agents](https://arxiv.org/abs/2610.20959) | 2026-10-14 | 7 模型/1,514 任务/5 benchmark；语义层等三种 context 技术的受控对照；语义层收益依赖 agent 行为 | 学术研究、非生产；无企业部署 | 可作 G6 的学术对照；不撑生产效果 |
+| [Auditable by Construction（KDAF）](https://arxiv.org/abs/2608.20661) | 2026-08-21 | 本体驱动 + 证据链的企业金融分析框架；FinanceBench 145 问；有 Zenodo 工件 | **单作者、独立研究者**；只在公开基准上评，无生产部署（G3/G4 不过） | 出现企业部署后重评；现只作 C |
+| [小红书 DIBP（QCon 上海 2026 议题）](https://qcon.infoq.cn/2026/shanghai/presentation/7343) | 2026-10-22/24 | 2026-02 起建的 DataAgent Context Layer；覆盖 80%+ 员工、主动会话周活 8,800+；数据/指标/业务语义/代码/血缘统一表征 | 议题摘要，无成本/失败；**不是 OWL 本体**；G3 只 QCon 一个信号 | 中国互联网侧「语义层/Context Layer 在生产」的 B 级采用证据；补到讲稿/视频里的失败与规模后可升 |
+| [江西农商 隐性关联图谱](https://www.fintechinchina.com/cases/9803) | 2026-09-29 | 投入 **<50 万元**（上限）；2026-05→08 上线、10 月推广 86 家；6 试点机构/68 用户/3,000+ 隐性关系；三层解耦含「业务语义层」 | 客户自述 + 行业评选；口径未说明（疑不含外部数据采购）；无失败披露；G3 无独立信号 | 中国农商行的**成本上限 + 周期**锚点；出现独立复核可升 admitted |
+| [江南农商 新范式知识库](https://www.fintechinchina.com/cases/9766) | 2026-09-22 | **12 个月、3 人核心组**（≈36 人月）；2,000+ 知识页/500+ DAU；文档整理 2.7→0.27 工时/份，年省 ~1,200 工时 | 同上；工时节约为自报估算，非实测账本 | 少见的「团队 × 月数」人月锚点；出现实测工时/审计后可升 |
+| [NHS FDP × Palantir（Guardian/Register）](https://www.theguardian.com/technology/2026/nov/02/palantir-unused-nhs-hospital-trusts) | 2026-11-02/03 | £330M 合同；137 家「realising benefits」中 **29 家** FOI 回复未上线/未使用其应用（约 21%）；OSR 介入 | 调查报道 + FOI，不是工程复盘；谈 FDP 使用，不谈 Ontology 深度；G4 媒体 | 「平台宣称 vs 客户使用」落差的证据；补到客户侧工程复盘后可升 |
 | [EDM Council「Why Your AI Needs an Ontology: Getting Started with FIBO」](https://edmcouncil.org/wp-content/uploads/2026/08/EDMWebinar_AI-Needs-and-Ontology-FIBO_2026-08-25_FINAL.pdf) | 2026-08-25 | 标准组织在推 FIBO-for-AI；含一组文档抽取成本对比（准确率 76%→95%、每文档 $0.39→$0.14、每查询 $0.21→$0.02） | **G3 只有标准组织自身一个信号**；且那组数字比的是「Claude 单模型 vs 模块化流水线」，**不是本体 vs 无本体**；无生产规模披露 | 2026 年标准组织的活跃度；一组**抽取流水线**成本基准（不可当本体效应） |
 | [京东海博 AI 知识库（自称 OKF）](http://stock.10jqka.com.cn/20260924/c680274369.shtml) | 2026-09-24 | 一概念一 md、`type` 唯一必填、index/log、宽容消费；AB 542 秒 vs 967 秒（约 -44%）；编译前移到维护期 | 单一来源、无个人署名；**原文 5 次 “OKF” 从未展开**，“= Google OKF” 是推断 | 拿到京东技术原文 + 第二独立来源后，可作中国第二个 OKF 采用线索 |
 | [Kunstenpunt Wikibase](https://tech-news.wikimedia.de/2026/06/02/kunstenpunt-a-whos-who-of-the-flemish-art-scene/) | 2026-06-02 | 100 万页/25 万实体/3 名专职；约束只警告不阻断；**先有 2024 文化参与数据标准（兼容 CIDOC CRM/schema.org），再把三套旧库并进 Wikibase** | 单机构、平台方博客；**与 OKF 无关**（全文 0 次 OKF/ontology）；“数据标准”≠“OWL 本体” | 第二独立报道出现后，可作“数据标准先行的 wiki”反例（不撑 OKF） |

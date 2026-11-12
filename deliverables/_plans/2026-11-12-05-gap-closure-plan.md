@@ -3,7 +3,7 @@ status: draft
 type: execution-plan
 updated: 2026-11-12
 scope: deliverables/05 + topics/06-measure + src/web
-current: true
+current: false
 ---
 
 # 05 缺口补齐计划（2026-11-12）
@@ -131,12 +131,12 @@ current: true
 | 阶段 | 状态 | 备注 |
 |---|---|---|
 | 计划落盘 | done | 2026-11-12 |
-| G2 中国采用 | pending | |
-| G3 TCO/人月 | pending | |
-| G5 postmortem | pending | |
-| G7 第二信号 | pending | |
-| G4/G6 | pending | |
-| 上游回写 | pending | |
-| 05 回写 | pending | |
-| 冷读 | pending | |
-| 收口 | pending | |
+| G2 中国采用 | done（阴性为主） | 五平台仍 0；补到小红书 B（非五平台）与江西/江南成本细节；90.3 记检索面 |
+| G3 TCO/人月 | done（部分） | 江西 <50 万上限、江南 3×12≈36 人月；东北大学 ¥80 万/1 年、Leibniz €270k；仍无同一买方配对/人月单价/回收期 |
+| G5 postmortem | done（阴性） | 无第一方复盘；NHS「宣称 vs 使用」29/137 记入 signal；审计机关无专项 |
+| G7 第二信号 | done（阴性） | Snowflake/Sigma 仍无第三方信号；维持 probation 到期日 |
+| G4/G6 | done（阴性） | 无失败率分母；无生产级同数据集对照（Greptime 厂商 benchmark 只作 C） |
+| 上游回写 | done | mechanism F9/F10 + 补搜小节；findings F9；L-21 改写 + L-24；E-31 限定/出处；frontier 四行 |
+| 05 回写 | done | 00/03/04/05/06/08/90/README；口径统一（五家/几十人月/建设价三区间） |
+| 冷读 | done | 代理只读 8 页；4 卡点 + 4 不一致已处理；结构合并建议留待下轮 |
+| 收口 | done | check_repo 通过（537 md / L=86）；state / state-log / _plans / 质量评估已更新 |

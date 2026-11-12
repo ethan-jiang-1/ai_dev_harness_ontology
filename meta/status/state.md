@@ -14,18 +14,18 @@ updated: 2026-11-12
 |---|---|
 | 宪章 | [CHARTER](../../CHARTER.md)：研究档案，不做实施；交付物是文档 |
 | 阶段 | 内部研究档案；不做对外客户交付，因此不设客户资产/签核前置 |
-| 论文 | 10 个目录（6 `admitted` + 4 `admitted (probation)`）；18 篇已按 [准入审计](../audits/2026-11-11-source-purge.md) 移出 |
+| 论文 | 12 个目录（8 `admitted` + 4 `admitted (probation)`）；18 篇已按 [准入审计](../audits/2026-11-11-source-purge.md) 移出 |
 | 开源 | 8 个项目（trustgraph / semantica / ontop / open-ontologies + OPA / Qlever + Great Expectations + OpenLineage），已 pin commit、已消化 |
 | 材料卡 | 17 张（1 张 HN + 10 张在役标准卡 + 5 张 05 生产证据卡 + 1 张 Google OKF） |
 | 主题 | 6 派 + 23 个子主题 + 00-harness 七部件 + 6 时刻 + 1 条形态轴 |
 | 结论 | 32 条 E：17 已核原文 + 2 已核代码 + 4 推测 + **9 已撤回**（E-25 由已核降推测）；3 条 Q；4 条 C |
-| 局部判断 | 85 条 L（01:19 / 02:10 / 03:16 / 04:7 / 05:10 / 06:23）；其中 **28 条 withdrawn**（源移出） |
+| 局部判断 | 86 条 L（01:19 / 02:10 / 03:16 / 04:7 / 05:10 / 06:24）；其中 **28 条 withdrawn**（源移出） |
 | 硬对象 | 94 注册（**20 已随源撤回**；现存 74：H3 33 / H2 41）；明细见 [objects](../../topics/objects.md) 变更记录 |
-| 证据配比（10 篇 + 8 开源） | 3 execution-test / 11 mechanism-only / 4 harness-evidence / 0 boundary-ruler |
-| 执行形态（18 源：10 论文 + 8 开源） | engine 3 / compiled 3 / context 1 / label 1 / none 10 |
-| 交付物 | 5 个子目录 + 共用入口 [START](../../deliverables/START.md)：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-worked-example；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（**合成示例**，E-21/E-22 已升）；**05-production-landscape 落地现状·实证（5 条 admitted/probation 生产证据 + 1 张 OKF admitted 格式卡 + 3 家农商行客户自述 signal + 五类价锚点；五平台外部采用与失败率已判“窗口内不存在”；质量自评 85.6/100；仍缺人月与项目级 postmortem，ADR 0014）**；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
+| 证据配比（12 篇 + 8 开源） | 3 execution-test / 13 mechanism-only / 4 harness-evidence / 0 boundary-ruler |
+| 执行形态（20 源：12 论文 + 8 开源） | engine 3 / compiled 5 / context 1 / label 1 / none 10 |
+| 交付物 | 5 个子目录 + 共用入口 [START](../../deliverables/START.md)：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-worked-example；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（**合成示例**，E-21/E-22 已升）；**05-production-landscape 落地现状·实证（5 条 admitted/probation 生产证据 + 1 张 OKF admitted 格式卡 + 3 家农商行客户自述 signal〔江西 <50 万上限、江南 3 人×12 月〕 + 小红书 DIBP（B） + NHS FDP（signal） + 五类价锚点；五平台外部采用与失败率已判“窗口内不存在”；质量自评 88.8/100（五期：证据池修复 + 两条新准入）；仍缺同一买方建设+维护配对与项目级 postmortem，ADR 0014）**；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-12，`python3 meta/tools/check_repo.py`：0 坏链 / 0 坏锚 / 0 未定义 ID / 枚举通过（537 个 md；E=32，Q=3，C=4，L=85；10 论文 / 8 开源 / 17 材料卡） |
+| 最后自检 | 2026-11-12，`python3 meta/tools/check_repo.py`：0 坏链 / 0 坏锚 / 0 未定义 ID / 枚举通过（550 个 md；E=32，Q=3，C=4，L=86；12 论文 / 8 开源 / 17 材料卡） |
 
 <a id="当前目标下一步做什么"></a>
 ## 当前目标（下一步做什么）
@@ -39,7 +39,7 @@ updated: 2026-11-12
 
 > 不在这张表里的事，默认不做；要做先进这张表（一次至多 3 项，按序）。
 >
-> **05 三期已收口到 [D1](#已知债务别当成已完成)**：公开证据能拿的都拿了（五类价锚点、3 家农商行 signal、7 例采购流标、五平台 0 客户、无项目级 postmortem），剩下三项是"等外部材料"，不再占目标位；出现材料即回填。
+> **05 四期已收口到 [D1](#已知债务别当成已完成)**：二轮补搜后公开证据能拿的都拿了（五类价 + 江西 <50 万/江南 36 人月两条客户自述、3 家农商行 signal、小红书 B、NHS「宣称 vs 使用」、7 例采购流标、五平台 0 客户、无项目级 postmortem），剩下是"等外部材料"，不再占目标位；出现材料即回填。
 >
 > **收东西的口径**：只收「能长期保障质量」的做法（可重复 / 自带检测 / 抗腐化），见 [conventions 三条测试](../rules/conventions.md#只收能长期保障质量的做法不是一次性技巧)。一次性技巧记候选，不升 E。
 
@@ -49,7 +49,7 @@ updated: 2026-11-12
 
 | # | 债务 | 现状 | 关闭判据 |
 |---|---|---|---|
-| D1 | **05 仍无“四项齐全”A 类** | 5 条 admitted/probation + 3 家农商行 signal；成本有五类价（平台/服务/建设/维护/运行）但无人月、无同一买方建设+维护配对；失败只有运行中的坑，无项目级 postmortem；五平台客户侧 0（已判定“窗口内不存在”，见 [frontier](../../topics/06-measure/feasibility/frontier.md) 与 05 的 90.3） | 出现任一条：带人月的复盘、项目级失败 postmortem、五平台任一客户署名复盘；写进 05 且可追到卡 |
+| D1 | **05 仍无“四项齐全”A 类** | 5 条 admitted/probation + 3 家农商行 signal + 小红书 B + NHS signal；成本有五类价，**2026-11-12 补到两条客户自述投入**（江西 <50 万上限、江南 3 人×12 月），仍无同一买方建设+维护配对、无人月单价、无回收期；失败只有运行中的坑 + NHS「宣称 vs 使用」，无项目级 postmortem；五平台客户侧 0（已判定“窗口内不存在”，见 [frontier](../../topics/06-measure/feasibility/frontier.md) 与 05 的 90.3） | 出现任一条：带人月的审计复盘、项目级失败 postmortem、五平台任一客户署名复盘；写进 05 且可追到卡 |
 | D2 | **04 有 8 个坏样本未跑** | `bad_samples.json` 里 tested=false 共 8 条（S1–S5/S6/S9/S10） | 逐条施加 mutation 跑出 `build_report`，把 tested 改 true 并填实测值 |
 | D3 | **04 clean FP 未测** | `clean_fp_set.status = 未测` | 5–10 个干净快照跑同一 shapes，报 FP 条数与分母 |
 | D4 | **02 R3 缺 extractor 规格** | 只有"span 对不上就丢"；谁抽 claim、怎么保 offset 未定 | 写出 extractor 的输入/输出契约 + offset 校验 + 抽不出的降级路径 |
@@ -67,6 +67,8 @@ updated: 2026-11-12
 
 ## 最近改动
 
+- **2026-11-12 05 证据池修复（接通论文 + 两条新准入）**：诊断出 05 的证据池与 `src/papers/` 断开——已过门的 **Apple Glyph**（3.4M 列/98K 表/275 叶标签本体/6 周 24k 判定）与 **Narrow and Deep**（工业试验台）从未进 05。本轮：① Glyph 接入 06.1/00/03.5/02.1/90.1，判 **A（probation）**（只有 I3、无 I1/I2），上游同步 E-28/E-29/L18/L19（新增「权限会前置限制语义生产」）；② 新建 **CoeusBI**（百度，PVLDB 19:4076，I1+I2+I5）与 **UniDataAgent**（联通，ICDM 2026 Demo，I1+I2）两篇论文目录（card/digest/paper/references/appendix），manifest 12 篇（8 admitted + 4 probation），05 均判 A；③ 评估 AstraZeneca（15,000 用户，signal）、Same Context（学术受控对照，G6 线索）、Auditable（单作者，不建卡），进 frontier/90.3；④ 补 05.5c 收益侧、8.2 缺口 8（非中美无生产案例）、02.1 叠加例子；⑤ QCon PPT 服务核实：中泰有幻灯片但需登录、小红书无幻灯片；Medact 被 Cloudflare 挡。自检 550 md / 12 论文。
+- **2026-11-12 05 缺口二轮补搜（含成本/采用/失败三条）**：按 [缺口补齐计划](../../deliverables/_plans/2026-11-12-05-gap-closure-plan.md) 重扫七条 gap。**命中三条 signal 级**：① 江西农商投入 **<50 万（上限）**、周期 2026-05→08；② 江南农商 **3 人×12 月≈36 人月**、文档整理省 ~1,200 工时/年；③ 小红书 DIBP（QCon：覆盖 80%+ 员工、周活 8,800+，B）；④ NHS FDP：**29 家 FOI 否认使用**（两报对 137 家口径不同）（signal）。新增价格锚点：东北大学本体仿真服务 ¥80 万/1 年、Leibniz-IWT €270k（TED）。上游改 F9 限定、06-L21、新增 06-L24、E-31 限定与出处、frontier 四行；05 回写 00/03/04/05/06/08/90/README。**仍阴性**：五平台具名客户 0、审计机关无本体/KG 专项、HN 无关停复盘、无生产级同数据集对照、无同一买方建设+维护配对。计划见 [gap closure plan](../../deliverables/_plans/2026-11-12-05-gap-closure-plan.md)。
 - **2026-11-12 04b OKF 严格化（拆层/补证/降级）**：4b 被指“硬挤进去、未走严格流程”，尤其“靠向本体”把规范边界/映射机制/采用证据混成一条路。走[修复回路](../../AGENTS.md)：逐句审计（7 P0/9 P1/5 P2，见 [provenance 审计](../audits/2026-11-12-04b-okf-provenance.md)）→ SCIMIN/SMW 论文先建卡后**复核降为 `signal` 并移出 `src/`**（承建方自述、G3 无独立信号，只进 frontier）→ 上游重写 mechanism OKF 节（两个方向 + 关系定型缺口；映射缺口分三档）、E-32 补非对称投影、新增 06-L23、frontier 收三份 C 实现 → 4b 重写 9 节（删伪阈值、Kunstenpunt/京东降 `signal`、加“没有完成迁移的案例”）。计划见 [04b strict plan](../../deliverables/_plans/2026-11-12-04b-okf-strict-plan.md)。
 - **2026-11-12 05 三期（可读性收口）**：03.5/04.5 台账去掉、指向 06.1 canonical；07 加 7.5b 填好的决策卡（示例值）；README/00 加问题链主线；01 加产品名一句话 + 四条类比；06.1 加证据类型图例（观测/主张/采购记录/媒体转述/厂商材料）；90 加 90.3b 九类口径与不可比说明。自评从 77 → **85.6**（C2 仍 3：主路径约 3 万字 > 2 万字档；A1/A3/D3 仍 4：缺人月/项目级 postmortem/五平台客户）。
 - **2026-11-12 05 缺口收口（二期）**：C 层一致性 7 项 + E-28/E-29/E-30 措辞修正（本体 vs 语义层配比 / 失败表述 / 窗口外源）；OKF 建 `admitted` 卡并修三处事实偏差（semantic-layer 词频、Knowledge Catalog 13 字段、京东海博 OKF 推断）；成本章从“无金额”升级为五类价锚点（£10.09M/5 年、$1.14M/年、¥49–276 万、¥178.8 万/年、$37–175/月）；补 3 家农商行 signal、7 例采购流标（供给薄）、Westpac 退出；失败率与五平台外部采用判“窗口内不存在”写入 frontier/90.3。评分见 [05 质量评估](../../deliverables/_plans/2026-11-12-05-quality-review.md)。

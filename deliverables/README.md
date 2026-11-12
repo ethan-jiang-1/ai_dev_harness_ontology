@@ -16,7 +16,7 @@ updated: 2026-11-12
 >
 > **2026-11-11 证据重置**：按被删源写成的段落重写完成前不得作为结论；撤回清单以 [审计](../meta/audits/2026-11-11-source-purge.md) 为唯一出处。定义已接规范主干（定义句标 `（N: 标准名）` 或 `（local）`）；收口记录见 [_plans 索引](./_plans/README.md)。
 >
-> **定位权威（[ADR 0014](../adr/0014-deliverable-scope-single-home.md)）**：**每份的初心/定性/边界/红线以它自己的 `SCOPE.md` 为准**；[meta/deliverables/scope](../meta/deliverables/scope.md) 只是五份总索引与共用规矩。改/建任何交付物前，先读该份 `SCOPE.md`。**04 是合成「怎么建」示例；新增 [05 落地现状](./05-production-landscape/README.md) 才是「业界真实怎么样」的实证份（已有正文；成本/外部采用仍缺）。**
+> **定位权威（[ADR 0014](../adr/0014-deliverable-scope-single-home.md)）**：**每份的初心/定性/边界/红线以它自己的 `SCOPE.md` 为准**；[meta/deliverables/scope](../meta/deliverables/scope.md) 只是五份总索引与共用规矩。改/建任何交付物前，先读该份 `SCOPE.md`。**04 是合成「怎么建」示例；新增 [05 落地现状](./05-production-landscape/README.md) 才是「业界真实怎么样」的实证份（已有正文；成本有价目/合同 + 两条客户自述投入，五平台外部采用仍缺）。**
 
 ## 0. 读者与写法：deliverables 是给人的成品
 
@@ -60,7 +60,7 @@ updated: 2026-11-12
 | [03-mechanism-reference](./03-mechanism-reference/README.md) | 为什么是六个位置、三根分类轴怎么分、15 条边界 | 入口 + 六张位置卡 + 谱外页 + 三张横切页 + 证据台账 | draft | E-xx + [topics/README](../topics/README.md) |
 | └ [附录：约束强度谱](03-mechanism-reference/05-appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字）；位置细节以卡为准 | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
 | [04-worked-example](./04-worked-example/README.md) | 本体怎么建到可消费、怎么查、怎么治 | 建 / 用 / 治三分册 + 验收 | draft | E-xx（含 E-21/E-22）+ 03/querying/01/access-control；未入库 signal |
-| [05-production-landscape](./05-production-landscape/README.md) | 业界真实落地现状、成本收益、靠谱与否有无证据 | 实证现状（**已有正文：5 条 admitted/probation 生产证据 + 10+ 条 C/signal 线索；全生命周期成本、中国外部采用、失败率仍缺**） | draft | 真实生产/业界证据（5 条 admitted/probation，CHARTER §4.4）+ Google OKF 格式卡 |
+| [05-production-landscape](./05-production-landscape/README.md) | 业界真实落地现状、成本收益、靠谱与否有无证据 | 实证现状（**已有正文：8 条 admitted/probation 生产证据 + 15+ 条 C/signal 线索；五类价 + 两条客户自述投入 + 收益点；五平台外部采用、失败率、TCO 配对仍缺**） | draft | 真实生产/业界证据（5 条 admitted/probation，CHARTER §4.4）+ Google OKF 格式卡 |
 
 > **04 与 05 的分界**：04 是「你可以怎么建」的**合成示例**（fixture 期望值，不证明生产）；05 是「业界实际怎么样」的**实证现状**（须真实生产证据）。定位详见 [meta/deliverable-scope](../meta/deliverables/scope.md)。
 
