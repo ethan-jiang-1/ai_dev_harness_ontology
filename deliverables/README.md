@@ -148,7 +148,7 @@ updated: 2026-11-12
 - 03：canonical 在 `03-positions/` 与 `04-across-positions/`；`09-appendix...` 是长版论证；`H`/`D` 必须始终带标记。
 - 04：不重复 01 的排序、02 的 recipe、03 的机制论证；04 不新增 E。
 
-**规则**：README 只做索引；正文按「02-sections / 03-主体 / 04-支撑 / 05-附录 / 09-工作底稿 / 90+ 查阅」放，不把长文塞回 README。目录与文件编号规则见 [IA 整改计划](./_plans/2026-11-12-deliverable-ia-plan.md)。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG；每份 `02-sections/01-GUIDE.md` 嵌本份图，README 不再嵌图。
+**规则**：README 只做索引；正文按「02-sections / 03-主体 / 04-支撑 / 05-附录 / 09-工作底稿 / 90+ 查阅」放，不把长文塞回 README。目录与文件编号规则见 [IA 整改计划](./_plans/2026-11-12-deliverable-ia-plan.md)。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG。**每份**的图由该份 `02-sections/01-GUIDE.md` 嵌；**本页（共享索引）只嵌一张三层信息流总图**，这是唯一例外。
 
 ## 期待 → 数据（验收规格）
 
