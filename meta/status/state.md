@@ -59,7 +59,7 @@ updated: 2026-11-12
 - **2026-11-12 来源黑名单（ADR 0013）**：[excluded-sources](../rules/excluded-sources.md) 常设禁引清单（21 源）；白名单=admitted 卡不另设文件；采/引前查黑名单接进 AGENTS/协议/checklist；P0 四篇 probation 第二信号核实为阴性。
 - **2026-11-11 素材准入重置** → [审计](../audits/2026-11-11-source-purge.md)；宪章 §4 + 18 篇论文/3 个旧网页移出 + 9 条 E 撤回。
 - **2026-11-11 规范主干接线 + 术语 v1**：01–04 定义段接 N/local（[接线报告](../../deliverables/_plans/2026-11-11-trunk-wiring.md)）；[term-baseline](./term-baseline.md) v1 29 词 + [术语审计](../audits/2026-11-11-term-baseline.md)。
-- **2026-11-11 撤回补偿（W 表 + 自测协议）**：[content-repair](../../deliverables/_plans/2026-11-11-content-repair.md)；02 免责密度 −43%，术语表 57→33 行，质量 §12.3 01=87/02=84/03=85/04=86。
+- **2026-11-11 撤回补偿（W 表 + 自测协议）**：[content-repair](../../deliverables/_plans/2026-11-11-content-repair.md)；02 免责密度 −43%，术语表 57→33 行，质量分以 [§12.4 独立修正](../../deliverables/_plans/2026-11-11-quality-review.md) 为现行口径（01=77/02=77/03=73/04=88）；§12.2/§12.3 已作废。
 - **2026-11-11 内容精读 + 长尾清理**：[content-read](../../deliverables/_plans/2026-11-11-content-read.md)；清 40+ 处撤回源数值、修 2 个覆盖率格子、2 处排除源误用。
 - **2026-11-11 代理冷读 + checkpoint**：[cold-read](../../deliverables/_plans/2026-11-11-cold-read.md)（68→86，修 5 处口径/裸词）；质量 §12.2 01=85/02=82/03=83/04=87。
 

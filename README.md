@@ -74,7 +74,7 @@
 | [`topics/`](./topics/) | 按六派沉淀；派 README 是地图，子主题 README 是 dashboard | 结论带等级，冲突显式保留，gap/next 可见 |
 | [`deliverables/`](./deliverables/) | 手册、Deck、图等对外物 | 读者不打开 topics 能完成任务；细节可链 |
 
-支撑目录：`adr/`（结构决策）、`meta/`（约定与模板）。
+支撑目录：`adr/`（结构决策）、`meta/`（**治理层**：rules 规则 / deliverables 交付物治理 / status 状态台账 / templates 模板 / audits·archive 历史 / tools 自检；入口 [meta/AGENTS](./meta/AGENTS.md)）。
 
 **三条规矩**：判断顺流而下，证据逆流而上（deliverables 只从 topics 抽、不新增判断；被指错时先走上游补证，走 [AGENTS 的修复回路](./AGENTS.md)）；上游可以领先下游；每级自带台账。
 
