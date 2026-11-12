@@ -173,6 +173,182 @@ updated: 2026-11-12
 - **F1 是事后解释，不是事前预测。** 「位置 × 成本 × 使能」能解释某机制为何回退，但不能在开跑前判断哪个机制值得；拿它做选型只会得到「都对」的结论。
 - **可能只是三篇论文的共同偏差。** CAI 是作者评自家 RAGFlow，CASEL 是模拟，POLAR 是单一合成基准，三者的部署层观测都是空的（G1）；尺子建在这三篇上，会继承同样的乐观或悲观偏差。
 
+<a id="landscape-2026-11"></a>
+## 生产落地图景（2026-11）
+
+> 2026-11-12 为 [05 落地现状](../../../deliverables/05-production-landscape/README.md) 补的实证页。问题不是「本体有没有用」，而是「谁在生产里跑、什么形态/规模、成本收益、靠谱与否有无证据」。
+>
+> **证据分级**（沿用 05 README 的方法，但准入仍按 CHARTER §4）：A = 一手工程复盘/公司生产报告，披露规模 + 成本或失败/限制；B = 具名组织在生产中使用/采用，有独立信号；C = 厂商产品页/白皮书/赞助调查/二手转述，只作线索。**只有 `admitted`（含 probation）能进「发现」；C 只进「供给面线索」，不撑判断。**
+
+### 证据台账（截至 2026-11-12）
+
+| 来源 | 日期 | 类型 / 准入 | 它证明什么 | 它不能证明什么 |
+|---|---|---|---|---|
+| [中泰证券 QCon 2026](../../../src/web/qcon-2026-zhongtai-ontology/qcon-2026-zhongtai-ontology.card.md) | 2026-09-02 | talk / `admitted` | 900 万客户、6,000+ 指标的券商环境；本体语义层（指标五要素、7,000+ 同义词）；生成/执行分离；三个退役判例；权限到属性级 | 单券商；议题页只有摘要，无成本/失败率/对照；不能外推全行业 |
+| [中泰证券 CCSA TC601 案例](../../../src/web/modb-2026-zhongtai-ontology/modb-2026-zhongtai-ontology.card.md) | 2026-10-15 | engineering / `admitted` | 9,137 知识目录、6,503 指标文档、2,622 表、12 万+ 血缘；DataAgent 生产；业务本体仍在信用业务验证 | 规模是知识资产数，不是本体实体/查询量；无成本/准确率；单公司 |
+| [Snowflake 内部 context layer](../../../src/web/snowflake-context-layer-2026/snowflake-context-layer-2026.card.md) | 2026-08-17 | engineering / `admitted (probation)` | 5,600 员工、320k 查询/月；semantic views 版本化/CI；朴素语义视图延迟与预聚合维护爆炸 | 单公司自述；无外部采用；准确率/成本缺失 |
+| [Sigma 2,883-model semantic layer](../../../src/web/sigma-semantic-layer-2026/sigma-semantic-layer-2026.card.md) | 2026-10-27 | engineering / `admitted (probation)` | 2,883 dbt 模型、63 job、6 region；语义层版本化/列级暴露/PII guardrail；dbt Summit 2026 | 供应商自己跑自己的产品；无成本/失败/准确率；不是本体推理 |
+| [Netflix 本体驱动可观测性](../../../src/web/netflix-ontology-observability-2026/netflix-ontology-observability-2026.card.md) | 2026-10-16 | engineering / `admitted` | OWL/SHACL/SPARQL + 自建 QuipuDB；49,000 目录/2B 请求/日/38M 日志/秒；12 namespace | 无成本/收益；自建图存储是例外；假设有时错 |
+
+**证据配比（谁在证明什么）**：5 条 admitted/probation 里，严格意义的 OWL/对象本体只有 **Netflix**（可观测性领域、自建图存储）；**中泰**是治理语义层已生产、业务本体在信用业务**试点**；**Snowflake / Sigma** 是 BI/数仓语义层（指标、维度、verified query），不是本体推理。所以「本体在生产」的 A 类证据是 **1 条领域专用 + 1 条试点**，不是 4 条。把「语义层落地」读成「本体落地」会高估现状；这也是 05 必须先讲清配比、再讲形态的原因。
+
+**供给面线索（C，未过门，只作「有方案」的证据，不撑采用/效果）**
+
+| 线索 | 日期 | 它是什么 | 为什么不能撑结论 |
+|---|---|---|---|
+| [Palantir 2026-10 公告](https://markets.businessinsider.com/news/stocks/palantir-announces-delivery-of-critical-sovereign-ai-outcomes-to-big-customers-1036651855) | 2026-10-21 | Foundry/AIP/Ontology/Apollo 在 L3Harris、McCarthy、Nvidia、Ondas/Regna、Tampa General 等落地 | 公司新闻稿；无规模/成本/失败；客户名单不等于效果 |
+| [阿里云 PolarDB 本体知识平台](https://www.alibabacloud.com/help/zh/polardb/polardb-for-postgresql/what-is-ontology-knowledge-platform) | 2026-10-21 | 数据库内嵌本体建模 + LLM 自动生成 + GraphRAG + Agent skills；灰度；按组件规格计费 | 厂商产品文档；无客户/规模/失败；只证产品存在 |
+| [阿里云 Context0 本体知识库](https://help.aliyun.com/zh/polardb/polardb-for-xscale/context0-build-ontology-knowledge-base) | 2026-09-23 | 知识库级 schema：类型≤100、关系≤300、每类型≤50 属性；版本、证据、自然语言抽取指令 | 同上；且是「薄本体」产品上限，不是企业级本体 |
+| [腾讯 Topbase](https://zhuangxiaoyan.blog.csdn.net/article/details/155427520) | 2025-12-02 | 226 类概念、1 亿+实体、22 亿三元组；微信搜一搜/信息流/问答 | **G1 超窗**（2025-12），只能作背景；无成本/失败；二手技术文 |
+| [Ant TuGraph](https://github.com/TuGraph-family/tugraph-db) | last push 2026-05-11 | 开源图数据库；Apache-2.0；1,768 stars/42 contributors；LDBC FinBench/金融风控 | `last_push` < 2026-06-01，G1 失败；图数据库≠本体平台；无 2026 生产报告 |
+| [Atlan: KG pitfalls](https://atlan.com/know/ai-agent/knowledge-graph/enterprise-knowledge-graph-pitfalls/) | 2026-09-10 | 「<15% 企业 KG 项目过 pilot」；组织/技术/经济三类失败 | 厂商二手综述，引用 Improvado 2026 synthesis；原始统计未核；只能当线索 |
+
+### F7 · 生产中的本体以「底座 + 薄本体」为主，不是自建本体塔
+
+**判断**：在我们能核到的 2026 生产/试点案例里，本体/语义层都跑在已有底座上——数仓语义层（Snowflake）、dbt/Dagster 语义工程（Sigma）、治理知识库/DataAgent（中泰）。阿里 PolarDB/Context0 与 Palantir 只有产品文档/客户名单（C），不计入生产案例。**没有发现「从零自建通用本体平台」的公开成功案例；唯一例外是 Netflix 自建 QuipuDB（领域专用图存储，不是通用平台，且无成本数）。**
+
+**证据**：
+- 中泰明确写「本体建设不必从零开始，指标治理、元数据与血缘是本体最重要的输入」；生产先用治理语义层，业务本体仍在信用业务验证。
+- Snowflake 的 semantic views 长在数仓/BI 上；Sigma 的语义层长在 dbt/Dagster/仓库上；阿里的本体平台长在 PolarDB 上，且 Context0 把本体限制在知识库级（类型≤100、关系≤300）。
+- Palantir 是重型平台路径：客户买的是 Foundry/Ontology/AIP，不是自己造本体引擎。
+
+**限定**：这是**公开案例的选择**，不是行业普查；「底座」包括公司自研平台（中泰的 DataAgent、腾讯 Topbase），所以不能把「平台承载」读成「一定买商业产品」。反例搜索（自建本体塔的成功案例）未找到，不等于不存在。
+
+**等级**：`已核`（公开证据的选择）；推广到「所有企业」是 `推测`。
+
+### F8 · 失败模式集中在语义定义、权限与维护
+
+**判断**：生产案例披露的坑，集中在**语义定义、维护、权限**，不是图查询性能：影子实体（表→实体自动映射）、口径漂移（同名不同源/全半角）、权限按人特批、聚合结果定位到个人、朴素语义视图延迟、预聚合管线维护爆炸。
+
+**证据**：
+- 中泰：三个退役判例（指标值顶点、万能组织类、任职承接）；「数据库表一键转实体」产出影子实体，源表一变全错且无人知道；权限按人特批、聚合泄露。
+- Snowflake：把 semantic view 指向十亿行原始事件表，每次提问 crawl/join，延迟巨大；自建 Dynamic Tables 预聚合后维护量爆炸。
+- Sigma：语义层要版本化、PII/SQL guardrail、列级暴露控制，否则每个 AI surface 各说各话。
+- 反例线索：Atlan 的「<15% 过 pilot」把失败归为组织/技术/经济三类（ontology drift、schema rigidity、entity resolution、ontology tax），但它是厂商二手综述，只能作线索，不能当统计。
+
+**限定**：这些是工程报告里的失败形态，不是失败率；不能推出「图引擎不重要」，只能说「公开复盘里它不是主诉」。
+
+**等级**：`已核`（多案例工程报告）；「多数项目失败于此」是 `推测`。
+
+### F9 · 成本拐点降的是启动/抽取成本，不是定义治理/维护成本
+
+**判断**：LLM 让「从数据/文档里抽本体、生成候选 schema、写摘要/别名/问法」变便宜；但没有降低「口径由谁定、同义词谁维护、权限怎么算、版本怎么退役」的成本。**真正的重活从建模前移到语义治理。**
+
+**证据**：
+- 中泰：6,503 个指标文档、9,137 份知识目录、12 万+ 血缘；7,000+ 同义词；LLM 只补充业务摘要/别名/问法，技术事实由程序整理，模型解释必须过来源证据核验。
+- Snowflake：5,600 员工/320k 查询的语义层要版本控制、peer review、CI/CD、eval、materialization；早期预聚合管线越扩越难维护。
+- Sigma：2,883 个模型、63 个 job、6 个 region 持续 build/deploy；语义层是长期软件工程，不是一次性建模。
+- 阿里：PolarDB/Context0 用 LLM 自动分析数据结构、样本发现生成候选 schema，把「建」的门槛降下来；但 Context0 仍要求显式版本、应用、权限、证据。
+
+**限定**：没有一条来源给出 TCO/人月/金额；这些都是**工作量代理**（文档数、模型数、job 数、同义词数），不能当成本曲线。成本拐点是 `推测`。
+
+**等级**：`推测`（方向有多个工程信号，缺成本数）。
+
+### F10 · 公开证据呈「美国偏语义层/上下文层、中国偏大厂平台/内部图谱」的不对称
+
+**判断**：2026-06 后的公开生产写作里，美国更多是**语义层/上下文层**的规模与失败披露（Snowflake、Sigma、dbt/AtScale、Palantir 客户公告）；中国更多是**大厂平台产品**（阿里 PolarDB/Context0、蚂蚁 TuGraph/GraphRAG、腾讯 Topbase）和**单点金融实践**（中泰），公开的独立生产复盘、成本/失败披露更少。
+
+**证据**：
+- 美国：Snowflake/Sigma 给出用户数/模型数/失败形态；Palantir 给出客户名单；dbt/AtScale 给出生态讨论。
+- 中国：阿里有 2026-09/10 的产品文档（C）；中泰有 2026-09/10 的会议+标准工作组案例（A）；腾讯 Topbase 的规模数是 2025-12（G1 超窗）；蚂蚁 TuGraph 的 `last_push` 是 2026-05（G1 失败）。
+- 中国不是没有东西：CCSA TC601 WG15 已立项《本体建模技术要求》《本体智能平台技术要求》《知识管理能力成熟度模型》等标准，说明生态在制度化；但标准只定词/合格性，不证效果。
+
+**限定**：这是**公开证据的描述**，不是产业能力排序；中国材料受公开意愿、语言、渠道影响，不能把「没公开」读成「没做」。
+
+**等级**：`已核`（证据基座描述）；「美国更成熟/中国更落后」是 `推测`，且不是本页要回答的问题。
+
+### 对 05 的四句话
+
+1. **形态**：生产里跑的是「底座 + 薄本体/语义层」，不是自建本体塔；重型平台（Palantir）与轻语义层（Snowflake/Sigma/dbt）是两端，中间是行业平台（阿里 PolarDB/Context0、中泰 DataAgent）。
+2. **规模**：公开可核的规模从「2,883 个语义模型/6 个 region」到「5,600 员工/320k 查询/月」到「900 万客户/6,000+ 指标/7,000+ 同义词」，但都缺同一口径的成本与效果。
+3. **靠谱**：有条件——定义有 owner、执行确定、权限可计算、证据不足能停；失败形态是影子实体/口径漂移/权限旁路/延迟，不是图查询。
+4. **缺口**：没有一条同时披露「规模 + 成本 + 失败 + 独立印证」的 A 类全量案例；中国大厂缺 2026-06 后的外部采用/成本/失败证据。05 应把这个缺口写成主线，而不是用厂商材料填满。
+
+
+<a id="okf-2026-11"></a>
+## OKF / Wiki 过渡层（2026-11）
+
+> 2026-11-12 补。问题：直接上完整本体太贵，能不能先用 Wiki/OKF 做前置层，再衔接本体？本节只做**定义、证据与毕业判据**，不写实施 recipe。
+>
+> **一句话**：OKF 是 Google 的开放知识格式（v0.1 2026-06-12，v0.2 2026-07-24），把 Karpathy 的 LLM Wiki 模式形式化；它是**知识容器**，不是本体——能解决可读/可审/可版本化/可溯源，不解决约束、推理、查询执行、策略/权限。
+
+### 它是什么（Google 官方定义）
+
+- **格式，不是服务**：一个 OKF bundle 是“一个目录的 markdown 文件”；一个 concept 一个文件，文件路径就是 concept 的 id；不需要 SDK/runtime。
+- **frontmatter**：v0.1 必填只有 `type`，约定 `title`/`description`/`resource`/`tags`/`timestamp`；正文是 markdown；concept 之间用普通 markdown 链接，链接图就是知识图；`index.md` 做渐进披露，`log.md` 做历史。
+- **v0.2 信任信号**（2026-07-24，全部 opt-in）：`sources`（含 author/usage_count/last_modified）、`generated`/`verified`（谁生成、谁独立确认）、`status`/`stale_after`（生命周期/过期）、`attestation`（数值是否按约定计算）。它记录信号，不给“可信度分数”。
+- **来源**：Google Cloud 博客 2026-06-12 / 2026-07-24；规范与示例在 `GoogleCloudPlatform/open-knowledge-format`；Karpathy 的 LLM Wiki gist 被官方明确引用（AK = Andrej Karpathy）。
+
+### 它不是什么
+
+| 它像 | 但它不是 |
+|---|---|
+| 目录 + 文件 + 链接 | 不是 OWL/RDF 本体：没有 class/property 的公理语义 |
+| frontmatter 有 type/tags | 不是 schema：不保证类型/基数/关系约束 |
+| 链接成图 | 不是可查询的 KG：没有 SPARQL/图查询执行 |
+| v0.2 有 verified/freshness | 不是策略/权限：不执行 allow/deny，不做行/列/属性级授权 |
+| 可被 agent 读 | 不是推理：不做 entailment/一致性检查 |
+
+**关键区分**（社区 ADR 的说法）：OKF concepts 是**声明性知识**，很多消费者读；本体/语义层是**可执行语义**，机器要求值/校验/拦。两者可以组合，不能互相替代。
+
+### 证据台账
+
+| 来源 | 日期 | 类型/准入 | 它证明什么 | 它不能证明什么 |
+|---|---|---|---|---|
+| [Google OKF v0.1](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing) | 2026-06-12 | 官方博客 / C（定义） | OKF 是开放的 markdown+YAML 格式；受 Karpathy LLM Wiki 启发 | 采用/效果；不是标准组织标准 |
+| [Google OKF v0.2](https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals) | 2026-07-24 | 官方博客 / C（定义） | 加 provenance/trust/freshness/lifecycle/attestation | 信任信号≠真实性；仍需 producer 审计 |
+| [Knowledge Catalog 集成](https://cloud.google.com/blog/products/data-analytics/scale-okf-bundles-across-an-organization-with-knowledge-catalog) | 2026-08-26 | 官方博客 / B（产品能力） | OKF bundle 可 push 成 Knowledge Catalog Entry，继承 IAM；sample Acme Retail 9 leaf/17 entries | 客户采用/规模/效果；sample 是合成 |
+| [中泰证券 CCSA 案例](../../../src/web/modb-2026-zhongtai-ontology/modb-2026-zhongtai-ontology.card.md) | 2026-10-15 | engineering / `admitted` | 用 OKF 组织 9,137 知识目录/6,503 指标文档/2,622 表/12 万+ 血缘；三泳道+证据门禁；业务本体验证中 | 业务本体全量；成本/准确率；单公司 |
+| [社区 ADR：不把 OKF 用于 skills](https://github.com/laurigates/claude-plugins/blob/main/docs/adrs/0021-open-knowledge-format-mapping-not-adopted.md) | 2026-07-12/11-02 | 工程决策 / C | 声明性知识 vs 可执行能力的区分；OKF 适合多消费者知识，不适合单 runtime 过程 | 不是生产采用；单项目 |
+| [OKF interop 批评](https://raw.githubusercontent.com/chrisgagne/grounded-forge/refs/heads/main/docs/architecture/okf-interop.md) | 2026-07 | 工程文档 / C | OKF 标准化容器，不标准化 producer/审计；“conformant bundle of confabulated claims validates cleanly” | 不是采用/效果；单项目 |
+
+### 从 OKF 到本体：能映射什么、不能映射什么
+
+| OKF 元素 | 可能映射到 | 自动/人审 | 缺什么 |
+|---|---|---|---|
+| concept 文件 | class 或 individual | 人审判定“类型还是实例” | 身份/时点/同名不同义 |
+| `type` | `rdf:type` / class | 半自动 | 类型层级/公理 |
+| `tags` | 标签/属性/受控词 | 半自动 | 正式属性域/值域 |
+| markdown links | 关系边 | 半自动（链接语义靠正文） | 关系类型/基数/方向 |
+| `sources`/`verified`/`status` | provenance/trust/lifecycle | 可自动 | 业务约束/权限 |
+| 正文表格/示例 | 约束候选 | 人审 | SHACL/OWL 形式化、执行 |
+| `attestation` | 计算约定 | 人审 | 查询执行/策略 |
+
+**结论**：OKF 能做“概念/术语/来源/owner/版本”的前置层；不能自动变成可执行本体。升级必须补：**形式约束（SHACL/OWL）、查询/推理执行、策略/权限、身份/时点、版本化 schema**。
+
+### 毕业判据：W0 → W1 → W2 → W3
+
+| 层 | 形态 | 能做什么 | 典型失败 | 升级信号 |
+|---|---|---|---|---|
+| **W0** | 纯 Wiki/文档 | 人读、搜索、审阅 | stale、无 owner、口径漂移 | 同一概念多页面；开始要跨页关系 |
+| **W1** | OKF/结构化 Markdown | 多消费者读、版本化、来源/信任/新鲜度 | 链接成图但无约束；agent 写库 trust 崩 | 需要约束/权限执行；多 agent 要稳定 schema；跨页关系查询 |
+| **W2** | 轻本体/语义层 | 概念/关系/约束/版本/权限；可查询/校验 | 维护成本；影子实体；权限旁路 | 跨系统对象/动作；高价值应用；重型平台 |
+| **W3** | 重型本体平台 | 对象/关系/动作/权限/应用一体 | 平台费/实施重/锁定 | 不适合多数团队 |
+
+**可观测的毕业信号**（命中 2 条以上再升级）：
+1. 同一概念在 ≥3 个页面/文档里重复，且已有两个“官方版本”。
+2. 业务问题需要**跨页关系查询**（不是关键词/向量检索）。
+3. 约束/权限**必须执行**（不能只在 prompt 里提醒）。
+4. ≥2 个 agent/应用需要**同一套稳定 schema**。
+5. 维护人时持续上升，而问答质量不升（stale/冲突）。
+6. 审计要求“这个数怎么算出来的”可追溯，而 OKF 只有来源/验证信号，没有计算链。
+
+**Wiki/OKF 就够的场景**：文档/制度/runbook/术语表/来源索引；单团队、低冲突、只读；agent 只需要上下文，不需要执行。
+
+### 反例与边界
+
+- **OKF 不是“便宜的本体”**：它把“知识可读/可审/可版本化”做便宜了，但没把“语义可执行”做便宜；把 OKF 当本体买，最后还是要补约束/权限/查询。
+- **agent 写库的信任问题**：v0.2 的 `verified` 是信号，不是保证；没有独立 producer/审计，conformance 不等于正确。
+- **规模不是毕业信号**：有 158 万 Markdown 节点的 OKF 超集（NKB 技术 note），说明 OKF 能装很大；真正触发升级的是**语义/执行/权限**，不是文件数。
+- **标准只定词**：Google 是公司，不是标准组织；OKF 是开放规范，不是 ISO/W3C 标准。引用时写“Google OKF”，不要写“行业标准”。
+
+### 对 05 的用法
+
+05 应把 OKF/Wiki 写成**过渡层**，不是本体的替代：
+- 对读者：先用 OKF 统一“概念/术语/来源/owner/版本”，再判断是否毕业到本体/语义层。
+- 对厂商：问“你的 OKF/知识库能不能导出/映射到本体？能不能执行约束/权限？”，而不是只看“支持 Markdown”。
+- 对证据：中泰是 A 类“OKF 前置层 + 语义层生产 + 业务本体验证”的中国案例；Google Knowledge Catalog 是 B 类产品能力；**截至 2026-11-12，未找到 OKF 直接替代本体的具名生产案例**。
+
 ## 关联
 
 - [findings](./findings.md) · [frontier](./frontier.md)

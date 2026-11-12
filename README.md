@@ -115,7 +115,7 @@
 
 - `src/` — 论文一篇一目录（PDF + 三份 MD + card + digest）；开源 pin commit；材料卡（HN + 在役标准）+ [manifest](./src/papers/manifest.md)。
 - `topics/` — 六派成文；跨派结论见 [conclusions](./topics/conclusions.md)；形态轴见 [execution-forms](./topics/execution-forms.md)。
-- `deliverables/` — 5 个子目录：[01 现状](./deliverables/01-capability-status/README.md) / [02 工程实施](./deliverables/02-engineering-playbook/README.md) / [03 机制参考](./deliverables/03-mechanism-reference/README.md) / [04 合成走查](./deliverables/04-worked-example/README.md) / [05 落地现状](./deliverables/05-production-landscape/README.md)（**实证份，证据待补、尚无正文**）。每份的定位与边界见它自己的 `SCOPE.md`。原 7 章书稿计划已废弃，没有独立 handbook。
+- `deliverables/` — 5 个子目录：[01 现状](./deliverables/01-capability-status/README.md) / [02 工程实施](./deliverables/02-engineering-playbook/README.md) / [03 机制参考](./deliverables/03-mechanism-reference/README.md) / [04 合成走查](./deliverables/04-worked-example/README.md) / [05 落地现状](./deliverables/05-production-landscape/README.md)（**实证份，已有正文；成本/外部采用仍缺**）。每份的定位与边界见它自己的 `SCOPE.md`。原 7 章书稿计划已废弃，没有独立 handbook。
 
 **素材准入（2026-06-01 起算）**：18 篇论文 + 3 个旧网页材料已移出，9 条 E 撤回；被删源的叙述页对账已基本完成（见 [state](./meta/status/state.md)）。**「现在最该做什么」只看 [state 的「当前目标」](./meta/status/state.md#当前目标下一步做什么)**，本页不另立优先级。最大的研究缺口是没有一条结论被独立复现；边界见 [state](./meta/status/state.md)。
 

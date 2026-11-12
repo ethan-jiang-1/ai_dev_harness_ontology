@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+  <title id="title">本体落地的四层结构：底座五选一，语义层统一</title>
+  <desc id="desc">应用层、语义层、底座/载体层、数据/治理层。底座层并列五种常见选择：数仓语义层、本体/知识图谱平台、图数据库、数据库内嵌本体、Wiki/OKF。Wiki/OKF 只是其中一种：成本低、对 LLM 友好，可以长期用，也可以按需升级到语义层。语义层负责概念/指标/同义词/权限/版本/证据；数据/治理层提供表、指标、血缘、权限、文档。</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef4fa"/>
+    </linearGradient>
+    <linearGradient id="app" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#dbeafe"/>
+      <stop offset="1" stop-color="#bfdbfe"/>
+    </linearGradient>
+    <linearGradient id="sem" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#dcfce7"/>
+      <stop offset="1" stop-color="#bbf7d0"/>
+    </linearGradient>
+    <linearGradient id="plat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fef3c7"/>
+      <stop offset="1" stop-color="#fde68a"/>
+    </linearGradient>
+    <linearGradient id="okf" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e0f2fe"/>
+      <stop offset="1" stop-color="#bae6fd"/>
+    </linearGradient>
+    <linearGradient id="data" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f3e8ff"/>
+      <stop offset="1" stop-color="#e9d5ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="780" fill="url(#bg)"/>
+  <text x="40" y="44" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="24" font-weight="700" fill="#0f172a">本体落地的四层结构：底座五选一，语义层统一</text>
+  <text x="40" y="72" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="13" fill="#475569">底座有五种常见选择，可单选也可组合。Wiki/OKF 只是其中一种：成本低、对 LLM 友好；可以长期用，也可以按需升级。</text>
+
+  <!-- layer labels -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="118" font-size="14" font-weight="700" fill="#1e3a8a">应用层</text>
+    <text x="40" y="140" font-size="11" fill="#334155">谁在消费</text>
+
+    <text x="40" y="238" font-size="14" font-weight="700" fill="#166534">语义层</text>
+    <text x="40" y="260" font-size="11" fill="#334155">机器执行什么</text>
+
+    <text x="40" y="392" font-size="14" font-weight="700" fill="#92400e">底座/载体层</text>
+    <text x="40" y="414" font-size="11" fill="#334155">本体长在哪（五选一）</text>
+
+    <text x="40" y="572" font-size="14" font-weight="700" fill="#6b21a8">数据/治理层</text>
+    <text x="40" y="594" font-size="11" fill="#334155">语义从哪来</text>
+  </g>
+
+  <!-- application layer -->
+  <rect x="300" y="95" width="680" height="80" rx="12" fill="url(#app)" stroke="#60a5fa" filter="url(#shadow)"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="13" fill="#1e3a8a" text-anchor="middle">
+    <text x="400" y="127" font-weight="700">问数 / BI</text>
+    <text x="400" y="147" font-size="11">同一指标，同一口径</text>
+    <text x="555" y="127" font-weight="700">Agent / 工具调用</text>
+    <text x="555" y="147" font-size="11">先查语义，再执行</text>
+    <text x="710" y="127" font-weight="700">风控 / 审批</text>
+    <text x="710" y="147" font-size="11">权限即计算</text>
+    <text x="875" y="127" font-weight="700">运维 / 客服 / 研发</text>
+    <text x="875" y="147" font-size="11">跨系统同一对象</text>
+  </g>
+
+  <!-- semantic layer -->
+  <rect x="300" y="205" width="680" height="112" rx="12" fill="url(#sem)" stroke="#34d399" filter="url(#shadow)"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" text-anchor="middle">
+    <text x="640" y="235" font-size="14" font-weight="700" fill="#065f46">本体 / 指标 / 同义词 / 口径 / 权限 / 版本 / 证据</text>
+    <g font-size="11" fill="#065f46">
+      <rect x="322" y="255" width="146" height="42" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+      <text x="395" y="273" font-weight="700">概念/关系</text><text x="395" y="289">对象、属性、约束</text>
+
+      <rect x="480" y="255" width="146" height="42" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+      <text x="553" y="273" font-weight="700">指标五要素</text><text x="553" y="289">名称/口径/单位/来源/owner</text>
+
+      <rect x="638" y="255" width="146" height="42" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+      <text x="711" y="273" font-weight="700">同义词/问法</text><text x="711" y="289">7,000+ 同义词不是小数</text>
+
+      <rect x="796" y="255" width="160" height="42" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+      <text x="876" y="273" font-weight="700">权限 / 证据 / 版本</text><text x="876" y="289">行列/属性级 + 可追溯 + 可退役</text>
+    </g>
+  </g>
+
+  <!-- platform layer: five options in one row -->
+  <rect x="300" y="350" width="680" height="160" rx="12" fill="url(#plat)" stroke="#f59e0b" filter="url(#shadow)"/>
+  <text x="640" y="374" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="11" fill="#92400e" text-anchor="middle">五种底座：任选其一，或组合使用；语义层都长在所选底座上</text>
+
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="10" fill="#78350f" text-anchor="middle">
+    <rect x="312" y="386" width="120" height="108" rx="8" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="372" y="406" font-size="12" font-weight="700">数仓语义层</text>
+    <text x="372" y="426">Snowflake</text>
+    <text x="372" y="442">dbt / Sigma</text>
+    <text x="372" y="462" fill="#92400e">公开证据多</text>
+
+    <rect x="444" y="386" width="120" height="108" rx="8" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="504" y="406" font-size="12" font-weight="700">本体平台</text>
+    <text x="504" y="426">Palantir / Stardog</text>
+    <text x="504" y="442">Ontotext</text>
+    <text x="504" y="462" fill="#92400e">重型、贵、窄</text>
+
+    <rect x="576" y="386" width="120" height="108" rx="8" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="636" y="406" font-size="12" font-weight="700">图数据库</text>
+    <text x="636" y="426">Neo4j</text>
+    <text x="636" y="442">蚂蚁 TuGraph</text>
+    <text x="636" y="462" fill="#92400e">多跳、关系</text>
+
+    <rect x="708" y="386" width="120" height="108" rx="8" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="768" y="406" font-size="12" font-weight="700">数据库内嵌</text>
+    <text x="768" y="426">阿里 PolarDB</text>
+    <text x="768" y="442">Context0</text>
+    <text x="768" y="462" fill="#92400e">薄本体</text>
+
+    <rect x="840" y="386" width="128" height="108" rx="8" fill="url(#okf)" stroke="#0284c7"/>
+    <text x="904" y="406" font-size="12" font-weight="700">Wiki / OKF</text>
+    <text x="904" y="426">Markdown + YAML</text>
+    <text x="904" y="442">concept / links</text>
+    <text x="904" y="462" fill="#075985">低成本 · LLM 友好</text>
+  </g>
+
+  <!-- data layer -->
+  <rect x="300" y="540" width="680" height="104" rx="12" fill="url(#data)" stroke="#c084fc" filter="url(#shadow)"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="12" fill="#581c87" text-anchor="middle">
+    <text x="380" y="574" font-weight="700">表 / 字段 / 码值</text>
+    <text x="380" y="594" font-size="10">物理事实</text>
+    <text x="515" y="574" font-weight="700">指标 / 规则</text>
+    <text x="515" y="594" font-size="10">口径</text>
+    <text x="650" y="574" font-weight="700">血缘 / 质量</text>
+    <text x="650" y="594" font-size="10">可追溯</text>
+    <text x="785" y="574" font-weight="700">权限 / 组织</text>
+    <text x="785" y="594" font-size="10">行列/属性</text>
+    <text x="920" y="574" font-weight="700">文档 / 经验</text>
+    <text x="920" y="594" font-size="10">非结构化</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#475569" stroke-width="2" marker-end="url(#arrow)" fill="none">
+    <line x1="640" y1="540" x2="640" y2="512"/>
+    <line x1="640" y1="350" x2="640" y2="319"/>
+    <line x1="640" y1="205" x2="640" y2="177"/>
+  </g>
+
+  <!-- bottom note -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="300" y="686" font-size="11" fill="#0f172a" font-weight="700">Wiki/OKF 的定位：低成本、LLM 友好</text>
+    <text x="300" y="706" font-size="10" fill="#334155">把知识组织成可读、可审、可版本化、可溯源的 concept（文档/术语/来源/信任），让大模型直接消费；</text>
+    <text x="300" y="722" font-size="10" fill="#334155">需要执行约束/权限/跨页关系时，再抬到语义层/本体。可以长期停在 OKF；公开证据里还没有完成升级的案例，长期停在 OKF 也合理。</text>
+    <text x="300" y="746" font-size="9" fill="#94a3b8">注：图为形态示意，不按厂商市场份额排序；C 类产品存在不等于生产采用。OKF = Google Open Knowledge Format（v0.1 2026-06 / v0.2 2026-07），受 Karpathy LLM Wiki 启发。</text>
+  </g>
+
+  <!-- right notes -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="1000" y="95" width="170" height="220" rx="10" fill="#ffffff" stroke="#cbd5e1" filter="url(#shadow)"/>
+    <text x="1014" y="119" font-size="12" font-weight="700" fill="#0f172a">读图</text>
+    <text x="1014" y="143" font-size="10" fill="#334155">1. 先选底座：</text>
+    <text x="1014" y="159" font-size="10" fill="#334155">   五选一，或组合</text>
+    <text x="1014" y="181" font-size="10" fill="#334155">2. 再看语义层：</text>
+    <text x="1014" y="197" font-size="10" fill="#334155">   概念/指标/权限/版本</text>
+    <text x="1014" y="219" font-size="10" fill="#334155">3. 再看谁养：</text>
+    <text x="1014" y="235" font-size="10" fill="#334155">   口径/权限/退役有 owner？</text>
+    <text x="1014" y="257" font-size="10" fill="#334155">4. 再看证据：</text>
+    <text x="1014" y="273" font-size="10" fill="#b91c1c">   规模+失败+独立印证？</text>
+    <text x="1014" y="295" font-size="10" fill="#b91c1c">C 类产品页只作线索。</text>
+
+    <rect x="1000" y="335" width="170" height="150" rx="10" fill="#ffffff" stroke="#cbd5e1" filter="url(#shadow)"/>
+    <text x="1014" y="359" font-size="12" font-weight="700" fill="#0f172a">美国公开证据</text>
+    <text x="1014" y="381" font-size="10" fill="#334155">强在数仓语义层/上下文层</text>
+    <text x="1014" y="399" font-size="10" fill="#64748b">Snowflake / Sigma / dbt</text>
+    <text x="1014" y="417" font-size="10" fill="#64748b">Netflix（自建 QuipuDB）</text>
+    <text x="1014" y="435" font-size="10" fill="#64748b">Palantir（重型平台）</text>
+    <text x="1014" y="457" font-size="10" fill="#b91c1c">单公司自述为主，缺 TCO/ROI</text>
+
+    <rect x="1000" y="505" width="170" height="170" rx="10" fill="#ffffff" stroke="#cbd5e1" filter="url(#shadow)"/>
+    <text x="1014" y="529" font-size="12" font-weight="700" fill="#0f172a">中国大厂方案</text>
+    <text x="1014" y="551" font-size="10" fill="#334155">阿里 PolarDB/Context0</text>
+    <text x="1014" y="569" font-size="10" fill="#334155">蚂蚁 TuGraph（G1 超窗）</text>
+    <text x="1014" y="587" font-size="10" fill="#334155">腾讯 DataBuddy/Topbase</text>
+    <text x="1014" y="605" font-size="10" fill="#334155">华为 DataArts（公测）</text>
+    <text x="1014" y="623" font-size="10" fill="#334155">京东 Oxygen（自报）</text>
+    <text x="1014" y="641" font-size="10" fill="#334155">京东海博（OKF）</text>
+    <text x="1014" y="661" font-size="10" fill="#b91c1c">产品存在 ≠ 生产采用</text>
+  </g>
+</svg>

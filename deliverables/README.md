@@ -16,7 +16,7 @@ updated: 2026-11-12
 >
 > **2026-11-11 证据重置**：按被删源写成的段落重写完成前不得作为结论；撤回清单以 [审计](../meta/audits/2026-11-11-source-purge.md) 为唯一出处。定义已接规范主干（定义句标 `（N: 标准名）` 或 `（local）`）；收口记录见 [_plans 索引](./_plans/README.md)。
 >
-> **定位权威（[ADR 0014](../adr/0014-deliverable-scope-single-home.md)）**：**每份的初心/定性/边界/红线以它自己的 `SCOPE.md` 为准**；[meta/deliverables/scope](../meta/deliverables/scope.md) 只是五份总索引与共用规矩。改/建任何交付物前，先读该份 `SCOPE.md`。**04 是合成「怎么建」示例；新增 [05 落地现状](./05-production-landscape/README.md) 才是「业界真实怎么样」的实证份（证据待补）。**
+> **定位权威（[ADR 0014](../adr/0014-deliverable-scope-single-home.md)）**：**每份的初心/定性/边界/红线以它自己的 `SCOPE.md` 为准**；[meta/deliverables/scope](../meta/deliverables/scope.md) 只是五份总索引与共用规矩。改/建任何交付物前，先读该份 `SCOPE.md`。**04 是合成「怎么建」示例；新增 [05 落地现状](./05-production-landscape/README.md) 才是「业界真实怎么样」的实证份（已有正文；成本/外部采用仍缺）。**
 
 ## 0. 读者与写法：deliverables 是给人的成品
 
@@ -60,7 +60,7 @@ updated: 2026-11-12
 | [03-mechanism-reference](./03-mechanism-reference/README.md) | 为什么是六个位置、三根分类轴怎么分、15 条边界 | 入口 + 六张位置卡 + 谱外页 + 三张横切页 + 证据台账 | draft | E-xx + [topics/README](../topics/README.md) |
 | └ [附录：约束强度谱](03-mechanism-reference/05-appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字）；位置细节以卡为准 | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
 | [04-worked-example](./04-worked-example/README.md) | 本体怎么建到可消费、怎么查、怎么治 | 建 / 用 / 治三分册 + 验收 | draft | E-xx（含 E-21/E-22）+ 03/querying/01/access-control；未入库 signal |
-| [05-production-landscape](./05-production-landscape/README.md) | 业界真实落地现状、成本收益、靠谱与否有无证据 | 实证现状（**证据待补，不编**） | seed | 真实生产/业界证据（待补，CHARTER §4.4） |
+| [05-production-landscape](./05-production-landscape/README.md) | 业界真实落地现状、成本收益、靠谱与否有无证据 | 实证现状（**已有正文：5 条 admitted/probation + 10 条线索；成本/外部采用仍缺**） | draft | 真实生产/业界证据（5 条 admitted/probation，CHARTER §4.4） |
 
 > **04 与 05 的分界**：04 是「你可以怎么建」的**合成示例**（fixture 期望值，不证明生产）；05 是「业界实际怎么样」的**实证现状**（须真实生产证据）。定位详见 [meta/deliverable-scope](../meta/deliverables/scope.md)。
 
@@ -102,7 +102,7 @@ updated: 2026-11-12
 
 ## 统一阅读结构
 
-01–04 内容不同，但**对读者的骨架是同一套**（05 目前只有定位与缺口，还没有正文，不套这套骨架）。每份开头都有一张同样的读者卡（读者 / 回答 / 不回答），然后从同一层进入：
+01–04 内容不同，但**对读者的骨架是同一套**。05 是实证报告，用 00/01/02/03/04/04b/05/06/07/08/90 的骨架（一页答案 → 导读 → 地图 → 美/中 → OKF/Wiki 过渡层 → 经济 → 案例 → 决策 → 边界 → 来源），不套 01–04 的能力/recipe 骨架；但同样有读者卡与证据分级。
 
 | 节 | 回答什么 | 01 现状 | 02 工程 | 03 机制 | 04 合成走查 |
 |---|---|---|---|---|---|
@@ -138,9 +138,9 @@ updated: 2026-11-12
 | [02 工程实施](./02-engineering-playbook/README.md) | 拿本体做某件事，具体怎么做 | 工程负责人/架构师 | 步骤 + 接口 + 验收 |
 | [03 机制参考](./03-mechanism-reference/README.md) | 为什么是这些位置/形态，证据边界在哪 | 架构师/研究者 | 参考 + 边界 |
 | [04 合成走查](./04-worked-example/README.md) | 怎么建、怎么查、怎么治 | 落地小团队 | 生命周期 + 验收 |
-| [05 落地现状](./05-production-landscape/README.md) | 业界真实落地如何、靠谱与否有无证据 | 决策者/研究者 | 实证现状（证据待补） |
+| [05 落地现状](./05-production-landscape/README.md) | 业界真实落地如何、靠谱与否有无证据 | 决策者/研究者 | 实证现状（已有正文） |
 
-**维护规则（01–05 共用；05 暂无正文）：**
+**维护规则（01–05 共用）：**
 
 - 新判断先回 `topics/` 的 claims/E，再改交付物；交付物不新增判断。结构性修改后跑 `python3 meta/tools/check_repo.py`。
 - 01：A/B/C/D 是交付层排序，不是 E；`09-data/` 与 `_plans/` 是工作底稿，不构成稳定判断。
