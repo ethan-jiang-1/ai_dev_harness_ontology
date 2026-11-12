@@ -25,7 +25,7 @@ updated: 2026-11-12
 | 01 现状 | 判断（描述·分级） | 值不值得做？今天能做到哪？ | [01/SCOPE](../../deliverables/01-capability-status/SCOPE.md) |
 | 02 工程 | 做法（规定） | 具体怎么做？ | [02/SCOPE](../../deliverables/02-engineering-playbook/SCOPE.md) |
 | 03 机制 | 机制（描述·参考） | 凭什么？边界在哪？ | [03/SCOPE](../../deliverables/03-mechanism-reference/SCOPE.md) |
-| 04 示例 | 示例（规定·**合成**） | 一条最小建用治链长什么样？ | [04/SCOPE](../../deliverables/04-worked-example/SCOPE.md) |
+| 04 合成走查 | 示例（规定·**合成**） | 一条最小建用治链长什么样？ | [04/SCOPE](../../deliverables/04-worked-example/SCOPE.md) |
 | 05 现状 | 现状（描述·**实证**） | 业界真实落地如何？靠谱与否有无证据？ | [05/SCOPE](../../deliverables/05-production-landscape/SCOPE.md) |
 
 > **04 与 05 的分界是要点**：04 是「你可以怎么建」的**合成示例**；05 是「业界实际怎么样」的**实证现状**。04 不证明生产；05 必须真实生产证据，缺证据标 gap，不许拿合成例子冒充。

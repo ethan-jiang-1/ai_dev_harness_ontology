@@ -12,7 +12,7 @@
 | 交稿前自检 | [rules/](./rules/) | checklist.md |
 | 判断一个源能不能进来 / 能不能引 | [rules/](./rules/) | excluded-sources.md（黑名单）、source-types.md |
 | 开新子主题 / 做前沿扫描 | [rules/](./rules/) | topic-research-protocol.md |
-| 改/建交付物 | [deliverables/](./deliverables/) | scope.md（五份总索引）、quality.md（评分卡） |
+| 改/建交付物 | 根 [deliverables/README](../deliverables/README.md)（成品）· 本目录 [deliverables/](./deliverables/)（治理） | 那份的 `SCOPE.md` + 治理页 scope.md（五份总索引）、quality.md（评分卡） |
 | 看现在到哪了（计数/阻塞） | [status/](./status/) | state.md（计数唯一权威）、state-log.md |
 | 拿模板开新页 | [templates/](./templates/) | note-template.md、subtopic-template/ |
 | 查"当时为什么这么定" | [audits/](./audits/) · [archive/](./archive/) | 审计快照、历史计划（**不作现行规则**） |
