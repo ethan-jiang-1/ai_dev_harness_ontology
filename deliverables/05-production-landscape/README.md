@@ -39,6 +39,59 @@ basis: 待补——真实生产/业界落地证据（admitted，含 CHARTER §4.
 
 候选先入对应派 `frontier.md`（过门才建卡）；采/引前查[来源黑名单](../../meta/rules/excluded-sources.md)。**补到 admitted 证据后，才沿 `src → topics → deliverables` 抽取写本份；不直接在交付物里编判断。**
 
+<a id="my-opinion"></a>
+## 我的建议：05 怎么建（供决策，不是结论）
+
+> 这一节是**方法意见**，不是研究结论；等真实证据进来后按它执行，或推翻它。
+
+### 先把「做成了」定义掉，否则永远在收白皮书
+
+建议采用**可复核三件套**，缺一件就只能算 `signal`：
+
+1. **规模**：多少实体/表/列、多少查询、多少用户（不是一个"大型集团"）。
+2. **成本**：建模人月、维护人月/月、单次查询或单文档成本；**至少一项是数**。
+3. **失败**：披露了什么没成、回退过什么。**只有好消息的不是证据，是宣传。**
+
+这三件套正好对应 [CHARTER §4.4 公司生产报告例外](../../CHARTER.md#44-三个窄例外)的条件（披露真实规模、失败与限制 + 独立印证）。**没有第三项的，一律不收。**
+
+### 证据分三类，别混着数
+
+| 类 | 例子 | 能撑什么 | 不能撑什么 |
+|---|---|---|---|
+| **A 一手工程复盘** | 公司工程博客、会议 industry talk、复盘 PDF（带数字与失败） | "某形态在某种规模下可行/不可行" | 跨行业推广 |
+| **B 采用信号** | 采购/合作披露、招聘 JD 里的本体/语义层要求、开源项目生产用户列表 | "**有人在投**"（拐点的间接证据） | 效果、成本 |
+| **C 厂商材料** | 白皮书、产品页、赞助调查 | 只能进 `frontier` 作线索 | 任何结论 |
+
+**关键**：C 类再权威也不能单独撑 05；但它可以用来**找 A 类**（顺着厂商客户名单去挖客户侧的一手材料）。
+
+### 六步流程（可执行）
+
+1. **定形态**：把"本体"拆成四种可观察形态——重型平台（Palantir 式）、标准驱动（FIBO/行业本体）、LLM 辅助薄语义（K1 类）、知识图谱产品。**分开查**，不要合成一个"本体采用率"。
+2. **按类找 A**：优先 conference industry track、公司 engineering blog、复盘 PDF；关键词组合见下。
+3. **三件套筛**：缺规模或缺失败 → 降 `signal`，记 `frontier`，不建卡。
+4. **交叉**：同一案例要有**两个独立来源**（公司 + 第三方报道/客户），单一来源只作 `signal`。
+5. **反向找失败**：专门搜 "abandoned/migrated away/replaced ontology/post-mortem"——**反例与正例同权**，这条最容易漏。
+6. **落账**：每条进 `topics/06-measure/feasibility/frontier.md`（成本/采用）或对应派 frontier；**过门才建卡**，卡里必须抄下三件套。
+
+### 检索线索（可直接用）
+
+- 形态词 × 证据词：`ontology` / `semantic layer` / `knowledge graph` × `production` / `deployed` / `lessons learned` / `post-mortem` / `migration`
+- **反例词**：`abandoned ontology`、`rip out knowledge graph`、`why our ontology failed`、`replaced semantic layer`
+- **拐点词**：`LLM` × `ontology` × `cost` / `feasible` / `finally` / `2026`
+- **间接信号**：招聘 JD（`ontology engineer` / `semantic layer` 职责）、采购公告、开源项目 "used by" 列表
+- 机构线索：EDM Council/FIBO 工作组（2026-08 仍在活动）、Palantir 客户名单（顺客户侧找一手）
+
+### 三条禁忌
+
+- 不把**厂商白皮书**当现状（G4：厂商自证）。
+- 不把**star 数/浏览量**当采用（CHARTER §4.3 明列）。
+- 不用 **04 的 fixture** 当证据（那是合成示例，见 [04 SCOPE](../04-worked-example/SCOPE.md)）。
+
+### 如果窗口内确实找不到 A 类（很可能）
+
+那就把 05 写成**「证据清单 + 明确缺口」**，而不是叙事：列出查了什么、筛掉了什么、缺口在哪、关闭它需要什么。**空着比编好**——这正是 04 的教训。同时把 A 类线索沉淀进 `frontier`，等真实材料出现时能立刻接上。
+
+
 ## 加载集
 
 - 定位：[交付物定位 §05](./SCOPE.md)。
