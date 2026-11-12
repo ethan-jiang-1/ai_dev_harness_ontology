@@ -88,7 +88,8 @@ Shapes：[shapes.ttl](../05-example/shapes.ttl)（2 条：TagHasLevel、HasTagCl
 
 范围 1–4 已写进 shape；fixture 没有 level 0 坏样本，所以仍是 2 violations。0/负数不在合法域（见 [boundaries](../02-sections/04-boundaries.md)）。
 
-**10 个坏样本里，现有闸门只稳定抓住 2 个**（完整表见 [参考表 §2](../02-sections/91-reference.md)）：
+**10 个坏样本里，现有闸门只稳定抓住 2 个**（完整表见 [参考表 §2](../02-sections/91-reference.md)；逐条 mutation、期望信号、跑没跑见 **[bad_samples.json](../05-example/bad_samples.json)**）。
+> **下表是期望值，不是实测**：只有 S7/S8 真跑过；其余是按 A.5 判据的阅读判断。要复算 `caught=2/10`，按 json 里的 mutation 逐条施加后重跑 `build_report`。
 
 | # | 坏样本 | 现在抓住？ |
 |---|---|---|

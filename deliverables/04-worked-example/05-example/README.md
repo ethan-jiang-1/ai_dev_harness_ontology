@@ -28,6 +28,7 @@ parent: ../README.md
 | [audit.schema.json](audit.schema.json) | audit record JSON Schema | ⑧ audit schema |
 | [audit_records.json](audit_records.json) | 3 条 audit 记录（deny + skip/leak + allow） | ⑧ audit record |
 | [fault_matrix.json](fault_matrix.json) | 10 类故障 × 3 段；注入骨架，不是实测 | ⑨ 故障矩阵 |
+| [bad_samples.json](./bad_samples.json) | S1–S10 的 mutation / 期望信号 / 跑没跑（**期望值，非实测**） |
 
 > 支持页：[5 分钟跑通](#5-分钟跑通可选)（可选跑）· [数据与坏样本](#数据与坏样本)（数据/坏样本）。
 
