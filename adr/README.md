@@ -22,5 +22,6 @@ updated: 2026-11-12
 | [0011](./0011-source-standing-and-term-baseline.md) | 源位阶与术语基线 | `normative` 定词、`informative` 佐证；术语定义不许引资料性源 |
 | [0012](./0012-instruction-layer-single-home.md) | 指令层单一出处与常设修复回路 | AGENTS 唯一路由；规则一个家；判断顺流、证据逆流；_plans 现行唯一 |
 | [0013](./0013-source-whitelist-blacklist.md) | 来源白名单 / 黑名单 | 白名单=admitted 卡不另设文件；黑名单=常设禁引清单，采/引前必查 |
+| [0014](./0014-deliverable-scope-single-home.md) | 交付物定位单一出处 | 定位→meta/deliverable-scope；AGENTS/README 是指针；答不了标 gap、不偷换问题 |
 
 **新增 ADR 的判据**：改变目录/层级/字段契约，或引入新的源类型/验证方式。只改内容判断，不写 ADR。

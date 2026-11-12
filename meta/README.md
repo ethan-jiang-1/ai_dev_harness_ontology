@@ -15,6 +15,7 @@ updated: 2026-11-11
 | [conventions.md](./conventions.md) | 证据等级、字段、命名、台账纪律 | 动笔前必读 |
 | [checklist.md](./checklist.md) | 交稿前检查 | 每次改完 |
 | [deliverable-quality.md](./deliverable-quality.md) | **交付物质量评分卡**（12 维 + 5 门槛 + 抽样协议） | 评估/打磨 `deliverables/` 时 |
+| [deliverable-scope.md](./deliverable-scope.md) | **交付物定位**（每份初心/定性/边界/红线，唯一权威） | 改/建任何交付物前 |
 | [source-types.md](./source-types.md) | 素材类型与证据天花板 | 引入新类型/博客/开源时 |
 | [excluded-sources.md](./excluded-sources.md) | **来源黑名单（禁读/禁引）** | 采/引任何源之前 |
 | [topic-research-protocol.md](./topic-research-protocol.md) | 派与子主题怎么长、frontier 怎么用 | 开新子主题/做扫描时 |

@@ -9,6 +9,8 @@ updated: 2026-11-12
 > **第一次来？先读 [START.md](./START.md)**（10 分钟）。**宪章**：[CHARTER](../CHARTER.md)——交付物是文档，不以可运行性为标准；示例数据/查询文本是说明材料。
 >
 > **2026-11-11 证据重置**：按被删源写成的段落重写完成前不得作为结论；撤回清单以 [审计](../meta/audits/2026-11-11-source-purge.md) 为唯一出处。定义已接规范主干（定义句标 `（N: 标准名）` 或 `（local）`）；收口记录见 [_plans 索引](./_plans/README.md)。
+>
+> **定位权威（[ADR 0014](../adr/0014-deliverable-scope-single-home.md)）**：每份的初心/定性/边界/红线以 [meta/deliverable-scope](../meta/deliverable-scope.md) 为准；改/建任何交付物前先读它。**04 是合成「怎么建」示例；新增 [05 落地现状](./05-production-landscape/README.md) 才是「业界真实怎么样」的实证份（证据待补）。**
 
 ## 0. 读者与写法：deliverables 是给人的成品
 
@@ -29,7 +31,7 @@ updated: 2026-11-12
 5. **定义引 N，效应引 I，线索只进 frontier。** 规范主干（标准能定义什么/不能定义什么）见 [topics/trunk.md](../topics/trunk.md)；交付物首现的定义要指 N 或标 `local`。
 6. **只抽 admitted 源支撑的判断。** 每个要点必须沿 E/L → digest 追到 `admission: admitted`（含 probation）的材料；追不到的删掉或标 `推测`，不能靠“行业普遍认为”补位。源被撤回的，对应段落同步失效；撤回清单以 [审计](../meta/audits/2026-11-11-source-purge.md) 为唯一出处。
 
-## 四个子目录 = 3 层 + 1 条生命周期
+## 子目录：01–04 = 3 层 + 1 条生命周期；05 = 落地现状（实证）
 
 前三层回答「判断 / 操作 / 依据」；04 把三者串成「建 → 用 → 治」的落地生命周期。四个子目录之外，还有一份共用的 10 分钟入口 [START.md](./START.md)（不属于任何一层，四份都从它进门）。
 
@@ -52,6 +54,9 @@ updated: 2026-11-12
 | [03-mechanism-reference](./03-mechanism-reference/README.md) | 为什么是六个位置、三根分类轴怎么分、15 条边界 | 入口 + 六张位置卡 + 谱外页 + 三张横切页 + 证据台账 | draft | E-xx + [topics/README](../topics/README.md) |
 | └ [附录：约束强度谱](03-mechanism-reference/05-appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字）；位置细节以卡为准 | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
 | [04-ontology-in-production](./04-ontology-in-production/README.md) | 本体怎么建到可消费、怎么查、怎么治 | 建 / 用 / 治三分册 + 验收 | draft | E-xx（含 E-21/E-22）+ 03/querying/01/access-control；未入库 signal |
+| [05-production-landscape](./05-production-landscape/README.md) | 业界真实落地现状、成本收益、靠谱与否有无证据 | 实证现状（**证据待补，不编**） | seed | 真实生产/业界证据（待补，CHARTER §4.4） |
+
+> **04 与 05 的分界**：04 是「你可以怎么建」的**合成示例**（fixture 期望值，不证明生产）；05 是「业界实际怎么样」的**实证现状**（须真实生产证据）。定位详见 [meta/deliverable-scope](../meta/deliverable-scope.md)。
 
 > `_plans/` 是[工作底稿](./_plans/README.md)，不是交付物；不进对外阅读路径，也不构成 E。
 >
@@ -127,6 +132,7 @@ updated: 2026-11-12
 | [02 工程实施](./02-engineering-playbook/README.md) | 拿本体做某件事，具体怎么做 | 工程负责人/架构师 | 步骤 + 接口 + 验收 |
 | [03 机制参考](./03-mechanism-reference/README.md) | 为什么是这些位置/形态，证据边界在哪 | 架构师/研究者 | 参考 + 边界 |
 | [04 落地](./04-ontology-in-production/README.md) | 怎么建、怎么查、怎么治 | 落地小团队 | 生命周期 + 验收 |
+| [05 落地现状](./05-production-landscape/README.md) | 业界真实落地如何、靠谱与否有无证据 | 决策者/研究者 | 实证现状（证据待补） |
 
 **维护规则（四份共用）：**
 

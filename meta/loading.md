@@ -32,7 +32,7 @@
 
 ## 按任务加载
 
-> 三层读者不同：`src/` 给 Agent 干货，`topics/` 给 Agent+人判断，`deliverables/` 给人成品。读交付物不需要先读 `src/`/`topics/`；要改交付物才回上游。细则见 [ADR 0010](../adr/0010-three-layer-information-flow.md)。
+> 三层读者不同：`src/` 给 Agent 干货，`topics/` 给 Agent+人判断，`deliverables/` 给人成品。读交付物不需要先读 `src/`/`topics/`；要改交付物才回上游。细则见 [ADR 0010](../adr/0010-three-layer-information-flow.md)。**改/建任何交付物，先读 [交付物定位](./deliverable-scope.md) 对应节（初心/定性/边界/红线）。**
 
 | 你要做什么 | 只加载 | 先不要加载 |
 |---|---|---|
@@ -49,6 +49,7 @@
 | 做 02 工程 | [02 GUIDE](../deliverables/02-engineering-playbook/02-sections/01-GUIDE.md) + [02 §0–§3](../deliverables/02-engineering-playbook/README.md) + [sections/map](../deliverables/02-engineering-playbook/02-sections/02-map.md) + [sections/approach](../deliverables/02-engineering-playbook/02-sections/03-approach.md) + 对应 recipe + 子主题 `mechanism.md` + [execution-forms](../topics/execution-forms.md) + 4 个开源 digest | 24 篇 `paper.md`、`card.md`、其他派 |
 | 做 03 机制 | [03 GUIDE](../deliverables/03-mechanism-reference/02-sections/01-GUIDE.md) + [03 §2–§4](../deliverables/03-mechanism-reference/README.md) + [sections/map](../deliverables/03-mechanism-reference/02-sections/02-map.md) + [positions](../deliverables/03-mechanism-reference/03-positions/README.md) + `positions/<位置>.md` + [boundaries](../deliverables/03-mechanism-reference/05-evidence/02-boundaries.md) + [conclusions](../topics/conclusions.md)；长版论证再看[附录](../deliverables/03-mechanism-reference/05-appendix-constraint-spectrum.md) §3.1–3.3/§3.7 | `src/` 原文、其他派 `mechanism.md`、全部 `paper.md` |
 | 做 04 落地 | [04 GUIDE](../deliverables/04-ontology-in-production/02-sections/01-GUIDE.md) + [04 地图](../deliverables/04-ontology-in-production/02-sections/02-map.md) + [04 建/用/治](../deliverables/04-ontology-in-production/03-body/01-build.md) + [E-21/E-22](../topics/conclusions.md) + [03/querying](../topics/03-knowledge/querying/README.md) + [01/access-control](../topics/01-constraint/access-control/README.md) | 01/02/03 全篇、外部原文 |
+| 做 05 现状 | [定位 05 节](./deliverable-scope.md#scope-05) + [05 README](../deliverables/05-production-landscape/README.md) + [CHARTER §4](../CHARTER.md#4-素材准入material-gate) + 真实生产/业界候选源 | 合成示例（04）、01/02/03 全篇 |
 | 用模型做第二意见（不用于实验） | [meta/models](./models.md) | 本地模型/实验被试 |
 | 查结构决策 | [adr/](../adr/README.md)（0001–0010） | 全部 meta |
 | 查 meta 有什么 | [meta/README](./README.md)：现行 / 模板 / 历史 | `archive/` |
@@ -85,7 +86,7 @@ D4 建用治 → 04 map/body → E-21/E-22 → digest §4/§5
 | topics | E 只在 `conclusions`；`sources.md` 只做 L/digest 索引，不复制 E 表 | `conclusions` 是唯一 E 表；`sources.md` 保持 L | 出现两份 E 就回退 |
 | src | digest §4/§5/§6/§8 编号稳定；§4 数字、§5 边界、§6 工程、§8 回链 | [src/README](../src/README.md) 的 digest 契约；模板固定骨架 | 反向读不到就回 `paper.md` 指定节 |
 | src | `card.md` 不承载判断；`references.md`/`appendix.md` 默认不读 | [src/README](../src/README.md) §0/§3 | 不要把 card 当 digest |
-| deliverables | 每份 README 有「加载集」；新增交付物先写期待与加载集 | 三份 README 的「加载集」表 | 没有加载集不算交付物 |
+| deliverables | 每份有[定位](./deliverable-scope.md) + README「加载集」；新增交付物先写定位、期待与加载集 | deliverable-scope + 各 README「加载集」表 | 没有定位/加载集不算交付物 |
 
 > **落地顺序**：先保证 topics/src 的契约（E→digest、frontier G/N、digest 四节、card 边界），再开始 D1 的 E1–E9 倒逼。契约不满足时，倒逼会退化成「从 manifest 顺读」，又变成乱忙。
 

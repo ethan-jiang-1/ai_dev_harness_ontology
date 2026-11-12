@@ -12,7 +12,7 @@ basis: E-01–E-20, C-01–C-04
 >
 > **状态**：`draft` ｜ **计数**：A=3 / B=4 / C=2 / 非本体=1 / gap=4 ｜ **证据重置**：5 条 E 撤回，W 表见 [canonical §5](02-sections/91-canonical.md#5-撤回与历史w-表)。
 >
-> **本页只做索引**。正文从 [00-overview](02-sections/00-overview.md) 开始；判定规则在 [02-map §2.1](02-sections/02-map.md#21-判定口径)。
+> **本页只做索引**。正文从 [00-overview](02-sections/00-overview.md) 开始；判定规则在 [02-map §2.1](02-sections/02-map.md#21-判定口径)。定位/边界以 [meta/deliverable-scope §01](../../meta/deliverable-scope.md#scope-01) 为准。
 
 ## 30 秒结论
 

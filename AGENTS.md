@@ -10,7 +10,7 @@ src/（给 Agent 的干货）──digest──▶ topics/（给 Agent+人的判
 
 - `src/`：一篇论文/一个项目一目录；**`digest.md` 是自包含的下游唯一入口**，`card.md` 只作 provenance。
 - `topics/`：六派沉淀判断；派内 `L-xx` 升跨派 `E-xx`；素材类型不进 topics。
-- `deliverables/`：**只抽不增**，主路径自包含，读者不打开 topics 能完成任务。
+- `deliverables/`：**只抽不增**，主路径自包含，读者不打开 topics 能完成任务。每份的初心/定性/边界/红线以 [交付物定位](./meta/deliverable-scope.md) 为准；**答不了初心问题就标 gap，不偷换成更容易的问题**。
 - **判断顺流而下，证据逆流而上**：交付物被指错时，先走上游补证，再回写下游——走下面的修复回路。
 
 任何改动都该让某条判断更清楚、更有证据，或更可证伪。
@@ -37,7 +37,7 @@ src/（给 Agent 的干货）──digest──▶ topics/（给 Agent+人的判
 | 修订跨派结论 | [topics/conclusions.md](./topics/conclusions.md)（`E-xx`，唯一 E 表） | 对应派 claims + digest |
 | 查时刻/形态/对象/承重数 | [seams](./topics/seams.md) / [execution-forms](./topics/execution-forms.md) / [objects](./topics/objects.md) / [evidence-anchors](./topics/evidence-anchors.md) | — |
 | 找某派前沿/候选 | 该派 `frontier.md`；候选只放这里，建卡须有「改变哪条判断」的理由 | [topic 协议](./meta/topic-research-protocol.md) |
-| 做成对外物 | `deliverables/`；只从 topics 抽取 | [deliverables/README](./deliverables/README.md) + [质量评分卡](./meta/deliverable-quality.md) |
+| 做成对外物 | `deliverables/`；只从 topics 抽取，**先读该份定位** | [交付物定位](./meta/deliverable-scope.md) + [deliverables/README](./deliverables/README.md) + [质量评分卡](./meta/deliverable-quality.md) |
 
 六派按**本体凭什么起作用**分：`01-constraint` 拦动作、`02-judgment` 验产出、`03-knowledge` 喂上下文、`04-state` 跨轮记忆、`05-produce` 造与修、`06-measure` 量有没有用；底座 `00-harness`（控制回路七部件）。**4+1+1**：01-04 问时刻，05 问来源，06 问尺子；跨派按主效应归派并标双重身份。地图与归派三问见 [topics/README](./topics/README.md)。
 
@@ -49,7 +49,7 @@ src/（给 Agent 的干货）──digest──▶ topics/（给 Agent+人的判
 2. **核证**：读 E 行链的 `digest.md` §4/§5。digest 足够 → 错在抽取或表述，跳第 5 步。
 3. **补证**：digest 不足或源不合格 → 先查 [来源黑名单](./meta/excluded-sources.md)（命中即弃），再按 [CHARTER §4](./CHARTER.md#4-素材准入material-gate) 找权威材料（研究论文与工程落地并重；标准只定词，不证效果）。过五门 → 建 card/digest；不过 → 记入该派 `frontier.md` 候选队列。
 4. **升判断**：先写该派 `claims.md`（L）；跨派或进交付物才升 `conclusions.md`（E）。修正旧判断的，回改所有引用页，并在 card/digest 的 `updates:` 登记。
-5. **回写**：按新的 E/digest 重写交付物段落；主路径保持自包含，细节链 topics 标「可选/出处」。
+5. **回写**：按新的 E/digest 重写交付物段落，对照该份[定位](./meta/deliverable-scope.md)不越界；主路径保持自包含，细节链 topics 标「可选/出处」。
 6. **收口**：跑 `python3 meta/tools/check_repo.py`，过 [checklist](./meta/checklist.md)，更新 [state](./meta/state.md)。
 
 **完成判据**：被指的那句话能指到 `admitted` 源的 digest 节，且数字/条件与原文一致；指不到，就在页面显式标 `推测` 或 gap，并在 frontier 写明「关闭它需要什么」。两者都做不到，修复未完成。
