@@ -24,7 +24,7 @@ src/（给 Agent 的干货）──digest──▶ topics/（给 Agent+人的判
 ## 入口
 
 - 研究问题与假设：[THESIS](./THESIS.md) · 术语（动笔前对齐）：[GLOSSARY](./GLOSSARY.md)
-- 加载集与阅读路径：[meta/loading](./meta/rules/loading.md) · 当前计数与阻塞：[meta/state](./meta/status/state.md)（计数唯一权威）
+- 加载集与阅读路径：[meta/loading](./meta/rules/loading.md) · 当前目标与计数：[meta/state](./meta/status/state.md#当前目标下一步做什么)（**下一步做什么 + 计数**的唯一权威）
 - meta 怎么用：[meta/AGENTS](./meta/AGENTS.md)（30 秒入口）· 文件索引：[meta/README](./meta/README.md) · 结构决策：[adr/README](./adr/README.md)
 - 本地噪音：`.tmp-venv/`、`.pi/` 不是仓库内容；搜索/统计时排除
 

@@ -6,7 +6,7 @@
 
 > **先读宪章**：[CHARTER](./CHARTER.md)。这是研究档案，不是软件项目；我们消化、组织、研究资料，交付物是文档，不是可运行系统。
 >
-> **2026-11-11 证据重置**：宪章 §4 素材准入已生效——论文 28→10、9 条 E 撤回。只有 `admitted`（含 probation）材料能撑 E/L/交付物；`signal` 只进 `frontier`；源撤回后，引用它的判断同步失效。入口：[CHARTER §4](./CHARTER.md#4-素材准入material-gate) · [状态页](./deliverables/_plans/2026-11-11-status.md) · [术语基线 v0](./meta/status/term-baseline.md)。
+> **2026-11-11 证据重置**：宪章 §4 素材准入已生效——论文 28→10、9 条 E 撤回。只有 `admitted`（含 probation）材料能撑 E/L/交付物；`signal` 只进 `frontier`；源撤回后，引用它的判断同步失效。入口：[CHARTER §4](./CHARTER.md#4-素材准入material-gate) · [当前状态](./meta/status/state.md) · [术语基线 v0](./meta/status/term-baseline.md)。
 
 ---
 
@@ -31,7 +31,7 @@
 | 当前计数与阻塞 | [meta/state](./meta/status/state.md) |
 | 素材准入（G1–G5） | [CHARTER §4](./CHARTER.md#4-素材准入material-gate) |
 | 术语基线 v0 | [meta/term-baseline](./meta/status/term-baseline.md) |
-| 证据重置状态（快照） | [_plans/2026-11-11-status](./deliverables/_plans/2026-11-11-status.md) |
+| 当前目标 / 计数 / 阻塞 | [meta/state](./meta/status/state.md#当前目标下一步做什么) |
 | 第一次接触（人，10 分钟） | [START](./deliverables/START.md) |
 | 质量口径 / 最新评分 | [rubric](./meta/deliverables/quality.md) · [review](./deliverables/_plans/2026-11-11-quality-review.md) |
 | 按需加载 | [meta/loading](./meta/rules/loading.md) |
@@ -115,9 +115,9 @@
 
 - `src/` — 论文一篇一目录（PDF + 三份 MD + card + digest）；开源 pin commit；材料卡（HN + 在役标准）+ [manifest](./src/papers/manifest.md)。
 - `topics/` — 六派成文；跨派结论见 [conclusions](./topics/conclusions.md)；形态轴见 [execution-forms](./topics/execution-forms.md)。
-- `deliverables/` — 4 个子目录（3 层 + 1 条生命周期）：[01 现状](./deliverables/01-capability-status/README.md) / [02 工程实施](./deliverables/02-engineering-playbook/README.md) / [03 机制参考](./deliverables/03-mechanism-reference/README.md) / [04 建用治](./deliverables/04-worked-example/README.md)。原 7 章书稿计划已废弃，没有独立 handbook。
+- `deliverables/` — 5 个子目录：[01 现状](./deliverables/01-capability-status/README.md) / [02 工程实施](./deliverables/02-engineering-playbook/README.md) / [03 机制参考](./deliverables/03-mechanism-reference/README.md) / [04 合成走查](./deliverables/04-worked-example/README.md) / [05 落地现状](./deliverables/05-production-landscape/README.md)（**实证份，证据待补、尚无正文**）。每份的定位与边界见它自己的 `SCOPE.md`。原 7 章书稿计划已废弃，没有独立 handbook。
 
-**2026-11-11 证据重置**：18 篇论文 + 3 个旧网页材料移出，9 条 E 撤回；按被删源写成的段落重写完成前不得作为结论引用。这是当前第一优先级，见 [审计](./meta/audits/2026-11-11-source-purge.md)。最大的研究缺口是没有一条结论被独立复现；边界与可自主推进项见 [state](./meta/status/state.md)。
+**素材准入（2026-06-01 起算）**：18 篇论文 + 3 个旧网页材料已移出，9 条 E 撤回；被删源的叙述页对账已基本完成（见 [state](./meta/status/state.md)）。**「现在最该做什么」只看 [state 的「当前目标」](./meta/status/state.md#当前目标下一步做什么)**，本页不另立优先级。最大的研究缺口是没有一条结论被独立复现；边界见 [state](./meta/status/state.md)。
 
 自检：`python3 meta/tools/check_repo.py`（文件链/锚点、枚举、ID、清单、计数；见 [ADR 0005](./adr/0005-repo-self-check.md)）。
 
