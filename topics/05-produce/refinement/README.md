@@ -39,6 +39,7 @@ evidence: []
 | 六条判断的证据/边界 | [findings](./findings.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
 | 原始论文 | [CASTON digest](../../../src/papers/2610.21466-caston-refinement/digest.md) |
+| 研究提示词与输出 | [prompt.md](./prompt.md)；run 记在 `runs/`（有 prompt 才建） |
 
 ## 边界
 

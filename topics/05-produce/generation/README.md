@@ -39,6 +39,7 @@ evidence: []
 | F1–F7 的证据/等级/边界 | [findings](./findings.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
 | 原始论文 | [OntoDoc digest](../../../meta/audits/2026-11-11-source-purge.md#src-2611-01276) · [ReX-GG digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-41901) · [Peeling digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-41785) · [Evontree digest](../../../meta/audits/2026-11-11-source-purge.md#src-2510-26683) · [SFE-O digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123) |
+| 研究提示词与输出 | [prompt.md](./prompt.md)；run 记在 `runs/`（有 prompt 才建） |
 
 ## 边界
 

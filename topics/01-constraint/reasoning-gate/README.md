@@ -40,6 +40,7 @@ evidence: [E-16]  # withdrawn
 | 四条判断的证据/数字 | [findings](./findings.md) |
 | 还缺什么、下一步 | [frontier](./frontier.md) |
 | 原始论文 | [OntoAct digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-21983) · [多 agent digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36325) |
+| 研究提示词与输出 | [prompt.md](./prompt.md)；run 记在 `runs/`（有 prompt 才建） |
 
 ## 边界
 
