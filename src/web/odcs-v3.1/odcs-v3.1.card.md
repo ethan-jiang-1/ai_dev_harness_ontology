@@ -87,7 +87,7 @@ provenance_type: foundation
 - [六项契约](../../../deliverables/02-engineering-playbook/05-appendices/04-artifact-pack.md#101-消费者契约-6-项)：说明五格**不能从 ODCS 直接抄**——ODCS 稳定只供 `load`（servers）与被动的角色名，consumer/moment/answers/refuses 仍须自造。**只读不改表。**
 - [契约 ↔ `build_report`](../../../topics/05-produce/representation/consumability.md#3-契约六项--build_report)：`quality`（metric+operator）≠ `violations`（shape 违反记录）的外部佐证。
 - 同目录没有 `digest`（web 材料卡即消化正文，见 [web/README](../README.md)），故下游引用本卡；本卡未改 topics/deliverables/meta，也未在 [src 台账](../README.md) 登记。
-- 不升 [conclusions.md](../../../topics/conclusions.md)；不给 04 添新判断。
+- 不升 [conclusions.md](../../../topics/conclusions.md)；不给交付物添新判断。
 
 ## 原文摘录
 

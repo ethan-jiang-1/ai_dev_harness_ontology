@@ -8,7 +8,7 @@ parent: README.md
 
 > **读者**：架构师 / 研究者 ｜ **目标**：把一条判断放到正确的位置上，并说出它不能证明什么。
 
-<img src="../_figures/03-six-positions.svg" alt="03 六个位置" width="100%">
+<img src="../../_figures/03-six-positions.svg" alt="03 六个位置" width="100%">
 
 ## 最短路径（10 分钟）
 

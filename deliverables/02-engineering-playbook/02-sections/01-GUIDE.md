@@ -8,7 +8,7 @@ parent: README.md
 
 > **读者**：工程负责人 / 架构师 ｜ **读完你能**：选一条接缝/recipe，写出接口、验收和 stop。
 
-<img src="../_figures/02-recipes-map.svg" alt="02 选一条 recipe" width="100%">
+<img src="../../_figures/02-recipes-map.svg" alt="02 选一条 recipe" width="100%">
 
 ## 最短路径（10 分钟）
 

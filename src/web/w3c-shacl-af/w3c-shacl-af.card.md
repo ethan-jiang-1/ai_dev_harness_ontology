@@ -59,8 +59,8 @@ provenance_type: standard-body
 ## 喂到哪个主题
 
 - `topics/01-constraint/commit-gate/read-path.md`（fail-open 的标准边界）
-- `deliverables/02-engineering-playbook/recipes/constraint.md` R8
-- `deliverables/03-mechanism-reference/sections/claim-walkthrough.md`
+- `deliverables/02-engineering-playbook/03-recipes/06-constraint.md` R8
+- `deliverables/03-mechanism-reference/02-sections/95-claim-walkthrough.md`
 
 ## 原文摘录
 

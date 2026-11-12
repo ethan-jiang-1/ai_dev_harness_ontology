@@ -124,8 +124,8 @@ scope: evidence-objects
 | O-N25 | HSR 与审批 | HSR 14.75%→7.02%；审批 8.7% | src/papers/2610.36570-casel/digest.md#42-主结果 | 20 seeds/120k actions；模拟 | E-15；CASEL Table 2 | H2 | 部署实测与模拟差一个量级 | 01 map；02 recipes/constraint |
 | O-N26 | 没有单一最优 | Consequence-Menu 4.38%/13.8%；Risk-Menu 5.82%/12.6%；Uncertainty 14.75%/6.9% | src/papers/2610.36570-casel/digest.md#42-主结果 | 模拟；主表 τ=∞ | E-15；CASEL Table 2 | H2 | 同 menu/cost 下出现唯一支配点 | 01 data/e5；03 coverage |
 | O-N27 | full ledger 是低审批端点 | harm–compute 面被支配，但低审批端 4.3% approvals / 11.82% HSR 是前沿点；54% 直接执行步骤 p_t c_t > r̄_t | src/papers/2610.36570-casel/digest.md#42-主结果 | 模拟；γ 假设 | E-15；CASEL §4.2 | H2 | 「只对不可逆动作记账」被验证且前沿消失 | 02 recipes/constraint；06 feasibility |
-| O-N28 | Glyph 的规模与标签空间 | ~3.4M 列 / ~98,000 表 / 4 业务线 / 3 后端；275 个叶标签（受治理内部本体，非公开词表） | src/papers/2609.10430-glyph/digest.md#41-规模本体与标签空间 | 单一组织（Apple）生产目录；平均 ~35 列/表（推测） | E-22；Glyph §4.1 | H2 | 跨企业复测显示规模/标签空间不可迁移 | 01 access-control；04 govern |
-| O-N29 | 检索指标与融合增量 | NDCG@10 0.5497→0.9225；MAP@100 0.1888→0.9009；端到端 F2 0.890 vs 最强单策略 0.880（融合 +0.010） | src/papers/2609.10430-glyph/digest.md#42-编码器检索table-2-p6 | 列级留出、同分布；不是打标准确率 | E-22；Glyph §4.2/§4.3 | H2 | 换分布后 NDCG/MAP 提升不能复现 | 01 access-control；04 govern |
+| O-N28 | Glyph 的规模与标签空间 | ~3.4M 列 / ~98,000 表 / 4 业务线 / 3 后端；275 个叶标签（受治理内部本体，非公开词表） | src/papers/2609.10430-glyph/digest.md#41-规模本体与标签空间 | 单一组织（Apple）生产目录；平均 ~35 列/表（推测） | E-22；Glyph §4.1 | H2 | 跨企业复测显示规模/标签空间不可迁移 | 01 access-control |
+| O-N29 | 检索指标与融合增量 | NDCG@10 0.5497→0.9225；MAP@100 0.1888→0.9009；端到端 F2 0.890 vs 最强单策略 0.880（融合 +0.010） | src/papers/2609.10430-glyph/digest.md#42-编码器检索table-2-p6 | 列级留出、同分布；不是打标准确率 | E-22；Glyph §4.2/§4.3 | H2 | 换分布后 NDCG/MAP 提升不能复现 | 01 access-control |
 
 ## R · 反例（12）
 
@@ -137,7 +137,7 @@ scope: evidence-objects
 | O-R04 | 投影排序普适（文本 > JSON > 查询） | GLM JSON 0.900 > 文本 0.891；Qwen 工具 0.407 < 检索 0.538；pooled 0.777 只是平均 | src/papers/2610.11768-narrow-and-deep/digest.md#42-形式与接口 | 4 模型；工具为事后比较 | E-12 | H2 | 更多模型上文本—JSON 排序不翻转 | 02 knowledge；03 context |
 | O-R05 | （已撤回）curated 本体更可靠 | curated precision 仅比随机高 1.6 点（CI 跨零）；真实答案 FA 16.8%；data-derived FA 3.5% | meta/audits/2026-11-11-source-purge.md | UniProt 4,410 条；单 benchmark；25% 假设 | E-02 | H2 | 第二域 curated 显著优于随机 | 01 data/e4；02 judgment |
 | O-R06 | 有引擎就能拦 | trustgraph fail-open、只删 subject；open-ontologies 只做 CI/报告；semantica 校验时 inference=none；ontop 重写不是 gate | topics/execution-forms.md#代码级核对2026-11-09 | 4 项目 pin commit；只读代码 | E-20 | H2 | 第二实现 fail-closed 且有写授权 | 03 execution-forms；02 constraint |
-| O-R07 | 有标签就能做访问控制 | 标签层（Glyph）/策略层（OPA 无领域本体）/执行层（trustgraph 单实现）不能互推；读路径过滤 ≠ 写授权 | topics/01-constraint/access-control/README.md#当前判断 | 单企业/单实现；无端到端验证 | E-22 | H2 | 端到端策略+执行验证 | 04 govern；01 access-control |
+| O-R07 | 有标签就能做访问控制 | 标签层（Glyph）/策略层（OPA 无领域本体）/执行层（trustgraph 单实现）不能互推；读路径过滤 ≠ 写授权 | topics/01-constraint/access-control/README.md#当前判断 | 单企业/单实现；无端到端验证 | E-22 | H2 | 端到端策略+执行验证 | 01 access-control |
 | O-R08 | 平均 −38% 可上线 | −38% = 43%×−91% + 57%×+1.9%；p_h=43% 是反推；时延 3× 只在 7 题上测 | src/papers/2610.41172-context-as-infrastructure/digest.md#42-token-收益是条件性的 | FRAMES；单语料；门实现未统一 | E-08 / E-14 | H2 | 实测 p_h 与 43% 差 >10pp 且平均收益翻转 | 02 §5.3；01 data/e3 |
 | O-R09 | 审批越多越安全 | CASEL 8.7% approvals/7.02% HSR；Uncertainty 6.9%/14.75%；Risk 12.6%/5.82%；Consequence 13.8%/4.38% | src/papers/2610.36570-casel/digest.md#42-主结果 | 模拟；τ=∞ 主表；审批疲劳未建模 | E-15 | H2 | 审批疲劳建模后排序翻转 | 01 data/e5；06 feasibility |
 | O-R10 | 不做身份对齐也能记忆 | no-alias CMR −7.8–12.1pp；LLM-Norm 2.3–3.7× 差；human audit +9.0–16.5pp | src/papers/2610.40482-firme/digest.md#41-memory-usability | 专有数据；3 period；无「完全不做对齐」对照 | E-05 | H2 | 无身份对照显示同等 CMR | 01 data/e6；04 identity |
@@ -153,7 +153,7 @@ scope: evidence-objects
 | O-P03 | （已撤回）false-veto 标注 | 样本 100 条 blocked + 授权标签（AuthorizationPairs 80/80 映射）；指标 false-block/miss 前沿；判定按 miss 预算选点；停无标签；标注协议可换锚复用 | meta/audits/2026-11-11-source-purge.md#src-2610-08082 | POLAR blocked log；单 gate | E-04 / 2607.22868（均已移出） | H2 | 标签定义不可复现 | 01 data/e5；02 constraint |
 | O-P04 | 记忆三层评估 | 样本 200 units/setting；指标 CMR/human audit/round-trip；判定 +10pp、merge precision ≥90%；停 precision <90% | src/papers/2610.40482-firme/digest.md#41-memory-usability | 专有数据；文本 only | E-05 / E-17 | H2 | 三层不可互替被打破 | 01 data/e6；04 memory |
 | O-P05 | read-path 泄漏率 | 样本 第二实现 + object 方向用例；指标泄漏率/误拦/时延；判定泄漏 0 且 object 方向受控；停 fail-open 未修 | deliverables/01-capability-status/09-data/e7-e8-code.md#3-还缺什么 | 单实现现状；SHACL-AF | E-20 | H2 | 第二实现 fail-closed 且 object 受控 | 02 §5.3；01 data/e7-e8 |
-| O-P06 | 受监管 citation/strict-pass | 样本 20–50 单；指标 citation 精度/strict-pass 违规/签核；判定 ≥0.95 且违规 0；停不可达 | deliverables/02-engineering-playbook/03-recipes/12-regulated.md#验收--停 | Grid 类；真实运营商未测 | 工程建议 + Grid signal | H2 | 客户侧显示 0.95/0 不可达 | 02 regulated；04 govern |
+| O-P06 | 受监管 citation/strict-pass | 样本 20–50 单；指标 citation 精度/strict-pass 违规/签核；判定 ≥0.95 且违规 0；停不可达 | deliverables/02-engineering-playbook/03-recipes/12-regulated.md#验收--停 | Grid 类；真实运营商未测 | 工程建议 + Grid signal | H2 | 客户侧显示 0.95/0 不可达 | 02 regulated |
 
 ## 索引 · 按 E
 
@@ -182,7 +182,6 @@ scope: evidence-objects
 | 01 现状 | 55 | 18 | O-C03 O-C14 O-C15 O-F01 O-F02 O-F06 O-F07 O-F08 O-F09 O-F11 O-F12 O-F13 O-F14 O-F15 O-T04 O-T06 O-T07 O-T08 O-T09 O-M01 O-N01 O-N03 O-N04 O-N06 O-N07 O-N09 O-N10 O-N11 O-N12 O-N13 O-N15 O-N16 O-N19 O-N20 O-N22 O-N23 O-N24 O-N25 O-N26 O-N28 O-N29 O-R01 O-R02 O-R03 O-R05 O-R07 O-R08 O-R09 O-R10 O-R12 O-P01 O-P02 O-P03 O-P04 O-P05 |
 | 02 工程 | 59 | 18 | O-C08 O-C12 O-C13 O-F01 O-F02 O-F03 O-F04 O-F05 O-F06 O-F07 O-F08 O-F10 O-F14 O-F15 O-T01 O-T02 O-T03 O-T04 O-T05 O-T06 O-T07 O-T08 O-T09 O-T10 O-T11 O-T12 O-T13 O-M03 O-M04 O-N01 O-N02 O-N03 O-N04 O-N05 O-N07 O-N08 O-N09 O-N13 O-N14 O-N15 O-N17 O-N18 O-N19 O-N20 O-N21 O-N25 O-N27 O-R02 O-R03 O-R04 O-R05 O-R06 O-R08 O-R11 O-P01 O-P02 O-P03 O-P05 O-P06 |
 | 03 机制 | 30 | 20 | O-C01 O-C02 O-C03 O-C04 O-C05 O-C06 O-C07 O-C08 O-C09 O-C10 O-C11 O-C12 O-C13 O-C14 O-C15 O-F09 O-F10 O-M01 O-M02 O-M04 O-N02 O-N05 O-N06 O-N22 O-N23 O-N24 O-N26 O-R01 O-R04 O-R06 |
-| 04 落地 | 12 | 2 | O-F11 O-F13 O-N10 O-N11 O-N12 O-N16 O-N28 O-N29 O-R07 O-R10 O-P04 O-P06 |
 
 ## 索引 · 按类型
 

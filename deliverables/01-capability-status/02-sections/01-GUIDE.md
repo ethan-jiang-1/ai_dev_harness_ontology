@@ -8,7 +8,7 @@ parent: README.md
 
 > **读者**：决策者 / 工程负责人 ｜ **读完你能**：给一项能力判 A/B/C/D，说出它离落地还差什么。
 
-<img src="../_figures/01-capability-map.svg" alt="01 能力地图" width="100%">
+<img src="../../_figures/01-capability-map.svg" alt="01 能力地图" width="100%">
 
 ## 最短路径（10 分钟）
 
