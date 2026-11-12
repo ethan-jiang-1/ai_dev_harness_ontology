@@ -60,7 +60,7 @@ updated: 2026-11-12
 | [03-mechanism-reference](./03-mechanism-reference/README.md) | 为什么是六个位置、三根分类轴怎么分、15 条边界 | 入口 + 六张位置卡 + 谱外页 + 三张横切页 + 证据台账 | draft | E-xx + [topics/README](../topics/README.md) |
 | └ [附录：约束强度谱](03-mechanism-reference/05-appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字）；位置细节以卡为准 | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
 | [04-worked-example](./04-worked-example/README.md) | 本体怎么建到可消费、怎么查、怎么治 | 建 / 用 / 治三分册 + 验收 | draft | E-xx（含 E-21/E-22）+ 03/querying/01/access-control；未入库 signal |
-| [05-production-landscape](./05-production-landscape/README.md) | 业界真实落地现状、成本收益、靠谱与否有无证据 | 实证现状（**已有正文：5 条 admitted/probation + 10 条线索；成本/外部采用仍缺**） | draft | 真实生产/业界证据（5 条 admitted/probation，CHARTER §4.4） |
+| [05-production-landscape](./05-production-landscape/README.md) | 业界真实落地现状、成本收益、靠谱与否有无证据 | 实证现状（**已有正文：5 条 admitted/probation 生产证据 + 10+ 条 C/signal 线索；全生命周期成本、中国外部采用、失败率仍缺**） | draft | 真实生产/业界证据（5 条 admitted/probation，CHARTER §4.4）+ Google OKF 格式卡 |
 
 > **04 与 05 的分界**：04 是「你可以怎么建」的**合成示例**（fixture 期望值，不证明生产）；05 是「业界实际怎么样」的**实证现状**（须真实生产证据）。定位详见 [meta/deliverable-scope](../meta/deliverables/scope.md)。
 
@@ -102,7 +102,7 @@ updated: 2026-11-12
 
 ## 统一阅读结构
 
-01–04 内容不同，但**对读者的骨架是同一套**。05 是实证报告，用 00/01/02/03/04/04b/05/06/07/08/90 的骨架（一页答案 → 导读 → 地图 → 美/中 → OKF/Wiki 过渡层 → 经济 → 案例 → 决策 → 边界 → 来源），不套 01–04 的能力/recipe 骨架；但同样有读者卡与证据分级。
+01–04 内容不同，但**对读者的骨架是同一套**。05 是实证报告，用 00/01/02/03/04/04b/05/06/07/08/90 的骨架（一页答案 → 导读 → 地图 → 美/中 → OKF/Wiki 底座选项 → 经济 → 案例 → 决策 → 边界 → 来源），不套 01–04 的能力/recipe 骨架；但同样有读者卡与证据分级。
 
 | 节 | 回答什么 | 01 现状 | 02 工程 | 03 机制 | 04 合成走查 |
 |---|---|---|---|---|---|

@@ -225,6 +225,7 @@ open-source/{org}-{repo}/
 | Snowflake 内部 context layer（2026-08-17） | [card](./web/snowflake-context-layer-2026/snowflake-context-layer-2026.card.md) | 已消化 / 官方博客 | 05 美国；E-28/E-29/E-31 |
 | Sigma 2,883-model semantic layer（2026-10-27） | [card](./web/sigma-semantic-layer-2026/sigma-semantic-layer-2026.card.md) | 已消化 / dbt 博客 | 05 美国；E-28/E-29/E-31 |
 | Netflix 本体驱动可观测性（2026-10-16） | [card](./web/netflix-ontology-observability-2026/netflix-ontology-observability-2026.card.md) | 已消化 / 官方博客 | 05 美国；E-28/E-29 |
+| Google Open Knowledge Format v0.1/v0.2（2026-06/07） | [card](./web/google-okf/google-okf.card.md) | 精读 / 规范正文 + 官方博客 | 05 4b、E-32；Knowledge Catalog 只到 C |
 | GB/T 43697-2024 数据分类分级规则 | [card](./web/gbt-43697/gbt-43697.card.md) | 摘要级 / 原文摘要 | 01/policy、04 C.2；三级 vs 1–4 是工程映射 |
 | GB/T 35273-2020 个人信息安全规范 | [card](./web/gbt-35273/gbt-35273.card.md) | 摘要级 / 原文摘要 | 01/policy；PII 类别，不是 level 表 |
 | W3C ODRL 2.2 | [card](./web/w3c-odrl-2.2/w3c-odrl-2.2.card.md) | 精读 / 原文正文 | 01/policy F2；冲突/义务/版本 |

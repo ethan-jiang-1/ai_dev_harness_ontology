@@ -15,10 +15,10 @@ parent: ../README.md
 |---|---|---|---|---|---|---|---|---|---|
 | 1 | **中泰证券**（QCon 2026） | 中国 | 指标/本体语义层 + 规则执行 | 2026-09-02 | 900 万客户；6,000+ 指标（另说 3,400+ 公司级口径）；7,000+ 同义词 | 三个退役判例；影子实体；权限按人特批；聚合泄露 | **A** | 券商在核心业务里用语义层统一口径/权限；失败形态真实 | 单券商；摘要级；无成本/失败率/对照 |
 | 2 | **中泰证券**（CCSA TC601） | 中国 | 治理知识库 + DataAgent | 2026-10-15 | 9,137 知识目录；6,503 指标文档；2,622 表；12 万+ 血缘 | 业务本体仍在信用业务验证；无依据语义剔除；证据不足不交付 SQL | **A** | “先治理语义层、再业务本体”的路径；知识资产规模 | 知识资产数≠本体覆盖；无成本/准确率；单公司 |
-| 3 | **Snowflake** | 美国 | 数仓语义层/context layer | 2026-08-17 | 5,600 员工；320,000 查询/月（2025-07）；400+ 用户/5,400+ 查询 | 十亿行视图延迟；Dynamic Tables 维护爆炸；无成本/准确率 | **A/probation** | 语义层能在 5,600 人规模跑；延迟/维护是真实坑 | 单公司自述；无外部采用；不是本体推理 |
-| 4 | **Sigma** | 美国 | dbt/Dagster 语义工程 | 2026-10-27 | 2,883 dbt 模型；63 job；6 region | 需版本化/PII/列级控制；无成本/失败/准确率 | **A/probation** | 轻语义层可以版本化、跨 6 region 持续部署 | 供应商自己跑自己的产品；不是客户效果 |
+| 3 | **Snowflake** | 美国 | 数仓语义层/context layer | 2026-08-17 | 5,600 员工；320,000 查询/月（2025-07）；400+ 用户/5,400+ 查询 | 十亿行视图延迟；Dynamic Tables 维护爆炸；无成本/准确率 | **A（probation）** | 语义层能在 5,600 人规模跑；延迟/维护是真实坑 | 单公司自述；无外部采用；不是本体推理 |
+| 4 | **Sigma** | 美国 | dbt/Dagster 语义工程 | 2026-10-27 | 2,883 dbt 模型；63 job；6 region | 需版本化/PII/列级控制；无成本/失败/准确率 | **A（probation）** | 轻语义层可以版本化、跨 6 region 持续部署 | 供应商自己跑自己的产品；不是客户效果 |
 | 5 | **Netflix** | 美国 | 重型 OWL/SHACL/SPARQL + 自建 QuipuDB | 2026-10-16 | 49,000 软件目录条目；>20 亿请求/日；3,800 万日志/秒；约 6,500 万并发流；12 namespace | 假设有时错；依赖边需封顶；串行 harvest 有 wall-clock 成本；无成本/收益数 | **A** | 重型本体在超大规模可观测性生产里跑；自建图存储是例外 | 成本/ROI；before/after 时延；自建平台可复制性 |
-| 6 | **Palantir** | 美国 | 重型本体平台 | 2026-10-21 | 客户名单：L3Harris、McCarthy、Nvidia、Ondas/Regna、Tampa General 等 | 公告无规模/成本/失败 | **C/B 线索** | Foundry/Ontology/AIP 在 2026 仍有具名客户 | 采用深度、效果、成本、失败 |
+| 6 | **Palantir** | 美国 | 重型本体平台 | 2026-10-21 | 客户名单：L3Harris、McCarthy、Nvidia、Ondas/Regna、Tampa General 等 | 公告无规模/成本/失败 | **C（新闻稿）** | Foundry/Ontology/AIP 在 2026 仍有具名客户 | 采用深度、效果、成本、失败 |
 | 7 | **阿里云 PolarDB 本体知识平台** | 中国 | 数据库内嵌本体 | 2026-10-21 | 产品能力（灰度）；组件价 2核4G $37.59/月、1核1G $1.65/月 | 灰度；仅 PG16；无客户/规模/失败 | **C** | 阿里有产品化本体建模+GraphRAG+Agent skills | 生产采用、效果、TCO |
 | 8 | **阿里云 Context0 本体知识库** | 中国 | 知识库级薄本体 | 2026-09-23 | 类型≤100；关系≤300；每类型≤50 属性 | 知识库级；无客户/规模/失败 | **C** | “薄本体”的产品上限与版本/证据设计 | 企业级本体、生产规模 |
 | 9 | **蚂蚁 TuGraph** | 中国 | 图数据库/GraphRAG | last push 2026-05-11 | 1,768 stars；42 contributors；Apache-2.0 | G1 超窗；图库≠本体平台 | **C/背景** | 蚂蚁有图底座与金融风控背景 | 2026-06 后生产使用、本体采用 |
@@ -32,10 +32,13 @@ parent: ../README.md
 | 线索 | 日期 | 数字 | 失败/限制 | 等级 | 用途 |
 |---|---|---|---|---|---|
 | [京东 Oxygen AIIC](https://arxiv.org/abs/2606.28070) | 2026-06-26 | 数百亿 SKU 商品本体；精度 94.2%/召回 82.8% | 关系建模“初步、未规模化”；线上失败大量；SFT 灾难性遗忘；公司自报、无独立采用 | signal | 中国大厂唯一同时给规模+失败的线索；不撑结论 |
-| [Anthropic 自助分析](https://claude.com/resources/articles/how-anthropic-enables-self-service-data-analytics-with-claude) | 2026-06-03 | 95% 查询自动化/~95% 准确；无 skills ≤21%；离线 95%→65%/月；+6% 准确换 +32% token/+72% 延迟 | LLM 自动生成 metric 定义 net-negative；单公司 | signal | 维护税的可核量化；不进结论 |
+| [Anthropic 自助分析](https://claude.com/resources/articles/how-anthropic-enables-self-service-data-analytics-with-claude) | 2026-06-03 | 95% 查询自动化/~95% 准确；无 skills ≤21%；离线 95%→65%/月；+6% 准确换 +32% token/+72% 延迟 | LLM 自动生成 metric 定义 net-negative；单公司；有 I4（InfoQ/AtScale/引用）但缺 I1–I3 | signal | 维护税的可核量化；不进结论 |
 | [AngelList 放弃语义层](https://www.angellist.com/blog/the-semantic-layer-nobody-maintains) | 2026-08-28 | 1,400+ 模型/59 域/13k 行索引/27k 列；Actions 几美元/月 | “stale semantics worse than none”；无准确率；HN 2 分 | signal | 回退/替代方案的真实样本 |
 | [AWS 语义层成本](https://builder.aws.com/content/3KvFN69cxO83mHPPRm71A5I820C/measuring-a-semantic-layer-evidence-cost-and-control-from-an-agentic-analytics-build) | 2026-10-19 | POC 50 用户/2,000 问/月；整层 $90–175/月；5 类 silent failure；live chat paraphrase agreement 4% | 客户匿名；POC；AWS 自证 | C | “运行便宜、定义维护贵”的量级线索 |
-| [VB Pulse](https://venturebeat.com/data/companies-are-building-governed-semantic-layers-most-say-their-ai-agents-are-getting-context-somewhere-else) | 2026-10-06 | n=107/100；39% 生产用语义层；其中 28% 是 agent 主要上下文源（全体 13%）；采用者 78% vs 未采用 37% 报告上下文失败 | 自选样本；41% 顾问；不能推因果 | C（调查） | 采用率≠使用率；失败常见但不给成功率 |
+| [VB Pulse](https://venturebeat.com/data/companies-are-building-governed-semantic-layers-most-say-their-ai-agents-are-getting-context-somewhere-else) | 2026-10-06（报告 2026-11-06） | n=107/100；39% 生产用语义层；其中 28% 是 agent 主要上下文源（全体 13%）；采用者 78% vs 未采用 37% 报告上下文失败 | 自选样本；41% 顾问；不能推因果 | C（调查） | 采用率≠使用率；失败常见但不给成功率 |
+| [农商行客户自述三例](https://www.fintechinchina.com/cases/9863)（贵州/江西/江南） | 2026-09/10 | 贵州：HugeGraph+华为大数据，1,000 日活/TPS 100；江西：NebulaGraph+OceanBase，全省 86 家；江南：Neo4j，2,000+ 页/500 DAU/**3 人核心组** | 客户自述+评选，无独立复核；无成本/失败率 | signal | 中国采用不止中泰；底座不是五家大厂平台 |
+| [中国联通软研院 政企本体建模](https://bj.zhiliaobiaoxun.com/article/110498214) | 2026-08-25/09-21 | 预算 190 万（限价 180.5 万）；4 个本体模型；两次流标后转谈判，亚信中标 | 采购公告，只到授标前；无上线/效果 | signal | 企业级本体项目的预算量级；供给端投标人不足 3 家 |
+| [Westpac 结束 Palantir 合作](https://www.cyberdaily.au/tech/14407-westpac-ditches-palantir-following-activist-push) | 2026-11-05 | 具名银行退出 Foundry；动因是活动人士施压 | 未披露技术失败；无替代方案；无成本 | signal | 客户 logo ≠ 长期采用；退出可能非技术原因 |
 
 > 这张表只作“补充线索”，不进 1–5 的发现；尤其不要拿 VB Pulse 的 78% 当“语义层导致失败”的因果。
 
@@ -88,7 +91,7 @@ parent: ../README.md
 
 **它做了什么**：用 RDF/OWL/SHACL/SPARQL 建可观测性本体，分 12 个 namespace；把应用、服务、事件、部署、事故等实体统一到一个图；持久化到自研 QuipuDB（Rust/redb 四元组存储）；关联引擎读 13 类信号，输出带证据的根因假设。
 
-**规模**：日常 >20 亿请求/日、3,800 万条实时日志/秒、2024-11 拳赛约 6,500 万并发流；软件目录约 49,000 条，每个 `ops:Application` 先过目录校验；调查基线约 4 小时。
+**规模**：日常 >20 亿请求/日、3,800 万条实时日志/秒、2024-11 拳赛约 6,500 万并发流；软件目录约 49,000 条，每个 `ops:Application` 先过目录校验；调查基线约 4 小时（作者另说“以前拼上下文要一两小时”——两个数不是同一指标：4 小时是整次调查，1–2 小时是其中重建上下文那段）。
 
 **失败/限制**：排序后的假设**有时是错的**（所以每条带证据）；拒绝通用 `Service` 类型（不同工具四种含义）；双向依赖边必须封顶，否则热门服务会主导整张图；串行 harvest 换掉竞态但付出 wall-clock；无成本/收益数。
 
@@ -113,6 +116,8 @@ parent: ../README.md
 - **哪家平台最好**：没有同数据集/同场景对照；Palantir 与 Snowflake 不是同一形态。
 - **ROI/回本期**：没有成本/收益数；只有工作量代理。
 - **成功率**：Atlan 的“<15%”是二手综述，原始统计未核；不能当分母。
+- **项目级失败**：没有一条“上线后被关停/废弃”的第一方复盘；中国 7 例采购流标都在授标前，Westpac 退出 Palantir 也不是技术失败。
+- **五平台客户**：阿里/蚂蚁/腾讯/华为/京东 2026-06 后没有具名客户；“公开查不到”不等于“没有客户”，只说明没人愿意署名。
 - **跨行业可复制**：中泰是券商、Snowflake/Sigma 是数据平台公司；金融/制造/医疗的边界不同。
 
 这些缺口及“什么会改变结论”见 [08 边界](./08-boundaries.md)。

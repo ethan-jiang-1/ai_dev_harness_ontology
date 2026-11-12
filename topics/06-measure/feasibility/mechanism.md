@@ -250,7 +250,7 @@ updated: 2026-11-12
 
 **证据**：
 - 美国：Snowflake/Sigma 给出用户数/模型数/失败形态；Palantir 给出客户名单；dbt/AtScale 给出生态讨论。
-- 中国：阿里有 2026-09/10 的产品文档（C）；中泰有 2026-09/10 的会议+标准工作组案例（A）；腾讯 Topbase 的规模数是 2025-12（G1 超窗）；蚂蚁 TuGraph 的 `last_push` 是 2026-05（G1 失败）。
+- 中国：阿里有 2026-09/10 的产品文档（C）；中泰有 2026-09/10 的会议+标准工作组案例（A）；腾讯 Topbase 的规模数是 2025-12（G1 超窗）；蚂蚁 TuGraph 的 `last_push` 是 2026-05（G1 失败）。**逐平台检索（2026-11-12）：阿里 Context0 / 蚂蚁 TuGraph / 腾讯 DataBuddy / 华为 DataArts / 京东 Oxygen 五家，2026-06 后 0 条「具名客户 + 可追一手」**；能过门的客户侧材料集中在海致星图/星环/NebulaGraph/Neo4j 与三家农商行自述（signal）。
 - 中国不是没有东西：CCSA TC601 WG15 已立项《本体建模技术要求》《本体智能平台技术要求》《知识管理能力成熟度模型》等标准，说明生态在制度化；但标准只定词/合格性，不证效果。
 
 **限定**：这是**公开证据的描述**，不是产业能力排序；中国材料受公开意愿、语言、渠道影响，不能把「没公开」读成「没做」。
@@ -266,9 +266,9 @@ updated: 2026-11-12
 
 
 <a id="okf-2026-11"></a>
-## OKF / Wiki 过渡层（2026-11）
+## OKF / Wiki 底座选项（2026-11）
 
-> 2026-11-12 补。问题：直接上完整本体太贵，能不能先用 Wiki/OKF 做前置层，再衔接本体？本节只做**定义、证据与毕业判据**，不写实施 recipe。
+> 2026-11-12 补。问题：直接上完整本体太贵，能不能把 Wiki/OKF 当底座选项之一、需要时再衔接本体？本节只做**定义、证据与升级判据**，不写实施 recipe。
 >
 > **一句话**：OKF 是 Google 的开放知识格式（v0.1 2026-06-12，v0.2 2026-07-24），把 Karpathy 的 LLM Wiki 模式形式化；它是**知识容器**，不是本体——能解决可读/可审/可版本化/可溯源，不解决约束、推理、查询执行、策略/权限。
 
@@ -295,9 +295,9 @@ updated: 2026-11-12
 
 | 来源 | 日期 | 类型/准入 | 它证明什么 | 它不能证明什么 |
 |---|---|---|---|---|
-| [Google OKF v0.1](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing) | 2026-06-12 | 官方博客 / C（定义） | OKF 是开放的 markdown+YAML 格式；受 Karpathy LLM Wiki 启发 | 采用/效果；不是标准组织标准 |
-| [Google OKF v0.2](https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals) | 2026-07-24 | 官方博客 / C（定义） | 加 provenance/trust/freshness/lifecycle/attestation | 信任信号≠真实性；仍需 producer 审计 |
-| [Knowledge Catalog 集成](https://cloud.google.com/blog/products/data-analytics/scale-okf-bundles-across-an-organization-with-knowledge-catalog) | 2026-08-26 | 官方博客 / B（产品能力） | OKF bundle 可 push 成 Knowledge Catalog Entry，继承 IAM；sample Acme Retail 9 leaf/17 entries | 客户采用/规模/效果；sample 是合成 |
+| [Google OKF v0.1](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing) · [卡](../../../src/web/google-okf/google-okf.card.md) | 2026-06-12 | 官方博客 / `admitted`（定义） | OKF 是开放的 markdown+YAML 格式；一概念一文件；受 Karpathy LLM Wiki 启发 | 采用/效果；不是标准组织标准 |
+| [Google OKF v0.2](https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals) | 2026-07-24 | 官方博客 / `admitted`（定义） | 加 provenance/trust/freshness/lifecycle/attestation，全部 opt-in；“advisory signals, not access control” | 信任信号≠真实性；仍需 producer 审计 |
+| [Knowledge Catalog 集成](https://cloud.google.com/blog/products/data-analytics/scale-okf-bundles-across-an-organization-with-knowledge-catalog) | 2026-08-26 | 官方博客 / C（产品能力） | OKF bundle 可映射成 Catalog Entry，继承 IAM；okf Aspect 13 字段；Acme 9 leaf/17 entries | 客户采用/规模/效果；sample 是合成 |
 | [中泰证券 CCSA 案例](../../../src/web/modb-2026-zhongtai-ontology/modb-2026-zhongtai-ontology.card.md) | 2026-10-15 | engineering / `admitted` | 用 OKF 组织 9,137 知识目录/6,503 指标文档/2,622 表/12 万+ 血缘；三泳道+证据门禁；业务本体验证中 | 业务本体全量；成本/准确率；单公司 |
 | [社区 ADR：不把 OKF 用于 skills](https://github.com/laurigates/claude-plugins/blob/main/docs/adrs/0021-open-knowledge-format-mapping-not-adopted.md) | 2026-07-12/11-02 | 工程决策 / C | 声明性知识 vs 可执行能力的区分；OKF 适合多消费者知识，不适合单 runtime 过程 | 不是生产采用；单项目 |
 | [OKF interop 批评](https://raw.githubusercontent.com/chrisgagne/grounded-forge/refs/heads/main/docs/architecture/okf-interop.md) | 2026-07 | 工程文档 / C | OKF 标准化容器，不标准化 producer/审计；“conformant bundle of confabulated claims validates cleanly” | 不是采用/效果；单项目 |
@@ -344,10 +344,10 @@ updated: 2026-11-12
 
 ### 对 05 的用法
 
-05 应把 OKF/Wiki 写成**过渡层**，不是本体的替代：
-- 对读者：先用 OKF 统一“概念/术语/来源/owner/版本”，再判断是否毕业到本体/语义层。
+05 应把 OKF/Wiki 写成**底座选项之一**，不是本体的替代；可以是过渡，也可以长期并行：
+- 对读者：先用 OKF 统一“概念/术语/来源/owner/版本”，需要执行约束/权限时再接本体/语义层；没有升级信号，长期停在 OKF 是合理选择。
 - 对厂商：问“你的 OKF/知识库能不能导出/映射到本体？能不能执行约束/权限？”，而不是只看“支持 Markdown”。
-- 对证据：中泰是 A 类“OKF 前置层 + 语义层生产 + 业务本体验证”的中国案例；Google Knowledge Catalog 是 B 类产品能力；**截至 2026-11-12，未找到 OKF 直接替代本体的具名生产案例**。
+- 对证据：中泰是 A 类“OKF 前置层 + 语义层生产 + 业务本体验证”的中国案例；Google OKF 规范/博客是 `admitted`（格式定义），Knowledge Catalog 是 C（产品能力）；**截至 2026-11-12，未找到 OKF 直接替代本体的具名生产案例，也未找到完成 OKF→本体迁移的案例**。
 
 ## 关联
 
