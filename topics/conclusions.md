@@ -73,20 +73,19 @@ updated: 2026-11-09
 | 编号 | 结论 | 出处 | 影响 | 状态 |
 |---|---|---|---|---|
 | E-20 | 「本体被执行」不是单一形态：同一 `engine` 至少覆盖 OWL 2 QL 查询重写（ontop）、SHACL-AF 策略求值（trustgraph）、SHACL 校验（semantica）、SHACL→SPARQL/verified Core（open-ontologies）四种语义；执行不保证健全（trustgraph target/rule 异常 fail-open，且只删 subject 侧），也不等于写授权（open-ontologies 只做影响报告与 CI 规则门，不对单次写签发授权）。限定：4 个开源项目、pin commit、只读代码未跑测试；不能外推为所有 `engine` 实现 | [execution-forms 代码核对](../topics/execution-forms.md#代码级核对2026-11-09) · [trustgraph](../src/open-source/trustgraph-ai-trustgraph/digest.md) · [semantica](../src/open-source/semantica-agi-semantica/digest.md) · [ontop](../src/open-source/ontop-ontop/digest.md) · [open-ontologies](../src/open-source/fabio-rovai-open-ontologies/digest.md) | 支撑「形态是独立变量」这一前提；**不支撑效应量**（未跑对照）；把 `engine` 从强度刻度拆成语义类别；`read-path` 仍只有 1 个实现，保持轴外 | active |
-
 | E-23 | **读路径策略过滤的 10 条用例：1 条正常，4 类漏洞**：trustgraph 只在 subject 命中时删三元组；object 方向不删（只查 `triple.s`）、target 异常 fail-open、无策略 open mode、判定缓存 60s 且不含 policy_version。唯一 fail-closed 是「有策略 + 缺 `user_context`」。**没有合格第二实现**：sparql-guard 方向相反但单作者/1★/3 周龄/无 harness 调用点；Jena `jena-permissions` 已退役；Fuseki 是端点级 ACL。**做法**：10 条用例里 **1/4 正常、2/3 方向性、5/9/10 是错误路径与版本、6 是唯一 fail-closed**，只看第 1 条会得出相反结论；**唯一新的实测结果是 alias leak**（shape 不覆盖未类型化 alias）→ alias 前置三层是修法；fail-closed 有最小策略可抄。限定：trustgraph 单实现、pin `184f622`、只读代码；10 条里 6 条已核、4 条 `待核`；不证明泄漏率/生产效果 | [read-path](../topics/01-constraint/commit-gate/read-path.md) · [trustgraph digest](../src/open-source/trustgraph-ai-trustgraph/digest.md) · E-20 | 支撑 04 C.3；**不支撑「读路径可授权」**、不支撑通用行为 | active |
 
 > E-20 是代码级综合，不是单篇 digest：四个 digest 提供逐项目证据，[execution-forms](../topics/execution-forms.md#代码级核对2026-11-09) 提供跨项目矩阵。引用时写「已核（代码）」，不要写成「已证」。
 
 ## 推测（未核原文）
-| E-25 |**可消费性不是产物属性，是三关记录**：load（parsed + 每个 shape 有 target + consumer endpoint）、validate（坏样本 caught + 干净样本 FP + shacl-shacl）、answer（CQ expected + 0 行分因）；三档里结构表是唯一三关 supported；10 个坏样本里现有 `build_report` 只稳定抓住 2 个（字面量 tag、缺 level）；`targeted=0` 必须是 undetermined，不是 pass。限定：fixture + 标准材料卡；S1–S6/S9/S10 未跑；无真数据/跨域/生产误报率 | [consumability](../topics/05-produce/representation/consumability.md) · [SHACL 卡](../src/web/w3c-shacl/w3c-shacl.card.md) · [ODCS 卡](../src/web/odcs-v3.1/odcs-v3.1.card.md) · E-12 | 支撑 04 A.1/A.5；**不支撑「建完就能用」** | active |
 
 | 编号 | 结论 | 为什么仍是推测 | 状态 |
 |---|---|---|---|
+| E-25 |**可消费性不是产物属性，是三关记录**：load（parsed + 每个 shape 有 target + consumer endpoint）、validate（坏样本 caught + 干净样本 FP + shacl-shacl）、answer（CQ expected + 0 行分因）；三档里结构表是唯一三关 supported；10 个坏样本里现有 `build_report` 只稳定抓住 2 个（字面量 tag、缺 level）；`targeted=0` 必须是 undetermined，不是 pass。限定：fixture + 标准材料卡；S1–S6/S9/S10 未跑；无真数据/跨域/生产误报率 | [consumability](../topics/05-produce/representation/consumability.md) · [SHACL 卡](../src/web/w3c-shacl/w3c-shacl.card.md) · [ODCS 卡](../src/web/odcs-v3.1/odcs-v3.1.card.md) · E-12 | 支撑 04 A.1/A.5；**不支撑「建完就能用」** | active |
 | E-11 | 训练好的检索嵌入中，前缀维度与分类法粒度对齐 | 仅读综述转述（Peeling the Matryoshka） | withdrawn |
 | E-19 | `推测`。原句「取决于位置×成本×使能条件、没有单一能力曲线」是**恒真的框架句**，已拆成三条可判定的：①**约束类**——审批预算 >5%、或 `p_h < p_min` 时不做（E-14/E-15 给数）；②**知识供给**——先做命名+单位（K1），若 trap 在 K1 消失则不建塔（E-12 的 kill criterion）；③**状态层**——没有 reasoning-state 消融，就不得声称「记忆提升一致性」（E-17 的消融口径）。三条各自可被推翻；框架句本身不再当结论 | — | 替代原「位置×成本×使能」通句 | active |
 | E-26 | **四条查询路线按资产条件选，不按总分排**：有关系库 → OBDA；有 KG 且本体进得了 context → ontology-in-context；有 KG 无本体 → agentic navigation；有生成器 + 可标注错例 → gate/correction。4×8 矩阵、17 类失败与「不可比」清单见 [compare](../topics/03-knowledge/querying/compare.md)；98.33 / 89.9 / 64.6 不能互比；OBDA 无 LLM、无 benchmark | 跨源综合；三条路线无头对头；P1/P2 空 | withdrawn |
-| E-27 | **输出校验要六类 + 三态，跨段故障会换形态**：同一 0 行可来自缺 tag/错 join/超时/真答案为空；同一 allow 可来自错 level/skip/版本；单段指标（violations/accuracy）看不见。六类 = schema/cardinality/provenance/freshness/cross-field/plausibility；`pass` 只在 `targeted>0` 且 `skipped=0` 时给 | 无跨段注入实验；六类里只有前两类成本低；生产误报未测 | active |
+| E-27 | **输出校验要六类 + 三态，跨段故障会换形态**：同一 0 行可来自缺 tag/错 join/超时/真答案为空；同一 allow 可来自错 level/skip/版本；单段指标（violations/accuracy）看不见。六类 = schema/cardinality/provenance/freshness/cross-field/plausibility；`pass` 只在 `targeted>0` 且 `skipped=0` 时给 | 无跨段注入实验；六类里只有前两类成本低；生产误报未测（出处：[output-validation](../topics/02-judgment/checker/output-validation.md) §六类+三态；E-25 的 `targeted` 条亦见该页）| active |
 
 ## 存疑
 
