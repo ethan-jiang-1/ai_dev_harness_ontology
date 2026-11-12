@@ -1,4 +1,5 @@
 {
+  "_synthetic": "fixture — NOT real data; see README.md",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://ex.org/c#audit-record.schema.json",
   "title": "Ontology query access audit record",

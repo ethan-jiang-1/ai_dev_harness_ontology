@@ -61,7 +61,6 @@ updated: 2026-11-09
 | E-21 | **Text2SPARQL 的单条路线只在单设置上成立**：GGC 的选择性纠错在 MCQA（电影域、iMKG、31,570 题、Llama-3.2-3B 单骨干）把答案集匹配率 90.23→98.33（全量纠错 92.34；45% 是相对全量纠错的墙钟，比单跑 +10%；Gate FPR 0.31%、trigger 9.31%）。限定：单 benchmark、单 snapshot、单系统、单模型；Match 允许 superset；不能当业务正确或跨域效应量；原“三条路线”中的 NLKGQ/KGVoyager 已移出，不再比较 | [GGC digest](../src/papers/2607.28082-ggc/digest.md) | 支撑 03/querying 的单路线机制；**不支撑路线排序**、不支撑业务正确 | contested |
 | E-22 | **访问控制至少分三层，层间不能互推**：标签/分类有生产级来源（Glyph，Apple 单企业，~3.4M 列/98k 表、275-leaf 分类本体、列级标签；NDCG/MAP 是检索指标、生产接受率是作者报告且对 FN 盲；**不产策略判定、不执行访问控制**）；策略层没有 ontology/KG 领域来源（OPA 只是通用策略引擎候选）；执行层只有 trustgraph 的单实现读路径 SHACL-AF post-filter（fail-open、只删 subject，E-20）。因此「有敏感标签」不能推出「有策略」或「执行正确」；读路径≠写授权。限定：Glyph 单企业/标签层；trustgraph 单实现/只读代码；无跨企业、无漏标率、无领域策略来源、无生产效果；OPA adjunct 未集成 | [Glyph digest](../src/papers/2609.10430-glyph/digest.md) · [trustgraph digest](../src/open-source/trustgraph-ai-trustgraph/digest.md) · E-20 | 支撑 04 C.1/C.7；**不支撑端到端访问控制** | active |
 | E-24 | **策略层可以纸面判定，但领域映射不是标准给的**：XACML 3.0 给合并算法（deny-overrides 等）/obligation/version；ODRL 2.2 给 permission/prohibition/duty/conflict；GB/T 43697 只分核心/重要/一般三级，GB/T 35273 只定义个人信息/敏感个人信息；04 的 1–4 + 2/3 阈值是工程映射。11 条测试 10 条有唯一期望；T9（steward+table）R4/R5 优先级未定；`clearance` 未被 8 条规则消费；`skip` 是 XACML/ODRL 都没有的第 4 种效果。限定：标准材料卡为摘要/精读混合，条款与 API 待核；11 条测试未跑；无领域策略来源；不证明执行 | [policy mechanism](../topics/01-constraint/policy/mechanism.md) · [GB/T 43697 卡](../src/web/gbt-43697/gbt-43697.card.md) · [XACML 卡](../src/web/oasis-xacml-3.0/oasis-xacml-3.0.card.md) · [ODRL 卡](../src/web/w3c-odrl-2.2/w3c-odrl-2.2.card.md) · E-22 | 支撑 04 C.2；**不支撑「策略正确」或「执行可授权」** | active |
-| E-25 | **可消费性不是产物属性，是三关记录**：load（parsed + 每个 shape 有 target + consumer endpoint）、validate（坏样本 caught + 干净样本 FP + shacl-shacl）、answer（CQ expected + 0 行分因）；三档里结构表是唯一三关 supported；10 个坏样本里现有 `build_report` 只稳定抓住 2 个（字面量 tag、缺 level）；`targeted=0` 必须是 undetermined，不是 pass。限定：fixture + 标准材料卡；S1–S6/S9/S10 未跑；无真数据/跨域/生产误报率 | [consumability](../topics/05-produce/representation/consumability.md) · [SHACL 卡](../src/web/w3c-shacl/w3c-shacl.card.md) · [ODCS 卡](../src/web/odcs-v3.1/odcs-v3.1.card.md) · E-12 | 支撑 04 A.1/A.5；**不支撑「建完就能用」** | active |
 
 > E-06 的论文发现是「已核」；把它推广为「漂移=输入不完备」是仓库推断，标 `推测`。两者不要混。
 >
@@ -80,11 +79,12 @@ updated: 2026-11-09
 > E-20 是代码级综合，不是单篇 digest：四个 digest 提供逐项目证据，[execution-forms](../topics/execution-forms.md#代码级核对2026-11-09) 提供跨项目矩阵。引用时写「已核（代码）」，不要写成「已证」。
 
 ## 推测（未核原文）
+| E-25 |**可消费性不是产物属性，是三关记录**：load（parsed + 每个 shape 有 target + consumer endpoint）、validate（坏样本 caught + 干净样本 FP + shacl-shacl）、answer（CQ expected + 0 行分因）；三档里结构表是唯一三关 supported；10 个坏样本里现有 `build_report` 只稳定抓住 2 个（字面量 tag、缺 level）；`targeted=0` 必须是 undetermined，不是 pass。限定：fixture + 标准材料卡；S1–S6/S9/S10 未跑；无真数据/跨域/生产误报率 | [consumability](../topics/05-produce/representation/consumability.md) · [SHACL 卡](../src/web/w3c-shacl/w3c-shacl.card.md) · [ODCS 卡](../src/web/odcs-v3.1/odcs-v3.1.card.md) · E-12 | 支撑 04 A.1/A.5；**不支撑「建完就能用」** | active |
 
 | 编号 | 结论 | 为什么仍是推测 | 状态 |
 |---|---|---|---|
 | E-11 | 训练好的检索嵌入中，前缀维度与分类法粒度对齐 | 仅读综述转述（Peeling the Matryoshka） | withdrawn |
-| E-19 | 机制是否值得落地，取决于「位置 × 成本 × 使能条件」，不是本体质量；没有一条适用于所有机制的能力曲线（约束类随能力下降，知识投影不随容量上升） | 横切综合；证据分散在 E-08/E-12/E-14/E-15/E-17（E-13/E-16 已撤回） | active |
+| E-19 | `推测`。原句「取决于位置×成本×使能条件、没有单一能力曲线」是**恒真的框架句**，已拆成三条可判定的：①**约束类**——审批预算 >5%、或 `p_h < p_min` 时不做（E-14/E-15 给数）；②**知识供给**——先做命名+单位（K1），若 trap 在 K1 消失则不建塔（E-12 的 kill criterion）；③**状态层**——没有 reasoning-state 消融，就不得声称「记忆提升一致性」（E-17 的消融口径）。三条各自可被推翻；框架句本身不再当结论 | — | 替代原「位置×成本×使能」通句 | active |
 | E-26 | **四条查询路线按资产条件选，不按总分排**：有关系库 → OBDA；有 KG 且本体进得了 context → ontology-in-context；有 KG 无本体 → agentic navigation；有生成器 + 可标注错例 → gate/correction。4×8 矩阵、17 类失败与「不可比」清单见 [compare](../topics/03-knowledge/querying/compare.md)；98.33 / 89.9 / 64.6 不能互比；OBDA 无 LLM、无 benchmark | 跨源综合；三条路线无头对头；P1/P2 空 | withdrawn |
 | E-27 | **输出校验要六类 + 三态，跨段故障会换形态**：同一 0 行可来自缺 tag/错 join/超时/真答案为空；同一 allow 可来自错 level/skip/版本；单段指标（violations/accuracy）看不见。六类 = schema/cardinality/provenance/freshness/cross-field/plausibility；`pass` 只在 `targeted>0` 且 `skipped=0` 时给 | 无跨段注入实验；六类里只有前两类成本低；生产误报未测 | active |
 
@@ -94,7 +94,7 @@ updated: 2026-11-09
 |---|---|---|
 | Q-01 | 「本体越完备效果越好」 | 与 E-01 冲突；完备性与可判定性在工程上反向 |
 | Q-02 | 「多智能体优于单体」 | 缺少在同等上下文预算下的对照 |
-| Q-03 | 「护栏必然提升任务表现」 | E-04 在 τ²-bench/单 gate/6 模型上否证了「护栏必然提升 reward」；不能外推为所有护栏/所有度量；保留作反例索引 |
+| Q-03 | 「护栏必然提升任务表现」 | **待新源**：原唯一否证 E-04 已撤回（POLAR）。旧观察留作历史索引，不作现役判断；关闭需新的 admitted 护栏证据 |
 
 ## 冲突
 
@@ -102,14 +102,14 @@ updated: 2026-11-09
 |---|---|---|
 | C-01 | 「上本体提准确率」 vs E-01 | 不做平均。假定前者成立的条件是弱 harness + 窄域；强 harness 下后者优先。待 RQ1 实验分离 |
 | C-02 | Q-01「越全越好」 vs 领域实践「窄而深」 | 倾向窄而深，但缺跨域对照 |
-| C-03 | 度量尺不一致 | E-01 与 E-04 都说「用准确率/reward 度量控制类机制会得出错误结论」。**这不是两个结论，是同一个方法论问题**：需按机制类型选度量 |
+| C-03 | 度量尺不一致 | `推测`。E-01（admitted）支持「结构化工件在强检索下无准确率增益」；另一半原锚 E-04 已撤回，故「按机制选度量」目前是**假说**，不是双源结论 |
 | C-04 | 结构化工件无增益（E-01） vs 投影文本有效（E-12） | **不矛盾**，但要说得更准：差别不只在「答案是否写在知识里」，还在**投影什么**——CAI 投影的是**证据**（claim + 逐字 span），N&D 投影的是**领域知识**（本体塔）。证据投影在需要审计/省 token 时有效；领域知识投影在答案即规则/手册时有效。判据见 [03 知识](./03-knowledge/README.md) |
 
-C-03 是当前最有价值的一条：它把「正面证据 vs 负面证据」的文献冲突，重新解释为**度量错配**。若成立，P1 的核心论证就从「本体有用/无用」变成「该用哪把尺子」。
+C-03 目前是**待检验假说**（不是结论）：它把「正面证据 vs 负面证据」的文献冲突，解释为**度量错配**。缺的正是关键实验——同一数据集、同一机制、两把尺子的对照；没有它，这句话不能当「最有价值的判断」引用。
 
-**2×2 证据（2026-11-10）**：约束类在任务账上混合/负、在风险账上前沿更优；知识供给在准确率上 neutral、在 token 上正收益（E-01/E-04/E-12/E-15；[06-L16](./06-measure/claims.md)；[03 measurement](../deliverables/03-mechanism-reference/04-across-positions/03-measurement.md#25-机制类型与尺子分派)）。**逐格已核，方向翻转仍是跨来源综合**——没有同数据集两把尺子的对照。
+**2×2 证据（2026-11-10）**：约束类在任务账上混合/负、在风险账上前沿更优；知识供给在准确率上 neutral、在 token 上正收益（E-01/E-12/E-15；**E-04 已撤回，其格作历史**；[06-L16](./06-measure/claims.md)；[03 measurement](../deliverables/03-mechanism-reference/04-across-positions/03-measurement.md#25-机制类型与尺子分派)）。**逐格已核，方向翻转仍是跨来源综合**——没有同数据集两把尺子的对照。
 
-**能力梯度不是一条线（`推测`，Wave 1 综合）。** 约束类收益随基线能力上升而下降（E-13）；知识投影的增益**不随容量上升**（E-12，H2 p=0.85），9B 带投影 0.737 > 750B 不带 0.672。两者不矛盾：护栏**替代**判断，投影**补充**知识。待 Wave 2/3 的 CASEL、OntoAct、Grid Agents 验证。
+**能力梯度不是一条线（`推测`，Wave 1 综合）。** 约束类收益随基线能力上升而下降（**原锚 E-13 已撤回，作历史**）；知识投影的增益**不随容量上升**（E-12，H2 p=0.85），9B 带投影 0.737 > 750B 不带 0.672。两者不矛盾：护栏**替代**判断，投影**补充**知识。待 Wave 2/3 的 CASEL、OntoAct、Grid Agents 验证。
 
 冲突不消除，保留在表里。
 
@@ -120,7 +120,7 @@ E-xx 不是一次写死。每条有一个 `状态` 列；改 E 之前先读对�
 | 状态 | 含义 | 当前 |
 |---|---|---|
 | `active` | 未被反例推翻；按限定使用 | 除下列外默认 |
-| `contested` | 主结论可站，但某个读法/外推被削弱 | E-04（“结构有效”的读法被 T1-only 削弱）、E-12（排序非普适）、E-15（模拟，非部署） |
+| `contested` | 主结论可站，但某个读法/外推被削弱 | E-12（排序非普适）、E-15（模拟，非部署） |
 | `withdrawn` | 源未过准入，结论撤回；编号保留供回链 | E-02/03/04/06/10/11/13/16/26 |
 | `superseded` | 被新证据取代；保留编号与指针 | 暂无 |
 

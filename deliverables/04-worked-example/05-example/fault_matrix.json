@@ -1,4 +1,5 @@
 {
+  "_synthetic": "fixture — NOT real data; see README.md",
   "fixture": "example/ 2026-11-10",
   "note": "10 类故障 × 3 段；不是实测，是注入矩阵骨架。信号来自 build_report / query log / audit record。",
   "faults": [

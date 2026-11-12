@@ -338,8 +338,28 @@ def main() -> int:
         if m and section in {"已核（一手原文摘要）", "已核（代码）", "推测（未核原文）", "存疑", "冲突"}:
             key = {"已核（一手原文摘要）": "已核", "已核（代码）": "已核", "推测（未核原文）": "推测"}.get(section, section)
             counts[key] += 1
-    if counts["已核"] != 16 or counts["推测"] != 2:
+    if counts["已核"] != 15 or counts["推测"] != 3:
         warnings.append(f"conclusion levels changed: {dict(counts)} (meta/state may need update)")
+
+    # 7a. withdrawn conclusions must not carry weight for live rows (grades follow evidence)
+    withdrawn = set()
+    for line in conclusions.splitlines():
+        m = re.match(r"\|\s*(E-\d+)\s*\|", line)
+        if m and "| withdrawn |" in line:
+            withdrawn.add(m.group(1))
+    section = None
+    for line in conclusions.splitlines():
+        if line.startswith("## "):
+            section = line[3:].strip()
+            continue
+        if section == "已撤回（源未过准入）" or not line.startswith("|"):
+            continue
+        m = re.match(r"\|\s*([EQLC]-\d+)\s*\|", line)
+        if not m:
+            continue
+        hit = [w for w in withdrawn if w in line]
+        if hit and not re.search(r"已撤回|撤回|作历史|withdrawn|待新源", line):
+            warnings.append(f"{m.group(1)} cites withdrawn {sorted(hit)} as support (topics/conclusions.md)")
 
     # 7b. state.md is the single authoritative count; keep it equal to the tree
     state_path = os.path.join(ROOT, "meta/status/state.md")

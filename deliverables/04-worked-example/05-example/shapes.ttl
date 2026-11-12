@@ -1,3 +1,7 @@
+# ==============================================================================
+# SYNTHETIC FIXTURE — 5 tables / 13 columns / 11 classes, NOT real data.
+# 生成于示例，数字是期望值，不是实测。引用前先读 ./README.md。
+# ==============================================================================
 @prefix : <https://ex.org/c#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .

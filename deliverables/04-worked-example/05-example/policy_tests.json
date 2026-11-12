@@ -1,4 +1,5 @@
 {
+  "_synthetic": "fixture — NOT real data; see README.md",
   "policy_version": "0.4.0",
   "fixture": "example/ 2026-11-10",
   "note": "11 条输入→期望；T9 是故意留的优先级空洞，不是失败样本；T11 验证 governance 的 dataset 级规则。clearance 只记录，不参与判定。",
