@@ -1,9 +1,11 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-12
 ---
 
 # 06 测量派：它到底有没有用
+
+> **2026-11-12 撤源对账**：本派 MIOE（E-10）、Diagnose（E-06）、POLAR / Ontology Catch 已移出。**`findings.md` 索引里的旧「已核」不作现役等级。** 仍 admitted：SLB（E-07/E-09）、Agents Are Systems（E-18）、CAI（E-14）、CASEL（E-15）、E-20。
 
 ## 核心主张
 

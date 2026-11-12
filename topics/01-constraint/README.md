@@ -1,9 +1,11 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-12
 ---
 
 # 01 约束派：怎么不让它做错事
+
+> **2026-11-12 撤源对账**：本派 POLAR（E-04/E-13）、OntoAct（E-16）、Commit Boundary 已移出（[审计](../../meta/audits/2026-11-11-source-purge.md)）。**本页与各子主题 README 的等级已降；`findings.md` 索引里的旧「已核」是撤源前记录，引用以 README 为准。** 仍 admitted：CASEL（E-15，非本体参照）、trustgraph/semantica/ontop/open-ontologies（E-20 代码级）、Glyph（E-22）。
 
 ## 核心主张
 

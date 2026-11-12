@@ -5,6 +5,8 @@
 > 编号沿用 [digest ledger](../../../meta/archive/2026-11/full-audit/digest-ledger.md)：D-11 = [Diagnose](../../../meta/audits/2026-11-11-source-purge.md#src-2610-35267)，D-15 = [Multi-agent](../../../meta/audits/2026-11-11-source-purge.md#src-2610-36325)。
 
 ## 索引
+> **2026-11-12 对账（等级以 README 为准）**：本页索引里的「已核」是**撤源前**的记录；支撑它的来源已按 [CHARTER §4](../../../CHARTER.md#4-素材准入material-gate) 移出，这些条目现等级见 [README](./README.md)（多已降 `推测`/`withdrawn`）。**引用请用 README 的等级，不要用本页索引的历史等级。**
+
 
 | ID | 判断（一行） | 等级 |
 |---|---|---|

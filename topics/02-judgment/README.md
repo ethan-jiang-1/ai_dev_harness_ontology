@@ -1,9 +1,11 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-12
 ---
 
 # 02 判定派：怎么知道它做错了
+
+> **2026-11-12 撤源对账**：本派 Ontology Catch（E-02）与 OA-RAG（E-03）已移出，checker/evidence/calibration 三页的效应量作历史示例。**`findings.md` 索引里的旧「已核」不作现役等级。** 仍 admitted：E-20 代码级三态/覆盖、E-24 策略语义标准。
 
 ## 核心主张
 

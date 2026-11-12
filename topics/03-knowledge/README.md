@@ -1,9 +1,11 @@
 ---
 status: draft
-updated: 2026-11-09
+updated: 2026-11-12
 ---
 
 # 03 知识派：怎么让它知道得对
+
+> **2026-11-12 撤源对账**：本派 Grid Agents（监管支线）、NLKGQ / KGVoyager（查询路线）已移出。**`findings.md` 索引里的旧「已核」不作现役等级。** 仍 admitted 的主干是 CAI（E-01/E-08/E-14）与 N&D（E-12）。
 
 ## 核心主张
 

@@ -4,6 +4,8 @@
 > 分数均为 Disentangle（Cause 与 Iso 的平均），不是准确率。机制与数字见 [MIOE digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-38326) §4（对应一手 Table 2/3）；Table/Fig. 页码指原文。
 
 ## 索引
+> **2026-11-12 对账（等级以 README 为准）**：本页索引里的「已核」是**撤源前**的记录；支撑它的来源已按 [CHARTER §4](../../../CHARTER.md#4-素材准入material-gate) 移出，这些条目现等级见 [README](./README.md)（多已降 `推测`/`withdrawn`）。**引用请用 README 的等级，不要用本页索引的历史等级。**
+
 
 | ID | 判断（一行） | 等级 |
 |---|---|---|
