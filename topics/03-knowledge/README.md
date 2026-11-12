@@ -20,11 +20,13 @@ updated: 2026-11-12
 
 ## 子主题地图
 
-| 子主题 | 回答什么 | 状态 | 已发现 / 未发现 | 先读 |
+> **计数只写在子主题 dashboard**（`<子主题>/README.md`）与 `findings.md`；本表不抄数字，避免派级与叶级漂移。
+
+| 子主题 | 回答什么 | 状态 | 计数 | 先读 |
 |---|---|---|---|---|
-| [projection](./projection/README.md) | 把领域知识投影成文本/JSON/工具 | `draft`，已拆 F/G | 4 F / 5 G | dashboard |
-| [compilation](./compilation/README.md) | 把证据预编译成 claim–leaf 工件 | `draft`，已拆 F/G | 11 F / 8 G | dashboard |
-| [querying](./querying/README.md) | 自然语言 → SPARQL 的三条路线 | `draft`，已拆 F/G | 3 F / 4 G | dashboard |
+| [projection](./projection/README.md) | 把领域知识投影成文本/JSON/工具 | `draft`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
+| [compilation](./compilation/README.md) | 把证据预编译成 claim–leaf 工件 | `draft`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
+| [querying](./querying/README.md) | 自然语言 → SPARQL 的三条路线 | `draft`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
 
 **薄页（<2 篇独立来源）**：projection（1 篇，单工厂）、compilation（2 篇，同一 CAI 的两种切法）。薄页的结论不能外推为跨域规律。
 

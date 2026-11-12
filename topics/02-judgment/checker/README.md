@@ -7,6 +7,8 @@ evidence: [E-02]  # withdrawn；代码级三态/覆盖见 E-20
 
 # 输出后判定：本体当 checker
 
+> **薄页（<2 篇独立来源）**：本页判断只作候选/边界，**不承担稳定判断**；引用时必须带「单来源」限定。
+
 > 产出已形成、尚未被使用。这里问「用什么本体、以什么方式检查、代价是什么」，不负责动作前拦截（[action-gate](../../01-constraint/action-gate/README.md)）或推理期约束（[reasoning-gate](../../01-constraint/reasoning-gate/README.md)）。
 >
 > **2026-11-12 对账**：效应量来源 Ontology Catch（E-02）已撤回（[tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37809)）——三源 catch/FA、precision、空结果基线、LLM judge 等数字作**历史示例，不作活证据**，等级降 `推测`。**仍 admitted 的是代码级发现（E-20）：三态 exit code、覆盖/保证权衡**，保持 `已核（代码）`。对应交付物 01 的 gap 行 / W-01。

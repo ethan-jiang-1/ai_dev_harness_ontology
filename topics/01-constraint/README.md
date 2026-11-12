@@ -17,13 +17,15 @@ POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是�
 
 ## 子主题地图
 
-| 子主题 | 回答什么 | 状态 | 已发现 / 未发现 | 先读 |
+> **计数只写在子主题 dashboard**（`<子主题>/README.md`）与 `findings.md`；本表不抄数字，避免派级与叶级漂移。
+
+| 子主题 | 回答什么 | 状态 | 计数 | 先读 |
 |---|---|---|---|---|
-| [action-gate](./action-gate/README.md) | 动作前：可逆性够不够、该分配多少审查 | `draft`，已拆 F/G | 6 F / 5 G | dashboard → findings |
-| [commit-gate](./commit-gate/README.md) | 落盘前：证据够不够授权持久化 | `seed`，已拆 F/G | 7 F / 4 G | dashboard |
-| [access-control](./access-control/README.md) | 标签/策略/执行三层；读路径过滤 | `draft`，已拆 F/G | 3 F / 4 G | dashboard |
-| [policy](./policy/README.md) | 策略层：标签/等级 → allow/deny；冲突/默认/审计 | `seed`，已拆 F/G；来源待入库 | 3 F / 3 G | dashboard |
-| [reasoning-gate](./reasoning-gate/README.md) | 推理期：条件成不成立、知识源怎么取 | `draft`，已拆 F/G | 4 F / 4 G | dashboard |
+| [action-gate](./action-gate/README.md) | 动作前：可逆性够不够、该分配多少审查 | `draft`，已拆 F/G | **不在此抄数** → dashboard | dashboard → findings |
+| [commit-gate](./commit-gate/README.md) | 落盘前：证据够不够授权持久化 | `seed`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
+| [access-control](./access-control/README.md) | 标签/策略/执行三层；读路径过滤 | `draft`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
+| [policy](./policy/README.md) | 策略层：标签/等级 → allow/deny；冲突/默认/审计 | `seed`，已拆 F/G；来源待入库 | **不在此抄数** → dashboard | dashboard |
+| [reasoning-gate](./reasoning-gate/README.md) | 推理期：条件成不成立、知识源怎么取 | `draft`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
 
 **薄页（<2 篇独立来源）**：commit-gate（1 篇概念架构 + trustgraph 读路径支持）、policy（标准/实现待入库，3 条判断里 2 条待核）。薄页只作候选/边界，不承担稳定判断。
 

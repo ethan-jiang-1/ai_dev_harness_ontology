@@ -20,6 +20,7 @@ It deliberately does not judge prose or evidence quality.
 from __future__ import annotations
 
 import os
+import glob as glob_mod
 import re
 import sys
 from collections import Counter
@@ -271,6 +272,20 @@ def main() -> int:
                 errors.append(f"missing SCOPE.md: deliverables/{d}")
             if not os.path.exists(os.path.join(base, "README.md")):
                 errors.append(f"missing README.md: deliverables/{d}")
+
+    # 4d. thin pages declared by school README must self-mark
+    for school in sorted(glob_mod.glob(os.path.join(ROOT, "topics", "0*", "README.md"))):
+        text = open(school, encoding="utf-8").read()
+        m = re.search(r"\*\*薄页（<2 篇独立来源）\*\*：(.+)", text)
+        if not m:
+            continue
+        for name in re.findall(r"([a-z][a-z0-9-]+)（", m.group(1)):
+            page = os.path.join(os.path.dirname(school), name, "README.md")
+            if not os.path.exists(page):
+                warnings.append(f"thin-page list names missing dir: {name} ({os.path.relpath(school, ROOT)})")
+                continue
+            if "薄页（<2 篇独立来源）" not in open(page, encoding="utf-8").read():
+                warnings.append(f"thin page not self-marked: topics/{os.path.basename(os.path.dirname(school))}/{name}/README.md")
 
     # 5. manifest coverage
     manifest = os.path.join(papers_dir, "manifest.md")

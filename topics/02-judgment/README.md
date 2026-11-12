@@ -15,13 +15,15 @@ updated: 2026-11-12
 
 ## 子主题地图
 
-| 子主题 | 回答什么 | 状态 | 已发现 / 未发现 | 先读 |
-|---|---|---|---|---|
-| [checker](./checker/README.md) | 输出后：本体当语义判据，漏检/误报怎么换 | `draft`，已拆 F/G | 5 F / 5 G | dashboard |
-| [evidence](./evidence/README.md) | 输出时：答案带什么证据、接地等级怎么报 | `draft`，已拆 F/G | 3 F / 4 G | dashboard |
-| [calibration](./calibration/README.md) | 判定器的曲线与代价 | `seed`，待拆 | — | 机制页 |
+> **计数只写在子主题 dashboard**（`<子主题>/README.md`）与 `findings.md`；本表不抄数字，避免派级与叶级漂移。
 
-**薄页（<2 篇独立来源）**：checker（1 篇）、evidence（1 篇）、calibration（0 篇，待建）。薄页只作候选/边界，不承担稳定判断。
+| 子主题 | 回答什么 | 状态 | 计数 | 先读 |
+|---|---|---|---|---|
+| [checker](./checker/README.md) | 输出后：本体当语义判据，漏检/误报怎么换 | `draft`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
+| [evidence](./evidence/README.md) | 输出时：答案带什么证据、接地等级怎么报 | `draft`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
+| [calibration](./calibration/README.md) | 判定器的曲线与代价 | `seed`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
+
+**薄页（<2 篇独立来源）**：checker（1 篇，**源已撤回 → 作历史**）、evidence（1 篇，**源已撤回**）、calibration（1 篇，**源已撤回**）。三页均已成文（各有 F 条目），但效应量不作现役判断。
 
 ## 本派当前判断
 

@@ -17,12 +17,14 @@ updated: 2026-11-12
 
 ## 子主题地图
 
-| 子主题 | 回答什么 | 状态 | 已发现 / 未发现 | 先读 |
+> **计数只写在子主题 dashboard**（`<子主题>/README.md`）与 `findings.md`；本表不抄数字，避免派级与叶级漂移。
+
+| 子主题 | 回答什么 | 状态 | 计数 | 先读 |
 |---|---|---|---|---|
-| [generation](./generation/README.md) | 本体从哪来：四条生成路线 | `draft`，已拆 F/G | 6 F / 6 G | dashboard |
-| [refinement](./refinement/README.md) | 在既有本体上修子类/约束 | `draft`，已拆 F/G | 6 F / 4 G | dashboard |
-| [representation](./representation/README.md) | 形式化到什么程度 | `seed` | 4 F / 5 G | 本页 |
-| [lifecycle](./lifecycle/README.md) | 来源、精化、对齐、演化 | `seed`，dashboard 薄页 | 3 判断 + 4 工程发现 / 3 G | 本页 |
+| [generation](./generation/README.md) | 本体从哪来：四条生成路线 | `draft`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
+| [refinement](./refinement/README.md) | 在既有本体上修子类/约束 | `draft`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
+| [representation](./representation/README.md) | 形式化到什么程度 | `seed` | **不在此抄数** → dashboard | 本页 |
+| [lifecycle](./lifecycle/README.md) | 来源、精化、对齐、演化 | `seed`，dashboard 薄页 | **不在此抄数** → dashboard | 本页 |
 | [modeling](./representation/modeling.md) | 规范如何压缩自由度 | 机制页 | — | 本页 |
 
 > 计数以各子主题 dashboard 为准（2026-11-08）。

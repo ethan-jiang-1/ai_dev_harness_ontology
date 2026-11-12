@@ -15,10 +15,12 @@ updated: 2026-11-09
 
 ## 子主题地图
 
-| 子主题 | 回答什么 | 状态 | 已发现 / 未发现 | 先读 |
+> **计数只写在子主题 dashboard**（`<子主题>/README.md`）与 `findings.md`；本表不抄数字，避免派级与叶级漂移。
+
+| 子主题 | 回答什么 | 状态 | 计数 | 先读 |
 |---|---|---|---|---|
-| [memory](./memory/README.md) | 事实集合 vs 状态；两层状态 | `draft`，已拆 F/G | 5 F / 5 G | dashboard |
-| [identity](./identity/README.md) | 跨源、跨期的同一性 | `draft`，已拆 F/G | 4 F / 5 G | dashboard |
+| [memory](./memory/README.md) | 事实集合 vs 状态；两层状态 | `draft`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
+| [identity](./identity/README.md) | 跨源、跨期的同一性 | `draft`，已拆 F/G | **不在此抄数** → dashboard | dashboard |
 | [determinism](./determinism/README.md) | 跨运行的一致性锚点 | `seed`，薄页（未拆 F/G） | 3 / 3（未编号） | README（薄页） |
 
 **薄页（<2 篇独立来源）**：identity（0 篇主归位；FIRME 经 `also_supports` 供给）、determinism（0 篇，设计提案）。薄页只作候选/边界，不承担稳定判断。

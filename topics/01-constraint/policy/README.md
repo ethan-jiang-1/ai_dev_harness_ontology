@@ -7,6 +7,8 @@ evidence: [E-22]
 
 # 策略层：标签怎么变成 allow/deny
 
+> **薄页（<2 篇独立来源）**：本页判断只作候选/边界，**不承担稳定判断**；引用时必须带「单来源」限定。
+
 > 回答：敏感标签/等级怎么映射成 principal/action/condition/effect，冲突怎么解，默认怎么定，审计留什么。
 > 不回答：标签怎么产（[access-control](../access-control/README.md)）、读路径怎么执行（[commit-gate/read-path](../commit-gate/read-path.md)）、写授权（[commit-gate](../commit-gate/README.md)）。
 

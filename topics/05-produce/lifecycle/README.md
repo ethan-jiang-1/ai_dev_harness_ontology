@@ -7,6 +7,8 @@ evidence: [E-02, E-05]  # E-02 withdrawn；E-05(FIRME) admitted
 
 # 生命周期：来源、精化、演化
 
+> **薄页（<2 篇独立来源）**：本页判断只作候选/边界，**不承担稳定判断**；引用时必须带「单来源」限定。
+
 > **2026-11-12 对账**：三源偏向的效应量来源 E-02(Ontology Catch) 与 Evontree/OntoAct 已撤回，相关数字作历史示例、降 `推测`；**FIRME（E-05）与 open-ontologies 代码检查（E-20）仍 admitted，保持 `已核`**。四阶段框架是综合（`推测`）。
 
 ## 状态
