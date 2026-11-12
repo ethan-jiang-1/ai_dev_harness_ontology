@@ -84,7 +84,7 @@ ExpectationSuite（JSON/Python）
 
 | digest | 机制 | 代码里对应 | 缺什么 |
 |---|---|---|---|
-| [E-02](../../../topics/conclusions.md)（Ontology Catch） | 本体当 checker，报 catch/FA | GE 是数据断言，不是本体检查 | 本体判据、catch/FA |
+| [E-02](../../../topics/conclusions.md)（Ontology Catch；**已撤回，历史**） | 本体当 checker，报 catch/FA | GE 是数据断言，不是本体检查 | 本体判据、catch/FA |
 | [E-27](../../../topics/conclusions.md)（输出校验/传播） | 六类 + 三态 | GE 可覆盖 schema/cardinality；无三态 | cross-field/语义、undetermined |
 | [output-validation](../../../topics/02-judgment/checker/output-validation.md) | 6 类 + 三态 | GE 的 expectation 可映射前两类 | 需外层包装三态与 coverage |
 

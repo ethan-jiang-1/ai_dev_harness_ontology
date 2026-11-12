@@ -25,7 +25,7 @@ updated: 2026-11-12
 | 执行形态（18 源：10 论文 + 8 开源） | engine 3 / compiled 3 / context 1 / label 1 / none 10 |
 | 交付物 | 5 个子目录 + 共用入口 [START](../../deliverables/START.md)：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-worked-example；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（**合成示例**，E-21/E-22 已升）；**05-production-landscape 落地现状·实证（新增，证据待补，ADR 0014）**；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-12，`python3 meta/tools/check_repo.py`：0 坏链 / 0 坏锚 / 0 未定义 ID / 枚举通过（475 个 md；E=27，Q=3，C=4，L=79；10 论文 / 8 开源 / 11 材料卡） |
+| 最后自检 | 2026-11-12，`python3 meta/tools/check_repo.py`：0 坏链 / 0 坏锚 / 0 未定义 ID / 枚举通过（504 个 md；E=27，Q=3，C=4，L=79；10 论文 / 8 开源 / 11 材料卡） |
 
 <a id="当前目标下一步做什么"></a>
 ## 当前目标（下一步做什么）
