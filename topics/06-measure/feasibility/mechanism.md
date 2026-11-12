@@ -270,7 +270,7 @@ updated: 2026-11-12
 
 > 2026-11-12 补。问题：直接上完整本体太贵，能不能把 Wiki/OKF 当底座选项之一、需要时再衔接本体？本节只做**定义、证据与升级判据**，不写实施 recipe。
 >
-> **一句话**：OKF 是 Google 的开放知识格式（v0.1 2026-06-12，v0.2 2026-07-24），把 Karpathy 的 LLM Wiki 模式形式化；它是**知识容器**，不是本体——能解决可读/可审/可版本化/可溯源，不解决约束、推理、查询执行、策略/权限。
+> **一句话**：OKF 是 Google 的开放知识格式（v0.1 2026-06-12，v0.2 2026-07-24），把 Karpathy 的 LLM Wiki 模式规格化为可交换的 Markdown bundle；它是**知识容器**，不是本体——能解决可读/可审/可版本化/可溯源，不解决约束、推理、查询执行、策略/权限。它与本体之间是**非对称投影**：本体→OKF 可机械投影但丢语义；OKF→本体是有损草稿 + 关系定型人审。
 
 ### 它是什么（Google 官方定义）
 
@@ -302,21 +302,49 @@ updated: 2026-11-12
 | [社区 ADR：不把 OKF 用于 skills](https://github.com/laurigates/claude-plugins/blob/main/docs/adrs/0021-open-knowledge-format-mapping-not-adopted.md) | 2026-07-12/11-02 | 工程决策 / C | 声明性知识 vs 可执行能力的区分；OKF 适合多消费者知识，不适合单 runtime 过程 | 不是生产采用；单项目 |
 | [OKF interop 批评](https://raw.githubusercontent.com/chrisgagne/grounded-forge/refs/heads/main/docs/architecture/okf-interop.md) | 2026-07 | 工程文档 / C | OKF 标准化容器，不标准化 producer/审计；“conformant bundle of confabulated claims validates cleanly” | 不是采用/效果；单项目 |
 
-### 从 OKF 到本体：能映射什么、不能映射什么
+### 从 OKF 到本体：两个方向、一条缝
 
-| OKF 元素 | 可能映射到 | 自动/人审 | 缺什么 |
+> 2026-11-12 重写。旧版把“可映射”写成“可以升级”，并混入了无源材料。新版按**方向**拆开：投影（本体→OKF）与上提（OKF→本体），只写有来源的部分。
+
+**方向一：本体 → OKF（投影，可机械完成、有损）**
+
+- 映射规则：`type` → 类名、`resource`/IRI → 资源链接、`tags` → SKOS 词、typed property → 未命名 Markdown 链接（关系类型在正文里丢失）。
+- 三份独立实现的说法：
+  - [Linked.Archi](https://meta.linked.archi/docs/practice/okf-open-knowledge-format/)（2026-07-17，C）：投影 “mildly lossy”，`am:realizes` 压成 untyped link；但 “for retrieval and progressive disclosure that is exactly enough”。
+  - [Atlas](https://github.com/AtlasDevHQ/atlas/blob/main/docs/research/okf-interop-spike.md)（2026-07-02，C）：导出 “near-total”，但 “what foreign consumers **lose is semantics, not data**”；表白名单/运行时执行没有 OKF 对应物。
+  - [GMEOW](https://github.com/Blackcat-Informatics/gmeow-ontology/blob/main/docs/okf.md)（2026，C）：OKF 是 “**LOSSY down-projection**”，只带 flat term surface；OWL 公理/RDF-star/对齐图留在 canonical 源。
+- 结论：投影可以全量，但**丢的正好是语义**（关系类型、公理、约束、执行）。等级 `已核（三份工程文档一致）`；不外推为生产规律。
+
+**方向二：OKF → 本体（上提，有损草稿 + 关系定型人审）**
+
+- `type` → OWL class、`resource` → IRI、`tags` → SKOS concept 可以机械映射。
+- **Markdown 链接没有类型**：要把 `[Customer Management]（…）` 变成 `am:realizes`，必须“作者提示或人审确认的推断”（Linked.Archi 原话：author-supplied hint or a human-confirmed inference）。Atlas 的 import 直接叫 “useful but genuinely **lossy draft generator**”，并把导入的 metric SQL 标 `okf.unverified_sql`，不让它静默升格为权威 metric；GMEOW 的 lift 要求封闭 `okf:` profile，未知键硬失败。
+- 结论：上提是**草稿生成 + 人工定型**，不是读一遍就得到本体。等级 `已核（三份工程文档一致）`。
+
+**这条缝：关系定型**
+
+- 三份实现都指向同一处：OKF 的链接只断言“有关系”，不断言“什么关系”；关系类型/基数/方向在正文里。Linked.Archi 把它命名为 “the **relationship-typing gap**”，并说这是 Information 层到 Knowledge 层的缝。
+- 这不是 OKF 的缺陷，是它的设计（consumer 不得因未知 type/坏链拒绝）。但它是**上提成本的主要来源**：文档越多，需要人审的链接越多。
+
+**什么映射不了（分三档，不再一句“六类”）**
+
+| 档 | 项 | 依据 | 能否补 |
 |---|---|---|---|
-| concept 文件 | class 或 individual | 人审判定“类型还是实例” | 身份/时点/同名不同义 |
-| `type` | `rdf:type` / class | 半自动 | 类型层级/公理 |
-| `tags` | 标签/属性/受控词 | 半自动 | 正式属性域/值域 |
-| markdown links | 关系边 | 半自动（链接语义靠正文） | 关系类型/基数/方向 |
-| `sources`/`verified`/`status` | provenance/trust/lifecycle | 可自动 | 业务约束/权限 |
-| 正文表格/示例 | 约束候选 | 人审 | SHACL/OWL 形式化、执行 |
-| `attestation` | 计算约定 | 人审 | 查询执行/策略 |
+| 规范明确不做 | 固定类型分类法、存储/查询基础设施、替代领域 schema | SPEC v0.2 non-goals（已核） | 要另建 ontology/semantic layer |
+| 规范明确没有 | 执行（OKF 记录计算与检查方式，**never executes**）、ACL/策略（“advisory signals, not access control”） | SPEC v0.2 / v0.2 博客（已核） | 要另接执行/策略层 |
+| 实现/分析 | 形式约束（SHACL/OWL 公理）、推理、关系类型/基数、身份粒度、as-of 时点 | 三份实现（C）+ W3C 标准卡（已核） | 要建模 + 人审 + 版本化 schema |
 
-**结论**：OKF 能做“概念/术语/来源/owner/版本”的前置层；不能自动变成可执行本体。升级必须补：**形式约束（SHACL/OWL）、查询/推理执行、策略/权限、身份/时点、版本化 schema**。
+**迁移证据：两个方向都有人做，但没有“完成迁移”的案例**
 
-### 毕业判据：W0 → W1 → W2 → W3
+- **本体先行（只有 `signal`）**：[SCIMIN-CRM/SMW](https://ceur-ws.org/Vol-4293/paper50.pdf) 描述 OWL 本体 + Semantic MediaWiki；LLM 只产候选标注，自动校验（domain/range、datatype、hallucination）+ 专家 HITL 后才同步生产。**判 `signal`**：承建方写自己的 demonstrator，G3 无独立信号，无量化/规模/成本。Kunstenpunt 是“数据标准先行、再并库进 Wikibase”（`signal`，单机构）。
+- **OKF 先行（有生产，但下一跳未完成）**：中泰用 OKF 作权威源/交换格式，图数据库/对象关系写在后续规划，业务本体仍在信用业务验证（[卡](../../../src/web/modb-2026-zhongtai-ontology/modb-2026-zhongtai-ontology.card.md)，`admitted`）。
+- **完成迁移**：截至 2026-11-12，公开渠道**没有找到**任何组织披露“OKF/Wiki → 本体”的完成案例（有路径、时间线、成本、失败）。这是检索阴性，不是“不存在”。
+
+**“OKF 会自己长成 ontology”是错的**：它不会自动长；要显式的上提工程（关系定型 + 人审 + 版本化 schema）。Linked.Archi 也明说两者 “neither is an evolution of the other”，只是同一阶梯的相邻层；它给出的路径是“先 OKF 捕获，再把高价值域提升到图”，这是**设计建议**，不是观测到的迁移。
+
+### 毕业判据：W0 → W1 → W2 → W3（设计判据，`推测`）
+
+> 这一节是**设计判据**，不是观测到的“毕业路径”；没有一条公开案例按这个阶梯走完。05 只引用 3 条信号，不复制整表，也不要把“判据”写成“已验证路线”。
 
 | 层 | 形态 | 能做什么 | 典型失败 | 升级信号 |
 |---|---|---|---|---|
@@ -339,15 +367,18 @@ updated: 2026-11-12
 
 - **OKF 不是“便宜的本体”**：它把“知识可读/可审/可版本化”做便宜了，但没把“语义可执行”做便宜；把 OKF 当本体买，最后还是要补约束/权限/查询。
 - **agent 写库的信任问题**：v0.2 的 `verified` 是信号，不是保证；没有独立 producer/审计，conformance 不等于正确。
-- **规模不是毕业信号**：有 158 万 Markdown 节点的 OKF 超集（NKB 技术 note），说明 OKF 能装很大；真正触发升级的是**语义/执行/权限**，不是文件数。
+- **规模不是毕业信号**：本份没有可引用的规模基准；文件数能很大，但真正触发升级的是**语义/执行/权限**，不是文件数。
 - **标准只定词**：Google 是公司，不是标准组织；OKF 是开放规范，不是 ISO/W3C 标准。引用时写“Google OKF”，不要写“行业标准”。
 
 ### 对 05 的用法
 
-05 应把 OKF/Wiki 写成**底座选项之一**，不是本体的替代；可以是过渡，也可以长期并行：
-- 对读者：先用 OKF 统一“概念/术语/来源/owner/版本”，需要执行约束/权限时再接本体/语义层；没有升级信号，长期停在 OKF 是合理选择。
-- 对厂商：问“你的 OKF/知识库能不能导出/映射到本体？能不能执行约束/权限？”，而不是只看“支持 Markdown”。
-- 对证据：中泰是 A 类“OKF 前置层 + 语义层生产 + 业务本体验证”的中国案例；Google OKF 规范/博客是 `admitted`（格式定义），Knowledge Catalog 是 C（产品能力）；**截至 2026-11-12，未找到 OKF 直接替代本体的具名生产案例，也未找到完成 OKF→本体迁移的案例**。
+05 应把 OKF/Wiki 写成**底座选项之一**，不是本体的替代；可以是过渡，也可以长期并行。**只写证据，不写 recipe**：
+
+- **写什么**：OKF 是什么（`admitted` 规范）；谁在用（中泰 `admitted`；京东海博/Kunstenpunt 只作 `signal` 线索，进 90 来源）；Google 的下一跳（Knowledge Catalog，C 级产品能力）；两个方向（投影有损、上提需人审，三份工程文档 C 级互证）；**没有完成 OKF→本体迁移的公开案例**（检索阴性，写日期与渠道）。
+- **不写什么**：W0–W3 整表、6 条成绩信号、任何数字阈值——判据留本节（`推测`），05 只留 3 条可观测信号并指向本页/07。
+- **不要写**：把 C 级实现文档写成生产采用；把“可映射”写成“会自动长成”；把“没找到”写成“不存在”。
+- **对读者的唯一动作**：先用 OKF 统一“概念/术语/来源/owner/版本”；出现跨页关系查询、约束/权限要执行、多 agent 共用稳定 schema 时，再考虑本体/语义层；没有这些信号，长期停在 OKF 是合理选择（`推测`）。
+- **对厂商的问题**：不要只问“支持 Markdown/OKF”，要问“能不能导出/映射到本体？关系类型谁定？能不能执行约束/权限？”
 
 ## 关联
 

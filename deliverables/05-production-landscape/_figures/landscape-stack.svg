@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="640" viewBox="0 0 1180 640" role="img" aria-labelledby="title desc">
   <title id="title">本体落地的四层结构：底座可选可并存，语义层统一</title>
-  <desc id="desc">四层结构自下而上：数据/治理层供源，底座/载体层承载，语义层统一，应用层消费。底座层并列五种常见载体（数仓语义层、本体平台、图数据库、数据库内嵌、Wiki/OKF），可单选也可并存。语义层负责概念、指标、同义词、口径、权限、版本、证据。</desc>
+  <desc id="desc">四层结构自下而上：数据/治理层供源，底座/载体层承载，语义层统一，应用层消费。底座层并列五种常见载体（数仓语义层、本体平台、图数据库、数据库内嵌、Wiki/OKF），可单选也可并存。语义层负责概念、指标、同义词、口径、权限、版本、证据。Wiki/OKF 是知识容器、不是本体：成本低、可长期并行，需要约束/权限时另建语义层，不会自行升级。</desc>
 
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
@@ -122,7 +122,7 @@
     <text x="876" y="376" font-size="12" font-weight="700">Wiki / OKF</text>
     <text x="876" y="396">Markdown + YAML</text>
     <text x="876" y="412">concept / links</text>
-    <text x="876" y="434" fill="#075985">低成本 · LLM 友好</text>
+    <text x="876" y="434" fill="#075985">非本体 · 无约束</text>
   </g>
 
   <!-- data layer: y 500..600 -->
@@ -147,8 +147,8 @@
     <line x1="590" y1="190" x2="590" y2="174"/>
   </g>
 
-  <!-- bottom note: OKF is an option, can be long-term -->
-  <text x="220" y="620" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="10" fill="#334155">Wiki/OKF：成本低、LLM 友好；可长期用，也可按需升级到语义层。</text>
+  <!-- bottom note: OKF is a knowledge container, not an ontology; no self-upgrade -->
+  <text x="220" y="620" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="10" fill="#334155">Wiki/OKF：成本低、LLM 友好，可长期并行；但它不是本体，要约束/权限时是另建语义层，不会自己升级（无迁移完成案例）。</text>
 
   <!-- right panels: y 90..600, both columns bottom-aligned with the data layer -->
   <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">

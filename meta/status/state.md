@@ -19,13 +19,13 @@ updated: 2026-11-12
 | 材料卡 | 17 张（1 张 HN + 10 张在役标准卡 + 5 张 05 生产证据卡 + 1 张 Google OKF） |
 | 主题 | 6 派 + 23 个子主题 + 00-harness 七部件 + 6 时刻 + 1 条形态轴 |
 | 结论 | 32 条 E：17 已核原文 + 2 已核代码 + 4 推测 + **9 已撤回**（E-25 由已核降推测）；3 条 Q；4 条 C |
-| 局部判断 | 84 条 L（01:19 / 02:10 / 03:16 / 04:7 / 05:10 / 06:22）；其中 **28 条 withdrawn**（源移出） |
+| 局部判断 | 85 条 L（01:19 / 02:10 / 03:16 / 04:7 / 05:10 / 06:23）；其中 **28 条 withdrawn**（源移出） |
 | 硬对象 | 94 注册（**20 已随源撤回**；现存 74：H3 33 / H2 41）；明细见 [objects](../../topics/objects.md) 变更记录 |
 | 证据配比（10 篇 + 8 开源） | 3 execution-test / 11 mechanism-only / 4 harness-evidence / 0 boundary-ruler |
 | 执行形态（18 源：10 论文 + 8 开源） | engine 3 / compiled 3 / context 1 / label 1 / none 10 |
-| 交付物 | 5 个子目录 + 共用入口 [START](../../deliverables/START.md)：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-worked-example；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（**合成示例**，E-21/E-22 已升）；**05-production-landscape 落地现状·实证（5 条 admitted/probation 生产证据 + 1 张 OKF admitted 格式卡 + 3 家农商行客户自述 signal + 五类价锚点；五平台外部采用与失败率已判“窗口内不存在”；仍缺人月与项目级 postmortem，ADR 0014）**；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
+| 交付物 | 5 个子目录 + 共用入口 [START](../../deliverables/START.md)：01-capability-status / 02-engineering-playbook / 03-mechanism-reference / 04-worked-example；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；04 为建/用/治生命周期（**合成示例**，E-21/E-22 已升）；**05-production-landscape 落地现状·实证（5 条 admitted/probation 生产证据 + 1 张 OKF admitted 格式卡 + 3 家农商行客户自述 signal + 五类价锚点；五平台外部采用与失败率已判“窗口内不存在”；质量自评 85.6/100；仍缺人月与项目级 postmortem，ADR 0014）**；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-12，`python3 meta/tools/check_repo.py`：0 坏链 / 0 坏锚 / 0 未定义 ID / 枚举通过（534 个 md；E=32，Q=3，C=4，L=84；10 论文 / 8 开源 / 17 材料卡） |
+| 最后自检 | 2026-11-12，`python3 meta/tools/check_repo.py`：0 坏链 / 0 坏锚 / 0 未定义 ID / 枚举通过（537 个 md；E=32，Q=3，C=4，L=85；10 论文 / 8 开源 / 17 材料卡） |
 
 <a id="当前目标下一步做什么"></a>
 ## 当前目标（下一步做什么）
@@ -67,6 +67,8 @@ updated: 2026-11-12
 
 ## 最近改动
 
+- **2026-11-12 04b OKF 严格化（拆层/补证/降级）**：4b 被指“硬挤进去、未走严格流程”，尤其“靠向本体”把规范边界/映射机制/采用证据混成一条路。走[修复回路](../../AGENTS.md)：逐句审计（7 P0/9 P1/5 P2，见 [provenance 审计](../audits/2026-11-12-04b-okf-provenance.md)）→ SCIMIN/SMW 论文先建卡后**复核降为 `signal` 并移出 `src/`**（承建方自述、G3 无独立信号，只进 frontier）→ 上游重写 mechanism OKF 节（两个方向 + 关系定型缺口；映射缺口分三档）、E-32 补非对称投影、新增 06-L23、frontier 收三份 C 实现 → 4b 重写 9 节（删伪阈值、Kunstenpunt/京东降 `signal`、加“没有完成迁移的案例”）。计划见 [04b strict plan](../../deliverables/_plans/2026-11-12-04b-okf-strict-plan.md)。
+- **2026-11-12 05 三期（可读性收口）**：03.5/04.5 台账去掉、指向 06.1 canonical；07 加 7.5b 填好的决策卡（示例值）；README/00 加问题链主线；01 加产品名一句话 + 四条类比；06.1 加证据类型图例（观测/主张/采购记录/媒体转述/厂商材料）；90 加 90.3b 九类口径与不可比说明。自评从 77 → **85.6**（C2 仍 3：主路径约 3 万字 > 2 万字档；A1/A3/D3 仍 4：缺人月/项目级 postmortem/五平台客户）。
 - **2026-11-12 05 缺口收口（二期）**：C 层一致性 7 项 + E-28/E-29/E-30 措辞修正（本体 vs 语义层配比 / 失败表述 / 窗口外源）；OKF 建 `admitted` 卡并修三处事实偏差（semantic-layer 词频、Knowledge Catalog 13 字段、京东海博 OKF 推断）；成本章从“无金额”升级为五类价锚点（£10.09M/5 年、$1.14M/年、¥49–276 万、¥178.8 万/年、$37–175/月）；补 3 家农商行 signal、7 例采购流标（供给薄）、Westpac 退出；失败率与五平台外部采用判“窗口内不存在”写入 frontier/90.3。评分见 [05 质量评估](../../deliverables/_plans/2026-11-12-05-quality-review.md)。
 - **2026-11-12 05 落地现状成稿（一期）**：5 条 admitted/probation（中泰×2、Snowflake、Sigma、Netflix）+ 10+ C/B 线索；新增 E-28–E-32（平台承载 / 失败在语义层 / 公开证据不对称 / 成本拐点 / OKF 前置层）、L-18–L-22；新增 5 张源卡；05 共 11 节 + 1 张 SVG；仍缺 TCO、中国大厂 2026-06 后外部采用、失败率。- **2026-11-12 路线 B 收口 + 二审**：11 条嵌套坏链修复；E-01/E-18 改指正确 mechanism，E-14 的 p_h 标定新增独立锚点并贯通到 compilation/02/01；E-21/E-23/E-07/E-22 的做法按三条测试改写；二审把 01/03/feasibility 残留的点估计判门清成 95% CI 下界；check_repo 把嵌套链接与 active E 缺做法/链接记为 error。细则见 [state-log](./state-log.md#2026-11-12-路线-b-二审p_h-口径清尾--闸门升级)。
 - **2026-11-12 meta 目录重组 + meta/AGENTS.md 门牌**：meta 根从 14 个平铺文件收成 **README（索引）+ AGENTS（30 秒入口）+ 子目录**：`rules/`（现行规则）、`deliverables/`（交付物治理）、`status/`（状态台账）、`templates/`（模板）、`audits/`、`archive/`、`tools/`；归档 2 个已完成开源计划；`meta/AGENTS.md` 只做门牌与指路、**不新增规则**（守住单一路由 ADR 0012）。

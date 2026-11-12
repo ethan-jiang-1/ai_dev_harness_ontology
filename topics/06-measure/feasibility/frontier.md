@@ -8,12 +8,20 @@
 |---|---|---|---|---|
 | [EDM Council「Why Your AI Needs an Ontology: Getting Started with FIBO」](https://edmcouncil.org/wp-content/uploads/2026/08/EDMWebinar_AI-Needs-and-Ontology-FIBO_2026-08-25_FINAL.pdf) | 2026-08-25 | 标准组织在推 FIBO-for-AI；含一组文档抽取成本对比（准确率 76%→95%、每文档 $0.39→$0.14、每查询 $0.21→$0.02） | **G3 只有标准组织自身一个信号**；且那组数字比的是「Claude 单模型 vs 模块化流水线」，**不是本体 vs 无本体**；无生产规模披露 | 2026 年标准组织的活跃度；一组**抽取流水线**成本基准（不可当本体效应） |
 | [京东海博 AI 知识库（自称 OKF）](http://stock.10jqka.com.cn/20260924/c680274369.shtml) | 2026-09-24 | 一概念一 md、`type` 唯一必填、index/log、宽容消费；AB 542 秒 vs 967 秒（约 -44%）；编译前移到维护期 | 单一来源、无个人署名；**原文 5 次 “OKF” 从未展开**，“= Google OKF” 是推断 | 拿到京东技术原文 + 第二独立来源后，可作中国第二个 OKF 采用线索 |
-| [Kunstenpunt Wikibase](https://tech-news.wikimedia.de/2026/06/02/kunstenpunt-a-whos-who-of-the-flemish-art-scene/) | 2026-06-02 | 100 万页/25 万实体/3 名专职；约束只警告不阻断；**先有本体/数据标准，再把 wiki 架上去** | 单机构、平台方博客；**与 OKF 无关**（全文 0 次 OKF/ontology） | 第二独立报道出现后，可作“本体驱动 wiki”反例（不撑 OKF） |
+| [Kunstenpunt Wikibase](https://tech-news.wikimedia.de/2026/06/02/kunstenpunt-a-whos-who-of-the-flemish-art-scene/) | 2026-06-02 | 100 万页/25 万实体/3 名专职；约束只警告不阻断；**先有 2024 文化参与数据标准（兼容 CIDOC CRM/schema.org），再把三套旧库并进 Wikibase** | 单机构、平台方博客；**与 OKF 无关**（全文 0 次 OKF/ontology）；“数据标准”≠“OWL 本体” | 第二独立报道出现后，可作“数据标准先行的 wiki”反例（不撑 OKF） |
+| [Linked.Archi · OKF and Linked.Archi](https://meta.linked.archi/docs/practice/okf-open-knowledge-format/) | 2026-07-17 | OKF 在 DIKW 的 Data→Information；本体→OKF 可机械投影但丢关系类型；OKF→本体 lift 需作者提示/人审；把“关系定型缺口”称为两层的缝；“多数组织会先 OKF、再把高价值域提升到图” | 单项目/自出版文档；GitHub org 仓库 2026-09 起、star 极少；无独立采用（G3 不过） | 作“非对称投影”的工程文档之一（C）；不撑 OKF 采用/迁移 |
+| [Atlas · OKF interop spike](https://github.com/AtlasDevHQ/atlas/blob/main/docs/research/okf-interop-spike.md) | 2026-07-02 | 导出“全但丢语义”；导入“有用但有损的草稿生成器”；表白名单/运行时执行无 OKF 对应物；`okf.unverified_sql` 防止未验证 SQL 升格 | 公司工程文档；仓库 1★；spike 未产品化（G3/G4 不过） | 第二份独立实现的映射证据（C） |
+| [GMEOW · OKF](https://github.com/Blackcat-Informatics/gmeow-ontology/blob/main/docs/okf.md) | 2026 | OKF = 有损下投影；封闭 `okf:` profile；lift 回 RDF；OWL 公理/RDF-star/对齐留在 canonical 源 | 单项目自出版；无独立采用 | 第三份实现互证（C） |
+| [SCIMIN-CRM · Semantic MediaWiki](https://ceur-ws.org/Vol-4293/paper50.pdf) | 2026-10-13 | **本体先行**：OWL 本体 + SMW 标注（category→类、page 属性→对象属性）；LLM 只产候选，自动校验（domain/range、datatype、hallucination）+ 专家 HITL 后才进生产；受控发布 | **承建方（AKKODIS Research）写自己的系统**：G3 的“多机构/I3 采用”都来自同一个 Horizon Europe 项目内部，**不是独立采用**；无量化/规模/成本（论文自述 future work 才做评估） | 出现独立评估（外部用户/规模/失败）后，可作“本体先行 wiki”的 engineering 证据；**现只作线索** |
 | Neo4j Aura Agent（ontology-driven agents） | 2026 | 厂商宣称 production-ready | G4 厂商自证；无独立采用 | 只作"有产品在卖"的线索 |
 | FAOS 神经符号架构（宣称准确率 +46%） | 2026 | 本体约束推理提升 agent 准确率 | G4 厂商/自媒体；无同行评审、无复现 | 若出现独立复现，可作机制证据 |
 | 中文媒体多篇（Palantir 本体论、金融本体落地"十问十答"等） | 2026 | 本体商业化与落地经验 | G4 二手综述/公众号；无一手规模数据 | 只作"国内在讨论"的线索 |
 
 > **判断**：截至目前，窗口内（≥2026-06）**没有找到披露真实规模与失败的生产系统报告**。2026-11-12 复核另加两条判定：① **五家大厂平台 2026-06 后具名客户 = 0**（逐平台检索；能过门的是海致/星环/金山云/中电云/中科世通亨奇与三家农商行自建）；② **没有上线后被关停的本体/KG 项目的第一方复盘**（中国 7 例流标都在授标前，且已重新采购/转谈判）。这不是检索失败，是这类材料本来稀缺——05 的空缺应如实保留，不得用上述候选填充。
+>
+> **2026-11-12 补记（SCIMIN 判定）**：SCIMIN/SMW 论文最初按 `admitted` 建卡，复核后**降为 `signal` 并移出 `src/`**——它是承建方对自己 demonstrator 的自述，G3 的独立信号不成立（详见 [04b 审计](../../../meta/audits/2026-11-12-04b-okf-provenance.md#7-处置结果2026-11-12-当日关闭)）。
+>
+> **2026-11-12 补记（OKF/本体映射线）**：另检索到 Zenodo「NKB-OKF-Superset」技术 note（2026-08-08）与 SAP community「Agent Memory in S/4HANA: why we store OKF in Z tables」；两者当日抓取被 403/Cloudflare 拦截，**未核不引**，列为待评估。OKF 的企业采用与“OKF→本体迁移”仍无 admitted 证据；Linked.Archi / Atlas / GMEOW 三份实现只互证“映射非对称”，**不证采用**。
 
 ## 未发现（G）
 

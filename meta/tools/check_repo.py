@@ -378,7 +378,7 @@ def main() -> int:
         if m and section in {"已核（一手原文摘要）", "已核（代码）", "推测（未核原文）", "存疑", "冲突"}:
             key = {"已核（一手原文摘要）": "已核", "已核（代码）": "已核", "推测（未核原文）": "推测"}.get(section, section)
             counts[key] += 1
-    if counts["已核"] != 15 or counts["推测"] != 3:
+    if counts["已核"] != 19 or counts["推测"] != 4:
         warnings.append(f"conclusion levels changed: {dict(counts)} (meta/state may need update)")
 
     # 7a. withdrawn conclusions must not carry weight for live rows (grades follow evidence)

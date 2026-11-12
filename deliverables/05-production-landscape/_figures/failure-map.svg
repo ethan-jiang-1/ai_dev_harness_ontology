@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="560" viewBox="0 0 1180 560" role="img" aria-labelledby="title desc">
+  <title id="title">失败不在图引擎：七种坑落在语义运维的五道关</title>
+  <desc id="desc">五道关从左到右：来源映射、定义、权限、计算与物化、维护与退役。七种公开复盘里的失败形态分别挂在对应的关下：影子实体；口径漂移、证据不足仍交付 SQL；权限按人特批、聚合泄露；朴素语义视图延迟；预聚合维护爆炸。底部结论：没有 A 类复盘把图查询性能列为主诉，验收应查语义定义、版本、权限与证据链。</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef4fa"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="1180" height="560" fill="url(#bg)"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="42" font-size="23" font-weight="700" fill="#0f172a">失败不在图引擎：七种坑落在语义运维的五道关</text>
+    <text x="40" y="68" font-size="13" fill="#475569">已核：中泰（QCon / CCSA）+ Snowflake。这些是失败形态，不是失败率——分母未知。</text>
+  </g>
+
+  <!-- stage chips -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="96" width="200" height="46" rx="8" fill="#e0f2fe" stroke="#7dd3fc"/>
+    <text x="140" y="124" font-size="12" font-weight="700" fill="#075985" text-anchor="middle">① 来源映射</text>
+
+    <rect x="266" y="96" width="200" height="46" rx="8" fill="#fee2e2" stroke="#fca5a5"/>
+    <text x="366" y="124" font-size="12" font-weight="700" fill="#991b1b" text-anchor="middle">② 定义</text>
+
+    <rect x="492" y="96" width="200" height="46" rx="8" fill="#fef3c7" stroke="#fcd34d"/>
+    <text x="592" y="124" font-size="12" font-weight="700" fill="#92400e" text-anchor="middle">③ 权限</text>
+
+    <rect x="718" y="96" width="200" height="46" rx="8" fill="#ede9fe" stroke="#c4b5fd"/>
+    <text x="818" y="124" font-size="12" font-weight="700" fill="#4c1d95" text-anchor="middle">④ 计算 / 物化</text>
+
+    <rect x="944" y="96" width="200" height="46" rx="8" fill="#d1fae5" stroke="#6ee7b7"/>
+    <text x="1044" y="124" font-size="12" font-weight="700" fill="#065f46" text-anchor="middle">⑤ 维护 / 退役</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="242" y1="119" x2="262" y2="119"/>
+    <line x1="468" y1="119" x2="488" y2="119"/>
+    <line x1="694" y1="119" x2="714" y2="119"/>
+    <line x1="920" y1="119" x2="940" y2="119"/>
+  </g>
+
+  <!-- col 1: tall card -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="158" width="200" height="190" rx="10" fill="#ffffff" stroke="#7dd3fc" filter="url(#shadow)"/>
+    <text x="56" y="184" font-size="12" font-weight="700" fill="#0c4a6e">影子实体</text>
+    <g font-size="10" fill="#334155">
+      <text x="56" y="208">表 → 实体自动映射；</text>
+      <text x="56" y="226">源表一变，实体全错；</text>
+      <text x="56" y="244">错在哪、谁负责，没人知道。</text>
+    </g>
+    <rect x="56" y="262" width="168" height="34" rx="6" fill="#f0f9ff" stroke="#bae6fd"/>
+    <text x="64" y="276" font-size="9.5" fill="#075985">→ 自动映射不能当本体。</text>
+    <text x="64" y="290" font-size="9.5" fill="#075985">实体要有显式定义与 owner。</text>
+    <text x="56" y="332" font-size="8.5" fill="#64748b">中泰 · 已核</text>
+  </g>
+
+  <!-- col 2: two cards -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="266" y="158" width="200" height="88" rx="10" fill="#ffffff" stroke="#fca5a5" filter="url(#shadow)"/>
+    <text x="282" y="180" font-size="11.5" font-weight="700" fill="#991b1b">口径漂移</text>
+    <text x="282" y="200" font-size="10" fill="#334155">同名不同源、全半角不一致；</text>
+    <text x="282" y="216" font-size="10" fill="#334155">AI 答案与经营报表对不上。</text>
+    <text x="282" y="238" font-size="8.5" fill="#64748b">中泰 · 已核</text>
+
+    <rect x="266" y="256" width="200" height="92" rx="10" fill="#ffffff" stroke="#fca5a5" filter="url(#shadow)"/>
+    <text x="282" y="278" font-size="11" font-weight="700" fill="#991b1b">证据不足仍交付 SQL</text>
+    <text x="282" y="298" font-size="10" fill="#334155">检索无依据、口径不明也硬答；</text>
+    <text x="282" y="314" font-size="10" fill="#334155">中泰把它做成交付门禁。</text>
+    <text x="282" y="338" font-size="8.5" fill="#64748b">中泰 · 已核</text>
+  </g>
+
+  <!-- col 3: two cards -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="492" y="158" width="200" height="88" rx="10" fill="#ffffff" stroke="#fcd34d" filter="url(#shadow)"/>
+    <text x="508" y="180" font-size="11.5" font-weight="700" fill="#92400e">权限按人特批</text>
+    <text x="508" y="200" font-size="10" fill="#334155">任职关系算不出来就开口子，</text>
+    <text x="508" y="216" font-size="10" fill="#334155">旁路越开越多。</text>
+    <text x="508" y="238" font-size="8.5" fill="#64748b">中泰 · 已核</text>
+
+    <rect x="492" y="256" width="200" height="92" rx="10" fill="#ffffff" stroke="#fcd34d" filter="url(#shadow)"/>
+    <text x="508" y="278" font-size="11.5" font-weight="700" fill="#92400e">聚合泄露</text>
+    <text x="508" y="298" font-size="10" fill="#334155">小桶聚合可定位到个人；</text>
+    <text x="508" y="314" font-size="10" fill="#334155">k-匿名桶 + 强制上卷兜住。</text>
+    <text x="508" y="338" font-size="8.5" fill="#64748b">中泰 · 已核</text>
+  </g>
+
+  <!-- col 4: tall card -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="718" y="158" width="200" height="190" rx="10" fill="#ffffff" stroke="#c4b5fd" filter="url(#shadow)"/>
+    <text x="734" y="184" font-size="11.5" font-weight="700" fill="#4c1d95">朴素语义视图延迟</text>
+    <g font-size="10" fill="#334155">
+      <text x="734" y="208">视图直指多张十亿行原始表；</text>
+      <text x="734" y="226">每次提问都 crawl / join；</text>
+      <text x="734" y="244">延迟大到不可用。</text>
+    </g>
+    <rect x="734" y="262" width="168" height="34" rx="6" fill="#f5f3ff" stroke="#ddd6fe"/>
+    <text x="742" y="276" font-size="9.5" fill="#5b21b6">→ 最终改用 materialization，</text>
+    <text x="742" y="290" font-size="9.5" fill="#5b21b6">不是「图查询调参」。</text>
+    <text x="734" y="332" font-size="8.5" fill="#64748b">Snowflake · 已核</text>
+  </g>
+
+  <!-- col 5: tall card -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="944" y="158" width="200" height="190" rx="10" fill="#ffffff" stroke="#6ee7b7" filter="url(#shadow)"/>
+    <text x="960" y="184" font-size="11.5" font-weight="700" fill="#065f46">预聚合维护爆炸</text>
+    <g font-size="10" fill="#334155">
+      <text x="960" y="208">为补延迟自建 Dynamic Tables；</text>
+      <text x="960" y="226">覆盖一扩，管线就维护不动。</text>
+    </g>
+    <rect x="960" y="246" width="168" height="50" rx="6" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="968" y="262" font-size="9.5" fill="#065f46">→ 预聚合不是免费的：</text>
+    <text x="968" y="277" font-size="9.5" fill="#065f46">覆盖 × 变更频率 = 维护量。</text>
+    <text x="968" y="290" font-size="9.5" fill="#065f46">先算这笔账再扩。</text>
+    <text x="960" y="332" font-size="8.5" fill="#64748b">Snowflake · 已核</text>
+  </g>
+
+  <!-- bottom banner -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="372" width="1100" height="92" rx="12" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="60" y="402" font-size="17" font-weight="700" fill="#991b1b">A 类复盘里，0 条把「图查询性能」列为主诉</text>
+    <text x="60" y="426" font-size="11" fill="#7f1d1d">验收先查语义定义、版本、权限、证据链；不要用图数据库 benchmark 代替。</text>
+    <text x="60" y="448" font-size="10" fill="#991b1b">反过来也不能读成「图引擎一定够用」：只是没有 A 类公开复盘把它列为主诉。</text>
+  </g>
+
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="10" fill="#334155">
+    <text x="40" y="492">这些是失败形态，不是失败率：3 份材料、分母未知；能说明「会怎么坏」，不能说明「多常坏」。</text>
+    <text x="40" y="512">反例：AngelList 是「维护成本 &gt; 收益」后的换实现（signal），不是项目失败；Westpac 退出 Palantir 也未披露技术失败。</text>
+  </g>
+</svg>

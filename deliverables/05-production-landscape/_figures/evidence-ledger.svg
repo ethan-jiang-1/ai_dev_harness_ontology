@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="700" viewBox="0 0 1180 700" role="img" aria-labelledby="title desc">
+  <title id="title">证据台账：5 条 A 类，没有一条四项齐</title>
+  <desc id="desc">五行案例按规模、成本、失败/限制、独立印证四列打分：规模与失败全部有披露，成本全部未披露，独立印证全部只有弱信号。底部结论：能回答谁在跑、坑长什么样；不能回答哪家最好、ROI、成功率。</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef4fa"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1180" height="700" fill="url(#bg)"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="42" font-size="23" font-weight="700" fill="#0f172a">证据台账：5 条 A 类，没有一条「四项齐」</text>
+    <text x="40" y="68" font-size="13" fill="#475569">5 条 A 类（其中 2 条 probation）。四件套 = 规模 + 成本 + 失败/限制 + 独立印证：✓ 有披露；✗ 全部未披露；~ 只有弱信号。</text>
+  </g>
+
+  <!-- table header -->
+  <rect x="40" y="100" width="1100" height="45" rx="8" fill="#e2e8f0"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="56" y="122" font-size="11" font-weight="700" fill="#334155">案例 / 日期</text>
+    <text x="56" y="137" font-size="9" fill="#64748b">按 06.1 台账顺序</text>
+    <text x="300" y="122" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">等级</text>
+    <text x="390" y="122" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">规模</text>
+    <text x="390" y="137" font-size="9" fill="#64748b" text-anchor="middle">实体/用户/查询</text>
+    <text x="470" y="122" font-size="11" font-weight="700" fill="#991b1b" text-anchor="middle">成本</text>
+    <text x="470" y="137" font-size="9" fill="#b91c1c" text-anchor="middle">人月/年费</text>
+    <text x="550" y="122" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">失败/限制</text>
+    <text x="550" y="137" font-size="9" fill="#64748b" text-anchor="middle">披露踩过的坑</text>
+    <text x="630" y="122" font-size="11" font-weight="700" fill="#92400e" text-anchor="middle">独立印证</text>
+    <text x="630" y="137" font-size="9" fill="#b45309" text-anchor="middle">审计/客户侧</text>
+    <text x="682" y="122" font-size="11" font-weight="700" fill="#334155">公开的规模与失败要点</text>
+  </g>
+
+  <!-- column tints -->
+  <rect x="430" y="145" width="80" height="410" fill="#fef2f2" opacity="0.75"/>
+  <rect x="590" y="145" width="80" height="410" fill="#fffbeb" opacity="0.75"/>
+
+  <!-- rows -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="145" width="1100" height="82" fill="#ffffff"/>
+    <line x1="40" y1="227" x2="1140" y2="227" stroke="#e2e8f0"/>
+    <text x="56" y="177" font-size="12" font-weight="700" fill="#0f172a">中泰证券 · QCon</text>
+    <text x="56" y="195" font-size="9.5" fill="#64748b">2026-09-02</text>
+    <text x="56" y="211" font-size="9.5" fill="#475569">治理语义层（生产）</text>
+    <rect x="258" y="164" width="84" height="22" rx="11" fill="#dcfce7" stroke="#86efac"/>
+    <text x="300" y="179" font-size="9.5" font-weight="700" fill="#166534" text-anchor="middle">A</text>
+    <text x="390" y="191" font-size="22" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="470" y="191" font-size="22" font-weight="700" fill="#dc2626" text-anchor="middle">✗</text>
+    <text x="550" y="191" font-size="22" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="630" y="191" font-size="22" font-weight="700" fill="#d97706" text-anchor="middle">~</text>
+    <text x="682" y="177" font-size="10.5" fill="#1e293b">900 万客户 / 6,000+ 指标 / 7,000+ 同义词</text>
+    <text x="682" y="197" font-size="10.5" fill="#1e293b">三个退役判例；影子实体；权限特批；聚合泄露</text>
+
+    <rect x="40" y="227" width="1100" height="82" fill="#f8fafc"/>
+    <line x1="40" y1="309" x2="1140" y2="309" stroke="#e2e8f0"/>
+    <text x="56" y="259" font-size="12" font-weight="700" fill="#0f172a">中泰证券 · CCSA</text>
+    <text x="56" y="277" font-size="9.5" fill="#64748b">2026-10-15</text>
+    <text x="56" y="293" font-size="9.5" fill="#475569">业务本体仍在试点</text>
+    <rect x="258" y="246" width="84" height="22" rx="11" fill="#dcfce7" stroke="#86efac"/>
+    <text x="300" y="261" font-size="9.5" font-weight="700" fill="#166534" text-anchor="middle">A</text>
+    <text x="390" y="273" font-size="22" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="470" y="273" font-size="22" font-weight="700" fill="#dc2626" text-anchor="middle">✗</text>
+    <text x="550" y="273" font-size="22" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="630" y="273" font-size="22" font-weight="700" fill="#d97706" text-anchor="middle">~</text>
+    <text x="682" y="259" font-size="10.5" fill="#1e293b">9,137 知识目录 / 6,503 指标文档 / 12 万+ 血缘</text>
+    <text x="682" y="279" font-size="10.5" fill="#1e293b">业务本体仅试点；证据不足不交付 SQL</text>
+
+    <rect x="40" y="309" width="1100" height="82" fill="#ffffff"/>
+    <line x1="40" y1="391" x2="1140" y2="391" stroke="#e2e8f0"/>
+    <text x="56" y="341" font-size="12" font-weight="700" fill="#0f172a">Snowflake 内部</text>
+    <text x="56" y="359" font-size="9.5" fill="#64748b">2026-08-17</text>
+    <text x="56" y="375" font-size="9.5" fill="#475569">BI 语义层 / context layer</text>
+    <rect x="258" y="328" width="84" height="22" rx="11" fill="#fef9c3" stroke="#fde047"/>
+    <text x="300" y="343" font-size="9" font-weight="700" fill="#854d0e" text-anchor="middle">A（probation）</text>
+    <text x="390" y="355" font-size="22" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="470" y="355" font-size="22" font-weight="700" fill="#dc2626" text-anchor="middle">✗</text>
+    <text x="550" y="355" font-size="22" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="630" y="355" font-size="22" font-weight="700" fill="#d97706" text-anchor="middle">~</text>
+    <text x="682" y="341" font-size="10.5" fill="#1e293b">5,600 员工 / 32 万查询每月（2025-07）</text>
+    <text x="682" y="361" font-size="10.5" fill="#1e293b">十亿行视图延迟；Dynamic Tables 维护爆炸</text>
+
+    <rect x="40" y="391" width="1100" height="82" fill="#f8fafc"/>
+    <line x1="40" y1="473" x2="1140" y2="473" stroke="#e2e8f0"/>
+    <text x="56" y="423" font-size="12" font-weight="700" fill="#0f172a">Sigma 内部</text>
+    <text x="56" y="441" font-size="9.5" fill="#64748b">2026-10-27</text>
+    <text x="56" y="457" font-size="9.5" fill="#475569">dbt + Dagster 语义工程</text>
+    <rect x="258" y="410" width="84" height="22" rx="11" fill="#fef9c3" stroke="#fde047"/>
+    <text x="300" y="425" font-size="9" font-weight="700" fill="#854d0e" text-anchor="middle">A（probation）</text>
+    <text x="390" y="437" font-size="22" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="470" y="437" font-size="22" font-weight="700" fill="#dc2626" text-anchor="middle">✗</text>
+    <text x="550" y="437" font-size="22" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="630" y="437" font-size="22" font-weight="700" fill="#d97706" text-anchor="middle">~</text>
+    <text x="682" y="423" font-size="10.5" fill="#1e293b">2,883 dbt 模型 / 63 job / 6 region</text>
+    <text x="682" y="443" font-size="10.5" fill="#1e293b">需版本化、PII/列级控制；无失败率数据</text>
+
+    <rect x="40" y="473" width="1100" height="82" fill="#ffffff"/>
+    <text x="56" y="505" font-size="12" font-weight="700" fill="#0f172a">Netflix 可观测性</text>
+    <text x="56" y="523" font-size="9.5" fill="#64748b">2026-10-16</text>
+    <text x="56" y="539" font-size="9.5" fill="#475569">领域专用 OWL 本体（例外）</text>
+    <rect x="258" y="492" width="84" height="22" rx="11" fill="#dcfce7" stroke="#86efac"/>
+    <text x="300" y="507" font-size="9.5" font-weight="700" fill="#166534" text-anchor="middle">A</text>
+    <text x="390" y="519" font-size="22" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="470" y="519" font-size="22" font-weight="700" fill="#dc2626" text-anchor="middle">✗</text>
+    <text x="550" y="519" font-size="22" font-weight="700" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="630" y="519" font-size="22" font-weight="700" fill="#d97706" text-anchor="middle">~</text>
+    <text x="682" y="505" font-size="10.5" fill="#1e293b">49,000 目录 / 20 亿请求每日 / 3,800 万日志每秒</text>
+    <text x="682" y="525" font-size="10.5" fill="#1e293b">假设有时错；依赖边需封顶；串行 harvest 成本</text>
+  </g>
+
+  <!-- row separators -->
+  <line x1="40" y1="145" x2="1140" y2="145" stroke="#cbd5e1"/>
+  <line x1="40" y1="555" x2="1140" y2="555" stroke="#cbd5e1"/>
+
+  <!-- stats -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="40" y="578" width="350" height="64" rx="10" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="58" y="606" font-size="14" font-weight="700" fill="#166534">规模 + 失败：5 / 5</text>
+    <text x="58" y="626" font-size="9.5" fill="#14532d">都有人披露跑了多大、摔在哪一关</text>
+
+    <rect x="410" y="578" width="350" height="64" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+    <text x="428" y="606" font-size="14" font-weight="700" fill="#991b1b">成本：0 / 5</text>
+    <text x="428" y="626" font-size="9.5" fill="#7f1d1d">没有一条给人月、账单或维护费</text>
+
+    <rect x="780" y="578" width="360" height="64" rx="10" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="798" y="606" font-size="14" font-weight="700" fill="#92400e">独立印证：0 / 5 达审计级</text>
+    <text x="798" y="626" font-size="9.5" fill="#78350f">会议/合作方/社区；Snowflake、Sigma 二搜阴性</text>
+  </g>
+
+  <text x="40" y="680" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="10" fill="#334155">结论：能答「谁在跑、坑长什么样」；不能答「哪家最好、ROI 多少、成功率」。C / signal 10+ 条只作线索，不进这张表。</text>
+</svg>

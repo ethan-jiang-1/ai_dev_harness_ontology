@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="740" viewBox="0 0 1180 740" role="img" aria-labelledby="title desc">
+  <title id="title">四类钱都有价，但没有一本账</title>
+  <desc id="desc">四层价格锚点：平台与年度服务（Palantir Foundry 五年、SEC 语义层支持、IRS 四个月、Kaiasm 年费）；中国项目建设合同（联通、北京银行、上海银行、中船、河北博物院）；维护费（浦发年费，超窗背景）；运行与价目（AWS POC、PolarDB 组件、AngelList）。底部缺口：无人月、无同一买方建设与维护配对、无回收期，不能相加成 TCO。</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef4fa"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1180" height="740" fill="url(#bg)"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="42" font-size="23" font-weight="700" fill="#0f172a">四类钱都有价，但没有一本账</text>
+    <text x="40" y="68" font-size="13" fill="#475569">平台/服务、建设、维护、运行四类锚点；币种、含税与范围不同，不能相加成 TCO。</text>
+  </g>
+
+  <!-- shelf A -->
+  <rect x="40" y="96" width="1100" height="150" rx="12" fill="#eff6ff"/>
+  <rect x="40" y="96" width="134" height="150" rx="12" fill="#dbeafe"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="56" y="126" font-size="12.5" font-weight="700" fill="#1e3a8a">A 平台 / 年度服务</text>
+    <text x="56" y="148" font-size="9.5" fill="#1e40af">£ / $ · 证据 B 类</text>
+    <text x="56" y="166" font-size="9.5" fill="#1e40af">含平台 + 服务</text>
+
+    <rect x="190" y="112" width="220" height="118" rx="9" fill="#ffffff" stroke="#93c5fd" filter="url(#shadow)"/>
+    <text x="204" y="134" font-size="9.5" fill="#1e3a8a">Cambridgeshire PCC × Palantir</text>
+    <text x="204" y="160" font-size="14" font-weight="700" fill="#1d4ed8">£10.09M / 5 年</text>
+    <text x="204" y="182" font-size="9" fill="#475569">≈ £2.0M/年；合同至 2031-10</text>
+    <text x="204" y="202" font-size="9" fill="#64748b">证明：重型平台年化量级</text>
+    <text x="204" y="220" font-size="8.5" fill="#b45309">不能证明：本体单项、内部人力</text>
+
+    <rect x="422" y="112" width="220" height="118" rx="9" fill="#ffffff" stroke="#93c5fd" filter="url(#shadow)"/>
+    <text x="436" y="134" font-size="9.5" fill="#1e3a8a">美国 SEC × TrussWorks</text>
+    <text x="436" y="160" font-size="14" font-weight="700" fill="#1d4ed8">$1.14M / 年</text>
+    <text x="436" y="182" font-size="9" fill="#475569">仅「semantic layer 支持」</text>
+    <text x="436" y="202" font-size="9" fill="#64748b">选项至 2030-03</text>
+    <text x="436" y="220" font-size="8.5" fill="#b45309">证明：语义层年度支持量级</text>
+
+    <rect x="654" y="112" width="220" height="118" rx="9" fill="#ffffff" stroke="#93c5fd" filter="url(#shadow)"/>
+    <text x="668" y="134" font-size="9.5" fill="#1e3a8a">美国 IRS × Palantir</text>
+    <text x="668" y="160" font-size="14" font-weight="700" fill="#1d4ed8">$4.9M / 4 个月</text>
+    <text x="668" y="182" font-size="9" fill="#475569">AI 助手 + 语义本体治理</text>
+    <text x="668" y="202" font-size="9" fill="#64748b">4 个月，不是全年</text>
+    <text x="668" y="220" font-size="8.5" fill="#b45309">证明：大型治理实施单价</text>
+
+    <rect x="886" y="112" width="220" height="118" rx="9" fill="#ffffff" stroke="#93c5fd" filter="url(#shadow)"/>
+    <text x="900" y="134" font-size="9.5" fill="#1e3a8a">英国 National Highways × Kaiasm</text>
+    <text x="900" y="160" font-size="14" font-weight="700" fill="#1d4ed8">£130k / 年</text>
+    <text x="900" y="182" font-size="9" fill="#475569">本体/分类法平台许可 + 支持</text>
+    <text x="900" y="202" font-size="9" fill="#64748b">小机构档</text>
+    <text x="900" y="220" font-size="8.5" fill="#b45309">证明：本体平台年费下限量级</text>
+  </g>
+
+  <!-- shelf B -->
+  <rect x="40" y="258" width="1100" height="140" rx="12" fill="#f0fdf4"/>
+  <rect x="40" y="258" width="134" height="140" rx="12" fill="#dcfce7"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="56" y="288" font-size="12.5" font-weight="700" fill="#166534">B 项目建设</text>
+    <text x="56" y="310" font-size="9.5" fill="#15803d">¥ · signal</text>
+    <text x="56" y="328" font-size="9.5" fill="#15803d">采购公告 / 合同</text>
+
+    <rect x="190" y="274" width="172" height="110" rx="9" fill="#ffffff" stroke="#86efac" filter="url(#shadow)"/>
+    <text x="202" y="296" font-size="9.5" fill="#166534">联通软研院</text>
+    <text x="202" y="322" font-size="13" font-weight="700" fill="#15803d">180.5–190 万</text>
+    <text x="202" y="344" font-size="9" fill="#475569">4 个本体模型；</text>
+    <text x="202" y="360" font-size="9" fill="#475569">两次流标后转谈判</text>
+    <text x="202" y="378" font-size="8.5" fill="#b45309">不能证明：上线效果</text>
+
+    <rect x="374" y="274" width="172" height="110" rx="9" fill="#ffffff" stroke="#86efac" filter="url(#shadow)"/>
+    <text x="386" y="296" font-size="9.5" fill="#166534">北京银行 × 知因</text>
+    <text x="386" y="322" font-size="13" font-weight="700" fill="#15803d">115 万</text>
+    <text x="386" y="344" font-size="9" fill="#475569">KG 资金链路分析建设</text>
+    <text x="386" y="360" font-size="9" fill="#475569">2026-10-27</text>
+    <text x="386" y="378" font-size="8.5" fill="#b45309">不含年维护</text>
+
+    <rect x="558" y="274" width="172" height="110" rx="9" fill="#ffffff" stroke="#86efac" filter="url(#shadow)"/>
+    <text x="570" y="296" font-size="9.5" fill="#166534">上海银行 × 海致</text>
+    <text x="570" y="322" font-size="13" font-weight="700" fill="#15803d">49.4 万</text>
+    <text x="570" y="344" font-size="9" fill="#475569">关联图谱（RG）优化</text>
+    <text x="570" y="360" font-size="9" fill="#475569">2026-07-19</text>
+    <text x="570" y="378" font-size="8.5" fill="#b45309">单点项目价</text>
+
+    <rect x="742" y="274" width="172" height="110" rx="9" fill="#ffffff" stroke="#86efac" filter="url(#shadow)"/>
+    <text x="754" y="296" font-size="9.5" fill="#166534">中船 716 所</text>
+    <text x="754" y="322" font-size="13" font-weight="700" fill="#15803d">142.5 万</text>
+    <text x="754" y="344" font-size="9" fill="#475569">知识图谱通用框架</text>
+    <text x="754" y="360" font-size="9" fill="#475569">2026-11-03</text>
+    <text x="754" y="378" font-size="8.5" fill="#b45309">不含实施/建模</text>
+
+    <rect x="926" y="274" width="172" height="110" rx="9" fill="#ffffff" stroke="#86efac" filter="url(#shadow)"/>
+    <text x="938" y="296" font-size="9.5" fill="#166534">河北博物院</text>
+    <text x="938" y="322" font-size="13" font-weight="700" fill="#15803d">275.689 万</text>
+    <text x="938" y="344" font-size="9" fill="#475569">古籍数字化 + KG 展示</text>
+    <text x="938" y="360" font-size="9" fill="#475569">2026-07-14</text>
+    <text x="938" y="378" font-size="8.5" fill="#b45309">文博上限，非企业级</text>
+  </g>
+
+  <!-- shelf C -->
+  <rect x="40" y="410" width="1100" height="98" rx="12" fill="#fffbeb"/>
+  <rect x="40" y="410" width="134" height="98" rx="12" fill="#fef3c7"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="56" y="438" font-size="12.5" font-weight="700" fill="#92400e">C 维护</text>
+    <text x="56" y="460" font-size="9.5" fill="#b45309">¥ · 仅一例</text>
+    <text x="56" y="478" font-size="9.5" fill="#b45309">2026-05 超窗</text>
+
+    <rect x="190" y="424" width="500" height="66" rx="9" fill="#ffffff" stroke="#fcd34d" filter="url(#shadow)"/>
+    <text x="204" y="446" font-size="9.5" fill="#92400e">浦发银行 × 星环</text>
+    <text x="204" y="468" font-size="14" font-weight="700" fill="#b45309">¥178.8 万 / 年</text>
+    <text x="330" y="468" font-size="9.5" fill="#475569">KG / 知识工程维护；只作背景</text>
+
+    <text x="714" y="442" font-size="10.5" font-weight="700" fill="#92400e">唯一可核的维护锚点</text>
+    <text x="714" y="462" font-size="9.5" fill="#78350f">维护费可与建设费同量级，甚至更高；</text>
+    <text x="714" y="480" font-size="9.5" fill="#78350f">但这是两家不同银行，不能直接相减。</text>
+  </g>
+
+  <!-- shelf D -->
+  <rect x="40" y="520" width="1100" height="98" rx="12" fill="#f5f3ff"/>
+  <rect x="40" y="520" width="134" height="98" rx="12" fill="#ede9fe"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="56" y="548" font-size="12.5" font-weight="700" fill="#5b21b6">D 运行 / 价目</text>
+    <text x="56" y="570" font-size="9.5" fill="#6d28d9">$ · C / signal</text>
+    <text x="56" y="588" font-size="9.5" fill="#6d28d9">不是生产账单</text>
+
+    <rect x="190" y="534" width="280" height="66" rx="9" fill="#ffffff" stroke="#c4b5fd" filter="url(#shadow)"/>
+    <text x="204" y="556" font-size="9.5" fill="#5b21b6">AWS 语义层 POC</text>
+    <text x="204" y="578" font-size="14" font-weight="700" fill="#6d28d9">$90–175 / 月</text>
+    <text x="330" y="578" font-size="9" fill="#475569">50 用户、2,000 问/月；AWS 自证</text>
+
+    <rect x="482" y="534" width="300" height="66" rx="9" fill="#ffffff" stroke="#c4b5fd" filter="url(#shadow)"/>
+    <text x="496" y="556" font-size="9.5" fill="#5b21b6">阿里 PolarDB 本体平台</text>
+    <text x="496" y="578" font-size="14" font-weight="700" fill="#6d28d9">$37.59 / 月 · $1.65 / 月</text>
+    <text x="674" y="578" font-size="9" fill="#475569">组件月费；C</text>
+
+    <rect x="794" y="534" width="304" height="66" rx="9" fill="#ffffff" stroke="#c4b5fd" filter="url(#shadow)"/>
+    <text x="808" y="556" font-size="9.5" fill="#5b21b6">AngelList 自生成索引</text>
+    <text x="808" y="578" font-size="14" font-weight="700" fill="#6d28d9">几美元 / 月</text>
+    <text x="920" y="578" font-size="9" fill="#475569">GitHub Actions 运行费；signal</text>
+  </g>
+
+  <!-- gap bar -->
+  <rect x="40" y="636" width="1100" height="76" rx="12" fill="#fef2f2" stroke="#fca5a5"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="60" y="666" font-size="15" font-weight="700" fill="#991b1b">缺的不是价，是账</text>
+    <text x="60" y="690" font-size="10" fill="#7f1d1d">无人月 / 无同一买方建设+维护配对 / 无回收期；四类钱不能相加 → 任何「ROI 300%」「成本降 50%」都没有依据。</text>
+  </g>
+</svg>

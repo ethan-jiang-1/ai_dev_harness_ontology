@@ -5,6 +5,7 @@ reading: 精读
 provenance: 原文正文
 updated: 2026-11-12
 admission: admitted
+gate: standard-in-force
 gate_checked: 2026-11-12
 impact_evidence: "I2: v0.2 博客记外部贡献者提交扩展提案与样例；I3: 中泰证券在生产中用 OKF 作知识载体（admitted 卡）；I5: Apache-2.0 规范 + samples/tests + reference agent 公开"
 liveness: "v0.2 2026-07-24；Knowledge Catalog 集成 2026-08-26；规范仓 main 最新 commit 2026-08-21；PR #63（2026-11-06，未合并）称迁往新组织"
@@ -12,7 +13,7 @@ provenance_type: company
 source: https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing
 author: Sam McVeety（Tech Lead, Data Analytics）；Amir Hormati（Tech Lead, BigQuery）；Firat Elbey（Knowledge Catalog 篇）
 published: 2026-06-12（v0.1）；2026-07-24（v0.2）；2026-08-26（Knowledge Catalog）
-updates: []
+updates: ["2026-11-12 补 gate 字段：按 CHARTER §4.4.1 在役例外记录（现行版本 + 2026-06 后维护 + ≥2 活跃实现），并声明证据天花板只到“定义”，不撑采用/效果/迁移"]
 ---
 
 # Google Open Knowledge Format（OKF v0.2）
@@ -37,6 +38,7 @@ updates: []
 - **一手还是转述**：一手。规范正文（`SPEC.md` v0.2，5,164 words）与三篇官方博客全文均逐字读过。
 - **有数据吗**：有可核的**文本事实**（字段、必填项、Non-goals、词频），没有采用/效果数据。
 - **数据规模与场景**：规范层；唯一生产采用证据来自**中泰证券**（admitted 卡，OKF 作权威源/交换格式，版本未披露）。
+- **准入走的是哪条例外（2026-11-12 补）**：**§4.4.1 在役标准例外**——① 现行版本 v0.2（SPEC.md 明确 `Version 0.2`，无 v0.3）；② 2026-06 后仍有维护活动（v0.2 2026-07-24、Knowledge Catalog 集成 2026-08-26、规范仓 main 2026-08-21 的 commit、51 个 open issue）；③ **≥2 个活跃独立实现**（Atlas 的 `okf import/export`、GMEOW 的 `gmeow okf` / `transpile`、Linked.Archi 的读写投影，均 2026-07 后）。**限定**：Google 是公司不是标准组织（SDO），所以这里只借 §4.4.1 的**实质条件**（现行 + 维护 + 多实现）判格式的“在役”，不等于承认它是行业标准；卡片用 `gate: standard-in-force` 记录这一判定，`standing` 仍按资料性处理。**证据天花板：只到“格式/字段/边界是什么”，不撑采用、效果、迁移。**
 - **可复现吗**：词频可复算——对 `SPEC.md` 做 whole-word 统计：`ontology`/`RDF`/`OWL`/`SHACL`/`SPARQL`/`knowledge graph` 各 **0** 次；`semantic layer`（空格）**0** 次，`Semantic-layer`（连字符）**1** 次，在 §12.3「Considered and deferred」把 Looker/dbt 模板列为未来工作。**「0 次」不能写成包含 semantic layer 的整句。**
 
 ## 与已有判断的关系

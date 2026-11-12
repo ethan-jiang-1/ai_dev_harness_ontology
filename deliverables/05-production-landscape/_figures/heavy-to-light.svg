@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="620" viewBox="0 0 1180 620" role="img" aria-labelledby="title desc">
+  <title id="title">重到轻：五种形态不是成熟度阶梯</title>
+  <desc id="desc">横向谱系从重型本体平台、领域专用自建、行业平台与治理语义层、数仓语义层、Wiki/OKF，到纯 prompt/文档 RAG。每张卡标出本体厚度、代表产品、证据等级与适合谁。Wiki/OKF 极薄、非本体、无推理，可长期并行但不会自行升级，公开迁移案例为 0。底部三问：有没有可执行语义、有没有版本证据权限、有没有具名生产参考。</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef4fa"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect width="1180" height="620" fill="url(#bg)"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="40" y="42" font-size="23" font-weight="700" fill="#0f172a">重 → 轻：五种形态不是成熟度阶梯</text>
+    <text x="40" y="68" font-size="13" fill="#475569">越重越窄、越贵；越轻越先解决口径/权限。位置是形态示意，不是市场份额或能力排序。</text>
+  </g>
+
+  <!-- card 1 -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="42" y="120" width="172" height="240" rx="12" fill="#ffffff" stroke="#fcd34d" filter="url(#shadow)"/>
+    <line x1="54" y1="120" x2="202" y2="120" stroke="#d97706" stroke-width="4" stroke-linecap="round"/>
+    <text x="58" y="150" font-size="12" font-weight="700" fill="#78350f">重型本体平台</text>
+    <text x="58" y="174" font-size="9" fill="#92400e">厚：对象/关系/动作</text>
+    <text x="58" y="188" font-size="9" fill="#92400e">权限/应用一起做</text>
+    <g font-size="9.5" fill="#334155">
+      <text x="58" y="214">Palantir Foundry</text>
+      <text x="58" y="230">Ontology · Stardog</text>
+      <text x="58" y="246">Ontotext</text>
+    </g>
+    <text x="58" y="274" font-size="9" fill="#64748b">高价值、跨系统</text>
+    <rect x="54" y="300" width="148" height="26" rx="13" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="128" y="317" font-size="8.5" fill="#92400e" text-anchor="middle">C：客户公告/旧案例</text>
+    <text x="58" y="344" font-size="8" fill="#92400e">平台费 + 建模 + 集成</text>
+  </g>
+
+  <!-- card 2 -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="227" y="120" width="172" height="240" rx="12" fill="#ffffff" stroke="#c4b5fd" stroke-dasharray="5 4" filter="url(#shadow)"/>
+    <line x1="239" y1="120" x2="387" y2="120" stroke="#7c3aed" stroke-width="4" stroke-linecap="round"/>
+    <text x="243" y="150" font-size="12" font-weight="700" fill="#4c1d95">领域专用自建</text>
+    <text x="243" y="174" font-size="9" fill="#6d28d9">厚：只做一个领域</text>
+    <text x="243" y="188" font-size="9" fill="#6d28d9">（例外，不是通用）</text>
+    <g font-size="9.5" fill="#334155">
+      <text x="243" y="214">Netflix QuipuDB</text>
+      <text x="243" y="230">OWL / SHACL / SPARQL</text>
+    </g>
+    <text x="243" y="274" font-size="9" fill="#64748b">平台能力强的组织</text>
+    <rect x="239" y="300" width="148" height="26" rx="13" fill="#f5f3ff" stroke="#c4b5fd"/>
+    <text x="313" y="317" font-size="8.5" fill="#5b21b6" text-anchor="middle">A：例外，不通用</text>
+    <text x="243" y="344" font-size="8" fill="#6d28d9">自建图存储 + 领域团队</text>
+  </g>
+
+  <!-- card 3 -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="412" y="120" width="172" height="240" rx="12" fill="#ffffff" stroke="#93c5fd" filter="url(#shadow)"/>
+    <line x1="424" y1="120" x2="572" y2="120" stroke="#1d4ed8" stroke-width="4" stroke-linecap="round"/>
+    <text x="428" y="150" font-size="11" font-weight="700" fill="#1e3a8a">行业平台 / 治理层</text>
+    <text x="428" y="174" font-size="9" fill="#1e40af">中：底座自带语义</text>
+    <text x="428" y="188" font-size="9" fill="#1e40af">+ 治理能力</text>
+    <g font-size="9.5" fill="#334155">
+      <text x="428" y="214">中泰 DataAgent</text>
+      <text x="428" y="230">阿里 PolarDB</text>
+      <text x="428" y="246">Context0</text>
+    </g>
+    <text x="428" y="274" font-size="9" fill="#64748b">金融/制造单点</text>
+    <rect x="424" y="300" width="148" height="26" rx="13" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="498" y="317" font-size="8.5" fill="#1e40af" text-anchor="middle">A（弱）/ C</text>
+    <text x="428" y="344" font-size="8" fill="#1e40af">建设 + 集成 + 治理</text>
+  </g>
+
+  <!-- card 4 -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="597" y="120" width="172" height="240" rx="12" fill="#ffffff" stroke="#6ee7b7" filter="url(#shadow)"/>
+    <line x1="609" y1="120" x2="757" y2="120" stroke="#059669" stroke-width="4" stroke-linecap="round"/>
+    <text x="613" y="150" font-size="12" font-weight="700" fill="#065f46">数仓语义层</text>
+    <text x="613" y="174" font-size="9" fill="#047857">薄：指标/维度/同义词</text>
+    <text x="613" y="188" font-size="9" fill="#047857">+ verified query</text>
+    <g font-size="9.5" fill="#334155">
+      <text x="613" y="214">Snowflake</text>
+      <text x="613" y="230">semantic views</text>
+      <text x="613" y="246">Sigma · dbt · AtScale</text>
+    </g>
+    <text x="613" y="274" font-size="9" fill="#64748b">已有数仓 / BI</text>
+    <rect x="609" y="300" width="148" height="26" rx="13" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="683" y="317" font-size="8.5" fill="#065f46" text-anchor="middle">A（probation）</text>
+    <text x="613" y="344" font-size="8" fill="#065f46">语义建模 + 版本/CI</text>
+  </g>
+
+  <!-- card 5 -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="782" y="120" width="172" height="240" rx="12" fill="#ffffff" stroke="#67e8f9" filter="url(#shadow)"/>
+    <line x1="794" y1="120" x2="942" y2="120" stroke="#0891b2" stroke-width="4" stroke-linecap="round"/>
+    <text x="798" y="150" font-size="12" font-weight="700" fill="#155e75">Wiki / OKF</text>
+    <text x="798" y="174" font-size="9" fill="#0e7490">极薄：概念/术语/来源/owner</text>
+    <text x="798" y="188" font-size="9" fill="#0e7490">非本体 · 无推理</text>
+    <g font-size="9.5" fill="#334155">
+      <text x="798" y="214">Google OKF</text>
+      <text x="798" y="230">Markdown + YAML</text>
+      <text x="798" y="246">concept / links</text>
+    </g>
+    <text x="798" y="274" font-size="9" fill="#64748b">知识散在文档里</text>
+    <rect x="794" y="300" width="148" height="26" rx="13" fill="#ecfeff" stroke="#67e8f9"/>
+    <text x="868" y="317" font-size="8.5" fill="#155e75" text-anchor="middle">A（中泰）· 迁移案例 0</text>
+    <text x="798" y="344" font-size="8" fill="#155e75">写作 + 维护人时</text>
+  </g>
+
+  <!-- card 6 -->
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <rect x="967" y="120" width="172" height="240" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="5 4"/>
+    <line x1="979" y1="120" x2="1127" y2="120" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+    <text x="983" y="150" font-size="11.5" font-weight="700" fill="#475569">纯 prompt / 文档 RAG</text>
+    <text x="983" y="174" font-size="9" fill="#64748b">没有可执行语义</text>
+    <text x="983" y="188" font-size="9" fill="#64748b">没有约束/权限/版本</text>
+    <g font-size="9.5" fill="#64748b">
+      <text x="983" y="214">不算本体落地</text>
+      <text x="983" y="230">只作边界参照</text>
+    </g>
+    <text x="983" y="274" font-size="9" fill="#94a3b8">不要把 RAG 当本体</text>
+    <rect x="979" y="300" width="148" height="26" rx="13" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="1053" y="317" font-size="8.5" fill="#64748b" text-anchor="middle">— 只作边界</text>
+    <text x="983" y="344" font-size="8" fill="#94a3b8">没有语义资产可养</text>
+  </g>
+
+  <!-- axis -->
+  <line x1="70" y1="392" x2="1110" y2="392" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="70" y="414" font-size="10" fill="#475569">重：平台费 + 建模 + 集成 + 治理；覆盖面窄</text>
+    <text x="1110" y="414" font-size="10" fill="#475569" text-anchor="end">轻：写作 + 维护人时；先解决口径/权限</text>
+  </g>
+
+  <!-- three questions -->
+  <rect x="40" y="444" width="1100" height="118" rx="12" fill="#ffffff" stroke="#cbd5e1" filter="url(#shadow)"/>
+  <g font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif">
+    <text x="60" y="472" font-size="13" font-weight="700" fill="#0f172a">三问：两问答不上，大概率是 C 类材料</text>
+
+    <rect x="60" y="486" width="340" height="58" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="76" y="508" font-size="10.5" font-weight="700" fill="#1e293b">① 有可执行语义吗？</text>
+    <text x="76" y="527" font-size="9.5" fill="#475569">查询 / 校验 / 策略 / 权限，不只塞进 prompt</text>
+
+    <rect x="416" y="486" width="340" height="58" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="432" y="508" font-size="10.5" font-weight="700" fill="#1e293b">② 有版本 / 证据 / 权限 / 退役吗？</text>
+    <text x="432" y="527" font-size="9.5" fill="#475569">不是一张 ER 图，也不是一次性建模</text>
+
+    <rect x="772" y="486" width="348" height="58" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+    <text x="788" y="508" font-size="10.5" font-weight="700" fill="#1e293b">③ 有具名生产参考吗？</text>
+    <text x="788" y="527" font-size="9.5" fill="#475569">规模 + 失败，不只是客户 logo</text>
+  </g>
+
+  <text x="40" y="592" font-family="PingFang SC, Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="10" fill="#334155">例外：Netflix 是领域专用自建，不是「从零建通用本体平台」的证据；京东 Oxygen 是 signal，不撑结论。</text>
+</svg>

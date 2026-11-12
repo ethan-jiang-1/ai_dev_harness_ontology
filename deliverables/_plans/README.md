@@ -2,11 +2,12 @@
 
 > 这里放**交付物的执行计划/工作底稿**，不是交付正文。它们可以引用 `src/` 与 `topics/`，但不构成 E、不新增规则、不进对外阅读路径。常设规则在 [AGENTS](../../AGENTS.md) / [CHARTER](../../CHARTER.md)。
 >
-> **现行计划至多一份**（当前：IA 整改）。其余是日志或参考：日志记当时改了什么，参考是被引用的报告/快照；都不指导新的写入。当前计数与阻塞看 [meta/state](../../meta/status/state.md)。结构决策见 [ADR 0012](../../adr/0012-instruction-layer-single-home.md)。
+> **现行计划至多一份**（当前：无；04b OKF 严格化已于 2026-11-12 执行完，IA 整改暂停）。其余是日志或参考：日志记当时改了什么，参考是被引用的报告/快照；都不指导新的写入。当前计数与阻塞看 [meta/state](../../meta/status/state.md)。结构决策见 [ADR 0012](../../adr/0012-instruction-layer-single-home.md)。
 
 | 文件 | 对应交付物 | 说明 | 状态 |
 |---|---|---|---|
-| [2026-11-12-deliverable-ia-plan.md](./2026-11-12-deliverable-ia-plan.md) | 01–04 | **IA 整改计划**：README 索引化、B 方案编号（02/03/04/05/09/90+）、链接路径兜底、第三人称语气；01 已落地，02–04 待执行 | **现行（唯一计划）** |
+| [2026-11-12-04b-okf-strict-plan.md](./2026-11-12-04b-okf-strict-plan.md) | 05 · 4b | **04b 严格化**：拆规范边界/映射机制/采用证据三层；SCIMIN 复核降为 signal（不入库）、Kunstenpunt/京东降为线索、删伪阈值；上游改 E-32/L-22 + 新增 L-23 | 已执行（2026-11-12） |
+| [2026-11-12-deliverable-ia-plan.md](./2026-11-12-deliverable-ia-plan.md) | 01–04 | **IA 整改计划**：README 索引化、B 方案编号（02/03/04/05/09/90+）、链接路径兜底、第三人称语气；01 已落地，02–04 待执行 | 参考（暂停） |
 | [2026-11-12-content-gap-survey.md](./2026-11-12-content-gap-survey.md) | 全仓 | **内容缺口盘点**：purge 后证据基座、按派缺口、横切缺口、优先级行动清单；外部对齐受限核实（web_search 402，宽口径发现待恢复） | 参考（缺口盘点） |
 | [2026-11-11-core-plan.md](./2026-11-11-core-plan.md) | 全仓 | **收口交接快照**：证据重置 + ADR 0011 术语基线 + 01→04 收口的 P0–P6 记录；常设规则以 AGENTS/CHARTER 为准，本文件不再新增规则 | 日志（收口记录） |
 | [2026-11-11-command-board.md](./2026-11-11-command-board.md) | 全仓 | 逐批进度日志：P0–P4 每批改了什么、`check_repo` 结果 | 日志 |

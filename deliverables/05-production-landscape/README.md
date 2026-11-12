@@ -28,7 +28,7 @@ basis: E-28/E-29/E-30/E-31/E-32；5 条 admitted/probation 生产证据 + C/sign
 2. **失败不在图引擎，在语义定义与权限。** 影子实体、口径漂移、权限按人特批、聚合泄露、朴素语义视图延迟、预聚合维护爆炸——这些才是生产复盘里的坑（E-29）。
 3. **美国公开证据领先在「语义层/上下文层」，中国领先在「大厂平台 + 内部大规模图谱 + 单点金融实践」。** 这是**公开证据的不对称**，不是能力排序；两边都缺「规模+成本+失败+独立印证」齐全的案例（E-30）。一个反直觉的细节：**中国五家大厂平台 2026-06 后没有一条具名客户**；客户自述（三家农商行）与采购集中在海致星图/星环/NebulaGraph/Neo4j/金山云等。成本拐点降的是启动/抽取成本，不是定义治理/维护成本（E-31，`推测`）；价格锚点已有，全生命周期账本仍缺。
 
-> **Wiki/OKF 是底座选项之一**：如果知识还散在 Wiki/文档里，可以选 Google OKF（Markdown + YAML frontmatter；concept/links/来源/信任）统一概念、术语、来源与 owner；也可以选数仓语义层、本体平台、图库或数据库内嵌。OKF **成本低、对 LLM 友好，也不是必经层**，可以长期用；公开证据里还没人走完「OKF → 语义层」这一跳（见 [4b](./02-sections/04b-okf-wiki.md)）。
+> **Wiki/OKF 是底座选项之一**：如果知识还散在 Wiki/文档里，可以选 Google OKF（Markdown + YAML frontmatter；concept/links/来源/信任）统一概念、术语、来源与 owner；也可以选数仓语义层、本体平台、图库或数据库内嵌。OKF **成本低、对 LLM 友好，也不是必经层**，可以长期用。它与本体之间是**两个方向**：本体→OKF 可机械投影但丢语义；OKF→本体是有损草稿 + 关系定型人审；公开证据里**还没有人走完「OKF → 本体」这一跳**——中泰是 OKF 先行、业务本体在验证；“本体先行的 wiki”只有承建方自述的会议论文（`signal`），不撑结论（见 [4b](./02-sections/04b-okf-wiki.md)）。
 >
 > **一句话**：本体落地已经不是「建不建塔」，而是「底座选谁 + 薄本体怎么治理」。今天能回答「谁在跑、什么形态、公开证据到哪」；还不能回答「哪家最好、ROI 多少」。
 
@@ -36,12 +36,13 @@ basis: E-28/E-29/E-30/E-31/E-32；5 条 admitted/probation 生产证据 + C/sign
 
 | 你手上的问题 | 读 | 得到什么 |
 |---|---|---|
+| 想先看一张图 | [01 导读 §1.5 图目录](./02-sections/01-GUIDE.md#15-本份的图快速解读用) | 问题链五步 + 6 张图的落点；先速读再进正文 |
 | 先看全貌 | [00 一页答案](./02-sections/00-overview.md) | 4 条判断 + 证据天花板 + 一页地图 |
 | 我属于哪种情况 | [01 导读](./02-sections/01-GUIDE.md) | 10 分钟/1 小时/深读路径 |
 | 到底有哪些形态 | [02 地图](./02-sections/02-map.md) | 底座→本体→应用分层；重→轻谱系；美/中对照 |
 | 美国到底谁在跑 | [03 美国](./02-sections/03-us.md) | Palantir / Snowflake / Sigma / Stardog / Ontotext 等 |
 | 中国大厂有没有方案 | [04 中国](./02-sections/04-china.md) | 阿里/蚂蚁/腾讯/华为/百度 + 中泰证券 |
-| Wiki/OKF 作为底座选项 | [04b OKF/Wiki](./02-sections/04b-okf-wiki.md) | OKF 的价值与边界、中泰/京东海博案例、可选升级判据 |
+| Wiki/OKF 作为底座选项 | [04b OKF/Wiki](./02-sections/04b-okf-wiki.md) | OKF 的价值与边界、中泰采用、两个方向（投影/上提）与“没有完成迁移”的缺口 |
 | 成本/收益怎么算 | [05 经济](./02-sections/05-economics.md) | 五项成本、build vs buy、TCO 缺口 |
 | 有哪些案例、各能证明什么 | [06 案例台账](./02-sections/06-cases.md) | A/B/C（+signal）分级 + 规模/失败/限制 |
 | 我该先做什么 | [07 决策](./02-sections/07-decision.md) | 5 个选型问题 + 90 天试点 + stop |
@@ -53,14 +54,16 @@ basis: E-28/E-29/E-30/E-31/E-32；5 条 admitted/probation 生产证据 + C/sign
 | 类 | 数量 | 说明 |
 |---|---|---|
 | **admitted / probation 生产证据** | 5 | 中泰 QCon、中泰 CCSA、Snowflake、Sigma、Netflix；都能追到 `src/web/` 卡 |
-| **C / signal 类线索** | 10+ | Palantir 公告、阿里 PolarDB/Context0、蚂蚁 TuGraph、腾讯 DataBuddy/Topbase、华为 DataArts、京东 Oxygen/海博、Google OKF、Kunstenpunt、Atlan、Anthropic、AngelList、AWS、VB Pulse；只证「有方案/有讨论/有披露」，不撑采用/效果 |
-| **明确 gap** | 7 | 无「规模+成本+失败+独立印证」四项齐的 A 类；无全生命周期 TCO/ROI（有价目/合同锚点）；五平台无客户侧（已判 0）；无失败率；无同数据集对照；无项目级 postmortem；Snowflake/Sigma 第二信号阴性 |
+| **admitted 格式证据** | 1 | Google OKF（格式定义，`admitted`）；它只证格式，不证采用/效果 |
+| **C / signal 类线索** | 12+ | Palantir 公告、阿里 PolarDB/Context0、蚂蚁 TuGraph、腾讯 DataBuddy/Topbase、华为 DataArts、京东 Oxygen/海博、Google Knowledge Catalog、Kunstenpunt、SCIMIN/SMW（本体先行自述）、Linked.Archi/Atlas/GMEOW（映射实现）、Atlan、Anthropic、AngelList、AWS、VB Pulse；只证「有方案/有讨论/有披露」，不撑采用/效果 |
+| **明确 gap** | 8 | 无「规模+成本+失败+独立印证」四项齐的 A 类；无全生命周期 TCO/ROI（有价目/合同锚点）；五平台无客户侧（已判 0）；无失败率；无同数据集对照；无项目级 postmortem；Snowflake/Sigma 第二信号阴性；**无 OKF/Wiki→本体迁移完成案例** |
 
 > **读法**：先看等级，再看日期，再看有没有独立信号。厂商案例页/产品文档默认 C；单公司工程博客默认「作者报告」，不默认「行业规律」。
 
 ## 维护
 
 - 正文只从 admitted/probation 证据抽取；C/signal 类只进 [90 来源](./02-sections/90-sources.md)、[06 案例台账](./02-sections/06-cases.md) 的「线索」列与 [04 中国](./02-sections/04-china.md) 的「方案存在」段，不撑结论。
+- 图在 [`_figures/`](./_figures/)，索引在 [01 §1.5](./02-sections/01-GUIDE.md#15-本份的图快速解读用)。**改正文数字/等级时同步改图**（图内数字都能在正文找到原值）；图只做速读，判断仍以正文/E-xx 为准。
 - 新证据先回 `topics/06-measure/feasibility/mechanism.md` 的「生产落地图景」与 `src/web/` 卡，再改本份；不在交付物里新增判断。
 - 改了判断 → 回改 E-28–E-32 与 [state](../../meta/status/state.md)；跑 `python3 meta/tools/check_repo.py`。
 - 定位改动走 [SCOPE](./SCOPE.md) 与 [ADR 0014](../../adr/0014-deliverable-scope-single-home.md)。

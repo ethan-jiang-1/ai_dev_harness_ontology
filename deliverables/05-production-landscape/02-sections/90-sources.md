@@ -97,10 +97,12 @@ parent: ../README.md
 | [Google OKF v0.2](https://cloud.google.com/blog/products/data-analytics/okf-v0-2-adds-trust-signals) | 2026-07-24 | 同上 | sources/generated/verified/status/stale_after/attestation 全部 opt-in；`type` 仍唯一必填；“advisory signals, not access control” | 信任信号≠真实性；仍需 producer 审计 |
 | [Google Knowledge Catalog 集成](https://cloud.google.com/blog/products/data-analytics/scale-okf-bundles-across-an-organization-with-knowledge-catalog) | 2026-08-26 | 官方博客 / C（产品能力） | bundle 可映射成 Catalog Entry、继承 IAM；okf Aspect 13 字段（`okf_type` 等，**无 `attestation` 字段**）；Acme 示例 9 leaf/17 entries | 客户采用/规模/效果；示例是合成 |
 | [中泰 CCSA 案例](../../../src/web/modb-2026-zhongtai-ontology/modb-2026-zhongtai-ontology.card.md) | 2026-10-15 | engineering / `admitted` | 用 OKF 组织 9,137 知识目录/6,503 指标文档/12 万+ 血缘；业务本体验证中 | 业务本体全量；成本/准确率；单公司 |
-| [Kunstenpunt Wikibase](https://tech-news.wikimedia.de/2026/06/02/kunstenpunt-a-whos-who-of-the-flemish-art-scene/) | 2026-06-02 | 工程博客 / B（Wikibase 案例） | 100 万页/25 万实体/3 名专职/与 Wikidata 联邦；约束只警告不阻断 | 它是“先有本体/数据标准，再把 wiki 架上去”；**全文 0 次 OKF/ontology**，不能当 OKF 案例 |
-| [京东海博 OKF](http://stock.10jqka.com.cn/20260924/c680274369.shtml) | 2026-09-24 | 媒体转载 / signal | 一概念一 md、`type` 必填、index/log、宽容消费；542 秒 vs 967 秒（约 -44%）；“编译前移到维护期” | 单一来源、无个人署名；**“OKF”全文未展开，“= Google OKF”是推断**；780+ 商家是业务规模不是知识规模 |
+| [SCIMIN-CRM · Semantic MediaWiki](https://ceur-ws.org/Vol-4293/paper50.pdf) | 2026-10-13 | 会议论文 / `signal`（承建方自述，不入 `src/`） | **本体先行**的做法：OWL 本体 + SMW 标注；LLM 候选 + 自动校验 + 专家 HITL + 受控发布 | 独立采用/规模/效果/成本；**不撑任何结论**；不是 OKF 案例；`CRM` = Critical Raw Materials |
+| [Kunstenpunt Wikibase](https://tech-news.wikimedia.de/2026/06/02/kunstenpunt-a-whos-who-of-the-flemish-art-scene/) | 2026-06-02 | 工程博客 / `signal`（frontier） | 100 万页/25 万实体/3 名专职/与 Wikidata 联邦；约束只警告不阻断；**2024 数据标准先行（兼容 CIDOC CRM/schema.org），再并库进 Wikibase** | 独立印证；**全文 0 次 OKF/ontology**；“数据标准”≠“OWL 本体”，不能当 OKF 案例 |
+| [京东海博 OKF](http://stock.10jqka.com.cn/20260924/c680274369.shtml) | 2026-09-24 | 媒体转载 / `signal` | 一概念一 md、`type` 必填、index/log、宽容消费；542 秒 vs 967 秒（约 -44%）；“编译前移到维护期” | 单一来源、无个人署名；**“OKF”全文未展开，“= Google OKF”是推断**；780+ 商家是业务规模不是知识规模 |
+| [Linked.Archi](https://meta.linked.archi/docs/practice/okf-open-knowledge-format/) · [Atlas](https://github.com/AtlasDevHQ/atlas/blob/main/docs/research/okf-interop-spike.md) · [GMEOW](https://github.com/Blackcat-Informatics/gmeow-ontology/blob/main/docs/okf.md) | 2026-07-17 / 07-02 / 2026 | 工程文档 / C（实现与框架） | 三份独立实现互证：本体→OKF 投影有损（丢关系类型/公理/约束）；OKF→本体是草稿 + 关系定型人审 | 生产采用、迁移完成；单项目/小仓库，star 不算信号 |
 
-> **最大缺口**：截至 2026-11-12，没有一条公开证据证明某组织完成“OKF/Wiki → 本体”的迁移；中泰最接近，但把图数据库/对象关系写在后续规划。
+> **最大缺口**：截至 2026-11-12，没有一条公开证据证明某组织完成“OKF/Wiki → 本体”的迁移（有路径、时间线、成本、失败）。中泰最接近，但把图数据库/对象关系写在后续规划；唯一的“本体先行 wiki”（SCIMIN）是承建方自述的 `signal`，不是独立采用。检索式见 [90.3](#903-阴性结果查过但没有过门的)。
 
 ## 90.3 阴性结果：查过但没有过门的
 
@@ -109,7 +111,9 @@ parent: ../README.md
 | 中国大厂 2026-06 后**外部采用**（阿里/蚂蚁/腾讯/华为/京东） | 官网、云文档、开发者社区、会议（QCon/CCKS/AICon/云栖/HC）、招聘、采购平台、案例库、arXiv | **五平台 0 条「具名客户 + 可追一手」**；能过门的客户侧材料集中在海致星图/星环/金山云/中电云计算/中科世通亨奇与三家农商行自建（signal） | 客户署名复盘或会议 talk；平台名 + 客户名 + 规模 |
 | Palantir 客户侧**一手工程复盘**（2026） | Palantir 公告、客户新闻、会议 | 只有公司公告/客户名单；无客户自己写的规模/成本/失败；**Westpac 2026-11 退出，但动因是活动人士施压** | 客户 engineering blog / conference industry talk |
 | 本体/语义层**全生命周期 TCO** | 工程博客、会议、USASpending、UK Contracts Finder、TED、中国政府采购网 | 有五类价（平台 £10.09M/5 年、语义层支持 $1.14M/年、建设 ¥49–276 万、维护 ¥178.8 万/年、POC $37–175/月）；**无人月、无同一买方建设+维护配对、无回收期** | 企业财务/采购披露，或带账本的复盘 |
-| OKF 的企业级采用 | Google OKF 博客/GitHub/Knowledge Catalog；中国案例 | 西方 0 个具名生产用户；中国仅中泰、京东海博（后者单一来源）；无 A 类 | 具名组织 + 规模 + 成本/失败 + 独立印证 |
+| 本体/语义层**人月/工时** | 工程博客、会议、arXiv（429 限流）、中国政府采购网、招标聚合站、上市公司募投、招聘 JD | **无可当 A 类的人月披露**。两条带数字的都不合格：Data Praxis 2026-06-19 是**构造案例**（1→12 人 / 24 个月，非客户披露）；玄同科技 2026-10-20 是**匿名厂商软文**（2 专家 + 1 知识工程师 × 半年，返工场景）。联通 2026-10-27「图谱知识增强」招标正文在付费墙后，未读到工作量清单 | 客户署名复盘（团队 × 月数）、招标文件的工作量/人月单价表、或募投「新增研发 N 人 + 建设期」 |
+| OKF 的企业级采用 | Google OKF 博客/GitHub/Knowledge Catalog；中国案例；GitHub 搜索 `"open knowledge format" in:description`（477，2026-11-12 快照） | **西方未找到具名生产采用**（只有工具/框架实现与教程，C）；中国仅中泰（`admitted`）+ 京东海博（`signal`）；无 A 类 | 具名组织 + 规模 + 成本/失败 + 独立印证 |
+| **OKF/Wiki → 本体迁移完成案例** | Google 博客/规范、GitHub、CEUR/SEMANTiCS、工程博客、Linked.Archi/Atlas/GMEOW | **0 条**：有投影/上提实现与“先 OKF 再提升”的框架建议，无组织披露完成迁移（路径/时间线/成本/失败） | 一份带迁移前后规模与成本的复盘；或迁移中断的 postmortem |
 | **上线后被关停/废弃的本体/KG 项目** | 英文工程博客、HN、KGC/SEMANTiCS 议程、TED、UK Contracts Finder、中国政府采购网、arXiv | **未找到第一方复盘**；中国 7 例流标/终止全在授标前（供应商不足 3 家），且已重新采购/转谈判；唯一"撤销合同"案例与本体无关 | 一条带结局（取消/回退/降级）与规模的 postmortem |
 | 重型平台被替换（窗口内） | TED、UK Contracts Finder、新闻 | 最强案例 MHCLG 用自建替换 Palantir Foundry（2026-05-19）**超窗，只作背景**；窗口内只有 Westpac（非技术原因） | 窗口内的技术性替换复盘 |
 | **失败率** | Atlan/Improvado、HN、咨询报告 | 只有二手"<15%"说法，原始统计未核；另有"60% 指标中台死在第二年"无样本/分母，未采用 | 可核的样本框+分母+年份 |
