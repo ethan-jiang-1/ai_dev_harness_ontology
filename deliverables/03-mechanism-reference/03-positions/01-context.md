@@ -1,7 +1,7 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 position: context
 evidence: [E-01, E-08, E-12, E-14]
 ---
@@ -56,7 +56,7 @@ evidence: [E-01, E-08, E-12, E-14]
 
 - 封闭域、操作手册型知识，答案基本写在材料里；
 - 投影：有稳定的描述记录与固定分节生成器；能承担 token/维护成本；
-- 编译：先量自己的 `p_h`、miss penalty、`c`、`Q`，`p_h ≥ p_min` 才买；
+- 编译：先量自己的 `p_h`、miss penalty、`c`、`Q`，`p_h` 的 95% CI 下界 > `p_min` 才买（[标定](../../../topics/03-knowledge/compilation/mechanism.md#p_h-calibration)）；
 - 需要硬约束时，**另接** action/checker/commit；不要在这一格承诺拒绝逻辑。
 
 ## 6. 证据与边界

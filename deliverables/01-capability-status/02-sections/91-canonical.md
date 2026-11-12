@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 parent: ../README.md
 ---
 
@@ -40,7 +40,7 @@ parent: ../README.md
 |---|---|---|---|---|
 | X1 | 点位语义 vs 原始点位 | ≥ +10pp | E-12；本域工程门 | 停在点位语义，不做投影 |
 | X2 | 知识投影文本 vs 点位语义 | ≥ +5pp；≤60k 字符 | E-12 | 停在点位语义 |
-| X3 | 编译 | `p_h ≥ p_min = 2% + c/(0.929Q)`；p95 不超预算 | E-08/E-14 | 不编译；先量 `p_h` |
+| X3 | 编译 | `p_h` 的 95% CI 下界 > `p_min = 2% + c/(0.929Q)`；p95 不超预算 | E-08/E-14 | 不编译；先 shadow 量 `p_h`（smoke 100–200，判门 1,600–2,000；[标定](../../../topics/03-knowledge/compilation/mechanism.md#p_h-calibration)） |
 | X4 | checker | **待新源；原门槛作废** | E-02 withdrawn | 先找新源；不设门槛 |
 | X5 | 动作闸 | **待新源；原门槛作废** | E-04/E-13 withdrawn；E-15 仅参照 | 先找新源；不上硬 veto |
 | X6 | 记忆 | CMR 或 Acc@complete ≥+10pp；merge precision ≥90%（**90% 是预登记线，`推测`**） | E-05/E-17 | 不做 registry |

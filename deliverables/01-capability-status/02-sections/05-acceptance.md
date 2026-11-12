@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 parent: ../README.md
 ---
 
@@ -37,7 +37,7 @@ parent: ../README.md
 |---|---|---|---|---|---|---|
 | X1 | 在目标域，点位语义相对原始点位（论文 K1 vs K0）的 primary-trap avoidance ≥ +10pp | `supported（限定）` | 3 个代表性任务的 K0/K1 回放，同一模型；primary-trap 标注 | E-12 单工厂 +54.6pp | 跨域；目标域基线 | 停在点位语义，不做投影；先查单位/别名覆盖 |
 | X2 | 知识投影文本相对点位语义（论文 K2 vs K1）的增益 ≥ +5pp，且投影 ≤60k 字符 | `supported（限定）` | K1/K2 回放；字符数；维护人日；顺序消融 | E-12 +19.8pp，单工厂 9 任务 | 跨域；多设备；顺序迁移 | 停在点位语义；不投影 |
-| X3 | 目标流量上 `p_h ≥ p_min = 2% + c/(0.929Q)`（c=每次编译成本，Q=每问 token 预算），且 p95 不超预算 | `conditional` | `p_h`、miss penalty、`c`、`Q`、p95、轮次 | E-08/E-14 公式；[e3 数据表](../09-data/e3-compilation.md) | 自己的流量分布 | 不编译；先量 `p_h`、`c`、`Q` |
+| X3 | 目标流量上 `p_h` 的 95% CI 下界 > `p_min = 2% + c/(0.929Q)`（c=每次编译成本，Q=每问 token 预算），且 p95 不超预算 | `conditional` | `p_h`、miss penalty、`c`、`Q`、p95、轮次；shadow 1,600–2,000 | E-08/E-14 公式；[e3 数据表](../09-data/e3-compilation.md) | 自己的流量分布 | 不编译；先 shadow 量 `p_h`、`c`、`Q`（smoke 100–200；[标定](../../../topics/03-knowledge/compilation/mechanism.md#p_h-calibration)） |
 | X4 | checker 的增量 catch ≥5pp、FA ≤15%，per-1k 成本 ≤人工 1/3（`工程建议`） | **`unknown` / 待新源** | 按 W-01：200 题分层（类型/声明/语义各 ≥50）；catch/FA/净修复分开；per-flagged 成本 | E-02 已撤回；[e4 数据表](../09-data/e4-checker.md) 只作历史 | 新源；故障分布；false-veto | 不设门槛；不立 checker 项，也不承诺 catch/FA |
 | X5 | 动作闸在给定 miss 预算下报 false-block 前沿；harm 降且 task success 不降 >2pp | **`unknown` / 待新源** | 按 W-03：shadow 200–500 决策 + 100 条 blocked 标注 + 同轨迹配对 | E-04/E-13 已撤回；E-15 仅非本体参照；[e5 数据表](../09-data/e5-false-veto.md) 只作历史 | 新源；blocked 标签；同轨迹配对 | 不设门槛；不上硬 veto；不把 CASEL 当本体证据 |
 | X6 | 记忆层 CMR 或 Acc@complete 相对基线 ≥ +10pp，merge precision ≥90% | `supported（限定）` | registry on/off；200 incoming units；CMR/merge precision/Acc@complete | E-05/E-17；[e6 数据表](../09-data/e6-memory.md) | 自己的域；false merge 传播 | 不做 registry；先修抽取 |

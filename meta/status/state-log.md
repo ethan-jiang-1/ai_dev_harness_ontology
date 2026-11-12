@@ -14,8 +14,15 @@ updated: 2026-11-12
 - **conclusions**：11 条链接改为单层；E-01→compilation §实施决策，E-18→metrics §方法要求，E-14→新 p_h 标定锚点；E-08/E-19 路径标签改为名字；E-21 阈值改为“自己的 gate 重标，论文数值只作单设置参考”；E-23 改为动作先行；E-07 去掉断裂标记；E-22 补“换域/换 backbone 重跑融合消融”。18 条在役做法逐条过三条测试，只改不满足的 4 条，其余保留；E-14/E-22/E-23 的做法句压回一句级。
 - **compilation**：新增“p_h 标定（判门用）”（100–200 smoke；1,600–2,000 shadow + 95% CI 下界；先 shadow；门实现先固定），并对齐 §实施决策/§stop/§第一个 sprint/§V3。
 - **02**：evaluation 样本表、R3 做法与验收、acceptance/canonical 的 R3 停线改为 CI 下界；01 e3 数据表加标定指针，形成 E-14→mechanism→交付物的贯通样例。
-- **check_repo**：嵌套链接记为 error（已验证注入后 exit 1）；路线 B 的做法/链接覆盖仍保留 warning。
+- **check_repo**：嵌套链接记为 error（已验证注入后 exit 1）；active E 的做法/链接覆盖当时保持 warning，二审改为 error。
 - **自检**：`check_repo` 通过（504 md，计数不变）；05 未纳入本轮。
+
+## 2026-11-12 路线 B 二审：p_h 口径清尾 + 闸门升级
+
+- **问题**：一审只把 CI 口径修到 compilation/02 主路径；01/03 与 feasibility 仍有多处 `p_h ≥/< p_min` 点估计判门，feasibility 的 sprint 仍写 100–200 问判门。
+- **清尾**：01（capabilities/canonical/acceptance/e3）、03（context/appendix）、02 R3 适用性、03-knowledge README、feasibility mechanism（实施决策/stop/sprint/go/no-go）、E-19 全部改为 `p_h` 的 95% CI 下界；feasibility sprint 的 100–200 改 smoke，判门 1,600–2,000 并链到 compilation §p_h。
+- **闸门升级**：`check_repo` 的 active E 检查从 warning 改为 error；要求 `**做法` 标记 + 实际 markdown 链接指向 mechanism/read-path/execution-forms/output-validation/consumability。
+- **自检**：`check_repo` 通过（504 md，计数不变）。
 
 ## 2026-11-12 meta 目录重组 + meta/AGENTS.md 门牌 + 每份交付物 SCOPE.md
 

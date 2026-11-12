@@ -66,7 +66,7 @@ claim–leaf（主张-证据叶子）编译在证据充分时省 91% token，不
 
 **不能做什么**：不能拿平均 −38% 当上线依据；它不是准确率项目；证据替换用检索轮次换 token，配对子集时延约 3×（仅 7 题）。
 
-**距离**：先量自己的 `p_h`、miss penalty、`c`、`Q`；`p_h < p_min` 就不做。
+**距离**：先量自己的 `p_h`、miss penalty、`c`、`Q`；`p_h` 的 95% CI 下界 ≤ `p_min` 就不做（100–200 问只作 smoke，判门 1,600–2,000；标定见 [compilation mechanism](../../../topics/03-knowledge/compilation/mechanism.md#p_h-calibration)）。
 
 <a id="judgment"></a>
 

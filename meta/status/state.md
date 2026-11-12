@@ -66,7 +66,7 @@ updated: 2026-11-12
 
 ## 最近改动
 
-- **2026-11-12 路线 B 收口**：11 条嵌套坏链修复；E-01/E-18 改指正确 mechanism，E-14 的 p_h 标定新增独立锚点并贯通到 compilation/02/01；E-21/E-23/E-07 的做法按三条测试改写；check_repo 把嵌套链接记为 error。细则见 [state-log](./state-log.md#2026-11-12-路线-b-收口坏链错页--p_h-标定贯通)。
+- **2026-11-12 路线 B 收口 + 二审**：11 条嵌套坏链修复；E-01/E-18 改指正确 mechanism，E-14 的 p_h 标定新增独立锚点并贯通到 compilation/02/01；E-21/E-23/E-07/E-22 的做法按三条测试改写；二审把 01/03/feasibility 残留的点估计判门清成 95% CI 下界；check_repo 把嵌套链接与 active E 缺做法/链接记为 error。细则见 [state-log](./state-log.md#2026-11-12-路线-b-二审p_h-口径清尾--闸门升级)。
 - **2026-11-12 meta 目录重组 + meta/AGENTS.md 门牌**：meta 根从 14 个平铺文件收成 **README（索引）+ AGENTS（30 秒入口）+ 子目录**：`rules/`（现行规则）、`deliverables/`（交付物治理）、`status/`（状态台账）、`templates/`（模板）、`audits/`、`archive/`、`tools/`；归档 2 个已完成开源计划；`meta/AGENTS.md` 只做门牌与指路、**不新增规则**（守住单一路由 ADR 0012）。
 - **2026-11-12 治理体系化（fresh-agent 契约 + SCOPE）**：AGENTS 加「Fresh agent 三件事」（目标/质量门/边界）；每份交付物立 `SCOPE.md`（初心/定性/边界/红线/发挥空间/答不了怎么办）；check_repo 强制每份有 SCOPE.md；**04 改名 ontology-in-production → worked-example**（名实不符，合成示例非生产现状）；质量门重申 ≥2026-06-01 + 活跃 + 在役标准须现行版本+维护活动。
 - **2026-11-12 交付物定位系统（ADR 0014）**：[meta/deliverables/scope](../deliverables/scope.md) 为五份总索引；各份 `SCOPE.md` 为权威；01–04 定性钉死；新开 [05-production-landscape](../../deliverables/05-production-landscape/README.md)（落地现状·实证，证据待补、不编）。硬规矩：**答不了初心问题就标 gap，不偷换成更容易的问题**——治 04 式漂移。

@@ -18,7 +18,7 @@ parent: ../README.md
 | R0 | 四项检查 pass/flag/unknown | 修复清单 | 无检查直接上 | 任一 unknown 当 pass | 工程建议（O-T01） | 改人工清单；不宣称 pass |
 | K1 | primary-trap avoidance | token | K0 | 剩余 trap 与深知识无关 → 停 | 工程建议 + E-12（O-T02） | 先做 K0 回放；量不出就停在 K1 |
 | 投影 | primary-trap/element | 字符数/维护人日 | K1 | <5pp、>60k、>2 人周/月 | 工程建议 + E-12（O-T03） | 先量 K1 基线；<5pp 就停 |
-| 编译 | token/问、p95 | `p_h`/miss、`c`、`Q` | 词法检索 | `p_h` 的 CI 下界 ≤ `p_min` | E-14 / O-F01（O-T04） | 先 shadow 量 p_h（smoke 100–200，判门 1,600–2,000）；量不出就不编译 |
+| 编译 | token/问、p95 | `p_h`/miss、`c`、`Q` | 词法检索 | `p_h` 的 CI 下界 ≤ `p_min` | E-14 / O-F01（O-T04） | 先 shadow 量 p_h（smoke 100–200，判门 1,600–2,000；[标定](../../../topics/03-knowledge/compilation/mechanism.md#p_h-calibration)）；量不出就不编译 |
 | evidence **gap** | 准确率、引用率 | 检索率、grounding 校准 | 纯文本 RAG | 原 E-03 撤回；不设门槛 | E-03 withdrawn | 先找新源；不设门槛 |
 | checker **gap** | 增量 catch、FA、净修复 | per-1k 成本 | 空结果重试 | 原 E-02 撤回；不设门槛 | E-02 withdrawn | 先找新源；不设门槛 |
 | action **gap** | harm、审批、false-veto、task success | 保留率、φ（可逆性分数）、miss–false-block 前沿 | 不上护栏 | 原 E-04/E-13 撤回；不设门槛 | E-04/E-13 withdrawn；E-15 参照 | 先找新源；不上硬 veto |
@@ -59,7 +59,7 @@ parent: ../README.md
 | R0 | 四项检查能预测「能不能执行」 | 30–60 分钟检查 + 后续失败记录 | 工程配方 | 无对照 |
 | R1 K1 | 绝对 `primary-trap avoidance ≥0.90` **或** 相对 `K1−K0 ≥+10pp`（预注册一个，不要混用） | K0/K1 回放；3 任务；trap 标注 | E-12 | 跨域 |
 | R2 投影 | K2 相对 K1 ≥ +5pp，且 ≤60k 字符、维护 ≤2 人周/月 | K1/K2 回放；字符；维护工时；顺序消融 | E-12 | 跨域；多设备 |
-| R3 编译 | `p_h` 的 95% CI 下界 > `p_min`，p95 不超预算 | `p_h`/miss/`c`/`Q`/p95/span 覆盖；shadow 1,600–2,000 | E-14 | 自己的流量 |
+| R3 编译 | `p_h` 的 95% CI 下界 > `p_min`，p95 不超预算 | `p_h`/miss/`c`/`Q`/p95/span 覆盖；shadow 1,600–2,000 | E-14；[标定](../../../topics/03-knowledge/compilation/mechanism.md#p_h-calibration) | 自己的流量 |
 | R4 证据契约 **gap** | **按 W-02 重测；原门槛作废** | 200 题；检索率/引用率；每级 100–200 标注 | E-03 withdrawn | 新源；等级校准；句级 span |
 | R5 checker **gap** | **按 W-01 重测；原门槛作废** | 200 题分层；catch/FA/净修复 | E-02 withdrawn | 新源；自己的故障分布 |
 | R6 动作闸 **gap** | **按 W-03 重测；原门槛作废** | shadow 200–500；100 blocked；同轨迹配对 | E-04/E-13 withdrawn；E-15 仅参照 | 新源；false-veto；同轨迹配对 |

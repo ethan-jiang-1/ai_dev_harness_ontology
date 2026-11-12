@@ -1,7 +1,7 @@
 ---
 status: draft
 deliverable_status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 appendix: constraint-spectrum
 target: 工程负责人 / 架构师
 length: 约 1.0 万字（中文字符，初稿）
@@ -233,7 +233,7 @@ E-01 与 E-12 不矛盾：一个是强检索 harness 下的证据工件，一个
 
 **何时用**：封闭域、操作手册型知识、答案基本写在文本里；需要模型照着规则做时，硬执行另进 01/02。
 
-**何时别用**：开放域检索、多跳问答——如果目标是准确率增益，此时该投资的是检索 harness 本身，而不是工件；编译只在算过 `p_h > p_min` 后才买；投影不承担拒绝逻辑。
+**何时别用**：开放域检索、多跳问答——如果目标是准确率增益，此时该投资的是检索 harness 本身，而不是工件；编译只在算过 `p_h` 的 95% CI 下界 > `p_min` 后才买（[标定](../../topics/03-knowledge/compilation/mechanism.md#p_h-calibration)）；投影不承担拒绝逻辑。
 
 供给形态不止一种；选错形态，会把「知识问题」误当成「检索问题」：
 

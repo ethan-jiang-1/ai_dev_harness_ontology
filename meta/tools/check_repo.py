@@ -279,10 +279,14 @@ def main() -> int:
         if not m or sec == "已撤回（源未过准入）" or "| withdrawn |" in line:
             continue
         eid = m.group(1)
-        if "做法" not in line:
-            warnings.append(f"{eid} has no 做法 sentence (route B: E is an index, practice must be one line)")
-        if not re.search(r"mechanism|read-path|execution-forms|output-validation|consumability|policy/", line):
-            warnings.append(f"{eid} has no practice link (route B: point at mechanism where steps/params/stop live)")
+        if "**做法" not in line:
+            errors.append(f"{eid} has no **做法 sentence (route B: E is an index, practice must be one line)")
+        targets = re.findall(r"\]\(([^)\s]+)\)", line)
+        if not any(
+            re.search(r"(?:mechanism|read-path|execution-forms|output-validation|consumability)\.md", target)
+            for target in targets
+        ):
+            errors.append(f"{eid} has no practice link (route B: point at mechanism where steps/params/stop live)")
 
     # 4c. every deliverable has a SCOPE.md positioning contract (ADR 0014)
     deliv_dir = os.path.join(ROOT, "deliverables")

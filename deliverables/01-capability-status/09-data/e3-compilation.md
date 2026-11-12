@@ -49,7 +49,7 @@ target: X3 compilation economics
 |---|---|---|---|
 | 公式/盈亏平衡 | `supported` | E-14；论文 Eq(3)–(9) | 公式本身；不代表你的 `p_h` |
 | 平均 −38% 可上线 | `contradicted` | E-08/E-14；hit/miss 混合 | 不能当部署依据 |
-| 目标流量 `p_h ≥ p_min` | **`unknown`（部署前）** | 缺自己的 `p_h`/`c`/`Q`/miss | 必须 shadow 量 |
+| 目标流量 `p_h` 的 95% CI 下界 > `p_min` | **`unknown`（部署前）** | 缺自己的 `p_h`/`c`/`Q`/miss | 必须 shadow 量（判门 1,600–2,000） |
 | 编译降准确率 | `supported（限定）` | E-01；强 harness 下无可检出增益 | 单基准；ontology not measured |
 
 **结论**：X3 是 `conditional`——公式成立，部署结论取决于自己的三到五个数。D1 应写「先量 `p_h`，再谈买不买」，不是「平均省 38%」。

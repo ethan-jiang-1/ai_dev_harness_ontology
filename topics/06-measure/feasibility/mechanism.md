@@ -84,7 +84,7 @@ updated: 2026-11-12
 
 ### 实施决策
 
-1. **上线审批看盈亏平衡，不看平均收益。** 编译类用 `p_h` 对 `p_min = 2% + c/(0.929Q)`；护栏类用 harm–approval 前沿点。「平均 −38%」「HSR 降 7.7 点」都不构成上线依据。`已核`（E-14/E-15；两个数都是模拟/条件值：−38% 是 hit/miss 混合，7.73 pp 是 CASEL 主表 τ=∞ 下相对 Uncertainty-Menu 的模拟差）→ 改变的是**审批材料里必须出现的分布项**（hit/miss、审批率、false-veto），不是机制选型。
+1. **上线审批看盈亏平衡，不看平均收益。** 编译类用 `p_h` 的 95% CI 下界对 `p_min = 2% + c/(0.929Q)`；护栏类用 harm–approval 前沿点。「平均 −38%」「HSR 降 7.7 点」都不构成上线依据。`已核`（E-14/E-15；两个数都是模拟/条件值：−38% 是 hit/miss 混合，7.73 pp 是 CASEL 主表 τ=∞ 下相对 Uncertainty-Menu 的模拟差）→ 改变的是**审批材料里必须出现的分布项**（hit/miss、审批率、false-veto），不是机制选型。
 2. **评测预算先买 miss；false-veto 不在现成可买清单里。** miss penalty ±1.5pp 会让 `p_h*` 在 0.4–3.6% 间移动，hit saving ±1.5pp 只动 2.0–2.1%（[CAI digest](../../../src/papers/2610.41172-context-as-infrastructure/digest.md) §6.5）；false-veto 在现有 digest 里**没有可用的测量**——POLAR 的 1,745 条 blocked decisions 没有 harm/authorization 标签，CASEL 的 approvals 也不含「本可合法执行」的标注。所以 false-veto 要先建标注能力（抽 blocked decisions 人工标），不是向供应商买一个数。`已核`（CAI 敏感度、POLAR 无标签）＋`推测`（先标 blocked decisions 的预算顺序）→ 标注预算按「拦错了多少」而不是「省了多少」立项。
 3. **先建账本，再建本体。** 没有 per-query / per-decision ledger，`p_h`、审批率、hit/miss 分布都算不出来（`c` 能从编译日志单算，但没法按 hit/miss 分摊；φ 还要另抽标签审计），五维成本表只能填「未知」。`推测`（三篇 digest 的共同接口要求，不是任一论文结论）→ 决定工具链顺序：埋点先于建模。
 4. **按「基线能力 × 不可逆性」排部署顺序，不按机制先进度。** 约束类收益随基线能力上升而下降（E-13），强模型与 retail（用户意图主导的域）常回退（E-04）；**合法意图是否导致回退未测**。编译类只在答案本就在语料里、复用次数够高时回本（E-14）。`已核`（E-04/E-13/E-14 的方向；E-04 未测合法意图）＋`推测`（把它当排序规则；E-13 是六点描述性拟合，作者明确不能当部署阈值）→ 决定先修弱模型那条链路，还是先修语料供给。
@@ -123,7 +123,7 @@ updated: 2026-11-12
 
 ### stop condition
 
-- `p_h < p_min`（用本人群实测的 `c`、`Q`）→ 停编译，转 harness 侧：收紧读预算、改停止策略、缓存重复查询。
+- `p_h` 的 95% CI 下界 ≤ `p_min`（用本人群实测的 `c`、`Q`）→ 停编译，转 harness 侧：收紧读预算、改停止策略、缓存重复查询。
 - 复用太少：以论文示例参数（`c=10`、`p_h≈0.43`）计，回本约 26 次查询；`Q` 低于这个量级 → 不建编译。
 - 编译后 p95 时延超预算（证据替换约 3×；3× 是 7 题配对观测，不是 p95）→ 只在 token 是硬成本的一小片流量灰度，不全量。
 - 护栏侧：shadow 回放 false-veto >5%，或审批率 >15%（示例上限）→ 降级 advisory/always-verify 或停。`推测`（digest 提的工程线，非论文实测；15% 是 CASEL digest 的示例，不是业务上限）。
@@ -143,14 +143,14 @@ updated: 2026-11-12
 
 1. **第 1–3 天 · 定口径**：锁 token（每问总量）、伤害（轨迹级 HSR 或 prevented harm）、审批（分钟/次）三个口径；把单价表建出来，缺项标「待填」。
 2. **第 4–6 天 · 埋点**：接 per-query 或 per-decision 账本，回放 7 天历史流量（或 200–500 条历史决策），出动作混合与基线 token/时延/轮次。
-3. **第 7–8 天 · 量分布**：编译侧抽 100–200 问估 `p_h` 与 miss penalty；护栏侧统计保留率/审批率，抽 100 条 blocked 标 false-veto。
+3. **第 7–8 天 · 量分布**：编译侧抽 100–200 问 smoke 估 `p_h` 与 miss penalty，判门另按 1,600–2,000 条 shadow 的 95% CI 下界（见 [compilation §p_h](../../03-knowledge/compilation/mechanism.md#p_h-calibration)）；护栏侧统计保留率/审批率，抽 100 条 blocked 标 false-veto。
 4. **第 9–10 天 · 算数**：算 `p_min`（用自己实测的 `c`、`Q`）或画 harm–approval 前沿；悲观/基准/乐观三列敏感性表替代点估计。
 
 **交付物**：一页账本 schema + 基线分布（`p_h`/miss、时延、审批、动作混合）+ `p_min` 对照表 + 单价表（含缺口清单）+ build/buy/不做 memo 草稿。
 
 **出口（go/no-go）**（下面前两条的阈值是工程门槛，不是论文实测，`推测`）：
-- **go**：`p_h ≥ p_min` 或前沿点优于现状，时延/审批在预算内，单价表缺口 ≤2 项 → 进第二 sprint（shadow/A-B）。
-- **no-go**：`p_h < p_min`，或 `p̂ĉ` 的 selective-risk AUC 未显著低于 `p̂`，或 false-veto >5% → 停，结论回写 [frontier](./frontier.md) 的 G1–G3。
+- **go**：`p_h` 的 95% CI 下界 > `p_min` 或前沿点优于现状，时延/审批在预算内，单价表缺口 ≤2 项 → 进第二 sprint（shadow/A-B）。
+- **no-go**：`p_h` 的 95% CI 下界 ≤ `p_min`，或 `p̂ĉ` 的 selective-risk AUC 未显著低于 `p̂`，或 false-veto >5% → 停，结论回写 [frontier](./frontier.md) 的 G1–G3。
 - **不出结论**：单价缺项 >2，或样本量不足以判 HSR（稀疏事件，2 周 log-only 不够）→ 补数据，不硬判。
 
 ### 客户指标/V3

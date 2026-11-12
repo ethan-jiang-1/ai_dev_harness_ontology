@@ -251,7 +251,7 @@ propose_setpoint(tag, value, reason, actor, idempotency_key)
 | 适用 | 不适用 |
 |---|---|
 | 语料大、查询重复、token/预算是硬约束 | 一次性任务、复用次数低 |
-| 证据充分率 `p_h` 高于 `p_min` | `p_h < p_min`；或 p95 时延是硬约束 |
+| 证据充分率 `p_h` 的 95% CI 下界 > `p_min` | CI 下界 ≤ `p_min`；或 p95 时延是硬约束 |
 | 有稳定文档源、能保留 offset/版本 | 表格/扫描/行话导致 span 抽不出 |
 | 能接受用检索轮次换 token | 要求「省 token 且不加时延」 |
 
