@@ -48,10 +48,10 @@ scope: 核心计划第 7 步（01→02→03→04 定义段接规范主干）
 | [03 action](../03-mechanism-reference/03-positions/05-action.md) | 顶部加词源 | ODRL/XACML 只到表达/架构；可逆性、min φ、τ `local`；E-04/13/16 仍 withdrawn |
 | [03 commit](../03-mechanism-reference/03-positions/06-commit.md) | 顶部加词源 | XACML/ODRL 只到判定架构；commit gate/三段式 `local`（概念架构） |
 | [03 memory / evidence](../03-mechanism-reference/03-positions/02-memory.md) | 顶部加词源 | 记忆/接地 `local`；标准不定义机制 |
-| [04 README](../../deliverables/04-worked-example/README.md) | 内码后加词源 | 本体/SHACL/ODRL/XACML/GB-T/ODCS 有 N；TBox/ABox、principal、level、skip、leak oracle `local` |
-| [04 术语 §0](../04-worked-example/02-sections/90-glossary.md#term-sources) | 新增 12 行来源表 | 数据分级/个人信息/数据契约/OWL 有 N |
-| [04 build A.3](../04-worked-example/03-body/01-build.md) | TBox/ABox 段加词源 | TBox/ABox `local`；类/属性语义 `N: OWL 2 Profiles` |
-| [04 govern C.1/C.2](../04-worked-example/03-body/03-govern.md) | C.1 后加词源；C.2 `skip` 规则加标记 | 分级/个人信息有 N；level 1–4、skip、principal `local` |
+| 04 README | 内码后加词源 | 本体/SHACL/ODRL/XACML/GB-T/ODCS 有 N；TBox/ABox、principal、level、skip、leak oracle `local` |
+| 04 术语 §0 | 新增 12 行来源表 | 数据分级/个人信息/数据契约/OWL 有 N |
+| 04 build A.3 | TBox/ABox 段加词源 | TBox/ABox `local`；类/属性语义 `N: OWL 2 Profiles` |
+| 04 govern C.1/C.2 | C.1 后加词源；C.2 `skip` 规则加标记 | 分级/个人信息有 N；level 1–4、skip、principal `local` |
 
 ## 3. 验收（可复跑）
 

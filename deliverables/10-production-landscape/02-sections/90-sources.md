@@ -6,7 +6,7 @@ parent: ../README.md
 
 # 90. 来源台账：哪些过门、哪些只是线索、哪些没找到
 
-> 本页是 05 的出处层。读正文不需要打开它；要核数字/判断时再来。
+> 本页是 10 的出处层。读正文不需要打开它；要核数字/判断时再来。
 > 准入判据以 [CHARTER §4](../../../CHARTER.md#4-素材准入material-gate) 为准；采/引前查 [来源黑名单](../../../meta/rules/excluded-sources.md)。
 
 ## 90.1 过门证据（admitted / probation）
@@ -164,4 +164,4 @@ parent: ../README.md
 - 关键词：`ontology production 2026`、`semantic layer production case study`、`Palantir ontology customer 2026`、`阿里云 本体 客户`、`蚂蚁 TuGraph 生产`、`腾讯 Topbase 2026`、`CCSA TC601 WG15`、`knowledge graph postmortem`、`ontology maintenance cost`、`FIBO EDM Council 2026`；第二轮：`ontology`/`Ontologie`/`knowledge graph`（TED，PD≥2026-06-01）、`Context0`/`DataBuddy`/`DataArts`/`TuGraph`/`Oxygen` + 客户、`人月 本体`、`knowledge graph failed`、`Palantir NHS`。
 - 抓取限制：`web_fetch` 对部分域名被策略拒绝（返回非公网 IP）；改用 `curl`；微信公众号多被 CAPTCHA，改用官网/会议页/转载；TED/HN 用公开 API。
 - 黑名单：采/引前已查 [excluded-sources](../../../meta/rules/excluded-sources.md)；未使用命中源。
-- 结论：**不是没搜，是这类材料稀缺**；第二轮把三条从“没查”变成“查过、只有 signal”，其余仍阴性；05 的价值之一是把“缺什么、查过哪”写清楚。
+- 结论：**不是没搜，是这类材料稀缺**；第二轮把三条从“没查”变成“查过、只有 signal”，其余仍阴性；10 的价值之一是把“缺什么、查过哪”写清楚。

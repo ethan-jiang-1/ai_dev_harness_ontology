@@ -64,9 +64,9 @@ provenance_type: foundation
 |---|---|---|
 | [consumability §3](../../../topics/05-produce/representation/consumability.md)（契约六项 ↔ `build_report` 不是一一对应）/ [05-L10](../../../topics/05-produce/claims.md) | 支持（字段层） | ODCS 正好落在 §3 说的「`load` 碰撞」上：`servers`（`type`/`host`/`location`/`environment`）是**怎么连**，没有 `parsed`/`violations` 这类**加载结果**字段。`roles`/`slaProperties`/`quality` 里也没有 `answers`/`refuses` 的对应物 → 「契约字段 ≠ `build_report`」再得一个标准侧实例。**但 05-L10 等级不动**：规范文本不是实现证据。 |
 | §3 的「三个语义碰撞」（`load` / `violations`≠`refuses` / `missing_fields`≠契约缺字段） | 可加第四个候选 | ODCS 的 `required` 在 property 级 = 「允许 null 吗」，在契约层 = 「字段必须写吗」。同词同型，且比前三个更容易混——因为两处都叫 required、都在写契约时用。 |
-| [build.md A.1](../../../deliverables/04-worked-example/03-body/01-build.md)（五格：consumer/principal/moment/answers/refuses/load） | 部分对应，缺 3 格 | consumer←无独立字段（最近 `roles[].role` + `servers[].roles`）；principal←`roles[].role`（IAM 角色名，弱；`tenant` 是「数据主要关联的属性」不是主体）；moment←无（`servers.environment` 是环境不是时刻，`slaProperties.timeOfAvailability` 是承诺交付时点，不是消费时刻）；answers←无；refuses←无（`roles.access` 是 read/write 授予，不是「拒 level≥3」这类谓词）；load←`servers`。`已核`（字段层），整体等价性 → 待核 3。 |
-| [build.md A.5](../../../deliverables/04-worked-example/03-body/01-build.md)（`build_report`：`load.violations` / `caught` / `answer`） | 不足替代 | A.5 的 `violations` 带 `focusNode`/`resultPath`/`sourceShape`（shape 违反记录）；ODCS `quality` 产出的是**指标值 + 算子比较**（`nullValues mustBe 0`、`invalidValues mustBeLessThan 5`），不是 violation 记录，也没有「哪个 shape 被违反」。拿 quality 顶 validate 会把「超阈值」当「违反 shape」。`推测`（读两边字段，无实现） |
-| [build.md A.2](../../../deliverables/04-worked-example/03-body/01-build.md)（三档：词表/结构表/逻辑表） | 无关 | ODCS 不分表达力档位。`logicalType`（string/date/number/…）与 `logicalTypeOptions`（format/minimum/pattern…）是数据类型与取值域，不是「能推出什么」的档位差。 |
+| [六项契约](../../../deliverables/02-engineering-playbook/05-appendices/04-artifact-pack.md#101-消费者契约-6-项)（consumer/principal/moment/answers/refuses/load） | 部分对应，缺 3 格 | consumer←无独立字段（最近 `roles[].role` + `servers[].roles`）；principal←`roles[].role`（IAM 角色名，弱；`tenant` 是「数据主要关联的属性」不是主体）；moment←无（`servers.environment` 是环境不是时刻，`slaProperties.timeOfAvailability` 是承诺交付时点，不是消费时刻）；answers←无；refuses←无（`roles.access` 是 read/write 授予，不是「拒 level≥3」这类谓词）；load←`servers`。`已核`（字段层），整体等价性 → 待核 3。 |
+| [契约 ↔ `build_report`](../../../topics/05-produce/representation/consumability.md#3-契约六项--build_report)（`load.violations` / `caught` / `answer`） | 不足替代 | A.5 的 `violations` 带 `focusNode`/`resultPath`/`sourceShape`（shape 违反记录）；ODCS `quality` 产出的是**指标值 + 算子比较**（`nullValues mustBe 0`、`invalidValues mustBeLessThan 5`），不是 violation 记录，也没有「哪个 shape 被违反」。拿 quality 顶 validate 会把「超阈值」当「违反 shape」。`推测`（读两边字段，无实现） |
+| [三档 × 四消费位置](../../../topics/05-produce/representation/consumability.md#2-三档--四消费位置)（词表/结构表/逻辑表） | 无关 | ODCS 不分表达力档位。`logicalType`（string/date/number/…）与 `logicalTypeOptions`（format/minimum/pattern…）是数据类型与取值域，不是「能推出什么」的档位差。 |
 | `topics/conclusions.md` 的 E-xx | 不触 | 本卡不产生 E，也不改任何 E 的等级。 |
 
 **不升 E / 不改判**：本卡只写这一个文件。[consumability §5](../../../topics/05-produce/representation/consumability.md) 里 ODCS 那行（`待核`，网页未入库）现在可以指到本卡，但 §3 的 `推测` 与 05-L10 的等级都不动——读规范≠验实现。要动 topics，需要另起一轮。
@@ -84,8 +84,8 @@ provenance_type: foundation
 ## 喂到哪个主题
 
 - [consumability §3](../../../topics/05-produce/representation/consumability.md)：补 ODCS 侧锚点——`servers` 落在 A.1 的 `load`、`quality` 不产出 `violations`、`answers`/`refuses` 无对应物、`required` 是第四个碰撞候选。§5 来源表的 ODCS 行可从「网页；未入库」改为指本卡，等级仍按「规范文本」记（不是实现证据）。
-- [build.md A.1](../../../deliverables/04-worked-example/03-body/01-build.md)：说明五格**不能从 ODCS 直接抄**——ODCS 稳定只供 `load`（servers）与被动的角色名，consumer/moment/answers/refuses 仍须自造。**只读不改表。**
-- [build.md A.5](../../../deliverables/04-worked-example/03-body/01-build.md)：`quality`（metric+operator）≠ `violations`（shape 违反记录）的外部佐证。
+- [六项契约](../../../deliverables/02-engineering-playbook/05-appendices/04-artifact-pack.md#101-消费者契约-6-项)：说明五格**不能从 ODCS 直接抄**——ODCS 稳定只供 `load`（servers）与被动的角色名，consumer/moment/answers/refuses 仍须自造。**只读不改表。**
+- [契约 ↔ `build_report`](../../../topics/05-produce/representation/consumability.md#3-契约六项--build_report)：`quality`（metric+operator）≠ `violations`（shape 违反记录）的外部佐证。
 - 同目录没有 `digest`（web 材料卡即消化正文，见 [web/README](../README.md)），故下游引用本卡；本卡未改 topics/deliverables/meta，也未在 [src 台账](../README.md) 登记。
 - 不升 [conclusions.md](../../../topics/conclusions.md)；不给 04 添新判断。
 

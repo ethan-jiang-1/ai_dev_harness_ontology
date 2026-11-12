@@ -66,7 +66,7 @@ scope: deliverable-gap
 | [01 现状](../01-capability-status/README.md) | 能读 | A/B/C/D 矩阵 14 行 + E1–E9 verdict | **主体是 6 个 300–1,200 字的摘要页**，把地图表又说了一遍；9 条期待没有一条 `supported`（无限定） | G5 / G7 |
 | [02 工程](../02-engineering-playbook/README.md) | 能照着做 | 13 条 recipe 的十字段 + 13 行停线表 | 停线无出处；`offline-and-obda` 5,267 字只引 1 条 E、`ledger` 4,223 字引 1 条、`interfaces` 3,751 字引 1 条 | G3 / G7 |
 | [03 机制](../03-mechanism-reference/README.md) | 能查 | 六张位置卡（8 字段）+ E-20 代码核对 | 承重墙 M1/M2 无测量；尺子错配（C-03）与覆盖率矩阵（06-L15）都是推测/设计 | G1 / G4 |
-| [04 落地](../04-worked-example/README.md) | 能走流程 | E-21/E-22 + 「三条 query 路线不排序」 | **build 章 1,525 字、0 条 E**，全段是 `signal`；「可消费性」没有任何下游测量（05-L7） | G2 / G5 |
+| 04 落地 | 能走流程 | E-21/E-22 + 「三条 query 路线不排序」 | **build 章 1,525 字、0 条 E**，全段是 `signal`；「可消费性」没有任何下游测量（05-L7） | G2 / G5 |
 
 **读法**：01 是「排序没有深度」，02 是「操作没有出处」，03 是「依据没有对照」，04 是「流程没有证据」。四份各有各的薄法，但共用同一批缺口。
 

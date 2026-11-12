@@ -6,7 +6,7 @@ deliverable: 01
 
 # 01 · capability-status — SCOPE（定位契约）
 
-> **改/建本交付物前必读。** 本页是 01 定位的唯一权威；五份的总索引与共用规矩见 [meta/deliverable-scope](../../meta/deliverables/scope.md)。README 是读者入口，本页是 agent 的边界契约。
+> **改/建本交付物前必读。** 本页是 01 定位的唯一权威；四份的总索引与共用规矩见 [meta/deliverable-scope](../../meta/deliverables/scope.md)。README 是读者入口，本页是 agent 的边界契约。
 
 ## 初心（为什么有这份）
 让决策者判断「本体 + harness 值不值得投、今天能做到哪一步」，不被夸大或已撤回的证据误导。
@@ -24,11 +24,11 @@ deliverable: 01
 能力判定、证据分级、判定口径、X 期待 verdict、边界 / 反例、决策记录。
 
 ## out-of-scope（不该干的，去哪）
-- 具体怎么做 → 02；机制为什么 → 03；建用治合成示例 → 04；业界落地现状 → 05。
+- 具体怎么做 → 02；机制为什么 → 03；业界落地现状 → 10。
 
 ## 红线（绝不能）
 - 不把撤回源当活证据；不把「已核」升「已证」。
-- 不替 02 给步骤、不替 05 报现状。
+- 不替 02 给步骤、不替 10 报现状。
 - 判定必须能追到 admitted 源的 digest 节。
 
 ## 发挥空间（scope 内你可以）

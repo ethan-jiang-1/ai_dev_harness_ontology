@@ -258,14 +258,14 @@ scope: gap-assessment
 
 | 维度 | 04 里的证据 | 为什么算 L2 |
 |---|---|---|
-| D1 | `example/`（9 件产物）+ [reference §0](../04-worked-example/02-sections/91-reference.md) 的 canonical 计数 | 每页引同一组数（11/5/2/5/13/5/3/8/11/12），可交叉核对 |
-| D2 | [journey §0](../04-worked-example/02-sections/95-journey.md) 的表（query / principal / raw / policy / governed / audit） | 同一个 CQ 在不同 principal 下的两个值都写出来，且标 raw/governed |
-| D3 | [GUIDE 30 分钟 8 步](../04-worked-example/02-sections/01-GUIDE.md) + journey | 每步有「读什么、核对什么、去哪」，能从头走到尾 |
-| D4 | [acceptance](../04-worked-example/02-sections/05-acceptance.md) A1–C5 + 5 组门槛 | 每项有「通过长什么样」「未通过怎么办」 |
-| D5 | [glossary](../04-worked-example/02-sections/90-glossary.md) | 概念 + 内码两段，正文首次出现给人话 |
-| D6 | [govern C.2](../04-worked-example/03-body/03-govern.md) 判定顺序 + T9 | specific → priority → 冲突=undetermined；冲突案例被保留 |
-| D7 | [transfer](../04-worked-example/02-sections/92-transfer.md) / [templates](../04-worked-example/02-sections/93-templates.md) / [worked-example](../04-worked-example/02-sections/94-worked-example.md) | 从「你的表」推到 TBox/CQ，有第二个例子，有空表可填 |
-| D8 | [boundaries](../04-worked-example/02-sections/04-boundaries.md) + [decision](../04-worked-example/02-sections/06-decision.md) | 17 条边界 + `conditional` 的处置与停 |
+| D1 | `example/`（9 件产物）+ reference §0 的 canonical 计数 | 每页引同一组数（11/5/2/5/13/5/3/8/11/12），可交叉核对 |
+| D2 | journey §0 的表（query / principal / raw / policy / governed / audit） | 同一个 CQ 在不同 principal 下的两个值都写出来，且标 raw/governed |
+| D3 | GUIDE 30 分钟 8 步 + journey | 每步有「读什么、核对什么、去哪」，能从头走到尾 |
+| D4 | acceptance A1–C5 + 5 组门槛 | 每项有「通过长什么样」「未通过怎么办」 |
+| D5 | glossary | 概念 + 内码两段，正文首次出现给人话 |
+| D6 | govern C.2 判定顺序 + T9 | specific → priority → 冲突=undetermined；冲突案例被保留 |
+| D7 | transfer / templates / worked-example | 从「你的表」推到 TBox/CQ，有第二个例子，有空表可填 |
+| D8 | boundaries + decision | 17 条边界 + `conditional` 的处置与停 |
 | D9 | reference §0「其他页引用这里，不复制」 | 有 canonical 表，其他页只链接 |
 | D10 | GUIDE 路径 + templates + acceptance 记录模板 | 只读这份能填完 9 件产物或明确写 `conditional` |
 

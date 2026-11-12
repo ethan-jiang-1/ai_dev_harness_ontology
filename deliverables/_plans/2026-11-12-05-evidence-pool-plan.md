@@ -9,7 +9,7 @@ current: false
 # 05 证据池修复计划（2026-11-12，第二轮）
 
 > 现行计划（[_plans 至多一份](./README.md)）。前一轮 [缺口补齐计划](./2026-11-12-05-gap-closure-plan.md) 已执行完；本计划针对它暴露出的**新缺口**。
-> 判据与准入仍以 [CHARTER §4](../../CHARTER.md#4-素材准入material-gate) 和 [05 SCOPE](../05-production-landscape/SCOPE.md) 为准；本页只排做什么、按什么算成。
+> 判据与准入仍以 [CHARTER §4](../../CHARTER.md#4-素材准入material-gate) 和 [05 SCOPE](../10-production-landscape/SCOPE.md) 为准；本页只排做什么、按什么算成。
 
 ## 0. 诊断：一句话
 

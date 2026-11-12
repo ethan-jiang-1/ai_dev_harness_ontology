@@ -58,7 +58,7 @@ updates: []
 ## 喂到哪个主题
 
 - `topics/06-measure/feasibility/mechanism.md` §生产落地图景
-- `deliverables/05-production-landscape/02-sections/04-china.md`
+- `deliverables/10-production-landscape/02-sections/04-china.md`
 
 ## 原文摘录
 

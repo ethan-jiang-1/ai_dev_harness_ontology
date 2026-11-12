@@ -71,8 +71,6 @@ provenance_type: standard-body
 
 - `topics/05-produce/representation/consumability.md`
 - `topics/02-judgment/checker/output-validation.md`
-- `deliverables/04-worked-example/body/build.md` A.4/A.5
-- `deliverables/04-worked-example/body/govern.md` C.5
 
 ## 原文摘录
 

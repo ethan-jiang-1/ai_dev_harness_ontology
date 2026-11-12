@@ -2,7 +2,7 @@
 status: draft
 type: provenance-audit
 updated: 2026-11-12
-target: deliverables/05-production-landscape/02-sections/04b-okf-wiki.md
+target: deliverables/10-production-landscape/02-sections/04b-okf-wiki.md
 plan: deliverables/_plans/2026-11-12-04b-okf-strict-plan.md
 ---
 
@@ -101,7 +101,7 @@ plan: deliverables/_plans/2026-11-12-04b-okf-strict-plan.md
 
 | 项 | 处置 |
 |---|---|
-| P0-1 京东海博越级 | 移出 4b 正文，只留 [90.2c](../../deliverables/05-production-landscape/02-sections/90-sources.md#902c-okf--wiki-底座选项定义产品案例) 的 `signal` 行与 frontier |
+| P0-1 京东海博越级 | 移出 4b 正文，只留 [90.2c](../../deliverables/10-production-landscape/02-sections/90-sources.md#902c-okf--wiki-底座选项定义产品案例) 的 `signal` 行与 frontier |
 | P0-2 SCIMIN 无源 | 先建卡判 `admitted`，**复核后降 `signal` 并移出 `src/`**（承建方自述、G3 无独立信号）；4b 只留线索、标“不撑任何判断”；正名 `CRM = Critical Raw Materials` |
 | P0-3 Kunstenpunt 措辞过强 | 改“数据标准先行（兼容 CIDOC CRM/schema.org）”，删“一步到位”，降 `signal`，只留一句 |
 | P0-4 Linked.Archi 越级 | 与 Atlas、GMEOW 一起作 C 级实现互证；入 frontier；不进 05 结论 |

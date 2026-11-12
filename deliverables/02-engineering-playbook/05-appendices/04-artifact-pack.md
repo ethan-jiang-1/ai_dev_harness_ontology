@@ -139,11 +139,11 @@ snapshot=2026-11-11, notes="R4 样例；latency 未测"
 
 > **这张表是产物包的一部分**：填不出未测清单，说明你还不知道自己的证据边界。
 
-## 8. 与 01/03/04 的分工
+## 8. 与 01/03 的分工
 
 - 值不值得做 → [01](../../01-capability-status/README.md)。
 - 为什么是这些位置 → [03](../../03-mechanism-reference/README.md)。
-- 建/用/治一条访问控制链 → [04](../../04-worked-example/README.md)。
+- 访问控制链的判据（判定单位 / `skip` / 冲突次序）→ [policy F4](../../../topics/01-constraint/policy/findings.md)。
 - 本页只回答：**一条 recipe 做完，手上应该有什么。**
 
 ## 9. 第二个例子：R1 K1（短）
@@ -207,3 +207,41 @@ delta=+?pp, tokens=?, gate=untested, notes="fixture 3 行；未跑"
 | 3 | 跨域 | 第二个域 |
 
 > 第二份包比第一份短，这是正常的：**R1 的产物本来就少**；不要为了对称硬凑。
+
+## 10. 附：另一条链（访问控制）的产物清单
+
+> 来源：原 04 合成走查（已退役，[ADR 0015](../../../adr/0015-retire-04-and-renumber-05-to-10.md)）。这里只留**清单与门槛**，不留 fixture 与数字——那条链的判据已搬到 [policy F4](../../../topics/01-constraint/policy/findings.md) 与 [output-validation §2.5](../../../topics/02-judgment/checker/output-validation.md)。
+>
+> 与 §0 的关系：§0 是**一条 recipe** 的产物包（R4/R1）；本表是**一条访问控制链**的产物包（建→用→治）。两者不互相替代。
+
+### 10.1 消费者契约 6 项
+
+`consumer`（谁消费）· `principal`（以什么身份）· `moment`（哪个时刻）· `answers`（能回答什么，CQ）· `refuses`（拒什么）· `load`（怎么加载/拿什么模式）。
+
+六格写不出的，不建 TBox——这是那条链的第一道门。
+
+### 10.2 九件产物
+
+| # | 产物 | 谁产 | 何时 | 怎么验 |
+|---|---|---|---|---|
+| 1 | 消费者契约 6 项 | 数据/应用/治理三方 | 立项 | 6 项无空；每行有 1 个 CQ 或拒绝条件 |
+| 2 | TBox + ABox | 数据/本体 | 建 | 解析器可读；类/属性计数对得上 |
+| 3 | shapes + 负例 | 数据/本体 | 建 | 每个 shape 有 target；已知坏样本 ≥1 violation |
+| 4 | CQ + expected | 应用 | 用 | 每条有 expected；0 行能分因 |
+| 5 | 策略表 | 治理 | 治 | 规则可复算；冲突/默认写清（见 policy F4） |
+| 6 | 策略测试 | 治理 | 治 | 每条输入→期望；平局标 undetermined |
+| 7 | 泄漏用例 | 治理 | 治 | 覆盖 object/别名/聚合/版本四类面 |
+| 8 | audit schema + 样例 | 治理 | 治 | 字段齐（见 output-validation §2.5）；能回放 |
+| 9 | 故障矩阵 | 三段共同 | 验收 | 骨架；标「不是实测」 |
+
+### 10.3 五组门槛
+
+| 组 | 管什么 | 通过长什么样 |
+|---|---|---|
+| 建（A1–A4） | 契约→TBox→shape→负例 | 六项无空；shape 有 target；坏样本被抓住 |
+| 用（A5 + B1–B3） | CQ→expected→0 行分因 | 每条 CQ 有 expected；0 行说得出原因 |
+| 治策略（C1–C3） | 规则→测试→泄漏面 | 测试可复算；平局显式 undetermined；skip 有 reason |
+| 治审计（C4–C5） | audit→replay | 字段齐；同快照可对照 |
+| 收口 | 未修漏洞 | 没有「已知但没修」的项；`conditional` 单列，不算失败 |
+
+> `conditional`（有条件通过）不是失败：它是「决策已写、验收未闭合」的显式状态。没有这一档，团队会把它偷写成 pass。

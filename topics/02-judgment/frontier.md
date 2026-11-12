@@ -47,7 +47,7 @@ rq: [RQ4, RQ5]
 | LOGicalThought（2510.01530） | 逻辑本体接地；四基准 +11.84% | G1 不过（2025-10 首公开） | 不建卡；方向并入 checker 校准线 |
 | CORE-LLM-Bench（Zenodo 2026） | 受控神经符号基准；9,048 QA 实例 | 待核 G1/G3 | 先核发表日期与独立信号 |
 | Can We Trust LLM Judges（2609.12002） | judge 能力相关偏差 + 多 judge 校准 | 待扫描 | 读摘要；先过五门 |
-| Automating OntoClean Verification | 本体验证自动化 | 待扫描 | 与 05 共享 |
+| Automating OntoClean Verification | 本体验证自动化 | 待扫描 | 与 10 共享 |
 
 ## 入档判据
 

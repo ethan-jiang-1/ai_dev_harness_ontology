@@ -6,7 +6,7 @@ deliverable: 03
 
 # 03 · mechanism-reference — SCOPE（定位契约）
 
-> **改/建本交付物前必读。** 本页是 03 定位的唯一权威；五份的总索引与共用规矩见 [meta/deliverable-scope](../../meta/deliverables/scope.md)。
+> **改/建本交付物前必读。** 本页是 03 定位的唯一权威；四份的总索引与共用规矩见 [meta/deliverable-scope](../../meta/deliverables/scope.md)。
 
 ## 初心（为什么有这份）
 让架构师 / 研究者理解"凭什么这么说"，知道分类与证据边界，不越界解读。
@@ -24,7 +24,7 @@ deliverable: 03
 位置 / 形态分类、覆盖率矩阵、claim 走查、边界 / 可证伪、证据台账。
 
 ## out-of-scope（不该干的，去哪）
-- 怎么做 → 02；值不值得 → 01；建用治合成示例 → 04；业界落地现状 → 05。
+- 怎么做 → 02；值不值得 → 01；业界落地现状 → 10。
 
 ## 红线（绝不能）
 - 给分类与边界，不给效应量；不新增 E/L。

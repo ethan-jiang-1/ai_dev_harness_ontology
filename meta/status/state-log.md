@@ -100,7 +100,7 @@ updated: 2026-11-12
 - **决策**：定位权威放 meta（单一出处，沿用 ADR 0012）——新增 meta/deliverables/scope.md；AGENTS 路由 / loading 加载集 / checklist 交稿闸只放指针；README 放读者钩子并指回。否决「散进 5 份 README」「塞进 AGENTS」。
 - **定性五分**：01 判断 / 02 做法 / 03 机制 / 04 示例（合成）/ 05 现状（实证）。04 与 05 分界钉死：04 合成「怎么建」，05 实证「业界怎么样」。
 - **防漂移硬规矩**：改/建前先读 scope；**答不了初心问题标 gap + frontier，禁止偷换成更容易的问题**；定性不混。
-- **落地**：04 内容不动、如实定性为合成示例；新开 deliverables/05-production-landscape/（证据基座缺口如实标明，先补真实生产原料再过门写，不编）。GLOSSARY 加「交付物定位」。
+- **落地**：04 内容不动、如实定性为合成示例；新开 deliverables/10-production-landscape/（证据基座缺口如实标明，先补真实生产原料再过门写，不编）。GLOSSARY 加「交付物定位」。
 - **自检**：check_repo 通过（458 md，新增 deliverable-scope / ADR 0014 / 05 README）。
 
 ## 2026-11-12 topics 撤回源叙述页对账
@@ -195,9 +195,9 @@ updated: 2026-11-12
 
 > 只做文档；fixture 只读复跑（rdflib/pyshacl/jsonschema），不做实验、不加 engine。现行计数看顶部表。
 
-- **新增**：[transfer](../../deliverables/04-worked-example/02-sections/92-transfer.md)（4 推导 + principal/多标签 2 决策 + 最小路径 + 自测）；[templates](../../deliverables/04-worked-example/02-sections/93-templates.md)（T1–T8 空表）；[decision](../../deliverables/04-worked-example/02-sections/06-decision.md)（成本五维/TCO、4 阶段、规模边界、conditional、memo、RACI）。
+- **新增**：transfer（4 推导 + principal/多标签 2 决策 + 最小路径 + 自测）；templates（T1–T8 空表）；decision（成本五维/TCO、4 阶段、规模边界、conditional、memo、RACI）。
 - **验收**：acceptance 增「期待与数据需求」X1–X5（验收规格，非 E）；README/GUIDE/sections/map/relations/body 索引接通。
-- **缺口补齐**：新增 [label-source](../../deliverables/04-worked-example/02-sections/96-label-source.md)（标签源三种路径 + 准入 8 问 + 50 列验证 + 停）；[worked-example](../../deliverables/04-worked-example/02-sections/94-worked-example.md)（3 表/6 列、多标签 B、5 规则/5 测试/2 audit）；decision §2.5（打标/执行层/审计公式 + 敏感性）；templates T9（成本工作纸）。
+- **缺口补齐**：新增 label-source（标签源三种路径 + 准入 8 问 + 50 列验证 + 停）；worked-example（3 表/6 列、多标签 B、5 规则/5 测试/2 audit）；decision §2.5（打标/执行层/审计公式 + 敏感性）；templates T9（成本工作纸）。
 - **结构**：README 归位——04/README 只留读者卡/问题索引/产物地图/起点/门槛与边界入口/支持页；8 步读路径移入 GUIDE，5 组门槛移入 acceptance，3 条不能证明移入 boundaries，why-not-SQL 移入 relations；example/README 拆出 run.md / data.md；evidence/README 拆出 ledger.md / sources.md。
 - **一致性**：CQ1 与 shape 片段加 `ontology.ttl` 同图前置；example 7→8 规则；T9 R4/R5；T11 命中 R5/R8；E-24 与 evidence 11 测试/8 规则/R4/R5；A.5 `CQ1` 改「2 列/2 表」；C.4/journey/B.6 去 `0/7` 混用；A.4 三组 catch/FA 补标签与样本量；glossary 加 PPV。
 - **复跑**：3/3 parse；11 类/5 属性；pyshacl 2 violations；CQ1 2（TBox 同图）/CQ2 7 列 4 表/CQ3 4 dataset；audit schema 0 错；policy 11/11（含 T11 命中 R5/R8）。
@@ -216,9 +216,9 @@ updated: 2026-11-12
 ## 2026-11-10 04 内容供给执行（W0–W3 主体，历史快照）
 
 - **W0**：12 张矩阵骨架入 [04-matrix-skeletons](../../deliverables/_plans/2026-11-10-04-matrix-skeletons.md)；12 条承重句冻结。
-- **W1**：T2 [querying/compare](../../topics/03-knowledge/querying/compare.md)（4×8 矩阵、17 类失败、决策树）；T5 [output-validation](../../topics/02-judgment/checker/output-validation.md)（六类 + 三态）；[consume v2](../../deliverables/04-worked-example/03-body/02-consume.md)（决策表、2×2、失败目录）。
-- **W2**：T3 [policy](../../topics/01-constraint/policy/README.md)（3 F / 3 G、7 列 schema、10 测试）；T4 [read-path](../../topics/01-constraint/commit-gate/read-path.md)（10 用例、第二实现否决）；[govern v2](../../deliverables/04-worked-example/03-body/03-govern.md)（10 测试、12 泄漏用例、audit schema）。
-- **W3**：T1 [consumability](../../topics/05-produce/representation/consumability.md)（三关、3×4、10 坏样本）；T6 [propagation](../../topics/06-measure/metrics/propagation.md)（10×3 故障矩阵、成本量级）；[build v2](../../deliverables/04-worked-example/03-body/01-build.md)（三关、10 坏样本）。
+- **W1**：T2 [querying/compare](../../topics/03-knowledge/querying/compare.md)（4×8 矩阵、17 类失败、决策树）；T5 [output-validation](../../topics/02-judgment/checker/output-validation.md)（六类 + 三态）；consume v2（决策表、2×2、失败目录）。
+- **W2**：T3 [policy](../../topics/01-constraint/policy/README.md)（3 F / 3 G、7 列 schema、10 测试）；T4 [read-path](../../topics/01-constraint/commit-gate/read-path.md)（10 用例、第二实现否决）；govern v2（10 测试、12 泄漏用例、audit schema）。
+- **W3**：T1 [consumability](../../topics/05-produce/representation/consumability.md)（三关、3×4、10 坏样本）；T6 [propagation](../../topics/06-measure/metrics/propagation.md)（10×3 故障矩阵、成本量级）；build v2（三关、10 坏样本）。
 - **产物**：04 九件（5 主 + policy_tests / audit.schema / leak_cases / fault_matrix）。
 - **收口**：M1–M4/M8/M9 标准已入材料卡；Great Expectations / OpenLineage 已入 OSS digest；M5–M7/M10 按 D7 降为候选；E23–E27 全部已升（读路径/策略层/可消费性/路线/输出）；04 body 14.12k（执行后修订 ≤15k）；模板 2 / gap 3；已核 17。
 - **check**：495 文件；E=27，L=79；0 断链。
@@ -268,7 +268,7 @@ updated: 2026-11-12
 
 - **新增**：[reverse-gap-plan](../../deliverables/_plans/2026-11-09-reverse-gap-plan.md)：从四份交付物反扫 topics/src，诊断四种薄法（17/22 单源、31/73 推测、13 行停线 0 出处、5 个门无第二实现/标签），给三条硬杠、旗舰三件（门槛表 / 反例集 / 执行矩阵）、上游订货单（TB/CA/FC/QP/S2/LB）与 WP0–WP8。
 - **新增**：[hard-objects-plan](../../deliverables/_plans/2026-11-09-hard-objects-plan.md)：把判断做成可引用/可复算/可核对的对象（O-xx）；H0–H3 分级、六字段 schema、`topics/objects.md` 注册表、五条产线（C/F/N/T/M+R/P/L）、10 天 60–80 个对象；O 能否进交付物待 ADR 0009。
-- **定位**：工作底稿，不产生 E/L；与 [01 计划](../../deliverables/_plans/01-capability-status.md)（E1–E9 证据）、[04 计划](../../deliverables/_plans/04-worked-example.md)（intake/scope）分工，不重复。
+- **定位**：工作底稿，不产生 E/L；与 [01 计划](../../deliverables/_plans/01-capability-status.md)（E1–E9 证据）、04 计划（intake/scope）分工，不重复。
 - **口径**：desk research + 只读代码；不向用户要资产/人/价/签核（ADR 0007）；停线出处标不出就标 gap，不编。
 
 ## 2026-11-09 D1 第一轮证据回抽
@@ -374,7 +374,7 @@ updated: 2026-11-12
 
 ## 2026-11-09 04 落地生命周期
 
-- **新增 [04-worked-example](../../deliverables/04-worked-example/README.md)**：README 索引 + `GUIDE.md` 本份导读 + `sections/`（map/boundaries/acceptance/relations）+ `body/`（build/consume/govern）+ `evidence/`；按 0–6 与前三份同构。
+- **新增 04-worked-example**：README 索引 + `GUIDE.md` 本份导读 + `sections/`（map/boundaries/acceptance/relations）+ `body/`（build/consume/govern）+ `evidence/`；按 0–6 与前三份同构。
 - **读者**：本体/数据工程师（建）、应用/agent 工程师（用）、治理/安全（治）；决策者仍走 01，工程负责人走 02，架构师走 03。
 - **证据边界**：外部来源（Ontology Generation、Axiom Benchmark、CK25、GGC、SAGA、SchemaForge、Build2SPARQL、VAULT、Graph-Agentic RAG、Enterprise Agentic Systems、AWS 指南）只作“信号/候选”，**未入库、未升 E**；04 正文只引 E-xx + 这些信号，不把厂商/摘要数字写成结论。
 - 自检：`python3 meta/tools/check_repo.py` 通过（426 文件；E=20，Q=3，C=4，L=66；24 论文 / 4 开源）。

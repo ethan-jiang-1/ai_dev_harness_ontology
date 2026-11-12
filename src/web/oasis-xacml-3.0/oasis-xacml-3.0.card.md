@@ -122,7 +122,6 @@ provenance_type: standard-body
 - `topics/01-constraint/policy/mechanism.md`「冲突消解对照」：XACML 列可去 `待核`，并把「默认」一格改为 `deny-overrides → NotApplicable；默认 deny 由 PEP bias 或 deny-unless-permit 给`。
 - `topics/01-constraint/access-control/frontier.md` G1（策略冲突/优先级）：XACML 给出可命名的冲突消解原语，可作为 G1 的术语底座。
 - `topics/01-constraint/sources.md`：OASIS XACML 3.0 由「待入库」→ 本源卡。
-- `deliverables/04-worked-example/body/govern.md` C.2：`deny-overrides` / 默认 deny 的措辞需分开写（算法 vs PEP bias）。
 - 不升 `topics/conclusions.md` 的 E：标准条文不是落地证据。
 
 ## 原文摘录

@@ -35,7 +35,7 @@ src/（给 Agent 的干货）──digest──▶ topics/（给 Agent+人的判
 | 你在做什么 | 落点 | 加载 |
 |---|---|---|
 | **交付物被指错/有缺口** | **修复回路（下节）** | 被指页 + 对应 E 行 + digest |
-| **要回答「值不值得投 / 今天能做到哪 / 业界真实怎么样」** | [01 现状](./deliverables/01-capability-status/SCOPE.md)（判断）或 [05 落地现状](./deliverables/05-production-landscape/SCOPE.md)（业界实证） | 该份 `SCOPE.md` + [START §4](./deliverables/START.md) 的问题→份映射 |
+| **要回答「值不值得投 / 今天能做到哪 / 业界真实怎么样」** | [01 现状](./deliverables/01-capability-status/SCOPE.md)（判断）或 [10 落地现状](./deliverables/10-production-landscape/SCOPE.md)（业界实证） | 该份 `SCOPE.md` + [START §4](./deliverables/START.md) 的问题→份映射 |
 | 论文入库/精读/消化 | `src/papers/{arxiv_id}-{slug}/`；在 [manifest](./src/papers/manifest.md) 登记 | [src/README §5](./src/README.md) + [论文卡](./src/_templates/paper-card.md)/[digest 模板](./src/_templates/paper-digest.md) |
 | 网页/标准/博客入库 | `src/web/{来源}/`；卡为同目录 `<stem>.card.md` | [src/README](./src/README.md) + [材料卡模板](./src/_templates/material-card.md) |
 | 开源项目入库/读码 | `src/open-source/{org}-{repo}/`；pin commit，不 vendor | [选择标准](./src/open-source/README.md) + [开源卡](./src/_templates/open-source-card.md)/[digest 模板](./src/_templates/open-source-digest.md) |

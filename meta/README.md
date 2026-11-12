@@ -23,7 +23,7 @@ updated: 2026-11-12
 
 | 文件 | 作用 |
 |---|---|
-| [deliverables/scope.md](./deliverables/scope.md) | **交付物定位总索引**（五份的定性/边界/共用规矩；每份权威在它自己的 `SCOPE.md`） |
+| [deliverables/scope.md](./deliverables/scope.md) | **交付物定位总索引**（四份的定性/边界/共用规矩；每份权威在它自己的 `SCOPE.md`） |
 | [deliverables/quality.md](./deliverables/quality.md) | 质量评分卡（12 维 + 5 门槛 + 抽样协议） |
 
 ## status/ — 状态与台账（"现在到哪了"）

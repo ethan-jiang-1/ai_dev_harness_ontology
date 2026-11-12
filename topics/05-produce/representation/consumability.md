@@ -9,6 +9,8 @@ evidence: [E-12]
 
 > 回答：一个本体/生成物「能被消费」怎么判定；三档表示在四类消费上的能力差；契约字段与 `build_report` 怎么对。
 > 不回答：本体怎么建（[README](./README.md)）、生成路线怎么选（[generation](../generation/README.md)）、判定器质量（[02/checker](../../02-judgment/checker/README.md)）。
+>
+> **口径**：本页所有 `A.1/A.5/S1–S10/CQ1–CQ3/fixture` 都指**原 04 的合成构造例**（5 表/13 列）。该构造例已随 [ADR 0015](../../../adr/0015-retire-04-and-renumber-05-to-10.md) 退役，这里保留的是判据与坏样本清单，**仓库内不再有可跑的样例**。
 
 ## 0. 三句话
 
@@ -59,7 +61,7 @@ evidence: [E-12]
 
 **应新增**：`consumer`、`principal{role,tenant}`、`moment/as_of`、`answers{query_id,expected}`、`refuses{policy_id,condition}`、`contract_version`/`ontology_version`；`load_target` 与 `load_result` 拆开。
 
-依据：[build A.1/A.5](../../../deliverables/04-worked-example/03-body/01-build.md)；[ODCS 材料卡](../../../src/web/odcs-v3.1/odcs-v3.1.card.md)。
+依据：原 04 的 build A.1/A.5（已退役，[ADR 0015](../../../adr/0015-retire-04-and-renumber-05-to-10.md)）；[ODCS 材料卡](../../../src/web/odcs-v3.1/odcs-v3.1.card.md)。
 
 ## 4. 十个坏样本
 
@@ -78,7 +80,7 @@ evidence: [E-12]
 
 **结论**：10 个里只有 S7/S8 被现有 `violations` 稳定抓住；S6/S9 需新增 target/边检查；S1–S5/S10 需契约/版本 schema。`推测`（读 A.5 + 文件，未跑 S1–S6/S9/S10）。
 
-**范围补充**：`sensitivityLevel` 的合法域是 1–4；04 的 shape 已加 `minInclusive 1`/`maxInclusive 4`，但 fixture 没有 0/负数坏样本，所以仍是 2 violations。S11 未入 fixture；真实数据要加，否则 0/负数会绕过策略（fail-open）。
+**范围补充**：`sensitivityLevel` 的合法域是 1–4；构造例的 shape 曾加 `minInclusive 1`/`maxInclusive 4`，但没有 0/负数坏样本，所以仍是 2 violations。S11 未入构造例；真实数据要加，否则 0/负数会绕过策略（fail-open）。
 
 ## 5. 来源与边界
 
@@ -105,4 +107,4 @@ evidence: [E-12]
 1. **跑 fixture**：parse + pyshacl + 3 CQ，记录原始输出；给 S6/S9/S10 加检查（shape target 必填、dataset 边 `ASK`、版本对账）。`待核`
 2. **契约 schema**：六格 + version 做成可校验 schema，让 `build_report` 读契约；`missing_fields` 拆 `contract_missing`/`artifact_missing`。`推测`
 3. **跨 validator**：pySHACL vs TopBraid 同 shapes/坏样本；SHACL test suite 121 例只当合规基线。`待核`
-4. **P5/EXP**：找下游评估论文或仓库外实验；没有之前，04 只写「闸门与停」，不写「建完就能用」。
+4. **P5/EXP**：找下游评估论文或仓库外实验；没有之前，本页只写「闸门与停」，不写「建完就能用」。

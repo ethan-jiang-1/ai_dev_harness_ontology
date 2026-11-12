@@ -136,7 +136,7 @@ _Avoid_: 反向加载（那是阅读路径）、回改（那只指判断变更�
 
 **交付物定位（Deliverable Scope / SCOPE.md）**:
 每份交付物的初心 / 定性 / 回答的问题 / in-scope / out-of-scope / 红线 / 发挥空间的定位契约，权威在该份交付物根目录的 `SCOPE.md`；[meta/deliverable-scope](./meta/deliverables/scope.md) 是五份总索引 + 共用规矩。改/建交付物前先读；答不了初心问题就标 gap，不偷换成更容易的问题。
-_origin_: `local`（本仓库治理，ADR 0014）｜ _anchor_: 各份 SCOPE.md / meta/deliverable-scope / adr/0014｜ _scope_: 定性分判断/做法/机制/示例/现状，04 合成示例 ≠ 05 实证现状；check_repo 强制每份有 SCOPE.md。
+_origin_: `local`（本仓库治理，ADR 0014）｜ _anchor_: 各份 SCOPE.md / meta/deliverable-scope / adr/0014｜ _scope_: 定性分判断/做法/机制/示例/现状；原 04 合成示例已退役，10 是实证现状；check_repo 强制每份有 SCOPE.md。
 _Avoid_: 质量评分（那是打分）、加载集（那是读什么）
 
 **台账（Ledger）**:

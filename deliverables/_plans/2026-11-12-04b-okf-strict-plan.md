@@ -3,7 +3,7 @@ status: draft
 type: strict-process-plan
 result: executed（2026-11-12；S0–S6 已走完，见文末执行回执）
 updated: 2026-11-12
-target: deliverables/05-production-landscape/02-sections/04b-okf-wiki.md
+target: deliverables/10-production-landscape/02-sections/04b-okf-wiki.md
 scope: 05 · 4b（OKF/Wiki 底座）；上游 topics/06 与 src/web
 ---
 
@@ -50,9 +50,9 @@ scope: 05 · 4b（OKF/Wiki 底座）；上游 topics/06 与 src/web
 
 1. **规范/标准事实** → `admitted` 卡的原文摘录（Google OKF、W3C OWL/SHACL、RDF）。
 2. **工程实现/映射机制** → 三份独立实现（Linked.Archi / Atlas / GMEOW）作为 **C 级佐证**；结论写成“三份独立工程文档在 X 上一致、在 Y 上分歧”，等级 `已核（工程文档互证）`，不外推为生产规律。
-3. **生产/试点采用** → 只有 `admitted`（中泰）能进 05 正文；`signal`（SCIMIN、Kunstenpunt、京东）只进 [90 来源](../05-production-landscape/02-sections/90-sources.md) 与 frontier。
+3. **生产/试点采用** → 只有 `admitted`（中泰）能进 05 正文；`signal`（SCIMIN、Kunstenpunt、京东）只进 [90 来源](../10-production-landscape/02-sections/90-sources.md) 与 frontier。
 4. **设计判据**（何时升级、W0–W3）→ 留在 [mechanism](../../topics/06-measure/feasibility/mechanism.md#okf-2026-11)，标 `推测`；4b 只保留“三个可观测信号 + 指向 07/mechanism”，**不写数字阈值**。
-5. **阴性结论**（没有完成迁移）→ 必须写检索式、日期、渠道；记 [90.3](../05-production-landscape/02-sections/90-sources.md) 与 frontier。
+5. **阴性结论**（没有完成迁移）→ 必须写检索式、日期、渠道；记 [90.3](../10-production-landscape/02-sections/90-sources.md) 与 frontier。
 
 ## 4. 执行步骤（S0–S6）
 
@@ -129,4 +129,4 @@ scope: 05 · 4b（OKF/Wiki 底座）；上游 topics/06 与 src/web
 3. 新增的不是 E 而是 **06-L23**：非对称投影是派内机制判断，不构成跨派结论。
 4. 顺带修 `check_repo` 里过期的结论等级期望（15/3 → 19/4），否则它会一直对当前状态误报。
 
-**未关的缺口**：OKF/Wiki → 本体迁移完成案例仍为 0（写进 [90.3](../../deliverables/05-production-landscape/02-sections/90-sources.md) 阴性行与 frontier）；Kunstenpunt 第二信号、SCIMIN 的规模/效果、三份实现是否有生产用户，都还需外部材料。
+**未关的缺口**：OKF/Wiki → 本体迁移完成案例仍为 0（写进 [90.3](../../deliverables/10-production-landscape/02-sections/90-sources.md) 阴性行与 frontier）；Kunstenpunt 第二信号、SCIMIN 的规模/效果、三份实现是否有生产用户，都还需外部材料。

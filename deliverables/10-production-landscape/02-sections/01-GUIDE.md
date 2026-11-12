@@ -8,7 +8,7 @@ parent: ../README.md
 
 > 本页只做导航与术语。正文从 [00 一页答案](./00-overview.md) 开始。
 
-<img src="../_figures/05-map.svg" alt="05 一页读懂：问题链五步与证据天花板" width="100%">
+<img src="../_figures/10-map.svg" alt="10 一页读懂：问题链五步与证据天花板" width="100%">
 
 <sub>**先看图再读文**：五步各留一个结论和一个数；图为索引，数字与判断以正文和 [90 来源](./90-sources.md) 为准。下方 1.1–1.4 是阅读路径与术语，1.5 是全份图目录。</sub>
 
@@ -86,7 +86,7 @@ parent: ../README.md
 
 ## 1.4 本份的“不读”清单
 
-- 不读 [04](../../04-worked-example/README.md) 的 fixture 当现状证据（那是合成示例）。
+- 不拿合成 fixture 当现状证据（原 04 的示例已退役，见 [ADR 0015](../../../adr/0015-retire-04-and-renumber-05-to-10.md)）。
 - 不读 `src/` 原文，除非你要核某个数字；主路径的数字都在正文带出处。
 - 不读厂商产品页当结论；它们只在 [90 来源](./90-sources.md) 的 C 类线索里。
 
@@ -94,7 +94,7 @@ parent: ../README.md
 
 | 图 | 在哪 | 用来看什么 |
 |---|---|---|
-| [一页读懂图（05-map.svg）](../_figures/05-map.svg) | 本页顶部 | 问题链五步 + 证据天花板：一屏读完「谁在跑→坑→国别→钱→怎么做」 |
+| [一页读懂图（10-map.svg）](../_figures/10-map.svg) | 本页顶部 | 问题链五步 + 证据天花板：一屏读完「谁在跑→坑→国别→钱→怎么做」 |
 | [四层结构图（landscape-stack.svg）](../_figures/landscape-stack.svg) | [02 §2.1](./02-map.md#21-四层结构底座不是单选题本体不是悬空的) | 四层结构：底座五选一可并存，语义层统一 |
 | [重→轻谱系图（heavy-to-light.svg）](../_figures/heavy-to-light.svg) | [02 §2.3](./02-map.md#23-重--轻谱系) | 重→轻谱系、证据等级与「三问」 |
 | [证据台账图（evidence-ledger.svg）](../_figures/evidence-ledger.svg) | [06 §6.1](./06-cases.md#61-主台账) | 5 条 A 类逐项查「规模/成本/失败/独立印证」；成本 0/5 |

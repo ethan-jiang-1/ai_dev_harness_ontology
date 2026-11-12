@@ -218,22 +218,22 @@ open-source/{org}-{repo}/
 | 材料 | 卡 / 消化 | 阅读 / 来源 | 已喂到 |
 |---|---|---|---|
 | 12 篇过门论文（8 admitted + 4 probation） | 各目录 `card.md` / `digest.md` | 精读/L2/L1 见各卡；4 篇 probation 到 2027-05-11 | E-01/05/07/08/09/12/14/15/17/18/21/22；03/04/05/06 派页 |
-| UniDataAgent（中国联通，2026-09-23） | [card](./papers/2609.27257-unidataagent/card.md) / [digest](./papers/2609.27257-unidataagent/digest.md) | 已消化 / 原文正文 | 05 中国；E-28/E-30/E-31 |
-| CoeusBI（百度，VLDB 2026，2026-06-13） | [card](./papers/2606.15384-coeusbi/card.md) / [digest](./papers/2606.15384-coeusbi/digest.md) | 已消化 / 原文正文 | 05 中国；E-28/E-30/E-31 |
+| UniDataAgent（中国联通，2026-09-23） | [card](./papers/2609.27257-unidataagent/card.md) / [digest](./papers/2609.27257-unidataagent/digest.md) | 已消化 / 原文正文 | 10 中国；E-28/E-30/E-31 |
+| CoeusBI（百度，VLDB 2026，2026-06-13） | [card](./papers/2606.15384-coeusbi/card.md) / [digest](./papers/2606.15384-coeusbi/digest.md) | 已消化 / 原文正文 | 10 中国；E-28/E-30/E-31 |
 | 18 篇移出论文 | [tombstone](../meta/audits/2026-11-11-source-purge.md) | — | E-02/03/04/06/10/11/13/16/26 已撤回；主题页待重写 |
-| HN · Netflix ontology-driven observability（2026-10-19） | [card](./web/hn-netflix-ontology-observability/hn-netflix-ontology-observability.card.md) | 已消化 / thread 原文 | 04 C.5/B.2 signal；不升 E |
-| 中泰证券 QCon 2026（2026-09-02） | [card](./web/qcon-2026-zhongtai-ontology/qcon-2026-zhongtai-ontology.card.md) | 摘要级 / 议题页 | 05 中国；E-28/E-29/E-30 |
-| 中泰证券 CCSA TC601（2026-10-15） | [card](./web/modb-2026-zhongtai-ontology/modb-2026-zhongtai-ontology.card.md) | 已消化 / 报道正文 | 05 中国、OKF；E-28/E-29/E-31/E-32 |
-| Snowflake 内部 context layer（2026-08-17） | [card](./web/snowflake-context-layer-2026/snowflake-context-layer-2026.card.md) | 已消化 / 官方博客 | 05 美国；E-28/E-29/E-31 |
-| Sigma 2,883-model semantic layer（2026-10-27） | [card](./web/sigma-semantic-layer-2026/sigma-semantic-layer-2026.card.md) | 已消化 / dbt 博客 | 05 美国；E-28/E-29/E-31 |
-| Netflix 本体驱动可观测性（2026-10-16） | [card](./web/netflix-ontology-observability-2026/netflix-ontology-observability-2026.card.md) | 已消化 / 官方博客 | 05 美国；E-28/E-29 |
-| Google Open Knowledge Format v0.1/v0.2（2026-06/07） | [card](./web/google-okf/google-okf.card.md) | 精读 / 规范正文 + 官方博客 | 05 4b、E-32；Knowledge Catalog 只到 C |
-| GB/T 43697-2024 数据分类分级规则 | [card](./web/gbt-43697/gbt-43697.card.md) | 摘要级 / 原文摘要 | 01/policy、04 C.2；三级 vs 1–4 是工程映射 |
+| HN · Netflix ontology-driven observability（2026-10-19） | [card](./web/hn-netflix-ontology-observability/hn-netflix-ontology-observability.card.md) | 已消化 / thread 原文 | 10 06.1 与 90.2 的 signal；不升 E |
+| 中泰证券 QCon 2026（2026-09-02） | [card](./web/qcon-2026-zhongtai-ontology/qcon-2026-zhongtai-ontology.card.md) | 摘要级 / 议题页 | 10 中国；E-28/E-29/E-30 |
+| 中泰证券 CCSA TC601（2026-10-15） | [card](./web/modb-2026-zhongtai-ontology/modb-2026-zhongtai-ontology.card.md) | 已消化 / 报道正文 | 10 中国、OKF；E-28/E-29/E-31/E-32 |
+| Snowflake 内部 context layer（2026-08-17） | [card](./web/snowflake-context-layer-2026/snowflake-context-layer-2026.card.md) | 已消化 / 官方博客 | 10 美国；E-28/E-29/E-31 |
+| Sigma 2,883-model semantic layer（2026-10-27） | [card](./web/sigma-semantic-layer-2026/sigma-semantic-layer-2026.card.md) | 已消化 / dbt 博客 | 10 美国；E-28/E-29/E-31 |
+| Netflix 本体驱动可观测性（2026-10-16） | [card](./web/netflix-ontology-observability-2026/netflix-ontology-observability-2026.card.md) | 已消化 / 官方博客 | 10 美国；E-28/E-29 |
+| Google Open Knowledge Format v0.1/v0.2（2026-06/07） | [card](./web/google-okf/google-okf.card.md) | 精读 / 规范正文 + 官方博客 | 10 4b、E-32；Knowledge Catalog 只到 C |
+| GB/T 43697-2024 数据分类分级规则 | [card](./web/gbt-43697/gbt-43697.card.md) | 摘要级 / 原文摘要 | 01/policy F3/F4；三级 vs 1–4 是工程映射 |
 | GB/T 35273-2020 个人信息安全规范 | [card](./web/gbt-35273/gbt-35273.card.md) | 摘要级 / 原文摘要 | 01/policy；PII 类别，不是 level 表 |
 | W3C ODRL 2.2 | [card](./web/w3c-odrl-2.2/w3c-odrl-2.2.card.md) | 精读 / 原文正文 | 01/policy F2；冲突/义务/版本 |
 | OASIS XACML 3.0 | [card](./web/oasis-xacml-3.0/oasis-xacml-3.0.card.md) | 精读 / 原文正文 | 01/policy F2；合并算法/obligation |
-| W3C SHACL | [card](./web/w3c-shacl/w3c-shacl.card.md) | 摘要级 / 原文摘要 | 05/consumability、02/output-validation、04 A.4/A.5 |
-| ODCS v3.1.0 | [card](./web/odcs-v3.1/odcs-v3.1.card.md) | 精读 / 原文正文 | 05/consumability §3、04 A.1/A.5 |
+| W3C SHACL | [card](./web/w3c-shacl/w3c-shacl.card.md) | 摘要级 / 原文摘要 | 05/consumability、02/output-validation §2.5 |
+| ODCS v3.1.0 | [card](./web/odcs-v3.1/odcs-v3.1.card.md) | 精读 / 原文正文 | 05/consumability §3、02 附录 D §10.1 |
 | W3C OWL 2 Profiles | [card](./web/w3c-owl2-profiles/w3c-owl2-profiles.card.md) | 摘要级 / 原文摘要 | read-path §9 alias 规则；02 R8、03 claim 走查 |
 | W3C SHACL-AF | [card](./web/w3c-shacl-af/w3c-shacl-af.card.md) | 摘要级 / 原文正文 | read-path fail-open 的标准边界；02 R8、03 claim 走查 |
 | ISO/IEC 21838（顶层本体） | [card](./web/iso-iec-21838/iso-iec-21838.card.md) | 摘要级 / 原文摘要 | 05/representation；TLO 与领域本体边界 |

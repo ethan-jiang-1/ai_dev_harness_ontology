@@ -89,8 +89,8 @@ parent: ../README.md
 - **量什么**：泄漏率（subject/object 分开）+ 误拦率 + 异常路径行为；三个都量不出，就写 `unknown`，不要写「已防止」。
 - **写进方案时**：把 §4 四条写成「未修清单」，不要写成「已知风险，可接受」。
 
-## 7. 与 01/04 的分工
+## 7. 与 01 及上游的分工
 
 - 值不值得做 → [01](../../01-capability-status/README.md)：读路径在 01 是 B（可试点），不是 A。
-- 建/用/治一条访问控制链 → [04](../../04-worked-example/README.md)：04 的 C.3 有 LEAK-T1 探针，明确「skip ≠ allow」。
+- 判定单位 / `skip` / 冲突次序 → [policy F4](../../../topics/01-constraint/policy/findings.md)：有 LEAK-T1 的构造例，明确「skip ≠ allow」；审计字段见 [output-validation §2.5](../../../topics/02-judgment/checker/output-validation.md)。
 - 本文只回答：**这条 claim 成立到哪、什么条件下不成立。**

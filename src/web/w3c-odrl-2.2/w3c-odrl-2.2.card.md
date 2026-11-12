@@ -76,7 +76,7 @@ provenance_type: standard-body
 - [policy F2](../../../topics/01-constraint/policy/findings.md)：F2 的 ODRL 一行的条款级证据；可把「标准未入库 → 待核」的限定收窄到「XACML/Rego/OpenFGA 未入库」。
 - [policy mechanism.md 冲突消解对照](../../../topics/01-constraint/policy/mechanism.md)：改「ODRL 默认：未指定 → `invalid`」；改「版本 = profile → `dc:replaces`/`dc:isReplacedBy` + `inheritFrom`」；补「冲突由 Action `includedIn`/`implies` 触发」。
 - [01-constraint/sources.md](../../../topics/01-constraint/sources.md)：ODRL 行仍写「待入库」，可改为指向本卡（本轮不改）。
-- [04 C.2 策略表](../../../deliverables/04-worked-example/03-body/03-govern.md)：`effect` 与 `obligation` 两列的语义对照；`skip`、`无命中 deny` 标为工程选择。
+- [policy F2/F4](../../../topics/01-constraint/policy/findings.md)：ODRL 的 permission/prohibition/duty 与 XACML 的合并算法不是一回事；`skip`、`无命中 deny` 是工程选择，不是 ODRL 语义。
 - 不升 `topics/conclusions.md`，不改 `claims.md`：本卡没有改变「策略层是独立层」这一级判断，只补条款与一处对照表错误。
 
 ## 原文摘录

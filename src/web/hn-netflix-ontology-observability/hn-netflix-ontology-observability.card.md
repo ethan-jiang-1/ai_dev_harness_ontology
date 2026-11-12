@@ -10,8 +10,6 @@ author: HN commenters（thread）
 published: 2026-10-19
 influence: HN 131 points / 32 comments（2026-10-19）
 updates:
-  - deliverables/04-worked-example/body/govern.md
-  - deliverables/04-worked-example/evidence/README.md
 admission: admitted
 gate_checked: 2026-11-11
 impact_evidence: "I2+I4: 131 points / 32 comments"
@@ -68,8 +66,6 @@ provenance_type: community
 
 ## 喂到哪个主题
 
-- `deliverables/04-worked-example/body/govern.md` C.5：作为“可观测性/审计”的行业信号（不是 E）。
-- `deliverables/04-worked-example/evidence/README.md`：signal 表。
 - 不升 `topics/conclusions.md` 的 E；若后续拿到 Netflix 原文数据，再评估是否进 03/04。
 
 ## 原文摘录

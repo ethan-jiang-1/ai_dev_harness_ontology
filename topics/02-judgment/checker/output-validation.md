@@ -39,6 +39,33 @@ evidence: [E-02]
 
 > 1–4 类可以自动化；5 类要领域规则；6 类只能做「异常提示」，不能当判定。
 
+## 2.5 audit record 的字段（provenance 类校验的落地清单）
+
+> 原 04 走查（已退役，[ADR 0015](../../../adr/0015-retire-04-and-renumber-05-to-10.md)）的 audit schema 搬到这里；**值是构造样例，不是生产记录**。
+
+一次判定要能回放，至少留这些字段：
+
+| 组 | 字段 | 为什么 |
+|---|---|---|
+| 身份 | `decision_id` `query_id` `who` `action` | 谁、对哪次查询、做了什么动作 |
+| 快照 | `snapshot` `policy_version` `tag_version` | 复算要能指回当时的策略与标签版本（严格 replay 还需内容 hash + parser 版本） |
+| 判定对象 | `judged_subject` `subject_kind` `judged_triple` `resource_level` | **判定单位是输出行的 subject**；表/dataset 级没有列 subject（见 [policy F4](../../01-constraint/policy/findings.md)） |
+| 上下文 | `user_context`（role/clearance） | 输入有、规则不一定消费 |
+| 结果 | `decision`（allow/deny/skip/undetermined）`reason` `execution_effect` `obligation` | `skip` 必须带 reason；`obligation: log` 不参与判定 |
+| 泄漏观测 | `leaked_object` `leaked_object_level` `outcome` `leak_check` | 判定与「实际返回了什么」分两栏记，否则看不见 skip→leak |
+
+构造样例（table 级 subject 判 skip、object 方向仍返回 `col_ssn`）：
+
+```json
+{"decision_id":"dec-0002","query_id":"LEAK-T1","judged_subject":":t_hr","subject_kind":"table",
+ "resource_level":null,"user_context":{"role":"analyst","clearance":2},
+ "decision":"skip","reason":"table_subject_not_judged","execution_effect":"returned",
+ "obligation":"log","leaked_object":":col_ssn","leaked_object_level":4,
+ "outcome":"returned t_hr/col_ssn","leak_check":"object_direction_failed"}
+```
+
+> 读法：`decision=skip` 与 `leak_check=object_direction_failed` 并存，就是「未判定被当成了不拦」。字段名是 `local` 约定，不对应任何标准。
+
 ## 3. 三态 verdict
 
 ```json
@@ -67,7 +94,9 @@ evidence: [E-02]
 
 依据：[checker F7](./findings.md)；[open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md) §3–§5。
 
-## 4. 本 fixture 的 8 条检查
+## 4. 示例 8 条检查（原 04 fixture，已退役）
+
+> 下表来自原 04 的合成 fixture（5 表/13 列），**数字只作形状示范，不再是可跑的样例**；fixture 已随 [ADR 0015](../../../adr/0015-retire-04-and-renumber-05-to-10.md) 退役。
 
 | # | 检查 | 查询/规则 | 期望 | 失败时 |
 |---|---|---|---|---|
@@ -109,7 +138,7 @@ SELECT ?col ?tagLevel ?colLevel WHERE {
 | schema | `expect_column_values_to_not_be_null` / `expect_column_to_exist` | 列存在与非空 |
 | cardinality | `expect_table_row_count_to_be_between` | 行数区间 |
 | cross-field | `expect_column_values_to_be_in_set` / 自定义 expectation | 等级/枚举一致 |
-| provenance | 无现成 expectation | 需要自定义或 04 audit 字段 |
+| provenance | 无现成 expectation | 需要自定义；字段清单见 [§2.5](#25-audit-record-的字段provenance-类校验的落地清单) |
 
 > Great Expectations 已入 [digest](../../../src/open-source/fivetran-great-expectations/digest.md)：确认的是 `ExpectTableRowCountToBeBetween` 的 `success`/`table.row_count` 模型（一个 core expectation）；`validator.py`/`ExpectationSuite` 路径待核。它是数据质量工具，不是本体校验器。
 >
@@ -122,8 +151,8 @@ SELECT ?col ?tagLevel ?colLevel WHERE {
 - **输出校验不能替代输入 shape**：输入侧没约束，输出侧只能抽样。
 - **`0 violation` 不等于检查有效**：先看 `targeted>0` 且 `skipped=0`；否则是空转。
 - **golden count（2/4/7）只在 fixture 成立**：生产没有 ground truth，只能基线 + 分层抽样。
-- **CQ3 的文档矛盾**：`example/README` 写「CQ3 不把 `col_legacy` 算作未打标」，但期望结果是 4 个 dataset 各 1（含 `ds_legacy`）；按图计算，`col_legacy` 的 `hasTag` 是字面量、无 level，会被 CQ3 计入。**该改的是说明，不是数据**（`已核`：读图对账，未跑）。
+- **CQ3 的文档矛盾**：原 04 的 `example/README`（已退役）写「CQ3 不把 `col_legacy` 算作未打标」，但期望结果是 4 个 dataset 各 1（含 `ds_legacy`）；按图计算，`col_legacy` 的 `hasTag` 是字面量、无 level，会被 CQ3 计入。**该改的是说明，不是数据**（`已核`：读图对账，未跑）。
 - **误报/成本未测**：6 类里只有 schema/cardinality 的成本低；cross-field 与 semantic plausibility 的误报没有本仓库数据。
-- **不要写「输出校验能拦住越权」**：它只能标出「结果与策略不一致」；执行层仍要看 [C](../../../deliverables/04-worked-example/03-body/03-govern.md)。
+- **不要写「输出校验能拦住越权」**：它只能标出「结果与策略不一致」；执行层语义见 [policy F4](../../01-constraint/policy/findings.md)（skip ≠ allow）。
 
 依据：E-02；[checker F7/F8](./findings.md)；[open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md)；gap：误报/成本、生产数据。

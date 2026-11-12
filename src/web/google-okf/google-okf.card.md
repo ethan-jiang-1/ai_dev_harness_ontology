@@ -60,7 +60,7 @@ updates: ["2026-11-12 补 gate 字段：按 CHARTER §4.4.1 在役例外记录�
 ## 喂到哪个主题
 
 - `topics/06-measure/feasibility/mechanism.md` §OKF / Wiki 底座选项
-- `deliverables/05-production-landscape/02-sections/04b-okf-wiki.md`
+- `deliverables/10-production-landscape/02-sections/04b-okf-wiki.md`
 
 ## 原文摘录
 

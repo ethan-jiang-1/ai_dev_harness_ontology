@@ -28,9 +28,9 @@ updates:
   - topics/06-measure/feasibility/findings.md
   - topics/06-measure/claims.md
   - topics/conclusions.md
-  - deliverables/05-production-landscape/02-sections/04-china.md
-  - deliverables/05-production-landscape/02-sections/06-cases.md
-  - deliverables/05-production-landscape/02-sections/90-sources.md
+  - deliverables/10-production-landscape/02-sections/04-china.md
+  - deliverables/10-production-landscape/02-sections/06-cases.md
+  - deliverables/10-production-landscape/02-sections/90-sources.md
 ---
 
 # CoeusBI · 来源卡

@@ -6,7 +6,7 @@ updated: 2026-11-12
 
 > **两页分工（别混）**：
 > - **[START.md](./START.md) = 读者入口**：人第一次来，10 分钟看懂「这份档案在说什么、我该读哪份」。**只有叙事，不做索引。**
-> - **本页 = 索引 + 维护规则**：五份各是什么、目录契约、抽取规则、质量口径。**给维护者/agent 用，不做开场故事。**
+> - **本页 = 索引 + 维护规则**：四份各是什么、目录契约、抽取规则、质量口径。**给维护者/agent 用，不做开场故事。**
 >
 > 分工写死在这里：新增内容先判断它属于「读者叙事」还是「索引/规则」，别两边都放。
 
@@ -16,7 +16,7 @@ updated: 2026-11-12
 >
 > **2026-11-11 证据重置**：按被删源写成的段落重写完成前不得作为结论；撤回清单以 [审计](../meta/audits/2026-11-11-source-purge.md) 为唯一出处。定义已接规范主干（定义句标 `（N: 标准名）` 或 `（local）`）；收口记录见 [_plans 索引](./_plans/README.md)。
 >
-> **定位权威（[ADR 0014](../adr/0014-deliverable-scope-single-home.md)）**：**每份的初心/定性/边界/红线以它自己的 `SCOPE.md` 为准**；[meta/deliverables/scope](../meta/deliverables/scope.md) 只是五份总索引与共用规矩。改/建任何交付物前，先读该份 `SCOPE.md`。**04 是合成「怎么建」示例；新增 [05 落地现状](./05-production-landscape/README.md) 才是「业界真实怎么样」的实证份（已有正文；成本有价目/合同 + 两条客户自述投入，五平台外部采用仍缺）。**
+> **定位权威（[ADR 0014](../adr/0014-deliverable-scope-single-home.md)）**：**每份的初心/定性/边界/红线以它自己的 `SCOPE.md` 为准**；[meta/deliverables/scope](../meta/deliverables/scope.md) 只是四份总索引与共用规矩。改/建任何交付物前，先读该份 `SCOPE.md`。**10 是「业界真实怎么样」的实证份**（已有正文；成本有价目/合同 + 两条客户自述投入，五平台外部采用仍缺）；它和 01–03 是两个视角，不排成一条阅读链。
 
 ## 0. 读者与写法：deliverables 是给人的成品
 
@@ -37,9 +37,11 @@ updated: 2026-11-12
 5. **定义引 N，效应引 I，线索只进 frontier。** 规范主干（标准能定义什么/不能定义什么）见 [topics/trunk.md](../topics/trunk.md)；交付物首现的定义要指 N 或标 `local`。
 6. **只抽 admitted 源支撑的判断。** 每个要点必须沿 E/L → digest 追到 `admission: admitted`（含 probation）的材料；追不到的删掉或标 `推测`，不能靠“行业普遍认为”补位。源被撤回的，对应段落同步失效；撤回清单以 [审计](../meta/audits/2026-11-11-source-purge.md) 为唯一出处。
 
-## 子目录：01–04 = 3 层 + 1 条生命周期；05 = 落地现状（实证）
+## 子目录：01–03 = 3 层（判断 / 操作 / 依据）；10 = 落地现状（实证）
 
-前三层回答「判断 / 操作 / 依据」；04 把三者串成「建 → 用 → 治」的**合成走查**；05 回答「业界真实落地怎么样」。五份之外，还有一份共用的 10 分钟入口 [START.md](./START.md)（不属于任何一层，01–05 都从它进门）。
+前三层回答「判断 / 操作 / 依据」，谈的是**你的项目**；10 回答「业界真实落地怎么样」，谈的是**世界**。两组的视角不同，不排成一条阅读序列。另有共用的 10 分钟入口 [START.md](./START.md)（不属于任何一组，四份都从它进门）。
+
+> 原 04（合成走查）已退役：它教人从「建塔」那一步开始，而 01/10 都说那一步不是起点。判据打捞进 topics 与 02 附录 D，见 [ADR 0015](../adr/0015-retire-04-and-renumber-05-to-10.md)。
 
 ```
 01-capability-status/     判断层：今天能做成什么、不能承诺什么
@@ -50,7 +52,7 @@ updated: 2026-11-12
         ▼
 03-mechanism-reference/   依据层：为什么是这些位置/形态，边界在哪
 
-04-worked-example/ 生命周期：建 → 用 → 治（跨三层）
+10-production-landscape/  实证层：业界真实落地怎么样（与前三层分架）
 ```
 
 | 子目录 | 回答什么 | 形态 | 状态 | 依据 |
@@ -59,10 +61,9 @@ updated: 2026-11-12
 | [02-engineering-playbook](./02-engineering-playbook/README.md) | 选位置/形态、R0–R12、开源与论文指示分级、账本/成本/上线、验收与 stop | 步骤 + 接口 + 验收 | draft | E-xx + 各派 mechanism |
 | [03-mechanism-reference](./03-mechanism-reference/README.md) | 为什么是六个位置、三根分类轴怎么分、15 条边界 | 入口 + 六张位置卡 + 谱外页 + 三张横切页 + 证据台账 | draft | E-xx + [topics/README](../topics/README.md) |
 | └ [附录：约束强度谱](03-mechanism-reference/05-appendix-constraint-spectrum.md) | 03 的长版论证（约 0.97 万字）；位置细节以卡为准 | Markdown 长文 | draft | E-01–E-05、E-12–E-17、E-20、C-03 |
-| [04-worked-example](./04-worked-example/README.md) | 本体怎么建到可消费、怎么查、怎么治 | 建 / 用 / 治三分册 + 验收 | draft | E-xx（含 E-21/E-22）+ 03/querying/01/access-control；未入库 signal |
-| [05-production-landscape](./05-production-landscape/README.md) | 业界真实落地现状、成本收益、靠谱与否有无证据 | 实证现状（**已有正文：8 条 admitted/probation 生产证据 + 15+ 条 C/signal 线索；五类价 + 两条客户自述投入 + 收益点；五平台外部采用、失败率、TCO 配对仍缺**） | draft | 真实生产/业界证据（5 条 admitted/probation，CHARTER §4.4）+ Google OKF 格式卡 |
+| [10-production-landscape](./10-production-landscape/README.md) | 业界真实落地现状、成本收益、靠谱与否有无证据 | 实证现状（**已有正文：8 条 admitted/probation 生产证据 + 15+ 条 C/signal 线索；五类价 + 两条客户自述投入 + 收益点；五平台外部采用、失败率、TCO 配对仍缺**） | draft | 真实生产/业界证据（8 条 admitted/probation，CHARTER §4.4）+ Google OKF 格式卡 |
 
-> **04 与 05 的分界**：04 是「你可以怎么建」的**合成示例**（fixture 期望值，不证明生产）；05 是「业界实际怎么样」的**实证现状**（须真实生产证据）。定位详见 [meta/deliverable-scope](../meta/deliverables/scope.md)。
+> **实证与合成分界**：10 只收真实生产证据（CHARTER §4），缺证据标 gap；合成示例已退役（ADR 0015），仓库内不再有「照着建一遍」的样例。定位详见 [meta/deliverable-scope](../meta/deliverables/scope.md)。
 
 > `_plans/` 是[工作底稿](./_plans/README.md)，不是交付物；不进对外阅读路径，也不构成 E。
 >
@@ -70,7 +71,7 @@ updated: 2026-11-12
 
 ## 导读：先读哪份、按什么顺序
 
-**一句话**：01 判断值不值得做；02 决定怎么做；03 查凭什么；04 从建到用再到治。
+**一句话**：01 判断值不值得做；02 决定怎么做；03 查凭什么；10 看业界实际怎么样。
 
 ### 按任务
 
@@ -80,89 +81,88 @@ updated: 2026-11-12
 | 有一个具体任务 | [01 地图](01-capability-status/02-sections/02-map.md)（A/B） | [02 地图](02-engineering-playbook/02-sections/02-map.md) → [02 主体](02-engineering-playbook/02-sections/03-approach.md)（R0 + 一条 recipe） | 03 附录、`src/` |
 | 要评审/说服别人 | [03 地图](03-mechanism-reference/02-sections/02-map.md) + [证据边界](03-mechanism-reference/02-sections/04-boundaries.md) | [01 验收](01-capability-status/02-sections/05-acceptance.md) + [02 边界](02-engineering-playbook/02-sections/04-boundaries.md) | `src/` 原文 |
 | 要落地一个接缝 | [02 地图](02-engineering-playbook/02-sections/02-map.md) → [R0 + recipe](02-engineering-playbook/02-sections/03-approach.md) | [02 运行](02-engineering-playbook/04-operations/01-ledger.md) + [02 验收](02-engineering-playbook/02-sections/05-acceptance.md) | 01 全篇 |
-| 要建/查/治一个本体应用 | [04 地图](04-worked-example/02-sections/02-map.md) | [04 建/用/治](04-worked-example/03-body/01-build.md) | 01/03 全篇 |
 | 要查某条判断的边界 | [03 地图](03-mechanism-reference/02-sections/02-map.md) + 对应 position | [03 证据](03-mechanism-reference/05-evidence/01-ledger.md) | 02 全篇 |
 
 ### 按时间
 
 | 时间 | 读什么 | 得到什么 |
 |---|---|---|
-| 10 分钟 | 本页图 + [01 §0](./01-capability-status/02-sections/00-overview.md#0-一页结论) + [02 §0](./02-engineering-playbook/02-sections/00-overview.md#0-一页结论) | 知道五份分工与「先做什么」 |
+| 10 分钟 | 本页图 + [01 §0](./01-capability-status/02-sections/00-overview.md#0-一页结论) + [02 §0](./02-engineering-playbook/02-sections/00-overview.md#0-一页结论) | 知道四份分工与「先做什么」 |
 | 1 小时 | 01 地图 + 02 地图 + 02 主体（R0） | 能选一个接缝/一条 recipe |
-| 半天 | 01–04 的 0–6 | 能写 go/no-go 与边界评审 |
+| 半天 | 01–03 的 0–6 + 10 | 能写 go/no-go 与边界评审 |
 
 ### 每份的阅读顺序
 
 - **01**（[GUIDE](01-capability-status/02-sections/01-GUIDE.md)）：0 → [地图](01-capability-status/02-sections/02-map.md) → [能力条目](01-capability-status/03-capabilities/README.md)（A→B→C→D）→ [边界](01-capability-status/02-sections/04-boundaries.md) → [验收](01-capability-status/02-sections/05-acceptance.md) → [关系](#关系与维护)。
 - **02**（[GUIDE](02-engineering-playbook/02-sections/01-GUIDE.md)）：0 → [地图](02-engineering-playbook/02-sections/02-map.md) → [R0 + 一条 recipe](02-engineering-playbook/02-sections/03-approach.md) → [边界](02-engineering-playbook/02-sections/04-boundaries.md) → [验收](02-engineering-playbook/02-sections/05-acceptance.md) → [关系](#关系与维护)。
 - **03**（[GUIDE](03-mechanism-reference/02-sections/01-GUIDE.md)）：0 → [地图](03-mechanism-reference/02-sections/02-map.md) → [位置卡](03-mechanism-reference/03-positions/README.md)（context→…→commit→outside）→ [横切页](03-mechanism-reference/04-across-positions/03-measurement.md) → [边界](03-mechanism-reference/02-sections/04-boundaries.md) → [验收](03-mechanism-reference/02-sections/05-acceptance.md) → [关系](03-mechanism-reference/02-sections/94-relations.md)。
-- **04**（[GUIDE](04-worked-example/02-sections/01-GUIDE.md)）：0 → [地图](04-worked-example/02-sections/02-map.md) → [建](04-worked-example/03-body/01-build.md) → [用](04-worked-example/03-body/02-consume.md) → [治](04-worked-example/03-body/03-govern.md) → [边界](04-worked-example/02-sections/04-boundaries.md) → [验收](04-worked-example/02-sections/05-acceptance.md) → [关系](04-worked-example/02-sections/97-relations.md)。
 
 **反向加载**：从 [01 §5.2](01-capability-status/02-sections/05-acceptance.md#52-期待与数据需求验收规格)/[plan](./_plans/01-capability-status.md)、[02 §3.1](02-engineering-playbook/02-sections/03-approach.md#31-十二条工程做法r0r12)、[03 §2.3](03-mechanism-reference/02-sections/02-map.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/rules/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
 
 ## 统一阅读结构
 
-01–04 内容不同，但**对读者的骨架是同一套**。05 是实证报告，用 00/01/02/03/04/04b/05/06/07/08/90 的骨架（一页答案 → 导读 → 地图 → 美/中 → OKF/Wiki 底座选项 → 经济 → 案例 → 决策 → 边界 → 来源），不套 01–04 的能力/recipe 骨架；但同样有读者卡与证据分级。
+01–03 内容不同，但**对读者的骨架是同一套**。10 是实证报告，用 00/01/02/03/04/04b/05/06/07/08/90 的骨架（一页答案 → 导读 → 地图 → 美/中 → OKF/Wiki 底座选项 → 经济 → 案例 → 决策 → 边界 → 来源），不套 01–03 的能力/recipe 骨架；但同样有读者卡与证据分级。
 
-| 节 | 回答什么 | 01 现状 | 02 工程 | 03 机制 | 04 合成走查 |
-|---|---|---|---|---|---|
-| **0 一页结论** | 这份东西一句话是什么、给谁、最重要三句 | `02-sections/00-overview.md` | 同左 | 同左 | 同左 |
-| **1 导读** | 先读哪份、按任务/时间怎么走 | `02-sections/01-GUIDE.md` | 同左 | 同左 | 同左 |
-| **2 地图** | 本份的核心框架（矩阵 / 五步法 / 四轴六位置 / 生命周期） | `02-sections/02-map.md` | 同左 | 同左 | 同左 |
-| **3 主体** | 逐项：能力 / recipe / 位置卡 / 建用治 | `03-capabilities/` | `03-recipes/` + `02-sections/03-approach.md` | `03-positions/` | `03-body/` |
-| **4 边界** | 证据等级、不能证明、反例/反模式 | `02-sections/04-boundaries.md` | 同左 | 同左 | 同左 |
-| **5 验收** | 指标、stop、缺口、期待与数据需求 | `02-sections/05-acceptance.md` | 同左 | 同左 | 同左 |
-| **6 关系与维护** | 与另外两份的关系、附录、更新规则 | [本页](#关系与维护) | 同左 | 同左 | 同左 |
+| 节 | 回答什么 | 01 现状 | 02 工程 | 03 机制 |
+|---|---|---|---|---|
+| **0 一页结论** | 这份东西一句话是什么、给谁、最重要三句 | `02-sections/00-overview.md` | 同左 | 同左 |
+| **1 导读** | 先读哪份、按任务/时间怎么走 | `02-sections/01-GUIDE.md` | 同左 | 同左 |
+| **2 地图** | 本份的核心框架（矩阵 / 五步法 / 四轴六位置） | `02-sections/02-map.md` | 同左 | 同左 |
+| **3 主体** | 逐项：能力 / recipe / 位置卡 | `03-capabilities/` | `03-recipes/` + `02-sections/03-approach.md` | `03-positions/` |
+| **4 边界** | 证据等级、不能证明、反例/反模式 | `02-sections/04-boundaries.md` | 同左 | 同左 |
+| **5 验收** | 指标、stop、缺口、期待与数据需求 | `02-sections/05-acceptance.md` | 同左 | 同左 |
+| **6 关系与维护** | 与另外两份的关系、附录、更新规则 | [本页](#关系与维护) | 同左 | 同左 |
 
-**同构不等于同文**：01 的主体是「能力条目」，02 是「recipe 条目」，03 是「位置卡」，04 是「建/用/治三分册」；前三类条目都必须有 **一句话 / 适用 / 证据等级 / 边界 / 去哪** 这五个字段。
+**同构不等于同文**：01 的主体是「能力条目」，02 是「recipe 条目」，03 是「位置卡」；三类条目都必须有 **一句话 / 适用 / 证据等级 / 边界 / 去哪** 这五个字段。
 
 ### 目录契约
 
-| 角色 | 01 现状 | 02 工程 | 03 机制 | 04 合成走查 |
-|---|---|---|---|---|
-| 索引 | `README.md`（只放 0/目录/关注） | 同左 | 同左 | 同左 |
-| 导读 | `02-sections/01-GUIDE.md` | 同左 | 同左 | 同左 |
-| 分节 | `02-sections/`（00-overview / 02-map / 04-boundaries / 05-acceptance） | 同左（多 03-approach） | 同左 | 同左（多 06-decision） |
-| 主体 | `03-capabilities/` | `03-recipes/`；总览在 `02-sections/03-approach.md` | `03-positions/` | `03-body/`（01-build / 02-consume / 03-govern） |
-| 支撑 | — | `04-operations/` | `04-across-positions/` | — |
-| 证据/工作底稿 | `09-data/` | `05-appendices/02-traceability.md` | `05-evidence/` | `04-evidence/` |
-| 附录/查阅 | `90+` 查阅页 | `05-appendices/` | `09-appendix...` + `90+` | `05-example/` + `90+` |
+| 角色 | 01 现状 | 02 工程 | 03 机制 |
+|---|---|---|---|
+| 索引 | `README.md`（只放 0/目录/关注） | 同左 | 同左 |
+| 导读 | `02-sections/01-GUIDE.md` | 同左 | 同左 |
+| 分节 | `02-sections/`（00-overview / 02-map / 04-boundaries / 05-acceptance） | 同左（多 03-approach） | 同左 |
+| 主体 | `03-capabilities/` | `03-recipes/`；总览在 `02-sections/03-approach.md` | `03-positions/` |
+| 支撑 | — | `04-operations/` | `04-across-positions/` |
+| 证据/工作底稿 | `09-data/` | `05-appendices/02-traceability.md` | `05-evidence/` |
+| 附录/查阅 | `90+` 查阅页 | `05-appendices/` | `09-appendix...` + `90+` |
+
+**10 的契约不同**：`02-sections/` 11 节（00/01/02/03/04/04b/05/06/07/08/90）+ 本份自己的 `_figures/`；不设主体/支撑子目录——它是一条线性问题链，不是条目库。
 
 ## 关系与维护
 
-**一句话**：01 告诉你「值不值得做」，02 告诉你「怎么做」，03 告诉你「凭什么这么说、说到哪为止」，04 把它们串成一条可走查的**合成**链（不是生产落地）。
+**一句话**：01 告诉你「值不值得做」，02 告诉你「怎么做」，03 告诉你「凭什么这么说、说到哪为止」；10 告诉你「业界实际怎么样」。01–03 与 10 是**两个视角**，不排成一条阅读链。
 
 | 交付物 | 回答 | 读者 | 形态 |
 |---|---|---|---|
 | [01 现状](./01-capability-status/README.md) | 今天能做成什么、不能承诺什么 | 决策者/工程负责人 | 判断 + 矩阵 |
 | [02 工程实施](./02-engineering-playbook/README.md) | 拿本体做某件事，具体怎么做 | 工程负责人/架构师 | 步骤 + 接口 + 验收 |
 | [03 机制参考](./03-mechanism-reference/README.md) | 为什么是这些位置/形态，证据边界在哪 | 架构师/研究者 | 参考 + 边界 |
-| [04 合成走查](./04-worked-example/README.md) | 怎么建、怎么查、怎么治 | 落地小团队 | 生命周期 + 验收 |
-| [05 落地现状](./05-production-landscape/README.md) | 业界真实落地如何、靠谱与否有无证据 | 决策者/研究者 | 实证现状（已有正文） |
+| [10 落地现状](./10-production-landscape/README.md) | 业界真实落地如何、靠谱与否有无证据 | 决策者/研究者 | 实证现状（已有正文） |
 
-**维护规则（01–05 共用）：**
+**维护规则（01–03、10 共用）：**
 
 - 新判断先回 `topics/` 的 claims/E，再改交付物；交付物不新增判断。结构性修改后跑 `python3 meta/tools/check_repo.py`。
 - 01：A/B/C/D 是交付层排序，不是 E；`09-data/` 与 `_plans/` 是工作底稿，不构成稳定判断。
 - 02：先改 `03-recipes/`，再回 README 索引；02 不新增 E。
 - 03：canonical 在 `03-positions/` 与 `04-across-positions/`；`09-appendix...` 是长版论证；`H`/`D` 必须始终带标记。
-- 04：不重复 01 的排序、02 的 recipe、03 的机制论证；04 不新增 E。
+- 10：只收 admitted 生产证据（CHARTER §4）；C/signal 只进 `90-sources` 与案例台账的「线索」列，不撑结论。
 
 **规则**：README 只做索引；正文按「02-sections / 03-主体 / 04-支撑 / 05-附录 / 09-工作底稿 / 90+ 查阅」放，不把长文塞回 README。目录与文件编号规则见 [IA 整改计划](./_plans/2026-11-12-deliverable-ia-plan.md)。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG。**每份**的图由该份 `02-sections/01-GUIDE.md` 嵌；**本页（共享索引）只嵌一张三层信息流总图**，这是唯一例外。
 
 ## 期待 → 数据（验收规格）
 
-01–04 的 `02-sections/05-acceptance.md` 都有一节「期待与数据需求」：把交付物要回答的问题写成**可证伪的期待**，再倒推「支持它需要什么数据、现在有什么、缺什么」。
+01–03 的 `02-sections/05-acceptance.md` 都有一节「期待与数据需求」：把交付物要回答的问题写成**可证伪的期待**，再倒推「支持它需要什么数据、现在有什么、缺什么」。
 
 它的作用不是承诺结果，而是让缺口显形：**量不出「支持它需要的数据」，就说明这条期待还停在推测。** 这是交付物的验收规格（非 E），不是新结论；数据回 `topics/` 或 `frontier` 补，不在交付物里补。
 
-01 的详细执行计划见 [plan.md](./_plans/01-capability-status.md)；04 的 topics/src 支撑计划见 [04-worked-example.md](./_plans/04-worked-example.md)。历史的上游订货与对象产线记录（reverse-gap-plan / hard-objects-plan / wiring-plan，均已执行）见 [_plans 索引](./_plans/README.md)；其中的倒查补证方法已升为常设[修复回路](../AGENTS.md)。
+01 的详细执行计划见 [plan.md](./_plans/01-capability-status.md)。历史的上游订货与对象产线记录（reverse-gap-plan / hard-objects-plan / wiring-plan，均已执行）见 [_plans 索引](./_plans/README.md)；其中的倒查补证方法已升为常设[修复回路](../AGENTS.md)。
 
 ## handbook 的去留（2026-11-09）
 
 **没有独立的 handbook。** 原《本体在 harness 里如何被执行》7 章、4–6 万字的书稿计划已废弃：
 
-- 书稿没有独立角色——01–04 已经把「判断/操作/依据/落地」分开，再写一本会把它们混回去。
+- 书稿没有独立角色——01–03 与 10 已经把「判断/操作/依据/现状」分开，再写一本会把它们混回去。
 - 第四章缺一手失败复盘、第六章缺按机制分派的度量方案、第七章是案例不是对照；按仓库规则，写不动的地方是研究没做完，不应在交付物里绕过去。
 - 主线「价值不在知道更多，而在让不该发生的事不发生」接近 P1a，但 E-01 的 ontology 是 `not measured`、E-04 的结构贡献未隔离；附录已把它收窄为「强端不是更好，是更窄」。
 
@@ -170,9 +170,9 @@ updated: 2026-11-12
 
 ## 质量评估（维护者用）
 
-评估 01–04 时**只用一套口径**：[交付物质量评分卡](../meta/deliverables/quality.md)（十二维 + 五条硬门槛 + 测量协议 + 使用纪律；维度定义不在本页复述）。评分不自动改 `status`；报告落 `_plans/YYYY-MM-DD-quality-review.md`，同维度比上次 ±1 才写 delta。
+评估 01–03 与 10 时**只用一套口径**：[交付物质量评分卡](../meta/deliverables/quality.md)（十二维 + 五条硬门槛 + 测量协议 + 使用纪律；维度定义不在本页复述）。评分不自动改 `status`；报告落 `_plans/YYYY-MM-DD-quality-review.md`，同维度比上次 ±1 才写 delta。
 
-**现行分（唯一口径）**：01=77 / 02=77 / 03=73 / 04=88 —— 取自 [独立评分修正 §12.4](./_plans/2026-11-11-quality-review.md)，修复后重评；**§12.2 的 85/82/83/87 与 §12.3 的 87/84/85/86 已作废，不得再引用**。残留 C2 冗余/体量与真人冷读。
+**现行分（唯一口径）**：01=77 / 02=77 / 03=73 —— 取自 [独立评分修正 §12.4](./_plans/2026-11-11-quality-review.md)；10=88.8 为**自评**（六期），单独一表、不与前三份同表排序（[10 质量评估](./_plans/2026-11-12-05-quality-review.md)）。**§12.2 的 85/82/83/87 与 §12.3 的 87/84/85/86 已作废，不得再引用**。残留 C2 冗余/体量与真人冷读。
 
 ## 待做
 

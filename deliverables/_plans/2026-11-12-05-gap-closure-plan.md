@@ -8,8 +8,8 @@ current: false
 
 # 05 缺口补齐计划（2026-11-12）
 
-> 现行计划（[_plans 至多一份](./README.md)）。本页只排**做什么、按什么判据算成**，不落判断；判断回 `topics/`，成品回 `deliverables/05-production-landscape/`。
-> 依据：[05 的 7 条 gap](../05-production-landscape/02-sections/08-boundaries.md#82-证据缺口按重要性) + [90.3 阴性结果](../05-production-landscape/02-sections/90-sources.md#903-阴性结果查过但没有过门的) + [质量评估](./2026-11-12-05-quality-review.md) 的 A1/A3/D3/C2 短板。
+> 现行计划（[_plans 至多一份](./README.md)）。本页只排**做什么、按什么判据算成**，不落判断；判断回 `topics/`，成品回 `deliverables/10-production-landscape/`。
+> 依据：[05 的 7 条 gap](../10-production-landscape/02-sections/08-boundaries.md#82-证据缺口按重要性) + [90.3 阴性结果](../10-production-landscape/02-sections/90-sources.md#903-阴性结果查过但没有过门的) + [质量评估](./2026-11-12-05-quality-review.md) 的 A1/A3/D3/C2 短板。
 
 ## 0. 前提（不要重做）
 
