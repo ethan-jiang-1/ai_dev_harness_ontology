@@ -2,7 +2,7 @@
 status: draft
 type: work-plan
 updated: 2026-11-10
-target: deliverables/04-ontology-in-production
+target: deliverables/04-worked-example
 scope: content-supply
 ---
 
@@ -84,7 +84,7 @@ topics 现有的三件套回答的是「这篇说了什么」：
 
 一句话：**可引用性 ≠ 可判断性。** 上一轮解决的是前者。
 
-倒查仍是合法**读法**（[loading](../../meta/loading.md) 的三条链不改）；它只是不能当**生产方式**——读的时候从交付物倒查，写的时候从决定往前压。
+倒查仍是合法**读法**（[loading](../../meta/rules/loading.md) 的三条链不改）；它只是不能当**生产方式**——读的时候从交付物倒查，写的时候从决定往前压。
 
 单源与无复现仍是天花板：它决定 04 不能写「已证」，但不解释为什么连「已核的对照」都没有。这轮先补后者。
 
@@ -238,7 +238,7 @@ topics 现有的三件套回答的是「这篇说了什么」：
 
 > `E23`–`E27` 已于 2026-11-10 定稿为 `E-23`…`E-27`（读路径/策略/可消费性/路线/输出），见 [conclusions](../../topics/conclusions.md)。
 >
-> 04 只能引 `E-xx`（[conventions](../../meta/conventions.md)）。compare 表再漂亮，不升 E 就进不了 04。**六件产物收成五条 E（T5/T6 合并），不是一条 finding 一条 E。**
+> 04 只能引 `E-xx`（[conventions](../../meta/rules/conventions.md)）。compare 表再漂亮，不升 E 就进不了 04。**六件产物收成五条 E（T5/T6 合并），不是一条 finding 一条 E。**
 
 | 新 E（已定稿） | 决定 | 由哪些产物/来源支撑 | 等级上限 |
 |---|---|---|---|
@@ -278,7 +278,7 @@ topics 现有的三件套回答的是「这篇说了什么」：
 
 本计划加两条：
 
-1. **标准/基准不套论文新鲜度**。标准是基础设施，不是「新判断」；用 `source_type: standard`（[conventions](../../meta/conventions.md)）入 `src/web/`，不套 `batch: 补给` 的 `published` 检查。理由：SHACL 2017、XACML 2013 不会因为「老」而失效；把标准挡在门外，只会让策略层继续空着。**这是口径，不是新 ADR；写进 `src/README` 一句话即可。**
+1. **标准/基准不套论文新鲜度**。标准是基础设施，不是「新判断」；用 `source_type: standard`（[conventions](../../meta/rules/conventions.md)）入 `src/web/`，不套 `batch: 补给` 的 `published` 检查。理由：SHACL 2017、XACML 2013 不会因为「老」而失效；把标准挡在门外，只会让策略层继续空着。**这是口径，不是新 ADR；写进 `src/README` 一句话即可。**
 2. **adjunct OSS 可以入库，但 `ontology_role: adjunct`，不单独撑 E**。Atlas/Ranger/OpenFGA 只回答「策略/审计的通用能力」，不回答「本体被执行」；引用时与 OPA 同口径。
 
 **每个来源必须带一张「填格卡」**：填哪个 claim 的哪个单元格、locator（页/表/条款/`file:symbol`）、不能填什么。填不出格的来源，不入档。
@@ -521,7 +521,7 @@ X.4 证据边界（1 段，不解释「为什么没有」）
 | 文件 | 关系 |
 |---|---|
 | [2026-11-09-reverse-gap-plan.md](./2026-11-09-reverse-gap-plan.md) | 保留为**诊断/审计**；本计划取代它的「订单」部分——订单不再是 TB/CA/FC 对象类型，而是矩阵空格 |
-| [04-ontology-in-production.md](./04-ontology-in-production.md) | 其 P1/P2 两条新 E 的范围被本计划扩展；「论文线冻结」改为「只补 5 个槽位」 |
+| [04-worked-example.md](./04-worked-example.md) | 其 P1/P2 两条新 E 的范围被本计划扩展；「论文线冻结」改为「只补 5 个槽位」 |
 | [2026-11-10-04-deep-plan.md](./2026-11-10-04-deep-plan.md) | D1–D6 保留（单读者 / fixture / 三链 / 预算 / 验收）；D3 的证据策略从「有什么引什么」改为「缺什么补什么」 |
 | [2026-11-09-hard-objects-plan.md](./2026-11-09-hard-objects-plan.md) | 保留；O 仍是地址层，不替代本计划的矩阵，也不因为矩阵新增对象 |
 | [2026-11-10-stage-review.md](./2026-11-10-stage-review.md) | 背景不变：单源、无同数据集两把尺子、机制缺口；本计划不解决独立复现，只解决 04 的决策密度 |

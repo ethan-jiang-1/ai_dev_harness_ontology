@@ -64,7 +64,7 @@ evidence: [E-01, E-04, E-12, E-18, E-20]  # E-04 withdrawn
 
 → **M1 的最小协议要加两个控制**：①同一个本体的呈现位置（首/中/尾）固定或轮换；②格式限制强度（无/松/严）单独一臂。否则「位置差异」会被 Lost in the Middle / Let Me Speak Freely 的效应污染。
 
-**M1 阻塞（2026-11-11）**：[meta/models.md](../../../meta/models.md) 明确 subagent 带工具/仓库上下文，不是干净被试；bash 直连 Yovole 超时。没有 raw chat endpoint，**2×2 跑不了**。协议与混淆项已备；结果标 `未测`，不伪造。
+**M1 阻塞（2026-11-11）**：[meta/status/models.md](../../../meta/status/models.md) 明确 subagent 带工具/仓库上下文，不是干净被试；bash 直连 Yovole 超时。没有 raw chat endpoint，**2×2 跑不了**。协议与混淆项已备；结果标 `未测`，不伪造。
 
 **dry-run（2026-11-11）**：用 3 条样本把 2×2 的表头填了一遍（位置 A/B × run 1–2），确认字段（task success / harm / false-block）可填；没有模型输出，所以没有数值。这一步只验证表结构，不是测量。
 

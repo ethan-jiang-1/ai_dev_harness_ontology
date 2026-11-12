@@ -81,7 +81,7 @@ instrumented job（Spark/Airflow/dbt…）
 |---|---|---|---|
 | [E-06](../../../topics/conclusions.md)（workflow 失败） | 五角色/七变量 | OpenLineage 记录 run/job/dataset 事件 | 失败归因、角色 |
 | [E-27](../../../topics/conclusions.md)（输出/传播） | 跨段故障换形态 | `ParentRunFacet`/`SymlinksDatasetFacet` 可追跨段 | 本体语义、注入实验 |
-| [04 C.4](../../../deliverables/04-ontology-in-production/03-body/03-govern.md) | 审计最小单元 | `run_id`/`parent run`/`dataset version`/`test status` | 与 04 audit schema 的字段映射未做 |
+| [04 C.4](../../../deliverables/04-worked-example/03-body/03-govern.md) | 审计最小单元 | `run_id`/`parent run`/`dataset version`/`test status` | 与 04 audit schema 的字段映射未做 |
 
 ## 8. 工程含义
 

@@ -2,7 +2,7 @@
 status: draft
 type: work-plan
 updated: 2026-11-10
-target: deliverables/04-ontology-in-production
+target: deliverables/04-worked-example
 scope: w0-skeletons
 ---
 

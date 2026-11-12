@@ -92,5 +92,5 @@ parent: ../README.md
 ## 7. 与 01/04 的分工
 
 - 值不值得做 → [01](../../01-capability-status/README.md)：读路径在 01 是 B（可试点），不是 A。
-- 建/用/治一条访问控制链 → [04](../../04-ontology-in-production/README.md)：04 的 C.3 有 LEAK-T1 探针，明确「skip ≠ allow」。
+- 建/用/治一条访问控制链 → [04](../../04-worked-example/README.md)：04 的 C.3 有 LEAK-T1 探针，明确「skip ≠ allow」。
 - 本文只回答：**这条 claim 成立到哪、什么条件下不成立。**

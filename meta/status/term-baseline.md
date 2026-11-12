@@ -7,11 +7,11 @@ scope: ADR 0011 §S3 v0（10 词）+ v1（29 词 + 06 试点 1 词）
 
 # 术语差异表 v0/v1：先标来源，再谈定义
 
-> 依据 [ADR 0011](../adr/0011-source-standing-and-term-baseline.md) 与 [基线整改计划](../deliverables/_plans/2026-11-11-baseline-correction-plan.md)。**本表只做判定与动作，不新增 E/L。**
+> 依据 [ADR 0011](../../adr/0011-source-standing-and-term-baseline.md) 与 [基线整改计划](../../deliverables/_plans/2026-11-11-baseline-correction-plan.md)。**本表只做判定与动作，不新增 E/L。**
 >
 > **v0 范围**：10 个高频词；**v1 范围**：GLOSSARY 里 v0 未判的其余 29 词 + 06-measure 试点发现的 1 个裸词。**未读标准正文的条款号一律写 `待核`**；`local` 不是“错”，是“本仓库自造/限定义”，必须首现解释、不得写成行业标准。
 >
-> **主干索引**：N（规范性）标准与「能/不能定义什么」见 [topics/trunk.md](../topics/trunk.md)；本表判词的来源与动作。
+> **主干索引**：N（规范性）标准与「能/不能定义什么」见 [topics/trunk.md](../../topics/trunk.md)；本表判词的来源与动作。
 
 ## 0. 规则（与 ADR 0011 一致）
 
@@ -30,7 +30,7 @@ scope: ADR 0011 §S3 v0（10 词）+ v1（29 词 + 06 试点 1 词）
 | **知识图谱** | 实例层的事实图，区别于本体（概念层） | 本仓库无 normative 锚 | `local` | `local` | 只作描述词；不要拿它定义“本体”；要定义先引 academic/standard 源 | v0 |
 | **语义层** | 把领域语义叠到数据/接口上的那一层 | 本仓库无 normative 锚 | `local` | `local` | 标 local；不与“本体”同义使用 | v0 |
 | **成熟度** | 组织能力分级 | 本仓库无 normative 锚；EKGF 判 `excluded` | `local` | `local` | **禁止**写成“行业成熟度标准”；只作组织讨论词 | v0 |
-| **知识层级** | 曾用来指 K0–K4 | 论文实验条件，不是标准；见 [K 页](../deliverables/01-capability-status/02-sections/92-k-ladder.md) | `local` | `local` | 改叫「论文条件」；不写“层级/等级”；**不作为术语，只作出处/回查** | v0 |
+| **知识层级** | 曾用来指 K0–K4 | 论文实验条件，不是标准；见 [K 页](../../deliverables/01-capability-status/02-sections/92-k-ladder.md) | `local` | `local` | 改叫「论文条件」；不写“层级/等级”；**不作为术语，只作出处/回查** | v0 |
 | **接地（grounding）** | 输出与本体证据之间的关系强度 | 本仓库无 normative 锚；E-03 已撤回 | `local` | `local` | 只作机制词；不引旧效应量；首现解释 | v0 |
 | **数据产品** | 可交付、可治理的数据/知识产物 | 本仓库无 normative 锚 | `local` | `local` | 标 local；不要写成标准术语 | v0 |
 | **约束** | 对数据/查询/动作的前置条件 | W3C SHACL（RDF 图约束；SHACL Core 为 W3C Recommendation） | `standard` | `narrower` | 标准义只到 RDF 图约束；动作前授权/闸门另标 local，不能拿 SHACL 证明“会拦动作” | v0 |
@@ -89,24 +89,24 @@ scope: ADR 0011 §S3 v0（10 词）+ v1（29 词 + 06 试点 1 词）
 
 ## 4. 与交付物的接口
 
-- 01 的 K0–K4 已按 `local` 处理（[K 页](../deliverables/01-capability-status/02-sections/92-k-ladder.md)）；**K0–K4 本身不是术语，不列入词表**；本表「知识层级」行只用于回查旧说法。
+- 01 的 K0–K4 已按 `local` 处理（[K 页](../../deliverables/01-capability-status/02-sections/92-k-ladder.md)）；**K0–K4 本身不是术语，不列入词表**；本表「知识层级」行只用于回查旧说法。
 - 01/02/03/04 的术语页与首现定义已按 v0/v1 判定改：四个术语页都有「§0 名词从哪来（N / local）」表；正文定义句用 `（N: 标准名）` 或 `（local）` 标注。**只改定义段/首现/锚点，不重写结构。**
 - 标准卡 `standing` 已补到 10 张标准卡；HN 是 `engineering`，不标 `standing`。
 
 ## 5. 06-measure 试点与冲突记录
 
-> 试点对象：[06-measure README](../topics/06-measure/README.md)、[claims](../topics/06-measure/claims.md)、[metrics/coverage](../topics/06-measure/metrics/coverage.md)。**只查术语用法，不改判断。**
+> 试点对象：[06-measure README](../../topics/06-measure/README.md)、[claims](../../topics/06-measure/claims.md)、[metrics/coverage](../../topics/06-measure/metrics/coverage.md)。**只查术语用法，不改判断。**
 
 | 位置 | 用法 | 判定 | 动作 |
 |---|---|---|---|
 | 06-L1 / 06-L6 | 「本体预测」「本体接地失败」 | 「接地」= `local`（无标准锚；E-03 已撤回） | 保留机制词；首现已由 03 evidence/glossary 解释；**不引旧效应量** |
 | 06-L6 / 06-L7 | 「五角色 + 七变量」 | 本仓库框架（`local`） | L6/L7 已 `withdrawn`；不得当术语或预测器 |
-| 06-L15 | 「覆盖率」按七类失效 × 八位置分类、不合成百分比 | 与 GLOSSARY 的 `local` 定义一致（`aligned`） | 保留；对外链 [coverage](../topics/06-measure/metrics/coverage.md) |
+| 06-L15 | 「覆盖率」按七类失效 × 八位置分类、不合成百分比 | 与 GLOSSARY 的 `local` 定义一致（`aligned`） | 保留；对外链 [coverage](../../topics/06-measure/metrics/coverage.md) |
 | 06-L16 / 03 measurement | 「任务账 / 风险账」 | **裸词**：GLOSSARY 无此条，但 14 处使用 | **v1 补判**：`local`，无标准锚；首现解释「用任务成功率记账 vs 用 harm/风险记账」；已写入 §6 |
 | 06 README §双重身份 | 「判定器」 | 与 v1 判定一致：`narrower`（SHACL 只定图校验） | 保留；不写成「SHACL 判定器」 |
 | 06-L13 | 「落地经济学」 | 本仓库综合词（`local`） | 只在本仓库语境用；不写成学科名 |
 
-> **试点结论**：06-measure 没有把 `local` 词冒充行业标准；真正需要补的是「任务账/风险账」这条裸词（已补）。术语冲突 0 条，**不新建审计整改项**；逐条记录见 [术语审计](../meta/audits/2026-11-11-term-baseline.md)。
+> **试点结论**：06-measure 没有把 `local` 词冒充行业标准；真正需要补的是「任务账/风险账」这条裸词（已补）。术语冲突 0 条，**不新建审计整改项**；逐条记录见 [术语审计](../audits/2026-11-11-term-baseline.md)。
 
 ## 6. 待核 / 下一版
 

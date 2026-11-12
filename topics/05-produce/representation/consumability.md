@@ -59,7 +59,7 @@ evidence: [E-12]
 
 **应新增**：`consumer`、`principal{role,tenant}`、`moment/as_of`、`answers{query_id,expected}`、`refuses{policy_id,condition}`、`contract_version`/`ontology_version`；`load_target` 与 `load_result` 拆开。
 
-依据：[build A.1/A.5](../../../deliverables/04-ontology-in-production/03-body/01-build.md)；[ODCS 材料卡](../../../src/web/odcs-v3.1/odcs-v3.1.card.md)。
+依据：[build A.1/A.5](../../../deliverables/04-worked-example/03-body/01-build.md)；[ODCS 材料卡](../../../src/web/odcs-v3.1/odcs-v3.1.card.md)。
 
 ## 4. 十个坏样本
 

@@ -11,7 +11,7 @@ updated: 2026-11-12
 
 ## 决策
 
-1. **定位的权威放 meta，单一出处**：新增 [meta/deliverable-scope.md](../meta/deliverable-scope.md)，是每份交付物「初心 / 定性 / 回答的问题 / 读者拿到 / in-scope / out-of-scope / 红线」的唯一权威。沿用 ADR 0012「一个规则一个家」：门→CHARTER、字段→conventions、计数→state、质量→rubric，**定位→deliverable-scope**。
+1. **定位的权威放 meta，单一出处**：新增 [meta/deliverables/scope.md](../meta/deliverables/scope.md)，是每份交付物「初心 / 定性 / 回答的问题 / 读者拿到 / in-scope / out-of-scope / 红线」的唯一权威。沿用 ADR 0012「一个规则一个家」：门→CHARTER、字段→conventions、计数→state、质量→rubric，**定位→deliverable-scope**。
 2. **AGENTS 只放指针，README 只放读者钩子**：AGENTS 任务路由「做成对外物」加载 deliverable-scope；各份 README 保留面向读者的「回答什么 / 不回答什么」，但注明「定位与边界以 meta/deliverable-scope 为准」，冲突以 scope 为准。不把定位散进 5 份 README（必漂），也不塞进 AGENTS（撑成规则堆）。
 3. **定性正交分五份**：01 判断（描述·分级）/ 02 做法（规定）/ 03 机制（描述·参考）/ 04 示例（规定·合成）/ 05 现状（描述·实证）。**04 与 05 分界**：04 是合成「怎么建」示例，05 是实证「业界怎么样」现状；04 不证明生产，05 必须真实生产证据。
 4. **防漂移三规矩接进流程**：① 改 / 建交付物前先读对应 scope；② **答不了初心问题就标 gap + frontier，禁止偷换成更容易的问题**（04 教训，写成硬规矩）；③ 定性不混（描述/规定、实证/合成）。接进 AGENTS 路由、loading 加载集、checklist 交稿检查。
@@ -22,4 +22,5 @@ updated: 2026-11-12
 - 每份交付物有了一份模型必须先读、可对照检查的定位；「跑着跑着偏掉」有了前置闸与交稿闸。
 - 「答不了就标 gap、不偷换问题」成为硬规矩，直接堵住 04 式漂移（拿合成教程冒充现状）。
 - 定位只有一个权威，README/AGENTS 是指针不是副本，不会各自漂移。
+- **补充（同日）**：定位下沉为每份交付物的 `SCOPE.md`（就近、随份走），meta 页降为**总索引 + 共用规矩**；`check_repo` 强制每份必须有 `SCOPE.md`。`meta/` 同时重组为 `rules/ deliverables/ status/ templates/` 等子目录，并加 `meta/AGENTS.md` 作为**只指路、不新增规则**的门牌——**不构成第二个路由器**，单一路由归根 AGENTS（ADR 0012）。
 - 被否决的替代方案：定位写进各份 README（散成 5 份、读者/治理两种受众混杂、必漂）；写进 AGENTS（路由器膨胀成规则堆，重蹈 ADR 0012 前的覆辙）；只靠质量评分卡事后打分（挡不住动手前的定位漂移）。

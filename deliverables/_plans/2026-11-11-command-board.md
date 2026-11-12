@@ -14,7 +14,7 @@ scope: 交付物证据重置 + ADR 0011 术语基线
 | 线 | 已完成 | 还没完成 | 影响 |
 |---|---|---|---|
 | **来源准入/清除**（[审计](../../meta/audits/2026-11-11-source-purge.md)） | 28→10 论文、15→11 材料卡、9 条 E 撤回、27 条 L 撤回、15 个对象撤回；tombstone 与横幅已落 | 交付物里仍按被删源写成的数字/判断未重写 | **最高风险**：01 的 A/B/C/D 有一半建立在已撤回的 E 上 |
-| **术语基线/ADR 0011**（[ADR](../../adr/0011-source-standing-and-term-baseline.md)、[计划](./2026-11-11-baseline-correction-plan.md)） | `standing` 字段、local 规则、ISO/IEC 21838 + OMG Commons 卡、K 事故入 ADR | `meta/term-baseline.md` v0（10 词）未落；W3C 卡 `standing` 未补；ODM 未核 | 不阻塞 01 的证据重置；但决定“以后怎么定义词” |
+| **术语基线/ADR 0011**（[ADR](../../adr/0011-source-standing-and-term-baseline.md)、[计划](./2026-11-11-baseline-correction-plan.md)） | `standing` 字段、local 规则、ISO/IEC 21838 + OMG Commons 卡、K 事故入 ADR | `meta/status/term-baseline.md` v0（10 词）未落；W3C 卡 `standing` 未补；ODM 未核 | 不阻塞 01 的证据重置；但决定“以后怎么定义词” |
 | **01 K0–K4 修复**（[K 页](../01-capability-status/02-sections/92-k-ladder.md)、[核查笔记](./2026-11-11-k-ladder-provenance.md)） | K0–K4 降为论文实验条件；首屏/术语/02/03/04 首现已改；`local` 与术语基线行已加；`check_repo` 通过 | K 之外的“撤回源”段落未动 | **叫法修好了，证据没修好** |
 
 ## 2. 最重要的判断
@@ -64,7 +64,7 @@ scope: 交付物证据重置 + ADR 0011 术语基线
 7. `capabilities/README.md`：3.4/3.5/3.6/3.9 的“能做什么/不能做什么”加撤回标记；不删机制描述，但不作为证据。
 
 ### P2 术语基线（并行，只动 `src/`、`meta/`、`GLOSSARY`）
-- 基线线：`meta/term-baseline.md` v0 十词；K 行用本板 §2 的 `local` 判定；W3C 卡补 `standing`；ODM 死活核查。
+- 基线线：`meta/status/term-baseline.md` v0 十词；K 行用本板 §2 的 `local` 判定；W3C 卡补 `standing`；ODM 死活核查。
 - 本板只审“与交付物冲突”的词；不抢写 `src/`。
 
 ### P3 02/03/04 重写（01 完成后）
@@ -86,7 +86,7 @@ scope: 交付物证据重置 + ADR 0011 术语基线
 
 **硬规则**：
 1. 同一文件只允许一个 writer；遇到 `file changed since it was read` 先重读。
-2. 每批改动跑 `check_repo`；计数只认 `meta/state.md`。
+2. 每批改动跑 `check_repo`；计数只认 `meta/status/state.md`。
 3. 撤回源只能出现在“撤回/待新源”语境；不得作为结论引用。
 4. 术语定义只能引 `normative`；`local` 首现解释；标准卡不撑效应量。
 5. 不在本板之外另起“第二套计划”。
@@ -96,7 +96,7 @@ scope: 交付物证据重置 + ADR 0011 术语基线
 - [ ] 01 的 A/B/C/D 表 0 行依赖 withdrawn E；4 行已进 gap 表。
 - [ ] 01 的 A/B/C 计数与 README/ canonical/ decision-record/ acceptance/ boundaries 一致。
 - [ ] 02/03/04 不再把 E-02/03/04/06/10/11/13/16/26 当结论（可保留 tombstone 说明）。
-- [ ] `meta/term-baseline.md` v0 有 K 行；`GLOSSARY` 十词有 `origin`/`anchor`/`scope`。
+- [ ] `meta/status/term-baseline.md` v0 有 K 行；`GLOSSARY` 十词有 `origin`/`anchor`/`scope`。
 - [ ] `check_repo` 通过；质量评分重跑；未决项一页可查。
 - [ ] 未擅自 commit；checkpoint 建议已写在本板。
 
@@ -141,7 +141,7 @@ scope: 交付物证据重置 + ADR 0011 术语基线
 - **03 收口**：`positions/action.md` 的“能改变什么”与证据表、`positions/checker.md`/`positions/evidence.md` 的证据表已把 E-02/E-03/E-04/E-13/E-16 行标 `withdrawn`。
 - **术语基线 K 行**：已写入 [baseline-correction-plan §S3](./2026-11-11-baseline-correction-plan.md)，判定 `local`；完整 10 词 v0 仍待基线线。
 - **自检**：`check_repo` 通过（434 md）。
-- **剩余**：02/03 长版附录仍有未逐句删的旧数字（已标历史）；`meta/term-baseline.md` 未建；质量评分/冷读未重跑；352 项未提交。
+- **剩余**：02/03 长版附录仍有未逐句删的旧数字（已标历史）；`meta/status/term-baseline.md` 未建；质量评分/冷读未重跑；352 项未提交。
 
 ### 2026-11-11 · Goal Round 2（03 附录重写）
 
@@ -149,11 +149,11 @@ scope: 交付物证据重置 + ADR 0011 术语基线
 - **03 位置卡**：action 的“能改变什么”与证据表、checker/evidence 的证据表、outside 的 E-16 行已标 `withdrawn`。
 - **02 残留**：cost 的 E-13 段、domains 的 basis/出处、artifact-pack 的 `已核` 说明已改历史；R4/R5/R6 证据段已删旧数字。
 - **自检**：`check_repo` 通过（434 md）。
-- **仍剩**：02/03 个别长文段落仍可能带旧数字（已标历史）；`meta/term-baseline.md` v0 未建；质量评分/冷读未重跑。
+- **仍剩**：02/03 个别长文段落仍可能带旧数字（已标历史）；`meta/status/term-baseline.md` v0 未建；质量评分/冷读未重跑。
 
 ### 2026-11-11 · Goal Round 3（术语 v0 + 03 附录）
 
-- **术语 v0**：新建 [meta/term-baseline.md](../../meta/term-baseline.md)，10 词判定（aligned 1 / narrower 1 / broader 1 / divergent 0 / local 7；local 均显式标注）；补 GLOSSARY 的「本体」origin、「顶层本体」「领域本体」；给 8 张标准卡补 `standing: normative`。
+- **术语 v0**：新建 [meta/status/term-baseline.md](../../meta/status/term-baseline.md)，10 词判定（aligned 1 / narrower 1 / broader 1 / divergent 0 / local 7；local 均显式标注）；补 GLOSSARY 的「本体」origin、「顶层本体」「领域本体」；给 8 张标准卡补 `standing: normative`。
 - **03 附录**：§3.1.3、§3.4.3/4/5、§3.6.2、§3.7、§3.8 已重写为“原锚撤回/历史”，旧锚点保留。
 - **02**：R4/R5/R6 证据段删旧数字；cost/domains/artifact-pack 残留已标历史。
 - **自检**：`check_repo` 通过（435 md；10 论文 / 8 开源 / 11 材料卡）。
@@ -184,7 +184,7 @@ scope: 交付物证据重置 + ADR 0011 术语基线
 ### 2026-11-11 · 第 7–10 步（规范主干接线 / 术语 v1 / 冷读 / checkpoint）
 
 - **第 7 步（01→02→03→04 接线）**：四份术语页各新增「§0 名词从哪来（N / local）」；正文定义句标 `（N: 标准名）`/`（local）`。逐页：01 README/map/capabilities/decision-record/K 页；02 README/R4–R5/R6–R9/R10–R11/接口附录；03 README/checker/action/commit/memory/evidence；04 README/build A.3/govern C.1–C.2；共用入口 START。记录与验收命令见 [接线报告](./2026-11-11-trunk-wiring.md)。
-- **第 8 步（术语 v1）**：[term-baseline](../../meta/term-baseline.md) 增 29 词（+06 试点补「任务账/风险账」1 词）；GLOSSARY 39 条全部有 `_origin_/_anchor_/_scope_`（v0 的 5 个漏条也补上）；计数 aligned 2 / narrower 2 / broader 1 / divergent 1 / local 33。06-measure 试点结论：0 术语冲突，1 条裸词已补判，见 [术语审计](../../meta/audits/2026-11-11-term-baseline.md)。
+- **第 8 步（术语 v1）**：[term-baseline](../../meta/status/term-baseline.md) 增 29 词（+06 试点补「任务账/风险账」1 词）；GLOSSARY 39 条全部有 `_origin_/_anchor_/_scope_`（v0 的 5 个漏条也补上）；计数 aligned 2 / narrower 2 / broader 1 / divergent 1 / local 33。06-measure 试点结论：0 术语冲突，1 条裸词已补判，见 [术语审计](../../meta/audits/2026-11-11-term-baseline.md)。
 - **第 9 步（冷读）**：代理冷读第一轮 68/100，抓 2 处口径冲突（START「只记一句」说「让某些事不发生」，与 01「动作前的拦不能承诺」相反；map §2.2「等级」列混装 `gap`/`设计`，读成「gap=C」）；已修。第二轮复核 86/100，再补 3 处：`gap` 收窄为「曾有 E 被撤回」、#14 的例外写明、START 两个裸词就地解释。见 [cold-read](./2026-11-11-cold-read.md)。**真人冷读仍未做。**
 - **第 10 步（checkpoint）**：`check_repo` 通过（442 md；0 坏链 / 0 坏锚 / 未定义 ID）；质量桌面复评 §12.2：01=85 / 02=82 / 03=83 / 04=87（非真人冷读）；提交最终 checkpoint（用户授权「一口气做完」）。
 - **仍剩**：真人冷读、C2 冗余/体量、02/03 长尾旧数字逐句删、ISO 21838 条款号。

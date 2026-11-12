@@ -86,7 +86,7 @@ _origin_: `local`（原 E-03 锚已撤回）｜ _anchor_: —｜ _scope_: 只作
 _Avoid_: 证据等级（与仓库的置信度分级混淆）、置信度、准确率
 
 **证据等级（Evidence Level）**:
-本仓库对一条主张的置信度分级：已证 / 已核 / 推测 / 存疑。定义见 [conventions](./meta/conventions.md#证据等级)。
+本仓库对一条主张的置信度分级：已证 / 已核 / 推测 / 存疑。定义见 [conventions](./meta/rules/conventions.md#证据等级)。
 _origin_: `local`（本仓库规则）｜ _anchor_: meta/conventions#证据等级｜ _scope_: 不与 var/置信度/接地等级混。
 _Avoid_: 接地等级、置信度
 
@@ -134,9 +134,9 @@ _Avoid_: 阶段、环节、chapter
 _origin_: `local`｜ _anchor_: AGENTS / ADR 0012｜ _scope_: 完成判据 = 被指句能指到 admitted 源的 digest 节，否则显式标推测/gap；不是临时计划。
 _Avoid_: 反向加载（那是阅读路径）、回改（那只指判断变更后的引用传播）
 
-**交付物定位（Deliverable Scope）**:
-每份交付物的初心 / 定性 / 回答的问题 / in-scope / out-of-scope / 红线的唯一权威定义，集中在 [meta/deliverable-scope](./meta/deliverable-scope.md)。改/建交付物前先读；答不了初心问题就标 gap，不偷换成更容易的问题。
-_origin_: `local`（本仓库治理，ADR 0014）｜ _anchor_: meta/deliverable-scope / adr/0014｜ _scope_: 定位权威在 meta，README/AGENTS 是指针；定性分判断/做法/机制/示例/现状，04 合成示例 ≠ 05 实证现状。
+**交付物定位（Deliverable Scope / SCOPE.md）**:
+每份交付物的初心 / 定性 / 回答的问题 / in-scope / out-of-scope / 红线 / 发挥空间的定位契约，权威在该份交付物根目录的 `SCOPE.md`；[meta/deliverable-scope](./meta/deliverables/scope.md) 是五份总索引 + 共用规矩。改/建交付物前先读；答不了初心问题就标 gap，不偷换成更容易的问题。
+_origin_: `local`（本仓库治理，ADR 0014）｜ _anchor_: 各份 SCOPE.md / meta/deliverable-scope / adr/0014｜ _scope_: 定性分判断/做法/机制/示例/现状，04 合成示例 ≠ 05 实证现状；check_repo 强制每份有 SCOPE.md。
 _Avoid_: 质量评分（那是打分）、加载集（那是读什么）
 
 **台账（Ledger）**:

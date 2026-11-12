@@ -5,7 +5,7 @@ updated: 2026-11-12
 
 # 结构决策（ADR）
 
-> 这里是“为什么长成这样”，不是“现在是什么”。现行规则见 [meta/README](../meta/README.md)，当前状态见 [meta/state](../meta/state.md)。
+> 这里是“为什么长成这样”，不是“现在是什么”。现行规则见 [meta/README](../meta/README.md)，当前状态见 [meta/state](../meta/status/state.md)。
 
 | 编号 | 决策 | 一句话 |
 |---|---|---|

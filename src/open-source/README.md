@@ -47,7 +47,7 @@ src/open-source/
 
 ### 本轮消化（8：4 本体 + 2 工程线 + 1 输出校验 + 1 lineage）
 
-本轮临时门槛：**本体项目 stars ≥ 1,000**（2026-11-09 起，可撤销）；工程线按采用/任务相关性例外。消化顺序与 C/A 闸见 [开源消化计划](../../meta/open-source-digestion-plan.md)。8 个均已建卡并写 `digest.md`（见下表与状态行）。
+本轮临时门槛：**本体项目 stars ≥ 1,000**（2026-11-09 起，可撤销）；工程线按采用/任务相关性例外。消化顺序与 C/A 闸见 [开源消化计划](../../meta/archive/2026-11/open-source-digestion-plan.md)。8 个均已建卡并写 `digest.md`（见下表与状态行）。
 
 | 项目 | stars | 本体在代码里做什么 | 接缝 | 为什么选它 / 要小心什么 |
 |---|---:|---|---|---|
@@ -111,7 +111,7 @@ src/open-source/
 
 ## 先做哪几个
 
-按 [开源消化计划](../../meta/open-source-digestion-plan.md) 的波次走，一次只动 1–2 个派：
+按 [开源消化计划](../../meta/archive/2026-11/open-source-digestion-plan.md) 的波次走，一次只动 1–2 个派：
 
 1. **Wave 1（01 / 02）**：`trustgraph`（读路径策略链 + `tests/unit/test_policy`）。
 2. **Wave 2（03）**：`semantica`（`run_shacl_validation` 最小示例）→ `ontop`（Docker 最小示例 + 查询重写）。

@@ -143,7 +143,7 @@ snapshot=2026-11-11, notes="R4 样例；latency 未测"
 
 - 值不值得做 → [01](../../01-capability-status/README.md)。
 - 为什么是这些位置 → [03](../../03-mechanism-reference/README.md)。
-- 建/用/治一条访问控制链 → [04](../../04-ontology-in-production/README.md)。
+- 建/用/治一条访问控制链 → [04](../../04-worked-example/README.md)。
 - 本页只回答：**一条 recipe 做完，手上应该有什么。**
 
 ## 9. 第二个例子：R1 K1（短）

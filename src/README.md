@@ -74,7 +74,7 @@ src/
 
 `card.md` 与 `digest.md` 都从原文来，但**不是上下游关系**：card 是来源登记，digest 是消化正文。下游不需要先读 card；**没有 digest 的源材料，不算进过流水线**。
 
-**反向加载（从交付物倒查）**：不要从 `papers/manifest.md` 顺读。走 `conclusions` 的 E 行 → 该 E 链的 `digest.md` §4/§5 → 只有 digest 不够时才回 `paper.md` 的指定表/节。`card.md` 只在需要 provenance 时读；`references.md` / `appendix.md` 默认不读。三条交付物的具体反向链见 [meta/loading](../meta/loading.md#从交付物倒查反向加载)。
+**反向加载（从交付物倒查）**：不要从 `papers/manifest.md` 顺读。走 `conclusions` 的 E 行 → 该 E 链的 `digest.md` §4/§5 → 只有 digest 不够时才回 `paper.md` 的指定表/节。`card.md` 只在需要 provenance 时读；`references.md` / `appendix.md` 默认不读。三条交付物的具体反向链见 [meta/loading](../meta/rules/loading.md#从交付物倒查反向加载)。
 
 **反向阅读锚点（digest 契约）**：§4「结果：数字与条件」、§5「这些数字不能说明什么」、§6「工程上怎么用」、§8「与仓库判断的关系」——这四节编号固定，不重排；新增内容放 §9/§10。反向读不到 §4/§5 时，才回 `paper.md` 的指定表/节。
 
@@ -82,7 +82,7 @@ src/
 
 五道门全部通过才进 `src/`；判定写在卡上。**判据以 [CHARTER §4](../CHARTER.md#4-素材准入material-gate) 为唯一出处**；下表只是按材料类型的操作速查，与宪章冲突时以宪章为准。
 
-**白名单 / 黑名单**：白名单 = 本目录 `admission: admitted`（含 probation）的卡，`check_repo` 强制校验，清单见 [manifest](./papers/manifest.md) / 下方台账 / [规范主干](../topics/trunk.md)；**不另设白名单文件**（避免第二份漂移副本）。黑名单 = [来源黑名单](../meta/excluded-sources.md)（禁读/禁引），采/引前先查。
+**白名单 / 黑名单**：白名单 = 本目录 `admission: admitted`（含 probation）的卡，`check_repo` 强制校验，清单见 [manifest](./papers/manifest.md) / 下方台账 / [规范主干](../topics/trunk.md)；**不另设白名单文件**（避免第二份漂移副本）。黑名单 = [来源黑名单](../meta/rules/excluded-sources.md)（禁读/禁引），采/引前先查。
 
 | 门 | 论文 | 网页/材料 | 开源项目 |
 |---|---|---|---|
@@ -99,7 +99,7 @@ src/
 
 ## 0.3 准入字段与复审
 
-字段定义以 [conventions §字段与词汇](../meta/conventions.md#字段与词汇) 为唯一出处。卡必填 `admission` / `gate_checked` / `impact_evidence` / `liveness` / `provenance_type`；写不出两条独立信号就不要写 `admitted`。复审周期、probation 与窄例外以 [CHARTER §4.3/§4.4](../CHARTER.md#43-回溯与退出无-grandfathering) 为准，不另开口子。
+字段定义以 [conventions §字段与词汇](../meta/rules/conventions.md#字段与词汇) 为唯一出处。卡必填 `admission` / `gate_checked` / `impact_evidence` / `liveness` / `provenance_type`；写不出两条独立信号就不要写 `admitted`。复审周期、probation 与窄例外以 [CHARTER §4.3/§4.4](../CHARTER.md#43-回溯与退出无-grandfathering) 为准，不另开口子。
 
 ## 1. 论文的规则（`papers/`）
 
@@ -132,7 +132,7 @@ open-source/{org}-{repo}/
 - **digest 是下游唯一入口**：topics 引开源证据时链 `digest.md`；`card.md` 只作 provenance，`code-map.md` 只做索引。
 - **执行 vs 装饰**要在 digest 里定级：真的跑 SHACL/OWL/约束检查，还是只把本体塞进 prompt；只有 README 说法的标 `推测`。
 - **命名**：目录全小写，`{org}-{repo}`，`/` 换成 `-`（如 `RDFLib/pySHACL` → `rdflib-pyshacl`）。
-- **候选与入库分开**：候选池、选择标准在 [open-source/README](./open-source/README.md)；入选项目才建目录。消化顺序与 C/A 闸见 [开源消化计划](../meta/open-source-digestion-plan.md)。
+- **候选与入库分开**：候选池、选择标准在 [open-source/README](./open-source/README.md)；入选项目才建目录。消化顺序与 C/A 闸见 [开源消化计划](../meta/archive/2026-11/open-source-digestion-plan.md)。
 - 模板：[open-source-card](./_templates/open-source-card.md) / [open-source-digest](./_templates/open-source-digest.md) / [open-source-code-map](./_templates/open-source-code-map.md)。
 
 ## 2. `card.md` 的定位：来源卡，不是消化（以论文为例）
@@ -169,7 +169,7 @@ open-source/{org}-{repo}/
 10. `## 9. 还没解决 / 下一步`：可实验的问题优先。
 11. `## 10. 原文`：arXiv/代码链接。
 
-**长度**：L3 约 250–360 行；L2 约 160–260 行；L1 约 100–240 行。长度是目标不是门；**自包含优先**，L1 的判断可以只有一页，digest 仍可写长。定义见 [conventions](../meta/conventions.md#阅读深度l1l2l3)。
+**长度**：L3 约 250–360 行；L2 约 160–260 行；L1 约 100–240 行。长度是目标不是门；**自包含优先**，L1 的判断可以只有一页，digest 仍可写长。定义见 [conventions](../meta/rules/conventions.md#阅读深度l1l2l3)。
 
 **禁止**：
 
@@ -180,7 +180,7 @@ open-source/{org}-{repo}/
 
 ## 4. 字段
 
-字段与取值以 [conventions §字段与词汇](../meta/conventions.md#字段与词汇) 为唯一出处（含开源卡的 commit/seam/ontology_role 三组与 `seam` 取值说明）；`seam` 的时刻/轴外位置定义见 [topics/seams.md](../topics/seams.md)。正文推断句至少标一次 `已核` / `推测` / `存疑`；没有标的按 `推测`。
+字段与取值以 [conventions §字段与词汇](../meta/rules/conventions.md#字段与词汇) 为唯一出处（含开源卡的 commit/seam/ontology_role 三组与 `seam` 取值说明）；`seam` 的时刻/轴外位置定义见 [topics/seams.md](../topics/seams.md)。正文推断句至少标一次 `已核` / `推测` / `存疑`；没有标的按 `推测`。
 
 ## 5. 新建的流程
 
@@ -194,7 +194,7 @@ open-source/{org}-{repo}/
 4. **写 digest**：用 [paper-digest](./_templates/paper-digest.md)，按 §3 骨架；先写「三句话」，再补术语/方法/数字/边界/工程。
 5. **抽图**：2–3 张承载机制/结果的图；带页码、出处、「看什么」。
 6. **落 topics**：更新派 `sources.md`（内容链 digest）→ `claims.md` / 子主题 dashboard；跨派才动 conclusions。
-7. **自检**：过 [checklist](../meta/checklist.md) 与 [digest 模板](./_templates/paper-digest.md) 的自包含要求；长度目标见 [conventions](../meta/conventions.md#阅读深度l1l2l3)。
+7. **自检**：过 [checklist](../meta/rules/checklist.md) 与 [digest 模板](./_templates/paper-digest.md) 的自包含要求；长度目标见 [conventions](../meta/rules/conventions.md#阅读深度l1l2l3)。
 
 ### 5.2 开源项目
 
@@ -205,11 +205,11 @@ open-source/{org}-{repo}/
 5. **写 code-map**：3–10 个文件/符号，一条调用链；不贴代码。
 6. **写 digest**：按 [open-source-digest](./_templates/open-source-digest.md) 的 10 段；每个判断带 `已核/已证/推测/存疑`。
 7. **落 topics**：只在改变判断时动 `claims.md`；只是「论文机制没找到实现」→ 写进 `frontier.md` 的 G/N。
-8. **自检**：过 [checklist](../meta/checklist.md)。
+8. **自检**：过 [checklist](../meta/rules/checklist.md)。
 
 ### 5.3 两类共同
 
-- 入库后更新 [meta/state](../meta/state.md) 的计数与 [execution-forms](../topics/execution-forms.md) 的形态分布。
+- 入库后更新 [meta/state](../meta/status/state.md) 的计数与 [execution-forms](../topics/execution-forms.md) 的形态分布。
 - 改判断：先本派 `claims.md`，跨派才 [conclusions](../topics/conclusions.md)；来源只进 `sources.md`。
 - 自检 `check_repo`；失败不提交。
 

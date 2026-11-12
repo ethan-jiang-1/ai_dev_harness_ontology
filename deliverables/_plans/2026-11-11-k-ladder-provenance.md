@@ -97,7 +97,7 @@ scope: terminology-provenance
 - 03：glossary、positions/context
 - 04：glossary、body/build
 - 顶层：START、根 GLOSSARY
-- 计数：`meta/state.md` 的文件数随新增页 +1；`meta/state-log.md` 记一笔
+- 计数：`meta/status/state.md` 的文件数随新增页 +1；`meta/status/state-log.md` 记一笔
 
 ## 8. 尚未做 / 可选
 

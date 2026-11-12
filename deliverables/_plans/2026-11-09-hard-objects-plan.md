@@ -133,7 +133,7 @@ status: active
 
 ## 4. 需要先定的一件事：O 能不能进交付物
 
-现在的规则是「交付物只引 `E-xx`」（[checklist](../../meta/checklist.md) §3）。O 层要成立，必须先回答这个。
+现在的规则是「交付物只引 `E-xx`」（[checklist](../../meta/rules/checklist.md) §3）。O 层要成立，必须先回答这个。
 
 | 方案 | 内容 | 优点 | 风险 |
 |---|---|---|---|
@@ -272,7 +272,7 @@ status: active
 |---|---|---|
 | [reverse-gap-plan](./2026-11-09-reverse-gap-plan.md) | 缺口分类、旗舰三件、上游订货 | 不重复诊断；只接它的「订单」做产线 |
 | [01-capability-status](./01-capability-status.md) | E1–E9 期待 → 数据表 → verdict | 不改 verdict；`data/` 是 N 的原料 |
-| [04-ontology-in-production](./04-ontology-in-production.md) | intake/scope/新鲜度/2 条新 E | 不做 intake；不新增 E |
+| [04-worked-example](./04-worked-example.md) | intake/scope/新鲜度/2 条新 E | 不做 intake；不新增 E |
 | **本计划** | O 的 schema、注册表、五条产线、硬度门槛 | 不判断「值不值得做」；不写交付正文 |
 
 ## 10. 起手动作（D1–D5）

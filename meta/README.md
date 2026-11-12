@@ -1,49 +1,58 @@
 ---
 status: draft
-updated: 2026-11-11
+updated: 2026-11-12
 ---
 
-# meta：规则、模板与历史
+# meta：文件索引
 
-> 这一页回答「meta 里有什么、哪个是现行、哪个只是历史」。**先看本页，不要直接 `ls`。**
+> **怎么用这一层**：先看 [AGENTS](./AGENTS.md)（30 秒入口：你要干什么去哪个子目录）。本页只做**文件索引**，不复述规则、不重复用法。
+> 现行规则 vs 历史：只读 `rules/` `deliverables/` `status/` `templates/`；`audits/` 与 `archive/` 是快照，**不作现行规则**。
 
-## 现行规则（写之前读）
-
-| 文件 | 作用 | 什么时候读 |
-|---|---|---|
-| [../CHARTER.md](../CHARTER.md) | **全仓宪章**：研究档案，不做实施 | 进入仓库先读 |
-| [conventions.md](./conventions.md) | 证据等级、字段、命名、台账纪律 | 动笔前必读 |
-| [checklist.md](./checklist.md) | 交稿前检查 | 每次改完 |
-| [deliverable-quality.md](./deliverable-quality.md) | **交付物质量评分卡**（12 维 + 5 门槛 + 抽样协议） | 评估/打磨 `deliverables/` 时 |
-| [deliverable-scope.md](./deliverable-scope.md) | **交付物定位**（每份初心/定性/边界/红线，唯一权威） | 改/建任何交付物前 |
-| [source-types.md](./source-types.md) | 素材类型与证据天花板 | 引入新类型/博客/开源时 |
-| [excluded-sources.md](./excluded-sources.md) | **来源黑名单（禁读/禁引）** | 采/引任何源之前 |
-| [topic-research-protocol.md](./topic-research-protocol.md) | 派与子主题怎么长、frontier 怎么用 | 开新子主题/做扫描时 |
-| [loading.md](./loading.md) | 按任务加载（渐进披露） | 接手时 |
-| [state.md](./state.md) | **当前计数、阻塞、最后自检**；历史日志见 [state-log](./state-log.md) | 想知道“现在到哪了” |
-| [models.md](./models.md) | **可用模型与本地约束**（不装本地模型；只用 Yovole 两个） | 要跑任何模型依赖的实验时 |
-
-## 模板与工具
+## rules/ — 现行规则（写之前读）
 
 | 文件 | 作用 |
 |---|---|
-| [note-template.md](./note-template.md) | 主题笔记模板 |
-| [subtopic-template/](./subtopic-template/README.md) | 子主题四件套模板 |
-| [tools/check_repo.py](./tools/check_repo.py) | 只读自检（链接/枚举/ID/清单/计数）；见 [ADR 0005](../adr/0005-repo-self-check.md) |
+| [rules/conventions.md](./rules/conventions.md) | 证据等级、字段、命名、台账纪律 |
+| [rules/checklist.md](./rules/checklist.md) | 交稿前检查（脚本查不了的语义项） |
+| [rules/excluded-sources.md](./rules/excluded-sources.md) | **来源黑名单（禁读/禁引）**，采/引前必查 |
+| [rules/source-types.md](./rules/source-types.md) | 素材类型与证据天花板 |
+| [rules/topic-research-protocol.md](./rules/topic-research-protocol.md) | 派与子主题怎么长、frontier 怎么用 |
+| [rules/loading.md](./rules/loading.md) | 按任务加载（渐进披露）与阅读路径 |
 
-## 现行计划与台账
+## deliverables/ — 交付物治理
 
-| 文件 | 作用 | 状态 |
-|---|---|---|
-| [term-baseline.md](./term-baseline.md) | ADR 0011 的术语差异表 v0（10 词）：origin/判定/动作 | 现行 v0（2026-11-11） |
-| [执行计划](../deliverables/_plans/README.md) | 核心计划、进度板、一页状态、术语/标准子计划 | 现行（2026-11-11） |
-| [open-source-digestion-plan.md](./open-source-digestion-plan.md) | 开源项目怎么吸收进 topics | 现行（2026-11-09） |
-| [open-source-absorption.md](./open-source-absorption.md) | 代码发现 → topics 的吸收矩阵 | 现行（2026-11-09） |
+| 文件 | 作用 |
+|---|---|
+| [deliverables/scope.md](./deliverables/scope.md) | **交付物定位总索引**（五份的定性/边界/共用规矩；每份权威在它自己的 `SCOPE.md`） |
+| [deliverables/quality.md](./deliverables/quality.md) | 质量评分卡（12 维 + 5 门槛 + 抽样协议） |
 
-## 历史归档（不要当现行规则）
+## status/ — 状态与台账（"现在到哪了"）
 
-[archive/2026-11/](./archive/2026-11/README.md) 存放 2026-11-07～09 的消化计划、质量计划/报告、digest/card 审计、critic 抽样与全审（full-audit）。这些文件已标 `status: superseded`，只用于追溯“当时怎么判的”，**不要用来指导现在的写入**。
+| 文件 | 作用 |
+|---|---|
+| [status/state.md](./status/state.md) | **当前计数、阻塞、最后自检**（计数唯一权威） |
+| [status/state-log.md](./status/state-log.md) | 历史日志（快照，不是现行计数） |
+| [status/term-baseline.md](./status/term-baseline.md) | 术语差异表（ADR 0011） |
+| [status/models.md](./status/models.md) | 可用模型与本地约束（不装本地模型） |
+
+## templates/ — 模板
+
+| 文件 | 作用 |
+|---|---|
+| [templates/note-template.md](./templates/note-template.md) | 主题笔记模板 |
+| [templates/subtopic-template/](./templates/subtopic-template/README.md) | 子主题四件套模板 |
+
+## tools/ — 只读自检
+
+| 文件 | 作用 |
+|---|---|
+| [tools/check_repo.py](./tools/check_repo.py) | 链接/锚点/枚举/ID/清单/计数/交付物 SCOPE 自检；见 [ADR 0005](../adr/0005-repo-self-check.md) |
+
+## audits/ · archive/ — 历史（不要当现行规则）
+
+- [audits/](./audits/)：准入/术语/指令层审计快照（如 [来源清除](./audits/2026-11-11-source-purge.md)）。tombstone 在这里。
+- [archive/2026-11/](./archive/2026-11/README.md)：已完成的计划、质量报告、digest/card 审计、开源消化计划/吸收矩阵；均标 `status: superseded`，只用于追溯"当时怎么判的"。
 
 ## 一条规则
 
-meta 根只放**现行**规则、模板、台账与状态；一次性的计划/审计/报告在完成后移入 `archive/<YYYY-MM>/`，并在本页登记。不要把 meta 变成第二个内容层。
+meta 只放**现行规则、模板、状态与台账**；一次性的计划/审计/报告完成后移入 `audits/` 或 `archive/<YYYY-MM>/` 并在本页登记。**不要把 meta 变成第二个内容层。**

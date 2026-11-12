@@ -2,7 +2,7 @@
 status: draft
 type: work-plan
 updated: 2026-11-10
-target: deliverables/04-ontology-in-production
+target: deliverables/04-worked-example
 scope: content-remediation
 ---
 
@@ -158,7 +158,7 @@ README（这是什么/不是什么 + 读法 + 5 组门槛摘要）
 - 统一所有计数（11 类、11 tests、3 audit、12 cases、9 artifacts）。
 - 统一 gate 数（5 组）；README/GUIDE/acceptance 一致。
 - `evidence/README.md` 加 O-F08/O-F14/PPV；每章证据行更新。
-- `meta/state.md`、`deliverables/README.md`、`_plans/README.md` 同步。
+- `meta/status/state.md`、`deliverables/README.md`、`_plans/README.md` 同步。
 
 ### C5 · 冷读（1–2 天）
 
@@ -262,7 +262,7 @@ README（这是什么/不是什么 + 读法 + 5 组门槛摘要）
 **meta**
 
 - `GLOSSARY.md`
-- `meta/state.md`、`meta/checklist.md`（加一条「交付物语义一致」）
+- `meta/status/state.md`、`meta/rules/checklist.md`（加一条「交付物语义一致」）
 - `deliverables/_plans/README.md`、本计划
 - `deliverables/README.md`
 

@@ -2,7 +2,7 @@
 status: draft
 type: work-plan
 updated: 2026-11-09
-target: deliverables/04-ontology-in-production
+target: deliverables/04-worked-example
 ---
 
 # 04 支撑计划：从“外部信号”到“可引 E”
@@ -15,7 +15,7 @@ target: deliverables/04-ontology-in-production
 
 **04 先保持 field guide 定位。** 本轮只做 **4 个核心 intake + 1 个已有活跃代码项目**，补 **2 个 topics 页面**、**2 条新 E**；**build 章不升级**（没有 in-scope 的 evaluation 来源），只升级 consume B.3 与 govern C.1。**论文线已冻结**：GGC/Glyph/NLKGQ/KGVoyager 是最后一批，不再新找论文；**工程 OSS 升为主线（P2.5）**：论文管机制，OSS 管落地；先扫后选 1–2 个，不硬塞。不新开交付物，不铺 20 个来源。
 
-**硬规则 1（引用）**：`deliverables/` 只引 `E-xx`——[conclusions](../../topics/conclusions.md) 的头写明“唯一允许被 deliverables 直接引用的地方”，[loading](../../meta/loading.md) 规则 1 与 [checklist](../../meta/checklist.md) §3 也禁止引 `L-xx`。路径是：
+**硬规则 1（引用）**：`deliverables/` 只引 `E-xx`——[conclusions](../../topics/conclusions.md) 的头写明“唯一允许被 deliverables 直接引用的地方”，[loading](../../meta/rules/loading.md) 规则 1 与 [checklist](../../meta/rules/checklist.md) §3 也禁止引 `L-xx`。路径是：
 
 ```text
 src digest → 子主题 F → 派 L → 跨派新 E（2 条）→ 04 引 E

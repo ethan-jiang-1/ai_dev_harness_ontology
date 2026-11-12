@@ -21,7 +21,7 @@ subtopic: metrics
 also_supports: []
 updates:
   - topics/06-measure/metrics/propagation.md
-  - deliverables/04-ontology-in-production/body/govern.md
+  - deliverables/04-worked-example/body/govern.md
 admission: admitted
 gate_checked: 2026-11-11
 impact_evidence: "I1+I3: LF AI & Data, production adoption"

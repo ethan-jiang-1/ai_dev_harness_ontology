@@ -33,7 +33,7 @@ rq: [RQ1, RQ2, RQ5]
 
 ## 18 个来源的初判（2026-11-12 对账）
 
-计数：`engine` 3 / `compiled` 3 / `context` 1 / `label` 1 / `none` 10（10 论文 + 8 开源）。与 [meta/state](../meta/state.md) 一致。18 篇移出论文的形态判定随源撤回，见 [清除审计](../meta/audits/2026-11-11-source-purge.md)，不再列。
+计数：`engine` 3 / `compiled` 3 / `context` 1 / `label` 1 / `none` 10（10 论文 + 8 开源）。与 [meta/state](../meta/status/state.md) 一致。18 篇移出论文的形态判定随源撤回，见 [清除审计](../meta/audits/2026-11-11-source-purge.md)，不再列。
 
 | 来源 | 形态 | 依据（digest） | 备注 |
 |---|---|---|---|

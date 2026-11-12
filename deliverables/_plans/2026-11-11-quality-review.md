@@ -2,13 +2,13 @@
 status: draft
 type: quality-review
 updated: 2026-11-11
-rubric: meta/deliverable-quality.md v1.1
+rubric: meta/deliverables/quality.md v1.1
 scope: deliverables/01–04
 ---
 
 # 2026-11-11 交付物质量评估（rubric v1.1 基线）
 
-> 口径：[交付物质量评分卡](../../meta/deliverable-quality.md) v1.1（维度/权重与 v1.0 相同；G2 的单句误标口径见 §1）。**首次运行，作为基线**；不与 2026-11-10 的 D1–D10 分数直接比较（维度与权重不同）。
+> 口径：[交付物质量评分卡](../../meta/deliverables/quality.md) v1.1（维度/权重与 v1.0 相同；G2 的单句误标口径见 §1）。**首次运行，作为基线**；不与 2026-11-10 的 D1–D10 分数直接比较（维度与权重不同）。
 >
 > 方法：P0 门槛 + P1 机械（01–04 的 110 个 md、1,044 条链接、字数/内码/表行/孤儿页）+ P2 抽样（32 条带数陈述、10 条判定性表述、10 个术语首现、5 个跨页高频数）+ 人读（四份主路径 + 12 个子页）。
 
@@ -262,7 +262,7 @@ scope: deliverables/01–04
 ## 9. C2/B3 合并（2026-11-11）
 
 - **01**：六个能力页并入 [capabilities/README.md](../01-capability-status/03-capabilities/README.md)（01 27→21 个 md，-6）；保留 A/B/C/D 总表与 3.1–3.9 机制箱，锚点 `#knowledge` 等。原来 6 个 0 出链死胡同消失。
-- **04**：原 `run.md` + `data.md` 并入 [example/README.md](../04-ontology-in-production/05-example/README.md)（04 25→23，-2）；fixture 说明、命令、数据/坏样本在一页。
+- **04**：原 `run.md` + `data.md` 并入 [example/README.md](../04-worked-example/05-example/README.md)（04 25→23，-2）；fixture 说明、命令、数据/坏样本在一页。
 - **机械读数**：01–04 110→102 个 md；<600 中文字符页 47→38；全仓 539→531。
 - **B3**：01–04 README 首屏各加一行内码映射；正文内码未全改，B3 仍按 2–3 记。
 - **未重打分**：C2 的结构性代价仍在（102 个 md），等真人冷读再复评；本轮只记录机械变化，不把合并写成分数提升。
@@ -424,7 +424,7 @@ scope: deliverables/01–04
 
 ## 11. 整改复评（2026-11-11 晚）
 
-> 口径仍是 [rubric v1.1](../../meta/deliverable-quality.md)。§11 记录 §10 之后的整改：术语碰撞、四份首屏、C2 合并、C3 单一真相、A2 任务闭合、C1 死链。**没有新增 E，没有改研究结论**；3 个 2026 KOL 来源按新 material gate 判 `signal`，只进 frontier，不撑交付物（见 §11.5）。
+> 口径仍是 [rubric v1.1](../../meta/deliverables/quality.md)。§11 记录 §10 之后的整改：术语碰撞、四份首屏、C2 合并、C3 单一真相、A2 任务闭合、C1 死链。**没有新增 E，没有改研究结论**；3 个 2026 KOL 来源按新 material gate 判 `signal`，只进 frontier，不撑交付物（见 §11.5）。
 
 ### 11.1 做了什么
 
@@ -520,7 +520,7 @@ scope: deliverables/01–04
 - **01**：A=3 / B=4 / C=2 / 非本体=1 / gap=4；4 行原 E-02/E-03/E-04/E-13/E-16 已转 gap。
 - **02**：A=3 / B=4 / C=1 / gap=4（不含 R0）；R4/R5/R6/R12 转 gap。
 - **03/04**：受影响位置卡/台账/附录已标 `withdrawn/历史`；长版正文仍有少量旧数字，已标历史。
-- **术语**：`meta/term-baseline.md` v0（10 词）已落；K 行 `local`；8 张标准卡补 `standing`。
+- **术语**：`meta/status/term-baseline.md` v0（10 词）已落；K 行 `local`；8 张标准卡补 `standing`。
 - **下一步**：02/03 长尾清完 → 重跑 12 维 → 冷读 → 再决定是否标 stable。
 
 ### 12.1 桌面复评（2026-11-11，非冷读）
@@ -552,7 +552,7 @@ scope: deliverables/01–04
 
 ### 12.2 接线后的桌面复评 + 代理冷读（2026-11-11 晚）
 
-> **评分口径不变**（[rubric v1](../../meta/deliverable-quality.md)）；这是 desk re-score + 代理冷读，**不是真人冷读**。本轮只改 C3（定义来源单一化）一处；B3 不升，因为 `N:`/`local` 是**出处**，不是「人话解释」。
+> **评分口径不变**（[rubric v1](../../meta/deliverables/quality.md)）；这是 desk re-score + 代理冷读，**不是真人冷读**。本轮只改 C3（定义来源单一化）一处；B3 不升，因为 `N:`/`local` 是**出处**，不是「人话解释」。
 
 | 维度 | 01 | 02 | 03 | 04 | 变化 |
 |---|---|---|---|---|---|

@@ -72,7 +72,7 @@ updates: []
 ## 喂到哪个主题
 
 - `GLOSSARY`：本体 / 顶层本体 的 `origin: standard` 锚
-- `meta/term-baseline.md`：差异表 v0（本体、顶层本体、领域本体）
+- `meta/status/term-baseline.md`：差异表 v0（本体、顶层本体、领域本体）
 - `topics/05-produce`：本体构建的边界（TLO vs 领域塔）
 
 ## 原文摘录

@@ -57,7 +57,7 @@ POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是�
 | `<子主题>/frontier.md` | 该子主题的 gap / next |
 | `<子主题>/prompt.md` + `runs/` | 可选：常驻 prompt 与按日期输出 |
 
-模板见 [meta/subtopic-template](../../meta/subtopic-template/README.md)。新增内容只改本目录；跨派才升 [conclusions](../conclusions.md)。
+模板见 [meta/templates/subtopic-template](../../meta/templates/subtopic-template/README.md)。新增内容只改本目录；跨派才升 [conclusions](../conclusions.md)。
 
 ## 持续挖掘
 

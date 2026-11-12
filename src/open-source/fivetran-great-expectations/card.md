@@ -21,7 +21,7 @@ subtopic: checker
 also_supports: []
 updates:
   - topics/02-judgment/checker/output-validation.md
-  - deliverables/04-ontology-in-production/body/govern.md
+  - deliverables/04-worked-example/body/govern.md
 admission: admitted
 gate_checked: 2026-11-11
 impact_evidence: "I3: production adoption"

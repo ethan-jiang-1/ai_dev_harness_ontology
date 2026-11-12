@@ -193,7 +193,7 @@ scope: deliverables/01–04 精读与质量判断（代理精读，非真人）
 ```bash
 grep -rn "50\.5\|68\.1\|94\.9\|82\.1\|9\.7k\|40\.3\|18\.9\|16\.8\|79\.2\|99\.9\|0\.967\|18 格\|8 改善" \
   deliverables/01-capability-status deliverables/02-engineering-playbook \
-  deliverables/03-mechanism-reference deliverables/04-ontology-in-production \
+  deliverables/03-mechanism-reference deliverables/04-worked-example \
   --include=*.md | grep -v "/data/\|_plans\|withdrawn\|撤回\|历史\|停用\|待新源\|旧"
 ```
 

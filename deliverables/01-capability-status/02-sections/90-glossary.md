@@ -11,7 +11,7 @@ parent: ../README.md
 <a id="term-sources"></a>
 ## 0. 名词从哪来（N / local）
 
-> `N:` = 规范性锚，只定「什么意思、什么叫合格」，**不撑效果**；`local` = 本仓库工作词，首现解释。完整清单见 [规范主干](../../../topics/trunk.md)，逐词判定见 [术语基线](../../../meta/term-baseline.md)。
+> `N:` = 规范性锚，只定「什么意思、什么叫合格」，**不撑效果**；`local` = 本仓库工作词，首现解释。完整清单见 [规范主干](../../../topics/trunk.md)，逐词判定见 [术语基线](../../../meta/status/term-baseline.md)。
 
 | 词 | 来源 | 一句话 |
 |---|---|---|

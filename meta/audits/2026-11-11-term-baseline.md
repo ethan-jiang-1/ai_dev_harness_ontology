@@ -9,7 +9,7 @@ scope: 06-measure 试点 + v1 词表冲突
 
 > 依据 [ADR 0011](../../adr/0011-source-standing-and-term-baseline.md) 与 [核心计划第 8 步](../../deliverables/_plans/2026-11-11-core-plan.md)。**只记录术语用法与处置，不新增判断。**
 >
-> 词表本体在 [meta/term-baseline.md](../term-baseline.md)（v0 10 词 + v1 29 词）；N/I/S 与标准边界见 [topics/trunk.md](../../topics/trunk.md)。
+> 词表本体在 [meta/status/term-baseline.md](../status/term-baseline.md)（v0 10 词 + v1 29 词）；N/I/S 与标准边界见 [topics/trunk.md](../../topics/trunk.md)。
 
 ## 1. 试点范围
 
@@ -34,7 +34,7 @@ scope: 06-measure 试点 + v1 词表冲突
 ## 3. 处理与后续
 
 1. **无术语冲突需要撤回判断**：06-measure 没有把 `local` 词写成行业标准；没有 `divergent` 级冲突。
-2. **补一条裸词**：「任务账 / 风险账」进 [term-baseline](../term-baseline.md) §5/§6，判 `local`；GLOSSARY 词条待 v1.1 补。
+2. **补一条裸词**：「任务账 / 风险账」进 [term-baseline](../status/term-baseline.md) §5/§6，判 `local`；GLOSSARY 词条待 v1.1 补。
 3. **复跑方法**（下一轮按派抽样）：
 
 ```bash

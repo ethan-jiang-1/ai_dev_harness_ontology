@@ -1,6 +1,6 @@
 # 校准 · 发现（F）
 
-> `F` 编号是子主题局部编号；跨页引用写 `calibration/Fx`。证据等级见 [conventions](../../../meta/conventions.md#证据等级)。
+> `F` 编号是子主题局部编号；跨页引用写 `calibration/Fx`。证据等级见 [conventions](../../../meta/rules/conventions.md#证据等级)。
 
 ## 索引
 

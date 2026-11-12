@@ -12,7 +12,7 @@ basis: E-01–E-20, C-03/C-04; topics/README 四轴
 >
 > **状态**：`draft` ｜ **证据状态**：E-02/E-03/E-04/E-06/E-10/E-11/E-13/E-16/E-26 撤回；受影响的位置卡保留机制、不保留效应量（W 表见 [05-evidence/01-ledger](05-evidence/01-ledger.md#w-table)）。
 >
-> **本页只做索引**。正文从 [00-overview](02-sections/00-overview.md) 开始；位置卡从 [03-positions](03-positions/README.md) 开始。定位/边界以 [meta/deliverable-scope §03](../../meta/deliverable-scope.md#scope-03) 为准。
+> **本页只做索引**。正文从 [00-overview](02-sections/00-overview.md) 开始；位置卡从 [03-positions](03-positions/README.md) 开始。**改/建前必读 [SCOPE.md](./SCOPE.md)**（初心/定性/边界/红线/发挥空间）。
 
 ## 30 秒结论
 

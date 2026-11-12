@@ -67,7 +67,7 @@ target: deliverables/01-capability-status 的 E1–E9
 | H5 | trustgraph 代码 + 单测 | object 方向、fail-open、首命中、缓存 | 一页「E7 代码核对」：已验证/未验证 | 能指出「读路径 best-effort」的具体边界 |
 | H6 | semantica / open-ontologies 代码 | 派生 shapes vs 手写；三态折叠 | 一页「E4/E8 代码旁证」 | 能说明「执行 ≠ 授权」 |
 
-**规则**：H1–H6 只改 `topics/` 的 findings/claims 或 D1 的限定；**不新增 E**，除非抽出的数改变了某条 E 的边界。改变边界才升 E，并按 [conventions](../../meta/conventions.md) 登记。
+**规则**：H1–H6 只改 `topics/` 的 findings/claims 或 D1 的限定；**不新增 E**，除非抽出的数改变了某条 E 的边界。改变边界才升 E，并按 [conventions](../../meta/rules/conventions.md) 登记。
 
 ## 4. 需要新 `src/` 的（按优先级）
 
@@ -157,7 +157,7 @@ target: deliverables/01-capability-status 的 E1–E9
 3. **§9 期待表**：每行填 verdict + boundary + what would change；`unknown` 不再被读成「无效」。
 4. **新增/修订 E**：只有 W6 的综合能升 E；每条带 digest 出处、等级、限定；不把设计提案升 E。
 5. **D2/D3 同步**：D2 的 stop/验收表随 verdict 改；D3 的 15 条边界随新证据改；不改就说明「未受影响」。
-6. **台账**：`topics/conclusions.md`、各派 `claims.md`、`meta/state.md`、D1/D2/D3 的 `updated` 同步。
+6. **台账**：`topics/conclusions.md`、各派 `claims.md`、`meta/status/state.md`、D1/D2/D3 的 `updated` 同步。
 
 **完成判据（DoD）**：
 
@@ -166,7 +166,7 @@ target: deliverables/01-capability-status 的 E1–E9
 - [x] 新增 E 都有 digest/代码出处 + 限定；没有「概念升 E」。
 - [x] D1 §2 的 A/B/C 与 §9 的 verdict 不矛盾。
 - [x] D2 的 stop 线、D3 的边界与 D1 一致。
-- [x] `python3 meta/tools/check_repo.py` 通过；`meta/state.md` 更新。
+- [x] `python3 meta/tools/check_repo.py` 通过；`meta/status/state.md` 更新。
 
 > **2026-11-09 第一轮完成**：E5 false-veto / E8 commit gate 仍 `unknown`，但已从「没有评测方法」推进到「有授权 benchmark + false-block/miss 前沿」；E7 仍缺第二个 read-path；E9 仍缺本体锚点实现。下一轮可继续这些 P1/P2，不阻塞 D1 的 verdict。
 

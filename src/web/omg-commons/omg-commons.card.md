@@ -66,7 +66,7 @@ updates: []
 
 - `GLOSSARY`：可复用本体模块 / 最小承诺
 - `topics/05-produce`：本体分层的规范化依据
-- `meta/term-baseline.md`：差异表 v0
+- `meta/status/term-baseline.md`：差异表 v0
 
 ## 原文摘录
 

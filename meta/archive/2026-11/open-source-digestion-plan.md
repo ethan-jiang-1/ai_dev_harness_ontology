@@ -1,12 +1,12 @@
 ---
-status: draft
+status: superseded
 updated: 2026-11-09
 ---
 
 # 开源项目消化计划：从代码证据到 topics 判断
 
 > 本计划只管一件事：把 `src/open-source/` 里**已建卡的项目**推进到「可被 topics 引用」，并把信息按现有 promote 路径送进 `topics/`。
-> 它不改变 [AGENTS](../AGENTS.md) 的落点规则；与 AGENTS 冲突时，以 AGENTS 为准。
+> 它不改变 [AGENTS](../../../AGENTS.md) 的落点规则；与 AGENTS 冲突时，以 AGENTS 为准。
 
 ## 0. 一句话
 
@@ -36,7 +36,7 @@ updated: 2026-11-09
 | ontodev/robot | 329 | **已删除**（<1,000★） | OBO 生命周期对照 |
 | sib-swiss/sparql-llm | 130† | **已删除**（<1,000★） | 最贴回路内，但样本太小 |
 
-> 低于门槛的项目**已从磁盘删除**；只在 [`_scan-2026-11-09.md`](../src/open-source/_scan-2026-11-09.md) 保留元数据。撤销门槛时重新建卡，不默认恢复。
+> 低于门槛的项目**已从磁盘删除**；只在 [`_scan-2026-11-09.md`](../../../src/open-source/_scan-2026-11-09.md) 保留元数据。撤销门槛时重新建卡，不默认恢复。
 
 **代价要说清**：把 pyshacl / ROBOT / sparql-llm 拿掉后，本轮没有「十分钟能跑通」的基线；剩下四个的运行成本分别是 Rust（392MB）、Python 微服务、Java（Ontop）、Python（Semantica），**Wave 1 要先算环境预算**，不要默认都能当天跑。
 

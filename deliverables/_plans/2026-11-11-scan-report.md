@@ -76,5 +76,5 @@ python3 meta/tools/check_repo.py
 ## 6. 下一步
 
 1. **复跑本报告的 4 条扫描**，确认干净门仍通过（新增的 N/local 标记不应引入旧数字/借权威）。
-2. **定义线**：改词先改 [term-baseline](../../meta/term-baseline.md)，再回改页面；不要逐页手改。
+2. **定义线**：改词先改 [term-baseline](../../meta/status/term-baseline.md)，再回改页面；不要逐页手改。
 3. **剩余**：真人冷读、C2 冗余、02/03 长尾旧数字逐句删。

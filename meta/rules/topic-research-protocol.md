@@ -86,7 +86,7 @@
 
 ## 8. 子主题与素材类型
 
-- **子主题**：派 README 只做地图；子主题 README 只做 index/dashboard；详细机制、发现、路线分别放 `mechanism.md` / `findings.md` / `frontier.md`。成立条件（满足其一）：有自己的判断与边界；≥2 张卡片共享同一子机制；需要自己的 frontier。不预建空子目录。见 [ADR 0003](../adr/0003-subtopics-and-source-types.md) 与 [§10](#10-readme-是-index不是正文)。
+- **子主题**：派 README 只做地图；子主题 README 只做 index/dashboard；详细机制、发现、路线分别放 `mechanism.md` / `findings.md` / `frontier.md`。成立条件（满足其一）：有自己的判断与边界；≥2 张卡片共享同一子机制；需要自己的 frontier。不预建空子目录。见 [ADR 0003](../../adr/0003-subtopics-and-source-types.md) 与 [§10](#10-readme-是-index不是正文)。
 - **素材类型**：论文在 `src/papers/{arxiv_id}-{slug}/`，目录内含 `<stem>.pdf` / `card.md` / `digest.md` / `figures/`；网页在 `src/web/`，卡与原文同名 `.card.md`。都用 `source_type` 区分。
 - **证据天花板**：博客/工程的 `已核` 只指「作者报告了 X」；一般规律默认 `推测`。见 [source-types](./source-types.md)。
 
@@ -96,7 +96,7 @@
 - 每次运行把输出写到 `runs/YYYY-MM-DD-<slug>.md`，不要直接改 README。
 - run 必须带 `prompt` / `model` / `sources` / `claims_changed`。
 - 审 run 后，结论才进 `claims.md` / README；run 保留作审计轨迹。
-- 模板见 [subtopic-template](./subtopic-template/README.md)。
+- 模板见 [subtopic-template](../templates/subtopic-template/README.md)。
 
 ## 10. README 是 index，不是正文
 

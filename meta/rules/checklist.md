@@ -6,7 +6,7 @@
 
 ## 0. 宪章
 
-- 这次改动是**读/消化/组织/写判断**，还是**建/跑/部署**？后者停；见 [CHARTER](../CHARTER.md)。
+- 这次改动是**读/消化/组织/写判断**，还是**建/跑/部署**？后者停；见 [CHARTER](../../CHARTER.md)。
 - 没有新增代码、engine、harness、reference filter、可执行套件；示例只作说明。
 - 没有把“能跑”当交付标准；没有因为示例不能跑就补实现。
 - 例外只有 `meta/tools/` 的只读自检。
@@ -39,15 +39,15 @@
 
 - 正文引用的 `E-xx / Q-xx / C-xx` 都在 `conclusions.md` 有定义。
 - 每个「推测 / 存疑」有未核理由或反例。
-- 交付物缺陷走过[修复回路](../AGENTS.md)：被指的那句话能指到 admitted 源的 digest 节，或已显式标 `推测`/gap 并在 frontier 记「关闭它需要什么」。
-- 交付物改动符合[交付物定位](./deliverable-scope.md)的定性与边界：每句落在它「回答的问题」里，不越界替别的份回答；答不了初心问题已标 gap，**没有偷换成更容易的问题**（合成教程冒充现状之类）。
+- 交付物缺陷走过[修复回路](../../AGENTS.md)：被指的那句话能指到 admitted 源的 digest 节，或已显式标 `推测`/gap 并在 frontier 记「关闭它需要什么」。
+- 交付物改动符合该份 `SCOPE.md` 的定性与边界：每句落在它「回答的问题」里，不越界替别的份回答；答不了初心问题已标 gap，**没有偷换成更容易的问题**（合成教程冒充现状之类）。每份交付物必须有 `SCOPE.md`（check_repo 强制）。
 - 卡片/消化修正了旧判断 → `updates:` 列全，主题页已回改。
 - 派内新判断在 `claims.md`；没有跨派/交付物的理由时，不应改 `conclusions.md`。
-- `deliverables/` 引 `E-xx` 作结论；`O-xx` 只作地址（[ADR 0009](../adr/0009-object-layer.md)），不引 `L-xx`；O 不得替代 E 作主句。
+- `deliverables/` 引 `E-xx` 作结论；`O-xx` 只作地址（[ADR 0009](../../adr/0009-object-layer.md)），不引 `L-xx`；O 不得替代 E 作主句。
 
 ## 4. 计数
 
-**当前计数只看 [meta/state](./state.md)**；本节只列结构性不变量，不再抄数字。
+**当前计数只看 [meta/state](../status/state.md)**；本节只列结构性不变量，不再抄数字。
 
 - 论文目录数 = manifest 行数；每目录一个 `<stem>.pdf`、`paper.md` / `references.md` / `appendix.md`、`card.md`、`digest.md`。
 - 开源：磁盘目录数 = 有 `card.md` 的项目数；有 `digest.md` 的才是「已消化」；没有 digest 的不计入。
@@ -65,7 +65,7 @@
 ## 6. 结构
 
 - `01-04` 问时刻，`05` 问来源，`06` 问尺子。
-- 时刻表在 [topics/seams.md](../topics/seams.md)；派表在 [topics/README.md](../topics/README.md)；部件表在 [00-harness/README.md](../topics/00-harness/README.md)。
+- 时刻表在 [topics/seams.md](../../topics/seams.md)；派表在 [topics/README.md](../../topics/README.md)；部件表在 [00-harness/README.md](../../topics/00-harness/README.md)。
 - 稳定判断在 `README.md`；活页在 `frontier.md`；局部结论在 `claims.md`；证据索引在 `sources.md`；详细论证在 `topics/<派>/<子主题>/README.md`。
 - **子主题 README 是 index/dashboard**：一屏以内；发现/证据在 `findings.md` + `findings/`，gap/next 在 `frontier.md`，机制在 `mechanism.md`。
 - 改一个派只动该派目录；跨派结论才动 `topics/conclusions.md`。
@@ -84,4 +84,4 @@
 - 每个数字带数据、模型、样本量、设置；没有裸数字；关键数字带表号/页码。
 - 不靠「详见 card」补上下文；链接只放原文/代码。
 - 长度：L3 250–360 行；L2 160–260；L1 100–240（目标，不是门；自包含优先）。
-- 过 [digest 模板](../src/_templates/paper-digest.md) 的自包含要求；长度目标见 [conventions](./conventions.md#阅读深度l1l2l3)。
+- 过 [digest 模板](../../src/_templates/paper-digest.md) 的自包含要求；长度目标见 [conventions](./conventions.md#阅读深度l1l2l3)。

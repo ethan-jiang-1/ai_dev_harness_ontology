@@ -17,7 +17,7 @@ parent: ../README.md
 <a id="term-sources"></a>
 ## 0. 名词从哪来（N / local）
 
-> `N:` = 规范性锚，只定词与合格性、**不撑效果**；`local` = 本仓库工作词，首现解释。完整清单见 [规范主干](../../../topics/trunk.md)，逐词判定见 [术语基线](../../../meta/term-baseline.md)；撤回依据与重测协议见 [canonical §1.1](91-canonical.md#w-table)。
+> `N:` = 规范性锚，只定词与合格性、**不撑效果**；`local` = 本仓库工作词，首现解释。完整清单见 [规范主干](../../../topics/trunk.md)，逐词判定见 [术语基线](../../../meta/status/term-baseline.md)；撤回依据与重测协议见 [canonical §1.1](91-canonical.md#w-table)。
 
 | 词 | 来源 | 一句话 |
 |---|---|---|

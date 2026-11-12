@@ -10,7 +10,7 @@ basis: 待补——真实生产/业界落地证据（admitted，含 CHARTER §4.
 
 > **读者**：想知道本体落地现状的决策者 / 研究者 ｜ **回答**：业界真实落地到什么程度、成本收益如何、靠谱与否有无可靠证据 ｜ **不回答**：怎么建（去 04 合成示例）、怎么做（去 02）、凭什么（去 03）、值不值得投（去 01）。
 >
-> **定位与边界以 [交付物定位 §05](../../meta/deliverable-scope.md#scope-05) 为准**（[ADR 0014](../../adr/0014-deliverable-scope-single-home.md)）。本份定性：**现状（描述·实证）**，不是合成教程。
+> **定位与边界以 [交付物定位 §05](./SCOPE.md) 为准**（[ADR 0014](../../adr/0014-deliverable-scope-single-home.md)）。本份定性：**现状（描述·实证）**，不是合成教程。
 
 ## 这份要回答的初心问题
 
@@ -26,7 +26,7 @@ basis: 待补——真实生产/业界落地证据（admitted，含 CHARTER §4.
 
 > **本份尚未有正文结论。** 当前 `src/` 的 admitted 源是研究论文 + 开源工具 + 标准卡，**没有「某公司真把本体跑在生产、测了成本收益」的案例**。最接近的 Glyph（E-22）也只是单企业、标签层、接受率作者自报。
 
-按[交付物定位](../../meta/deliverable-scope.md)的硬规矩：**答不了初心问题就标 gap，不偷换成更容易的问题。** 所以本份现在不写「理想化怎么建」来冒充现状（那是 04 的定位，也是 04 跑偏的教训）。先补原料，再写现状。
+按[交付物定位](../../meta/deliverables/scope.md)的硬规矩：**答不了初心问题就标 gap，不偷换成更容易的问题。** 所以本份现在不写「理想化怎么建」来冒充现状（那是 04 的定位，也是 04 跑偏的教训）。先补原料，再写现状。
 
 ## 要回答它，需要补什么证据（研究任务）
 
@@ -37,17 +37,17 @@ basis: 待补——真实生产/业界落地证据（admitted，含 CHARTER §4.
 | 成本拐点的证据（为什么现在开始有人上） | 实测成本对比 / 工具成熟度 | §4 五门 |
 | 失败/回退案例（不靠谱的证据，同权重） | 一手复盘 | §4 五门，反例同权 |
 
-候选先入对应派 `frontier.md`（过门才建卡）；采/引前查[来源黑名单](../../meta/excluded-sources.md)。**补到 admitted 证据后，才沿 `src → topics → deliverables` 抽取写本份；不直接在交付物里编判断。**
+候选先入对应派 `frontier.md`（过门才建卡）；采/引前查[来源黑名单](../../meta/rules/excluded-sources.md)。**补到 admitted 证据后，才沿 `src → topics → deliverables` 抽取写本份；不直接在交付物里编判断。**
 
 ## 加载集
 
-- 定位：[交付物定位 §05](../../meta/deliverable-scope.md#scope-05)。
-- 准入：[CHARTER §4](../../CHARTER.md#4-素材准入material-gate) + [来源黑名单](../../meta/excluded-sources.md)。
-- 现状证据基座：[meta/state](../../meta/state.md)（当前 admitted 源）+ [conclusions](../../topics/conclusions.md) E 表。
+- 定位：[交付物定位 §05](./SCOPE.md)。
+- 准入：[CHARTER §4](../../CHARTER.md#4-素材准入material-gate) + [来源黑名单](../../meta/rules/excluded-sources.md)。
+- 现状证据基座：[meta/state](../../meta/status/state.md)（当前 admitted 源）+ [conclusions](../../topics/conclusions.md) E 表。
 - 与 04 的分界：04 是合成「怎么建」示例；本份是实证「业界怎么样」。**不读 04 的 fixture 当现状证据。**
 
 ## 维护
 
-- 定位改动走 [ADR](../../adr/README.md)；本 README 钩子与[定位](../../meta/deliverable-scope.md#scope-05)一致。
+- 定位改动走 [ADR](../../adr/README.md)；本 README 钩子与[定位](./SCOPE.md)一致。
 - 正文结论只从 admitted 证据抽取；每条带证据等级与限定；缺证据标 gap。
-- 本份是新增交付物（ADR 0014）；计数见 [meta/state](../../meta/state.md)。
+- 本份是新增交付物（ADR 0014）；计数见 [meta/state](../../meta/status/state.md)。

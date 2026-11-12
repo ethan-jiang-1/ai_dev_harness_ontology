@@ -12,7 +12,7 @@ basis: E-01–E-20, C-03; recipes R0–R12
 >
 > **状态**：`draft` ｜ **计数**：A=3（R1/R10/R11）/ B=4（R2/R3/R7/R8）/ C=1（R9）/ gap=4（R4/R5/R6/R12，不含 R0） ｜ **证据重置**：R4/R5/R6/R12 原锚撤回，W 表见 [91-canonical](02-sections/91-canonical.md#w-table)。
 >
-> **本页只做索引**。正文从 [00-overview](02-sections/00-overview.md) 开始；配方从 [03-recipes](03-recipes/README.md) 选。定位/边界以 [meta/deliverable-scope §02](../../meta/deliverable-scope.md#scope-02) 为准。
+> **本页只做索引**。正文从 [00-overview](02-sections/00-overview.md) 开始；配方从 [03-recipes](03-recipes/README.md) 选。**改/建前必读 [SCOPE.md](./SCOPE.md)**（初心/定性/边界/红线/发挥空间）。
 
 ## 30 秒结论
 

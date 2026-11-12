@@ -5,7 +5,7 @@ updated: 2026-11-12
 
 # 05 生产派：本体从哪来、怎么修
 
-> **2026-11-12 对账（重要）**：本派多数来源已撤回——OntoDoc、ReX-GG、Peeling、Evontree、SFE-O、E-02(Ontology Catch)（见 [黑名单](../../meta/excluded-sources.md)）。**仍 admitted 的只有 CASTON 与 FIRME。** 下文引用撤回源的「已核」数字/结论一律作历史/机制参考，不作活证据，相关判断降为 `推测`。本派方向（来源影响可信度、精化、表示≠执行）作为研究框架保留，但证据基座已被大幅削薄。
+> **2026-11-12 对账（重要）**：本派多数来源已撤回——OntoDoc、ReX-GG、Peeling、Evontree、SFE-O、E-02(Ontology Catch)（见 [黑名单](../../meta/rules/excluded-sources.md)）。**仍 admitted 的只有 CASTON 与 FIRME。** 下文引用撤回源的「已核」数字/结论一律作历史/机制参考，不作活证据，相关判断降为 `推测`。本派方向（来源影响可信度、精化、表示≠执行）作为研究框架保留，但证据基座已被大幅削薄。
 
 ## 核心主张
 

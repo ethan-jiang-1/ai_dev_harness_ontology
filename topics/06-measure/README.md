@@ -60,11 +60,11 @@ updated: 2026-11-09
 | [sources.md](./sources.md) | 本派卡片索引 |
 | [frontier.md](./frontier.md) | 本派候选队列 |
 | `<子主题>/README.md` | 详细机制 |
-| `<子主题>/prompt.md` + `runs/` | 常驻 prompt 与按日期输出（模板见 [meta/subtopic-template](../../meta/subtopic-template/README.md)） |
+| `<子主题>/prompt.md` + `runs/` | 常驻 prompt 与按日期输出（模板见 [meta/templates/subtopic-template](../../meta/templates/subtopic-template/README.md)） |
 
 新增内容只改本目录；只有跨派结论或进 `deliverables/` 时，才升到 [conclusions](../conclusions.md) 的 E-xx。卡片 `home` 指向本派，`subtopic` 指向子主题。
 
-子主题按 [模板](../../meta/subtopic-template/README.md) 起；没有 `prompt.md` 就先不建 `runs/`。
+子主题按 [模板](../../meta/templates/subtopic-template/README.md) 起；没有 `prompt.md` 就先不建 `runs/`。
 
 ## 持续挖掘
 

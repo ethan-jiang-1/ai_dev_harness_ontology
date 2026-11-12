@@ -1,5 +1,5 @@
 ---
-status: draft
+status: superseded
 updated: 2026-11-09
 ---
 

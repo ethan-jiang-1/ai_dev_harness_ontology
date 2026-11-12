@@ -9,7 +9,7 @@ scope: 核心计划第 7 步（01→02→03→04 定义段接规范主干）
 
 > **这是核心计划第 7 步的产出，也是第 8 步术语 v1 的入口。** 只记录「定义句接到哪、怎么验、还剩什么」，不新增 E/L。
 >
-> 主干索引：[topics/trunk.md](../../topics/trunk.md)；逐词判定：[meta/term-baseline.md](../../meta/term-baseline.md)。
+> 主干索引：[topics/trunk.md](../../topics/trunk.md)；逐词判定：[meta/status/term-baseline.md](../../meta/status/term-baseline.md)。
 
 ## 1. 接线口径
 
@@ -48,10 +48,10 @@ scope: 核心计划第 7 步（01→02→03→04 定义段接规范主干）
 | [03 action](../03-mechanism-reference/03-positions/05-action.md) | 顶部加词源 | ODRL/XACML 只到表达/架构；可逆性、min φ、τ `local`；E-04/13/16 仍 withdrawn |
 | [03 commit](../03-mechanism-reference/03-positions/06-commit.md) | 顶部加词源 | XACML/ODRL 只到判定架构；commit gate/三段式 `local`（概念架构） |
 | [03 memory / evidence](../03-mechanism-reference/03-positions/02-memory.md) | 顶部加词源 | 记忆/接地 `local`；标准不定义机制 |
-| [04 README](../../deliverables/04-ontology-in-production/README.md) | 内码后加词源 | 本体/SHACL/ODRL/XACML/GB-T/ODCS 有 N；TBox/ABox、principal、level、skip、leak oracle `local` |
-| [04 术语 §0](../04-ontology-in-production/02-sections/90-glossary.md#term-sources) | 新增 12 行来源表 | 数据分级/个人信息/数据契约/OWL 有 N |
-| [04 build A.3](../04-ontology-in-production/03-body/01-build.md) | TBox/ABox 段加词源 | TBox/ABox `local`；类/属性语义 `N: OWL 2 Profiles` |
-| [04 govern C.1/C.2](../04-ontology-in-production/03-body/03-govern.md) | C.1 后加词源；C.2 `skip` 规则加标记 | 分级/个人信息有 N；level 1–4、skip、principal `local` |
+| [04 README](../../deliverables/04-worked-example/README.md) | 内码后加词源 | 本体/SHACL/ODRL/XACML/GB-T/ODCS 有 N；TBox/ABox、principal、level、skip、leak oracle `local` |
+| [04 术语 §0](../04-worked-example/02-sections/90-glossary.md#term-sources) | 新增 12 行来源表 | 数据分级/个人信息/数据契约/OWL 有 N |
+| [04 build A.3](../04-worked-example/03-body/01-build.md) | TBox/ABox 段加词源 | TBox/ABox `local`；类/属性语义 `N: OWL 2 Profiles` |
+| [04 govern C.1/C.2](../04-worked-example/03-body/03-govern.md) | C.1 后加词源；C.2 `skip` 规则加标记 | 分级/个人信息有 N；level 1–4、skip、principal `local` |
 
 ## 3. 验收（可复跑）
 
@@ -66,7 +66,7 @@ grep -l "词源" deliverables/START.md deliverables/0*/README.md \
   deliverables/01-capability-status/capabilities/README.md \
   deliverables/02-engineering-playbook/recipes/*.md \
   deliverables/03-mechanism-reference/positions/*.md \
-  deliverables/04-ontology-in-production/body/*.md
+  deliverables/04-worked-example/body/*.md
 
 # 3) 没有「标准证明效果」的句子（命中都应是否定句/规则说明）
 grep -rn "ISO.*证明\|SHACL.*证明\|ODRL.*证明\|XACML.*证明\|GB/T.*证明" \

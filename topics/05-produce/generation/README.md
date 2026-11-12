@@ -9,7 +9,7 @@ evidence: []
 
 > 多数本体文献默认本体已经存在；真实项目第一步往往是「造一个」。这里问「来源怎么影响可信度、生成物怎么被消费」，不负责精化（[refinement](../refinement/README.md)）。
 >
-> **2026-11-12 对账**：本页四篇来源 OntoDoc / ReX-GG / Peeling / Evontree（及 SFE-O）均已撤回（[黑名单](../../../meta/excluded-sources.md)）。下列判断的数字/结论作**历史/机制参考，不作活证据**，原「已核」降 `推测`；「生成产出候选、可消费性未测」的问题意识保留，证据待新源。代码侧 semantica 消费路径（E-20）仍 admitted。
+> **2026-11-12 对账**：本页四篇来源 OntoDoc / ReX-GG / Peeling / Evontree（及 SFE-O）均已撤回（[黑名单](../../../meta/rules/excluded-sources.md)）。下列判断的数字/结论作**历史/机制参考，不作活证据**，原「已核」降 `推测`；「生成产出候选、可消费性未测」的问题意识保留，证据待新源。代码侧 semantica 消费路径（E-20）仍 admitted。
 
 ## 状态
 

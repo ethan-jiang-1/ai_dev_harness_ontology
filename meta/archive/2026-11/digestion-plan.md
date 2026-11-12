@@ -3,7 +3,7 @@ status: superseded
 updated: 2026-11-07
 ---
 
-> **历史快照（2026-11-08/09）**：已归档，不再维护。现行规则见 `meta/README.md`，当前状态见 `meta/state.md`。文中的计数与结论可能已被后续修复取代。
+> **历史快照（2026-11-08/09）**：已归档，不再维护。现行规则见 `meta/README.md`，当前状态见 `meta/status/state.md`。文中的计数与结论可能已被后续修复取代。
 
 
 # 论文消化计划：从摘要级卡片到工程级判断
@@ -111,7 +111,7 @@ updated: 2026-11-07
 
 **如果只想先拿到最硬的判断更新**：做这 6 篇——CAI、POLAR、Narrow & Deep、Ontology Catch、CASEL、SLB。它们覆盖 E-01/02/04/07/08/12/13 与「成本、度量」两条横切；E-03/05/06 与 05 生产仍要后续补。这是最小路线，不是最终覆盖。
 
-**执行时的加载纪律**：按 [loading](../../loading.md) 的按需加载。每篇只带该派 `README` + `claims.md` + `sources.md` + 该卡 + 原文；不要把全仓塞进上下文。卡片和 topics 的细节按需回查，不预读。
+**执行时的加载纪律**：按 [loading](../../rules/loading.md) 的按需加载。每篇只带该派 `README` + `claims.md` + `sources.md` + 该卡 + 原文；不要把全仓塞进上下文。卡片和 topics 的细节按需回查，不预读。
 
 ---
 
@@ -143,7 +143,7 @@ updated: 2026-11-07
 
 字段：`card.md` 动 `reading: 精读`、`provenance: 原文正文`；`digest.md` 用 `quality: A/B/C`、`based_on: card.md`、`claims: []`。不新增其他 frontmatter 字段。
 
-**`已消化` 的定义**（建议写进 [conventions](../../conventions.md)）：
+**`已消化` 的定义**（建议写进 [conventions](../../rules/conventions.md)）：
 
 > `card.md` 为 `精读` + `原文正文`，同目录有 `digest.md`，且至少有一个 topics 页面或 `claims.md` 被它改变；若判断未变，须在派 `sources.md` 写 `no delta` 及原因。只有卡、没有落点，不算已消化。
 
@@ -258,7 +258,7 @@ Grid Agents、OntoDoc；CASTON；Peeling / Evontree / SFE-O / ReX-GG 作 L1 集�
 
 ## 8. 质量门与反幻觉
 
-每篇的完成检查（建议并入 [checklist](../../checklist.md)）：
+每篇的完成检查（建议并入 [checklist](../../rules/checklist.md)）：
 
 - 每个数字有页码/表号；摘要数字标 `摘要`，正文核对后改 `正文`。
 - 作者自述 vs 读者推断分开；推断句标 `推测`。

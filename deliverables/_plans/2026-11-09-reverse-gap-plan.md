@@ -39,9 +39,9 @@ scope: deliverable-gap
 
 ## 1. 扫描口径
 
-1. **起点是交付物，不是 manifest。** 按 [meta/loading](../../meta/loading.md#从交付物倒查反向加载) 的四条反向链，逐份看「这句话要点到哪条 E / 哪张表 / 哪段代码」。
+1. **起点是交付物，不是 manifest。** 按 [meta/loading](../../meta/rules/loading.md#从交付物倒查反向加载) 的四条反向链，逐份看「这句话要点到哪条 E / 哪张表 / 哪段代码」。
 2. **检查四件事**：这句话有没有 E；E 有几个独立来源；这个数能不能指到 digest 的表/页或代码锚；这一页有没有可判定的 stop。
-3. **计数以台账为准**：E/Q/C 看 [conclusions](../../topics/conclusions.md)，L 看各派 `claims.md`，来源看 [manifest](../../src/papers/manifest.md) 与 [state](../../meta/state.md)，自检看 `check_repo.py`。
+3. **计数以台账为准**：E/Q/C 看 [conclusions](../../topics/conclusions.md)，L 看各派 `claims.md`，来源看 [manifest](../../src/papers/manifest.md) 与 [state](../../meta/status/state.md)，自检看 `check_repo.py`。
 4. **不把「未测」算成缺口。** `unknown` 是合法状态；缺口的定义是「没写找过哪里」，不是「没有结论」。
 5. **只认对象，不认篇幅。** 上游交出「一张表的一格 / 一个 `file:symbol` / 一个反例 / 一个带标签的样本」，比再写 3,000 字有用。
 
@@ -66,7 +66,7 @@ scope: deliverable-gap
 | [01 现状](../01-capability-status/README.md) | 能读 | A/B/C/D 矩阵 14 行 + E1–E9 verdict | **主体是 6 个 300–1,200 字的摘要页**，把地图表又说了一遍；9 条期待没有一条 `supported`（无限定） | G5 / G7 |
 | [02 工程](../02-engineering-playbook/README.md) | 能照着做 | 13 条 recipe 的十字段 + 13 行停线表 | 停线无出处；`offline-and-obda` 5,267 字只引 1 条 E、`ledger` 4,223 字引 1 条、`interfaces` 3,751 字引 1 条 | G3 / G7 |
 | [03 机制](../03-mechanism-reference/README.md) | 能查 | 六张位置卡（8 字段）+ E-20 代码核对 | 承重墙 M1/M2 无测量；尺子错配（C-03）与覆盖率矩阵（06-L15）都是推测/设计 | G1 / G4 |
-| [04 落地](../04-ontology-in-production/README.md) | 能走流程 | E-21/E-22 + 「三条 query 路线不排序」 | **build 章 1,525 字、0 条 E**，全段是 `signal`；「可消费性」没有任何下游测量（05-L7） | G2 / G5 |
+| [04 落地](../04-worked-example/README.md) | 能走流程 | E-21/E-22 + 「三条 query 路线不排序」 | **build 章 1,525 字、0 条 E**，全段是 `signal`；「可消费性」没有任何下游测量（05-L7） | G2 / G5 |
 
 **读法**：01 是「排序没有深度」，02 是「操作没有出处」，03 是「依据没有对照」，04 是「流程没有证据」。四份各有各的薄法，但共用同一批缺口。
 
@@ -188,7 +188,7 @@ scope: deliverable-gap
 2. S2 必须独立：同作者、同数据、同实验室的后续论文不算第二来源。
 3. LB 必须有标签定义；没有定义的「人工看了觉得是误拦」不算标签。
 4. **不设外部资产前置**：任何需要具名客户、真实日志、人价的订单都不下（[ADR 0007](../../adr/0007-no-external-asset-gate.md)）。
-5. 所有订单的产出回到 `topics/` 或 `src/`；**交付物只引 E**（[checklist](../../meta/checklist.md) §3）。
+5. 所有订单的产出回到 `topics/` 或 `src/`；**交付物只引 E**（[checklist](../../meta/rules/checklist.md) §3）。
 
 ## 8. 工作包
 
@@ -260,7 +260,7 @@ scope: deliverable-gap
 
 - 冷读：一个没读过 `topics/` 的人，能否按四份的加载集走到「够判断」；记时间与卡点。
 - 脚本：建议给 `check_repo.py` 加三条只读检查（附录 A），先以 warning 起步，连续两轮 0 误报再升 error。
-- 回写：`meta/state.md` 的交付物行、各派 frontier 的订单状态。
+- 回写：`meta/status/state.md` 的交付物行、各派 frontier 的订单状态。
 
 ## 9. 顺序（以及为什么）
 
@@ -295,7 +295,7 @@ scope: deliverable-gap
 - [ ] WP6：≥2.4k 字且 ≤1 条 E 的页从 8 降到 ≤3；>1.5k 字 0 条 E 的正文页从 3 降到 0；索引页从 11 降到 ≤8；01 主体页数下降且无重复。
 - [ ] 交付物引用 `L-xx` = 0。
 - [ ] 冷读通过：10 分钟能指出「先做什么、量什么、什么时候停」。
-- [ ] `python3 meta/tools/check_repo.py` 通过；`meta/state.md` 更新。
+- [ ] `python3 meta/tools/check_repo.py` 通过；`meta/status/state.md` 更新。
 
 ## 12. 三天动作
 
@@ -324,5 +324,5 @@ scope: deliverable-gap
 | 计划 | 管什么 | 不管什么 |
 |---|---|---|
 | [01-capability-status](./01-capability-status.md) | 01 的 E1–E9 期待 → 数据表 → verdict | 02/03/04 的密度；停线出处 |
-| [04-ontology-in-production](./04-ontology-in-production.md) | 04 的 intake、scope、新鲜度、2 条新 E | 01/02/03；旗舰三件 |
+| [04-worked-example](./04-worked-example.md) | 04 的 intake、scope、新鲜度、2 条新 E | 01/02/03；旗舰三件 |
 | **本计划** | 四份交付物的密度、旗舰三件、上游订单 | 具体论文 intake（归 04 计划）；E1–E9 的 verdict（归 01 计划） |

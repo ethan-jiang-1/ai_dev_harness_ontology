@@ -16,7 +16,7 @@ scope: wiring
 
 | 步 | 做什么 | 落点 | 验收 |
 |---|---|---|---|
-| 0 | ADR 0009 定案：方案 A（O 只作地址，主句仍落 E） | [ADR 0009](../../adr/0009-object-layer.md)、[checklist](../../meta/checklist.md) §3、[loading](../../meta/loading.md) | 三处规则一致；O 必须挂 E |
+| 0 | ADR 0009 定案：方案 A（O 只作地址，主句仍落 E） | [ADR 0009](../../adr/0009-object-layer.md)、[checklist](../../meta/rules/checklist.md) §3、[loading](../../meta/rules/loading.md) | 三处规则一致；O 必须挂 E |
 | 1 | 02 §5.1 的 13 行停线加 `出处` + `量不出时` 两列 | [02 §5.1](../02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺) | 13/13 有出处；≥4 行挂 E/公式；≥2 行标 gap/工程建议 |
 | 2 | 03 boundaries 加 12 条反例表（带数 + 条件 + O-R） | [03 boundaries](../03-mechanism-reference/05-evidence/02-boundaries.md) | 12 条带数；每条有「条件下不成立」 |
 | 3 | 03 execution-forms 的代码核对表加 `O` 列；补 OPA 行；Qlever 标「无代码锚」 | [03 execution-forms](../03-mechanism-reference/04-across-positions/02-execution-forms.md) | 5 行有 O-C；「不保证什么」可点开 |
@@ -46,7 +46,7 @@ scope: wiring
 
 ## 4. 执行记录（2026-11-10）
 
-- **0 ADR**：0009 状态改为**接受（方案 A）**；[checklist](../../meta/checklist.md) §3、[loading](../../meta/loading.md) 规则 1、[objects.md](../../topics/objects.md) 头部三处同步。
+- **0 ADR**：0009 状态改为**接受（方案 A）**；[checklist](../../meta/rules/checklist.md) §3、[loading](../../meta/rules/loading.md) 规则 1、[objects.md](../../topics/objects.md) 头部三处同步。
 - **1 M**：[02 §5.1](../02-engineering-playbook/02-sections/05-acceptance.md#51-验收与-stop按机制选尺) 13 行 × 7 列；13/13 有出处；11 行挂 E/公式（5 纯 + 6 混合）；2 行 `工程建议 / gap`（R0、commit）。
 - **2 R**：[boundaries.md §0](../03-mechanism-reference/05-evidence/02-boundaries.md#0-反例集r-table) 12 条；每条带数、条件、`O-Rxx`；B1–B15 原表保留，B/R 分工写在页首。
 - **3 X**：[execution-forms §3](../03-mechanism-reference/04-across-positions/02-execution-forms.md#3-五个项目的代码级核对) 5 行 × 6 列（加 `O` 列）；补 OPA；Qlever 标「无代码锚」。
@@ -56,4 +56,4 @@ scope: wiring
   - 路径 C：02「read-path」→ `O-T09` → `O-C03` → trustgraph digest §6，3 跳，fail-open 可核。
   - 卡点 0 断链；1 个误读风险——O 编号是地址、不是结论，已在 M-table 脚注写明；交付物无 `L-xx` 引用。
 
-**验收**：见 §2，全部勾选由 [state](../../meta/state.md) 与 `check_repo` 输出背书。
+**验收**：见 §2，全部勾选由 [state](../../meta/status/state.md) 与 `check_repo` 输出背书。

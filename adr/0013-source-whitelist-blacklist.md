@@ -12,7 +12,7 @@ updated: 2026-11-12
 ## 决策
 
 1. **白名单不另设文件**：= `src/` 的 admitted 卡集合，由准入门 + `check_repo` 强制；视图走 manifest / src 台账 / trunk。
-2. **黑名单设常设权威**：[meta/excluded-sources.md](../meta/excluded-sources.md) 是“禁读/禁引”的唯一现行清单；purge 审计降为历史明细（仿 state.md/state-log 的权威/快照分工）。新增剔除先记黑名单，再留审计明细。
+2. **黑名单设常设权威**：[meta/rules/excluded-sources.md](../meta/rules/excluded-sources.md) 是“禁读/禁引”的唯一现行清单；purge 审计降为历史明细（仿 state.md/state-log 的权威/快照分工）。新增剔除先记黑名单，再留审计明细。
 3. **查黑名单接进流程**：AGENTS 素材准入节与修复回路第 3 步、topic 协议入档判据、checklist §0.1 各加“采/引前先查黑名单，命中不读不引不入库”。门管入库，黑名单管复见。
 4. **黑名单不是永久封杀**：源后来补到过门证据可按 CHARTER §4 复审移出；`signal` 不进黑名单（它只是不够格入库，仍可作 frontier 线索）。
 

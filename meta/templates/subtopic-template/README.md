@@ -30,5 +30,5 @@
 - run 不直接改 README；先审 run，再把结论写进 `findings.md` / `claims.md`。
 - 每个 run 必须带：prompt 路径、模型、输入卡片、改变了哪条 claim、遗留问题。
 - 没有 prompt 的子主题，先不建 `runs/`；没有内容，先不建 `findings/`、`mechanism.md`。不预建空目录。
-- 子主题成立条件见 [ADR 0003](../../adr/0003-subtopics-and-source-types.md)。
+- 子主题成立条件见 [ADR 0003](../../../adr/0003-subtopics-and-source-types.md)。
 - 编号 `F1` / `G1` / `N1` 是子主题局部编号；跨页引用带路径。

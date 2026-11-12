@@ -12,7 +12,7 @@ It checks the things a human checklist kept missing:
   * frontmatter enums are legal
   * E/Q/C/L ids are defined before use
   * paper directories, manifest rows and card fields agree
-  * meta/state.md's file count agrees with the filesystem
+  * meta/status/state.md's file count agrees with the filesystem
 
 It deliberately does not judge prose or evidence quality.
 """
@@ -262,6 +262,16 @@ def main() -> int:
         if scalar(card, "execution_form") in EXECUTION_FORM:
             form_counts[scalar(card, "execution_form")] += 1
 
+    # 4c. every deliverable has a SCOPE.md positioning contract (ADR 0014)
+    deliv_dir = os.path.join(ROOT, "deliverables")
+    for d in sorted(os.listdir(deliv_dir)):
+        base = os.path.join(deliv_dir, d)
+        if os.path.isdir(base) and re.match(r"^0\d-", d):
+            if not os.path.exists(os.path.join(base, "SCOPE.md")):
+                errors.append(f"missing SCOPE.md: deliverables/{d}")
+            if not os.path.exists(os.path.join(base, "README.md")):
+                errors.append(f"missing README.md: deliverables/{d}")
+
     # 5. manifest coverage
     manifest = os.path.join(papers_dir, "manifest.md")
     if os.path.exists(manifest):
@@ -332,12 +342,12 @@ def main() -> int:
         warnings.append(f"conclusion levels changed: {dict(counts)} (meta/state may need update)")
 
     # 7b. state.md is the single authoritative count; keep it equal to the tree
-    state_path = os.path.join(ROOT, "meta/state.md")
+    state_path = os.path.join(ROOT, "meta/status/state.md")
     state_text = texts.get(state_path, "")
     if os.path.exists(state_path):
         state_match = re.search(r"\|\s*最后自检\s*\|[^\n]*?(\d+)\s*个\s*md", state_text)
         if not state_match:
-            warnings.append("meta/state.md has no '最后自检 ... <N> 个 md' row")
+            warnings.append("meta/status/state.md has no '最后自检 ... <N> 个 md' row")
         elif int(state_match.group(1)) != len(files):
             errors.append(f"meta/state md count {state_match.group(1)} != actual {len(files)}")
 
@@ -352,7 +362,7 @@ def main() -> int:
         ):
             m = re.search(pattern, state_text)
             if not m:
-                warnings.append(f"meta/state.md has no {label} count row")
+                warnings.append(f"meta/status/state.md has no {label} count row")
             elif int(m.group(1)) != actual:
                 errors.append(f"meta/state {label} count {m.group(1)} != actual {actual}")
 
@@ -361,7 +371,7 @@ def main() -> int:
             state_text,
         )
         if not forms:
-            warnings.append("meta/state.md has no execution_form distribution row")
+            warnings.append("meta/status/state.md has no execution_form distribution row")
         else:
             got = dict(zip(("engine", "compiled", "context", "label", "none"), map(int, forms.groups())))
             for key, value in got.items():
@@ -435,7 +445,7 @@ def main() -> int:
 
         state_objects = re.search(r"\|\s*硬对象\s*\|\s*(\d+)", state_text)
         if not state_objects:
-            warnings.append("meta/state.md has no 硬对象 count row")
+            warnings.append("meta/status/state.md has no 硬对象 count row")
         elif int(state_objects.group(1)) != len(object_ids):
             errors.append(f"meta/state object count {state_objects.group(1)} != actual {len(object_ids)}")
 

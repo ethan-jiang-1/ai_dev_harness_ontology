@@ -25,7 +25,7 @@ scope: 标准基线、术语、判断回改
 ### S0 定调（本轮）
 
 - `adr/0011`：源位阶与术语基线规则。
-- `meta/conventions.md`：`standing` 字段 + 三条规矩。
+- `meta/rules/conventions.md`：`standing` 字段 + 三条规矩。
 - 产出：本计划。
 
 **验收**：规则可在 `conventions` 一处查到；标准卡有 `standing`。
@@ -50,7 +50,7 @@ GB/T 42131-2022、FIBO、HL7 FHIR、GS1 EPCIS、IOF。
 
 ### S3 术语差异表（30 词）
 
-对 `GLOSSARY.md` 每个词给一行（v0 十词已落 [term-baseline.md](../../meta/term-baseline.md)；本表是工作稿，不新增 E/L）：
+对 `GLOSSARY.md` 每个词给一行（v0 十词已落 [term-baseline.md](../../meta/status/term-baseline.md)；本表是工作稿，不新增 E/L）：
 
 | 词 | 我们的定义 | 标准锚 | 判定 | 动作 |
 |---|---|---|---|---|
