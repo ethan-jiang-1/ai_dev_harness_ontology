@@ -122,8 +122,8 @@ SFE-O 与 Ontology Catch 已移出；checker 的 catch/FA 不再引用（W 表�
 | `ontology_version` | [ontology.ttl](../05-example/ontology.ttl) 的 `owl:versionInfo` | 0.1.0 |
 | `tag_version` | `ontology.ttl` 的 `:tagVersion` | fixture 约定；不是独立 tag 文件 |
 | `contract_version` | A.1 契约表 | fixture 约定 0.1.0；没有独立文件 |
-| `snapshot` | `example/ 2026-11-10` | 日期标签，不是内容 hash；真 replay 需 hash |
-| `parser` | 环境 | 本次未记版本；跨版本重跑可能不同 |
+| `snapshot` | `example/ 2026-11-10` | 日期标签，不是内容 hash。**replay 必填 `content_hash`**（三个 tt 文件的 sha256，拼排序后取 hash） |
+| `parser` | 环境 | **replay 必填 `parser_version`**（`rdflib==x.y.z` / `pyshacl==x.y.z`）；同一 shapes 在不同 validator 版本上结果可能不同 |
 
 三关是记录，不是产物属性；`targeted=0` 不是 pass。
 
@@ -131,7 +131,7 @@ SFE-O 与 Ontology Catch 已移出；checker 的 catch/FA 不再引用（W 表�
 
 **交接**：`build_report` 的 `targeted/violations`→B 的先决条件；`query_id`→C.4；`policy_version`→A.5。
 
-**停**：`violations` ≠ 已声明坏样本数（2）或落在已知清单外；`targeted=0`（shape 无目标）当 pass；`answer` 0 行不分因；无契约/版本/来源；下游不加载。
+**停**：缺 `content_hash` 或 `parser_version` 时**不得宣称「可 replay」**（只能写「同环境近似复现」）；`violations` ≠ 已声明坏样本数（2）或落在已知清单外；`targeted=0`（shape 无目标）当 pass；`answer` 0 行不分因；无契约/版本/来源；下游不加载。
 
 ## A.6 证据与边界
 
@@ -140,5 +140,5 @@ SFE-O 与 Ontology Catch 已移出；checker 的 catch/FA 不再引用（W 表�
 - **能加载 ≠ 可用**：`parsed=true` 只到语法；S4（endpoint 假阳性）、S6（无 target 静默）都可能在「加载成功」后发生。
 - **`violations=2` ≠ 干净**：只证明两个已声明坏样本被抓住，不证明干净数据无误报。
 - **三关过 ≠ 生产**：没有真数据误报率、延迟、权限、规模、版本回滚；fixture 是合成 5 表/13 列。
-- **版本不可精确 replay**：`snapshot` 是日期标签，`tag_version`/`contract_version` 是 fixture 约定；没有内容 hash 和 parser 版本。要 replay，先把这三件事补齐。
+- **版本不可精确 replay（当前）**：`snapshot` 是日期标签、`parser` 未记版本、`tag_version`/`contract_version` 是 fixture 约定。**要 replay，先补三件**：① 三份 TTL 的 `content_hash`；② `parser_version`（validator 版本）；③ 契约/标签版本独立文件（不是约定）。补齐前，只能说「同环境近似复现」。
 
