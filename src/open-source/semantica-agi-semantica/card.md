@@ -78,5 +78,5 @@ graph-native context / accountable AI 平台；本体模块负责生成 OWL、�
 - [x] pin commit（39cf721…）
 - [x] 定位本体生成与校验入口
 - [ ] 跑 `run_shacl_validation` 最小示例
-- [ ] 写 `code-map.md`
-- [ ] 写 `digest.md`，回链 `topics/03-knowledge` 与 `02-judgment/checker`
+- [x] 已完成（2026-11-12 核对：文件已存在）
+- [x] 已完成（2026-11-12 核对：文件已存在），回链 `topics/03-knowledge` 与 `02-judgment/checker`

@@ -3,7 +3,7 @@ status: draft
 updated: 2026-11-09
 quality: B
 based_on: card.md
-claims: []
+claims: [E-22]
 ---
 
 # Glyph：给 340 万列打敏感性标签——标签层能到哪，执行层还没到

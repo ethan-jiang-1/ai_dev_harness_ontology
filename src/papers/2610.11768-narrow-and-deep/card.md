@@ -8,7 +8,6 @@ arxiv: 2610.11768
 title: Narrow and Deep: An Ontology Tower as the Knowledge of an LLM Agent for an Industrial Equipment System
 authors: Younghwan Joo, Sung-il Kim（韩国能源研究院）
 pdf: 2610.11768-narrow-and-deep.pdf
-direction: 4
 home: topics/03-knowledge
 subtopic: projection
 also_supports: []

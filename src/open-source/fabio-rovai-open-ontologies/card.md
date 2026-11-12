@@ -78,5 +78,5 @@ Rust 实现的本体工程工具链：SHACL 校验、变更影响/闭包差分�
 - [x] pin commit（375fbc4…）
 - [x] 定位 SHACL 与变更模块
 - [ ] 跑 `cargo test w3c_shacl_conformance`（或单测）
-- [ ] 写 `code-map.md`
-- [ ] 写 `digest.md`，回链 `topics/05-produce/lifecycle` 与 `01-constraint/commit-gate`
+- [x] 已完成（2026-11-12 核对：文件已存在）
+- [x] 已完成（2026-11-12 核对：文件已存在），回链 `topics/05-produce/lifecycle` 与 `01-constraint/commit-gate`

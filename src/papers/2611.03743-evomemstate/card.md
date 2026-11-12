@@ -8,7 +8,6 @@ arxiv: 2611.03743
 title: EvoMemState: Evolving Memory State for Personal Agents
 authors: Zhishang Xiang, Yunbo Tang, Zhongqiao Liu, et al.（厦门大学等）
 pdf: 2611.03743-evomemstate.pdf
-direction: 4
 home: topics/04-state
 subtopic: memory
 also_supports: []

@@ -8,7 +8,6 @@ arxiv: 2611.02395
 title: Solver-Like Behavior in Large Language Models as Formalizers
 authors: Rikhil Amonkar, Stuti Mohan, Kevin Nguyen, Ceyhun Efe Kayan, Ronan Le Bras, Li Zhang（Drexel / AI2）
 pdf: 2611.02395-solver-like-behavior.pdf
-direction: 3
 home: topics/06-measure
 subtopic: trace
 also_supports: []

@@ -4,7 +4,7 @@ updated: 2026-11-09
 quality: B
 based_on: card.md
 commit: 39cf7216d2326b012436efebf8a227e82f37dd3b
-claims: []
+claims: [E-20]
 ---
 
 # semantica：本体先被编译成 SHACL，再由 pyshacl 执行——「执行」发生在约束派生之后

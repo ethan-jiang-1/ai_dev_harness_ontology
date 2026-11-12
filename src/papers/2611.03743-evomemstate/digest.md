@@ -3,7 +3,7 @@ status: draft
 updated: 2026-11-08
 quality: A
 based_on: card.md
-claims: [04-L1]
+claims: [E-17]
 ---
 
 # EvoMemState：记忆是状态，不是事实集合

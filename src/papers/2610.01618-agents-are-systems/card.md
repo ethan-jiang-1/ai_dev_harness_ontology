@@ -8,7 +8,6 @@ arxiv: 2610.01618
 title: "Agents Are Systems, Not Models: Rethinking Agentic Evaluation"
 authors: Luis Wiedmann, Leander Girrbach, Cordelia Schmid, Zeynep Akata
 pdf: 2610.01618-agents-are-systems.pdf
-direction: 5
 home: topics/06-measure
 subtopic: metrics
 also_supports: []

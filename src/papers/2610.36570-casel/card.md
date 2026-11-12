@@ -8,7 +8,6 @@ arxiv: 2610.36570
 title: "CASEL: Consequence-Aware Selective Execution for Reliable Long-Horizon Tool-Using Agents"
 authors: Yanyan Zhang, Fei Shen, Ting Yan, Hao Zhang
 pdf: 2610.36570-casel.pdf
-direction: 5
 home: topics/01-constraint
 subtopic: action-gate
 also_supports: []

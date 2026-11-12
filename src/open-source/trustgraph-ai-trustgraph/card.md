@@ -80,5 +80,5 @@ AI governance platform for agents；本体有两个用途——抽取阶段的�
 - [x] pin commit（184f622…）
 - [x] 定位本体加载与调用点
 - [ ] 跑 `tests/unit/test_extract/test_ontology` 与 `test_policy`
-- [ ] 写 `code-map.md`
-- [ ] 写 `digest.md`，回链 `topics/01-constraint`
+- [x] 已完成（2026-11-12 核对：文件已存在）
+- [x] 已完成（2026-11-12 核对：文件已存在），回链 `topics/01-constraint`

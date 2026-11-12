@@ -14,7 +14,6 @@ arxiv: 2609.10430
 title: Glyph - A Multi-Strategy Agentic System for Column Description and Sensitivity-Ontology Tagging of Enterprise Data Catalogs
 authors: Kostia Kudriavtsev, Parvez Rafi, Sha Sundaram
 pdf: 2609.10430-glyph.pdf
-direction: 1
 home: topics/01-constraint
 subtopic: access-control
 also_supports: []

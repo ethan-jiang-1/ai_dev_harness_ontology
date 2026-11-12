@@ -14,7 +14,6 @@ arxiv: 2607.28082
 title: GGC - Selective Query Correction for Reliable Text-to-SPARQL Generation
 authors: Yang Ziyi, Thanh-Son Nguyen, Nguyen Tuan Anh, Lihui Chen
 pdf: 2607.28082-ggc.pdf
-direction: 3
 home: topics/03-knowledge
 subtopic: querying
 also_supports: []

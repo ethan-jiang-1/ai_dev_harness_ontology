@@ -8,7 +8,6 @@ arxiv: 2610.40482
 title: "FIRME: Registry-Anchored Memory Graphs for Evolving, Heterogeneous Investor Knowledge"
 authors: Yunbai Zhang, Yunyi Gao, Han-Tai Shiao（Vanguard）
 pdf: 2610.40482-firme.pdf
-direction: 4
 home: topics/04-state
 subtopic: memory
 also_supports: ['identity']

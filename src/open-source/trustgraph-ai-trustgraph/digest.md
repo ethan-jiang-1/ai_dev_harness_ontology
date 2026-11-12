@@ -4,7 +4,7 @@ updated: 2026-11-09
 quality: B
 based_on: card.md
 commit: 184f6228e9ebfa0e54f87e0e66f190549dfbd162
-claims: [01-L13]
+claims: [E-20, E-23]
 ---
 
 # trustgraph：本体在真实 agent 平台里以「读路径策略过滤 + 抽取 schema」被执行
