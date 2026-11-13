@@ -39,6 +39,8 @@ SEAM = {"action-gate", "evidence", "checker", "commit-gate", "memory", "determin
 EXECUTION_FORM = {"engine", "compiled", "context", "label", "none", "unknown"}
 EVIDENCE_ROLE = {"execution-test", "mechanism-only", "harness-evidence", "boundary-ruler", "unclear"}
 ADMISSION = {"admitted", "admitted (probation)", "signal", "excluded"}
+STANDING = {"normative", "informative"}
+PLAN_STATUS = {"active", "completed", "abandoned"}
 FRESHNESS_CUTOFF = "2026-06-01"
 
 RAW_PAPER = re.compile(r"^src/papers/[^/]+/(paper|references|appendix)\.md$")
@@ -166,6 +168,8 @@ def main() -> int:
             ("execution_form", EXECUTION_FORM),
             ("evidence_role", EVIDENCE_ROLE),
             ("admission", ADMISSION),
+            ("standing", STANDING),
+            ("plan_status", PLAN_STATUS),
         ):
             value = scalar(fields, key)
             if value and value not in allowed:
@@ -173,11 +177,30 @@ def main() -> int:
         if (
             "updated" not in fields
             and name not in SKIP_FRONTMATTER
-            and not name.startswith("src/_templates/")
+            and not name.startswith("meta/templates/")
             and not RAW_PAPER.match(name)
             and not name.startswith("meta/tools/")
         ):
             warnings.append(f"no updated: {name}")
+
+    # 2b. plan_status / workpaper hygiene (ADR 0016)
+    active_plans = []
+    for path, text in texts.items():
+        name = rel(path)
+        if re.match(r"^meta/plans/(?!README\.md$)[^/]+\.md$", name):
+            fields, _ = parse_frontmatter(text)
+            if not fields or not scalar(fields, "plan_status"):
+                errors.append(f"plan missing plan_status: {name}")
+            if fields and scalar(fields, "status"):
+                errors.append(f"plan must use plan_status instead of status: {name}")
+            if fields and scalar(fields, "plan_status") == "active":
+                active_plans.append(name)
+        elif re.match(r"^deliverables/_workpapers/[^/]+\.md$", name):
+            fields, _ = parse_frontmatter(text)
+            if fields and scalar(fields, "plan_status"):
+                errors.append(f"workpaper must not carry plan_status: {name}")
+    if len(active_plans) > 1:
+        errors.append(f"multiple active plans in meta/plans/: {active_plans}")
 
     # 3. id definitions
     conclusions = texts.get(os.path.join(ROOT, "topics/conclusions.md"), "")
@@ -292,7 +315,7 @@ def main() -> int:
     deliv_dir = os.path.join(ROOT, "deliverables")
     for d in sorted(os.listdir(deliv_dir)):
         base = os.path.join(deliv_dir, d)
-        if os.path.isdir(base) and re.match(r"^0\d-", d):
+        if os.path.isdir(base) and re.match(r"^\d{2}-", d):
             if not os.path.exists(os.path.join(base, "SCOPE.md")):
                 errors.append(f"missing SCOPE.md: deliverables/{d}")
             if not os.path.exists(os.path.join(base, "README.md")):
@@ -366,6 +389,28 @@ def main() -> int:
                     if len(cells) > 4 and seam not in cells[4]:
                         errors.append(f"README seam mismatch: {repo} card={seam} table={cells[4]!r}")
 
+    # 6c. src/web material cards gate fields (CHARTER §4)
+    web_dir = os.path.join(ROOT, "src/web")
+    for dirpath, _, filenames in os.walk(web_dir):
+        for fname in sorted(filenames):
+            if not fname.endswith(".card.md"):
+                continue
+            cpath = os.path.join(dirpath, fname)
+            card, _ = parse_frontmatter(open(cpath, encoding="utf-8").read())
+            if not card:
+                errors.append(f"missing frontmatter: {rel(cpath)}")
+                continue
+            adm = scalar(card, "admission")
+            if adm not in ADMISSION:
+                errors.append(f"invalid or missing admission {adm!r}: {rel(cpath)}")
+            elif adm in {"admitted", "admitted (probation)"}:
+                for key in ("gate_checked", "liveness", "provenance_type", "impact_evidence"):
+                    if not scalar(card, key):
+                        errors.append(f"missing {key} in admitted card: {rel(cpath)}")
+            standing = scalar(card, "standing")
+            if standing and standing not in {"normative", "informative"}:
+                errors.append(f"invalid standing {standing!r}: {rel(cpath)}")
+
     # 7. conclusion level counts (section based; rows do not repeat the level)
     counts = Counter()
     section = None
@@ -378,8 +423,6 @@ def main() -> int:
         if m and section in {"已核（一手原文摘要）", "已核（代码）", "推测（未核原文）", "存疑", "冲突"}:
             key = {"已核（一手原文摘要）": "已核", "已核（代码）": "已核", "推测（未核原文）": "推测"}.get(section, section)
             counts[key] += 1
-    if counts["已核"] != 19 or counts["推测"] != 4:
-        warnings.append(f"conclusion levels changed: {dict(counts)} (meta/state may need update)")
 
     # 7a. withdrawn conclusions must not carry weight for live rows (grades follow evidence)
     withdrawn = set()
@@ -439,6 +482,21 @@ def main() -> int:
                     errors.append(f"meta/state execution_form {key}={value} != actual {form_counts.get(key, 0)}")
             if sum(got.values()) != sum(form_counts.values()):
                 errors.append(f"meta/state execution_form total {sum(got.values())} != actual {sum(form_counts.values())}")
+
+        state_concl = re.search(
+            r"\|\s*结论\s*\|[^\n]*?(\d+)\s*已核原文\s*\+\s*(\d+)\s*已核代码\s*\+\s*(\d+)\s*推测[^\n]*?(\d+)\s*已撤回",
+            re.sub(r"\*", "", state_text),
+        )
+        if not state_concl:
+            warnings.append("meta/status/state.md has no parseable 结论 count row")
+        else:
+            st_orig, st_code, st_spec, st_withdrawn = map(int, state_concl.groups())
+            if counts["已核"] != st_orig + st_code or counts["推测"] != st_spec:
+                errors.append(
+                    f"meta/state conclusion counts ({st_orig}+{st_code} 已核, {st_spec} 推测) != actual {dict(counts)}"
+                )
+            if len(withdrawn) != st_withdrawn:
+                errors.append(f"meta/state withdrawn E count {st_withdrawn} != actual {len(withdrawn)}")
 
     # 9. object registry (topics/objects.md): warn-only
     objects_path = os.path.join(ROOT, "topics/objects.md")
@@ -508,6 +566,98 @@ def main() -> int:
             warnings.append("meta/status/state.md has no 硬对象 count row")
         elif int(state_objects.group(1)) != len(object_ids):
             errors.append(f"meta/state object count {state_objects.group(1)} != actual {len(object_ids)}")
+
+    # 10. fresh-agent hygiene: blacklist re-entry, dead src/ backtick paths, uncaveated withdrawn E-xx
+    excl_path = os.path.join(ROOT, "meta/rules/excluded-sources.md")
+    if os.path.exists(excl_path):
+        excl_ids = set(re.findall(r"^\|\s*(\d{4}\.\d{4,5})\b", open(excl_path, encoding="utf-8").read(), re.M))
+        for pdir in paper_dirs:
+            pid = pdir.split("-", 1)[0]
+            if pid in excl_ids:
+                errors.append(f"blacklisted paper dir present in src/papers/: {pdir}")
+
+    for path, text in texts.items():
+        name = rel(path)
+        if not (name.startswith("topics/") or name.startswith("deliverables/")):
+            continue
+        if "/_workpapers/" in name or "/_plans/" in name or "/runs/" in name:
+            continue
+        cleaned = strip_code(text)
+        for raw_target in re.findall(r"`(src/(?:papers|open-source|web)/[^`\s]+?)`", cleaned):
+            if any(ch in raw_target for ch in "{}*<>") or "..." in raw_target:
+                continue
+            target_path = raw_target.split("#", 1)[0].rstrip(".,;:)")
+            if not os.path.exists(os.path.join(ROOT, target_path)):
+                errors.append(f"dead src backtick path `{raw_target}` in {name}")
+
+    caveat_re = re.compile(
+        r"已撤回|撤回|withdrawn|作历史|历史|W-\d|移出|待新源|不再作|停用|停摆|不可用|降为|原锚|原\s*E-|原\s*O-|重找|清除|淘汰|黑名单|tombstone|excluded|未过"
+    )
+    withdrawn_l = set()
+    for path, text in texts.items():
+        if re.match(r"^topics/0[1-6]-[^/]+/claims\.md$", rel(path)):
+            for line in text.splitlines():
+                m = re.match(r"^\|\s*(0[1-6]-L\d+)\s*\|[^|]*\|\s*(withdrawn|已撤回)\b", line)
+                if m:
+                    withdrawn_l.add(m.group(1))
+
+    withdrawn_o = set()
+    obj_path = os.path.join(ROOT, "topics/objects.md")
+    if obj_path in texts:
+        for line in texts[obj_path].splitlines():
+            m = re.match(r"^\|\s*(O-[A-Z]\d{2})\s*\|\s*（已撤回）", line)
+            if m:
+                withdrawn_o.add(m.group(1))
+
+    for d in paper_dirs:
+        pcard = os.path.join(ROOT, "src/papers", d, "card.md")
+        if pcard in texts:
+            fm, _ = parse_frontmatter(texts[pcard])
+            for k in ("admission", "gate_checked", "impact_evidence", "liveness", "provenance_type"):
+                if not fm.get(k):
+                    errors.append(f"paper card missing {k}: src/papers/{d}/card.md")
+    for proj in oss_projects:
+        ocard = os.path.join(ROOT, "src/open-source", proj, "card.md")
+        if ocard in texts:
+            fm, _ = parse_frontmatter(texts[ocard])
+            for k in ("admission", "gate_checked", "impact_evidence", "liveness", "provenance_type"):
+                if not fm.get(k):
+                    errors.append(f"oss card missing {k}: src/open-source/{proj}/card.md")
+
+    skip_e_guard = {
+        "topics/conclusions.md",
+        "topics/evidence-anchors.md",
+        "topics/objects.md",
+        "meta/rules/excluded-sources.md",
+    }
+    for path, text in texts.items():
+        name = rel(path)
+        if name in skip_e_guard or re.match(r"^topics/0[1-6]-[^/]+/(claims|sources)\.md$", name):
+            continue
+        if any(s in name for s in ("/_workpapers/", "/_plans/", "/runs/", "/09-data/", "91-canonical.md", "05-evidence/01-ledger.md", "05-appendix")):
+            continue
+        is_active_scope = (
+            name in {"THESIS.md", "AGENTS.md", "README.md", "meta/workflow/loading.md"}
+            or name.startswith("topics/")
+            or name.startswith("deliverables/")
+        )
+        if not is_active_scope:
+            continue
+        for lineno, line in enumerate(text.splitlines(), 1):
+            hits = sorted(set(re.findall(r"\b(E-\d+)\b", line)) & withdrawn)
+            if hits and not caveat_re.search(line):
+                errors.append(f"uncaveated withdrawn {hits} in {name}:{lineno}")
+            hits_l = sorted(set(re.findall(r"\b(0[1-6]-L\d+)\b", line)) & withdrawn_l)
+            if hits_l and not caveat_re.search(line):
+                errors.append(f"uncaveated withdrawn {hits_l} in {name}:{lineno}")
+            if name.startswith("deliverables/") and withdrawn_o:
+                hits_o = sorted(set(re.findall(r"\b(O-[A-Z]\d{2})\b", line)) & withdrawn_o)
+                if hits_o and not caveat_re.search(line):
+                    errors.append(f"uncaveated withdrawn {hits_o} in {name}:{lineno}")
+            if os.path.exists(excl_path):
+                bad_ids = [pid for pid in sorted(excl_ids) if pid in line]
+                if bad_ids and not caveat_re.search(line):
+                    errors.append(f"uncaveated blacklisted id {bad_ids} in {name}:{lineno}")
 
     # 8. summary
     print(f"md files: {len(files)}  papers: {len(paper_dirs)}  open-source: {len(oss_projects)}")

@@ -141,4 +141,4 @@ NPV_do_nothing = 0
 4. **把模拟当部署。** CASEL 的数字有明确条件；Grid 移出（W-05），其数值不再引用。
 5. **把 build 当默认。** buy/do nothing 也是选项。
 
-**出处**：[06/feasibility](../../../topics/06-measure/feasibility/mechanism.md) · [E-08/E-12/E-13/E-14/E-15](../../../topics/conclusions.md)
+**出处**：[06/feasibility](../../../topics/06-measure/feasibility/mechanism.md) · [E-08/E-12/E-14/E-15（原 E-13 已撤回）](../../../topics/conclusions.md)

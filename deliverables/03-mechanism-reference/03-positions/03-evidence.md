@@ -92,6 +92,6 @@ OA-RAG 的实际做法：`DESCRIBE` 取 concept card，`ASK` 问 reasoner 是否
 ## 8. 上游指针
 
 - 机制：[evidence/mechanism](../../../topics/02-judgment/evidence/mechanism.md)
-- 判断：[02-judgment/README](../../../topics/02-judgment/README.md) · [conclusions](../../../topics/conclusions.md) E-03
+- 判断：[02-judgment/README](../../../topics/02-judgment/README.md) · [conclusions](../../../topics/conclusions.md) 原 E-03（已撤回，见 W-02）
 - 施工：[02 R4（recipes）](../../02-engineering-playbook/03-recipes/README.md) · [01 能力 4](../../01-capability-status/02-sections/02-map.md#22-一张表)
 - 长版论证：[附录 §3.4.3](../05-appendix-constraint-spectrum.md#343-evidence输出时的证据契约)

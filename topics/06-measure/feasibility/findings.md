@@ -48,7 +48,7 @@ updated: 2026-11-12
 - **数字/方向**：POLAR 约束收益随基线能力下降（六点描述性拟合，斜率 −0.76/−0.67/−0.31，不能当阈值）；N&D 投影增益不随容量上升（H2 单向检验 p=0.85，是「未检出」不是「证明无效应」）；9B 带投影 0.737 > 750B 不带 0.672（区间约 0.3 宽）。
 - **含义**：不能用一个「能力越强越有用/越没用」的曲线概括所有机制。
 - **等级**：`推测`（横切综合；POLAR 斜率已撤回作历史示例，N&D 零结果仍 admitted；「所有机制」是外推，E-19 也把这条列为推测）。
-- **来源**：[POLAR digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) §4.2；[N&D digest](../../../src/papers/2610.11768-narrow-and-deep/digest.md) §4；E-12/E-13。
+- **来源**：[POLAR digest（已移出）](../../../meta/audits/2026-11-11-source-purge.md#src-2610-08082) §4.2；[N&D digest](../../../src/papers/2610.11768-narrow-and-deep/digest.md) §4；E-12（原 E-13 已撤回）。
 
 ## F5 · 护栏 NPV 的分母是 do-nothing
 

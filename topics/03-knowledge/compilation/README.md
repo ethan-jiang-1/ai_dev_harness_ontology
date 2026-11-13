@@ -1,12 +1,14 @@
 ---
 status: draft
-updated: 2026-11-08
+updated: 2026-11-13
 rq: [RQ1, RQ5]
 evidence: [E-01, E-08, E-14]
 ---
 
 # 编译：把检索前的整理当成供给层
 
+> **2026-11-11 素材重置注**：本页两条线索中 CAI（E-01/E-08/E-14）为 `admitted`；**Grid Agents（2611.03534，03-L9/03-L11）因厂商自证未过准入门已移出**（[审计](../../../meta/audits/2026-11-11-source-purge.md#src-2611-03534)），受监管支线判断（F5/F8–F11）同步降为`推测（源已撤回）`，仅作工程结构参考，不作现役实证。
+>
 > **薄页（<2 篇独立来源）**：本页判断只作候选/边界，**不承担稳定判断**；引用时必须带「单来源」限定。
 
 > 在检索之前把源文档加工成带类型/版本/lineage 的工件；这里问「编译值不值、在什么条件下省预算」，不负责投影成文（[projection](../projection/README.md)）。
@@ -28,9 +30,9 @@ evidence: [E-01, E-08, E-14]
 - **省 token 可能用轮次/时延换。** 配对子集时延约 3×（仅 7 题）；时延硬约束时不要买。`已核`
 - **决策门的结果不能和 hit/miss 对读。** E3 arm mean 有证据 −52%、无证据 −30%；140→30 s 是 gate arm 的均值，不是未编译基线。`已核`
 - **盈亏平衡先看 miss，不看 hit。** miss 端 ±1.5pp 让 `p_h*` 在 0.4–3.6% 间移动，hit 端只动 2.0–2.1%（解析推导）。`已核`
-- **「编译」不是一种东西。** CAI 编译证据（claim+span），无 solver；Grid 编译法规知识系统 + solver。两者只共有「证据可追溯」；「数字不靠模型」只属于 Grid。`已核`
-- **Grid 对最强 agent baseline 只有 0.5pp 优势。** Codex CLI 99.4%/21.6 s、Power-Agent 99.4%/16.8 s；Grid 只高 0.5pp、快 2.9–7.7 s，大差距只在 vs base model（40.8/28.3）。`已核`（数字）；「工具/solver 贡献」未拆分，`推测`。
-- **受监管支线的可审计性靠契约，不靠模型。** 每条法规结论带 citation、不能引用就拒答；study 带 state_hash/solver_version 才能判 strict pass；记忆与决策点需人批准/签核。客户指标（周期/工时/审计发现数）尚无基线。`已核`（契约）/`推测`（客户指标）
+- **「编译」不是一种东西（待重证）。** CAI 编译证据（claim+span），无 solver；原 Grid 线编译法规知识系统 + solver，但 2611.03534 已移出，`03-L9` 已撤回。`推测`（原 Grid 源已撤回）
+- **Grid 对最强 agent baseline 只有 0.5pp 优势（原源已撤回）。** 原技术报告数字仅作历史/单报告参考，不再作现役定锚。`推测`（源已撤回）
+- **受监管支线的可审计性契约（工程配方，待新源）。** citation+拒答、state_hash/study_type/solver_version 与记忆/决策点签核源自已移出的 Grid 报告，保留为架构配方参考，不作实证；客户指标亦无基线。`推测`（源已撤回）
 
 ## 文件地图
 
@@ -44,7 +46,7 @@ evidence: [E-01, E-08, E-14]
 | 受监管支线的接口/stop/拒答/客户指标 | [F8](./findings/regulatory.md#f8) · [F9](./findings/regulatory.md#f9) · [F10](./findings/regulatory.md#f10) · [F11](./findings/regulatory.md#f11) |
 | 还缺什么、下一步看什么 | [frontier](./frontier.md) |
 | CAI 原卡 | `src/papers/2610.41172-context-as-infrastructure/card.md` · [digest](../../../src/papers/2610.41172-context-as-infrastructure/digest.md) |
-| Grid 原卡 | `src/papers/2611.03534-power-system-agentic/card.md` · [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2611-03534) |
+| Grid 原卡（已移出） | [审计 tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2611-03534)（原 2611.03534 已移出） |
 
 ## 边界
 

@@ -15,15 +15,15 @@ updated: 2026-11-09
 | [OntoAct digest](../../meta/audits/2026-11-11-source-purge.md#src-2610-21983) | preprint | 精读 | 01-L3 / 01-L11 / 01-L12 / 01-L15 | [card](../../meta/audits/2026-11-11-source-purge.md#src-2610-21983)（provenance）；三值条件 + 假设 revision；Tacit-FLE 三个规模；elimination 上 IfR 匹配/超过 |
 | [多 agent 差分诊断 digest](../../meta/audits/2026-11-11-source-purge.md#src-2610-36325) | preprint | 精读 | 01-L3 / 01-L15 | [card](../../meta/audits/2026-11-11-source-purge.md#src-2610-36325)（provenance）；Q4DX 单基准；curated KG 未覆盖诊断恒 0 |
 | [CASEL digest](../../src/papers/2610.36570-casel/digest.md) | paper | 精读 | 01-L4, 01-L5, 01-L8, 01-L9, 01-L10 | [card](../../src/papers/2610.36570-casel/card.md)（provenance）；模拟；γ_m 假设；主表 `τ̂=∞`；NoRev 非单变量 |
-| [Same Operation, Different Permission digest](../../meta/audits/2026-11-11-source-purge.md#src-2610-16838) | preprint | 精读 | —（E-04 边界） | [card](../../meta/audits/2026-11-11-source-purge.md#src-2610-16838)（provenance）；同操作/不同权限的 guardrail 评测；无本体、非 commit gate；不升 E |
-| [What Can Be Enforced? digest](../../meta/audits/2026-11-11-source-purge.md#src-2607-22868) | preprint | 精读 | —（E-04 边界） | [card](../../meta/audits/2026-11-11-source-purge.md#src-2607-22868)（provenance）；false-block/miss 前沿 + conformal 校准 + 闭环；理论/诊断；无本体；不升 E |
+| [Same Operation, Different Permission digest（已移出）](../../meta/audits/2026-11-11-source-purge.md#src-2610-16838) | preprint | 精读 | —（原 E-04 边界，已移出） | [card](../../meta/audits/2026-11-11-source-purge.md#src-2610-16838)（tombstone）；同操作/不同权限 guardrail 评测；无本体、非 commit gate；不升 E |
+| [What Can Be Enforced? digest（已移出）](../../meta/audits/2026-11-11-source-purge.md#src-2607-22868) | preprint | 精读 | —（原 E-04 边界，已移出） | [card](../../meta/audits/2026-11-11-source-purge.md#src-2607-22868)（tombstone）；false-block/miss 前沿 + conformal 校准；无本体；不升 E |
 | [trustgraph digest](../../src/open-source/trustgraph-ai-trustgraph/digest.md) | open-source | 已读代码 | 01-L13 / 01-L18 / commit-gate F5 | [card](../../src/open-source/trustgraph-ai-trustgraph/card.md)（provenance）；读路径 SHACL-AF 策略过滤，31 条单测已跑；写路径 commit gate 未定位 |
 | [Glyph digest](../../src/papers/2609.10430-glyph/digest.md) | preprint | 精读 | 01-L16 / 01-L17 | [card](../../src/papers/2609.10430-glyph/card.md)（provenance）；Apple 单企业；标签层，不产策略/不执行；NDCG/MAP 是检索指标、生产接受率对 FN 盲 |
 | [OPA digest](../../src/open-source/open-policy-agent-opa/digest.md) | open-source | 已读代码 | 01-L16（策略层候选） | [card](../../src/open-source/open-policy-agent-opa/card.md)（provenance）；Rego/decision API/bundle/logs；不解析 OWL/SHACL；不消费 Glyph 标签；未与 trustgraph 集成 |
 
 > **本派没有 Commit Boundary 的 E-xx**：`01-L13/L14` 只在派内使用。`conclusions` 的 E-05 是 FIRME；Commit Boundary digest 的 `claims: [E-05]` 与 §8 的 E-05 回链都是错挂，**2026-11-09 已回改**（`claims: []`，§8 改为“不挂 E-xx”）。
 >
-> **数字口径**：01-L11 用 OntoAct digest 的 78.6/83.3/90.0%（IfR 64.3/66.7/65.0%）、SI `1.6–2.4`；`conclusions` 的 E-16 已于 2026-11-09 按同口径回改。CASEL 主表是 `τ̂=∞`，不要把 7.02% 当阈值开启后的结果。
+> **数字口径**：01-L11 用 OntoAct digest 的 78.6/83.3/90.0%（IfR 64.3/66.7/65.0%）、SI `1.6–2.4`；`conclusions` 的 E-16 与 01-L11/L15 均已随 2026-11-11 撤源撤回，此处仅作历史校准注记。CASEL 主表是 `τ̂=∞`，不要把 7.02% 当阈值开启后的结果。
 
 ## 策略层来源（2026-11-10）
 

@@ -130,7 +130,7 @@
 - 本文件：宪章（最高约束）。
 - [AGENTS.md](./AGENTS.md)：操作手册（落点、流程、准入检查）。
 - [meta/rules/conventions.md](./meta/rules/conventions.md)：写作约定（字段、证据等级）。
-- [meta/rules/checklist.md](./meta/rules/checklist.md)：交稿检查。
+- [meta/workflow/checklist.md](./meta/workflow/checklist.md)：交稿检查。
 - 冲突时：**宪章 > AGENTS > meta 约定 > 单页文档**。
 - 修改宪章需要用户明确同意；agent 不得自行放宽。
 

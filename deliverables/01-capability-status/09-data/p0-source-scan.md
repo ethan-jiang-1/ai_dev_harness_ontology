@@ -7,18 +7,20 @@ target: X5 false-veto / X7 read-path / X8 commit gate
 
 # P0 源扫描：false-veto 与 commit gate
 
-> **工作底稿，不是交付正文。** 扫描阶段只做摘要级 go/no-go；2610.16838 与 2607.22868 已于 2026-11-09 入档（L2 digest）。外部来源只作候选，不把摘要当结论。
+> **2026-11-11 素材重置注（历史扫描工作底稿）**：本页提到的 `2607.22868`（What Can Be Enforced?）、`2610.16838`（Same Operation, Different Permission）、`2610.08082`（POLAR）与 `2610.37407`（Commit Boundary）均因未过 [CHARTER §4](../../../CHARTER.md#4-素材准入material-gate) 准入门于 2026-11-11 移出（见 [黑名单](../../../meta/rules/excluded-sources.md) 与 [审计](../../../meta/audits/2026-11-11-source-purge.md)）。本页仅保留为检索方法与问题定义参考，不再作入档/定锚证据。
+>
+> **工作底稿，不是交付正文。** 外部来源只作候选，不把摘要当结论。
 
 ## 1. 检索与筛选
 
 | 检索 | 命中 | 判断 |
 |---|---|---|
-| `What Can Be Enforced? 2607.22868` | arXiv 2607.22868，26 页，理论 + 实验 | **高相关**；给 false-block/miss 前沿与 conformal 校准，可能改写 X5 的「false-veto 不可测」表述 |
-| `commit boundary implementation entity resolution` | Zenodo 23580733（Commit Boundary 原论文，已入档）；arXiv 2610.16838（授权 benchmark） | **无实现**；X8 仍是 `unknown/无实现` |
-| `false veto guardrail annotation blocked decisions agent` | arXiv 2610.16838；POLAR（已入档） | **高相关**；直接测「同操作、不同权限」下的误拦 |
+| `What Can Be Enforced? 2607.22868` | `[已移出/黑名单]` 原 arXiv 2607.22868 | 2026-11-11 因单作者/无采用移出（作概念对照：false-block/miss 前沿不可当单点阈值） |
+| `commit boundary implementation entity resolution` | `[已移出/黑名单]` 原 Commit Boundary（2610.37407）与 2610.16838 | **无实现**；X8 仍是 `unknown/无实现` |
+| `false veto guardrail annotation blocked decisions agent` | `[已移出/黑名单]` 原 arXiv 2610.16838 与 POLAR（2610.08082） | 2026-11-11 均已移出；方向保留：找带授权标签的过门新源 |
 | `SHACL access control read path policy filter ontology` | GraphDB 文档；无第二个独立实现 | X7 的第二个实现本轮未找到；保持 `unknown` |
 
-## 2. 候选 A：What Can Be Enforced?（2607.22868）
+## 2. 候选 A（历史检索快照，已于 2026-11-11 移出）：What Can Be Enforced?（2607.22868）
 
 **摘要级事实**（只读 arXiv 摘要，未读正文）：
 
@@ -31,11 +33,11 @@ target: X5 false-veto / X7 read-path / X8 commit gate
 
 **为什么重要**：它把「false-veto」从「没有标签所以不可测」推进到「有 false-block/miss 前沿与校准证书」。如果成立，D1 的 X5 不应只写 `unknown`，而应写「可校准，但需要策略表示与 oracle 谓词；POLAR 没有这些」。
 
-**go/no-go**：**go（P0，已入档 2026-11-09）**。它不是实证误拦率，不能直接填 X5 的「false-veto ≤5%」；但它给出 false-block/miss 前沿与校准协议，已写成 L2 digest（`src/papers/2607.22868-what-can-be-enforced/digest.md`），作为 X5 的边界，不升 E。
+**go/no-go**：**已于 2026-11-11 随准入门移出**（原 2026-11-09 曾入档 L2，现见 [tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2607-22868)）；仅保留其「miss–false-block 前沿」问题框架，不可引用为现行证据。
 
 **入档判据**：报告 false-block/miss 前沿或校准协议，且能映射到 POLAR 的 blocked log；否则只进 `frontier`。
 
-## 3. 候选 B：Same Operation, Different Permission（2610.16838）
+## 3. 候选 B（历史检索快照，已于 2026-11-11 移出）：Same Operation, Different Permission（2610.16838）
 
 **摘要级事实**（只读 arXiv 摘要，未读正文）：
 
@@ -46,7 +48,7 @@ target: X5 false-veto / X7 read-path / X8 commit gate
 
 **为什么重要**：这正是 X5 的 false-veto 与 X8 的 authorization 的交集；它提供了「同操作、不同权限」的评估设计，能补 POLAR 的「block log 无授权标签」。如果它的数据/代码公开，可作为 X5/X8 的实证来源。
 
-**go/no-go**：**go（P0，已入档 2026-11-09）**。它比 A 更直接：有 benchmark、有授权标签、有误拦结果。已下载 PDF、转 MD、建卡、L2 digest（`src/papers/2610.16838-same-operation-different-permission/digest.md`）；数字见 §3.1。
+**go/no-go**：**已于 2026-11-11 随准入门移出**（原 2026-11-09 曾入档 L2，现见 [tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2610-16838)）；§3.1 摘要数字仅作撤源前历史备份，不可引用为现行证据。
 
 ### 3.1 具体数字（摘要 + HTML 正文，2026-11-09）
 
@@ -65,7 +67,7 @@ target: X5 false-veto / X7 read-path / X8 commit gate
 
 **对 D1 的意义**：
 
-- X5 的 false-veto 仍没有「本体闸」的一手数；但 2610.16838 证明**授权标签 + 请求级配对**可以测「误拦合法请求」，而且误拦很常见（Safeguard 174/767）。这为 X5 提供了**评估方法**，不是 POLAR 的替代数字。
+- X5 的 false-veto 仍没有「本体闸」的一手数；原 `2610.16838` 已移出（见黑名单），但其「授权标签 + 请求级配对」的评测思路可供新源对照；X5 verdict 保持 `unknown`。
 - X8 的授权问题被具体化：guardrail 的「拒绝」可能是 review 失败，不是正确拒绝；commit gate 也需要区分「拒绝未授权」与「review 不可用」。
 - 它**不改变** X5/X8 的 verdict：X5 false-veto 仍 `unknown`（POLAR 无标签）；X8 仍无 commit gate 实现。它改变的是「下一步怎么测」。
 
@@ -77,9 +79,9 @@ target: X5 false-veto / X7 read-path / X8 commit gate
 
 ## 5. 下一步
 
-1. ~~落盘 2610.16838（P0），建卡 + L2 digest~~ **已完成**（2026-11-09）；下一步：把「同操作/不同权限」设计映射到本体 checker。
-2. ~~读 2607.22868 正文的 false-block/miss 前沿与校准部分~~ **已完成并入档**；下一步：把 T2 前沿搬到本体 checker，不急着升 E。
+1. 原 `2610.16838` 已于 2026-11-11 移出（见 [tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2610-16838)）；按五门重找带权限标签的 guardrail 过门新源。
+2. 原 `2607.22868` 已于 2026-11-11 移出（见 [tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2607-22868)）；保留「miss–false-block 前沿」问题定义，等待过门新源。
 3. 继续扫第二个 read-path 实现（P1）；没有就保持 `unknown`。
-4. 把本页结论回写 [plan](../../_plans/01-capability-status.md) §4 的 P0 行与 D1 §9 的 verdict。
+4. 把本页结论回写 [plan](../../../meta/archive/2026-11/plans/01-capability-status.md) §4 的 P0 行与 D1 §9 的 verdict。
 
 > 回 [01 目录](../README.md) ｜ 回 [01 §数据表](../README.md)

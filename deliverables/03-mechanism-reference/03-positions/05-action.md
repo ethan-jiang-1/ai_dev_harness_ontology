@@ -23,8 +23,8 @@ evidence: [E-04, E-13, E-15, E-16]  # E-04/13/16 withdrawn
 
 | 子机制 | 问什么 | 机器做什么 | 代表 |
 |---|---|---|---|
-| 可逆性闸 | 存在可接受的逆操作序列吗？ | 两层本体：T1–T5 类型化逆关系 + 状态投影；反向搜索，取最弱一步 φ；低于 τ 或没有完整 π → veto | POLAR（E-04） |
-| 条件验证 | 结论/动作的前提条件成不成立？ | 三值条件 ⊤/⊥/? + 假设 revision；缺证据转观察 | OntoAct / reasoning-gate（E-16） |
+| 可逆性闸 | 存在可接受的逆操作序列吗？ | 两层本体：T1–T5 类型化逆关系 + 状态投影；反向搜索，取最弱一步 φ；低于 τ 或没有完整 π → veto | POLAR（原 E-04，已撤回） |
+| 条件验证 | 结论/动作的前提条件成不成立？ | 三值条件 ⊤/⊥/? + 假设 revision；缺证据转观察 | OntoAct / reasoning-gate（原 E-16，已撤回） |
 | 多模式分配 | 这个动作该 direct/verify/sandbox/clarify/approve？ | `J(m)=γ_m·p̂ĉ + λk(m) + μq(m)`；前置门 `g`/`d` 先走 clarify/verify | CASEL（E-15） |
 
 POLAR 的两层：Layer A 静态动作本体（每个 mutating tool 的 T1–T5 + curator 权重）；Layer B 状态投影 `slot(entity,id)=value`，从真实 DB + 已执行工具重建。**判定与执行分离**：APPROVE/VETO/ESCALATE 是 DecisionPolicy，不是本体；被评估的 wrapper 不模拟完整 post-action state s′。
@@ -77,7 +77,7 @@ POLAR 的两层：Layer A 静态动作本体（每个 mutating tool 的 T1–T5 
 | E-15 | 已核 | harm–approval–cost 前沿；审批量 | 本体增益；审批疲劳；所有方法同 menu |
 | E-16 | **withdrawn** | 条件验证的形式影响；三值 + revision | 安全保证；真实工厂；所有知识源 |
 
-> 四种证据都带强限定：E-04 是单基准/单 gate/6 模型；E-15 是模拟、无本体变量；E-16 是模拟、固定 schema。**不要把任何一个数字当「本体护栏有效」的效应量。**
+> 限定提示（其中 E-04/E-16 已于 2026-11-11 撤回）：原 E-04 仅为单基准/单 gate/6 模型；E-15 是模拟、无本体变量；原 E-16 仅为模拟、固定 schema。**不要把任何一个数字当「本体护栏有效」的效应量。**
 
 ## 7. 可证伪条件
 
@@ -85,12 +85,12 @@ POLAR 的两层：Layer A 静态动作本体（每个 mutating tool 的 T1–T5 
 
 - 同轨迹配对显示 full 相对 T1-only 的 Δ>0 且 CI 不跨零 → 结构贡献成立；
 - shadow 标注 false-veto 的 miss–false-block 前沿（不设单点 ≤5%），且 harm 降、task success 不降 >2pp → 窄条件下可试点；
-- 强模型上不再回退，或回退可被能力阈值解释 → 收窄 E-13 的边界；
+- 强模型上不再回退，或回退可被能力阈值解释 → 重立或替代原 E-13（已撤回）的能力边界；
 - 复合动作的可逆性可计算且与单步一致 → 扩大可逆性闸的适用范围。
 
 ## 8. 上游指针
 
 - 机制：[action-gate/mechanism](../../../topics/01-constraint/action-gate/mechanism.md) · [reasoning-gate/mechanism](../../../topics/01-constraint/reasoning-gate/mechanism.md)
-- 判断：[01-constraint/README](../../../topics/01-constraint/README.md) · [conclusions](../../../topics/conclusions.md) E-04/E-13/E-15/E-16
+- 判断：[01-constraint/README](../../../topics/01-constraint/README.md) · [conclusions](../../../topics/conclusions.md) E-15（原 E-04/E-13/E-16 已撤回）
 - 施工：[02 R6（recipes）](../../02-engineering-playbook/03-recipes/README.md) · [01 能力 6/11/12](../../01-capability-status/02-sections/02-map.md#22-一张表)
 - 长版论证：[附录 §3.4.5](../05-appendix-constraint-spectrum.md#345-action动作前的闸)

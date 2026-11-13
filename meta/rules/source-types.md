@@ -23,7 +23,7 @@
 
 ## 与证据等级的关系
 
-- `paper` / `preprint` / `standard`：可按 [conventions](./conventions.md#证据等级) 升到 `已核`。
+- `paper` / `preprint` / `standard`：可按 [schema §3.1](../schema.md#31-证据等级四档) 升到 `已核`。
 - `open-source`：代码定位（`文件:符号`）可到 `已核`；`已证` 需 `EXP-xxx` 复现。README/star/单测覆盖率不能升等级。
 - `blog` / `engineering`：卡片可以 `已核`，但指的是「作者报告了 X」；把 X 推广为一般规律时，标 `推测`。
 - `talk` / `survey`：默认 `推测`；引用时写「转述自」并标 `待核`。

@@ -21,21 +21,21 @@ scope: evidence-anchors
 - **不能证明**：本体无增益；可外推到所有工件。
 - **适用**：01 boundaries §4.2/§4.3；02 R1/R2 的边界。
 
-## E-02
+## E-02（`withdrawn` · 2026-11-11 随源撤回，仅作历史锚对照）
 
 - **承重数/条件**：curated / data-derived / masked 三来源 catch/FA 各有偏向；空结果重试是关键基线；curated precision 仅略优于随机；judge 修坏多于修好。
 - **digest 节**：[Ontology Catch §3.6 空结果基线](../meta/audits/2026-11-11-source-purge.md#src-2610-37809) · [§4 结果](../meta/audits/2026-11-11-source-purge.md#src-2610-37809)
 - **不能证明**：部署 precision；false-veto；跨域；语义错。
 - **适用**：02 R5；01 E4；03 checker。
 
-## E-03
+## E-03（`withdrawn` · 2026-11-11 随源撤回，仅作历史锚对照）
 
 - **承重数/条件**：强制接地等级平均最优；Tests 1–2 +10–15pp；等级是模型自评；检索是主瓶颈；三个大本体、六个医学 QA、2 个 backbone。
 - **digest 节**：[OA-RAG §4 结果](../meta/audits/2026-11-11-source-purge.md#src-2610-36335)
 - **不能证明**：形式保证；等级校准；句级 span。
 - **适用**：02 R4；01 E4；03 evidence。
 
-## E-04
+## E-04（`withdrawn` · 2026-11-11 随源撤回，仅作历史锚对照）
 
 - **承重数/条件**：18 个模型-域组合仅 8 个改善；retail/强模型回退；T1-only ≈ blanket veto；false-veto 未测；τ=0.80 下 airline 只保留 36.6% 候选动作。
 - **digest 节**：[POLAR §4 结果](../meta/audits/2026-11-11-source-purge.md#src-2610-08082)
@@ -63,7 +63,7 @@ scope: evidence-anchors
 - **不能证明**：跨域；多设备；顺序迁移；本体归属性。
 - **适用**：01 E1/E2；02 R1/R2；03 context。
 
-## E-13
+## E-13（`withdrawn` · 2026-11-11 随源撤回，仅作历史锚对照）
 
 - **承重数/条件**：斜率 −0.76/−0.67/−0.31；R² 0.92/0.98/0.65；六点描述性拟合，不是预测曲线。
 - **digest 节**：[POLAR §4 结果](../meta/audits/2026-11-11-source-purge.md#src-2610-08082)

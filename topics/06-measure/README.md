@@ -1,11 +1,11 @@
 ---
 status: draft
-updated: 2026-11-12
+updated: 2026-11-13
 ---
 
 # 06 测量派：它到底有没有用
 
-> **2026-11-12 撤源对账**：本派 MIOE（E-10）、Diagnose（E-06）、POLAR / Ontology Catch 已移出。**`findings.md` 索引里的旧「已核」不作现役等级。** 仍 admitted：SLB（E-07/E-09）、Agents Are Systems（E-18）、CAI（E-14）、CASEL（E-15）、E-20。
+> **2026-11-13 撤源对账**：本派 MIOE（E-10）、Diagnose（E-06）、POLAR / Ontology Catch 已移出；**下列 `mechanism/findings.md` 与 `failure-attribution/findings.md` 索引已同步降为 `推测`/历史参考**。仍 admitted：SLB（E-07/E-09）、Agents Are Systems（E-18）、CAI（E-14）、CASEL（E-15）、E-20。
 
 ## 核心主张
 
@@ -36,7 +36,7 @@ updated: 2026-11-12
 有两篇工作既是方案又是尺子，按主效应归派，在此登记：
 
 - **Context as Infrastructure**（主效应 [03 知识](../03-knowledge/README.md)）：它提出编译，同时用同一批实验否证了编译在准确率上的价值。
-- **The Ontology Catch**（主效应 [02 判定](../02-judgment/README.md)）：它提判定器，同时证明 curated 判定器的精确度仅略优于随机。
+- **The Ontology Catch**（主效应 [02 判定](../02-judgment/README.md)；**2026-11-11 已移出**，原 E-02 撤回，仅作历史双重身份示例）：它提判定器，同时原报告 curated 判定器的精确度仅略优于随机。
 
 这两篇的共同点值得记下：**提出方案的人自己给出了反证。** 这种工作比单纯的成功案例有信息量得多。
 
@@ -62,11 +62,11 @@ updated: 2026-11-12
 | [sources.md](./sources.md) | 本派卡片索引 |
 | [frontier.md](./frontier.md) | 本派候选队列 |
 | `<子主题>/README.md` | 详细机制 |
-| `<子主题>/prompt.md` + `runs/` | 常驻 prompt 与按日期输出（模板见 [meta/templates/subtopic-template](../../meta/templates/subtopic-template/README.md)） |
+| `<子主题>/prompt.md` + `runs/` | 常驻 prompt 与按日期输出（模板见 [meta/templates/subtopic-template](../../meta/templates/topics/subtopic-template/README.md)） |
 
 新增内容只改本目录；只有跨派结论或进 `deliverables/` 时，才升到 [conclusions](../conclusions.md) 的 E-xx。卡片 `home` 指向本派，`subtopic` 指向子主题。
 
-子主题按 [模板](../../meta/templates/subtopic-template/README.md) 起；没有 `prompt.md` 就先不建 `runs/`。
+子主题按 [模板](../../meta/templates/topics/subtopic-template/README.md) 起；没有 `prompt.md` 就先不建 `runs/`。
 
 ## 持续挖掘
 

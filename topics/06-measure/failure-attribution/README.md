@@ -56,6 +56,6 @@ evidence: [E-06]  # withdrawn
 
 ## 关联
 
-- 派：[06 测量](../README.md) · 结论：[E-06](../../conclusions.md)
+- 派：[06 测量](../README.md) · 结论：[原 E-06（已于 2026-11-11 撤回）](../../conclusions.md)
 - 相邻：[metrics](../metrics/README.md) · [trace](../trace/README.md)
 - 判定：[00-harness/verification](../../00-harness/verification.md) · [02 判定](../../02-judgment/README.md)

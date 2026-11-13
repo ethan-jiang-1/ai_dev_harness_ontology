@@ -2,7 +2,7 @@
 status: draft
 updated: 2026-11-10
 rq: [RQ2, RQ4]
-evidence: [E-02]
+evidence: [E-20] # 原 E-02 已于 2026-11-11 撤回
 ---
 
 # 输出校验：把结果对象当判据
@@ -155,4 +155,4 @@ SELECT ?col ?tagLevel ?colLevel WHERE {
 - **误报/成本未测**：6 类里只有 schema/cardinality 的成本低；cross-field 与 semantic plausibility 的误报没有本仓库数据。
 - **不要写「输出校验能拦住越权」**：它只能标出「结果与策略不一致」；执行层语义见 [policy F4](../../01-constraint/policy/findings.md)（skip ≠ allow）。
 
-依据：E-02；[checker F7/F8](./findings.md)；[open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md)；gap：误报/成本、生产数据。
+依据：原 E-02（已撤回，历史对照）；[checker F7/F8](./findings.md)；[open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md)；gap：误报/成本、生产数据。

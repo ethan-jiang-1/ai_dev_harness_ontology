@@ -11,7 +11,7 @@ updated: 2026-11-12
 
 > 各派的局部判断先写在本派 `claims.md`（`01-Lx` 等）；只有跨派或进 `deliverables/` 时，才升到本页的 `E-xx`。这样改一个派不必动本页。
 
-等级定义见 [conventions](../meta/rules/conventions.md#证据等级)。
+等级定义见 [conventions](../meta/schema.md#31-证据等级四档)。
 
 > **反向阅读**：E 行 → [evidence-anchors](./evidence-anchors.md)（承重数/条件 + digest 节）→ digest §4（数字与条件）→ §5（不能说明什么）；缺的数去对应派 `frontier.md`。不要在 E 表里补新判断。
 
@@ -136,4 +136,4 @@ E-xx 不是一次写死。每条有一个 `状态` 列；改 E 之前先读对�
 
 当前无。
 
-新派成立前，把“跨派、但暂时没有归属”的判断先记在这里；同一方向累计 ≥3 条，再按 [topic 协议](../meta/rules/topic-research-protocol.md) 立派。不要把单条判断直接写成新派。
+新派成立前，把“跨派、但暂时没有归属”的判断先记在这里；同一方向累计 ≥3 条，再按 [topic 协议](../meta/workflow/topic-research-protocol.md) 立派。不要把单条判断直接写成新派。

@@ -1,6 +1,7 @@
 # 生成 · 未发现与下一步
 
 > `G` = gap（还没站住的判断）；`N` = next（下一步看什么）。稳定判断回 [findings](./findings.md)；参数/接口/stop 回 [mechanism](./mechanism.md)。
+> **2026-11-12 对账**：OntoDoc / ReX-GG / Peeling / Evontree 均已移出（[黑名单](../../../meta/rules/excluded-sources.md)）；下表缺口方向保留，证据待过门新源（semantica 消费路径已入 E-20）。
 
 ## 未发现（G）
 

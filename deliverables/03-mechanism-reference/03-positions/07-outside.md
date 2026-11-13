@@ -98,7 +98,7 @@ evidence: [E-16, E-17, E-20]  # E-16 withdrawn
 1. 不能证明谱外位置「不重要」；它们可能比六位置更重要，只是分类不同。
 2. 不能证明 `read-path`/`supply` 的实现「有效」；E-20 只给代码级机制，不是效应量。
 3. 不能证明 `determinism` 可度量；它是设计提案，无 E。
-4. 不能把 `reasoning` 的数字当本体增益；E-16 是模拟、固定 schema。
+4. 不能把 `reasoning` 的数字当本体增益；原 E-16 已撤回（且原本即为模拟、固定 schema）。
 5. 不能把 `training` 的报告值当已核；训练侧项目的增益是 `存疑`。
 
 ## 6. 上游
@@ -108,4 +108,4 @@ evidence: [E-16, E-17, E-20]  # E-16 withdrawn
 - [topics/04-state/determinism/README.md](../../../topics/04-state/determinism/README.md)
 - [topics/01-constraint/commit-gate/README.md](../../../topics/01-constraint/commit-gate/README.md)（read-path）
 - 施工：[02 R8 读路径 / R11 OBDA](../../02-engineering-playbook/03-recipes/README.md)；determinism/reasoning/training 暂无 recipe
-- [conclusions](../../../topics/conclusions.md) E-16/E-17/E-20
+- [conclusions](../../../topics/conclusions.md) E-17/E-20（原 E-16 已撤回）

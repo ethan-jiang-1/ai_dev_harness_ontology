@@ -53,6 +53,6 @@ evidence: [E-02]  # withdrawn；代码级三态/覆盖见 E-20
 
 ## 关联
 
-- 派：[02 判定](../README.md) · 结论：[E-02](../../conclusions.md)
+- 派：[02 判定](../README.md) · 结论：[原 E-02（已撤回）](../../conclusions.md) / [E-20](../../conclusions.md)
 - 相邻：[evidence](../evidence/README.md)（证据接地）· [00-harness/verification](../../00-harness/verification.md)
 - 成本：[06-measure/feasibility](../../06-measure/feasibility/README.md)

@@ -35,7 +35,7 @@ updated: 2026-11-12
 
 ## 维护
 
-- 新增/重定位一份交付物：先建/改它的 `SCOPE.md`，再更新本页一览与 [loading](../rules/loading.md)；走 [ADR](../../adr/README.md) 判据。
+- 新增/重定位一份交付物：先建/改它的 `SCOPE.md`，再更新本页一览与 [loading](../workflow/loading.md)；走 [ADR](../../adr/README.md) 判据。
 - 发现内容与 SCOPE 定性不符：按[修复回路](../../AGENTS.md)处理——改内容回 scope，或走 ADR 重定位；**不允许内容偷偷越界**。
 - `check_repo` 强制：每份交付物必须有 `SCOPE.md`。
-- 本页只管定位索引与共用规矩；计数归 [state](../status/state.md)、质量打分归 [rubric](./quality.md)、字段归 [conventions](../rules/conventions.md)。
+- 本页只管定位索引与共用规矩；计数归 [state](../status/state.md)、质量打分归 [rubric](./quality.md)、字段归 [schema](../schema.md)、写作归 [conventions](../rules/conventions.md)。

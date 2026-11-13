@@ -86,7 +86,7 @@ _origin_: `local`（原 E-03 锚已撤回）｜ _anchor_: —｜ _scope_: 只作
 _Avoid_: 证据等级（与仓库的置信度分级混淆）、置信度、准确率
 
 **证据等级（Evidence Level）**:
-本仓库对一条主张的置信度分级：已证 / 已核 / 推测 / 存疑。定义见 [conventions](./meta/rules/conventions.md#证据等级)。
+本仓库对一条主张的置信度分级：已证 / 已核 / 推测 / 存疑。定义见 [conventions](./meta/schema.md#31-证据等级四档)。
 _origin_: `local`（本仓库规则）｜ _anchor_: meta/conventions#证据等级｜ _scope_: 不与 var/置信度/接地等级混。
 _Avoid_: 接地等级、置信度
 

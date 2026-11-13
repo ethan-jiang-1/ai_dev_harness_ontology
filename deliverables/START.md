@@ -63,7 +63,7 @@ basis: E-01/E-12/E-20; THESIS P1a–P1c；E-04/E-13 已撤回
 - **不能说「本体无增益」**：E-01 的 ontology 是 `not measured`，它测的是摘要树/大纲/wiki/实体图。
 - **不能把 E-12 外推**：单工厂、9 任务、答案基本写在文本里；换域要重测。
 - **不能把已撤回的 E-04 当「护栏证据」**：旧 18 格/8 改善、T1-only 观察停用；需要新的本体闸来源；false-veto 仍无标签。
-- **04 的 fixture 是合成的**：数字是期望值，不是实测；`conditional` 不是失败，是未决项。
+- **原 `04` 建用治合成走查已退役（[ADR 0015](../adr/0015-retire-04-and-renumber-05-to-10.md)）**：其合成 fixture 数字（期望值，非实测）与治理清单（`conditional` 为未决项）不再作独立交付物，实证线转入 [10 落地现状](./10-production-landscape/README.md)。
 - **多智能体共享本体、本体自动生成**：只有方向或派内机制，没有形成 E；标 `undetermined` / 非本表范围。
 - **K0–K2 不是行业标准**：它们是 N&D 单篇论文的五个实验条件（K3/K4 也在论文里）；01 的 K1「别名/槽位」是工程扩展。见 [K0–K4 来源](01-capability-status/02-sections/92-k-ladder.md)。
 

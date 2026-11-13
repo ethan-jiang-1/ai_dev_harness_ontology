@@ -3,7 +3,7 @@ status: draft
 deliverable_status: draft
 updated: 2026-11-12
 target: 架构师 / 研究者
-basis: E-01–E-20, C-03/C-04; topics/README 四轴
+basis: 有效主力 E-01, E-05, E-07–E-09, E-12, E-14, E-15, E-17–E-25, C-03/C-04（W 表见 05-evidence/01-ledger）；topics/README 四轴
 ---
 
 # 03 · 机制参考：六个位置、三根分类轴与证据边界

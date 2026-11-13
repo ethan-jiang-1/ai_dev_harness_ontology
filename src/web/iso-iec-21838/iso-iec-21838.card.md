@@ -8,6 +8,7 @@ gate_checked: 2026-11-11
 impact_evidence: I1 标准组织（ISO/IEC JTC 1/SC 32）；I2 多主体（国家成员体投票，BFO 由多机构维护）；I3 采用（BFO 官网自述 550+ 项目使用，待核）
 liveness: 2026-06 后：-3:2023 / -4:2023 现行；BFO 持续发布（具体版本待核）
 reading: 摘要级
+provenance_type: standard-body
 provenance: 原文摘要
 updated: 2026-11-11
 batch: 2026-11-11 基线批

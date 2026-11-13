@@ -52,6 +52,6 @@ evidence: [E-04, E-13, E-15]  # E-04/13 withdrawn
 
 ## 关联
 
-- 派：[01 约束](../README.md) · 结论：[E-04 / E-13 / E-15](../../conclusions.md)
+- 派：[01 约束](../README.md) · 结论：[E-15（原 E-04/E-13 已撤回）](../../conclusions.md)
 - 相邻：[commit-gate](../commit-gate/README.md)（落盘前）· [reasoning-gate](../reasoning-gate/README.md)（推理期）
 - 成本/可行性：[06-measure/feasibility](../../06-measure/feasibility/README.md)

@@ -7,7 +7,7 @@ scope: 06-measure 试点 + v1 词表冲突
 
 # 术语基线审计：06-measure 试点（2026-11-11）
 
-> 依据 [ADR 0011](../../adr/0011-source-standing-and-term-baseline.md) 与 [核心计划第 8 步](../../deliverables/_plans/2026-11-11-core-plan.md)。**只记录术语用法与处置，不新增判断。**
+> 依据 [ADR 0011](../../adr/0011-source-standing-and-term-baseline.md) 与 [核心计划第 8 步](../archive/2026-11/plans/2026-11-11-core-plan.md)。**只记录术语用法与处置，不新增判断。**
 >
 > 词表本体在 [meta/status/term-baseline.md](../status/term-baseline.md)（v0 10 词 + v1 29 词）；N/I/S 与标准边界见 [topics/trunk.md](../../topics/trunk.md)。
 

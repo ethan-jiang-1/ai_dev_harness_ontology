@@ -2,7 +2,7 @@
 status: draft
 updated: 2026-11-10
 rq: [RQ2, RQ4]
-evidence: [E-06]
+evidence: [E-05] # 原 E-06 已于 2026-11-11 撤回
 ---
 
 # 跨段传播：单段指标看不见的放大
@@ -55,12 +55,12 @@ evidence: [E-06]
 
 | 段 | 成本项 | 公式/口径 | 参数 | 状态 |
 |---|---|---|---|---|
-| build | 建模 + shapes + 负例 | `N_table × 建模人日 + N_shape × shape 人日 + 负例` | 2–4 人周建模；3–5 人日 shapes（SFE-O digest E3，`推测`） | 估算 |
-| query | 生成 + 执行 + 纠错 | `Q × (生成 + 执行 + trigger × 纠错)` | GGC：单跑 ~30h、选择性 ~33h、全量 ~60h（单卡 3090）；KGVoyager：$2.43/85.6s per run | 有数（单设置） |
+| build | 建模 + shapes + 负例 | `N_table × 建模人日 + N_shape × shape 人日 + 负例` | 2–4 人周建模；3–5 人日 shapes（原 SFE-O digest E3，`推测`，源已移出） | 估算 |
+| query | 生成 + 执行 + 纠错 | `Q × (生成 + 执行 + trigger × 纠错)` | GGC（admitted）：单跑 ~30h、选择性 ~33h、全量 ~60h（单卡 3090）；KGVoyager（已移出，历史参考）：原报 $2.43/85.6s per run | GGC 有数（单设置） |
 | govern | 策略求值 + 审计存储 | `D × (policy eval + audit write)` | 策略求值未测；审计存储按 decision 数 | 未知 |
 | 跨段 | 检测 + 返工 | `故障数 × 定位人日 + 返工人日` | 无实测；按故障类型估 | 未知 |
 
-**结论**：唯一有数的是 query 段（且单设置）；build 是估算；govern/跨段是未知。**不要把 GGC 的 30/33/60h 当你的 build 成本，也不要把 KGVoyager 的 $2.43 当生产单价。**
+**结论**：唯一有现役数字的是 GGC query 段（且单设置）；build 是估算；govern/跨段是未知。**不要把 GGC 的 30/33/60h 当你的 build 成本，更不要把已移出 KGVoyager 的 $2.43 当生产单价。**
 
 ## 4. 检测点与仪表
 
@@ -76,7 +76,7 @@ evidence: [E-06]
 ## 5. 边界
 
 - **没有跨段注入实验**：矩阵是设计，不是实测；每条路径的证据只到单段/旁证。
-- **E-06 是 position paper**：五角色/七变量是诊断词汇，不是量化分布；不能当「传播率」。
+- **原 E-06（已撤回）是 position paper**：五角色/七变量仅作诊断词汇参考，不是量化分布；不能当「传播率」。
 - **E-05/identity 的 alias 传播**是旁证：alias 错配沿后续观察传播，无自动回滚，幅度未测（`推测`）。
 - **成本只有 query 段有数**：build 是估算；govern/跨段未知。
 - **不要写「端到端可观测」**：本页只给检测点；没有生产仪表。
@@ -87,4 +87,4 @@ evidence: [E-06]
 2. **仪表最小集**：`run_id/snapshot/policy_version/tag_version` 四件；没有就不做跨段比较。
 3. **成本**：先量 build 的建模/shape 人日与 govern 的 decision 数；不要用厂商报价。
 
-依据：E-06；[E-05](../../conclusions.md)；[output-validation](../../02-judgment/checker/output-validation.md)、[read-path](../../01-constraint/commit-gate/read-path.md)、[policy](../../01-constraint/policy/mechanism.md)；gap：端到端注入。
+依据：原 E-06（已撤回，诊断框架参考）；[E-05](../../conclusions.md)；[output-validation](../../02-judgment/checker/output-validation.md)、[read-path](../../01-constraint/commit-gate/read-path.md)、[policy](../../01-constraint/policy/mechanism.md)；gap：端到端注入。

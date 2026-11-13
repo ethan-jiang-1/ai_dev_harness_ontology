@@ -14,7 +14,7 @@ updated: 2026-11-12
 
 > **第一次来？先读 [START.md](./START.md)**（10 分钟）。**宪章**：[CHARTER](../CHARTER.md)——交付物是文档，不以可运行性为标准；示例数据/查询文本是说明材料。
 >
-> **2026-11-11 证据重置**：按被删源写成的段落重写完成前不得作为结论；撤回清单以 [审计](../meta/audits/2026-11-11-source-purge.md) 为唯一出处。定义已接规范主干（定义句标 `（N: 标准名）` 或 `（local）`）；收口记录见 [_plans 索引](./_plans/README.md)。
+> **2026-11-11 证据重置**：按被删源写成的段落重写完成前不得作为结论；撤回清单以 [审计](../meta/audits/2026-11-11-source-purge.md) 为唯一出处。定义已接规范主干（定义句标 `（N: 标准名）` 或 `（local）`）；收口记录见 [_workpapers 索引](./_workpapers/README.md)。
 >
 > **定位权威（[ADR 0014](../adr/0014-deliverable-scope-single-home.md)）**：**每份的初心/定性/边界/红线以它自己的 `SCOPE.md` 为准**；[meta/deliverables/scope](../meta/deliverables/scope.md) 只是四份总索引与共用规矩。改/建任何交付物前，先读该份 `SCOPE.md`。**10 是「业界真实怎么样」的实证份**（已有正文；成本有价目/合同 + 两条客户自述投入，五平台外部采用仍缺）；它和 01–03 是两个视角，不排成一条阅读链。
 
@@ -65,9 +65,9 @@ updated: 2026-11-12
 
 > **实证与合成分界**：10 只收真实生产证据（CHARTER §4），缺证据标 gap；合成示例已退役（ADR 0015），仓库内不再有「照着建一遍」的样例。定位详见 [meta/deliverable-scope](../meta/deliverables/scope.md)。
 
-> `_plans/` 是[工作底稿](./_plans/README.md)，不是交付物；不进对外阅读路径，也不构成 E。
+> `_workpapers/` 是[工作底稿](./_workpapers/README.md)，不是交付物；不进对外阅读路径，也不构成 E。推进计划在 [meta/plans/](../meta/plans/README.md)。
 >
-> **2026-11-11 整改**：01/02/03 按 [差距评估报告](./_plans/2026-11-10-gap-assessment-report.md) 与 [整改计划](./_plans/2026-11-11-remediation-plan.md) 补了读者层（01 决策记录/术语/canonical、02 产物包/术语/canonical/读者检查、03 claim 走查/读者检查/术语）。三份仍 `draft`；M1/M2 未关，02 的 citation 正确性仍是 gap。
+> **2026-11-11 整改**：01/02/03 按 [差距评估报告](./_workpapers/2026-11-10-gap-assessment-report.md) 与 [整改计划](../meta/archive/2026-11/plans/2026-11-11-remediation-plan.md) 补了读者层（01 决策记录/术语/canonical、02 产物包/术语/canonical/读者检查、03 claim 走查/读者检查/术语）。三份仍 `draft`；M1/M2 未关，02 的 citation 正确性仍是 gap。
 
 ## 导读：先读哪份、按什么顺序
 
@@ -97,7 +97,7 @@ updated: 2026-11-12
 - **02**（[GUIDE](02-engineering-playbook/02-sections/01-GUIDE.md)）：0 → [地图](02-engineering-playbook/02-sections/02-map.md) → [R0 + 一条 recipe](02-engineering-playbook/02-sections/03-approach.md) → [边界](02-engineering-playbook/02-sections/04-boundaries.md) → [验收](02-engineering-playbook/02-sections/05-acceptance.md) → [关系](#关系与维护)。
 - **03**（[GUIDE](03-mechanism-reference/02-sections/01-GUIDE.md)）：0 → [地图](03-mechanism-reference/02-sections/02-map.md) → [位置卡](03-mechanism-reference/03-positions/README.md)（context→…→commit→outside）→ [横切页](03-mechanism-reference/04-across-positions/03-measurement.md) → [边界](03-mechanism-reference/02-sections/04-boundaries.md) → [验收](03-mechanism-reference/02-sections/05-acceptance.md) → [关系](03-mechanism-reference/02-sections/94-relations.md)。
 
-**反向加载**：从 [01 §5.2](01-capability-status/02-sections/05-acceptance.md#52-期待与数据需求验收规格)/[plan](./_plans/01-capability-status.md)、[02 §3.1](02-engineering-playbook/02-sections/03-approach.md#31-十二条工程做法r0r12)、[03 §2.3](03-mechanism-reference/02-sections/02-map.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/rules/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
+**反向加载**：从 [01 §5.2](01-capability-status/02-sections/05-acceptance.md#52-期待与数据需求验收规格)/[plan](../meta/archive/2026-11/plans/01-capability-status.md)、[02 §3.1](02-engineering-playbook/02-sections/03-approach.md#31-十二条工程做法r0r12)、[03 §2.3](03-mechanism-reference/02-sections/02-map.md#23-六个位置一页表) 出发，按 [meta/loading 的三条反向链](../meta/workflow/loading.md#从交付物倒查反向加载) 走；不要从 `src/papers/manifest.md` 开始扫。
 
 ## 统一阅读结构
 
@@ -143,12 +143,12 @@ updated: 2026-11-12
 **维护规则（01–03、10 共用）：**
 
 - 新判断先回 `topics/` 的 claims/E，再改交付物；交付物不新增判断。结构性修改后跑 `python3 meta/tools/check_repo.py`。
-- 01：A/B/C/D 是交付层排序，不是 E；`09-data/` 与 `_plans/` 是工作底稿，不构成稳定判断。
+- 01：A/B/C/D 是交付层排序，不是 E；`09-data/` 与 `_workpapers/` 是工作底稿，不构成稳定判断。
 - 02：先改 `03-recipes/`，再回 README 索引；02 不新增 E。
 - 03：canonical 在 `03-positions/` 与 `04-across-positions/`；`09-appendix...` 是长版论证；`H`/`D` 必须始终带标记。
 - 10：只收 admitted 生产证据（CHARTER §4）；C/signal 只进 `90-sources` 与案例台账的「线索」列，不撑结论。
 
-**规则**：README 只做索引；正文按「02-sections / 03-主体 / 04-支撑 / 05-附录 / 09-工作底稿 / 90+ 查阅」放，不把长文塞回 README。目录与文件编号规则见 [IA 整改计划](./_plans/2026-11-12-deliverable-ia-plan.md)。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG。**每份**的图由该份 `02-sections/01-GUIDE.md` 嵌；**本页（共享索引）只嵌一张三层信息流总图**，这是唯一例外。
+**规则**：README 只做索引；正文按「02-sections / 03-主体 / 04-支撑 / 05-附录 / 09-工作底稿 / 90+ 查阅」放，不把长文塞回 README。目录与文件编号规则见 [IA 整改计划](../meta/plans/2026-11-12-deliverable-ia-plan.md)。导航图统一在 [`_figures/`](./_figures/README.md)，用 SVG。**每份**的图由该份 `02-sections/01-GUIDE.md` 嵌；**本页（共享索引）只嵌一张三层信息流总图**，这是唯一例外。
 
 ## 期待 → 数据（验收规格）
 
@@ -156,7 +156,7 @@ updated: 2026-11-12
 
 它的作用不是承诺结果，而是让缺口显形：**量不出「支持它需要的数据」，就说明这条期待还停在推测。** 这是交付物的验收规格（非 E），不是新结论；数据回 `topics/` 或 `frontier` 补，不在交付物里补。
 
-01 的详细执行计划见 [plan.md](./_plans/01-capability-status.md)。历史的上游订货与对象产线记录（reverse-gap-plan / hard-objects-plan / wiring-plan，均已执行）见 [_plans 索引](./_plans/README.md)；其中的倒查补证方法已升为常设[修复回路](../AGENTS.md)。
+01 的详细执行计划见 [plan.md](../meta/archive/2026-11/plans/01-capability-status.md)。历史的上游订货与对象产线记录（reverse-gap-plan / hard-objects-plan / wiring-plan，均已执行）见 [已归档计划](../meta/archive/2026-11/README.md#2026-11-已归档计划)；其中的倒查补证方法已升为常设[修复回路](../AGENTS.md)。
 
 ## handbook 的去留（2026-11-09）
 
@@ -164,15 +164,15 @@ updated: 2026-11-12
 
 - 书稿没有独立角色——01–03 与 10 已经把「判断/操作/依据/现状」分开，再写一本会把它们混回去。
 - 第四章缺一手失败复盘、第六章缺按机制分派的度量方案、第七章是案例不是对照；按仓库规则，写不动的地方是研究没做完，不应在交付物里绕过去。
-- 主线「价值不在知道更多，而在让不该发生的事不发生」接近 P1a，但 E-01 的 ontology 是 `not measured`、E-04 的结构贡献未隔离；附录已把它收窄为「强端不是更好，是更窄」。
+- 主线「价值不在知道更多，而在让不该发生的事不发生」接近 P1a，但 E-01 的 ontology 是 `not measured`、原 E-04 已撤回（其结构贡献本就未隔离）；附录已把它收窄为「强端不是更好，是更窄」。
 
 唯一保留的是**论证资产**：原第三章成为 [03 的长版附录](03-mechanism-reference/05-appendix-constraint-spectrum.md)。原大纲与规划已删除，git 历史保留；不再有第四个 `handbook/` 目录。
 
 ## 质量评估（维护者用）
 
-评估 01–03 与 10 时**只用一套口径**：[交付物质量评分卡](../meta/deliverables/quality.md)（十二维 + 五条硬门槛 + 测量协议 + 使用纪律；维度定义不在本页复述）。评分不自动改 `status`；报告落 `_plans/YYYY-MM-DD-quality-review.md`，同维度比上次 ±1 才写 delta。
+评估 01–03 与 10 时**只用一套口径**：[交付物质量评分卡](../meta/deliverables/quality.md)（十二维 + 五条硬门槛 + 测量协议 + 使用纪律；维度定义不在本页复述）。评分不自动改 `status`；报告落 `_workpapers/YYYY-MM-DD-quality-review.md`，同维度比上次 ±1 才写 delta。
 
-**现行分（唯一口径）**：01=77 / 02=77 / 03=73 —— 取自 [独立评分修正 §12.4](./_plans/2026-11-11-quality-review.md)；10=88.8 为**自评**（六期），单独一表、不与前三份同表排序（[10 质量评估](./_plans/2026-11-12-05-quality-review.md)）。**§12.2 的 85/82/83/87 与 §12.3 的 87/84/85/86 已作废，不得再引用**。残留 C2 冗余/体量与真人冷读。
+**现行分（唯一口径）**：01=77 / 02=77 / 03=73 —— 取自 [独立评分修正 §12.4](./_workpapers/2026-11-11-quality-review.md)；10=88.8 为**自评**（六期），单独一表、不与前三份同表排序（[10 质量评估](./_workpapers/2026-11-12-05-quality-review.md)）。**§12.2 的 85/82/83/87 与 §12.3 的 87/84/85/86 已作废，不得再引用**。残留 C2 冗余/体量与真人冷读。
 
 ## 待做
 
@@ -190,7 +190,7 @@ updated: 2026-11-12
 | `stable` | 结构冻结，可对外 |
 | `frozen` | 内容冻结，仅随新证据被动修订 |
 
-文档本身的 `status` 仍用 `seed / draft / stabilized / superseded`；`deliverable_status` 只表示交付阶段。见 [conventions](../meta/rules/conventions.md#字段与词汇)。
+文档本身的 `status` 仍用 `seed / draft / stabilized / superseded`；`deliverable_status` 只表示交付阶段。见 [conventions](../meta/schema.md#1-文档与来源字段)。
 
 ## 一条判据
 

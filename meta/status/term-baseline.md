@@ -7,7 +7,7 @@ scope: ADR 0011 §S3 v0（10 词）+ v1（29 词 + 06 试点 1 词）
 
 # 术语差异表 v0/v1：先标来源，再谈定义
 
-> 依据 [ADR 0011](../../adr/0011-source-standing-and-term-baseline.md) 与 [基线整改计划](../../deliverables/_plans/2026-11-11-baseline-correction-plan.md)。**本表只做判定与动作，不新增 E/L。**
+> 依据 [ADR 0011](../../adr/0011-source-standing-and-term-baseline.md) 与 [基线整改计划](../archive/2026-11/plans/2026-11-11-baseline-correction-plan.md)。**本表只做判定与动作，不新增 E/L。**
 >
 > **v0 范围**：10 个高频词；**v1 范围**：GLOSSARY 里 v0 未判的其余 29 词 + 06-measure 试点发现的 1 个裸词。**未读标准正文的条款号一律写 `待核`**；`local` 不是“错”，是“本仓库自造/限定义”，必须首现解释、不得写成行业标准。
 >

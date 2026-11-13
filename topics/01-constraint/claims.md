@@ -29,4 +29,4 @@ updated: 2026-11-09
 | 01-L18 | trustgraph 的读路径 SHACL-AF 过滤是单实现、fail-open、只删 subject；读路径过滤 ≠ 写授权 | 已核（代码） | E-20 / commit-gate F5–F7 | 错误路径细节在 commit-gate；本派不复述 |
 | 01-L19 | 策略层有可判定的冲突/默认/义务语义（XACML/ODRL/Rego/ReBAC 各不相同），但领域标准只给等级/处置、不给 principal/action 映射；映射是工程选择 | 已核（标准摘要）/ 推测（映射） | policy F1–F3；E-22；**已升 E-24** | GB/T 43697/35273、XACML/ODRL 已入材料卡；Atlas/Ranger/OpenFGA 待入库；11 条测试未跑 |
 
-> **跨页缺口（2026-11-09 已修）**：Commit Boundary 仍是概念架构，未升 E；`conclusions` 的 E-05 属 FIRME，不属于本派，`src/papers/2610.37407-commit-boundary/digest.md` 的 `claims: [E-05]` 已改为空并回写 §8。E-16 已按 OntoAct digest 的 78.6/83.3/90.0%（IfR 64.3/66.7/65.0%）、SI `1.6–2.4` 校正。
+> **历史勘误注（2026-11-09 修；2026-11-11 后注）**：Commit Boundary（2610.37407）与 OntoAct（2610.21983）原入库卡/E-16 已于 2026-11-11 随准入清除撤回（[审计](../../meta/audits/2026-11-11-source-purge.md)）；`conclusions` 的 E-05 属 FIRME，不属于本派。

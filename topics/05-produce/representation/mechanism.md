@@ -169,5 +169,5 @@ main_level: 推测
 
 - [README](./README.md) · [findings](./findings.md) · [modeling](./modeling.md)
 - [SFE-O digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123) · [card](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37123)
-- [05 派 claims](../claims.md)（05-L4）· [sources](../sources.md)
+- [05 派 claims](../claims.md)（原 `05-L4` 已随 SFE-O 撤回）· [sources](../sources.md)
 - [generation](../generation/README.md) · [refinement](../refinement/README.md) · [lifecycle](../lifecycle/README.md)

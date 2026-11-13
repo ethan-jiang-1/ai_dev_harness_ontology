@@ -56,6 +56,6 @@ evidence: [E-03]  # withdrawn
 
 ## 关联
 
-- 派：[02 判定](../README.md) · 结论：[E-03](../../conclusions.md)
+- 派：[02 判定](../README.md) · 结论：[原 E-03（已撤回）](../../conclusions.md)
 - 相邻：[checker](../checker/README.md) · [03 知识 projection](../../03-knowledge/projection/README.md)
 - 成本：[06-measure/feasibility](../../06-measure/feasibility/README.md)

@@ -103,7 +103,7 @@ updated: 2026-11-12
 1. **「本体提升准确率」几乎都发生在弱端**（03 知识派）。强端改善的是「是否可用」，用准确率度量它必然得出「无增益」——这正是 [C-03](./conclusions.md#冲突) 记录的那条方法论问题。
 2. **中间空档最缺研究**：大量中间产物（计划、草稿、中间结论）既没判定也没授权，直接流向下一步。
 
-这张图目前是**组织假设**，不是 E 编号结论；它的证据分散在 E-01、E-04、E-12、E-13。把它当强结论引用前，先看 [conclusions](./conclusions.md) 的等级。
+这张图目前是**组织假设**，不是 E 编号结论；现役分散锚点在 E-01、E-12（原约束端 E-04、E-13 已于 2026-11-11 撤回）。把它当强结论引用前，先看 [conclusions](./conclusions.md) 的等级。
 
 ## 派与派的边界
 
@@ -128,7 +128,7 @@ updated: 2026-11-12
 
 ## 怎么读这一层
 
-任务路由（做什么→去哪）在 [AGENTS](../AGENTS.md)；从交付物倒查证据在 [meta/loading §从交付物倒查](../meta/rules/loading.md#从交付物倒查反向加载)。本页只管派与轴的地图。横切索引四个：找跨派结论 → [conclusions](./conclusions.md)；找本派判断 → 该派 `claims.md`；找 E 的承重数/条件 → [evidence-anchors](./evidence-anchors.md)；找地址/对象 → [objects](./objects.md)。
+任务路由（做什么→去哪）在 [AGENTS](../AGENTS.md)；从交付物倒查证据在 [meta/loading §从交付物倒查](../meta/workflow/loading.md#从交付物倒查反向加载)。本页只管派与轴的地图。横切索引四个：找跨派结论 → [conclusions](./conclusions.md)；找本派判断 → 该派 `claims.md`；找 E 的承重数/条件 → [evidence-anchors](./evidence-anchors.md)；找地址/对象 → [objects](./objects.md)。
 
 ## 论文进库的前置
 
@@ -174,7 +174,7 @@ updated: 2026-11-12
 
 答不出来，说明它还没被消化。
 
-每派根目录有四个文件：`README.md`（地图与硬证据，只在判断被改变时改写）、`frontier.md`（活页：前沿问题、信号源、检索式、候选队列、入档判据）、`claims.md`（本派局部结论 `L-xx`）、`sources.md`（本派卡片索引）。方法见 [meta/rules/topic-research-protocol.md](../meta/rules/topic-research-protocol.md)。
+每派根目录有四个文件：`README.md`（地图与硬证据，只在判断被改变时改写）、`frontier.md`（活页：前沿问题、信号源、检索式、候选队列、入档判据）、`claims.md`（本派局部结论 `L-xx`）、`sources.md`（本派卡片索引）。方法见 [meta/workflow/topic-research-protocol.md](../meta/workflow/topic-research-protocol.md)。
 
 派内可以再有**子主题目录**：`topics/<派>/<子主题>/README.md`。派 README 只做地图与硬证据；子主题 README 放详细机制。子主题按子机制/子问题命名，不按来源类型；成立条件与素材类型规则见 [ADR 0003](../adr/0003-subtopics-and-source-types.md)。
 

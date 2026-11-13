@@ -20,4 +20,4 @@ updated: 2026-11-12
 | 05-L9 | medium 接受率 0–25%，但不是全 mixed：default 0/2、pretrained 1/4、GPT-4o mini 1/5；medium 一律人审 | 已核 | CASTON Table 1 | default 的 2 条全 mixed；另两组各有 1 条被接受；每组 2–5 条 |
 | 05-L10 | 可消费性 = load/validate/answer 三关记录；现有 build_report 只覆盖 load/validate 的一部分；10 个坏样本只有 2 个被稳定抓住 | 推测（读文件/标准） | representation/consumability；04 A.5 | 未跑 S1–S6/S9/S10；ODCS/LinkML 待入库 |
 
-> **跨页说明（本次不动 conclusions）**：generation 原 frontmatter `evidence: [E-05]` 是错挂——E-05 属 FIRME/04-state，已改为空。05 引用的 E-02/E-05 均按 conclusions 现有条目，没有新增或修改 `E-xx`。
+> **跨页说明**：generation 原 frontmatter `evidence: [E-05]` 是错挂——E-05 属 FIRME/04-state，已改为空。原引 `E-02`（Ontology Catch）已于 2026-11-11 随源撤回，相关条目 `05-L8` 已标 `推测`；`E-05` 仍为 FIRME。

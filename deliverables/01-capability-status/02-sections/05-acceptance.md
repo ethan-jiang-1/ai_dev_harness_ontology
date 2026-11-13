@@ -14,7 +14,7 @@ parent: ../README.md
 |---|---|---|---|---|
 | false-veto / 误拦率 | 原锚撤回（W-03）；blocked log 没有 harm/授权标签；候选源也按 §4 移出 | 按 W-03 做 shadow 200–500 + 100 条 blocked 标注；报 miss–false-block 前沿，不设单点 | 部分：有评测方法；本体闸标签仍需仓库外 | 待新源 |
 | 写路径授权 | 概念架构 + 四条开源否定证据；本轮检索未找到实现 | 域 policy、审计存储、事务、可控写路径；先做一个 mutation class | 否 | 需立项建设 |
-| 独立复现 | 现有 27 条 E 全部是 `已核`/`推测`，无 `已证`；10 篇论文 + 8 个开源是材料基础 | 仓库外复现记录 + `EXP-xxx` 指针 | 否 | 不确定 |
+| 独立复现 | 现役所有 E 均为 `已核`/`推测`，无 `已证`（现行在库计数见 [state.md](../../../meta/status/state.md)） | 仓库外复现记录 + `EXP-xxx` 指针 | 否 | 不确定 |
 | 跨域效度 | 单工厂（E-12）、单基准（E-01）、checker 无 admitted 源（E-02 撤回）、专有数据（E-05）；本轮未新增跨域来源 | 更多独立域/基准 | 部分：可继续 desk research | 数个来源 |
 | 接地等级校准 | 旧等级是模型自评、且源已撤回（W-02）；数值停用 | 按 W-02：每级 100–200 条独立标注，报 precision/recall | 否 | 独立标注 |
 | 第二个 read-path 实现 | trustgraph 1 个 | 再找一个 pin commit 的实现 | 部分：可继续扫开源 | 继续扫 |
@@ -49,6 +49,6 @@ parent: ../README.md
 
 **第一轮底稿**：[`data/`](../09-data/) 里有 e3/e4/e5/e6/e7-e8 数据表与 [P0 源扫描](../09-data/p0-source-scan.md)。它们是工作底稿，不是交付正文；正式引用仍走 E-xx。
 
-**详细执行计划**：[plan.md](../../_plans/01-capability-status.md)（覆盖审计、现有 digest 回抽、需要新 `src/` 的来源、WBS、排期、DoD、停止规则）。
+**详细执行计划**：[plan.md](../../../meta/archive/2026-11/plans/01-capability-status.md)（覆盖审计、现有 digest 回抽、需要新 `src/` 的来源、WBS、排期、DoD、停止规则）。
 
 <a id="8-与另外两份交付物的关系"></a>

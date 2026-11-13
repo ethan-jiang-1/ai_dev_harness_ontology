@@ -3,7 +3,7 @@ status: draft
 deliverable_status: draft
 updated: 2026-11-12
 target: 工程负责人 / 架构师
-basis: E-01–E-20, C-03; recipes R0–R12
+basis: 有效主力 E-01, E-05, E-07–E-09, E-12, E-14, E-15, E-17–E-25, C-03（W 表见 91-canonical）；recipes R0–R12
 ---
 
 # 02 · 工程实施：把本体接进 harness 的做法

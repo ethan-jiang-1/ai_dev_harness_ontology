@@ -36,7 +36,7 @@
 ## F4 · 身份变更是 commit 问题
 
 - **判断**：`UNVERIFIED` 可进推理，但不能授权 merge/split；需要 claim-specific promotion、冲突解决、scope/version 检查。
-- **写侧最小字段**（Commit Boundary §6.5）：证据带 `hypothesis_id` / `source_id`（判同源，防止 hypothesis 诱导的检索被当独立确认）与 `role: support|contradiction|unresolved`；promotion 带 `promoted_by` / `promoted_at`（审计谁批的）；verdict 带 `failed_claims[]` / `unresolved[]` / `scope_valid` / `versions_valid`（defer 理由可回放）。缺这些，事后既分不清 false merge 与同源自证，也答不出为什么 defer。字段契约 `已核`。
+- **写侧最小字段**（原 Commit Boundary 2610.37407 §6.5，已移出；作字段设计参考）：证据带 `hypothesis_id` / `source_id`（判同源，防止 hypothesis 诱导的检索被当独立确认）与 `role: support|contradiction|unresolved`；promotion 带 `promoted_by` / `promoted_at`（审计谁批的）；verdict 带 `failed_claims[]` / `unresolved[]` / `scope_valid` / `versions_valid`（defer 理由可回放）。缺这些，事后既分不清 false merge 与同源自证，也答不出为什么 defer。`推测`（概念字段参考，原源已移出）。
 - **失败模式与处置**（Commit Boundary 失败表，§6.5）：promotion 被绕过 → 拒 commit；scope/version 过期 → defer；部分提交（graph 与 evidence 不一致）→ 回滚；同源 lineage 误判 → 降级为 `UNVERIFIED`；policy 本身错 → 停，先修 policy。这是契约级处置，没有实现、没有触发率，不能当成本/效果数字。
 - **等级**：`推测`（Commit Boundary 是概念架构，无实现）。
 - **边界**：没有 false-defer 率；没有工程集成；promotion 正确性依赖外部标注。

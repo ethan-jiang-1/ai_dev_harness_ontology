@@ -54,6 +54,6 @@ evidence: [E-10]  # withdrawn
 
 ## 关联
 
-- 派：[06 测量](../README.md) · 结论：[E-10](../../conclusions.md)
+- 派：[06 测量](../README.md) · 结论：[原 E-10（已于 2026-11-11 撤回）](../../conclusions.md)
 - 相邻：[metrics](../metrics/README.md) · [trace](../trace/README.md)
 - 判定：[02 checker](../../02-judgment/checker/README.md)

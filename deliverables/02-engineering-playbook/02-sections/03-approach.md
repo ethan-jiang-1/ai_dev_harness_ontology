@@ -73,7 +73,7 @@ parent: ../README.md
 | 公式级 | 可算的盈亏平衡/代价 | 编译 `p_min = 2% + c/(0.929Q)`（E-14）；CASEL `J(m)`（E-15，`γ_m` 是假设） | 代自己的数；不抄论文的 `c`/`γ` |
 | 协议级 | 判定/标注/三态 | 协议形态可读（三态/标注表）；数值与阈值按 W-01/W-02 重测 | 不抄阈值；照结构、不照结论 |
 | 参数级 | 具体设置 | FIRME 匹配顺序/0.8（E-05）；POLAR/OntoAct 等已移出源的参数只作机制示例（W-03/W-04） | 只当起点，按域重标 |
-| 流程级 | 步骤顺序 | CAI parse→chunk→enrich→validate→assemble→register；OA-RAG DESCRIBE/ASK/SELECT | 抄流程；不抄规模 |
+| 流程级 | 步骤顺序 | CAI parse→chunk→enrich→validate→assemble→register；OA-RAG DESCRIBE/ASK/SELECT（已移出源，仅作流程思路占位） | 抄流程；不抄规模 |
 | 概念级 | 设计问题 | commit gate；determinism；多智能体共享本体 | 只能当设计清单，不能当实现 |
 
 **结论**：论文/开源在**接口、公式、协议、参数**上给了可操作的指示；在**端到端架构**和**效应量**上没有。不要指望一篇论文给出「拿本体做 X」的完整 recipe；能抄的是零件，组装要自己测。

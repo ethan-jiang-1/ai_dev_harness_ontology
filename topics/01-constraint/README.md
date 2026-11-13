@@ -1,17 +1,17 @@
 ---
 status: draft
-updated: 2026-11-12
+updated: 2026-11-13
 ---
 
 # 01 约束派：怎么不让它做错事
 
-> **2026-11-12 撤源对账**：本派 POLAR（E-04/E-13）、OntoAct（E-16）、Commit Boundary 已移出（[审计](../../meta/audits/2026-11-11-source-purge.md)）。**本页与各子主题 README 的等级已降；`findings.md` 索引里的旧「已核」是撤源前记录，引用以 README 为准。** 仍 admitted：CASEL（E-15，非本体参照）、trustgraph/semantica/ontop/open-ontologies（E-20 代码级）、Glyph（E-22）。
+> **2026-11-13 撤源对账**：本派 POLAR（E-04/E-13）、OntoAct（E-16）、Commit Boundary 已移出（[审计](../../meta/audits/2026-11-11-source-purge.md)）。本页与各子主题 `README` / `findings` 的等级已同步降为 `推测`/历史参考；仍 admitted：CASEL（E-15，非本体参照）、trustgraph/semantica/ontop/open-ontologies（E-20 代码级）、Glyph（E-22）。
 
 ## 核心主张
 
 **安全应作为结构问题来问，不是让模型给判断。**（`推测`，组织假设）
 
-POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是否存在一个可接受的逆操作序列**」——后者的答案是结构性的、可审计的；前者只是一个标签，而标签无法被验证。但 POLAR 的实测只到「有逆序列」：T1-only 接近 blanket veto，结构贡献未被隔离（[01-L6](./claims.md)）。**这是本派的方向性主张，不是已被证明的结论。**
+原 POLAR（已移出，作方向示例）把问题从「LLM 能否判断这个动作是否安全」换成「**是否存在一个可接受的逆操作序列**」——后者的答案是结构性的、可审计的；前者只是一个标签，而标签无法被验证。但 POLAR 的原实测只到「有逆序列」：T1-only 接近 blanket veto，结构贡献未被隔离（原 `01-L6` 已 `withdrawn`）。**这是本派的方向性主张，不是已被证明的结论。**
 
 这一派的判据尽量不依赖模型**自评**，而依赖可检查的世界状态/本体事实。但各子机制做到的程度不同：action-gate 查运行时状态，reasoning-gate 的候选仍由 LLM 提出、只验证条件，commit-gate 的**写路径**仍是概念设计、无实现（读路径已有开源实现，见 [commit-gate F5](./commit-gate/findings.md)）。这不是说它是唯一不依赖模型输出的一派。
 
@@ -41,11 +41,11 @@ POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是�
 
 **用**：动作不可逆且代价高（对外发送、资金、删除唯一数据）；模型能力弱于域要求；域规则可被查询成事实。
 
-**别用**：强模型 + 高基线（POLAR 已观察到回退）；动作的复合可逆性无法计算；判定所需事实依赖运行时状态而系统拿不到；合法意图主导（retail 退货/换货）且没有意图/授权层。
+**别用**：强模型 + 高基线（原 POLAR 已移出，其回退观察仅作历史警示）；动作的复合可逆性无法计算；判定所需事实依赖运行时状态而系统拿不到；合法意图主导（retail 退货/换货）且没有意图/授权层。
 
 ## 双重身份
 
-多 agent 诊断同时属于 [06 测量/failure-attribution](../06-measure/failure-attribution/README.md)：它是「聚合指标掩盖 case-level」的案例（Top-1 只 +2.5 pp，个案可从 0.340 到 1.0），也是「curated KG 覆盖换可审计性」的案例——未覆盖诊断恒 0。digest 未见「性能换安全」的表述。
+多 agent 诊断（已移出，仅作双重身份历史定位示例）同时属于 [06 测量/failure-attribution](../06-measure/failure-attribution/README.md)：它是「聚合指标掩盖 case-level」的案例，也是「curated KG 覆盖换可审计性」的案例（原数值停用）。digest 未见「性能换安全」的表述。
 
 ## 本目录怎么长
 
@@ -61,7 +61,7 @@ POLAR 把问题从「LLM 能否判断这个动作是否安全」换成「**是�
 | `<子主题>/frontier.md` | 该子主题的 gap / next |
 | `<子主题>/prompt.md` + `runs/` | 可选：常驻 prompt 与按日期输出 |
 
-模板见 [meta/templates/subtopic-template](../../meta/templates/subtopic-template/README.md)。新增内容只改本目录；跨派才升 [conclusions](../conclusions.md)。
+模板见 [meta/templates/subtopic-template](../../meta/templates/topics/subtopic-template/README.md)。新增内容只改本目录；跨派才升 [conclusions](../conclusions.md)。
 
 ## 持续挖掘
 

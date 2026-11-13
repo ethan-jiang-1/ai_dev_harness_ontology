@@ -1,7 +1,8 @@
 # 持久化前 · 机制
 
+> **2026-11-11 素材重置注**：本页「证据状态机 / 两阶段 / promotion 契约 / 工程发现 1–4」源自概念提案 **Commit Boundary（arXiv:2610.37407）**——该源已因「单作者/质量 C/无实现」未过准入门并移出（[tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37407)），`01-L13/L14` 已撤回。以下保留作**`推测`（纯设计契约参考，无实现/无实证）**；原标「已核」仅指撤源前对设计文本的核对，不代表现役实证。
+>
 > 只写「它怎么跑」。判断回 [findings](./findings.md)，边界/下一步回 [frontier](./frontier.md)。
-> 「工程发现 1–4」里的字段名/记录结构来自 [digest](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37407) §6.5 的工程配方（论文只给抽象对象，未给 schema），标 `推测`；commit 条件、promotion 规则、stop 门来自论文契约或 digest 明确条目，逐条标等级。
 
 ## 位置
 
@@ -34,9 +35,9 @@
 | `P_auth(q_m, ω)` | 对特定命题、观察域、policy version 有授权资格 |
 | `PASS` / `BREACH` / `UNKNOWN_EVIDENCE` | 三态结论；`BREACH` > `UNKNOWN` > `PASS` |
 
-`UNKNOWN_EVIDENCE` 表示授权未建立（证据不足或冲突未解），不是「两个实体不同」的证明；不可逆变更被 defer 不等于反证。`已核`（digest §6.1 第 8 条）
+`UNKNOWN_EVIDENCE` 表示授权未建立（证据不足或冲突未解），不是「两个实体不同」的证明；不可逆变更被 defer 不等于反证。`推测`（原 2610.37407 设计契约参考，源已移出）
 
-## promotion 契约（digest §3.3，七条）
+## promotion 契约（原 2610.37407 §3.3，源已移出，仅作设计参考）
 
 1. 评估**具体命题**，不是文档相关性/查询匹配/合理性。
 2. 记录 provenance、命题、角色、时间适用性、validation basis、policy/validator version。
@@ -48,23 +49,23 @@
 
 ## 两阶段
 
-Phase 1 授权 proposed mutation；Phase 2 验证 realized candidate；commit 时 scope/version/graph/evidence 必须在同一 snapshot。Phase 1 的批准只绑定当次 mutation 的 `q_m`/scope 与 graph/evidence/policy 版本，不是会话级通行证。`已核`（digest §3.1/§6.5；arXiv:2610.37407 §6.1）
+Phase 1 授权 proposed mutation；Phase 2 验证 realized candidate；commit 时 scope/version/graph/evidence 必须在同一 snapshot。Phase 1 的批准只绑定当次 mutation 的 `q_m`/scope 与 graph/evidence/policy 版本，不是会话级通行证。`推测`（2610.37407 概念提案，源已移出）
 
 ## 失效模式
 
-> 以下是契约边界或实现风险，不是实测发生率；digest 明确无实现。标 `已核` 指论文/契约明确；标 `推测` 指工程判断或未测发生率；表内处置动作来自 digest §6.5 失败模式表（工程配方）。
+> 以下是契约边界或实现风险，不是实测发生率；原提案明确无实现。下列各条均为**`推测`（原 Commit Boundary 2610.37407 设计契约参考，源已于 2026-11-11 移出，不作现役实证）**。
 
-- **批准越界复用（把 `P_auth` 当会话级通行证）。** `P_auth(q_m, ω)` 只对已声明命题、角色、观察域、policy version 有效；把一次批准复用到别的 mutation 或新版本，需要重新 promotion，不能继承。`已核`（digest §3.3 第 7 条）
-- **promotion 被绕过。** 直接写 `P_auth`，跳过 promotion 记录；审计 promotion 记录可发现，拒绝 commit。`已核`（digest §6.5 失败模式表）
-- **scope/version 过期。** Phase 1 后 policy/本体/图/证据版本变化，旧批准仍被使用；必须同 snapshot 检查 `ScopeValid`/`VersionsValid`，否则 defer。`已核`（契约；digest §6.5）
-- **部分提交。** graph 与 evidence 不一致；用事务/对账回滚。`已核`（digest §6.5 失败模式表）
-- **同源 lineage 误判。** 多个 `UNVERIFIED` 被当确认；按共享 query/hypothesis/source 降级为 `UNVERIFIED`。`已核`（契约）
-- **policy 本身错。** 规则与域不符；专家评审，停，修 policy。`已核`（digest §6.5 失败模式表）
-- **冲突被静默消解。** 实现若把冲突压成单一分数/标签，就绕过 `unresolved` 阻塞；digest 要求未解决冲突 → `UNKNOWN_EVIDENCE`/defer，但未测实现发生率。`推测`
-- **defer 无重入路径。** digest 只说 defer、不丢弃证据，没有给队列/重入协议；若没有队列，被阻塞 mutation 会停在系统外。`推测`（缺口 G3）
-- **依赖链未记录。** 架构不控制 hypothesis-conditioned retrieval；没有 dependency-aware lineage，promotion 仍可能被污染。`已核`（digest §5）
-- **Policy/promotion 正确性外包。** 架构只保证「按 contract 执行」，不保证 contract 本身对。`已核`（digest §4.1/§5）
-- **把「没有冲突」当「支持」。** 没检测到冲突只是没检测到，不是 positive support。`已核`（§3.3 第 5 条）
+- **批准越界复用（把 `P_auth` 当会话级通行证）。** `P_auth(q_m, ω)` 只对已声明命题、角色、观察域、policy version 有效；把一次批准复用到别的 mutation 或新版本，需要重新 promotion，不能继承。`推测`（契约设计）
+- **promotion 被绕过。** 直接写 `P_auth`，跳过 promotion 记录；审计 promotion 记录可发现，拒绝 commit。`推测`（契约设计）
+- **scope/version 过期。** Phase 1 后 policy/本体/图/证据版本变化，旧批准仍被使用；必须同 snapshot 检查 `ScopeValid`/`VersionsValid`，否则 defer。`推测`（契约设计）
+- **部分提交。** graph 与 evidence 不一致；用事务/对账回滚。`推测`（契约设计）
+- **同源 lineage 误判。** 多个 `UNVERIFIED` 被当确认；按共享 query/hypothesis/source 降级为 `UNVERIFIED`。`推测`（契约设计）
+- **policy 本身错。** 规则与域不符；专家评审，停，修 policy。`推测`（契约设计）
+- **冲突被静默消解。** 实现若把冲突压成单一分数/标签，就绕过 `unresolved` 阻塞；契约要求未解决冲突 → `UNKNOWN_EVIDENCE`/defer，但未测实现发生率。`推测`
+- **defer 无重入路径。** 契约只说 defer、不丢弃证据，没有给队列/重入协议；若没有队列，被阻塞 mutation 会停在系统外。`推测`（缺口 G3）
+- **依赖链未记录。** 架构不控制 hypothesis-conditioned retrieval；没有 dependency-aware lineage，promotion 仍可能被污染。`推测`（契约边界）
+- **Policy/promotion 正确性外包。** 架构只保证「按 contract 执行」，不保证 contract 本身对。`推测`（契约边界）
+- **把「没有冲突」当「支持」。** 没检测到冲突只是没检测到，不是 positive support。`推测`（契约设计）
 
 ## 与本体 / 回路的关系
 
@@ -72,43 +73,43 @@ Phase 1 授权 proposed mutation；Phase 2 验证 realized candidate；commit �
 
 ## 实施与客户价值（A3/A4）
 
-> 本节把 digest 的工程口径落到接口/字段/成本/stop；重点补 3 类：`verdict` 字段（`scope_valid`/`versions_valid`/`failed_claims[]`/`unresolved[]`）、`promotion` 审计字段（`promoted_by`；shadow/eligible 边界）、持续审计成本。字段名是 digest §6.5 的工程配方（论文未给 schema），不把它们说成论文实测。
+> 本节工程口径与字段/成本/stop 为原 Commit Boundary（2610.37407，已移出）的工程配方参考，一律标 `推测`，不得作实测引用。
 
 ### 实施决策
 
 - 身份变更/图合并/主数据写入前：`UNVERIFIED` 只能推理，不能授权 merge/split；commit gate 只放行 `PASS`（`q_m` 全覆盖 + 冲突清）+ `ScopeValid` + `VersionsValid`。
-- **批准不继承。** `P_auth(q_m, ω)` 只对已声明命题/角色/观察域/policy version 有效；下一个 mutation 重新派生 `q_m` 并重新 promotion，不能沿用上一笔批准。`已核`（digest §3.3 第 7 条；arXiv:2610.37407 §6.1）
+- **批准不继承。** `P_auth(q_m, ω)` 只对已声明命题/角色/观察域/policy version 有效；下一个 mutation 重新派生 `q_m` 并重新 promotion，不能沿用上一笔批准。`推测`（原 2610.37407 §6.1 设计契约，源已移出）
 - 先做一个 mutation class（person merge），不要一次覆盖所有写路径。
-- 使能条件：可控写路径、domain policy、promotion 流程、版本化存储、能记录 provenance；缺一不做。`已核`（digest §6.2）
+- 使能条件：可控写路径、domain policy、promotion 流程、版本化存储、能记录 provenance；缺一不做。`推测`
 
 ### 工程发现 1｜接口：mutation context、q_m 与 verdict
 
-- `mutation_context {mutation_id, class: merge|split|unmerge, head_id, target_id, policy_version, snapshot_id}`。`推测`（digest §6.5 数据契约）
-- `evidence {obs_id, claim_id, role: support|contradiction|unresolved, provenance, hypothesis_id, source_id}`；`hypothesis_id`/`source_id` 是同源检测的钩子，缺了只能靠文本相似度猜。`推测`（digest §6.5 数据契约；同源检测必要性为工程判断）
-- `q_m = [{claim_id, predicate, scope, version}]`，由 supervisor 从 mutation、`V_E`、policy version 派生；Planner 不能替换或弱化。`已核`（派生规则：digest §3.1；不可替换：arXiv:2610.37407 Assumption 5）；字段结构 `推测`
-- `verdict {status: PASS|BREACH|UNKNOWN_EVIDENCE, failed_claims[], unresolved[], scope_valid, versions_valid}`。commit 只在 `PASS ∧ scope_valid ∧ versions_valid` 时放行；`BREACH` 拒绝/升级，`UNKNOWN_EVIDENCE` defer。`已核`（commit 条件；digest §6.5）；字段结构 `推测`
-- **为什么 verdict 不能只有三态。** 只有 `status` 时，defer 无法回答「缺哪条 claim / 哪条冲突未解 / 是 scope 还是 version 过期」，重入和审计都做不了；`failed_claims[]` 与 `unresolved[]` 是重入的输入。`推测`（工程判断；digest 只给字段，未给重入协议）
-- 两阶段：Phase 1 授权 proposed；Phase 2 验证 realized；同 snapshot 的 scope/version/graph/evidence。`已核`（digest §3.1）
+- `mutation_context {mutation_id, class: merge|split|unmerge, head_id, target_id, policy_version, snapshot_id}`。`推测`
+- `evidence {obs_id, claim_id, role: support|contradiction|unresolved, provenance, hypothesis_id, source_id}`；`hypothesis_id`/`source_id` 是同源检测的钩子，缺了只能靠文本相似度猜。`推测`
+- `q_m = [{claim_id, predicate, scope, version}]`，由 supervisor 从 mutation、`V_E`、policy version 派生；Planner 不能替换或弱化。`推测`（原 2610.37407 设计契约，源已移出）
+- `verdict {status: PASS|BREACH|UNKNOWN_EVIDENCE, failed_claims[], unresolved[], scope_valid, versions_valid}`。commit 只在 `PASS ∧ scope_valid ∧ versions_valid` 时放行；`BREACH` 拒绝/升级，`UNKNOWN_EVIDENCE` defer。`推测`
+- **为什么 verdict 不能只有三态。** 只有 `status` 时，defer 无法回答「缺哪条 claim / 哪条冲突未解 / 是 scope 还是 version 过期」，重入和审计都做不了；`failed_claims[]` 与 `unresolved[]` 是重入的输入。`推测`
+- 两阶段：Phase 1 授权 proposed；Phase 2 验证 realized；同 snapshot 的 scope/version/graph/evidence。`推测`
 
 ### 工程发现 2｜接口：promotion 记录要能独立审计
 
-- `promotion {claim_id, obs_id, role: support|contradiction|unresolved, validation_basis, policy_version, promoted_by, promoted_at}`。`推测`（digest §6.5 数据契约；论文只给抽象对象）
-- **`promoted_by` / `promoted_at` 不能省。** 缺 `promoted_by` 不能追是谁做的 promotion；缺 `promoted_at` 不能追何时。两者都缺，审计只能看到「已授权」。`推测`（审计判断；digest 只给字段）
-- `role` 必须是命题级：support / contradiction / unresolved；不能只有一个全局「已验证」标签。`已核`（§3.3 第 1–2 条）
-- promotion 不接受 Planner 置信度、LLM `verified` 标签、多个 `UNVERIFIED` 重复；也不从「没冲突」推断 support。`已核`（§3.3 第 3–5 条）
+- `promotion {claim_id, obs_id, role: support|contradiction|unresolved, validation_basis, policy_version, promoted_by, promoted_at}`。`推测`
+- **`promoted_by` / `promoted_at` 不能省。** 缺 `promoted_by` 不能追是谁做的 promotion；缺 `promoted_at` 不能追何时。两者都缺，审计只能看到「已授权」。`推测`
+- `role` 必须是命题级：support / contradiction / unresolved；不能只有一个全局「已验证」标签。`推测`
+- promotion 不接受 Planner 置信度、LLM `verified` 标签、多个 `UNVERIFIED` 重复；也不从「没冲突」推断 support。`推测`
 
 ### 工程发现 3｜约束：shadow 与 eligible 是 promotion 的硬边界
 
-- **shadow 排除。** promotion 的 provenance/validation basis 不得引用 shadow candidate，也不得引用「其 recorded basis 引用了 shadow」的 claim；限制要沿记录链传递。`已核`（§3.3 第 6 条）
-- **eligible 范围。** 证据只在声明的命题、角色、适用性上 eligible；同一来源换一个命题要重新评估，不能把「对 A 命题可用」当成「对 B 命题也可用」。`已核`（§3.3 第 7 条）
-- **工程含义：** promotion 表要能表达 `shadow` 标记与 `eligible_scope`；否则实现只能把 eligibility 做成全局布尔（promotion 一次生效、对所有命题都算数）。`推测`（接口设计判断）
+- **shadow 排除。** promotion 的 provenance/validation basis 不得引用 shadow candidate，也不得引用「其 recorded basis 引用了 shadow」的 claim；限制要沿记录链传递。`推测`
+- **eligible 范围。** 证据只在声明的命题、角色、适用性上 eligible；同一来源换一个命题要重新评估，不能把「对 A 命题可用」当成「对 B 命题也可用」。`推测`
+- **工程含义：** promotion 表要能表达 `shadow` 标记与 `eligible_scope`；否则实现只能把 eligibility 做成全局布尔（promotion 一次生效、对所有命题都算数）。`推测`
 
 ### 工程发现 4｜成本与指标：审计存储是持续成本，false-defer 必须先测
 
-- 一次性：domain policy/claim 表 2–4 专家人日；状态机/审计存储 2–3 人周。`推测`（digest §6.5 估算；论文无实测）
-- 持续：审计存储保存证据、角色、validation basis、policy version；policy/本体每次变更要重新验证并做版本管理。digest 把它列为持续成本，没有给数字。`已核`（§6.2 类别）；量级 `推测`
-- 人审：准备 20–50 条 false-defer 样本（digest 给量级，未给工时）。`推测`
-- **上线前先测 false-defer。** 正确变更被 `UNKNOWN_EVIDENCE` 拦住的比例；没有这个数，就不知道 gate 的代价。`已核`（§6.4 最小落地清单第 8 条）
+- 一次性：domain policy/claim 表 2–4 专家人日；状态机/审计存储 2–3 人周。`推测`
+- 持续：审计存储保存证据、角色、validation basis、policy version；policy/本体每次变更要重新验证并做版本管理。`推测`
+- 人审：准备 20–50 条 false-defer 样本。`推测`
+- **上线前先测 false-defer。** 正确变更被 `UNKNOWN_EVIDENCE` 拦住的比例；没有这个数，就不知道 gate 的代价。`推测`（设计检查项）
 - **stop 门（工程门，不是论文阈值；数字是 digest 给的起点，`推测`）：**
   - false-defer >20% → 停，放宽 claim 范围/补证据。
   - unresolved conflict >10% → 停，先解决冲突。

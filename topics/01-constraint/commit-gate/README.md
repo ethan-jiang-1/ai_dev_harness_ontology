@@ -1,6 +1,6 @@
 ---
 status: seed
-updated: 2026-11-09
+updated: 2026-11-13
 rq: [RQ2, RQ4]
 evidence: []
 ---
@@ -8,6 +8,7 @@ evidence: []
 # 持久化前：推理证据 ≠ 授权证据
 
 > **薄页（<2 篇独立来源）**：本页判断只作候选/边界，**不承担稳定判断**；引用时必须带「单来源」限定。
+> **2026-11-13 对账**：原 Commit Boundary（2610.37407）已移出（[tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2610-37407)）；下述写路径三条件/概念架构降为 `推测`（仅作设计参考）。读路径开源实现（trustgraph，E-20）仍 admitted，F5–F7 保持 `已核（代码）`。
 
 > 变更即将落盘或写入外部系统的那一刻。前面都是「推理」，这里是唯一「改变世界」的时刻；这里问「什么证据才有权推动持久化」。
 
@@ -24,10 +25,10 @@ evidence: []
 
 ## 当前判断
 
-- **推理证据 ≠ 授权证据。** 能支持假设，不等于有权推动持久化变更；`UNVERIFIED` 可进 Planner，但不能当 positive authorization support。`已核`（概念架构）
-- **提交条件要显式化。** 证据齐、冲突清、版本有效，三条全过才 commit；`P_auth` 按命题/观察域/policy version 绑定，commit 时再验 scope/version；不跨 mutation 继承。`已核`（设计规范）
-- **同源检索不是独立确认。** hypothesis 诱导的多个结果不能互相印证；「没检测到冲突」也不是 positive support。`已核`（概念）
-- **写路径只有设计，没有实现。** Commit Boundary 自述无实现、无实证；保证是条件性的，只能作设计提案。`已核`（概念）
+- **推理证据 ≠ 授权证据。** 能支持假设，不等于有权推动持久化变更；`UNVERIFIED` 可进 Planner，但不能当 positive authorization support。`推测`（原 Commit Boundary 已移出，仅作概念参考）
+- **提交条件要显式化。** 证据齐、冲突清、版本有效，三条全过才 commit；`P_auth` 按命题/观察域/policy version 绑定，commit 时再验 scope/version；不跨 mutation 继承。`推测`（概念设计规范，原源已移出）
+- **同源检索不是独立确认。** hypothesis 诱导的多个结果不能互相印证；「没检测到冲突」也不是 positive support。`推测`（概念参考，原源已移出）
+- **写路径只有设计，没有实现。** Commit Boundary（已移出）原自述无实现、无实证；保证是条件性的，只能作设计提案。`推测`（概念参考）
 - **读路径已有实现，但不是 commit gate。** trustgraph 的 `policy_filter.py` 按 user_context + SHACL-AF 过滤检索结果；拦的是「看到什么」，不是「写什么」。`已核`（代码；[F5](./findings.md)）
 - **读路径实现的两个失败模式。** SPARQL 异常一律放行（fail-open，[F6](./findings.md)）；只删 subject 侧三元组，object 方向可能泄漏（[F7](./findings.md)）。`已核`（代码）
 
@@ -51,7 +52,7 @@ evidence: []
 
 ## 关联
 
-- 派：[01 约束](../README.md) · 本派 claims：[01-L13 / 01-L14](../claims.md)（未升 E）
+- 派：[01 约束](../README.md) · 本派 claims：[01-L13 / 01-L14](../claims.md)（已随 Commit Boundary 撤回，未升 E；trustgraph 见 `01-L18`）
 - 相邻：[action-gate](../action-gate/README.md) · [reasoning-gate](../reasoning-gate/README.md)
 - 执行链分层（求值 / 决策 / 执行 / 授权 / 审计）：[execution-forms](../../execution-forms.md#执行链求值决策执行授权审计)
 - 记忆写入：[04 memory](../../04-state/memory/README.md) · [identity](../../04-state/identity/README.md)

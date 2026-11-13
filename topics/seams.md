@@ -39,8 +39,8 @@ rq: [RQ2, RQ3]
 |---|---|---|---|---|
 | `read-path` | 检索结果返回前、进入上下文前 | 是（可阻断，但 best-effort） | trustgraph 的 SHACL-AF 策略过滤 | 只有 1 个代码实现；且代码核对发现 fail-open、只删 subject 侧；等第二个独立实现再决定 |
 | `supply` | 供给/编译内部执行 | 否 | ontop 的查询重写、CAI 的编译 | 代码核对：ontop 做 TBox 饱和 + 查询重写，不是校验；它改变「给什么」，不直接拦模型动作 |
-| `reasoning` | 推理期、动作前 | 是（条件验证） | OntoAct 的三值条件、reasoning-gate | 与 action-gate 的边界尚未稳定；先留在 01 派内 |
-| `training` | 训练侧 | 否 | Evontree 的规则筛数据 | 不在推理回路内 |
+| `reasoning` | 推理期、动作前 | 是（条件验证） | OntoAct（已移出，机制示例）的三值条件、reasoning-gate | 与 action-gate 的边界尚未稳定；先留在 01 派内 |
+| `training` | 训练侧 | 否 | Evontree（已移出，历史示例）的规则筛数据 | 不在推理回路内 |
 
 `none` 只表示「不是上述任何位置」，**必须在 digest 里写清是“回路外”还是“尚未判定”**；不能再把两者混成一个值。
 

@@ -8,6 +8,7 @@ gate_checked: 2026-11-11
 impact_evidence: I1 标准组织（OMG，1998 年起为 ISO/IEC JTC 1 PAS submitter）；I2 多主体（88solutions / Adaptive / Airbus / Dassault 等贡献）；I3 采用（FIBO、RIO、MVF、LCC、API4KP 将其列为上游可复用库，待核具体条款）
 liveness: 1.3 formal，2026-06 发布；贡献者版权 2024–2025
 reading: 摘要级
+provenance_type: standard-body
 provenance: 原文摘要
 updated: 2026-11-11
 batch: 2026-11-11 基线批

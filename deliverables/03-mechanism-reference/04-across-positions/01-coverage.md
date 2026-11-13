@@ -107,4 +107,4 @@ evidence: [E-01, E-02, E-03, E-04, E-05, E-12, E-17, E-20, C-03]  # E-02/03/04 w
 - [topics/06-measure/metrics/coverage.md](../../../topics/06-measure/metrics/coverage.md)（定义与逐格理由）
 - [topics/README 强度与覆盖率反向](../../../topics/README.md#强度与覆盖率反向)
 - [topics/execution-forms.md](../../../topics/execution-forms.md)（形态轴）
-- [topics/conclusions.md](../../../topics/conclusions.md) 的 E-01/E-02/E-03/E-04/E-05/E-12/E-17/E-20、C-03
+- [topics/conclusions.md](../../../topics/conclusions.md) 的 E-01/E-05/E-12/E-17/E-20、C-03（原 E-02/E-03/E-04 已撤回）

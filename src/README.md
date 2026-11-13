@@ -42,8 +42,7 @@ src/
 │       ├── card.md                   # 来源卡：repo/commit/license/本体在哪/调用点（短）
 │       ├── digest.md                 # 代码阅读正文：自包含，下游唯一入口
 │       └── code-map.md               # 可选：文件/符号/调用链索引
-├── _templates/                       # 三类源材料的模板都在这里，子目录不再自带模板
-└── README.md
+└── README.md                         # 模板统一在 ../meta/templates/src/，src/ 不再自带模板
 ```
 
 ## 0.1 两个角色 + 一份原文，一句话
@@ -58,9 +57,9 @@ src/
 
 | 类 | 原文 | 来源卡模板 | 消化模板 | 额外 |
 |---|---|---|---|---|
-| 论文 | `paper.md` / PDF | [paper-card](./_templates/paper-card.md) | [paper-digest](./_templates/paper-digest.md) | `figures/` |
-| 网页 | 原文 MD | [material-card](./_templates/material-card.md) | 同卡（材料卡含判断） | — |
-| 代码 | commit + 链接 | [open-source-card](./_templates/open-source-card.md) | [open-source-digest](./_templates/open-source-digest.md) | `code-map.md` |
+| 论文 | `paper.md` / PDF | [paper-card](../meta/templates/src/paper-card.md) | [paper-digest](../meta/templates/src/paper-digest.md) | `figures/` |
+| 网页 | 原文 MD | [material-card](../meta/templates/src/material-card.md) | 同卡（材料卡含判断） | — |
+| 代码 | commit + 链接 | [open-source-card](../meta/templates/src/open-source-card.md) | [open-source-digest](../meta/templates/src/open-source-digest.md) | `code-map.md` |
 
 **信息流**（论文为例，另两类同构）：
 
@@ -74,7 +73,7 @@ src/
 
 `card.md` 与 `digest.md` 都从原文来，但**不是上下游关系**：card 是来源登记，digest 是消化正文。下游不需要先读 card；**没有 digest 的源材料，不算进过流水线**。
 
-**反向加载（从交付物倒查）**：不要从 `papers/manifest.md` 顺读。走 `conclusions` 的 E 行 → 该 E 链的 `digest.md` §4/§5 → 只有 digest 不够时才回 `paper.md` 的指定表/节。`card.md` 只在需要 provenance 时读；`references.md` / `appendix.md` 默认不读。三条交付物的具体反向链见 [meta/loading](../meta/rules/loading.md#从交付物倒查反向加载)。
+**反向加载（从交付物倒查）**：不要从 `papers/manifest.md` 顺读。走 `conclusions` 的 E 行 → 该 E 链的 `digest.md` §4/§5 → 只有 digest 不够时才回 `paper.md` 的指定表/节。`card.md` 只在需要 provenance 时读；`references.md` / `appendix.md` 默认不读。三条交付物的具体反向链见 [meta/loading](../meta/workflow/loading.md#从交付物倒查反向加载)。
 
 **反向阅读锚点（digest 契约）**：§4「结果：数字与条件」、§5「这些数字不能说明什么」、§6「工程上怎么用」（**本篇价值主体**）、§8「与仓库判断的关系」——这四节编号固定，不重排；新增内容放 §9/§10。§6 必含 6.1 复刻顺序 / 6.2 成本与使能 / 6.3 何时用 / 6.4 三个坑+检测信号 / 6.5 工程配方；frontmatter 必填 `enabler`（为什么以前不行、现在行）。反向读不到 §4/§5 时，才回 `paper.md` 的指定表/节。
 
@@ -99,7 +98,7 @@ src/
 
 ## 0.3 准入字段与复审
 
-字段定义以 [conventions §字段与词汇](../meta/rules/conventions.md#字段与词汇) 为唯一出处。卡必填 `admission` / `gate_checked` / `impact_evidence` / `liveness` / `provenance_type`；写不出两条独立信号就不要写 `admitted`。复审周期、probation 与窄例外以 [CHARTER §4.3/§4.4](../CHARTER.md#43-回溯与退出无-grandfathering) 为准，不另开口子。
+字段定义以 [conventions §字段与词汇](../meta/schema.md#1-文档与来源字段) 为唯一出处。卡必填 `admission` / `gate_checked` / `impact_evidence` / `liveness` / `provenance_type`；写不出两条独立信号就不要写 `admitted`。复审周期、probation 与窄例外以 [CHARTER §4.3/§4.4](../CHARTER.md#43-回溯与退出无-grandfathering) 为准，不另开口子。
 
 ## 1. 论文的规则（`papers/`）
 
@@ -133,11 +132,11 @@ open-source/{org}-{repo}/
 - **执行 vs 装饰**要在 digest 里定级：真的跑 SHACL/OWL/约束检查，还是只把本体塞进 prompt；只有 README 说法的标 `推测`。
 - **命名**：目录全小写，`{org}-{repo}`，`/` 换成 `-`（如 `RDFLib/pySHACL` → `rdflib-pyshacl`）。
 - **候选与入库分开**：候选池、选择标准在 [open-source/README](./open-source/README.md)；入选项目才建目录。消化顺序与 C/A 闸见 [开源消化计划](../meta/archive/2026-11/open-source-digestion-plan.md)。
-- 模板：[open-source-card](./_templates/open-source-card.md) / [open-source-digest](./_templates/open-source-digest.md) / [open-source-code-map](./_templates/open-source-code-map.md)。
+- 模板：[open-source-card](../meta/templates/src/open-source-card.md) / [open-source-digest](../meta/templates/src/open-source-digest.md) / [open-source-code-map](../meta/templates/src/open-source-code-map.md)。
 
 ## 2. `card.md` 的定位：来源卡，不是消化（以论文为例）
 
-`card.md` 只回答「这是什么、我从哪读的、原文/图/代码在哪」。建议 40–70 行；材料卡与开源卡是同一角色，字段不同（见 `_templates/` 对应模板）。
+`card.md` 只回答「这是什么、我从哪读的、原文/图/代码在哪」。建议 40–70 行；材料卡与开源卡是同一角色，字段不同（见 [meta/templates/src/](../meta/templates/src/paper-card.md) 对应模板）。
 
 | 内容 | 要求 |
 |---|---|
@@ -153,7 +152,7 @@ open-source/{org}-{repo}/
 
 ## 3. `digest.md` 的定位：下游唯一入口
 
-`digest.md` 是**自包含消化正文**。读者可能只读这一篇，不读 card/原文；所以它必须能独立成立。以下骨架以论文为例；开源 digest 用 [open-source-digest](./_templates/open-source-digest.md)，要求相同（自包含、不靠「详见 card」）。
+`digest.md` 是**自包含消化正文**。读者可能只读这一篇，不读 card/原文；所以它必须能独立成立。以下骨架以论文为例；开源 digest 用 [open-source-digest](../meta/templates/src/open-source-digest.md)，要求相同（自包含、不靠「详见 card」）。
 
 固定骨架：
 
@@ -169,7 +168,7 @@ open-source/{org}-{repo}/
 10. `## 9. 还没解决 / 下一步`：可实验的问题优先。
 11. `## 10. 原文`：arXiv/代码链接。
 
-**长度**：L3 约 250–360 行；L2 约 160–260 行；L1 约 100–240 行。长度是目标不是门；**自包含优先**，L1 的判断可以只有一页，digest 仍可写长。定义见 [conventions](../meta/rules/conventions.md#阅读深度l1l2l3)。
+**长度**：L3 约 250–360 行；L2 约 160–260 行；L1 约 100–240 行。长度是目标不是门；**自包含优先**，L1 的判断可以只有一页，digest 仍可写长。定义见 [schema](../meta/schema.md#32-阅读深度l1l2l3)。
 
 **禁止**：
 
@@ -180,7 +179,7 @@ open-source/{org}-{repo}/
 
 ## 4. 字段
 
-字段与取值以 [conventions §字段与词汇](../meta/rules/conventions.md#字段与词汇) 为唯一出处（含开源卡的 commit/seam/ontology_role 三组与 `seam` 取值说明）；`seam` 的时刻/轴外位置定义见 [topics/seams.md](../topics/seams.md)。正文推断句至少标一次 `已核` / `推测` / `存疑`；没有标的按 `推测`。
+字段与取值以 [conventions §字段与词汇](../meta/schema.md#1-文档与来源字段) 为唯一出处（含开源卡的 commit/seam/ontology_role 三组与 `seam` 取值说明）；`seam` 的时刻/轴外位置定义见 [topics/seams.md](../topics/seams.md)。正文推断句至少标一次 `已核` / `推测` / `存疑`；没有标的按 `推测`。
 
 ## 5. 新建的流程
 
@@ -188,24 +187,24 @@ open-source/{org}-{repo}/
 
 ### 5.1 论文
 
-1. **落原文**：PDF 放 `src/papers/{arxiv_id}-{slug}/`；在 [manifest](./papers/manifest.md) 登记（行格式照表头：`# | 批次 | arXiv | 短标题 | 页 | 方向 | 文件 | 卡片 | 消化`），下载结果记 [_download.log](./papers/_download.log)。
+1. **落原文**：PDF 放 `src/papers/{arxiv_id}-{slug}/`；在 [manifest](./papers/manifest.md) 登记（行格式照表头：`# | 批次 | arXiv | 短标题 | 方向 | 文件 | 卡片 | 消化`），下载结果记 [_download.log](./papers/_download.log)。
 2. **转 MD**：`paper.md` + `references.md` + `appendix.md`；用 `pymupdf4llm` 逐页转，正文保留 `<!-- page N -->`；公式/表格回 PDF 核。
-3. **写 card**：用 [paper-card](./_templates/paper-card.md)；元数据 + 一句话 + 问题/设定 + 图表索引 + 作者局限；`reading`/`provenance` 如实，并填 `evidence_role` / `execution_form` / `subtopic`（多归位用 `also_supports`）。
-4. **写 digest**：用 [paper-digest](./_templates/paper-digest.md)，按 §3 骨架；先写「三句话」，再补术语/方法/数字/边界/工程。
+3. **写 card**：用 [paper-card](../meta/templates/src/paper-card.md)；元数据 + 一句话 + 问题/设定 + 图表索引 + 作者局限；`reading`/`provenance` 如实，并填 `evidence_role` / `execution_form` / `subtopic`（多归位用 `also_supports`）。
+4. **写 digest**：用 [paper-digest](../meta/templates/src/paper-digest.md)，按 §3 骨架；先写「三句话」，再补术语/方法/数字/边界/工程。
 5. **抽图**：2–3 张承载机制/结果的图；带页码、出处、「看什么」。
 6. **落 topics**：更新派 `sources.md`（内容链 digest）→ `claims.md` / 子主题 dashboard；跨派才动 conclusions。
-7. **自检**：过 [checklist](../meta/rules/checklist.md) 与 [digest 模板](./_templates/paper-digest.md) 的自包含要求；长度目标见 [conventions](../meta/rules/conventions.md#阅读深度l1l2l3)。
+7. **自检**：过 [checklist](../meta/workflow/checklist.md) 与 [digest 模板](../meta/templates/src/paper-digest.md) 的自包含要求；长度目标见 [schema](../meta/schema.md#32-阅读深度l1l2l3)。
 
 ### 5.2 开源项目
 
 1. **先筛**：按 [open-source/README](./open-source/README.md) 的选择标准过一遍；没入选的不建目录。
-2. **建目录**：`src/open-source/{org}-{repo}/`，从 `_templates/` 取三份模板。
+2. **建目录**：`src/open-source/{org}-{repo}/`，从 [meta/templates/src/](../meta/templates/src/open-source-card.md) 取三份模板。
 3. **pin 版本**：`git ls-remote` 或 GitHub API 取 commit SHA；填 license/scan_date/stars。
 4. **写 card**：本体在哪、调用点、证据入口；**只写可定位的事实**，执行/装饰的定级留到 digest。
 5. **写 code-map**：3–10 个文件/符号，一条调用链；不贴代码。
-6. **写 digest**：按 [open-source-digest](./_templates/open-source-digest.md) 的 10 段；每个判断带 `已核/已证/推测/存疑`。
+6. **写 digest**：按 [open-source-digest](../meta/templates/src/open-source-digest.md) 的 10 段；每个判断带 `已核/已证/推测/存疑`。
 7. **落 topics**：只在改变判断时动 `claims.md`；只是「论文机制没找到实现」→ 写进 `frontier.md` 的 G/N。
-8. **自检**：过 [checklist](../meta/rules/checklist.md)。
+8. **自检**：过 [checklist](../meta/workflow/checklist.md)。
 
 ### 5.3 两类共同
 
@@ -240,14 +239,14 @@ open-source/{org}-{repo}/
 | OMG Commons 1.3 | [card](./web/omg-commons/omg-commons.card.md) | 摘要级 / 原文摘要 | 05/representation；可复用模块与最小承诺 |
 | 开源项目 | 状态与进度见 [open-source/README](./open-source/README.md) | 8 个已消化（4 本体 + OPA/Qlever + Great Expectations + OpenLineage） | `topics/01-constraint`、`02-judgment`、`03-knowledge`、`05-produce` |
 
-> 论文按篇记；开源按项目记在 `open-source/README`；标准按卡记。**一处明细，一处总账。**
-> 2026-11-11 起，论文层只保留 10 篇过门来源；被删的 18 篇不再出现在台账内容里，只在 [审计](../meta/audits/2026-11-11-source-purge.md) 留 tombstone。
+> 论文按篇记；开源按项目记在 `open-source/README`；标准按卡记。**一处明细，一处总账（总计数见 [state.md](../meta/status/state.md)）。**
+> 2026-11-11 起，首轮论文只保留 10 篇过门来源（2026-11-12 随 10 交付物新增 2 篇后为 12 篇，见 `manifest.md`）；被删的 18 篇不再出现在台账内容里，只在 [审计](../meta/audits/2026-11-11-source-purge.md) 留 tombstone。
 
 ## 7. 已知缺口
 
-- **第一优先级：重写被删源的段落。** 18 篇论文 + 3 个旧网页已移出，主题页/交付物里仍有按它们写成的数字与判断；链接已指向 tombstone，但段落未改完。重写前不得引用。
-- 10 篇过门论文中 4 篇是 `probation`（GGC/Agents/N&D/CASEL）：只有 I2 + 真实评估，缺 I3/I4/I5；2027-05-11 前补不到第二信号就移出。
-- 9 条 E 已撤回（E-02/03/04/06/10/11/13/16/26），E-21 改写为 GGC 单路线，E-19 降为 `推测`；交付物引用这些编号的段落同步失效。
+- **持续维护被删源的长尾引用。** 18 篇论文 + 3 个旧网页已移出，主题页与交付物主干已按 2026-11-11 清除审计降级或标记撤回，新增/修改引用前仍须核对 `tombstone` 与 [黑名单](../meta/rules/excluded-sources.md)。
+- 在库过门论文中仍有 4 篇处于 `probation`（GGC/Agents/N&D/CASEL）：只有 I2 + 真实评估，缺 I3/I4/I5；2027-05-11 前补不到第二信号就移出。
+- 9 条 E 已撤回（E-02/03/04/06/10/11/13/16/26），E-21 改写为 GGC 单路线，E-19 降为 `推测`；涉及这些条目的旧结论与前沿仅作历史对照。
 - 部署层回报、false-veto/false-defer、维护成本仍缺量化。
 - `quality` 是粗分，不是同行评审结论；引用时仍看证据等级。
 - 开源侧：8 个已消化；`04 记忆 / 06 度量` 仍缺「本体真执行」的开源样本，语义检索类不计入。

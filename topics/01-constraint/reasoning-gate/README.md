@@ -51,6 +51,6 @@ evidence: [E-16]  # withdrawn
 
 ## 关联
 
-- 派：[01 约束](../README.md) · 结论：[E-16](../../conclusions.md)
+- 派：[01 约束](../README.md) · 结论：[原 E-16（已撤回）](../../conclusions.md)
 - 相邻：[action-gate](../action-gate/README.md) · [commit-gate](../commit-gate/README.md)
 - 判定：[02 判定](../../02-judgment/README.md)

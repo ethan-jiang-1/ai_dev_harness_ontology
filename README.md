@@ -6,7 +6,7 @@
 
 > **先读宪章**：[CHARTER](./CHARTER.md)。这是研究档案，不是软件项目；我们消化、组织、研究资料，交付物是文档，不是可运行系统。
 >
-> **2026-11-11 证据重置**：宪章 §4 素材准入已生效——论文 28→10、9 条 E 撤回。只有 `admitted`（含 probation）材料能撑 E/L/交付物；`signal` 只进 `frontier`；源撤回后，引用它的判断同步失效。入口：[CHARTER §4](./CHARTER.md#4-素材准入material-gate) · [当前状态](./meta/status/state.md) · [术语基线 v0](./meta/status/term-baseline.md)。
+> **2026-11-11 证据重置（持续更新）**：宪章 §4 素材准入已生效——首轮论文 28→10（截至最近一次盘点共 12 篇，见 `state.md`）、9 条 E 撤回。只有 `admitted`（含 probation）材料能撑 E/L/交付物；`signal` 只进 `frontier`；源撤回后，引用它的判断同步失效。入口：[CHARTER §4](./CHARTER.md#4-素材准入material-gate) · [当前状态](./meta/status/state.md) · [术语基线 v0](./meta/status/term-baseline.md)。
 
 ---
 
@@ -27,14 +27,14 @@
 | 材料、卡、消化 | [src/README](./src/README.md) |
 | 落地成本 / 可行性 | [topics/06-measure/feasibility](./topics/06-measure/feasibility/README.md) |
 | 交付物 | [deliverables](./deliverables/README.md) |
-| 写作约定与模板 | [meta/README](./meta/README.md) |
+| 写作约定与字段规范 | [meta/README](./meta/README.md) · [schema](./meta/schema.md) |
 | 当前计数与阻塞 | [meta/state](./meta/status/state.md) |
 | 素材准入（G1–G5） | [CHARTER §4](./CHARTER.md#4-素材准入material-gate) |
 | 术语基线 v0 | [meta/term-baseline](./meta/status/term-baseline.md) |
 | 当前目标 / 计数 / 阻塞 | [meta/state](./meta/status/state.md#当前目标下一步做什么) |
 | 第一次接触（人，10 分钟） | [START](./deliverables/START.md) |
-| 质量口径 / 最新评分 | [rubric](./meta/deliverables/quality.md) · [review](./deliverables/_plans/2026-11-11-quality-review.md) |
-| 按需加载 | [meta/loading](./meta/rules/loading.md) |
+| 质量口径 / 最新评分 | [rubric](./meta/deliverables/quality.md) · [review](./deliverables/_workpapers/2026-11-11-quality-review.md) |
+| 按需加载 | [meta/loading](./meta/workflow/loading.md) |
 
 ## 1. 一句话问题
 
@@ -74,7 +74,7 @@
 | [`topics/`](./topics/) | 按六派沉淀；派 README 是地图，子主题 README 是 dashboard | 结论带等级，冲突显式保留，gap/next 可见 |
 | [`deliverables/`](./deliverables/) | 手册、Deck、图等对外物 | 读者不打开 topics 能完成任务；细节可链 |
 
-支撑目录：`adr/`（结构决策）、`meta/`（**治理层**：rules 规则 / deliverables 交付物治理 / status 状态台账 / templates 模板 / audits·archive 历史 / tools 自检；入口 [meta/AGENTS](./meta/AGENTS.md)）。
+支撑目录：`adr/`（结构决策）、`meta/`（**治理层**：schema 字段 / rules 规则 / workflow 流程 / deliverables 交付物治理 / templates 模板 / status 状态 / plans 计划 / tools 自检 / audits·archive 历史；入口 [meta/README](./meta/README.md)）。
 
 **三条规矩**：判断顺流而下，证据逆流而上（deliverables 只从 topics 抽、不新增判断；被指错时先走上游补证，走 [AGENTS 的修复回路](./AGENTS.md)）；上游可以领先下游；每级自带台账。
 
@@ -115,7 +115,7 @@
 
 - `src/` — 论文一篇一目录（PDF + 三份 MD + card + digest）；开源 pin commit；材料卡（HN + 在役标准）+ [manifest](./src/papers/manifest.md)。
 - `topics/` — 六派成文；跨派结论见 [conclusions](./topics/conclusions.md)；形态轴见 [execution-forms](./topics/execution-forms.md)。
-- `deliverables/` — 4 个子目录，两组视角：[01 现状](./deliverables/01-capability-status/README.md) / [02 工程实施](./deliverables/02-engineering-playbook/README.md) / [03 机制参考](./deliverables/03-mechanism-reference/README.md)（判断/做法/机制，谈你的项目）；[10 落地现状](./deliverables/10-production-landscape/README.md)（实证，谈世界；**已有正文，成本/外部采用仍缺**）。每份的定位与边界见它自己的 `SCOPE.md`。原 04 合成走查已退役（[ADR 0015](./adr/0015-retire-04-and-renumber-05-to-10.md)）；原 7 章书稿计划已废弃，没有独立 handbook。
+- `deliverables/` — 4 个子目录，两组视角：[01 现状](./deliverables/01-capability-status/README.md) / [02 工程实施](./deliverables/02-engineering-playbook/README.md) / [03 机制参考](./deliverables/03-mechanism-reference/README.md)（判断/做法/机制，谈你的项目）；[10 落地现状](./deliverables/10-production-landscape/README.md)（实证，谈世界；**已有正文与 E-28–E-32 锚点，持续补实证**）。每份的定位与边界见它自己的 `SCOPE.md`。原 04 合成走查已退役（[ADR 0015](./adr/0015-retire-04-and-renumber-05-to-10.md)）；原 7 章书稿计划已废弃，没有独立 handbook。
 
 **素材准入（2026-06-01 起算）**：18 篇论文 + 3 个旧网页材料已移出，9 条 E 撤回；被删源的叙述页对账已基本完成（见 [state](./meta/status/state.md)）。**「现在最该做什么」只看 [state 的「当前目标」](./meta/status/state.md#当前目标下一步做什么)**，本页不另立优先级。最大的研究缺口是没有一条结论被独立复现；边界见 [state](./meta/status/state.md)。
 
@@ -126,8 +126,8 @@
 本页只指路，不复制流程（流程复制一次就会漂一次）：
 
 - 加论文/开源 → [src/README](./src/README.md) §5；登记只在 [manifest](./src/papers/manifest.md)。
-- 加子主题/做扫描 → [topic 协议](./meta/rules/topic-research-protocol.md) + [子主题模板](./meta/templates/subtopic-template/README.md)。
+- 加子主题/做扫描 → [topic 协议](./meta/workflow/topic-research-protocol.md) + [子主题模板](./meta/templates/topics/subtopic-template/README.md)。
 - 改派判断 → 该派 `claims.md`；跨派才动 [conclusions](./topics/conclusions.md)。
-- 交稿 → [checklist](./meta/rules/checklist.md)，先跑 `python3 meta/tools/check_repo.py`。
+- 交稿 → [checklist](./meta/workflow/checklist.md)，先跑 `python3 meta/tools/check_repo.py`。
 
 纪律见 [AGENTS](./AGENTS.md)（写之后 / 护栏）；本页只指路，不复制流程。

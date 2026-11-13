@@ -3,7 +3,7 @@ status: draft
 deliverable_status: draft
 updated: 2026-11-12
 target: 决策者 / 工程负责人
-basis: E-01–E-20, C-01–C-04
+basis: E-01, E-05, E-07–E-09, E-12, E-14, E-15, E-17–E-25, E-27, C-01–C-04（E-02–04/06/10–11/13/16 已撤回，W 表见 91-canonical）
 ---
 
 # 01 · 现状：本体接进 harness，今天能完成什么

@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-12
+updated: 2026-11-13
 ---
 
 # 结构决策（ADR）
@@ -24,5 +24,6 @@ updated: 2026-11-12
 | [0013](./0013-source-whitelist-blacklist.md) | 来源白名单 / 黑名单 | 白名单=admitted 卡不另设文件；黑名单=常设禁引清单，采/引前必查 |
 | [0014](./0014-deliverable-scope-single-home.md) | 交付物定位单一出处 | 定位→meta/deliverable-scope；AGENTS/README 是指针；答不了标 gap、不偷换问题 |
 | [0015](./0015-retire-04-and-renumber-05-to-10.md) | 退役 04，实证份改为 10 系列 | 04 的示例对象过期（教人从第 5 步开始）；判据打捞进 topics/02，35 文件删除；05→10 与 01–03 分架 |
+| [0016](./0016-unify-meta-structure.md) | 统一 `meta/` 治理结构与工作底稿分家 | 单入口 + `schema.md` + `rules/`/`workflow/` 二分 + 模板收归 `meta/templates/` + 计划与 `_workpapers/` 分家 |
 
 **新增 ADR 的判据**：改变目录/层级/字段契约，或引入新的源类型/验证方式。只改内容判断，不写 ADR。

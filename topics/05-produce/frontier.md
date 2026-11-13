@@ -11,7 +11,7 @@ rq: [RQ2, RQ3]
 ## 这一派现在的前沿问题
 
 1. **精化能否产品化**：给定一个本体和一批下游错误，自动定位该修哪条子类/约束？CASTON 既没有「下游错误 → 公理」映射，也没报 recall@30/recall@10（[refinement/frontier](./refinement/frontier.md) 的 G1）。
-2. **来源标记如何进入判定权重**，而不让判定变得不可解释？E-02 只测到来源差异，加权效果未测（[generation/frontier](./generation/frontier.md) 的 G3）。
+2. **来源标记如何进入判定权重**，而不让判定变得不可解释？原 E-02（已撤回）只测到来源差异，加权效果未测（[generation/frontier](./generation/frontier.md) 的 G3）。
 3. **本体是否需要「测试」**：一组必须成立/必须不成立的事实对，能不能当回归测试（[refinement/frontier](./refinement/frontier.md) 的 G2）。
 4. **生成物的可消费性怎么测**：四条生成路线只测说明、结构或用户感知，没有「判定器能否加载/解释/复现」的评测（[generation/frontier](./generation/frontier.md) 的 G1/G4）。
 5. **表示选型假设是否成立**：第二档（结构表 + SHACL）能否覆盖多数判定场景、边界在哪；三档成本差没有对照（[representation/README](./representation/README.md#开放问题)）。这是本页假设，不是 SFE-O 的结论。
@@ -20,8 +20,8 @@ rq: [RQ2, RQ3]
 
 - **会议/期刊**：ISWC、ESWC、K-CAP、JIST；ACL/EMNLP 的 ontology generation 线。
 - **标准/工具**：OWL 2、SHACL、SPARQL、ontology testing 工具。
-- **领域本体**：工业设备（SFE-O）、生物医学/农业 KG（OntoDoc）、金融/电网（FIRME）。
-- **实验室/团队**：CASTON、OntoDoc、Peeling、Evontree、ReX-GG、FIRME、OntoAct。
+- **领域本体**：工业设备（原 SFE-O 已移出）、生物医学/农业 KG（原 OntoDoc 已移出）、金融/电网（FIRME）。
+- **实验室/团队**：CASTON、FIRME（现役）；OntoDoc、Peeling、Evontree、ReX-GG、OntoAct（原文已于 2026-11-11 移出，仅追踪其过门新工作）。
 - **arXiv**：cs.AI / cs.CL / cs.DB / cs.LG。
 
 ## 检索式

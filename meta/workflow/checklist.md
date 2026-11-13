@@ -1,0 +1,95 @@
+# 交稿前检查
+
+每次改完跑一遍。任何一条不通过，不要提交。
+
+先跑 `python3 meta/tools/check_repo.py`；它覆盖文件与锚点链接、枚举、E/L 编号、论文/开源清单与计数。下面是脚本查不了的语义项。
+
+## 0. 宪章
+
+- 这次改动是**读/消化/组织/写判断**，还是**建/跑/部署**？后者停；见 [CHARTER](../../CHARTER.md)。
+- 没有新增代码、engine、harness、reference filter、可执行套件；示例只作说明。
+- 没有把“能跑”当交付标准；没有因为示例不能跑就补实现。
+- 例外只有 `meta/tools/` 的只读自检。
+
+## 0.1 素材准入
+
+- 新引源已对 [来源黑名单](../rules/excluded-sources.md) 查过；无命中源的读/引/入库。
+- 新卡有 `admission` / `gate_checked` / `impact_evidence` / `liveness` / `provenance_type`；`admitted` 至少两条独立信号，至少一条 I1–I3。
+- `signal` 没进 `src/`；`excluded` 没建卡；**历史语料没有“已引用/已消化/名校”豁免**。
+- 被删源的引用已改 tombstone；依赖它的 E/L 已撤回、降级或换锚。
+- 公司自证、会议主 track、star/浏览不算影响信号；标准走 §4.4 在役例外并写活动证据。
+
+## 1. 链接
+
+- 所有相对链接的文件与 `#锚点` 都存在（`check_repo` 会查）。
+- 标签指向正确概念，不只是「能点开」；重点查 `seams.md`、`frontier.md`、`conclusions.md` 的交叉链接。
+- 旧结构名（`30-seams`、`src_notes/`、`topics/harness/` 等）不再出现。
+
+## 2. frontmatter
+
+> 合法枚举集合以 [schema](../schema.md) 为唯一权威（脚本已核）；本节只做语义与配套检查。
+
+- 通用/笔记：`status`、`source_type`、`reading`、`provenance` 语义匹配（读到哪 ≠ 证据等级 ≠ 文档成熟度）；`home` 指向 `topics/<派>`，`subtopic` 指向子主题。
+- 论文 digest：`quality` 对齐证据强度；`based_on: card.md` 指向同目录来源卡；有真实阈值才写 `enabler`。
+- 开源卡：`commit` 已 pin；`scan_date` / `stars_at_scan` / `last_push` 齐全；`ontology_role` / `seam` / `execution_form` / `evidence_role` 符合代码实读定位。
+- 论文卡：`evidence_role` 与 `execution_form` 齐全；一篇喂多个子主题时，`subtopic` 主归位 + `also_supports` 列出其余。
+- 计划与交付：`meta/plans/` 下推进计划只用 `plan_status`（不用文档 `status`）；`deliverables/` 用 `deliverable_status`。
+- `updated` 是最后一次实质修订，不是搬家或改链接日期。
+
+## 3. 证据
+
+- 正文引用的 `E-xx / Q-xx / C-xx` 都在 `conclusions.md` 有定义。
+- 每个「推测 / 存疑」有未核理由或反例。
+- 交付物缺陷走过[修复回路](../../AGENTS.md)：被指的那句话能指到 admitted 源的 digest 节，或已显式标 `推测`/gap 并在 frontier 记「关闭它需要什么」。
+- 交付物改动符合该份 `SCOPE.md` 的定性与边界：每句落在它「回答的问题」里，不越界替别的份回答；答不了初心问题已标 gap，**没有偷换成更容易的问题**（合成教程冒充现状之类）。每份交付物必须有 `SCOPE.md`（check_repo 强制）。
+- 卡片/消化修正了旧判断 → `updates:` 列全，主题页已回改。
+- 派内新判断在 `claims.md`；没有跨派/交付物的理由时，不应改 `conclusions.md`。
+- **新写的 L/E 过了[干货五问](../rules/conventions.md#干货一条知识成不成入仓闸)吗**：① 解决哪个具体的坎 ② 为什么以前不行现在行 ③ 哪个非显然的设计决定 ④ 换团队会不会踩同一坑 ⑤ 等级对档、撤回项不得供等级。过不了 → 收窄、或降为背景/缺口，别写成判断。
+- 没有用数字密度评价干货；数字只作锚点（有数无做法 = 别人的结论，不是我们的干货）。
+- **收的做法能长期保障质量吗**：可重复（换个人还能得出同样结论）／自带检测（有闸门或三态，出错会报警）／抗腐化（模型升级、换人后仍成立，或写清何时重测）。一次性技巧记候选，不升 E。
+- **交付物引用 E 且涉「怎么做」时，必须同时给 mechanism 链接**（E 只做索引，程序住在 mechanism）；只引 E 不给做法链接 = 缺一块。
+- `deliverables/` 引 `E-xx` 作结论；`O-xx` 只作地址（[ADR 0009](../../adr/0009-object-layer.md)），不引 `L-xx`；O 不得替代 E 作主句。
+
+## 4. 计数
+
+**当前计数只看 [meta/state](../status/state.md)**；本节只列结构性不变量，不再抄数字。
+
+- 论文目录数 = manifest 行数；每目录一个 `<stem>.pdf`、`paper.md` / `references.md` / `appendix.md`、`card.md`、`digest.md`。
+- 开源：磁盘目录数 = 有 `card.md` 的项目数；有 `digest.md` 的才是「已消化」；没有 digest 的不计入。
+- 6 派 / 6 个 `frontier.md` / 6 个 `claims.md` / 6 个 `sources.md` / 6 个硬时刻 + 轴外位置。
+- 06 有 5 个子主题（mechanism / failure-attribution / trace / metrics / feasibility）。
+- 标题里的「N 种读法」与下面的条目数一致。
+- 自检脚本能数的（论文/开源/ID/枚举/链接/锚点），以脚本输出为准。
+
+## 5. 术语
+
+- `证据等级` 只指四档置信度；原 OA-RAG（已移出，仅作术语边界示例）的 entailed/... 用 `接地等级`。
+- `接缝`（概念）/ `时刻`（六个位置）/ `派`（分类）不混用。
+- 新术语进 `GLOSSARY.md`。
+
+## 6. 结构
+
+- `01-04` 问时刻，`05` 问来源，`06` 问尺子。
+- 时刻表在 [topics/seams.md](../../topics/seams.md)；派表在 [topics/README.md](../../topics/README.md)；部件表在 [00-harness/README.md](../../topics/00-harness/README.md)。
+- 稳定判断在 `README.md`；活页在 `frontier.md`；局部结论在 `claims.md`；证据索引在 `sources.md`；详细论证在 `topics/<派>/<子主题>/README.md`。
+- **子主题 README 是 index/dashboard**：一屏以内；发现/证据在 `findings.md` + `findings/`，gap/next 在 `frontier.md`，机制在 `mechanism.md`。
+- 改一个派只动该派目录；跨派结论才动 `topics/conclusions.md`。
+- 论文一篇一目录：`src/papers/{arxiv_id}-{slug}/`，内含 `<stem>.pdf` / `paper.md` / `references.md` / `appendix.md` / `card.md` / `digest.md` / `figures/`。
+- 开源一个项目一目录：`src/open-source/{org}-{repo}/`，内含 `card.md` / `digest.md` / `code-map.md`；**没有 digest 的不算入库**；不 vendor 代码。
+- **模板只有一处**：`meta/templates/`（`src/` 三套在 `meta/templates/src/`，`topics/` 在 `meta/templates/topics/`）；`src/` 与源材料子目录不再自带模板。
+- **计划与工作底稿分家**：带 `plan_status` 的推进计划放 `meta/plans/`（`active` ≤ 1，完成后进 `meta/archive/YYYY-MM/plans/`）；冷读、质量评分、内容审计等无状态底稿放 `deliverables/_workpapers/`。
+- **card 是来源卡，digest 是消化正文**：card 只放元数据 + 一页索引 + 图表位置 + 作者局限；digest 自包含（术语/方法/数字条件/边界/工程用法），不靠「详见 card」。
+- 图在论文目录的 `figures/`；topics 引用时带出处、页码、看什么。
+- 博客/工程原文在 `src/web/`，卡与原文同目录 `.card.md`；不放进 `topics/`。
+- 子主题有 `prompt.md` 才建 `runs/`；run 带 `prompt` / `model` / `sources` / `claims_changed`。
+- run 不直接改 README；结论先过 `claims.md` / README。
+
+## 7. digest 自包含
+
+- 有「三句话 / 问题 / 术语 / 方法 / 数字与条件 / 不能说明什么 / 工程用法 / 质量边界 / 与仓库判断 / 未解决」。
+- **§6 是价值主体，且 6.1–6.5 齐**（复刻顺序 / 成本与使能 / 何时用 / 三个坑+检测信号 / 工程配方）；frontmatter 有 `enabler`，写的是**真实阈值**（「要有 LLM 才能用 LLM」这类同义反复算没写）。
+- 没有用「数字多」当验收；数字是锚点，**能不能照做**才是验收项。
+- 每个数字带数据、模型、样本量、设置；没有裸数字；关键数字带表号/页码。
+- 不靠「详见 card」补上下文；链接只放原文/代码。
+- 长度：L3 250–360 行；L2 160–260；L1 100–240（目标，不是门；自包含优先）。
+- 过 [digest 模板](../templates/src/paper-digest.md) 的自包含要求；长度目标见 [schema](../schema.md#32-阅读深度l1l2l3)。

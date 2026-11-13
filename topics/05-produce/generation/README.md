@@ -50,6 +50,6 @@ evidence: []
 
 ## 关联
 
-- 派：[05 生产](../README.md) · 本派结论：[05-L3 / 05-L7](../claims.md)（生成/可消费性缺口暂无直接 `E-xx`）
+- 派：[05 生产](../README.md) · 本派结论：[05-L3 / 05-L7](../claims.md)（其中 `05-L7` 已随 OntoDoc 撤回；生成/可消费性缺口暂无直接 `E-xx`）
 - 相邻：[refinement](../refinement/README.md) · [representation](../representation/README.md)
 - 判定：[02 checker](../../02-judgment/checker/README.md)

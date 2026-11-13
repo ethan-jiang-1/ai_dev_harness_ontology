@@ -11,7 +11,7 @@ updated: 2026-11-12
 
 ## 决策
 
-1. **AGENTS.md 是唯一的 agent 路由表**：任务→落点→加载，一张表。README 回归给人看；[meta/loading](../meta/rules/loading.md) 只做加载集与阅读路径参考；各层 README 只讲本层。路由只写“去哪”，不复制“是什么”。
+1. **AGENTS.md 是唯一的 agent 路由表**：任务→落点→加载，一张表。README 回归给人看；[meta/loading](../meta/workflow/loading.md) 只做加载集与阅读路径参考；各层 README 只讲本层。路由只写“去哪”，不复制“是什么”。
 2. **每条规则一个家**：准入门→CHARTER §4；字段与证据等级→conventions；计数→state；digest 契约→src/README 与模板；质量口径→deliverable-quality；frontier/run 纪律→topic-research-protocol。其它位置只留指针，不复述判据。
 3. **常设“修复回路”**写进 AGENTS：缺陷→定位承重句/E→核 digest→不足则按五门补证→L→E→回写交付物→收口。完成判据：被指的那句话能指到 admitted 源的 digest 节且数字条件与原文一致；指不到就显式标 `推测`/gap 并在 frontier 记缺什么。
 4. **主干表述改为“判断顺流而下，证据逆流而上”**：deliverables 不新增判断；修复必须先走上游。替代“单向不可反向”的空间隐喻，消除与反向加载的字面冲突。主干信息流本身（src→topics→deliverables，ADR 0010）不变。

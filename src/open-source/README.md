@@ -21,7 +21,7 @@ src/open-source/
     └── code-map.md            # 可选：文件/符号/调用链索引
 ```
 
-- 模板在 [`../_templates/`](../_templates/)：`open-source-card.md` / `open-source-digest.md` / `open-source-code-map.md`。**本目录不再自带模板。**
+- 模板在 [`meta/templates/src/`](../../meta/templates/src/)：`open-source-card.md` / `open-source-digest.md` / `open-source-code-map.md`。**本目录不再自带模板。**
 - 规则（不 vendor、pin commit、digest 是入口、执行 vs 装饰）见 [src/README §1.1](../README.md#11-开源项目的规则open-source)；本页不重复，避免两处口径。
 - **没有 `digest.md` 的项目不算入库**；只有卡的是候选/在读。
 
@@ -33,7 +33,7 @@ src/open-source/
 | 执行 vs 装饰 | 真的跑 SHACL/OWL/约束/查询重写/推理，还是只把本体塞进 prompt |
 | harness 接缝 | 能挂到哪个时刻（action-gate / evidence / checker / commit-gate / memory / determinism）；不是接缝就写 `none` |
 | 证据 | tests/benchmarks/issues/生产案例，不只看 README |
-| 可研究性 | 能否定位到文件/符号；能否与 22 篇 digest 对照 |
+| 可研究性 | 能否定位到文件/符号；能否与在库过门研究对照 |
 | 准入 | **CHARTER §4 五门**：`last_push` ≥ **2026-06-01**；180 天内有提交；≥2 名独立贡献者；有 release/tag |
 | 影响力 | 采用/依赖/生产案例/标准地位，**≥2 个独立信号**；star 与 README 承诺不算信号 |
 

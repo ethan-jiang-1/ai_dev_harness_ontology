@@ -46,6 +46,6 @@ evidence: [E-21]
 
 ## 关联
 
-- 派：[03 知识](../README.md) · 本派 claims：[03-L12–L16](../claims.md)
+- 派：[03 知识](../README.md) · 本派 claims：[03-L12–L16](../claims.md)（仅 `03-L13`/GGC 仍 admitted；`03-L12/L14/L15/L16` 已随 NLKGQ/KGVoyager 移出标 `withdrawn`）
 - 结论：[E-21](../../conclusions.md)（P1 新 E）；对照页：[compare](./compare.md)
 - 卡片（provenance）：[GGC](../../../src/papers/2607.28082-ggc/card.md) · [NLKGQ](../../../meta/audits/2026-11-11-source-purge.md#src-2609-14652) · [KGVoyager](../../../meta/audits/2026-11-11-source-purge.md#src-2609-01780)

@@ -30,7 +30,7 @@ updated: 2026-11-12
 ## F1 · 候选，不是完备本体
 
 - **判断**：生成物只到「可读、部分正确」；没有一篇证明它能被判定器/agent 直接消费。
-- **已核（限四篇）**：OntoDoc 只测描述四维（LLM judge + 11 人评估）；ReX-GG 只测用户感知准确率 0.778（摘要级）；Peeling 只测 DAG 的 Graph F1；Evontree 的产物是训练数据（本体树 + 三元组），没有下游加载测试。
+- **原标「已核」（四篇已移出，降 `推测` 作历史示例）**：OntoDoc 只测描述四维（LLM judge + 11 人评估）；ReX-GG 只测用户感知准确率 0.778（摘要级）；Peeling 只测 DAG 的 Graph F1；Evontree 的产物是训练数据（本体树 + 三元组），没有下游加载测试。
 - **推测**：「生成产出候选，不是完备本体」是类别判断——「完备」没有操作定义，四篇也没打算交付完整本体。
 - **反例/边界**：没有下游任务不等于生成物没用（F2 有 completeness 提升）；可消费性也没有统一评测口径。
 - **来源**：OntoDoc digest §4/§5；ReX-GG digest §4.1/§5；Peeling digest §4.1/§5；Evontree digest §5。
@@ -65,7 +65,7 @@ updated: 2026-11-12
 ## F5 · 来源字段是建议，生成者身份没有进判定
 
 - **判断**：四篇论文都没有把「生成者身份（expert/llm/mining）」作为判定权重。`provenance_triples[]`、`generator_version`、`evidence_span` 这三个字段出自 digest 的 E3 建议（OntoDoc §6.5、ReX-GG §6.1），是工程建议，不是论文产物；ReX 论文侧能核的只是 JSON 输出含证据 span（digest §0/§3）。
-- **已核（流程痕迹，不是 schema）**：OntoDoc 的每条 assumption 至少一条引用 DB triple 编号，描述可追溯到 triple；ReX 的匿名互评把候选匿名/隐藏模型名（去偏设计），刻意抹掉来源；Evontree 的三元组按 `ConfirmValue` 分 confirmed/reliable/extrapolated/gap（Table 2）。这些说明流程里有证据痕迹，不等于产物带来源权重。
+- **历史流程痕迹（原四篇已移出，降 `推测`；非 schema）**：OntoDoc 的每条 assumption 至少一条引用 DB triple 编号，描述可追溯到 triple；ReX 的匿名互评把候选匿名/隐藏模型名（去偏设计），刻意抹掉来源；Evontree 的三元组按 `ConfirmValue` 分 confirmed/reliable/extrapolated/gap（Table 2）。这些说明流程里有证据痕迹，不等于产物带来源权重。
 - **推测（字段设计）**：`provenance_triples[]`/`generator_version`/`evidence_span` 可作为工程字段先记，但论文没有给出这些字段名；标 `推测`，不算「已核字段」。
 - **未核（效果）**：四篇都没有测过按来源加权会不会降低误判。所以「判定器不知道约束是谁写的」是 `推测`，且与「产物带来源字段」不是一回事——字段可加，加权效果没测。
 - **含义**：来源标记是可加的字段设计，不是已验证的收益；进权重前先测 false-accept/false-reject。

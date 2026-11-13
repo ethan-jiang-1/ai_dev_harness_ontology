@@ -3,20 +3,19 @@
 > 只放已经能站住的判断。`F` 编号是子主题局部编号；跨页引用写 `checker/Fx`。
 
 ## 索引
-> **2026-11-12 对账（等级以 README 为准）**：本页索引里的「已核」是**撤源前**的记录；支撑它的来源已按 [CHARTER §4](../../../CHARTER.md#4-素材准入material-gate) 移出，这些条目现等级见 [README](./README.md)（多已降 `推测`/`withdrawn`）。**引用请用 README 的等级，不要用本页索引的历史等级。**
-
+> **2026-11-13 对账**：F1–F6 来源于 Ontology Catch（2610.37809，已移出），本索引与 README 已同步降为 `推测`（机制/历史参考，原数值停用）；F7–F8（open-ontologies，E-20 admitted）保持 `已核（代码；未跑）`；F9 为基于原 D1 阈值的分析演示（`推测`）。
 
 | ID | 判断（一行） | 等级 |
 |---|---|---|
-| F1 | 三种本体来源在漏检/误报上无单一向优 | 已核 |
-| F2 | curated 真实答案 precision 仅略优于随机；FA 主源是 declaration/domain-range，不是「与数据矛盾」 | 已核 |
-| F3 | 空结果重试是强基线；ontology check 必须先超过它 | 已核 |
-| F4 | curated + data-derived 组合无净收益 | 已核 |
-| F5 | specific feedback 修复更多，但 corrupt 也更多 | 已核 |
-| F6 | LLM judge 检错更多，但修坏多于修好；不能默认更好 | 已核（单图比较器） |
+| F1 | 三种本体来源在漏检/误报上无单一向优 | 推测（源已移出，历史示例） |
+| F2 | curated 真实答案 precision 仅略优于随机；FA 主源是 declaration/domain-range，不是「与数据矛盾」 | 推测（源已移出，历史示例） |
+| F3 | 空结果重试是强基线；ontology check 必须先超过它 | 推测（源已移出，历史示例） |
+| F4 | curated + data-derived 组合无净收益 | 推测（源已移出，历史示例） |
+| F5 | specific feedback 修复更多，但 corrupt 也更多 | 推测（源已移出，历史示例） |
+| F6 | LLM judge 检错更多，但修坏多于修好；不能默认更好 | 推测（源已移出，历史示例） |
 | F7 | checker 的答案应分三态：通过 / 违反 / 未检查完；把「没检查完」合并进 pass 会污染 catch/FA | 已核（代码；未跑） |
 | F8 | SHACL 求值器的「覆盖」与「保证」不可兼得：默认支持 `sh:sparql` 但会 skip；verified 覆盖 Core 但拒绝 `sh:sparql`（22/120） | 已核（代码；未跑） |
-| F9 | 用 D1 的 +5pp/FA≤15% 阈值：data-derived 在 UniProt 真实答案上过线；curated 高 catch 但 FA 超线；masked LLM 增量不足 | 分析 |
+| F9 | 用 D1 的 +5pp/FA≤15% 阈值：data-derived 在 UniProt 真实答案上过线；curated 高 catch 但 FA 超线；masked LLM 增量不足 | 推测（分析演示；原 D1 随 E-02 撤回） |
 
 ## F1 · 三源权衡
 
@@ -82,10 +81,11 @@
 - **含义**：checker 选型不是「越强越好」，而是「用覆盖换保证」或反之；引用时必须说明用的是哪条路径、它拒了什么。这与 F7 的三态是同一件事的两面：保证越强，undetermined/拒绝的边界越显式。
 - **来源**：[open-ontologies digest](../../../src/open-source/fabio-rovai-open-ontologies/digest.md) §3–§5；`src/shacl_verified.rs`、`src/main.rs` 的 `Shacl` 分发。
 
-## F9 · 用 D1 的「+5pp / FA≤15%」阈值套 E-02
+<a id="f9--用-d1-的5pp--fa15阈值套-e-02"></a>
+## F9 · 用 D1 的「+5pp / FA≤15%」阈值套原 E-02（源已撤回）
 
 - **判断**：在 UniProt 真实答案上，相对空结果重试（catch 2.5% / FA 0.1%），data-derived 的增量 catch 为 **+5.7pp**、FA **3.5%**，过 D1 的工程阈值；curated 增量 **+16.4pp** 但 FA **16.8%** 超线；masked LLM 增量 **+2.5pp**，不足。
-- **等级**：分析（E-02 + D1 工程阈值；不是论文结论）。
+- **等级**：`推测`（历史口径演示：原 E-02 已于 2026-11-11 撤回 + D1 工程阈值）。
 - **边界**：单图（UniProt）；语义错 0%（changes of meaning 结构检查抓不到）；部署故障分布未知；阈值是工程选择，不是论文的显著性判断。
 - **含义**：E4 的 verdict 应写成「data-derived 在 UniProt 真实答案上过线；curated 高 catch 但 FA 超线；masked LLM 增量不足」；不能写成「checker 有效」或「curated 更好」。
-- **来源**：E-02；[e4 数据表](../../../deliverables/01-capability-status/09-data/e4-checker.md)。
+- **来源**：原 E-02（已撤回，历史对照）；[e4 数据表](../../../deliverables/01-capability-status/09-data/e4-checker.md)。

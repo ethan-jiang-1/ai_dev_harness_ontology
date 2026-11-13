@@ -27,9 +27,9 @@ updated: 2026-11-12
 
 ## 本派当前判断
 
-- **curated 不等于可靠。** 真实答案上 curated 精确度仅略优于随机；按发布状态使用的 schema 甚至可能与自身数据矛盾。详见 [checker/F2](./checker/findings.md)。
-- **空结果重试是必须超过的基线。** 人工 fault 上 catch 79.2%、FA 0%；ontology check 只有抓到它抓不到的错才有价值。详见 [checker/F3](./checker/findings.md)。
-- **接地等级要显式化，但别把它当保证。** OA-RAG 让答案报告本体观察 + grounding level，整体最优；但等级是模型自评、未校准。详见 [evidence](./evidence/README.md)。
+- **`[已撤回/历史]` curated 不等于可靠。** 原实证（Ontology Catch / E-02 已于 2026-11-11 撤回）称真实答案上 curated 精确度仅略优于随机、按发布状态使用的 schema 甚至可能与自身数据矛盾；现作待重证问题，详见 [checker/F2](./checker/findings.md)。
+- **`[已撤回/历史]` 空结果重试是必须超过的基线。** 原人工 fault 79.2%/FA 0% 源自已撤回的 E-02，现作比较基线设计提示，不作现役实证，详见 [checker/F3](./checker/findings.md)。
+- **`[已撤回/历史]` 接地等级要显式化，但别把它当保证。** 原 OA-RAG（E-03 已撤回）仅作结构提示，详见 [evidence](./evidence/README.md)。
 - **误报比漏检更贵。** 漏检只是放过一个错误；误报会让 agent 去改对的东西，产生新的、更隐蔽的错误。目前是 `推测`，待仓库外验证。
 
 ## 何时用 · 何时别用

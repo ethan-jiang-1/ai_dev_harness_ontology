@@ -1,6 +1,6 @@
 ---
 status: draft
-updated: 2026-11-12
+updated: 2026-11-13
 ---
 
 # 仓库状态戳
@@ -8,7 +8,7 @@ updated: 2026-11-12
 > 这是全仓**权威的当前计数**。README 只保留结构性摘要，checklist 不再抄数；数字冲突时以本页为准。
 > 每次结构性提交前更新；自检命令见文末。历史日志见 [state-log](./state-log.md)。
 
-## 当前状态（2026-11-12）
+## 当前状态（2026-11-13）
 
 | 项 | 值 |
 |---|---|
@@ -23,21 +23,22 @@ updated: 2026-11-12
 | 硬对象 | 94 注册（**20 已随源撤回**；现存 74：H3 33 / H2 41）；明细见 [objects](../../topics/objects.md) 变更记录 |
 | 证据配比（12 篇 + 8 开源） | 3 execution-test / 13 mechanism-only / 4 harness-evidence / 0 boundary-ruler |
 | 执行形态（20 源：12 论文 + 8 开源） | engine 3 / compiled 5 / context 1 / label 1 / none 10 |
-| 交付物 | 4 个子目录 + 共用入口 [START](../../deliverables/START.md)：01-capability-status / 02-engineering-playbook / 03-mechanism-reference（一组：判断/做法/机制，谈你的项目）+ **10-production-landscape**（另一组：实证，谈世界）；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；10 为落地现状·实证（5 条 admitted/probation 生产证据 + 1 张 OKF admitted 格式卡 + 3 家农商行客户自述 signal〔江西 <50 万上限、江南 3 人×12 月〕 + 小红书 DIBP（B） + NHS FDP（signal） + 五类价锚点；五平台外部采用与失败率已判“窗口内不存在”；质量自评 88.8/100；仍缺同一买方建设+维护配对与项目级 postmortem）。**原 04 合成走查已退役（ADR 0015）**；另有 `_plans/` 工作底稿（非交付）；原 7 章书稿计划已废弃，没有独立 handbook |
+| 交付物 | 4 个子目录 + 共用入口 [START](../../deliverables/START.md)：01-capability-status / 02-engineering-playbook / 03-mechanism-reference（一组：判断/做法/机制，谈你的项目）+ **10-production-landscape**（另一组：实证，谈世界）；02 为 README 门厅 + 13 条 recipe（R0–R12）+ 账本/评测/成本/上线/领域 + 附录；03 为四层结构（入口 + 6 位置卡 + 谱外页 + 3 横切页 + 证据台账/边界/缺口）；10 为落地现状·实证（5 条 admitted/probation 生产证据 + 1 张 OKF admitted 格式卡 + 3 家农商行客户自述 signal〔江西 <50 万上限、江南 3 人×12 月〕 + 小红书 DIBP（B） + NHS FDP（signal） + 五类价锚点；五平台外部采用与失败率已判“窗口内不存在”；质量自评 88.8/100；仍缺同一买方建设+维护配对与项目级 postmortem）。**原 04 合成走查已退役（ADR 0015）**；另有 `_workpapers/` 工作底稿（非交付），推进计划已收归 [meta/plans/](../plans/README.md)；原 7 章书稿计划已废弃，没有独立 handbook |
 | 模型 | 不本地安装；Yovole 两个：`DeepSeek-V4-Flash` / `qwen3.8-27b`；直连超时；harness override 可调用，但 subagent 会调用工具，**不用于实验**，只做第二意见；见 [models](./models.md) |
-| 最后自检 | 2026-11-12，`python3 meta/tools/check_repo.py`：0 坏链 / 0 坏锚 / 0 未定义 ID / 枚举通过（527 个 md；E=32，Q=3，C=4，L=86；12 论文 / 8 开源 / 17 材料卡） |
+| 最后自检 | 2026-11-13，`python3 meta/tools/check_repo.py`：0 errors / 0 warnings（534 个 md；E=32，Q=3，C=4，L=86；12 论文 / 8 开源 / 17 材料卡） |
 
 <a id="当前目标下一步做什么"></a>
 ## 当前目标（下一步做什么）
 
-> **「现在最该做什么」只看这一节**；README / _plans / 各派 frontier 都不另立优先级。做完一项就改这一节，并记 [state-log](./state-log.md)。
+> **「现在最该做什么」只看这一节**；README / plans / 各派 frontier 都不另立优先级。拆成**外部守门（A 轨）**与**仓内立即可推（B 轨）**，避免 fresh agent 在等待外部论文期间空转。做完一项就改这一节，并记 [state-log](./state-log.md)。
 
-| # | 目标 | 为什么是它 | 关闭条件 |
-|---|---|---|---|
-| 1 | **P0 四篇 probation 补第二独立信号**（GGC / Agents / N&D / CASEL） | 只靠一条信号，2027-05-11 前补不到就移出，会带走 E-12/E-15/E-18 等锚 | 每篇卡上 `impact_evidence` 出现第二个独立信号（≥1 个 I1–I3） |
-| 2 | **M1/M2 承重墙**：同本体跨位置对照、覆盖率测量 | 03 明写「没有这两项，只给分类不给效应量」；这是全仓最大的方法论缺口 | 有 admitted 源做同本体跨位置对照，或明确判定「现有文献不存在」并写进 frontier |
+| 轨道 | # | 目标 | 为什么是它 | 关闭条件 |
+|---|---|---|---|---|
+| **A 轨（外部守门）** | 1 | **P0 四篇 probation 补第二独立信号**（GGC / Agents / N&D / CASEL） | 只靠 I2 一条信号，2027-05-11 前补不到就移出，会带走 E-12/E-15/E-18 等锚 | 每篇卡上 `impact_evidence` 出现第二个独立信号（≥1 个 I1–I3）；如命中先查黑名单 |
+| **B 轨（仓内可推）** | 2 | **补 `04-state` / `06-measure` 开源执行样本 + `read-path` 第二独立实现** | 不等新论文即可推进：目前仅 trustgraph 1 个 `read-path` 实现（`ontology-rag-firewall`/`sparql-guard` 仍为候选），04/06 缺代码级本体执行样本 | 在 [选择标准](../../src/open-source/README.md) 五门下入库可 pin commit 的代码读码（或明确记录本轮候选排除结论） |
+| **B 轨（结构收口）** | 3 | **完成 `02/03` 信息架构对齐（见 [IA 整改计划](../plans/2026-11-12-deliverable-ia-plan.md)）+ D4（02 R3 extractor 规格）** | 把 02/03 与 10 一样收紧读径字数与可检入口，并补齐 R3 唯一缺的下游消费接口契约 | 02/03 对齐评分过线，R3 写出输入/输出契约 + offset 校验 + 降级路径 |
 
-> 不在这张表里的事，默认不做；要做先进这张表（一次至多 3 项，按序）。
+> **方法论开放墙（M1/M2）**：同本体跨位置对照、覆盖率实测是全仓最大的方法论缺口（决定 `03` 能否从分类走向效应量）。若外部有 admitted 新源立即收入；若要通过仓外实验验证升「已证」，须经用户明确同意并在仓库外运行、以 `EXP-xxx` 回链（[CHARTER](../../CHARTER.md) 禁止在仓内写代码/建实验）。
 >
 > **10 四期已收口到 [D1](#已知债务别当成已完成)**：二轮补搜后公开证据能拿的都拿了（五类价 + 江西 <50 万/江南 36 人月两条客户自述、3 家农商行 signal、小红书 B、NHS「宣称 vs 使用」、7 例采购流标、五平台 0 客户、无项目级 postmortem），剩下是"等外部材料"，不再占目标位；出现材料即回填。
 >
@@ -66,28 +67,11 @@ updated: 2026-11-12
 
 ## 最近改动
 
-> **编号说明**：04 已退役、05 已改名 10（[ADR 0015](../../adr/0015-retire-04-and-renumber-05-to-10.md)）；下文的「05」是历史条目里的旧号，指同一份。
+> 仅保留最新 3 条里程碑摘要；全量历史快照见 [state-log](./state-log.md)（其中 `04` 已退役、`05` 已按 [ADR 0015](../../adr/0015-retire-04-and-renumber-05-to-10.md) 改名为 `10-production-landscape`）。
 
-- **2026-11-12 交付物重排（ADR 0015）**：04 合成走查退役——判据打捞到 [policy F4](../../topics/01-constraint/policy/findings.md)、[output-validation §2.5](../../topics/02-judgment/checker/output-validation.md)、[02 附录 D §10](../../deliverables/02-engineering-playbook/05-appendices/04-artifact-pack.md)，fixture 与 35 个文件删除；05 改名 **10-production-landscape**（与 01–03 分架，不再排成一条阅读链），路径/份号/索引表/图名同步。交付物 = 01/02/03/10 四份。
-- **2026-11-12 05 收口（会场扫 + 压缩 + 一致性）**：VLDB vol19 全目录扫过（457 篇），无新准入；DBAIOps 判 G1 超窗（arXiv 2025-08）。两篇新论文 `reading` 降「精读」并补读校核（修正「专家评审是硬门槛」措辞）。06.1 加 Glyph 双口径脚注；04.4.9 写明联通采购与 UniDataAgent「同院同期、无互引、关系未知」。**主并集 33.6k → 28.1k 汉字**（6.2 压表、中泰四节并三、4.6 三层压三条、美章精简），路径长度写入 01.1（1 小时档 13.1k/16.0k）。README 首屏加「本体少、语义层多」配比。质量评估六期：C2 仍 3，总分 88.8。自检 551 md / 12 论文。
-- **2026-11-12 05 证据池修复（接通论文 + 两条新准入）**：诊断出 05 的证据池与 `src/papers/` 断开——已过门的 **Apple Glyph**（3.4M 列/98K 表/275 叶标签本体/6 周 24k 判定）与 **Narrow and Deep**（工业试验台）从未进 05。本轮：① Glyph 接入 06.1/00/03.5/02.1/90.1，判 **A（probation）**（只有 I3、无 I1/I2），上游同步 E-28/E-29/L18/L19（新增「权限会前置限制语义生产」）；② 新建 **CoeusBI**（百度，PVLDB 19:4076，I1+I2+I5）与 **UniDataAgent**（联通，ICDM 2026 Demo，I1+I2）两篇论文目录（card/digest/paper/references/appendix），manifest 12 篇（8 admitted + 4 probation），05 均判 A；③ 评估 AstraZeneca（15,000 用户，signal）、Same Context（学术受控对照，G6 线索）、Auditable（单作者，不建卡），进 frontier/90.3；④ 补 05.5c 收益侧、8.2 缺口 8（非中美无生产案例）、02.1 叠加例子；⑤ QCon PPT 服务核实：中泰有幻灯片但需登录、小红书无幻灯片；Medact 被 Cloudflare 挡。自检 550 md / 12 论文。
-- **2026-11-12 05 缺口二轮补搜（含成本/采用/失败三条）**：按 [缺口补齐计划](../../deliverables/_plans/2026-11-12-05-gap-closure-plan.md) 重扫七条 gap。**命中三条 signal 级**：① 江西农商投入 **<50 万（上限）**、周期 2026-05→08；② 江南农商 **3 人×12 月≈36 人月**、文档整理省 ~1,200 工时/年；③ 小红书 DIBP（QCon：覆盖 80%+ 员工、周活 8,800+，B）；④ NHS FDP：**29 家 FOI 否认使用**（两报对 137 家口径不同）（signal）。新增价格锚点：东北大学本体仿真服务 ¥80 万/1 年、Leibniz-IWT €270k（TED）。上游改 F9 限定、06-L21、新增 06-L24、E-31 限定与出处、frontier 四行；05 回写 00/03/04/05/06/08/90/README。**仍阴性**：五平台具名客户 0、审计机关无本体/KG 专项、HN 无关停复盘、无生产级同数据集对照、无同一买方建设+维护配对。计划见 [gap closure plan](../../deliverables/_plans/2026-11-12-05-gap-closure-plan.md)。
-- **2026-11-12 04b OKF 严格化（拆层/补证/降级）**：4b 被指“硬挤进去、未走严格流程”，尤其“靠向本体”把规范边界/映射机制/采用证据混成一条路。走[修复回路](../../AGENTS.md)：逐句审计（7 P0/9 P1/5 P2，见 [provenance 审计](../audits/2026-11-12-04b-okf-provenance.md)）→ SCIMIN/SMW 论文先建卡后**复核降为 `signal` 并移出 `src/`**（承建方自述、G3 无独立信号，只进 frontier）→ 上游重写 mechanism OKF 节（两个方向 + 关系定型缺口；映射缺口分三档）、E-32 补非对称投影、新增 06-L23、frontier 收三份 C 实现 → 4b 重写 9 节（删伪阈值、Kunstenpunt/京东降 `signal`、加“没有完成迁移的案例”）。计划见 [04b strict plan](../../deliverables/_plans/2026-11-12-04b-okf-strict-plan.md)。
-- **2026-11-12 05 三期（可读性收口）**：03.5/04.5 台账去掉、指向 06.1 canonical；07 加 7.5b 填好的决策卡（示例值）；README/00 加问题链主线；01 加产品名一句话 + 四条类比；06.1 加证据类型图例（观测/主张/采购记录/媒体转述/厂商材料）；90 加 90.3b 九类口径与不可比说明。自评从 77 → **85.6**（C2 仍 3：主路径约 3 万字 > 2 万字档；A1/A3/D3 仍 4：缺人月/项目级 postmortem/五平台客户）。
-- **2026-11-12 05 缺口收口（二期）**：C 层一致性 7 项 + E-28/E-29/E-30 措辞修正（本体 vs 语义层配比 / 失败表述 / 窗口外源）；OKF 建 `admitted` 卡并修三处事实偏差（semantic-layer 词频、Knowledge Catalog 13 字段、京东海博 OKF 推断）；成本章从“无金额”升级为五类价锚点（£10.09M/5 年、$1.14M/年、¥49–276 万、¥178.8 万/年、$37–175/月）；补 3 家农商行 signal、7 例采购流标（供给薄）、Westpac 退出；失败率与五平台外部采用判“窗口内不存在”写入 frontier/90.3。评分见 [05 质量评估](../../deliverables/_plans/2026-11-12-05-quality-review.md)。
-- **2026-11-12 05 落地现状成稿（一期）**：5 条 admitted/probation（中泰×2、Snowflake、Sigma、Netflix）+ 10+ C/B 线索；新增 E-28–E-32（平台承载 / 失败在语义层 / 公开证据不对称 / 成本拐点 / OKF 前置层）、L-18–L-22；新增 5 张源卡；05 共 11 节 + 1 张 SVG；仍缺 TCO、中国大厂 2026-06 后外部采用、失败率。- **2026-11-12 路线 B 收口 + 二审**：11 条嵌套坏链修复；E-01/E-18 改指正确 mechanism，E-14 的 p_h 标定新增独立锚点并贯通到 compilation/02/01；E-21/E-23/E-07/E-22 的做法按三条测试改写；二审把 01/03/feasibility 残留的点估计判门清成 95% CI 下界；check_repo 把嵌套链接与 active E 缺做法/链接记为 error。细则见 [state-log](./state-log.md#2026-11-12-路线-b-二审p_h-口径清尾--闸门升级)。
-- **2026-11-12 meta 目录重组 + meta/AGENTS.md 门牌**：meta 根从 14 个平铺文件收成 **README（索引）+ AGENTS（30 秒入口）+ 子目录**：`rules/`（现行规则）、`deliverables/`（交付物治理）、`status/`（状态台账）、`templates/`（模板）、`audits/`、`archive/`、`tools/`；归档 2 个已完成开源计划；`meta/AGENTS.md` 只做门牌与指路、**不新增规则**（守住单一路由 ADR 0012）。
-- **2026-11-12 治理体系化（fresh-agent 契约 + SCOPE）**：AGENTS 加「Fresh agent 三件事」（目标/质量门/边界）；每份交付物立 `SCOPE.md`（初心/定性/边界/红线/发挥空间/答不了怎么办）；check_repo 强制每份有 SCOPE.md；**04 改名 ontology-in-production → worked-example**（名实不符，合成示例非生产现状）；质量门重申 ≥2026-06-01 + 活跃 + 在役标准须现行版本+维护活动。
-- **2026-11-12 交付物定位系统（ADR 0014）**：[meta/deliverables/scope](../deliverables/scope.md) 为五份总索引（当时）；各份 `SCOPE.md` 为权威；01–04 定性钉死（当时）；新开 [10-production-landscape](../../deliverables/10-production-landscape/README.md)（落地现状·实证，证据待补、不编；当时编号 05）。硬规矩：**答不了初心问题就标 gap，不偷换成更容易的问题**——治 04 式漂移。
-- **2026-11-12 topics 撤回源叙述页对账（11 提交）**：01-constraint（action-gate/reasoning-gate/reversibility）、02-judgment（evidence/checker/calibration）、05-produce（README/claims/generation/representation/lifecycle）、06-measure（metrics/mechanism/failure-attribution/feasibility/claims）把撤回源数字降 `推测`/历史示例并加对账横幅；admitted 源保留；06-L2、05-L1/L8 等级修正；01 capabilities 补 frontmatter。交付物正文扫描无漂移；最重要的 01-capability-status 经逐页冷读确认自包含、判定口径/计数/W 表一致。
-- **2026-11-12 指令层结构整改（ADR 0012）** → [ADR](../../adr/0012-instruction-layer-single-home.md) / [审计](../audits/2026-11-12-instruction-layer-audit.md)；AGENTS 唯一路由 + 常设修复回路；规则单一出处；_plans 现行唯一；修 3 处漂移。细则见 [state-log](./state-log.md#2026-11-12-指令层结构整改adr-0012)。
-- **2026-11-12 内容层 purge 对账 + 缺口盘点**：六派 frontier 队列 / 硬对象注册表（20 撤回）/ execution-forms（18 源）/ frontmatter 卫生对齐；[内容缺口盘点](../../deliverables/_plans/2026-11-12-content-gap-survey.md)（外部前沿对齐待补）。
-- **2026-11-12 来源黑名单（ADR 0013）**：[excluded-sources](../rules/excluded-sources.md) 常设禁引清单（21 源）；白名单=admitted 卡不另设文件；采/引前查黑名单接进 AGENTS/协议/checklist；P0 四篇 probation 第二信号核实为阴性。
-- **2026-11-11 素材准入重置** → [审计](../audits/2026-11-11-source-purge.md)；宪章 §4 + 18 篇论文/3 个旧网页移出 + 9 条 E 撤回。
-- **2026-11-11 规范主干接线 + 术语 v1**：01–04 定义段接 N/local（[接线报告](../../deliverables/_plans/2026-11-11-trunk-wiring.md)）；[term-baseline](./term-baseline.md) v1 29 词 + [术语审计](../audits/2026-11-11-term-baseline.md)。
-- **2026-11-11 撤回补偿（W 表 + 自测协议）**：[content-repair](../../deliverables/_plans/2026-11-11-content-repair.md)；02 免责密度 −43%，术语表 57→33 行，质量分以 [§12.4 独立修正](../../deliverables/_plans/2026-11-11-quality-review.md) 为现行口径（01=77/02=77/03=73/04=88）；§12.2/§12.3 已作废。
-- **2026-11-11 内容精读 + 长尾清理**：[content-read](../../deliverables/_plans/2026-11-11-content-read.md)；清 40+ 处撤回源数值、修 2 个覆盖率格子、2 处排除源误用。
-- **2026-11-11 代理冷读 + checkpoint**：[cold-read](../../deliverables/_plans/2026-11-11-cold-read.md)（68→86，修 5 处口径/裸词）；质量 §12.2 01=85/02=82/03=83/04=87。
+- **2026-11-13 `meta/` 治理结构与工作底稿对齐（[ADR 0016](../../adr/0016-unify-meta-structure.md)）**：合并 `meta/AGENTS.md` 到 [meta/README.md](../README.md)；抽离 [meta/schema.md](../schema.md) 为全仓字段/枚举唯一权威；拆分 `rules/`（静态口径，补 `information-flow.md`、`staleness.md`）与 `workflow/`（动态流程，移入 `loading`/`checklist`/`topic-research-protocol`，补 `extension-points.md`、`working-agreements.md`）；模板全收归 `meta/templates/{src,topics}/`；撤销 `deliverables/_plans/`，推进计划归 [meta/plans/](../plans/README.md) 与 `archive/2026-11/plans/`，冷读/评分底稿留 `deliverables/_workpapers/`；补 `meta/tools/README.md` 并强化 `check_repo` 对 `plan_status` 唯一性检验。
+- **2026-11-13 fresh-agent 防跑偏校准与闸门加固**：修正 `THESIS` / `01` / `02` / `03/compilation` / `05-produce` / `06/feasibility` / `01/09-data` 中残余的撤回源旧「已核」标号、死 `src/` 路径与退役 `04` / 旧计数错标；补全 `iso-iec-21838`、`omg-commons` 的 `provenance_type`；将 `check_repo` 升级覆盖 `10-*` `SCOPE`、动态比对 `结论` 计数、`src/web` 门禁字段、黑名单防复入、死 `src/` 路径与未标注撤回 `E-xx`；`当前目标` 改为「外部守门 + 仓内可推」双轨。详见 [state-log](./state-log.md#2026-11-13-fresh-agent-防跑偏校准与闸门加固)。
+- **2026-11-12 交付物重排（ADR 0015）**：04 合成走查退役（判据打捞至 `policy F4`、`output-validation §2.5`、`02 附录 D §10`），删除 fixture 与 35 个文件；05 改名 **10-production-landscape**，交付物收拢为 `01 / 02 / 03 / 10` 四份。
 
 ## 怎么刷新
 

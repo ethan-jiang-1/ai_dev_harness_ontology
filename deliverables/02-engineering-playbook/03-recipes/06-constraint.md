@@ -395,6 +395,6 @@ verdict: {status: PASS|BREACH|UNKNOWN_EVIDENCE,
 - Commit Boundary 的 `q_m`/promotion/verdict 语义；不要抄「已实现」。
 - [identity 机制](../../../topics/04-state/identity/mechanism.md) 的 merge/split 写侧契约。
 
-**出处**：[action-gate 机制](../../../topics/01-constraint/action-gate/mechanism.md) · [commit-gate 机制](../../../topics/01-constraint/commit-gate/mechanism.md) · [E-04/E-15/E-20](../../../topics/conclusions.md)
+**出处**：[action-gate 机制](../../../topics/01-constraint/action-gate/mechanism.md) · [commit-gate 机制](../../../topics/01-constraint/commit-gate/mechanism.md) · [E-15/E-20（原 E-04 已撤回）](../../../topics/conclusions.md)
 
 > 回 [recipes 索引](README.md) ｜ 回 [02 目录](../README.md)

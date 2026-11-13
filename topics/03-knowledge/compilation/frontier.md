@@ -13,7 +13,7 @@
 | G5 | 部署层回报的量化 | 治理/上手/审计通过率仍只有定性断言 | 部署指标 + 对照 | CAI Table 2；N&D 工业案例 | 高 |
 | G6 | 投影 vs 编译的边界 | C-04 的解释仍靠人工预判「答案在不在文本里」 | 可自动判定的任务形态指标 | N&D/CAI 对照；03 projection | 高 |
 | G7 | CAI 的六条 harness 不变量与「按失败组织工具」分类没有进 digest | 机制页不能引用；写进 topic 就成了无 digest 依据的论断（本轮已从 mechanism 移出） | 把 `paper.md` §6.2/§6.4 的两节补进 CAI digest，再回写机制页 | CAI `paper.md` §6.2/§6.4；digest 补录 | 低 |
-| G8 | Grid 相对最强 agent baseline 的 0.5pp 优势归因 | Codex CLI/Power-Agent 均 99.4%；Power-Agent 仅 46/519 调用 PowerMCP 仍到 99.4%，所以「工具/solver 贡献」未被拆分 | 同 harness 消融：去掉 solver/工具、只留 agent 写代码；或给 Codex/Power-Agent 加领域工具；回写 03-L9 的工具归因 | Grid §4.2–4.3；复现实验 | 中 |
+| G8 | Grid（已移出）相对最强 agent baseline 的 0.5pp 优势归因 | Codex CLI/Power-Agent 均 99.4%；Power-Agent 仅 46/519 调用 PowerMCP 仍到 99.4%，所以「工具/solver 贡献」未被拆分（原数字随 Grid 移出停用） | 同 harness 消融：去掉 solver/工具、只留 agent 写代码；或给 Codex/Power-Agent 加领域工具；补过门新源重写原 `03-L9`（withdrawn）方向 | Grid（已移出）§4.2–4.3；复现实验 | 中 |
 
 ## 下一步（N）
 

@@ -77,7 +77,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 
 ### grounding 校准协议（工程配方，`推测`）
 
-> E-03 明确：等级是**模型自评**、未校准，作者不提供形式正确性保证。下面的协议是补丁，不是论文方法。
+> 原 E-03 已于 2026-11-11 撤回（历史注记：其等级是**模型自评**、未校准，无形式正确性保证）。下面的协议是工程兜底补丁，不是论文方法。
 >
 > 注意：公开的 conformal/faithfulness 方法多是**二值**（supported/not），不是 entailed/supported/related/unrelated 四级；不要假设有现成库能直接校准四级，需自建标注与阈值。
 
@@ -135,7 +135,7 @@ output: {answer, observations[], grounding: entailed|supported|related|unrelated
 - **人评先行**：两人独立标注，报 κ；κ < 0.6 或 precision < 0.9 → 只做提示，不自动放行。
 - **LLM judge 只做预标注**：先在这 20 条上测与人一致率；AttributionBench 的经验上限约 80% macro-F1，达不到就不得替代人评。
 - **停**：没有标签 → 标 `gap`；不要把 presence 的 85% 当 correctness 的通过线。
-- **EXP-004（2026-11-11）**：抽 20 条交付物 claim + 所引 E 行，两个 agent 标 S/P/N，κ=1.0；strict S=5/20（25%），宽松 57.5%，N=2/20。结论：**E 行单独只支持 1/4 的 claim**；多数是 E 行摘要掉了具体数字/条件，细节在 digest。E-xx 是地址，不是自足 warrant。**EXP-004b**：同一 20 对改用「E 行 + [evidence-anchors](../../../topics/evidence-anchors.md) 锚」后，strict 25% → **55–65%**，N 2 → **0**；剩余 P 多是处方/解释，应标 `工程建议`，不要挂 E。见 [exp-004](../../_plans/2026-11-11-exp-004-citation-audit.md)。
+- **EXP-004（2026-11-11）**：抽 20 条交付物 claim + 所引 E 行，两个 agent 标 S/P/N，κ=1.0；strict S=5/20（25%），宽松 57.5%，N=2/20。结论：**E 行单独只支持 1/4 的 claim**；多数是 E 行摘要掉了具体数字/条件，细节在 digest。E-xx 是地址，不是自足 warrant。**EXP-004b**：同一 20 对改用「E 行 + [evidence-anchors](../../../topics/evidence-anchors.md) 锚」后，strict 25% → **55–65%**，N 2 → **0**；剩余 P 多是处方/解释，应标 `工程建议`，不要挂 E。见 [exp-004](../../_workpapers/2026-11-11-exp-004-citation-audit.md)。
 
 ### 可抄锚点
 
@@ -243,4 +243,4 @@ per-1k cost = flag_rate × per-flagged cost × 1000
 - Ontology Catch 已移出：口径可读，数值按 W-01 重测；不要抄「curated 权威」。
 - [open-ontologies 的三态 ](10-offline-and-obda.md#r10--离线ci-shacl把没检查完做成第三态)；第三态是接口设计，不是效果证据。
 
-**出处**：[evidence 机制](../../../topics/02-judgment/evidence/mechanism.md) · [checker 机制](../../../topics/02-judgment/checker/mechanism.md) · [E-02/E-03](../../../topics/conclusions.md)
+**出处**：[evidence 机制](../../../topics/02-judgment/evidence/mechanism.md) · [checker 机制](../../../topics/02-judgment/checker/mechanism.md) · [E-02/E-03（均已撤回，历史配方参考）](../../../topics/conclusions.md)

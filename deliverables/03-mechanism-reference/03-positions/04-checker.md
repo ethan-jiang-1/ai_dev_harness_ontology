@@ -88,6 +88,6 @@ evidence: [E-02, E-20]  # E-02 withdrawn
 ## 8. 上游指针
 
 - 机制：[checker/mechanism](../../../topics/02-judgment/checker/mechanism.md)
-- 判断：[02-judgment/README](../../../topics/02-judgment/README.md) · [conclusions](../../../topics/conclusions.md) E-02/E-20
+- 判断：[02-judgment/README](../../../topics/02-judgment/README.md) · [conclusions](../../../topics/conclusions.md) E-20（原 E-02 已撤回，见 W-01）
 - 施工：[02 R5（recipes）](../../02-engineering-playbook/03-recipes/README.md) · [01 能力 5](../../01-capability-status/02-sections/02-map.md#22-一张表)
 - 长版论证：[附录 §3.4.4](../05-appendix-constraint-spectrum.md#344-checker输出后的判定器)

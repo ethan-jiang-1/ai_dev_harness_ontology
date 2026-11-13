@@ -17,7 +17,7 @@
 | [91-placement](./91-placement.md) | **placement 五步**：位置/时刻/粒度/gate-or-filter/判不了 |
 | [92-reader-checks](./92-reader-checks.md) | 读者自检（有没有把 H 当 E） |
 | [93-templates](./93-templates.md) | claim 走查模板 |
-| [94-relations](./94-relations.md) | 与 01/02/04 的分工 |
+| [94-relations](./94-relations.md) | 与 01/02/10 的分工与维护规则 |
 | [95-claim-walkthrough](./95-claim-walkthrough.md) | 一条 claim 的完整走查示例 |
 
 **建议顺序**：00 → 01 → 02 → [../03-positions](../03-positions/README.md) → 04 → 05。

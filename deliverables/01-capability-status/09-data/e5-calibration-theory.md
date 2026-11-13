@@ -7,7 +7,9 @@ target: X5 false-veto / false-block
 
 # X5 校准理论：false-veto 是一个前沿，不是一个阈值
 
-> **工作底稿，不是交付正文。** 来源：arXiv 2607.22868；2026-11-09 已入档，L2 digest 在 `src/papers/2607.22868-what-can-be-enforced/digest.md`。用于改写 X5 的表述，不新增 E。
+> **2026-11-11 素材重置注**：原来源 `2607.22868`（与下文的 POLAR `2610.08082`）均因未过准入门于 2026-11-11 移出（见 [黑名单](../../../meta/rules/excluded-sources.md) 与 [tombstone](../../../meta/audits/2026-11-11-source-purge.md#src-2607-22868)）。本页保留为「为什么 X5 应理解为前沿曲线而非单点阈值」的概念注记，不作现行实证定锚。
+>
+> **工作底稿，不是交付正文。** 原为改写 X5 表述而作，不新增 E。
 
 ## 1. 它证明什么
 
